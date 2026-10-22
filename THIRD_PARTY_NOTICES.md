@@ -63,3 +63,14 @@ FFmpeg 官方说明（https://ffmpeg.org/legal.html）：
    - 增加 `THIRD_PARTY_NOTICES` 与各许可证文本；
    - 这样 GPLv3 源码 + 二进制才具备清晰的分发链路。
 3. 若必须保留 RTX VSR：需要 NVIDIA 书面许可，并把该组件从 GPL 发布物中拆成独立分发/独立 EULA，不能混在 GPLv3 Release 里。
+
+
+## 6. 2026-10-22 更新：公共二进制已发布 + SDK 自带路径
+
+- GitHub Release `v1.0.0` 已上传安装版/便携版（`LyraViewer-Setup-1.0.0.exe` / `LyraViewer-Portable-1.0.0.zip`），
+  其中 **不包含** NVIDIA RTX Video SDK 的 nvngx DLL；
+- 播放器设置 → 视频画质 → 「RTX Video SDK 路径」：用户选择自己下载的 SDK 根目录后，
+  程序自动找到 `bin\Windows\x64\rel\nvngx_*.dll` 并复制到程序目录使用（NVIDIA 文档默认从程序目录加载），
+  选择结果写入 `data/player_settings.json` 的 `rtx_sdk_path`，可清除；
+- FFmpeg 仍为 GPLv3 构建；安装目录与仓库均提供 `FFMPEG_SOURCE_INFO.txt`（版本、configure、对应源码链接）；
+- Qt 仍未随包分发；安装包内静态链接的 FreeType/libpng 按各自许可保留声明。
