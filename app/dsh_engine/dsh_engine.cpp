@@ -2451,6 +2451,38 @@ static void dsh_check_present_hr(HRESULT hr){
 }
 // ★ 只读导出：显卡是否已被判死（1=已判死）。C# 侧据此提示"显卡/驱动故障，请重启程序"，而不是让用户对着白屏干等。
 // ================= ★ RTX VSR 开关（UI 设置里那个"超分辨率"开关）=================
+// ★ 允许用户指定 RTX Video SDK 的 DLL 目录（包含 nvngx_vsr.dll / nvngx_truehdr.dll）。
+//   传入空字符串 = 清除（恢复默认搜索，例如 DLL 就在程序目录时）。
+//   作用：安装包不再携带 NVIDIA SDK DLL；用户自己下载 SDK 后选目录即可使用 RTX VSR。
+extern "C" __declspec(dllexport) int WINAPI DshEngine_SetRtxSdkPath(const char* pathUtf8){
+    g_vsr.enabled = 0;
+    if(g_vsr.dll){
+        if(g_vsr.pShutdown) g_vsr.pShutdown();
+        FreeLibrary(g_vsr.dll);
+        g_vsr.dll = nullptr;
+        g_vsr.pProbe = nullptr; g_vsr.pInit = nullptr; g_vsr.pEval = nullptr;
+        g_vsr.pCpu = nullptr; g_vsr.pOutSrv = nullptr; g_vsr.pShutdown = nullptr;
+    }
+    g_vsr.available = -1; g_vsr.ready = 0;
+    g_vsr.outSrv = nullptr; g_vsr.dev = nullptr; g_vsr.outW = g_vsr.outH = 0;
+    if(pathUtf8 && *pathUtf8){
+        wchar_t wd[2048];
+        int n = MultiByteToWideChar(CP_UTF8, 0, pathUtf8, -1, wd, 2048);
+        if(n <= 0){ dsh_log("RTX SDK: 路径编码转换失败"); return -2; }
+        SetDllDirectoryW(wd);
+        char b[1200];
+        snprintf(b, sizeof(b), "RTX SDK: 已设置 DLL 搜索目录 = %s", pathUtf8);
+        dsh_log(b);
+    } else {
+        SetDllDirectoryW(nullptr);
+        dsh_log("RTX SDK: 已清除自定义 DLL 搜索目录（按默认搜索）");
+    }
+    int ok = vsr_probe();
+    char b[320];
+    snprintf(b, sizeof(b), "RTX SDK: 重新探测 RTX VSR → %s", ok ? "可用" : "不可用");
+    dsh_log(b);
+    return ok;
+}
 extern "C" __declspec(dllexport) int WINAPI DshEngine_RtxVsrAvailable(){ return vsr_probe(); }
 extern "C" __declspec(dllexport) int WINAPI DshEngine_SetRtxVsr(int on){
     if(!on){

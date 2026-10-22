@@ -1,0 +1,22 @@
+﻿FFmpeg 来源与编译信息（璃鸢镜 1.0.0 安装包）
+
+安装包内包含两个 FFmpeg 构建：
+1) third_party\ffmpeg\bin\ffmpeg.exe / ffprobe.exe
+   version: 2022-08-31-git-319e8a49b5-essentials_build-www.gyan.dev
+   configure: --enable-gpl --enable-version3 --enable-libx264 --enable-libx265 ...（完整 configure 见 ffmpeg -version）
+   license: GPLv3（因启用 --enable-gpl）
+   对应源码：https://github.com/FFmpeg/FFmpeg/archive/319e8a49b5.tar.gz
+   构建来源：https://www.gyan.dev/ffmpeg/builds/
+
+2) 程序根目录 avcodec-61.dll / avformat-61.dll / avfilter-10.dll / avutil-59.dll /
+   swscale-8.dll / swresample-5.dll
+   libavcodec 61.19.101（FFmpeg 7.1 系）
+   license: GPLv3（共享构建，含 libx264/libx265 等 GPL 组件）
+   对应源码：https://github.com/FFmpeg/FFmpeg/archive/refs/tags/n7.1.1.tar.gz
+   构建来源：https://github.com/BtbN/FFmpeg-Builds
+
+分发义务（FFmpeg 官方 checklist）：
+- 随二进制提供与上述构建对应的 FFmpeg 源码（或同一下载页的源码包）；
+- 说明 configure/构建方式；
+- 附带 GPLv3 许可证文本（本目录 LICENSE 即为 GPLv3）；
+- 在程序/下载页标注 "This software uses FFmpeg licensed under GPLv3"。

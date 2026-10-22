@@ -87,6 +87,8 @@ public static class DshNative
     [DllImport("dsh_engine.dll", CallingConvention = CallingConvention.Winapi)]
     public static extern int DshEngine_SetHdrPassthrough(int on);   // 运行时切：1=直通 0=色调映射；返回实际生效方式，-1=不可用
     // ---- ★ NVIDIA RTX Video Super Resolution（RTX VSR）----
+    [DllImport("dsh_engine.dll", CallingConvention = CallingConvention.Winapi, CharSet = CharSet.Ansi)]
+    public static extern int DshEngine_SetRtxSdkPath([MarshalAs(UnmanagedType.LPUTF8Str)] string pathUtf8); // 设置 RTX SDK DLL 目录（空=清除）
     [DllImport("dsh_engine.dll", CallingConvention = CallingConvention.Winapi)]
     public static extern int DshEngine_RtxVsrAvailable();          // 1=N 卡 RTX VSR 可用；0=不可用
     [DllImport("dsh_engine.dll", CallingConvention = CallingConvention.Winapi)]
@@ -158,6 +160,7 @@ public sealed partial class VideoWindow : Window
     private bool _aiSubJobsActive;
     private Microsoft.UI.Dispatching.DispatcherQueueTimer? _aiSubTimer;
     private string _aiSubLastGenSrt = "";
+    private string _rtxSdkPath = "";          // ★ 用户选择的 NVIDIA RTX Video SDK 根目录（不打包 SDK）
     // ---- ★ AI 字幕多版本（<视频名>.ai.<模型>.srt）----
     private readonly List<(string Path, string Label)> _aiSubVersions = new();
     private int _aiSubVersionIdx = -1;
@@ -442,11 +445,132 @@ public sealed partial class VideoWindow : Window
     }
 
     // ================= ★ NVIDIA RTX VSR（视频超分开关）=================
+    /// <summary>把用户 SDK 里的 nvngx DLL 复制到程序目录（NVIDIA 文档：默认从运行程序目录加载）。</summary>
+    private static bool CopyRtxDllsToApp(string dllDir)
+    {
+        try
+        {
+            string appDir = AppContext.BaseDirectory;
+            bool any = false;
+            foreach (var name in new[] { "nvngx_vsr.dll", "nvngx_truehdr.dll" })
+            {
+                string src = Path.Combine(dllDir, name);
+                if (!File.Exists(src)) continue;
+                File.Copy(src, Path.Combine(appDir, name), true);
+                any = true;
+            }
+            return any;
+        }
+        catch { return false; }
+    }
+
+    /// <summary>从用户选的 SDK 根目录里找到包含 nvngx_vsr.dll 的 DLL 目录。</summary>
+    private static string ResolveRtxSdkDllDir(string root)
+    {
+        try
+        {
+            if (string.IsNullOrEmpty(root) || !Directory.Exists(root)) return "";
+            var cands = new List<string>
+            {
+                root,
+                Path.Combine(root, "bin", "Windows", "x64", "rel"),
+                Path.Combine(root, "bin", "Windows", "x64", "dev"),
+                Path.Combine(root, "bin", "Windows", "x64"),
+            };
+            foreach (var d in cands)
+            {
+                if (File.Exists(Path.Combine(d, "nvngx_vsr.dll"))) return d;
+            }
+            // 兜底：SDK 目录里递归找（只找 nvngx_vsr.dll，找到即返回）
+            foreach (var f in Directory.EnumerateFiles(root, "nvngx_vsr.dll", SearchOption.AllDirectories))
+                return Path.GetDirectoryName(f) ?? "";
+        }
+        catch { }
+        return "";
+    }
+
+    private void TryApplyRtxSdkPathFromUi(string root)
+    {
+        try
+        {
+            string dllDir = ResolveRtxSdkDllDir(root);
+            if (string.IsNullOrEmpty(dllDir))
+            {
+                RtxVsrDetailText.Text = "选中的目录里没有找到 nvngx_vsr.dll；请选择 NVIDIA RTX Video SDK 根目录（含 bin\\Windows\\x64\\rel）";
+                DmLog("RTX SDK: 选择目录无效 " + root);
+                return;
+            }
+            _rtxSdkPath = root;
+            Backend.SaveRtxSdkPath(root);
+            RtxSdkPathText.Text = root;
+            CopyRtxDllsToApp(dllDir);
+            DshNative.DshEngine_SetRtxSdkPath("");   // 强制重载 bridge，按程序目录重新找 nvngx
+            _rtxVsrAvail = DshNative.DshEngine_RtxVsrAvailable();
+            InitRtxVsrUi();                 // 重新探测并恢复开关状态
+            if (_engineReady) ApplyRtxVsrOnOpen();
+            DmLog($"RTX SDK: 选择 {root}（DLL 目录 {dllDir}）→ VSR {(_rtxVsrAvail == 1 ? "可用" : "仍不可用")}");
+        }
+        catch (Exception ex) { DmLog("RTX SDK: 应用路径失败 " + ex.Message); }
+    }
+
+    private async void RtxSdkBrowse_Click(object sender, RoutedEventArgs e)
+    {
+        try
+        {
+            var picker = new Windows.Storage.Pickers.FolderPicker();
+            picker.FileTypeFilter.Add("*");
+            var hwnd = WinRT.Interop.WindowNative.GetWindowHandle(this);
+            WinRT.Interop.InitializeWithWindow.Initialize(picker, hwnd);
+            var folder = await picker.PickSingleFolderAsync();
+            if (folder == null) return;
+            TryApplyRtxSdkPathFromUi(folder.Path);
+        }
+        catch (Exception ex) { DmLog("RTX SDK: 打开目录选择器失败 " + ex.Message); }
+    }
+
+    private void RtxSdkClear_Click(object sender, RoutedEventArgs e)
+    {
+        try
+        {
+            _rtxSdkPath = "";
+            Backend.SaveRtxSdkPath("");
+            RtxSdkPathText.Text = "未选择（默认在程序目录查找）";
+            foreach (var name in new[] { "nvngx_vsr.dll", "nvngx_truehdr.dll" })
+            {
+                try { File.Delete(Path.Combine(AppContext.BaseDirectory, name)); } catch { }
+            }
+            DshNative.DshEngine_SetRtxSdkPath("");
+            _rtxVsrAvail = DshNative.DshEngine_RtxVsrAvailable();
+            InitRtxVsrUi();
+            if (_engineReady) ApplyRtxVsrOnOpen();
+            DmLog("RTX SDK: 已清除自定义路径");
+        }
+        catch (Exception ex) { DmLog("RTX SDK: 清除失败 " + ex.Message); }
+    }
+
     /// <summary>引擎就绪后调用：检测 N 卡可用性，回填开关状态（不主动开，等 OpenMedia 后套用记忆）。</summary>
     private void InitRtxVsrUi()
     {
         try
         {
+            _rtxSdkPath = Backend.LoadRtxSdkPath();
+            try { RtxSdkPathText.Text = string.IsNullOrEmpty(_rtxSdkPath) ? "未选择（默认在程序目录查找）" : _rtxSdkPath; } catch { }
+            if (!string.IsNullOrEmpty(_rtxSdkPath))
+            {
+                string dllDir = ResolveRtxSdkDllDir(_rtxSdkPath);
+                if (!string.IsNullOrEmpty(dllDir))
+                {
+                    CopyRtxDllsToApp(dllDir);
+                    DshNative.DshEngine_SetRtxSdkPath("");
+                    DmLog("RTX SDK: 已从设置应用路径并复制 DLL 到程序目录 " + dllDir);
+                }
+                else
+                {
+                    _rtxSdkPath = "";
+                    try { RtxSdkPathText.Text = "未选择（默认在程序目录查找）"; } catch { }
+                    DmLog("RTX SDK: 设置里的路径里找不到 nvngx_vsr.dll → 忽略");
+                }
+            }
             _rtxVsrAvail = DshNative.DshEngine_RtxVsrAvailable();
             if (_rtxVsrAvail != 1)
             {

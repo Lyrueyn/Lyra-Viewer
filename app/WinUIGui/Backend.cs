@@ -468,6 +468,23 @@ public static class Backend
         try { var o = ReadSettingsObj(); o["rtx_vsr_quality"] = Math.Clamp(q, 1, 4); WriteSettingsObj(o); } catch { }
     }
 
+    // ★ RTX Video SDK 目录（可选；不随安装包分发 SDK，用户自己选择 SDK 根目录）
+    public static string LoadRtxSdkPath()
+    {
+        try
+        {
+            var v = ReadSettingsObj()["rtx_sdk_path"];
+            if (v is JsonValue jv && jv.TryGetValue(out string? path)) return path ?? "";
+        }
+        catch { }
+        return "";
+    }
+
+    public static void SaveRtxSdkPath(string path)
+    {
+        try { var o = ReadSettingsObj(); o["rtx_sdk_path"] = path ?? ""; WriteSettingsObj(o); } catch { }
+    }
+
     // ★ 窗口置顶（Pin）记忆：player_settings.json 的 "always_on_top"
     public static bool LoadAlwaysOnTop()
     {
