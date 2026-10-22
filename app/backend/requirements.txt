@@ -1,0 +1,5 @@
+# 本地歌单器 · 后端依赖（零依赖弹幕/评论：纯标准库实现）
+# 安装：py -3.10 -m venv .venv 后 .venv\Scripts\activate && pip install -r requirements.txt
+fastapi>=0.115
+uvicorn[standard]>=0.30
+yt-dlp>=2024.8.6

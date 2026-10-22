@@ -1,0 +1,928 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Window
+    x:Class="WinUIGui.VideoWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:WinUIGui"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="璃鸢镜"
+    mc:Ignorable="d">
+
+    <!-- 仿 B站播放页：深色 + 顶部栏 + 视频左 + 信息栏右 -->
+    <Grid x:Name="RootGrid" Background="#0F0F0F" IsTabStop="True" KeyDown="Video_KeyDown">
+        <Grid.Resources>
+            <SolidColorBrush x:Key="BiliBg" Color="#0F0F0F"/>
+            <SolidColorBrush x:Key="BiliBar" Color="#171717"/>
+            <SolidColorBrush x:Key="BiliCard" Color="#1F1F1F"/>
+            <SolidColorBrush x:Key="BiliPink" Color="#FB7299"/>
+            <SolidColorBrush x:Key="BiliBlue" Color="#66CCFF"/>   <!-- ★ 天依蓝：倍速等"已改动默认值"的状态高亮 -->
+            <SolidColorBrush x:Key="BiliBtnOff" Color="#33FFFFFF"/> <!-- 控制条按钮默认底色 -->
+            <SolidColorBrush x:Key="BiliText" Color="#FFFFFF"/>
+            <SolidColorBrush x:Key="BiliSub" Color="#9BA0A5"/>
+            <SolidColorBrush x:Key="BiliHover" Color="#2A2A2A"/>
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="48"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- 顶部栏：回到主界面（‹ › 前进后退没实现，按用户要求先删掉，不留在界面上） -->
+        <Grid Grid.Row="0" Background="{StaticResource BiliBar}">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="12,0" Spacing="4">
+                <Button Content="回到主界面" Click="BackToMain_Click" Background="Transparent" BorderThickness="0"
+                        Foreground="{StaticResource BiliText}" ToolTipService.ToolTip="把主界面窗口切到前台（视频窗保持打开）"/>
+            </StackPanel>
+        </Grid>
+
+        <!-- 主体：视频左边 + 信息栏右边 -->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="380"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- 视频视区 + 弹幕层 + 底部播放控制条 -->
+            <!-- ★ VideoHost：逻辑尺寸容器（LayoutClip）。VideoPanel 的布局尺寸会被设成"物理像素数"，
+                 再用 RenderTransform 缩放 1/scale 缩回 DIP —— 见 ApplyRenderScale() 的说明。
+                 ★ 鼠标进出的判定挂在 VideoHost（包含视频层 + 控制条）上：控制条是它的子元素，
+                   这样鼠标从视频移到控制条那一行**不会**触发 PointerExited，避免控制条"一进一出"闪动。 -->
+            <Grid Grid.Column="0" x:Name="VideoHost" Background="Transparent"
+                  PointerMoved="Video_PointerMoved" PointerExited="Video_PointerExited">
+                <SwapChainPanel x:Name="VideoPanel" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0,0"/>
+                <Canvas x:Name="DanmakuLayer" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsHitTestVisible="True" Background="Transparent" Tapped="Video_Tapped"/>
+                <!-- ★ 字幕层：TextBlock 叠加在视频上（前端按引擎播放时钟刷新；IsHitTestVisible=False 不影响操作） -->
+                <Border x:Name="SubtitleBar" VerticalAlignment="Bottom" HorizontalAlignment="Center"
+                        Margin="0,0,0,64" Background="#99000000" CornerRadius="6" Padding="12,5"
+                        MaxWidth="1200" Visibility="Collapsed" IsHitTestVisible="False">
+                    <TextBlock x:Name="SubtitleText" Foreground="#FFFFFF" FontSize="20" TextWrapping="Wrap"
+                               TextAlignment="Center" LineHeight="26"/>
+                </Border>
+                <Grid x:Name="ControlBar" VerticalAlignment="Bottom" Background="#99000000" Height="52" IsHitTestVisible="True"
+                      PointerEntered="Bar_PointerEntered" PointerExited="Bar_PointerExited">
+                    <Grid VerticalAlignment="Center" Margin="10,0" ColumnSpacing="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>   <!-- 进度条拉伸填充 -->
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>  <!-- HDR 开关 -->
+                            <ColumnDefinition Width="Auto"/>  <!-- 画质切换 -->
+                            <ColumnDefinition Width="Auto"/>  <!-- ★ 音量 -->
+                            <ColumnDefinition Width="Auto"/>  <!-- ★ 循环开关 -->
+                            <ColumnDefinition Width="Auto"/>  <!-- ★ 字幕开关 -->
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="PlayBtn" Grid.Column="0" Content="⏸" Click="PlayBtn_Click" Width="38" Height="32"
+                                Background="Transparent" BorderThickness="0" Foreground="#FFFFFF" FontSize="16"/>
+                        <Slider x:Name="SeekSlider" Grid.Column="1" HorizontalAlignment="Stretch" Minimum="0" Maximum="1" Value="0"
+                                StepFrequency="0.001" SmallChange="0.01" IsThumbToolTipEnabled="False"
+                                VerticalAlignment="Center" ValueChanged="SeekSlider_ValueChanged"
+                                PointerPressed="Seek_PointerPressed" PointerReleased="Seek_PointerReleased"/>
+                        <TextBlock x:Name="TimeText" Grid.Column="2" Text="00:00 / 00:00" Foreground="#FFFFFF" FontSize="12" VerticalAlignment="Center"/>
+                        <Button x:Name="HdrBtn" Grid.Column="3" Content="HDR —" Click="HdrBtn_Click" MinWidth="76" Height="30"
+                                Background="#33FFFFFF" BorderThickness="0" Foreground="#FFFFFF" FontSize="12"
+                                VerticalAlignment="Center" IsEnabled="False"
+                                ToolTipService.ToolTip="HDR 输出方式开关：10bit PQ 直通 ↔ BT.2390 色调映射到 SDR（非 HDR 视频时不可用）"/>
+                        <Button x:Name="QualityBtn" Grid.Column="4" Content="画质 —" Click="QualityBtn_Click" MinWidth="84" Height="30"
+                                Background="#33FFFFFF" BorderThickness="0" Foreground="#FFFFFF" FontSize="12"
+                                VerticalAlignment="Center" Visibility="Collapsed"
+                                ToolTipService.ToolTip="切换本地已下载的画质（同一视频同一分P的不同清晰度版本，切换后保持播放位置）"/>
+                        <!-- ★ 字幕：开关 + 语言切换（有字幕文件时才显示；开=天依蓝，关=半透明白） -->
+                        <StackPanel Grid.Column="7" Orientation="Horizontal" Spacing="4" VerticalAlignment="Center">
+                            <Button x:Name="SubBtn" Content="字幕 关" Click="SubBtn_Click"
+                                    AutomationProperties.AutomationId="SubBtn"
+                                    MinWidth="64" Height="30" Padding="8,0" FontSize="12"
+                                    Background="#33FFFFFF" BorderThickness="0" Foreground="#FFFFFF"
+                                    VerticalAlignment="Center" Visibility="Collapsed"
+                                    ToolTipService.ToolTip="字幕开关（自动加载视频同名字幕文件 .srt/.vtt/.ass；有字幕时按钮才出现）"/>
+                            <Button x:Name="SubLangBtn" Content="语言" Click="SubLangBtn_Click"
+                                    AutomationProperties.AutomationId="SubLangBtn"
+                                    MinWidth="70" Height="30" Padding="8,0" FontSize="12"
+                                    Background="#33FFFFFF" BorderThickness="0" Foreground="#FFFFFF"
+                                    VerticalAlignment="Center" Visibility="Collapsed"
+                                    ToolTipService.ToolTip="切换字幕语言（人工/自动；点一下按顺序切换）"/>
+                        </StackPanel>
+                        <!-- ★ 音量条 + 静音（开关用文字，不用图标；开=粉色，关=半透明白） -->
+                        <StackPanel Grid.Column="5" Orientation="Horizontal" Spacing="6" VerticalAlignment="Center">
+                            <Button x:Name="MuteBtn" Content="静音" Click="MuteBtn_Click" MinWidth="46" Height="30"
+                                    Background="#33FFFFFF" BorderThickness="0" Foreground="#FFFFFF" FontSize="12"
+                                    ToolTipService.ToolTip="静音开关（开着时按钮变粉色）"/>
+                            <Slider x:Name="VolumeSlider" Width="96" Minimum="0" Maximum="100" Value="100"
+                                    StepFrequency="1" SmallChange="1" IsThumbToolTipEnabled="True"
+                                    VerticalAlignment="Center" ValueChanged="VolumeSlider_ValueChanged"
+                                    ToolTipService.ToolTip="音量"/>
+                        </StackPanel>
+                        <!-- ★ 倍速 / 循环（文字按钮，不用图标；列表循环只有从合集打开时才有意义） -->
+                        <StackPanel Grid.Column="6" Orientation="Horizontal" Spacing="4" VerticalAlignment="Center">
+                            <!-- ★ 倍速滑条（0.5× ~ 4.0× 连续可调，保持音高；不是 1.0× 时数值变天依蓝） -->
+                            <StackPanel x:Name="SpeedPanel" Orientation="Horizontal" Spacing="6" VerticalAlignment="Center"
+                                        ToolTipService.ToolTip="播放倍速（保持音高）：拖滑条连续调，0.5× ~ 4.0×；点数值可回到 1.0×">
+                                <TextBlock Text="倍速" Foreground="#FFFFFF" FontSize="12" VerticalAlignment="Center"/>
+                                <Slider x:Name="SpeedSlider" Width="108" Minimum="0.5" Maximum="4.0" Value="1.0"
+                                        StepFrequency="0.05" SmallChange="0.05" LargeChange="0.25"
+                                        IsThumbToolTipEnabled="True" VerticalAlignment="Center"
+                                        ValueChanged="SpeedSlider_ValueChanged"
+                                        AutomationProperties.AutomationId="SpeedSlider"/>
+                                <TextBlock x:Name="SpeedLabel" Text="1.0×" MinWidth="44" Foreground="#FFFFFF" FontSize="12"
+                                           VerticalAlignment="Center" Tapped="SpeedLabel_Tapped"
+                                           AutomationProperties.AutomationId="SpeedLabel"
+                                           ToolTipService.ToolTip="点一下回到 1.0× 原速"/>
+                            </StackPanel>                            <Button x:Name="LoopOneBtn" Content="单集循环" Click="LoopOneBtn_Click" MinWidth="72" Height="30"
+                                    Background="#33FFFFFF" BorderThickness="0" Foreground="#FFFFFF" FontSize="12"
+                                    ToolTipService.ToolTip="单集循环开关：这一集播完从头重播（开着时按钮变粉色）"/>
+                            <Button x:Name="LoopListBtn" Content="列表循环" Click="LoopListBtn_Click" MinWidth="72" Height="30"
+                                    Background="#33FFFFFF" BorderThickness="0" Foreground="#FFFFFF" FontSize="12"
+                                    Visibility="Collapsed"
+                                    ToolTipService.ToolTip="列表循环开关：最后一集播完回到第一集；不开则最后一集播完就停（开着时按钮变粉色）"/>
+                            <Button x:Name="PinBtn" Content="📌 置顶" Click="PinBtn_Click" MinWidth="80" Height="30"
+                                    AutomationProperties.AutomationId="PinBtn"
+                                    Background="#33FFFFFF" BorderThickness="0" Foreground="#FFFFFF" FontSize="12"
+                                    ToolTipService.ToolTip="把视频窗口钉在最上层（切到别的窗口也盖在上面）；开着时按钮变天依蓝"/>
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+
+                <!-- ★ 白屏说人话：显卡设备判死时的提示条（默认隐藏）——
+                     引擎侧阀门判死后会停止向显卡提交画面（防"每帧重建拖蓝屏"），但界面上原本只剩一个白窗口，
+                     用户不知道发生了什么。这里每 1 秒轮询 DshEngine_GpuDead()，为 1 就弹出这条文字提示并把控制条置灰。
+                     纯文字（不用图标）、放在视频区顶部、不遮控制条；恢复（返回 0）时自动隐藏。 -->
+                <Border x:Name="GpuDeadBanner" Visibility="Collapsed"
+                        AutomationProperties.AutomationId="GpuDeadBanner"
+                        HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,18,0,0"
+                        Padding="18,12" CornerRadius="8" MaxWidth="760"
+                        Background="#E6101010" BorderThickness="2" BorderBrush="{StaticResource BiliBlue}">
+                    <StackPanel Spacing="5">
+                        <TextBlock AutomationProperties.AutomationId="GpuDeadBannerTitle"
+                                   Text="⚠ 显卡设备已丢失（驱动故障），画面已停止"
+                                   Foreground="{StaticResource BiliBlue}" FontSize="16" FontWeight="SemiBold"/>
+                        <TextBlock Text="点下方按钮即可重启播放器（会自动开好新窗口再关掉当前这个）；若频繁出现，请做一次真正的重启（不是关机再开）。"
+                                   Foreground="#FFFFFF" FontSize="13" TextWrapping="Wrap"/>
+                        <!-- ★ 一键重启（文字按钮、天依蓝；不用图标）。点一次就自动开新实例 → 等它起来 → 再关自己，
+                             用户不必再"手动关掉 + 手动打开"两步。 -->
+                        <Button x:Name="RestartPlayerBtn" Content="重新启动播放器" Click="RestartPlayerBtn_Click"
+                                AutomationProperties.AutomationId="RestartPlayerBtn"
+                                Margin="0,6,0,0" MinWidth="150" Height="34" Padding="16,0"
+                                HorizontalAlignment="Left" FontSize="13" FontWeight="SemiBold"
+                                Background="{StaticResource BiliBlue}" Foreground="#101010" BorderThickness="0"
+                                ToolTipService.ToolTip="一键重启：先启动新窗口，确认起来了再关闭当前窗口（画面已停，重启程序是最可靠的恢复手段）"/>
+                        <TextBlock x:Name="RestartHint" AutomationProperties.AutomationId="RestartHint"
+                                   Text="" Visibility="Collapsed"
+                                   Foreground="#FFD479" FontSize="12" TextWrapping="Wrap"/>
+                        <TextBlock AutomationProperties.AutomationId="GpuDeadBannerSub"
+                                   Text="（画面已停止刷新，下方控制条已置灰 —— 重启后即可恢复）"
+                                   Foreground="#B9BEC4" FontSize="12" TextWrapping="Wrap"/>
+                    </StackPanel>
+                </Border>
+                <!-- ★ T22：自动连播停机提示（默认隐藏）——同一文件被反复自动打开达到上限时显示，不让用户面对"莫名其妙停住/反复重开" -->
+                <Border x:Name="AutoStopBar" Visibility="Collapsed"
+                        AutomationProperties.AutomationId="AutoStopBar"
+                        HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="14,0,0,68"
+                        Background="#E6101010" CornerRadius="6" Padding="12,8"
+                        BorderThickness="1" BorderBrush="{StaticResource BiliPink}">
+                    <TextBlock x:Name="AutoStopText" AutomationProperties.AutomationId="AutoStopText"
+                               Text="自动连播已停止" Foreground="{StaticResource BiliPink}" FontSize="12" TextWrapping="Wrap" MaxWidth="560"/>
+                </Border>
+            </Grid>
+
+            <!-- 右侧信息栏 -->
+            <!-- ★ 右栏：tab 行固定在顶部（不随内容滚动），下面的内容才滚动 -->
+            <Grid x:Name="RightPanelRoot" Grid.Column="1" Background="{StaticResource BiliBar}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <!-- tab：简介 / 评论 / 设置（固定区，永远显示在最上方） -->
+                <StackPanel Grid.Row="0" Padding="14,10,14,6" Spacing="10">
+                    <StackPanel Orientation="Horizontal" Spacing="18">
+                        <Button x:Name="IntroTab" Content="简介" Click="IntroTab_Click"
+                                Background="Transparent" BorderThickness="0" Padding="0" FontSize="16" FontWeight="SemiBold"
+                                Foreground="{StaticResource BiliPink}"/>
+                        <Button x:Name="CommentTab" Content="评论" Click="CommentTab_Click"
+                                Background="Transparent" BorderThickness="0" Padding="0" FontSize="14"
+                                Foreground="{StaticResource BiliSub}"/>
+                        <Button x:Name="SettingsTab" Content="设置" Click="SettingsTab_Click"
+                                Background="Transparent" BorderThickness="0" Padding="0" FontSize="14"
+                                Foreground="{StaticResource BiliSub}"
+                                ToolTipService.ToolTip="播放器通用设置（先做弹幕设置）"/>
+                        <Button x:Name="EnhanceTab" Content="增强任务" Click="EnhanceTab_Click"
+                                Background="Transparent" BorderThickness="0" Padding="0" FontSize="14"
+                                Foreground="{StaticResource BiliSub}"
+                                ToolTipService.ToolTip="音视频增强管线（重采样 / AI 超分 / 降噪 / 补帧…），以及这个视频的增强版本"/>
+                        <Button x:Name="EnhanceChainTab" Content="增强链" Click="EnhanceChainTab_Click"
+                                AutomationProperties.AutomationId="EnhanceChainTab"
+                                Background="Transparent" BorderThickness="0" Padding="0" FontSize="14"
+                                Foreground="{StaticResource BiliSub}"
+                                ToolTipService.ToolTip="节点图式增强链：节点1=当前视频 → 加几个节点 → 应用 → 产物A；对A再增强生成B时，A就是B的节点1（双击节点1可展开它自己的链）"/>
+                        <Button x:Name="InfoTab" Content="信息" Click="InfoTab_Click"
+                                AutomationProperties.AutomationId="InfoTab"
+                                Background="Transparent" BorderThickness="0" Padding="0" FontSize="14"
+                                Foreground="{StaticResource BiliSub}"
+                                ToolTipService.ToolTip="当前视频/音频的详细信息：文件大小、容器、时长、视频编码/分辨率/帧率、音频采样率/声道/位深、HDR 等"/>
+                    </StackPanel>
+                    <Rectangle Height="2" Fill="{StaticResource BiliPink}" HorizontalAlignment="Left" Width="36"/>
+                </StackPanel>
+
+                <!-- 内容区（可滚动） -->
+                <ScrollViewer Grid.Row="1">
+                <StackPanel Padding="14,10,14,20" Spacing="10">
+
+                    <!-- ===== 简介面板（默认显示）：UP主 / 标题 / 统计 / 简介 / 按钮 ===== -->
+                    <StackPanel x:Name="IntroPanel" Spacing="10">
+
+                    <!-- ★ 封面（有封面图时显示：B站封面 / YouTube 缩略图） -->
+                    <Border x:Name="IntroCoverBorder" Visibility="Collapsed" CornerRadius="8"
+                            Background="{StaticResource BiliCard}" HorizontalAlignment="Left">
+                        <Image x:Name="IntroCover" Stretch="Uniform" MaxHeight="170" HorizontalAlignment="Left"/>
+                    </Border>
+
+                    <!-- ★ 设置面板（点"设置"展开）：先做弹幕设置 -->
+
+                    <!-- UP主 -->
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Spacing="10">
+                        <Border Width="40" Height="40" CornerRadius="20" Background="{StaticResource BiliCard}">
+                            <TextBlock x:Name="UpAvatar" Text="?" Foreground="{StaticResource BiliPink}" FontWeight="Bold" FontSize="18"
+                                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <StackPanel VerticalAlignment="Center">
+                            <TextBlock x:Name="UpNameText" Text="本地视频" Foreground="{StaticResource BiliText}" FontSize="15" FontWeight="SemiBold"/>
+                            <TextBlock x:Name="UpSubText" Text="—" Foreground="{StaticResource BiliSub}" FontSize="12"/>
+                        </StackPanel>
+                    </StackPanel>
+
+                    <!-- 标题 -->
+                    <TextBlock x:Name="TitleText" Text="—"
+                               Foreground="{StaticResource BiliText}" FontSize="15" FontWeight="SemiBold" TextWrapping="Wrap"/>
+
+                    <!-- ★ 播放增强版时：源视频信息 + 返回源视频（只在这种情况显示） -->
+                    <StackPanel x:Name="ProductSourcePanel" Spacing="5" Visibility="Collapsed">
+                        <StackPanel Orientation="Horizontal" Spacing="10" VerticalAlignment="Center">
+                            <Button x:Name="BackToSourceBtn" Content="← 返回源视频" Click="BackToSource_Click"
+                                    AutomationProperties.AutomationId="BackToSourceBtn"
+                                    Padding="10,4" FontSize="12"
+                                    Background="{StaticResource BiliCard}" Foreground="{StaticResource BiliText}" BorderThickness="0"
+                                    ToolTipService.ToolTip="回到这个增强版对应的源视频继续播放"/>
+                            <TextBlock x:Name="ProductVersionText" Foreground="{StaticResource BiliPink}" FontSize="12"
+                                       VerticalAlignment="Center" TextTrimming="CharacterEllipsis"/>
+                        </StackPanel>
+                        <TextBlock x:Name="ProductSourceTitle" Foreground="{StaticResource BiliText}" FontSize="13"
+                                   FontWeight="SemiBold" TextWrapping="Wrap"/>
+                        <TextBlock x:Name="ProductSourceMeta" Foreground="{StaticResource BiliSub}" FontSize="12" TextWrapping="Wrap"/>
+                        <TextBlock x:Name="ProductSourceDesc" Foreground="{StaticResource BiliSub}" FontSize="12"
+                                   TextWrapping="Wrap" LineHeight="18" Visibility="Collapsed"/>
+                    </StackPanel>
+
+                    <!-- 统计 -->
+                    <TextBlock x:Name="StatsText" Text="—" Foreground="{StaticResource BiliSub}" FontSize="12"/>
+
+                    <!-- ★ 简介（从 B站 view 接口取；没有 bvid 的本地视频不显示） -->
+                    <TextBlock x:Name="DescText" Text="" Foreground="{StaticResource BiliSub}" FontSize="12"
+                               TextWrapping="Wrap" Visibility="Collapsed" LineHeight="18"/>
+
+                    <!-- 刷新弹幕（全量）：后端按天抓 B 站历史弹幕 + 实时补缺、按 id 去重 -->
+                    <StackPanel Orientation="Horizontal" Spacing="8">
+                        <Button x:Name="RefreshDmBtn" Content="刷新弹幕" Click="RefreshDanmaku_Click"
+                                Padding="12,5" FontSize="12"
+                                Background="{StaticResource BiliCard}" Foreground="{StaticResource BiliText}" BorderThickness="0"
+                                ToolTipService.ToolTip="从 B 站按天重抓全部历史弹幕（比下载时抓的实时弹幕池更全）。抓取可能要几分钟，期间按钮显示 刷新中…"/>
+                        <Button x:Name="AddCollBtn" Content="＋ 加入合集" Click="AddToCollection_Click"
+                                Padding="12,5" FontSize="12"
+                                Background="{StaticResource BiliCard}" Foreground="{StaticResource BiliText}" BorderThickness="0"
+                                ToolTipService.ToolTip="把当前视频加入某个合集（也可新建合集并加入）"/>
+                        <Button x:Name="RedownloadSubBtn" Content="重新下载字幕" Click="RedownloadSubtitle_Click"
+                                AutomationProperties.AutomationId="RedownloadSubBtn"
+                                Padding="12,5" FontSize="12"
+                                Background="{StaticResource BiliCard}" Foreground="{StaticResource BiliText}" BorderThickness="0"
+                                ToolTipService.ToolTip="重新从原始来源（B站 CC 字幕 / YouTube 字幕）下载这个视频的字幕文件；下载完会自动刷新字幕语言列表"/>
+                    </StackPanel>
+                    <TextBlock x:Name="SubRedownloadHint" AutomationProperties.AutomationId="SubRedownloadHint"
+                               Foreground="{StaticResource BiliSub}" FontSize="11" TextWrapping="Wrap"
+                               Visibility="Collapsed"/>
+                    </StackPanel>
+                    <!-- ===== /简介面板 ===== -->
+
+                    <!-- ===== ★ 评论面板（点"评论"tab 才显示） ===== -->
+                    <StackPanel x:Name="CommentsPanel" Spacing="8" Visibility="Collapsed">
+                      <!-- ① 评论列表视图 -->
+                      <StackPanel x:Name="CommentListPanel" Spacing="8">
+                        <TextBlock x:Name="CommentsHeader" Text="评论" Foreground="{StaticResource BiliText}" FontSize="14" FontWeight="SemiBold"/>
+                        <TextBlock x:Name="CommentsHint" Text="" Foreground="{StaticResource BiliSub}" FontSize="12"/>
+                        <ListView x:Name="CommentList" SelectionMode="None" Background="Transparent"
+                                  ScrollViewer.VerticalScrollMode="Disabled">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Padding="0,8" Spacing="3">
+                                        <StackPanel Orientation="Horizontal" Spacing="8">
+                                            <TextBlock Text="{Binding Avatar}" Foreground="{StaticResource BiliPink}" FontWeight="SemiBold" FontSize="13"/>
+                                            <TextBlock Text="{Binding UserName}" Foreground="{StaticResource BiliText}" FontSize="12" FontWeight="SemiBold"/>
+                                            <TextBlock Text="{Binding TimeText}" Foreground="{StaticResource BiliSub}" FontSize="11"/>
+                                            <TextBlock Text="{Binding LikeText}" Foreground="{StaticResource BiliSub}" FontSize="11"/>
+                                        </StackPanel>
+                                        <TextBlock Text="{Binding Content}" Foreground="{StaticResource BiliText}" FontSize="12"
+                                                   TextWrapping="Wrap" LineHeight="18"/>
+                                        <StackPanel Spacing="2" Margin="12,3,0,0">
+                                            <ItemsControl ItemsSource="{Binding Replies}">
+                                                <ItemsControl.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <TextBlock Text="{Binding}" Foreground="{StaticResource BiliSub}" FontSize="11"
+                                                                   TextWrapping="Wrap" Margin="0,1"/>
+                                                    </DataTemplate>
+                                                </ItemsControl.ItemTemplate>
+                                            </ItemsControl>
+                                            <!-- ★ 点它 → 整个 tab 切成"这一楼"（左上角有返回） -->
+                                            <Button Content="{Binding MoreText}" Click="MoreReplies_Click"
+                                                    Visibility="{Binding MoreVisibility}" HorizontalAlignment="Left"
+                                                    Padding="8,2" Margin="0,2,0,0" FontSize="11" BorderThickness="0"
+                                                    Background="Transparent" Foreground="{StaticResource BiliPink}"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ListView>
+                        <Button x:Name="MoreCommentsBtn" Content="加载更多" Click="MoreComments_Click" Visibility="Collapsed"
+                                Padding="12,5" FontSize="12" HorizontalAlignment="Left"
+                                Background="{StaticResource BiliCard}" Foreground="{StaticResource BiliText}" BorderThickness="0"/>
+                      </StackPanel>
+
+                      <!-- ② ★ 楼视图：整个 tab 变成这一楼（左上角"返回"回评论列表） -->
+                      <StackPanel x:Name="CommentThreadPanel" Spacing="10" Visibility="Collapsed">
+                        <StackPanel Orientation="Horizontal" Spacing="10" VerticalAlignment="Center">
+                            <Button x:Name="BackToCommentsBtn" Content="← 返回" Click="BackToComments_Click"
+                                    Padding="10,4" FontSize="12" BorderThickness="0"
+                                    Background="{StaticResource BiliCard}" Foreground="{StaticResource BiliText}"
+                                    ToolTipService.ToolTip="回到评论列表"/>
+                            <TextBlock x:Name="ThreadTitle" Text="回复" Foreground="{StaticResource BiliText}"
+                                       FontSize="14" FontWeight="SemiBold" VerticalAlignment="Center"/>
+                        </StackPanel>
+                        <!-- 楼主评论 -->
+                        <Border Background="{StaticResource BiliCard}" CornerRadius="6" Padding="10">
+                            <StackPanel Spacing="4">
+                                <StackPanel Orientation="Horizontal" Spacing="8">
+                                    <TextBlock x:Name="ThreadRootAvatar" Text="?" Foreground="{StaticResource BiliPink}" FontWeight="SemiBold" FontSize="13"/>
+                                    <TextBlock x:Name="ThreadRootName" Text="" Foreground="{StaticResource BiliText}" FontSize="12" FontWeight="SemiBold"/>
+                                    <TextBlock x:Name="ThreadRootTime" Text="" Foreground="{StaticResource BiliSub}" FontSize="11"/>
+                                    <TextBlock x:Name="ThreadRootLike" Text="" Foreground="{StaticResource BiliSub}" FontSize="11"/>
+                                </StackPanel>
+                                <TextBlock x:Name="ThreadRootContent" Text="" Foreground="{StaticResource BiliText}" FontSize="12"
+                                           TextWrapping="Wrap" LineHeight="18"/>
+                            </StackPanel>
+                        </Border>
+                        <TextBlock x:Name="ThreadHint" Text="正在加载回复…" Foreground="{StaticResource BiliSub}" FontSize="12"/>
+                        <ListView x:Name="ThreadList" SelectionMode="None" Background="Transparent"
+                                  ScrollViewer.VerticalScrollMode="Disabled">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Padding="0,6" Spacing="2">
+                                        <StackPanel Orientation="Horizontal" Spacing="8">
+                                            <TextBlock Text="{Binding Avatar}" Foreground="{StaticResource BiliPink}" FontWeight="SemiBold" FontSize="12"/>
+                                            <TextBlock Text="{Binding UserName}" Foreground="{StaticResource BiliText}" FontSize="12" FontWeight="SemiBold"/>
+                                            <TextBlock Text="{Binding TimeText}" Foreground="{StaticResource BiliSub}" FontSize="11"/>
+                                            <TextBlock Text="{Binding LikeText}" Foreground="{StaticResource BiliSub}" FontSize="11"/>
+                                        </StackPanel>
+                                        <TextBlock Text="{Binding Content}" Foreground="{StaticResource BiliText}" FontSize="12"
+                                                   TextWrapping="Wrap" LineHeight="18"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ListView>
+                        <Button x:Name="MoreRepliesPageBtn" Content="加载更多回复" Click="MoreRepliesPage_Click" Visibility="Collapsed"
+                                Padding="12,5" FontSize="12" HorizontalAlignment="Left"
+                                Background="{StaticResource BiliCard}" Foreground="{StaticResource BiliText}" BorderThickness="0"/>
+                      </StackPanel>
+                    </StackPanel>
+                    <!-- ===== /评论面板 ===== -->
+
+                    <!-- ★ 设置面板（点"设置"tab 才显示）—— 必须是简介/评论面板的兄弟节点，不能嵌在 IntroPanel 里 -->
+                    <StackPanel x:Name="SettingsPanel" Spacing="14" Visibility="Collapsed" Margin="0,4,0,6">
+                        <!-- ★ 音频输出：独占/共享（A2-12 / task-11）。文字按钮不用图标。
+                             按钮只表示"意图"（Set/GetExclusive），小字表示"当前实际"（GetExclusiveActive）——
+                             因为设备拒绝独占时会**静默回退共享**，只显示意图就是骗人。 -->
+                        <TextBlock Text="音频输出" Foreground="{StaticResource BiliText}" FontWeight="SemiBold" FontSize="14"/>
+                        <StackPanel Spacing="5">
+                            <StackPanel Orientation="Horizontal" Spacing="10">
+                                <Button x:Name="ExclBtn" Content="共享模式" Click="ExclBtn_Click"
+                                        AutomationProperties.AutomationId="ExclBtn"
+                                        MinWidth="106" Height="30" Padding="12,0" FontSize="12"
+                                        Background="#33FFFFFF" Foreground="#FFFFFF" BorderThickness="0"
+                                        VerticalAlignment="Center"
+                                        ToolTipService.ToolTip="独占模式（WASAPI Exclusive）绕过系统混音器、可位完美输出，但会抢占音频设备（此时浏览器/B站等其它程序无法出声）。点击切换，下一个视频生效"/>
+                                <TextBlock x:Name="ExclStatusText" AutomationProperties.AutomationId="ExclStatusText"
+                                           Text="当前实际：暂无媒体播放" Foreground="{StaticResource BiliBlue}"
+                                           FontSize="12" VerticalAlignment="Center" TextWrapping="Wrap"/>
+                            </StackPanel>
+                            <TextBlock x:Name="ExclHint" AutomationProperties.AutomationId="ExclHint"
+                                       TextWrapping="Wrap" Foreground="{StaticResource BiliSub}" FontSize="11"
+                                       Text="独占模式音质最好（绕过系统混音器、可位完美），但会抢占音频设备：此时浏览器/B站等其它程序无法出声。切换后「下一个视频生效」（引擎不会在播放中重开音频设备）。&#x0a;能否真正位完美取决于你的声卡/驱动：有些设备只接受 48000Hz / 2ch / 16bit PCM（此时 48kHz 源 = 位完美，44.1kHz 源会被重采样）；有些设备支持更高的位深/采样率。请以上面那行「当前实际」为准。&#x0a;若独占失败，引擎会静默回退到共享模式 —— 共享模式下并非位完美，请留意「当前实际」那行的状态。"/>
+                        </StackPanel>
+
+                        <!-- ★ 视频画质：NVIDIA RTX VSR（实时 AI 超分；仅 N 卡 RTX 20 系以上 + SDR） -->
+                        <TextBlock Text="视频画质" Foreground="{StaticResource BiliText}" FontWeight="SemiBold" FontSize="14"/>
+                        <Border Background="{StaticResource BiliCard}" CornerRadius="8" Padding="12,10" BorderThickness="1" BorderBrush="#33FFFFFF">
+                            <StackPanel Spacing="8">
+                                <StackPanel Orientation="Horizontal" Spacing="10">
+                                    <ToggleSwitch x:Name="RtxVsrToggle" AutomationProperties.AutomationId="RtxVsrToggle"
+                                                  OnContent="开" OffContent="关" IsOn="False" MinWidth="96"
+                                                  Foreground="{StaticResource BiliText}" RequestedTheme="Dark"
+                                                  Toggled="RtxVsrToggle_Toggled"
+                                                  ToolTipService.ToolTip="NVIDIA RTX 视频超分（RTX VSR）：边播边用显卡 AI 提升清晰度（1080p→4K 级），不下载模型、几乎不占性能。仅 NVIDIA RTX 20 系以上可用；HDR 视频会自动沿用原来的色调映射（会提示）。"/>
+                                    <TextBlock x:Name="RtxVsrStatusText" AutomationProperties.AutomationId="RtxVsrStatusText"
+                                               Text="检测中…" Foreground="{StaticResource BiliBlue}" FontSize="12"
+                                               VerticalAlignment="Center"/>
+                                </StackPanel>
+                                <TextBlock x:Name="RtxVsrDetailText" AutomationProperties.AutomationId="RtxVsrDetailText"
+                                           TextWrapping="Wrap" Foreground="{StaticResource BiliSub}" FontSize="11"/>
+                                <StackPanel Orientation="Horizontal" Spacing="8">
+                                    <TextBlock Text="质量挡位：" Foreground="{StaticResource BiliSub}" FontSize="12"
+                                               VerticalAlignment="Center"/>
+                                    <ComboBox x:Name="RtxVsrQualityCombo" AutomationProperties.AutomationId="RtxVsrQualityCombo"
+                                              MinWidth="150" Background="{StaticResource BiliCard}"
+                                              Foreground="{StaticResource BiliText}" RequestedTheme="Dark" BorderThickness="1"
+                                              BorderBrush="#33FFFFFF" CornerRadius="6" FontSize="12"
+                                              SelectionChanged="RtxVsrQualityCombo_SelectionChanged"
+                                              ToolTipService.ToolTip="1挡=低（最快，最自然）；2挡=中（默认，推荐）；3挡=高（更锐）；4挡=极高（最锐，可能有颗粒/边缘光晕）"/>
+                                </StackPanel>
+                                <TextBlock x:Name="RtxVsrHint" AutomationProperties.AutomationId="RtxVsrHint"
+                                           TextWrapping="Wrap" Foreground="{StaticResource BiliSub}" FontSize="11"
+                                           Text="NVIDIA 显卡专属：用 Tensor Core 实时做 AI 超分（不下载模型、不用等、几乎不占性能）。默认按「至少 2 倍源分辨率」做 AI 放大再降到窗口大小，所以锐度提升更明显；源分辨率越低/码率越低，效果越明显（1080p 源在 1080p 窗口提升有限）。HDR 视频会自动沿用原来的色调映射。没有 N 卡时此开关不可用。"/>
+                            </StackPanel>
+                        </Border>
+
+                        <!-- ★ 字幕：语言选择（下载时抓的是视频自带的人工字幕；没有人工字幕的才会是自动生成） -->
+                        <TextBlock Text="字幕" Foreground="{StaticResource BiliText}" FontWeight="SemiBold" FontSize="14"/>
+                        <StackPanel Spacing="2">
+                            <TextBlock x:Name="SubLangLabel" Text="字幕语言：自动" Foreground="{StaticResource BiliSub}" FontSize="12"/>
+                            <ComboBox x:Name="SubLangCombo" AutomationProperties.AutomationId="SubLangCombo"
+                                      MinWidth="240" Background="{StaticResource BiliCard}" Foreground="{StaticResource BiliText}"
+                                      BorderThickness="0" FontSize="12" SelectionChanged="SubLangCombo_SelectionChanged"/>
+                            <TextBlock x:Name="SubEmptyHint"
+                                       Text="（当前视频没有字幕文件；下载 YouTube 视频时会自动抓取视频自带的人工字幕）"
+                                       Foreground="{StaticResource BiliSub}" FontSize="11" TextWrapping="Wrap" Visibility="Collapsed"/>
+                            <StackPanel Orientation="Horizontal" Spacing="10" Margin="0,4,0,0">
+                                <ToggleSwitch x:Name="AiSubToggle" AutomationProperties.AutomationId="AiSubToggle"
+                                              OnContent="开" OffContent="关" IsOn="False" MinWidth="96"
+                                              Foreground="{StaticResource BiliText}" RequestedTheme="Dark"
+                                              Toggled="AiSubToggle_Toggled"
+                                              ToolTipService.ToolTip="AI 字幕：开启后视频右下角的字幕语言固定显示「自动识别」（表示字幕由 AI 自动识别生成）；关闭后恢复显示实际字幕语言（如 中文（中国））。"/>
+                                <TextBlock x:Name="AiSubStatusText" AutomationProperties.AutomationId="AiSubStatusText"
+                                           Text="关闭" Foreground="{StaticResource BiliSub}" FontSize="12"
+                                           VerticalAlignment="Center" TextWrapping="Wrap"/>
+                            </StackPanel>
+                            <TextBlock x:Name="AiSubHint" AutomationProperties.AutomationId="AiSubHint"
+                                       TextWrapping="Wrap" Foreground="{StaticResource BiliSub}" FontSize="11"
+                                       Text="AI 字幕：开启后视频右下角固定显示「自动识别」，不显示具体语言；关闭则恢复显示实际语言（中文（中国）/ 日本語 等）。"/>
+                            <!-- ★ AI 字幕模型（Whisper）：下载/选择/删除 + 进度条 + 取消 -->
+                            <Border Background="{StaticResource BiliCard}" CornerRadius="8" Padding="12,10"
+                                    BorderThickness="1" BorderBrush="#33FFFFFF" Margin="0,4,0,0">
+                                <StackPanel Spacing="7">
+                                    <TextBlock Text="语音识别模型（Whisper）" Foreground="{StaticResource BiliText}"
+                                               FontSize="12" FontWeight="SemiBold"/>
+                                    <ComboBox x:Name="AiSubModelCombo" AutomationProperties.AutomationId="AiSubModelCombo"
+                                              MinWidth="200" HorizontalAlignment="Stretch" Background="{StaticResource BiliCard}"
+                                              Foreground="{StaticResource BiliText}" RequestedTheme="Dark"
+                                              BorderThickness="1" BorderBrush="#33FFFFFF" CornerRadius="6"
+                                              FontSize="12" SelectionChanged="AiSubModelCombo_SelectionChanged"
+                                              ToolTipService.ToolTip="选择用哪个 Whisper 模型做 AI 字幕（越大越准也越慢）；选中的模型就是「使用模型」"/>
+                                    <StackPanel Orientation="Horizontal" Spacing="6">
+                                        <Button x:Name="AiSubModelDlBtn" Content="下载模型" Click="AiSubModelDl_Click"
+                                                AutomationProperties.AutomationId="AiSubModelDlBtn"
+                                                Padding="10,5" FontSize="12" Background="{StaticResource BiliCard}"
+                                                Foreground="{StaticResource BiliText}" BorderThickness="0"/>
+                                        <Button x:Name="AiSubModelDelBtn" Content="删除模型" Click="AiSubModelDel_Click"
+                                                AutomationProperties.AutomationId="AiSubModelDelBtn"
+                                                Padding="10,5" FontSize="12" Background="{StaticResource BiliCard}"
+                                                Foreground="{StaticResource BiliText}" BorderThickness="0"
+                                                ToolTipService.ToolTip="删除已下载的模型文件（可随时重新下载）"/>
+                                        <Button x:Name="AiSubModelCancelBtn" Content="取消下载" Click="AiSubModelCancel_Click"
+                                                AutomationProperties.AutomationId="AiSubModelCancelBtn"
+                                                Padding="10,5" FontSize="12" Background="{StaticResource BiliCard}"
+                                                Foreground="{StaticResource BiliPink}" BorderThickness="0" IsEnabled="False"/>
+                                    </StackPanel>
+                                    <ProgressBar x:Name="AiSubModelProgress" AutomationProperties.AutomationId="AiSubModelProgress"
+                                                 Minimum="0" Maximum="100" Value="0" Height="6"
+                                                 Foreground="{StaticResource BiliBlue}"/>
+                                    <TextBlock x:Name="AiSubModelProgressText" AutomationProperties.AutomationId="AiSubModelProgressText"
+                                               Foreground="{StaticResource BiliSub}" FontSize="11" TextWrapping="Wrap"
+                                               Text="选择模型后点「下载模型」，这里会显示 x / y MB 进度"/>
+                                    <StackPanel Orientation="Horizontal" Spacing="6">
+                                        <Button x:Name="AiSubDepsBtn" Content="下载语音识别依赖" Click="AiSubDeps_Click"
+                                                AutomationProperties.AutomationId="AiSubDepsBtn"
+                                                Padding="10,5" FontSize="12" Background="{StaticResource BiliCard}"
+                                                Foreground="{StaticResource BiliBlue}" BorderThickness="0" Visibility="Collapsed"
+                                                ToolTipService.ToolTip="首次使用 AI 字幕需要安装 openai-whisper（约几十 MB 依赖，不含模型）"/>
+                                        <Button x:Name="AiSubDepsCancelBtn" Content="取消安装" Click="AiSubDepsCancel_Click"
+                                                AutomationProperties.AutomationId="AiSubDepsCancelBtn"
+                                                Padding="10,5" FontSize="12" Background="{StaticResource BiliCard}"
+                                                Foreground="{StaticResource BiliPink}" BorderThickness="0" Visibility="Collapsed"/>
+                                    </StackPanel>
+                                    <!-- ★ AI 字幕版本：每个模型单独一版，按钮切换（文字单独一行换行，避免窄面板溢出） -->
+                                    <Button x:Name="AiSubVersionBtn" Content="切换字幕版本" Click="AiSubVersion_Click"
+                                            AutomationProperties.AutomationId="AiSubVersionBtn"
+                                            HorizontalAlignment="Left"
+                                            Padding="10,5" FontSize="12" Background="{StaticResource BiliCard}"
+                                            Foreground="{StaticResource BiliText}" BorderThickness="0" IsEnabled="False"
+                                            ToolTipService.ToolTip="不同模型识别出的字幕会单独保存为不同版本；点这里循环切换当前视频的 AI 字幕版本"/>
+                                    <TextBlock x:Name="AiSubVersionText" AutomationProperties.AutomationId="AiSubVersionText"
+                                               Foreground="{StaticResource BiliSub}" FontSize="11"
+                                               TextWrapping="Wrap" HorizontalAlignment="Stretch"
+                                               Text="还没有 AI 字幕版本"/>
+                                    <TextBlock x:Name="AiSubDeviceText" AutomationProperties.AutomationId="AiSubDeviceText"
+                                               Foreground="{StaticResource BiliSub}" FontSize="11" TextWrapping="Wrap"
+                                               Text="识别设备：检测中…"/>
+                                    <StackPanel Orientation="Horizontal" Spacing="6">
+                                        <Button x:Name="AiSubGenBtn" Content="用 AI 识别当前视频字幕" Click="AiSubGen_Click"
+                                                AutomationProperties.AutomationId="AiSubGenBtn"
+                                                Padding="10,5" FontSize="12" Background="{StaticResource BiliCard}"
+                                                Foreground="{StaticResource BiliText}" BorderThickness="0"
+                                                ToolTipService.ToolTip="用当前选择的 Whisper 模型识别当前视频的语音并生成 .ai.srt 字幕文件"/>
+                                        <Button x:Name="AiSubGenCancelBtn" Content="取消识别" Click="AiSubGenCancel_Click"
+                                                AutomationProperties.AutomationId="AiSubGenCancelBtn"
+                                                Padding="10,5" FontSize="12" Background="{StaticResource BiliCard}"
+                                                Foreground="{StaticResource BiliPink}" BorderThickness="0" IsEnabled="False"/>
+                                    </StackPanel>
+                                    <TextBlock x:Name="AiSubGenText" AutomationProperties.AutomationId="AiSubGenText"
+                                               Foreground="{StaticResource BiliSub}" FontSize="11" TextWrapping="Wrap" Text=""/>
+                                </StackPanel>
+                            </Border>
+                        </StackPanel>
+                        <TextBlock x:Name="DmSettingsTitle" Text="弹幕设置" Foreground="{StaticResource BiliText}" FontWeight="SemiBold" FontSize="14"/>
+
+                        <StackPanel Spacing="2">
+                            <TextBlock x:Name="DmOpacityLabel" Text="不透明度：100%" Foreground="{StaticResource BiliSub}" FontSize="12"/>
+                            <Slider x:Name="DmOpacitySlider" Minimum="0" Maximum="100" Value="100"
+                                    StepFrequency="1" ValueChanged="DmOption_Changed"
+                                    ToolTipService.ToolTip="整层弹幕的不透明度；0% = 完全看不见"/>
+                        </StackPanel>
+
+                        <StackPanel Spacing="2">
+                            <TextBlock x:Name="DmAreaLabel" Text="滚动弹幕区域：最上 100%" Foreground="{StaticResource BiliSub}" FontSize="12"/>
+                            <Slider x:Name="DmAreaSlider" Minimum="10" Maximum="100" Value="100"
+                                    StepFrequency="5" TickFrequency="10" ValueChanged="DmOption_Changed"
+                                    ToolTipService.ToolTip="滚动弹幕只出现在视频最上面的这个百分比高度；排在这之外的滚动弹幕会被直接丢弃（不挤进来）。顶部/底部固定弹幕不受影响"/>
+                        <StackPanel Spacing="2">
+                            <TextBlock x:Name="DmFontLabel" Text="弹幕字号：100%" Foreground="{StaticResource BiliSub}" FontSize="12"/>
+                            <Slider x:Name="DmFontSlider" Minimum="50" Maximum="200" Value="100"
+                                    StepFrequency="5" ValueChanged="DmOption_Changed"
+                                    ToolTipService.ToolTip="弹幕字号相对默认大小（100% = 默认）"/>
+                        </StackPanel>
+
+                        <StackPanel Spacing="2">
+                            <TextBlock x:Name="DmSpeedLabel" Text="滚动速度：100%" Foreground="{StaticResource BiliSub}" FontSize="12"/>
+                            <Slider x:Name="DmSpeedSlider" Minimum="50" Maximum="200" Value="100"
+                                    StepFrequency="5" ValueChanged="DmOption_Changed"
+                                    ToolTipService.ToolTip="滚动弹幕速度（100% = 默认；越大越快）"/>
+                        </StackPanel>
+
+                        <StackPanel Spacing="2">
+                            <TextBlock Text="屏蔽词（空格或逗号分隔，命中即不显示）" Foreground="{StaticResource BiliSub}" FontSize="12"/>
+                            <TextBox x:Name="DmBlockBox" Text="" PlaceholderText="例如：前方高能 打卡"
+                                     Background="{StaticResource BiliCard}" Foreground="{StaticResource BiliText}"
+                                     BorderThickness="0" FontSize="12" TextChanged="DmBlockBox_TextChanged"/>
+                        </StackPanel>
+                        </StackPanel>
+
+                        <StackPanel Spacing="2">
+                            <TextBlock x:Name="DmMaxLabel" Text="同屏最大数量：不限" Foreground="{StaticResource BiliSub}" FontSize="12"/>
+                            <Slider x:Name="DmMaxSlider" Minimum="0" Maximum="500" Value="0"
+                                    StepFrequency="10" TickFrequency="50" ValueChanged="DmOption_Changed"
+                                    ToolTipService.ToolTip="同屏最多同时存在多少条弹幕；0 = 不限制。超出后新弹幕不再出现"/>
+                        </StackPanel>
+
+                        <TextBlock Text="设置自动保存，下次打开视频沿用。" Foreground="{StaticResource BiliSub}" FontSize="11"/>
+                    </StackPanel>
+
+                    <!-- ===== ★ 增强面板（A2 增强管线；点"增强"tab 才显示）=====
+                         后端接口：GET /api/enhancers、GET /api/enhance/tasks、GET /api/enhance/versions、GET /api/enhance/all、
+                                   POST /api/enhance/submit、POST /api/enhance/tasks/{id}/cancel、DELETE /api/enhance/tasks/{id}
+                         界面原则：键名（soxr_hires 这种）不给用户看，只显示通俗中文名 + 一句说明；失败把后端 error 原样显示。 -->
+                    <StackPanel x:Name="EnhancePanel" Spacing="12" Visibility="Collapsed" Margin="0,4,0,6">
+                        <!-- ★ AI 增强依赖：PyTorch 等 2~3GB 不可能打进安装包 → 按本机显卡在线装一次；
+                             装好后上面四个 AI 增强器才会出现在「增强链 → 加节点」里 -->
+                        <Border x:Name="AiDepsCard" Background="{StaticResource BiliCard}" CornerRadius="8" Padding="12">
+                            <StackPanel Spacing="8">
+                                <TextBlock Text="AI 增强依赖（AI 音频超分 / 人声降噪 / AI 视频超分 / RIFE 补帧）"
+                                           Foreground="{StaticResource BiliText}" FontWeight="SemiBold" FontSize="13" TextWrapping="Wrap"/>
+                                <TextBlock x:Name="AiDepsStatusText" AutomationProperties.AutomationId="AiDepsStatusText"
+                                           Foreground="{StaticResource BiliSub}" FontSize="11" TextWrapping="Wrap" Text="正在检测…"/>
+                                <ProgressBar x:Name="AiDepsProgress" Height="4" Minimum="0" Maximum="100"
+                                             Foreground="{StaticResource BiliPink}" Visibility="Collapsed"/>
+                                <TextBlock x:Name="AiDepsLogText" Foreground="{StaticResource BiliSub}" FontSize="10"
+                                           TextWrapping="Wrap" Visibility="Collapsed"/>
+                                <!-- ★ 按钮分两行：右侧信息栏只有 380px 宽，四个按钮挤一行放不下会把「取消安装」顶出屏幕 -->
+                                <StackPanel Spacing="8">
+                                    <Button x:Name="AiDepsInstallBtn" Content="⬇ 一键下载 AI 依赖（自动匹配显卡）"
+                                            Click="AiDepsInstall_Click" AutomationProperties.AutomationId="AiDepsInstallBtn"
+                                            HorizontalAlignment="Stretch" Height="34" Padding="12,0" FontSize="12"
+                                            Background="{StaticResource BiliBlue}" Foreground="#101010" BorderThickness="0"
+                                            ToolTipService.ToolTip="自动检测显卡/驱动选择对应 CUDA 版本，在线安装 PyTorch 与各增强器依赖；已装好或正在装时不会重复下载"/>
+                                    <StackPanel Orientation="Horizontal" Spacing="8">
+                                        <!-- ★ 取消安装：下载中才显示（2~3GB 下载可能很久，用户随时可停；已下载部分保留可续） -->
+                                        <Button x:Name="AiDepsCancelBtn" Content="✕ 取消安装" Click="AiDepsCancel_Click"
+                                                AutomationProperties.AutomationId="AiDepsCancelBtn"
+                                                MinWidth="110" Height="32" Padding="12,0" FontSize="12"
+                                                Background="#2A1D21" Foreground="#FF8A8A" BorderThickness="1" BorderBrush="#6E3A47"
+                                                Visibility="Collapsed"
+                                                ToolTipService.ToolTip="停止下载安装（已下载的轮子/缓存保留，下次点安装会继续用、不白下）"/>
+                                        <Button x:Name="AiDepsCheckBtn" Content="重新检测" Click="AiDepsCheck_Click"
+                                                AutomationProperties.AutomationId="AiDepsCheckBtn"
+                                                MinWidth="88" Height="32" Padding="12,0" FontSize="12"
+                                                Background="{StaticResource BiliCard}" Foreground="{StaticResource BiliSub}" BorderThickness="0"/>
+                                    </StackPanel>
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+                        <TextBlock Text="增强任务 / 产物" Foreground="{StaticResource BiliText}" FontWeight="SemiBold" FontSize="14"/>
+                                                <!-- ★ T31 合并（用户拍板 A 方案）：增强器选择只在「增强链」tab 的节点图里 -->
+                        <TextBlock x:Name="EnhanceTargetText" AutomationProperties.AutomationId="EnhanceTargetText"
+                                   Text="增强统一在「增强链」tab：＋加节点 → 应用（一个节点也能跑，多节点会串行成链）"
+                                   Foreground="{StaticResource BiliSub}" FontSize="11" TextWrapping="Wrap"/>
+                        <TextBlock Text="这里只显示任务进度和产物目录（选择增强器请去「增强链」）" Foreground="{StaticResource BiliSub}" FontSize="10" TextWrapping="Wrap"/>
+
+                        <!-- 增强器：每行一个文字按钮（中文名）+ 一句通俗说明；说明见代码里的 EnhancerInfo 表 -->
+                        <ItemsControl x:Name="EnhancerList" Visibility="Collapsed"><!-- ★ T31：增强器单选框已并入节点图（保留元素但不显示，方便回滚） -->
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Spacing="2" Margin="0,0,0,8">
+                                        <Button Content="{Binding Label}" Tag="{Binding}" Click="Enhancer_Click"
+                                                IsEnabled="{Binding Enabled}" HorizontalAlignment="Left"
+                                                AutomationProperties.AutomationId="{Binding AutomationId}"
+                                                MinWidth="126" Height="28" Padding="12,0" FontSize="12"
+                                                Background="{StaticResource BiliBlue}" Foreground="#101010" BorderThickness="0"
+                                                ToolTipService.ToolTip="{Binding Desc}"/>
+                                        <TextBlock Text="{Binding Desc}" Foreground="{StaticResource BiliSub}" FontSize="11" TextWrapping="Wrap"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                        <TextBlock x:Name="EnhanceMsg" AutomationProperties.AutomationId="EnhanceMsg"
+                                   Text="" Foreground="#FFD479" FontSize="11" TextWrapping="Wrap"/>
+
+                        <!-- 增强任务（状态/进度/取消/删除） -->
+                        <TextBlock Text="增强任务" Foreground="{StaticResource BiliText}" FontWeight="SemiBold" FontSize="14"/>
+                        <TextBlock x:Name="EnhanceTaskEmpty" Text="（暂无增强任务）" Foreground="{StaticResource BiliSub}" FontSize="11"/>
+                        <ListView x:Name="EnhanceTaskList" SelectionMode="None" Background="Transparent" ScrollViewer.VerticalScrollMode="Disabled">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Padding="0,4" Spacing="3">
+                                        <Grid>
+                                            <TextBlock Text="{Binding Title}" Foreground="{StaticResource BiliText}" FontSize="12"
+                                                       Margin="0,0,120,0" TextTrimming="CharacterEllipsis" MaxLines="1"/>
+                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Spacing="6">
+                                                <TextBlock Text="{Binding Status}" Foreground="{StaticResource BiliPink}" FontSize="11" VerticalAlignment="Center"/>
+                                                <Button Content="取消" Tag="{Binding}" Click="EnhanceCancel_Click"
+                                                        Visibility="{Binding CancelVisibility}" Padding="8,0" Height="24"
+                                                        Background="{StaticResource BiliCard}" BorderThickness="0" Foreground="{StaticResource BiliSub}"
+                                                        FontSize="11" ToolTipService.ToolTip="取消该增强任务"/>
+                                                <Button Content="删除" Tag="{Binding}" Click="EnhanceDelete_Click"
+                                                        Visibility="{Binding DeleteVisibility}" Padding="8,0" Height="24"
+                                                        Background="{StaticResource BiliCard}" BorderThickness="0" Foreground="{StaticResource BiliSub}"
+                                                        FontSize="11" ToolTipService.ToolTip="删除任务记录；已完成的任务会连增强产物文件一起删掉"/>
+                                            </StackPanel>
+                                        </Grid>
+                                        <ProgressBar Value="{Binding Progress}" Minimum="0" Maximum="100" Height="3" Foreground="{StaticResource BiliPink}"/>
+                                        <Grid>
+                                            <TextBlock Text="{Binding ProgressText}" Foreground="{StaticResource BiliSub}" FontSize="10"/>
+                                            <TextBlock Text="{Binding Error}" Foreground="#e05252" FontSize="10" HorizontalAlignment="Right"
+                                                       TextTrimming="CharacterEllipsis" MaxLines="1"/>
+                                        </Grid>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ListView>
+
+                        <!-- 这个视频的增强版本（点"播放"直接放增强版 —— 这是整条管线的最终价值） -->
+                        <TextBlock Text="这个视频的增强版本" Foreground="{StaticResource BiliText}" FontWeight="SemiBold" FontSize="14"/>
+                        <TextBlock x:Name="EnhanceVerEmpty" Text="（这视频还没有增强版本）" Foreground="{StaticResource BiliSub}" FontSize="11"/>
+                        <ListView x:Name="EnhanceVersionList" SelectionMode="None" Background="Transparent" ScrollViewer.VerticalScrollMode="Disabled">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Padding="0,3">
+                                        <StackPanel Margin="0,0,64,0">
+                                            <TextBlock Text="{Binding Name}" Foreground="{StaticResource BiliText}" FontSize="12"
+                                                       TextTrimming="CharacterEllipsis" MaxLines="1"/>
+                                            <TextBlock Text="{Binding Sub}" Foreground="{StaticResource BiliSub}" FontSize="10"
+                                                       TextTrimming="CharacterEllipsis" MaxLines="1"/>
+                                        </StackPanel>
+                                        <Button Content="播放" Tag="{Binding}" Click="EnhancePlay_Click"
+                                                HorizontalAlignment="Right" VerticalAlignment="Center" MinWidth="56" Height="24" Padding="8,0"
+                                                Background="{StaticResource BiliBlue}" Foreground="#101010" BorderThickness="0"
+                                                FontSize="11" ToolTipService.ToolTip="播放这个增强版本（画面/音轨都来自增强产物文件）"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ListView>
+
+                        <!-- 全部增强产物（后端 GET /api/enhance/all；跨视频） -->
+                        <TextBlock Text="全部增强产物" Foreground="{StaticResource BiliText}" FontWeight="SemiBold" FontSize="14"/>
+                        <TextBlock x:Name="EnhanceAllEmpty" Text="（暂无）" Foreground="{StaticResource BiliSub}" FontSize="11"/>
+                        <ListView x:Name="EnhanceAllList" SelectionMode="None" Background="Transparent" ScrollViewer.VerticalScrollMode="Disabled">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Padding="0,3">
+                                        <StackPanel Margin="0,0,64,0">
+                                            <TextBlock Text="{Binding Name}" Foreground="{StaticResource BiliText}" FontSize="12"
+                                                       TextTrimming="CharacterEllipsis" MaxLines="1"/>
+                                            <TextBlock Text="{Binding Sub}" Foreground="{StaticResource BiliSub}" FontSize="10"
+                                                       TextTrimming="CharacterEllipsis" MaxLines="1"/>
+                                        </StackPanel>
+                                        <Button Content="播放" Tag="{Binding}" Click="EnhancePlay_Click"
+                                                HorizontalAlignment="Right" VerticalAlignment="Center" MinWidth="56" Height="24" Padding="8,0"
+                                                Background="{StaticResource BiliCard}" Foreground="{StaticResource BiliText}" BorderThickness="0"
+                                                FontSize="11" ToolTipService.ToolTip="播放这个增强产物"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ListView>
+                    </StackPanel>
+
+                    <!-- ===== ★ 增强链（P2 / T28，第 5 个 tab）：节点图 =====
+                         用户设计：节点1 = 当前播放的视频 → 加几个节点 → 应用 → 产物A；
+                         对 A 再增强生成 B 时，A 就是 B 的"节点1"，**双击节点1 就地展开**它自己的链（递归），以此类推。
+                         节点序列应用后只读（不可删节点，保留血缘）；删除有子代的产物后端会 409，这里把 error 原文显示出来。 -->
+                    <StackPanel x:Name="EnhanceChainPanel" Spacing="12" Visibility="Collapsed" Margin="0,4,0,6">
+                          <!-- ★ T33：节点图已独立成窗口（用户："给我把节点tab独立成窗口，没有关闭节点窗口前把其它窗口冻结住"） -->
+                          <StackPanel Spacing="10">
+                              <TextBlock Text="增强链（节点图）" Foreground="{StaticResource BiliText}" FontWeight="SemiBold" FontSize="14"/>
+                              <TextBlock Text="节点图现在是一个独立窗口。点下面的按钮打开；打开期间本窗口会冻结（置灰、点不动），关掉节点图窗口后自动恢复。" Foreground="{StaticResource BiliSub}" FontSize="11" TextWrapping="Wrap"/>
+                              <Button x:Name="OpenChainWindowBtn" Content="打开节点图窗口" Click="OpenChainWindow_Click"
+                                      AutomationProperties.AutomationId="OpenChainWindowBtn"
+                                      MinWidth="220" Height="44" Padding="18,0" FontSize="14" FontWeight="SemiBold"
+                                      Background="{StaticResource BiliBlue}" Foreground="#101010" BorderThickness="0"
+                                      HorizontalAlignment="Left"
+                                      ToolTipService.ToolTip="在独立窗口里编辑增强链节点图（画布更大、节点更清晰）"/>
+                              <!-- ★ AI 依赖：入口放这里一份（「增强任务」页顶部也有一份，哪边方便点哪边） -->
+                              <StackPanel Orientation="Horizontal" Spacing="8">
+                                  <Button x:Name="ChainDepsBtn" Content="⬇ 下载 AI 依赖" Click="ChainDeps_Click"
+                                          AutomationProperties.AutomationId="ChainDepsBtn"
+                                          MinWidth="160" Height="34" Padding="14,0" FontSize="12"
+                                          Background="{StaticResource BiliPink}" Foreground="#FFFFFF" BorderThickness="0"
+                                          ToolTipService.ToolTip="AI 音频超分 / 人声降噪 / AI 视频超分 / RIFE 补帧 需要 PyTorch 等（约 3 GB，不随安装包提供），在这里一键在线安装（自动匹配显卡）"/>
+                                  <TextBlock x:Name="ChainDepsStatus" AutomationProperties.AutomationId="ChainDepsStatus"
+                                             Foreground="{StaticResource BiliSub}" FontSize="11" VerticalAlignment="Center"
+                                             TextWrapping="Wrap" Text="正在检测 AI 依赖…"/>
+                              </StackPanel>
+                          </StackPanel>
+                          <!-- ↓ 旧的内联节点图 UI：已搬到独立窗口，这里整体折叠保留（CS 逻辑未删，便于回退） -->
+                          <StackPanel x:Name="OldChainUi" Visibility="Collapsed" Spacing="12">
+                        <TextBlock Text="增强链（节点图）" Foreground="{StaticResource BiliText}" FontWeight="SemiBold" FontSize="14"/>
+                        <TextBlock Text="节点1 永远是「当前正在播放的视频」（随换片自动更新）。加几个节点 → 应用 → 生成增强产物；对产物再增强时，它就自动变成下一条链的节点1。"
+                                   Foreground="{StaticResource BiliSub}" FontSize="11" TextWrapping="Wrap"/>
+
+                        <!-- ★ T29 工具条（保留 T28 的 AutomationId；位置挪到画布上方） -->
+                        <StackPanel Orientation="Horizontal" Spacing="8">
+                            <Button x:Name="ChainAddNodeBtn" Content="＋ 加节点" Click="ChainAddNode_Click"
+                                    AutomationProperties.AutomationId="ChainAddNodeBtn" MinWidth="92" Height="30" Padding="10,0"
+                                    Background="{StaticResource BiliBtnOff}" Foreground="{StaticResource BiliText}" BorderThickness="0" FontSize="12"/>
+                            <Button x:Name="ChainApplyBtn" Content="应用（跑出增强视频）" Click="ChainApply_Click"
+                                    AutomationProperties.AutomationId="ChainApplyBtn" MinWidth="146" Height="30" Padding="10,0"
+                                    Background="{StaticResource BiliBlue}" Foreground="#101010" BorderThickness="0"
+                                    FontSize="12" FontWeight="SemiBold"
+                                    ToolTipService.ToolTip="把节点1的源文件 + 当前节点序列提交给后端跑增强；应用后节点序列只读（不可删节点，保留血缘）"/>
+                            <Button x:Name="ChainResetBtn" Content="新建一条链" Click="ChainReset_Click"
+                                    AutomationProperties.AutomationId="ChainResetBtn" MinWidth="104" Height="30" Padding="10,0"
+                                    Background="{StaticResource BiliCard}" Foreground="{StaticResource BiliText}" BorderThickness="0"
+                                    FontSize="12" Visibility="Collapsed"/>
+                            <Button x:Name="ChainFullscreenBtn" Content="全屏编辑" Click="ChainFullscreen_Click"
+                                    AutomationProperties.AutomationId="ChainFullscreenBtn" MinWidth="84" Height="30" Padding="10,0"
+                                    Background="{StaticResource BiliBlue}" Foreground="#101010" BorderThickness="0"
+                                    FontSize="12" FontWeight="SemiBold"
+                                    ToolTipService.ToolTip="把增强链画布扩到整个播放器窗口（Blender/UE5 那种占满视口的节点编辑器）"/>
+                            <Button x:Name="ChainAutoLayoutBtn" Content="自动排列" Click="ChainAutoLayout_Click"
+                                    AutomationProperties.AutomationId="ChainAutoLayoutBtn" MinWidth="88" Height="30" Padding="10,0"
+                                    Background="{StaticResource BiliCard}" Foreground="{StaticResource BiliSub}" BorderThickness="0"
+                                    FontSize="12" ToolTipService.ToolTip="把节点按当前执行顺序重新整齐排布（拖乱了一键恢复）"/>
+                        </StackPanel>
+                        <Grid>
+                            <TextBlock x:Name="ChainEditHint" Text="节点图：拖节点左右摆 = 改执行顺序；滚轮缩放" Foreground="{StaticResource BiliSub}" FontSize="11"/>
+                            <TextBlock x:Name="ChainAppliedHint" Text="" Foreground="{StaticResource BiliPink}" FontSize="11" HorizontalAlignment="Right" Visibility="Collapsed"/>
+                        </Grid>
+                        <TextBlock x:Name="ChainEmptyHint" Text="（还没有节点：点「＋ 加节点」；只应用一个节点也行）"
+                                   Foreground="{StaticResource BiliSub}" FontSize="11"/>
+
+                        <!-- ★ T29 节点图画布（Blender/UE5 风格）：深色画布 + 点阵网格 + 节点卡 + 端口 + 三次贝塞尔连线
+                             结构（自下而上）：点阵网格层 → 连线层(ChainWireLayer，含端口) → 节点层(ChainCanvas)
+                             缩放挂在 ChainCanvasWorld 的 RenderTransform 上；滚动由外层 ScrollViewer 负责。 -->
+                        <Border x:Name="ChainCanvasViewport" Height="300" CornerRadius="8" Background="#14161A" BorderThickness="1" BorderBrush="#33FFFFFF">
+                            <ScrollViewer x:Name="ChainCanvasScroll" AutomationProperties.AutomationId="ChainCanvas" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"
+                                          ZoomMode="Disabled">
+                                <Canvas x:Name="ChainCanvasWorld" Width="1600" Height="420" Background="#14161A">
+                                    <Canvas.RenderTransform>
+                                        <ScaleTransform x:Name="ChainZoomTransform" ScaleX="1" ScaleY="1"/>
+                                    </Canvas.RenderTransform>
+                                    <!-- 点阵网格（单条 Path，性能友好） -->
+                                    <Path x:Name="ChainGridPath" IsHitTestVisible="False"/>
+                                    <!-- 连线层（含端口小圆点）：在节点卡下面 -->
+                                    <Canvas x:Name="ChainWireLayer" Width="1600" Height="420" IsHitTestVisible="False"/>
+                                    <!-- 节点层 -->
+                                    <Canvas x:Name="ChainCanvas" Width="1600" Height="420" Background="Transparent"
+                                            AutomationProperties.AutomationId="ChainCanvas"/>
+                                </Canvas>
+                            </ScrollViewer>
+                        </Border>
+                        <Grid>
+                            <TextBlock x:Name="ChainMsg" AutomationProperties.AutomationId="ChainMsg" Text=""
+                                       Foreground="#FFD479" FontSize="11" TextWrapping="Wrap"/>
+                            <TextBlock x:Name="ChainCanvasStats" AutomationProperties.AutomationId="ChainCanvasStats" Text="画布：节点 0"
+                                       Foreground="{StaticResource BiliSub}" FontSize="10" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                            <TextBlock x:Name="ChainZoomText" AutomationProperties.AutomationId="ChainZoomText" Text="缩放 100%"
+                                       Foreground="{StaticResource BiliSub}" FontSize="10" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+                        </Grid>
+
+                        <!-- 链 / 产物列表（含双击节点1 内联展开祖先） -->
+                        <TextBlock Text="增强链 / 产物" Foreground="{StaticResource BiliText}" FontWeight="SemiBold" FontSize="14"/>
+                        <TextBlock Text="双击卡片里的「节点1」区域，就地展开它自己的链（展开后每一级还能继续双击，直到原始视频）。"
+                                   Foreground="{StaticResource BiliSub}" FontSize="11" TextWrapping="Wrap"/>
+                        <TextBlock x:Name="ChainListEmpty" Text="（还没有增强产物；应用一条链后会出现在这里）"
+                                   Foreground="{StaticResource BiliSub}" FontSize="11"/>
+                        <ListView x:Name="ChainRowList" SelectionMode="None" Background="Transparent" ScrollViewer.VerticalScrollMode="Disabled">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Border Margin="{Binding IndentMargin}" Padding="9,7" CornerRadius="6"
+                                            Background="{StaticResource BiliCard}" BorderThickness="1"
+                                            BorderBrush="{Binding BorderBrushKey}">
+                                        <StackPanel Spacing="4">
+                                            <Grid>
+                                                <StackPanel Margin="0,0,140,0" Spacing="2">
+                                                    <TextBlock Text="{Binding Title}" Foreground="{StaticResource BiliText}" FontSize="12"
+                                                               FontWeight="SemiBold" TextTrimming="CharacterEllipsis" MaxLines="1"/>
+                                                    <TextBlock Text="{Binding ChainText}" Foreground="{StaticResource BiliSub}" FontSize="10"
+                                                               TextWrapping="Wrap"/>
+                                                    <TextBlock Text="{Binding StatusText}" Foreground="{StaticResource BiliPink}" FontSize="10"/>
+                                                </StackPanel>
+                                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Spacing="4" VerticalAlignment="Top">
+                                                    <Button Content="播放" Tag="{Binding}" Click="ChainPlay_Click" AutomationProperties.AutomationId="{Binding PlayAutomationId}"
+                                                            Visibility="{Binding PlayVisibility}" MinWidth="52" Height="24" Padding="8,0"
+                                                            Background="{StaticResource BiliBtnOff}" Foreground="{StaticResource BiliText}"
+                                                            BorderThickness="0" FontSize="11" ToolTipService.ToolTip="播放这个增强产物"/>
+                                                    <Button Content="删除" Tag="{Binding}" Click="ChainDelete_Click" AutomationProperties.AutomationId="{Binding DeleteAutomationId}"
+                                                            Visibility="{Binding DeleteVisibility}" MinWidth="52" Height="24" Padding="8,0"
+                                                            Background="{StaticResource BiliCard}" Foreground="{StaticResource BiliSub}"
+                                                            BorderThickness="0" FontSize="11"
+                                                            ToolTipService.ToolTip="删除这个产物；若它有子代版本，后端会拒绝（409）并在行内显示原因"/>
+                                                </StackPanel>
+                                            </Grid>
+                                            <!-- ★ 节点1 区域：双击就地展开祖先（设计核心）；同时给一个「展开」文字按钮（不知道双击的人也能用，UIA 也好点） -->
+                                            <Border Background="#1A66CCFF" CornerRadius="4" Padding="7,5"
+                                                    Tag="{Binding}" DoubleTapped="ChainNodeOne_DoubleTapped"
+                                                    Visibility="{Binding NodeOneVisibility}">
+                                                <Grid>
+                                                    <TextBlock Text="{Binding NodeOneText}" Foreground="{StaticResource BiliSub}" FontSize="10"
+                                                               TextWrapping="Wrap" Margin="0,0,64,0" VerticalAlignment="Center"/>
+                                                    <Button Content="{Binding ExpandButtonText}" Tag="{Binding}" Click="ChainExpand_Click"
+                                                            AutomationProperties.AutomationId="{Binding ExpandAutomationId}"
+                                                            Visibility="{Binding ExpandVisibility}" HorizontalAlignment="Right"
+                                                            MinWidth="52" Height="22" Padding="6,0" VerticalAlignment="Center"
+                                                            Background="{StaticResource BiliBlue}" Foreground="#101010" BorderThickness="0" FontSize="10"
+                                                            ToolTipService.ToolTip="展开/收起这条链的祖先（也可以直接双击左边这块「节点1」）"/>
+                                                </Grid>
+                                            </Border>
+                                            <TextBlock Text="{Binding Error}" Foreground="#e05252" FontSize="10" TextWrapping="Wrap"
+                                                       Visibility="{Binding ErrorVisibility}"/>
+                                        </StackPanel>
+                                    </Border>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                          </StackPanel>
+                    </StackPanel>
+                    <!-- ===== ★ 信息面板（点「信息」tab 才显示）：当前视频的详细信息 ===== -->
+                    <StackPanel x:Name="InfoPanel" Spacing="10" Visibility="Collapsed" Margin="0,4,0,6">
+                        <Grid>
+                            <TextBlock Text="视频信息" Foreground="{StaticResource BiliText}" FontSize="16" FontWeight="SemiBold"/>
+                            <Button x:Name="InfoRefreshBtn" Content="🔄 刷新" Click="InfoRefresh_Click" HorizontalAlignment="Right"
+                                    AutomationProperties.AutomationId="InfoRefreshBtn"
+                                    Background="{StaticResource BiliCard}" BorderThickness="0" Foreground="{StaticResource BiliSub}" FontSize="12"/>
+                        </Grid>
+                        <TextBlock x:Name="InfoMsg" Text="" Foreground="{StaticResource BiliSub}" FontSize="11" TextWrapping="Wrap"
+                                   AutomationProperties.AutomationId="InfoMsg"/>
+                        <StackPanel x:Name="InfoRows" Spacing="6" AutomationProperties.AutomationId="InfoRows"/>
+                    </StackPanel>
+                    <StackPanel x:Name="PlaylistPanel" Spacing="8" Visibility="Collapsed">
+                        <TextBlock x:Name="PlaylistTitle" Text="播放列表" Foreground="{StaticResource BiliText}" FontSize="14" FontWeight="SemiBold"/>
+                        <ListView x:Name="PlaylistItemsList" SelectionMode="None" IsItemClickEnabled="True" ItemClick="PlaylistItem_Click"
+                                  Background="Transparent" ScrollViewer.VerticalScrollMode="Disabled">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Padding="8,6">
+                                        <TextBlock Text="{Binding Title}" Foreground="{StaticResource BiliText}" FontSize="13" TextTrimming="CharacterEllipsis" MaxLines="1"/>
+                                        <StackPanel Orientation="Horizontal" Spacing="8">
+                                            <TextBlock Text="{Binding UpName}" Foreground="{StaticResource BiliPink}" FontSize="11"/>
+                                            <TextBlock Text="{Binding Pos}" Foreground="{StaticResource BiliSub}" FontSize="11"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ListView>
+                    </StackPanel>
+
+                </StackPanel>
+                </ScrollViewer>
+            </Grid>
+        </Grid>
+            <!-- ★ T33：节点图窗口打开时的冻结遮罩（半透明 + 提示；配合 Win32 EnableWindow 实现真模态） -->
+        <Grid x:Name="ChainFrozenOverlay" Grid.Row="0" Grid.RowSpan="20" Visibility="Collapsed"
+              Background="#B0000000" Canvas.ZIndex="9999">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="8">
+                <TextBlock Text="节点图窗口已打开" Foreground="#E8EEF5" FontSize="22" FontWeight="SemiBold" HorizontalAlignment="Center"/>
+                <TextBlock Text="关闭节点图窗口后即可继续操作本窗口" Foreground="#8A94A3" FontSize="13" HorizontalAlignment="Center"/>
+            </StackPanel>
+        </Grid></Grid>
+</Window>

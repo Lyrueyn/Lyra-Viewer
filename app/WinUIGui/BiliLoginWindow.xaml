@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ★ B 站登录窗口：用系统自带 WebView2 打开登录页，登录成功后自动抓 Cookie 并保存
+     零外部依赖（Windows 10/11 自带 WebView2 Runtime），安装版也能用。 -->
+<Window
+    x:Class="WinUIGui.BiliLoginWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WinUIGui">
+
+    <Grid x:Name="RootGrid" Background="#0D0F12">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- 顶部：说明 + 手动抓取 -->
+        <Grid Grid.Row="0" Padding="16,12,16,10" Background="#12151A">
+            <StackPanel Spacing="4" Margin="0,0,240,0">
+                <TextBlock Text="登录 B 站 · 自动获取 Cookie" Foreground="#E8EEF5" FontSize="16" FontWeight="SemiBold"/>
+                <TextBlock Text="在下面的窗口里登录 B 站（扫码或账号密码都行）。登录成功后会自动抓取 Cookie 并保存，然后本窗口自动关闭。"
+                           Foreground="#8A94A3" FontSize="11" TextWrapping="Wrap"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Spacing="8" HorizontalAlignment="Right" VerticalAlignment="Center">
+                <Button x:Name="ManualGrabBtn" Content="登录好了，立即抓取" Click="ManualGrab_Click"
+                        AutomationProperties.AutomationId="BiliLoginGrabBtn"
+                        MinWidth="150" Height="32" Padding="12,0"
+                        Background="#66CCFF" Foreground="#101010" BorderThickness="0"
+                        FontSize="12" FontWeight="SemiBold"/>
+                <Button x:Name="CloseBtn" Content="关闭" Click="Close_Click"
+                        AutomationProperties.AutomationId="BiliLoginCloseBtn"
+                        MinWidth="72" Height="32" Padding="12,0"
+                        Background="#262B33" Foreground="#E8EEF5" BorderThickness="0"
+                        FontSize="12"/>
+            </StackPanel>
+        </Grid>
+
+        <!-- 中间：WebView2 登录页 -->
+        <Border Grid.Row="1" Margin="12,0,12,0" CornerRadius="8" Background="#14161A" BorderThickness="1" BorderBrush="#2A3038">
+            <WebView2 x:Name="Wv" AutomationProperties.AutomationId="BiliLoginWebView"/>
+        </Border>
+
+        <!-- 底部：状态 -->
+        <TextBlock x:Name="Hint" Grid.Row="2" AutomationProperties.AutomationId="BiliLoginHint"
+                   Text="正在加载登录页…" Foreground="#FFD479" FontSize="12"
+                   Margin="16,8,16,12" TextWrapping="Wrap"/>
+    </Grid>
+</Window>

@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ★ T33 增强链节点图：独立窗口（用户要求："给我把节点tab独立成窗口"）
+     设计：
+       · 独立 Window，默认约 1600×1000、可拉伸/最大化（打开/关闭由 VideoWindow 控制）
+       · 打开时视频窗被冻结（真模态：Win32 EnableWindow(false) + 半透明遮罩）
+       · 画布大（世界 3200×1400）、节点大（240×96）、视觉按 Blender/UE5 手感放大
+       · 保留 T29/T31/T32 的全部 AutomationId（验收脚本依赖）
+     结构（自下而上）：点阵网格 → 连线层 ChainWireLayer → 节点层 ChainCanvas -->
+<Window
+    x:Class="WinUIGui.ChainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WinUIGui">
+
+    <Grid x:Name="ChainRootGrid" Background="#0D0F12">
+        <Grid.Resources>
+            <!-- 与主窗同色系（天依蓝主题），但独立窗口里画布更大更亮一点 -->
+            <SolidColorBrush x:Key="BiliPink"   Color="#F06EAA"/>
+            <SolidColorBrush x:Key="BiliBlue"   Color="#66CCFF"/>
+            <SolidColorBrush x:Key="BiliCard"   Color="#1A1D22"/>
+            <SolidColorBrush x:Key="BiliText"   Color="#E8EEF5"/>
+            <SolidColorBrush x:Key="BiliSub"    Color="#8A94A3"/>
+            <SolidColorBrush x:Key="BiliBtnOff" Color="#262B33"/>
+        </Grid.Resources>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>   <!-- 标题栏 -->
+            <RowDefinition Height="Auto"/>   <!-- 工具条 -->
+            <RowDefinition Height="*"/>      <!-- 画布（占满剩余全部空间） -->
+            <RowDefinition Height="Auto"/>   <!-- 状态行 -->
+            <RowDefinition Height="212"/>    <!-- 产物列表 -->
+        </Grid.RowDefinitions>
+
+        <!-- ============ 行 0：标题栏 ============ -->
+        <Grid Grid.Row="0" Padding="16,12,16,8" Background="#12151A">
+            <StackPanel Spacing="3" Margin="0,0,120,0">
+                <TextBlock Text="增强链 · 节点图" Foreground="{StaticResource BiliText}" FontSize="16" FontWeight="SemiBold"/>
+                <TextBlock x:Name="ChainSourceTitle" AutomationProperties.AutomationId="ChainSourceTitle"
+                           Text="（还没有打开视频）" Foreground="{StaticResource BiliSub}" FontSize="11"
+                           TextTrimming="CharacterEllipsis" MaxLines="1"/>
+            </StackPanel>
+            <Button x:Name="ChainCloseBtn" Content="关闭节点图" Click="ChainClose_Click"
+                    AutomationProperties.AutomationId="ChainCloseBtn"
+                    HorizontalAlignment="Right" VerticalAlignment="Center" MinWidth="104" Height="30" Padding="12,0"
+                    Background="{StaticResource BiliBtnOff}" Foreground="{StaticResource BiliText}"
+                    BorderThickness="0" FontSize="12"
+                    ToolTipService.ToolTip="关闭节点图窗口并解除主窗口的冻结（Esc 也可以）"/>
+        </Grid>
+
+        <!-- ============ 行 1：工具条 ============ -->
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Spacing="8" Padding="16,0,16,10">
+            <Button x:Name="ChainAddNodeBtn" Content="＋ 加节点" Click="ChainAddNode_Click"
+                    AutomationProperties.AutomationId="ChainAddNodeBtn" MinWidth="96" Height="32" Padding="12,0"
+                    Background="{StaticResource BiliBtnOff}" Foreground="{StaticResource BiliText}" BorderThickness="0"
+                    FontSize="12" ToolTipService.ToolTip="从 7 个增强器里选一个加到节点1 后面（可加多个，从左到右串行执行）"/>
+            <Button x:Name="ChainApplyBtn" Content="应用（跑出增强视频）" Click="ChainApply_Click"
+                    AutomationProperties.AutomationId="ChainApplyBtn" MinWidth="168" Height="32" Padding="12,0"
+                    Background="{StaticResource BiliBlue}" Foreground="#101010" BorderThickness="0"
+                    FontSize="12" FontWeight="SemiBold"
+                    ToolTipService.ToolTip="把节点1的源文件 + 当前节点序列提交给后端跑增强；应用后节点序列只读（不可删节点，保留血缘）"/>
+            <Button x:Name="ChainResetBtn" Content="新建一条链" Click="ChainReset_Click"
+                    AutomationProperties.AutomationId="ChainResetBtn" MinWidth="112" Height="32" Padding="12,0"
+                    Background="{StaticResource BiliCard}" Foreground="{StaticResource BiliText}" BorderThickness="0"
+                    FontSize="12" Visibility="Collapsed"/>
+            <Button x:Name="ChainAutoLayoutBtn" Content="自动排列" Click="ChainAutoLayout_Click"
+                    AutomationProperties.AutomationId="ChainAutoLayoutBtn" MinWidth="92" Height="32" Padding="12,0"
+                    Background="{StaticResource BiliCard}" Foreground="{StaticResource BiliSub}" BorderThickness="0"
+                    FontSize="12" ToolTipService.ToolTip="把节点按当前执行顺序重新整齐排布（拖乱了一键恢复）"/>
+            <Button x:Name="ChainZoomFitBtn" Content="适配窗口" Click="ChainZoomFit_Click"
+                    AutomationProperties.AutomationId="ChainZoomFitBtn" MinWidth="92" Height="32" Padding="12,0"
+                    Background="{StaticResource BiliCard}" Foreground="{StaticResource BiliSub}" BorderThickness="0"
+                    FontSize="12" ToolTipService.ToolTip="把整条链缩放到刚好装进窗口（之后再滚轮微调）"/>
+            <Button x:Name="ChainSourceExpandBtn" Content="血统 ↗" Click="ChainSourceExpand_Click"
+                    AutomationProperties.AutomationId="ChainSourceExpandBtn" MinWidth="88" Height="32" Padding="12,0"
+                    Background="{StaticResource BiliCard}" Foreground="{StaticResource BiliBlue}" BorderThickness="0"
+                    FontSize="12" ToolTipService.ToolTip="展开当前产物自己的血统链（源 → 祖先节点们 → 本产物）；再点收起"/>
+            <Button x:Name="ChainPinBtn" Content="📌 置顶" Click="ChainPin_Click"
+                    AutomationProperties.AutomationId="ChainPinBtn" MinWidth="88" Height="32" Padding="12,0"
+                    Background="{StaticResource BiliBtnOff}" Foreground="{StaticResource BiliText}" BorderThickness="0"
+                    FontSize="12" ToolTipService.ToolTip="把节点图钉在最上层，并解除主窗冻结 → 可以边看视频边改节点（开着时按钮变天依蓝）"/>
+            <!-- ★ AI 依赖：缺依赖时显示（点了自动匹配显卡在线装 torch 等，不重复下载） -->
+            <Button x:Name="ChainAiDepsBtn" Content="⬇ 下载 AI 依赖" Click="ChainAiDeps_Click"
+                    AutomationProperties.AutomationId="ChainAiDepsBtn" MinWidth="150" Height="32" Padding="12,0"
+                    Background="{StaticResource BiliPink}" Foreground="#FFFFFF" BorderThickness="0"
+                    FontSize="12" Visibility="Collapsed"
+                    ToolTipService.ToolTip="AI 音频超分/人声降噪/AI视频超分/RIFE补帧 需要 PyTorch 等（约 3GB，不随安装包提供），一键在线安装并自动匹配显卡"/>
+            <TextBlock x:Name="ChainEditHint" Text="拖节点左右摆 = 改执行顺序；滚轮缩放；空白处左键/中键拖拽 = 平移" 
+                       Foreground="{StaticResource BiliSub}" FontSize="11" VerticalAlignment="Center" Margin="8,0,0,0"/>
+            <TextBlock x:Name="ChainAppliedHint" AutomationProperties.AutomationId="ChainAppliedHint" Text=""
+                       Foreground="{StaticResource BiliPink}" FontSize="11" VerticalAlignment="Center" Visibility="Collapsed"/>
+        </StackPanel>
+
+        <!-- ============ 行 2：画布（占满剩余空间） ============ -->
+        <Border Grid.Row="2" x:Name="ChainCanvasViewport" Margin="16,0,16,8" CornerRadius="8"
+                Background="#14161A" BorderThickness="1" BorderBrush="#2A3038">
+            <ScrollViewer x:Name="ChainCanvasScroll" AutomationProperties.AutomationId="ChainCanvas"
+                          HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"
+                          ZoomMode="Disabled"
+                          HorizontalScrollMode="Enabled" VerticalScrollMode="Enabled">
+                <Canvas x:Name="ChainCanvasWorld" Width="3200" Height="1400" Background="#14161A">
+                    <Canvas.RenderTransform>
+                        <ScaleTransform x:Name="ChainZoomTransform" ScaleX="1" ScaleY="1"/>
+                    </Canvas.RenderTransform>
+                    <!-- 点阵网格（单条 Path，性能友好） -->
+                    <Path x:Name="ChainGridPath" IsHitTestVisible="False"/>
+                    <!-- 连线层（含端口小圆点）：在节点卡下面 -->
+                    <Canvas x:Name="ChainWireLayer" Width="3200" Height="1400" IsHitTestVisible="False"/>
+                    <!-- 节点层 -->
+                    <Canvas x:Name="ChainCanvas" Width="3200" Height="1400" Background="Transparent"
+                            PointerPressed="Canvas_PanPressed" PointerMoved="Canvas_PanMoved" PointerReleased="Canvas_PanReleased" PointerCanceled="Canvas_PanReleased" PointerCaptureLost="Canvas_PanReleased"
+                            AutomationProperties.AutomationId="ChainCanvas"/>
+                </Canvas>
+            </ScrollViewer>
+        </Border>
+
+        <!-- ============ 行 3：状态行 ============ -->
+        <Grid Grid.Row="3" Padding="16,0,16,8">
+            <TextBlock x:Name="ChainMsg" AutomationProperties.AutomationId="ChainMsg" Text=""
+                       Foreground="#FFD479" FontSize="12" TextWrapping="Wrap" Margin="0,0,260,0"/>
+            <TextBlock x:Name="ChainCanvasStats" AutomationProperties.AutomationId="ChainCanvasStats" Text="画布：节点 0 · 端口 2 · 连线 1"
+                       Foreground="{StaticResource BiliSub}" FontSize="11" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+            <TextBlock x:Name="ChainZoomText" AutomationProperties.AutomationId="ChainZoomText" Text="缩放 100%"
+                       Foreground="{StaticResource BiliSub}" FontSize="11" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+        </Grid>
+
+        <!-- ============ 行 4：产物列表 ============ -->
+        <Grid Grid.Row="4" Margin="16,0,16,12">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" Orientation="Horizontal" Spacing="10" Margin="0,0,0,4">
+                <TextBlock Text="这条视频的增强产物" Foreground="{StaticResource BiliText}" FontWeight="SemiBold" FontSize="13"/>
+                <TextBlock Text="（播放 / 删除 / 展开血统；有子代的产物删不掉，后端 409）"
+                           Foreground="{StaticResource BiliSub}" FontSize="11" VerticalAlignment="Center"/>
+            </StackPanel>
+            <TextBlock x:Name="ChainListEmpty" Grid.Row="1" Text="（还没有增强产物；应用一条链后会出现在这里）"
+                       Foreground="{StaticResource BiliSub}" FontSize="11"/>
+            <ListView x:Name="ChainRowList" Grid.Row="1" AutomationProperties.AutomationId="ChainRowList"
+                      SelectionMode="None" Background="Transparent"
+                      ScrollViewer.VerticalScrollMode="Enabled" ScrollViewer.VerticalScrollBarVisibility="Auto">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                        <Setter Property="Padding" Value="0"/>
+                        <Setter Property="MinHeight" Value="0"/>
+                        <Setter Property="Margin" Value="0,0,0,6"/>
+                    </Style>
+                </ListView.ItemContainerStyle>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Border Margin="{Binding IndentMargin}" Padding="10,8" CornerRadius="6"
+                                Background="{StaticResource BiliCard}" BorderThickness="1"
+                                BorderBrush="{Binding BorderBrushKey}">
+                            <StackPanel Spacing="4">
+                                <Grid>
+                                    <StackPanel Margin="0,0,150,0" Spacing="2">
+                                        <TextBlock Text="{Binding Title}" Foreground="{StaticResource BiliText}" FontSize="12"
+                                                   FontWeight="SemiBold" TextTrimming="CharacterEllipsis" MaxLines="1"/>
+                                        <TextBlock Text="{Binding ChainText}" Foreground="{StaticResource BiliSub}" FontSize="11"
+                                                   TextWrapping="Wrap"/>
+                                        <TextBlock Text="{Binding StatusText}" Foreground="{StaticResource BiliPink}" FontSize="11"
+                                                   TextWrapping="Wrap"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Spacing="4" VerticalAlignment="Top">
+                                        <Button Content="播放" Tag="{Binding}" Click="ChainPlay_Click"
+                                                AutomationProperties.AutomationId="{Binding PlayAutomationId}"
+                                                Visibility="{Binding PlayVisibility}" MinWidth="56" Height="26" Padding="8,0"
+                                                Background="{StaticResource BiliBtnOff}" Foreground="{StaticResource BiliText}"
+                                                BorderThickness="0" FontSize="11" ToolTipService.ToolTip="播放这个增强产物"/>
+                                        <Button Content="删除" Tag="{Binding}" Click="ChainDelete_Click"
+                                                AutomationProperties.AutomationId="{Binding DeleteAutomationId}"
+                                                Visibility="{Binding DeleteVisibility}" MinWidth="56" Height="26" Padding="8,0"
+                                                Background="{StaticResource BiliCard}" Foreground="{StaticResource BiliSub}"
+                                                BorderThickness="0" FontSize="11"
+                                                ToolTipService.ToolTip="删除这个产物；若它有子代版本，后端会拒绝（409）并在行内显示原因"/>
+                                    </StackPanel>
+                                </Grid>
+                                <Border Background="#1A66CCFF" CornerRadius="4" Padding="8,6"
+                                        Tag="{Binding}" DoubleTapped="ChainNodeOne_DoubleTapped"
+                                        Visibility="{Binding NodeOneVisibility}">
+                                    <Grid>
+                                        <TextBlock Text="{Binding NodeOneText}" Foreground="{StaticResource BiliSub}" FontSize="11"
+                                                   TextWrapping="Wrap" Margin="0,0,70,0" VerticalAlignment="Center"/>
+                                        <Button Content="{Binding ExpandButtonText}" Tag="{Binding}" Click="ChainExpand_Click"
+                                                AutomationProperties.AutomationId="{Binding ExpandAutomationId}"
+                                                Visibility="{Binding ExpandVisibility}" HorizontalAlignment="Right"
+                                                MinWidth="58" Height="24" Padding="6,0" VerticalAlignment="Center"
+                                                Background="{StaticResource BiliBlue}" Foreground="#101010" BorderThickness="0"
+                                                FontSize="10"
+                                                ToolTipService.ToolTip="展开/收起这条链的祖先（也可以在画布上点节点1 的「血统」）"/>
+                                    </Grid>
+                                </Border>
+                                <TextBlock Text="{Binding Error}" Foreground="#e05252" FontSize="11" TextWrapping="Wrap"
+                                           Visibility="{Binding ErrorVisibility}"/>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+    </Grid>
+</Window>

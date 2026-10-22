@@ -1,0 +1,482 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Window
+    x:Class="WinUIGui.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:WinUIGui"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="璃鸢镜"
+    mc:Ignorable="d">
+    <Window.SystemBackdrop>
+        <MicaBackdrop />
+    </Window.SystemBackdrop>
+
+    <!-- 仿 B站首页：深色 + 顶部导航栏 + 左侧图标栏 + 视频卡片网格 -->
+    <Grid Background="#0F0F0F">
+        <Grid.Resources>
+            <SolidColorBrush x:Key="NavBar" Color="#171717"/>
+            <SolidColorBrush x:Key="Card" Color="#2A2A2A"/>
+            <SolidColorBrush x:Key="Pink" Color="#FB7299"/>
+            <SolidColorBrush x:Key="TextMain" Color="#FFFFFF"/>
+            <SolidColorBrush x:Key="TextSub" Color="#9BA0A5"/>
+            <!-- ★ 下载中心配色：深色卡片化，统一用 天依粉 + 深灰（原来 Cookie 面板米白、按钮红/蓝/粉混用，和深色主题冲突） -->
+            <SolidColorBrush x:Key="DlCard" Color="#1B1E23"/>
+            <SolidColorBrush x:Key="DlLine" Color="#262B33"/>
+            <SolidColorBrush x:Key="DlText" Color="#E8EEF5"/>
+            <SolidColorBrush x:Key="DlMuted" Color="#98A2AE"/>
+            <SolidColorBrush x:Key="DlInput" Color="#14171B"/>
+            <SolidColorBrush x:Key="DlGreen" Color="#7BCB7B"/>
+            <SolidColorBrush x:Key="DlRed" Color="#FF6B6B"/>
+            <SolidColorBrush x:Key="DlBlue" Color="#66CCFF"/>
+
+            <Style x:Key="DlCardStyle" TargetType="Border">
+                <Setter Property="Background" Value="{StaticResource DlCard}"/>
+                <Setter Property="BorderBrush" Value="{StaticResource DlLine}"/>
+                <Setter Property="BorderThickness" Value="1"/>
+                <Setter Property="CornerRadius" Value="10"/>
+                <Setter Property="Padding" Value="16,14"/>
+            </Style>
+            <Style x:Key="DlPrimaryBtn" TargetType="Button">
+                <Setter Property="Background" Value="{StaticResource Pink}"/>
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="Foreground" Value="#FFFFFF"/>
+                <Setter Property="FontSize" Value="13"/>
+                <Setter Property="FontWeight" Value="SemiBold"/>
+                <Setter Property="Height" Value="34"/>
+                <Setter Property="Padding" Value="16,0"/>
+                <Setter Property="CornerRadius" Value="8"/>
+            </Style>
+            <Style x:Key="DlSecondaryBtn" TargetType="Button">
+                <Setter Property="Background" Value="{StaticResource DlLine}"/>
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="Foreground" Value="{StaticResource DlText}"/>
+                <Setter Property="FontSize" Value="12"/>
+                <Setter Property="Height" Value="34"/>
+                <Setter Property="Padding" Value="14,0"/>
+                <Setter Property="CornerRadius" Value="8"/>
+            </Style>
+            <Style x:Key="DlGhostBtn" TargetType="Button">
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="Foreground" Value="{StaticResource DlMuted}"/>
+                <Setter Property="FontSize" Value="12"/>
+                <Setter Property="Height" Value="34"/>
+                <Setter Property="Padding" Value="10,0"/>
+                <Setter Property="CornerRadius" Value="8"/>
+            </Style>
+            <Style x:Key="DlDangerBtn" TargetType="Button">
+                <Setter Property="Background" Value="#2A1D21"/>
+                <Setter Property="BorderThickness" Value="1"/>
+                <Setter Property="BorderBrush" Value="#6E3A47"/>
+                <Setter Property="Foreground" Value="#FF8A8A"/>
+                <Setter Property="FontSize" Value="12"/>
+                <Setter Property="Height" Value="34"/>
+                <Setter Property="Padding" Value="14,0"/>
+                <Setter Property="CornerRadius" Value="8"/>
+            </Style>
+            <Style x:Key="DlTextBoxStyle" TargetType="TextBox">
+                <Setter Property="Background" Value="{StaticResource DlInput}"/>
+                <Setter Property="BorderBrush" Value="{StaticResource DlLine}"/>
+                <Setter Property="BorderThickness" Value="1"/>
+                <Setter Property="Foreground" Value="{StaticResource DlText}"/>
+                <Setter Property="PlaceholderForeground" Value="#6C7683"/>
+                <Setter Property="CornerRadius" Value="8"/>
+                <Setter Property="FontSize" Value="13"/>
+                <Setter Property="Padding" Value="12,8"/>
+            </Style>
+            <Style x:Key="DlComboStyle" TargetType="ComboBox">
+                <Setter Property="Background" Value="{StaticResource DlLine}"/>
+                <Setter Property="Foreground" Value="{StaticResource DlText}"/>
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="CornerRadius" Value="8"/>
+                <Setter Property="FontSize" Value="12"/>
+                <Setter Property="MinHeight" Value="34"/>
+            </Style>
+        </Grid.Resources>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="52"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- 顶部导航栏 -->
+        <Grid Grid.Row="0" Background="{StaticResource NavBar}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0" Orientation="Horizontal" Spacing="10" VerticalAlignment="Center" Margin="16,0,20,0">
+                <TextBlock Text="璃鸢镜" Foreground="{StaticResource TextMain}" FontSize="20"
+                           FontWeight="SemiBold" VerticalAlignment="Center"/>
+                <Border Background="#1FFFFFFF" CornerRadius="9" Padding="7,2" VerticalAlignment="Center">
+                    <TextBlock x:Name="AppVersionText" AutomationProperties.AutomationId="AppVersionText"
+                               Text="v1.0.0" Foreground="{StaticResource TextSub}" FontSize="11"/>
+                </Border>
+            </StackPanel>
+            <!-- ★ 首页视频总数（不再只显示 30 个；有多少显示多少） -->
+            <TextBlock x:Name="HomeCountText" Grid.Column="1" Foreground="{StaticResource TextSub}" FontSize="12"
+                       VerticalAlignment="Center" Margin="0,4,0,0" HorizontalAlignment="Left"/>
+
+            <StackPanel Grid.Column="2" Orientation="Horizontal" Spacing="10" VerticalAlignment="Center" Margin="12,0,16,0">
+                <Button Content="打开视频" Click="OpenBtn_Click" Background="{StaticResource Pink}" BorderThickness="0"
+                        Foreground="{StaticResource TextMain}" CornerRadius="16"/>
+            </StackPanel>
+        </Grid>
+
+        <!-- 主体：左侧图标栏 + 卡片网格 -->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="66"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- 左侧图标栏 -->
+            <StackPanel Grid.Column="0" Background="{StaticResource NavBar}" Padding="0,12,0,12" Spacing="6">
+                <Button x:Name="HomeNav" AutomationProperties.AutomationId="NavHomeBtn" Background="Transparent" BorderThickness="0" Click="Nav_Click" Tag="home">
+                    <StackPanel Orientation="Vertical" Spacing="2" HorizontalAlignment="Center">
+                        <FontIcon Glyph="&#xE80F;" FontSize="20" Foreground="{StaticResource Pink}" HorizontalAlignment="Center"/>
+                        <TextBlock Text="首页" Foreground="{StaticResource Pink}" FontSize="11" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+                <Button x:Name="DlNav" AutomationProperties.AutomationId="NavDownloadBtn" Background="Transparent" BorderThickness="0" Click="Nav_Click" Tag="download">
+                    <StackPanel Orientation="Vertical" Spacing="2" HorizontalAlignment="Center">
+                        <FontIcon Glyph="&#xE896;" FontSize="20" Foreground="{StaticResource TextSub}" HorizontalAlignment="Center"/>
+                        <TextBlock Text="下载" Foreground="{StaticResource TextSub}" FontSize="11" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+                <Button x:Name="CollNav" AutomationProperties.AutomationId="NavCollectionsBtn" Background="Transparent" BorderThickness="0" Click="Nav_Click" Tag="collections">
+                    <StackPanel Orientation="Vertical" Spacing="2" HorizontalAlignment="Center">
+                        <FontIcon Glyph="&#xE8B7;" FontSize="20" Foreground="{StaticResource TextSub}" HorizontalAlignment="Center"/>
+                        <TextBlock Text="合集" Foreground="{StaticResource TextSub}" FontSize="11" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+
+            <!-- 内容区：首页卡片 / 下载页 -->
+            <Grid Grid.Column="1">
+                <!-- 首页：视频卡片网格 -->
+                <GridView x:Name="CardGrid" SelectionMode="None" IsItemClickEnabled="True" CanReorderItems="True" AllowDrop="True"
+                          ItemClick="Card_ItemClick" Margin="16,12" Padding="0,0,0,16"
+                          Visibility="Visible">
+                    <GridView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Width="250" Spacing="6" Margin="0,0,12,16">
+                                <Border Height="140" CornerRadius="8" Background="{Binding ThumbBrush}">
+                                    <Grid>
+                                        <!-- ★ 真实封面（下载时一起抓下来的 B站封面图；没有封面时它是透明的，
+                                             露出下面的占位色块 + 标题） -->
+                                        <Image Source="{Binding Cover}" Stretch="UniformToFill"
+                                               HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        <TextBlock Text="{Binding Title}" Visibility="{Binding PlaceholderVisibility}"
+                                                   Foreground="{StaticResource TextSub}" FontSize="12"
+                                                   HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap"
+                                                   TextTrimming="CharacterEllipsis" MaxLines="3" Margin="12"/>
+                                        <Border HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,6,6"
+                                                CornerRadius="4" Padding="5,1" Background="Transparent">
+                                            <TextBlock Text="{Binding Duration}" Foreground="#FFFFFF" FontSize="11" FontWeight="SemiBold"/>
+                                        </Border>
+                                        <Button Content="＋" Tag="{Binding}" Click="CardAddToCollection_Click"
+                                                Width="26" Height="26" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,4,34,0"
+                                                Background="#CC000000" BorderThickness="0" Foreground="{StaticResource TextMain}"
+                                                FontSize="14" Padding="0" ToolTipService.ToolTip="加入合集"/>
+                                        <Button Content="✕" Tag="{Binding}" Click="CardDelete_Click"
+                                                Width="26" Height="26" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,4,4,0"
+                                                Background="#CC000000" BorderThickness="0" Foreground="{StaticResource TextMain}"
+                                                FontSize="12" Padding="0" ToolTipService.ToolTip="删除视频"/>
+                                    </Grid>
+                                </Border>
+                                <!-- ★ 标题固定占两行高度（20px 行高×2）：原来不固定，标题两行的卡片会把下面的
+                                     「点击播放 / 作者」那一行挤出卡片，导致作者不显示（用户截图实测发现） -->
+                                <Grid Height="40" VerticalAlignment="Top">
+                                    <TextBlock Text="{Binding Title}" Foreground="{StaticResource TextMain}" FontSize="14"
+                                               MaxLines="2" TextWrapping="Wrap" TextTrimming="CharacterEllipsis"
+                                               VerticalAlignment="Top"/>
+                                </Grid>
+                                <Grid>
+                                    <TextBlock Text="{Binding Plays}" Foreground="{StaticResource TextSub}" FontSize="12"/>
+                                    <TextBlock Text="{Binding Author}" Foreground="{StaticResource TextSub}" FontSize="12" HorizontalAlignment="Right"
+                                               TextTrimming="CharacterEllipsis" MaxWidth="120"/>
+                                </Grid>
+                            </StackPanel>
+                        </DataTemplate>
+                    </GridView.ItemTemplate>
+                </GridView>
+
+                <!-- 下载页：解析 → 画质/分P → 下载 → Cookie → 任务列表（★ 深色卡片化 + 天依粉统一配色） -->
+                <ScrollViewer x:Name="DownloadPanel" Visibility="Collapsed" Margin="24,16">
+                    <StackPanel Spacing="14" Width="1240" HorizontalAlignment="Left">
+
+                        <!-- 标题 + 副标题 + 右侧操作 -->
+                        <Grid>
+                            <StackPanel Spacing="2">
+                                <TextBlock Text="下载中心" Foreground="{StaticResource DlText}" FontSize="22" FontWeight="SemiBold"/>
+                                <TextBlock Text="粘贴链接 → 解析 → 选画质 → 下载；B站登录 Cookie 可解锁 1080P+ / 4K" Foreground="{StaticResource DlMuted}" FontSize="11"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Spacing="8" HorizontalAlignment="Right" VerticalAlignment="Center">
+                                <Button Content="📂 打开下载文件夹" Click="OpenDownloadDir_Click" AutomationProperties.AutomationId="OpenDownloadDirBtn"
+                                        Style="{StaticResource DlSecondaryBtn}"/>
+                                <Button Content="🔄 刷新任务" Click="RefreshDl_Click" Style="{StaticResource DlSecondaryBtn}"/>
+                            </StackPanel>
+                        </Grid>
+
+                        <!-- URL + 解析 -->
+                        <StackPanel Orientation="Horizontal" Spacing="10">
+                            <TextBox x:Name="UrlBox" Width="920" Height="38" Style="{StaticResource DlTextBoxStyle}"
+                                     PlaceholderText="粘贴视频链接（B站 / YouTube 等）"/>
+                            <Button Content="🔍 解析" Click="ParseBtn_Click" Style="{StaticResource DlPrimaryBtn}" Height="38" MinWidth="96"/>
+                        </StackPanel>
+
+                        <!-- 解析结果卡片 -->
+                        <Border x:Name="ParsePanel" Visibility="Collapsed" Style="{StaticResource DlCardStyle}">
+                            <StackPanel Spacing="10">
+                                <TextBlock x:Name="ParseTitle" Foreground="{StaticResource DlText}" FontSize="15" FontWeight="SemiBold" TextWrapping="Wrap"/>
+                                <TextBlock x:Name="ParseSub" Foreground="{StaticResource DlMuted}" FontSize="12" TextWrapping="Wrap"/>
+                                <TextBlock x:Name="ParseDlHint" Foreground="{StaticResource DlGreen}" FontSize="11" Visibility="Collapsed"/>
+                                <StackPanel Orientation="Horizontal" Spacing="10">
+                                    <TextBlock Text="清晰度" Foreground="{StaticResource DlMuted}" FontSize="12" VerticalAlignment="Center"/>
+                                    <ComboBox x:Name="FormatCombo" Width="220" Style="{StaticResource DlComboStyle}" DisplayMemberPath="Label"/>
+                                    <Button Content="⬇ 开始下载" Click="DownloadBtn_Click" Style="{StaticResource DlPrimaryBtn}"/>
+                                </StackPanel>
+                                <StackPanel x:Name="PageRow" Orientation="Horizontal" Spacing="10" Visibility="Collapsed">
+                                    <TextBlock Text="分P" Foreground="{StaticResource DlMuted}" FontSize="12" VerticalAlignment="Center"/>
+                                    <ComboBox x:Name="PageCombo" Width="280" Style="{StaticResource DlComboStyle}" DisplayMemberPath="Label"/>
+                                    <Button x:Name="CollectionBtn" Content="⬇ 下载整个合集" Click="CollectionBtn_Click"
+                                            Background="Transparent" BorderThickness="1" BorderBrush="{StaticResource Pink}"
+                                            Foreground="{StaticResource Pink}" CornerRadius="8" Height="34" Padding="14,0" FontSize="12"/>
+                                </StackPanel>
+                                <!-- ★ YouTube 播放列表：条目列表（勾选要下的视频 + 每条单独选画质）-->
+                                <StackPanel x:Name="PlaylistPanel" Spacing="8" Visibility="Collapsed" Margin="0,4,0,0">
+                                    <TextBlock x:Name="PlaylistHint"
+                                               Text="播放列表条目（勾选要下载的视频；每条都能单独选画质）"
+                                               Foreground="{StaticResource DlMuted}" FontSize="12" TextWrapping="Wrap"/>
+                                    <Border Background="{StaticResource DlInput}" CornerRadius="8" Padding="8,6">
+                                        <ScrollViewer MaxHeight="300" VerticalScrollBarVisibility="Auto">
+                                            <StackPanel x:Name="PlaylistItemsHost" Spacing="4"/>
+                                        </ScrollViewer>
+                                    </Border>
+                                    <StackPanel Orientation="Horizontal" Spacing="8">
+                                        <Button x:Name="PlaylistDownloadBtn" Content="⬇ 下载选中的视频" Click="PlaylistDownload_Click"
+                                                AutomationProperties.AutomationId="PlaylistDownloadBtn" Style="{StaticResource DlPrimaryBtn}"/>
+                                        <Button Content="全选" Click="PlaylistSelectAll_Click" Style="{StaticResource DlSecondaryBtn}"/>
+                                        <Button Content="全不选" Click="PlaylistSelectNone_Click" Style="{StaticResource DlSecondaryBtn}"/>
+                                        <TextBlock x:Name="PlaylistSelText" Foreground="{StaticResource DlMuted}" FontSize="12"
+                                                   VerticalAlignment="Center"/>
+                                    </StackPanel>
+                                </StackPanel>
+                                <CheckBox x:Name="HiresCheck" Content="Hi-Res 无损音频（FLAC 24/96，文件较大）" Foreground="{StaticResource DlMuted}"
+                                          FontSize="12" IsChecked="True" Visibility="Collapsed"/>
+                            </StackPanel>
+                        </Border>
+
+                        <!-- B站高清 Cookie -->
+                        <Border Style="{StaticResource DlCardStyle}">
+                            <StackPanel Spacing="10">
+                                <Grid>
+                                    <StackPanel Orientation="Horizontal" Spacing="8">
+                                        <Border Width="3" Height="16" Background="{StaticResource Pink}" CornerRadius="2" VerticalAlignment="Center"/>
+                                        <TextBlock Text="高清下载设置（B站登录 Cookie）" Foreground="{StaticResource DlText}" FontSize="14" FontWeight="SemiBold"/>
+                                    </StackPanel>
+                                    <TextBlock x:Name="CookieStatus" Foreground="{StaticResource DlMuted}" FontSize="11" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                                </Grid>
+                                <TextBlock Text="浏览器打开 bilibili.com 登录后按 F12 → Application/应用 → Cookies，复制 SESSDATA 的值（或整条 Cookie 串）。至少填 SESSDATA 可下 1080p；下 4K 还需 bili_jct + DedeUserID + buvid3。Cookie 只存本机 data/config.json。"
+                                           Foreground="{StaticResource DlMuted}" FontSize="11" TextWrapping="Wrap" LineHeight="18"/>
+                                <TextBox x:Name="CookieInput" Height="56" AcceptsReturn="True" TextWrapping="Wrap"
+                                         AutomationProperties.AutomationId="CookieInput"
+                                         PlaceholderText="SESSDATA=xxxxxx; bili_jct=xxxxxx; ...（也可以只粘贴 SESSDATA 的值）"
+                                         Style="{StaticResource DlTextBoxStyle}" FontSize="12" Padding="10,8"/>
+                                <StackPanel Orientation="Horizontal" Spacing="8">
+                                    <Button Content="💾 保存 Cookie" Click="CookieSave_Click" AutomationProperties.AutomationId="CookieSaveBtn"
+                                            Style="{StaticResource DlPrimaryBtn}"/>
+                                    <Button Content="从剪贴板粘贴" Click="CookiePaste_Click" AutomationProperties.AutomationId="CookiePasteBtn"
+                                            Style="{StaticResource DlSecondaryBtn}"/>
+                                    <Button Content="清空" Click="CookieClear_Click" Style="{StaticResource DlSecondaryBtn}"/>
+                                    <Button Content="🔑 自动获取 Cookie" Click="CookieImport_Click" AutomationProperties.AutomationId="CookieImportBtn"
+                                            Style="{StaticResource DlSecondaryBtn}"
+                                            ToolTipService.ToolTip="打开内置浏览器登录 B 站，登录成功后自动抓取并保存 Cookie（不需要 Node/Playwright）">
+                                        <Button.Resources>
+                                            <SolidColorBrush x:Key="ButtonForeground" Color="#66CCFF"/>
+                                        </Button.Resources>
+                                    </Button>
+                                    <Button Content="怎么获取？" Click="CookieHowTo_Click" AutomationProperties.AutomationId="CookieHowToBtn"
+                                            Style="{StaticResource DlGhostBtn}"/>
+                                    <TextBlock x:Name="CookieMsg" Foreground="{StaticResource DlGreen}" FontSize="11" VerticalAlignment="Center" TextWrapping="Wrap"/>
+                                </StackPanel>
+                                <Border Height="1" Background="{StaticResource DlLine}" Margin="0,2"/>
+                                <StackPanel x:Name="YtCookieRow" Orientation="Horizontal" Spacing="8">
+                                    <Button Content="▶ 登录 YouTube 获取 Cookie" Click="YtCookieLogin_Click"
+                                            AutomationProperties.AutomationId="YtCookieLoginBtn" Style="{StaticResource DlDangerBtn}"
+                                            ToolTipService.ToolTip="打开内置浏览器登录 Google 账号，自动抓取 YouTube 登录 Cookie（解决 yt-dlp 风控）"/>
+                                    <Button Content="清除 YouTube Cookie" Click="YtCookieClear_Click"
+                                            AutomationProperties.AutomationId="YtCookieClearBtn" Style="{StaticResource DlSecondaryBtn}"/>
+                                    <TextBlock x:Name="YtCookieStatus" Text="YouTube Cookie：未设置"
+                                               AutomationProperties.AutomationId="YtCookieStatus"
+                                               Foreground="{StaticResource DlMuted}" FontSize="11" VerticalAlignment="Center" TextWrapping="Wrap"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+
+                        <!-- 任务列表 -->
+                        <Grid Margin="0,4,0,0">
+                            <StackPanel Orientation="Horizontal" Spacing="8">
+                                <Border Width="3" Height="16" Background="{StaticResource Pink}" CornerRadius="2" VerticalAlignment="Center"/>
+                                <TextBlock Text="下载任务" Foreground="{StaticResource DlText}" FontSize="16" FontWeight="SemiBold"/>
+                                <TextBlock x:Name="DlTasksCountText" Foreground="{StaticResource DlMuted}" FontSize="11" VerticalAlignment="Bottom" Margin="0,0,0,3"/>
+                            </StackPanel>
+                            <Button Content="🗑 清空已完成" Click="ClearDl_Click" Style="{StaticResource DlGhostBtn}"
+                                    HorizontalAlignment="Right"/>
+                        </Grid>
+                        <Grid>
+                            <TextBlock x:Name="DlEmptyHint" Text="暂无下载任务 —— 在上方粘贴视频链接，点「解析」开始"
+                                       Foreground="{StaticResource DlMuted}" FontSize="13" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                       Visibility="Collapsed"/>
+                            <ListView x:Name="DlTasksList" Height="560" Background="Transparent"
+                                  SelectionMode="None" ScrollViewer.VerticalScrollMode="Enabled"
+                                  ItemContainerTransitions="{x:Null}">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Border Background="{StaticResource DlCard}" BorderBrush="{StaticResource DlLine}" BorderThickness="1"
+                                            CornerRadius="10" Padding="14,10" Margin="0,0,0,8">
+                                        <StackPanel Spacing="8">
+                                            <Grid>
+                                                <StackPanel Margin="0,0,170,0" Spacing="2">
+                                                    <TextBlock Text="{Binding DisplayTitle}" Foreground="{StaticResource DlText}" FontSize="13"
+                                                               TextTrimming="CharacterEllipsis" MaxLines="1"/>
+                                                    <TextBlock Text="{Binding Url}" Foreground="{StaticResource DlMuted}" FontSize="10"
+                                                               TextTrimming="CharacterEllipsis" MaxLines="1"/>
+                                                </StackPanel>
+                                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Spacing="8" VerticalAlignment="Center">
+                                                    <Border Background="{Binding StatusBg}" CornerRadius="6" Padding="8,3" VerticalAlignment="Center">
+                                                        <TextBlock Text="{Binding Status}" Foreground="{Binding StatusColor}" FontSize="11" FontWeight="SemiBold"/>
+                                                    </Border>
+                                                    <!-- ★ 失败任务一键重试（文字按钮、只对 failed 显示；点了立刻禁用防连点） -->
+                                                    <Button Content="重试" Tag="{Binding}" Click="RetryTask_Click"
+                                                            Visibility="{Binding RetryVisibility}" IsEnabled="{Binding RetryEnabled}"
+                                                            Height="26" MinWidth="56" Padding="10,0"
+                                                            Background="{StaticResource DlLine}" BorderThickness="0" Foreground="{StaticResource DlText}"
+                                                            CornerRadius="6" FontSize="11" ToolTipService.ToolTip="重新提交这个链接（复用下载队列；已在队列 / 已在本地会直接提示）"/>
+                                                    <Button Content="✕ 取消" Tag="{Binding}" Click="CancelTask_Click"
+                                                            Visibility="{Binding CancelVisibility}" Height="26" Padding="8,0"
+                                                            Background="{StaticResource DlLine}" BorderThickness="0" Foreground="{StaticResource DlMuted}"
+                                                            CornerRadius="6" FontSize="11" ToolTipService.ToolTip="取消该下载"/>
+                                                </StackPanel>
+                                            </Grid>
+                                            <Grid ColumnSpacing="10">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                </Grid.ColumnDefinitions>
+                                                <ProgressBar Value="{Binding Progress}" Minimum="0" Maximum="100" Height="5"
+                                                             CornerRadius="3" Background="{StaticResource DlInput}"
+                                                             Foreground="{Binding ProgressColor}" VerticalAlignment="Center"/>
+                                                <TextBlock Grid.Column="1" Text="{Binding ProgressText}" Foreground="{StaticResource DlMuted}"
+                                                           FontSize="11" MinWidth="34" TextAlignment="Right"/>
+                                            </Grid>
+                                            <Grid>
+                                                <TextBlock Text="{Binding RetryHint}" Visibility="{Binding RetryHintVisibility}"
+                                                           Foreground="{StaticResource DlBlue}" FontSize="11"
+                                                           TextTrimming="CharacterEllipsis" MaxLines="1"/>
+                                                <!-- 失败原因：error（下载器报的）优先，否则显示 reason（系统判定，如"进程中断"） -->
+                                                <TextBlock Text="{Binding FailureText}" Visibility="{Binding FailureVisibility}"
+                                                           Foreground="{StaticResource DlRed}" FontSize="11" HorizontalAlignment="Right"
+                                                           TextTrimming="CharacterEllipsis" MaxLines="1"/>
+                                            </Grid>
+                                        </StackPanel>
+                                    </Border>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                            </ListView>
+                        </Grid>
+                    </StackPanel>
+                </ScrollViewer>
+
+                <!-- 合集页 -->
+                <Grid x:Name="CollectionsPanel" Visibility="Collapsed" Margin="24,16" ColumnSpacing="16">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="300"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <!-- 合集列表 -->
+                    <Grid Grid.Column="0" RowSpacing="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0">
+                            <TextBlock Text="合集" Foreground="{StaticResource TextMain}" FontSize="18" FontWeight="SemiBold"/>
+                            <Button Content="＋新建" Click="NewPlaylist_Click" Background="{StaticResource Pink}" BorderThickness="0"
+                                    Foreground="{StaticResource TextMain}" HorizontalAlignment="Right" CornerRadius="14" FontSize="12"/>
+                        </Grid>
+                        <ListView x:Name="PlaylistList" Grid.Row="1" SelectionMode="Single" Background="{StaticResource NavBar}"
+                                  SelectionChanged="Playlist_SelectionChanged"
+                                  ScrollViewer.VerticalScrollMode="Enabled">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <StackPanel Padding="6,4">
+                                            <TextBlock Text="{Binding Name}" Foreground="{StaticResource TextMain}" FontSize="14"/>
+                                            <TextBlock Text="{Binding CountText}" Foreground="{StaticResource TextSub}" FontSize="11"/>
+                                        </StackPanel>
+                                        <Button Content="🗑" Tag="{Binding}" Click="PlaylistDelete_Click"
+                                                Width="30" Height="30" HorizontalAlignment="Right" VerticalAlignment="Center"
+                                                Background="Transparent" BorderThickness="0" Foreground="{StaticResource TextSub}"
+                                                FontSize="13" Padding="0" ToolTipService.ToolTip="删除合集"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </Grid>
+                    <!-- 合集内视频：与首页同款卡片（封面 + 时长 + 标题 + UP主/画质） -->
+                    <Grid Grid.Column="1" RowSpacing="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock x:Name="CollTitle" Grid.Row="0" Text="合集内容" Foreground="{StaticResource TextMain}" FontSize="18" FontWeight="SemiBold"/>
+                        <GridView x:Name="CollItems" Grid.Row="1" SelectionMode="None" IsItemClickEnabled="True" ItemClick="CollItem_Click" CanReorderItems="True" AllowDrop="True"
+                                  Background="Transparent" Padding="0,0,0,16">
+                            <GridView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Width="250" Spacing="6" Margin="0,0,12,16">
+                                        <Border Height="140" CornerRadius="8" Background="{Binding ThumbBrush}">
+                                            <Grid>
+                                                <Image Source="{Binding Cover}" Stretch="UniformToFill"
+                                                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                <TextBlock Text="{Binding Title}" Visibility="{Binding PlaceholderVisibility}"
+                                                           Foreground="{StaticResource TextSub}" FontSize="12"
+                                                           HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap"
+                                                           TextTrimming="CharacterEllipsis" MaxLines="3" Margin="12"/>
+                                                <Border HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,6,6"
+                                                        CornerRadius="4" Padding="5,1" Background="Transparent">
+                                                    <TextBlock Text="{Binding DurationText}" Foreground="#FFFFFF" FontSize="11" FontWeight="SemiBold"/>
+                                                </Border>
+                                                <Button Content="✕" Tag="{Binding}" Click="CollItemRemove_Click"
+                                                        Width="26" Height="26" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,4,4,0"
+                                                        Background="#CC000000" BorderThickness="0" Foreground="{StaticResource TextMain}"
+                                                        FontSize="12" Padding="0" ToolTipService.ToolTip="从合集移除"/>
+                                            </Grid>
+                                        </Border>
+                                        <!-- ★ 标题固定占两行高度（20px 行高×2）：原来不固定，标题两行的卡片会把下面的
+                                             「P几 / 作者」那一行挤出卡片（首页修过同样的问题，合集漏改了） -->
+                                        <Grid Height="40" VerticalAlignment="Top">
+                                            <TextBlock Text="{Binding Title}" Foreground="{StaticResource TextMain}" FontSize="14"
+                                                       MaxLines="2" TextWrapping="Wrap" TextTrimming="CharacterEllipsis"
+                                                       VerticalAlignment="Top"/>
+                                        </Grid>
+                                        <Grid>
+                                            <TextBlock Text="{Binding Pos}" Foreground="{StaticResource TextSub}" FontSize="12"/>
+                                            <TextBlock Text="{Binding UpName}" Foreground="{StaticResource Pink}" FontSize="12" HorizontalAlignment="Right"
+                                                       TextTrimming="CharacterEllipsis" MaxLines="1" MaxWidth="140"/>
+                                        </Grid>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridView.ItemTemplate>
+                        </GridView>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

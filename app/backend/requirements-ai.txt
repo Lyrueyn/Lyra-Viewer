@@ -1,0 +1,30 @@
+# 本地歌单器 · AI 依赖（第二阶段 P2 才安装！）
+# ⚠️ 必须用 Python 3.10 虚拟环境（本机现成；系统 Python 3.14 对 AI 库支持滞后）
+#
+# 安装顺序（50 系显卡 Blackwell 用 cu130 索引，torch 2.13.0+cu130）：
+#   1) pip install "flit_core<4,>=3.11"                        # 先补 torch 构建依赖（默认 PyPI）
+#   2) pip install torch==2.13.0 torchvision==0.28.0 --index-url https://download.pytorch.org/whl/cu130
+#   3) pip install -r requirements-ai.txt
+#
+# 说明：
+#   - realesrgan：画质超分（腾讯开源）
+#   - rife：视频补帧（RIFE 4.26 帧率插值，AI）。模型在 backend/models/rife/
+#     （train_log/IFNet_HDv3.py + train_log/flownet.pkl + model/warplayer.py）。
+#     来源：HuggingFace hzwer/RIFE -> RIFEv4.26_0921.zip（需配 wsariplayer 的 fp16 修复）。
+#   - deepfilternet：降噪
+#   - audio_sr（音频超分·AI）：LavaSR（Vocos 架构，任意 8-48kHz → 48kHz 补高频，~50MB）
+#     uv pip install git+https://github.com/ysharma3501/LavaSR.git
+#   - soxr_hires（音频超分·非AI）：libsoxr 高质量 sinc 滤波重采样到 Hi-Res（默认 96kHz，24bit wav）
+#     纯信号处理、无 AI/模型下载；只抬采样率规格、不补超奈奎斯特高频。pip install soxr
+#   - fft_hires（音频超分·非AI）：专业 FFT 重采样（scipy.signal.resample）到 Hi-Res（默认 96kHz）。
+#     scipy 的 resample 用 FFT+防混叠窗，幅值/能量缩放正确、支持多声道（axis=0）。
+#     依赖 numpy + scipy + soundfile。
+#   - AudioLBM（清华+生数科技，NeurIPS 2025）官方尚未开源，开源后同接口替换接入。
+
+basicsr>=1.4.2
+realesrgan>=0.3.0
+deepfilternet>=0.5.6
+opencv-python
+numpy
+librosa
+soundfile
