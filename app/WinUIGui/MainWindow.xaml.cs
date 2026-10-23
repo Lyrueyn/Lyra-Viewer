@@ -17,6 +17,17 @@ namespace WinUIGui;
 public sealed partial class MainWindow : Window
 {
     private VideoWindow? _video;
+    private readonly List<ExtensionHostWindow> _extHosts = new();   // ★ 已打开的扩展宿主窗口
+
+    private sealed class AvailableExtension
+    {
+        public string Id = "", Name = "", Description = "", Repo = "", Asset = "";
+    }
+    private static readonly AvailableExtension[] AvailableExtensions = new[]
+    {
+        new AvailableExtension { Id = "epub", Name = "EPUB 阅读器", Repo = "Lyrueyn/Lyra-Extension-Epub",
+            Asset = "lyra-ext-epub.zip", Description = "在璃鸢镜里阅读 EPUB：目录、章节、字号、进度记忆。" },
+    };
     public IReadOnlyList<VideoWindow> VideoWindows => _video is null ? Array.Empty<VideoWindow>() : new[] { _video };
 
     // 按需创建/复用视频窗：点视频时才建（启动不弹），窗口关闭后下次点击重建
@@ -294,8 +305,10 @@ public sealed partial class MainWindow : Window
             CardGrid.Visibility = tag == "home" ? Visibility.Visible : Visibility.Collapsed;
             DownloadPanel.Visibility = tag == "download" ? Visibility.Visible : Visibility.Collapsed;
             CollectionsPanel.Visibility = tag == "collections" ? Visibility.Visible : Visibility.Collapsed;
+            ExtensionsPanel.Visibility = tag == "extensions" ? Visibility.Visible : Visibility.Collapsed;
             UpdateNavHighlight(tag);   // ★ 以前只切面板、没切颜色 → "首页"永远是粉色
             if (tag == "collections") LoadPlaylistsAsync();
+            if (tag == "extensions") RefreshExtensionsPage();
         }
     }
 
@@ -308,7 +321,7 @@ public sealed partial class MainWindow : Window
         var res = ((FrameworkElement)Content).Resources;   // 根 Grid 的资源字典（Pink / TextSub 定义在那）
         Brush pink = res.TryGetValue("Pink", out var p) && p is Brush pb ? pb : new SolidColorBrush(Windows.UI.Color.FromArgb(255, 0xFB, 0x72, 0x99));
         Brush sub = res.TryGetValue("TextSub", out var s) && s is Brush sb ? sb : new SolidColorBrush(Windows.UI.Color.FromArgb(255, 0x9B, 0xA0, 0xA5));
-        foreach (var (btn, tag) in new[] { (HomeNav, "home"), (DlNav, "download"), (CollNav, "collections") })
+        foreach (var (btn, tag) in new[] { (HomeNav, "home"), (DlNav, "download"), (CollNav, "collections"), (ExtNav, "extensions"), (ExtNav, "extensions") })
         {
             Brush brush = tag == activeTag ? pink : sub;
             if (btn.Content is not StackPanel sp) continue;
@@ -512,6 +525,191 @@ public sealed partial class MainWindow : Window
             if (!string.IsNullOrEmpty(copied) && File.Exists(copied)) ShowVideo(copied);
         }
         catch (Exception ex) { HomeCountText.Text = "添加失败：" + ex.Message; }
+    }
+
+    // ================= ★ 扩展中心：下载 / 管理 =================
+    private void RefreshExtBtn_Click(object sender, RoutedEventArgs e) => RefreshExtensionsPage();
+
+    private void RefreshExtensionsPage()
+    {
+        try
+        {
+            ExtItemsPanel.Children.Clear();
+            var installed = ExtensionCatalog.LoadAll();
+            var installedIds = new HashSet<string>(installed.Select(e => e.Id), StringComparer.OrdinalIgnoreCase);
+            foreach (var ext in installed) ExtItemsPanel.Children.Add(BuildInstalledExtCard(ext));
+            foreach (var av in AvailableExtensions)
+            {
+                if (installedIds.Contains(av.Id)) continue;
+                ExtItemsPanel.Children.Add(BuildAvailableExtCard(av));
+            }
+            if (ExtItemsPanel.Children.Count == 0)
+                ExtItemsPanel.Children.Add(new TextBlock { Text = "暂无扩展", Foreground = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 155, 160, 165)) });
+            ExtStatusText.Text = installed.Count == 0 ? "尚未安装扩展" : $"已安装 {installed.Count} 个扩展";
+        }
+        catch (Exception ex) { ExtStatusText.Text = "读取扩展失败：" + ex.Message; }
+    }
+
+    private Border MakeExtCard()
+    {
+        return new Border
+        {
+            Background = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 23, 23, 23)),
+            CornerRadius = new CornerRadius(8),
+            Padding = new Thickness(14, 12, 14, 12),
+            BorderBrush = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 42, 42, 42)),
+            BorderThickness = new Thickness(1),
+        };
+    }
+
+    private Button MakeExtButton(string text, bool primary = false)
+    {
+        return new Button
+        {
+            Content = text,
+            Background = new SolidColorBrush(primary ? Windows.UI.Color.FromArgb(255, 251, 114, 153) : Windows.UI.Color.FromArgb(40, 255, 255, 255)),
+            Foreground = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 255, 255, 255)),
+            BorderThickness = new Thickness(0),
+            CornerRadius = new CornerRadius(14),
+            Padding = new Thickness(10, 4, 10, 4),
+            FontSize = 12,
+        };
+    }
+
+    private UIElement BuildInstalledExtCard(ExtensionCatalog.ExtensionInfo ext)
+    {
+        var info = new StackPanel { Spacing = 3 };
+        info.Children.Add(new TextBlock { Text = ext.Name + "  v" + ext.Version, Foreground = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 255, 255, 255)), FontSize = 14, FontWeight = Microsoft.UI.Text.FontWeights.SemiBold });
+        info.Children.Add(new TextBlock { Text = ext.Description, Foreground = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 155, 160, 165)), FontSize = 12, TextWrapping = TextWrapping.Wrap });
+        info.Children.Add(new TextBlock { Text = ext.Enabled ? "已启用" : "已禁用", Foreground = new SolidColorBrush(ext.Enabled ? Windows.UI.Color.FromArgb(255, 120, 200, 120) : Windows.UI.Color.FromArgb(255, 155, 160, 165)), FontSize = 11 });
+
+        var buttons = new StackPanel { Orientation = Orientation.Horizontal, Spacing = 8, VerticalAlignment = VerticalAlignment.Center };
+        var open = MakeExtButton("打开", true); open.Click += (_, _) => OpenExtension(ext); buttons.Children.Add(open);
+        var toggle = MakeExtButton(ext.Enabled ? "禁用" : "启用"); toggle.Click += (_, _) => { ExtensionCatalog.SetEnabled(ext.Id, !ext.Enabled); RefreshExtensionsPage(); }; buttons.Children.Add(toggle);
+        var del = MakeExtButton("删除"); del.Click += (_, _) => DeleteExtension(ext); buttons.Children.Add(del);
+
+        var grid = new Grid();
+        grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
+        grid.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
+        Grid.SetColumn(info, 0); grid.Children.Add(info);
+        Grid.SetColumn(buttons, 1); grid.Children.Add(buttons);
+        var b = MakeExtCard(); b.Child = grid; return b;
+    }
+
+    private UIElement BuildAvailableExtCard(AvailableExtension av)
+    {
+        var info = new StackPanel { Spacing = 3 };
+        info.Children.Add(new TextBlock { Text = av.Name, Foreground = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 255, 255, 255)), FontSize = 14, FontWeight = Microsoft.UI.Text.FontWeights.SemiBold });
+        info.Children.Add(new TextBlock { Text = av.Description, Foreground = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 155, 160, 165)), FontSize = 12, TextWrapping = TextWrapping.Wrap });
+        var btn = MakeExtButton("下载安装", true);
+        btn.Click += async (_, _) => await InstallExtensionAsync(av);
+        var grid = new Grid();
+        grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
+        grid.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
+        Grid.SetColumn(info, 0); grid.Children.Add(info);
+        Grid.SetColumn(btn, 1); grid.Children.Add(btn);
+        var b = MakeExtCard(); b.Child = grid; return b;
+    }
+
+    private void OpenExtension(ExtensionCatalog.ExtensionInfo ext)
+    {
+        try
+        {
+            if (!ext.Enabled) { ExtStatusText.Text = "扩展已禁用，请先启用"; return; }
+            string dir = Path.Combine(ExtensionCatalog.ExtensionsDir, ext.Id);
+            if (!Directory.Exists(dir)) { ExtStatusText.Text = "扩展目录不存在"; return; }
+            var win = new ExtensionHostWindow(ext.Id, ext.Name, dir, string.IsNullOrWhiteSpace(ext.Entry) ? "index.html" : ext.Entry);
+            win.Closed += (_, _) => _extHosts.Remove(win);
+            _extHosts.Add(win);
+            win.Activate();
+        }
+        catch (Exception ex) { ExtStatusText.Text = "打开扩展失败：" + ex.Message; }
+    }
+
+    private void DeleteExtension(ExtensionCatalog.ExtensionInfo ext)
+    {
+        try
+        {
+            string dir = Path.Combine(ExtensionCatalog.ExtensionsDir, ext.Id);
+            if (Directory.Exists(dir)) Directory.Delete(dir, true);
+            RefreshExtensionsPage();
+            ExtStatusText.Text = "已删除扩展：" + ext.Name;
+        }
+        catch (Exception ex) { ExtStatusText.Text = "删除失败：" + ex.Message; }
+    }
+
+    private async Task InstallExtensionAsync(AvailableExtension av)
+    {
+        try
+        {
+            if (ExtProgress.Visibility == Visibility.Visible) return;
+            ExtProgress.Visibility = Visibility.Visible;
+            ExtProgress.Value = 0;
+            ExtStatusText.Text = "正在下载 " + av.Name + "…";
+            string zip = Path.Combine(Path.GetTempPath(), "lyra_ext_" + av.Id + ".zip");
+            using var http = new System.Net.Http.HttpClient();
+            http.Timeout = TimeSpan.FromMinutes(10);
+            string[] urls =
+            {
+                $"https://github.com/{av.Repo}/releases/latest/download/{av.Asset}",
+                $"https://github.com/{av.Repo}/archive/refs/heads/main.zip",
+            };
+            Exception? last = null;
+            foreach (var url in urls)
+            {
+                try
+                {
+                    using var resp = await http.GetAsync(url, System.Net.Http.HttpCompletionOption.ResponseHeadersRead);
+                    if (!resp.IsSuccessStatusCode) throw new Exception("HTTP " + (int)resp.StatusCode);
+                    long total = resp.Content.Headers.ContentLength ?? 0;
+                    await using var src = await resp.Content.ReadAsStreamAsync();
+                    await using var dst = File.Create(zip);
+                    byte[] buf = new byte[81920];
+                    long done = 0;
+                    while (true)
+                    {
+                        int n = await src.ReadAsync(buf);
+                        if (n <= 0) break;
+                        await dst.WriteAsync(buf.AsMemory(0, n));
+                        done += n;
+                        if (total > 0)
+                        {
+                            ExtProgress.Value = done * 100.0 / total;
+                            ExtStatusText.Text = $"正在下载 {av.Name}… {done / 1048576.0:0.0}/{total / 1048576.0:0.0} MB";
+                        }
+                    }
+                    last = null;
+                    break;
+                }
+                catch (Exception ex) { last = ex; }
+            }
+            if (last != null) throw last;
+
+            string tmp = Path.Combine(Path.GetTempPath(), "lyra_ext_" + av.Id + "_unzip");
+            if (Directory.Exists(tmp)) Directory.Delete(tmp, true);
+            System.IO.Compression.ZipFile.ExtractToDirectory(zip, tmp);
+            string? manifest = Directory.GetFiles(tmp, "extension.json", SearchOption.AllDirectories).FirstOrDefault();
+            if (manifest == null) throw new Exception("扩展包里没有 extension.json");
+            string srcDir = Path.GetDirectoryName(manifest)!;
+            string dest = Path.Combine(ExtensionCatalog.ExtensionsDir, av.Id);
+            if (Directory.Exists(dest)) Directory.Delete(dest, true);
+            Directory.CreateDirectory(dest);
+            CopyDir(srcDir, dest);
+            try { File.Delete(zip); Directory.Delete(tmp, true); } catch { }
+
+            ExtProgress.Value = 100;
+            RefreshExtensionsPage();
+            ExtStatusText.Text = $"已安装 {av.Name}，点「打开」启动";
+        }
+        catch (Exception ex) { ExtStatusText.Text = "安装失败：" + ex.Message; }
+        finally { ExtProgress.Visibility = Visibility.Collapsed; }
+    }
+
+    private static void CopyDir(string src, string dst)
+    {
+        Directory.CreateDirectory(dst);
+        foreach (var f in Directory.GetFiles(src)) File.Copy(f, Path.Combine(dst, Path.GetFileName(f)), true);
+        foreach (var d in Directory.GetDirectories(src)) CopyDir(d, Path.Combine(dst, Path.GetFileName(d)));
     }
 
     private async void OpenBtn_Click(object sender, RoutedEventArgs e)

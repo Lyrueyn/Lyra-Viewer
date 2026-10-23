@@ -157,10 +157,33 @@
                         <TextBlock Text="合集" Foreground="{StaticResource TextSub}" FontSize="11" HorizontalAlignment="Center"/>
                     </StackPanel>
                 </Button>
+                <Button x:Name="ExtNav" AutomationProperties.AutomationId="NavExtensionsBtn" Background="Transparent" BorderThickness="0" Click="Nav_Click" Tag="extensions">
+                    <StackPanel Orientation="Vertical" Spacing="2" HorizontalAlignment="Center">
+                        <FontIcon Glyph="&#xE8F1;" FontSize="20" Foreground="{StaticResource TextSub}" HorizontalAlignment="Center"/>
+                        <TextBlock Text="扩展" Foreground="{StaticResource TextSub}" FontSize="11" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+                <!-- ★ 扩展中心：下载/管理网页扩展（不把扩展代码打进播放器） -->
             </StackPanel>
 
             <!-- 内容区：首页卡片 / 下载页 -->
             <Grid Grid.Column="1">
+                <ScrollViewer x:Name="ExtensionsPanel" Visibility="Collapsed" Margin="24,16">
+                    <StackPanel Spacing="12" MaxWidth="980" HorizontalAlignment="Left">
+                        <TextBlock Text="扩展" Foreground="{StaticResource TextMain}" FontSize="22" FontWeight="SemiBold"/>
+                        <TextBlock Text="扩展不会打包进播放器本体；下载后独立存放，关闭即释放。当前支持网页扩展。"
+                                   Foreground="{StaticResource TextSub}" FontSize="12" TextWrapping="Wrap"/>
+                        <StackPanel Orientation="Horizontal" Spacing="10" VerticalAlignment="Center">
+                            <Button Content="刷新列表" Click="RefreshExtBtn_Click" Background="#33FFFFFF" BorderThickness="0"
+                                    Foreground="{StaticResource TextMain}" CornerRadius="14" Padding="12,5"/>
+                            <TextBlock x:Name="ExtStatusText" Text="" Foreground="{StaticResource TextSub}" FontSize="12"
+                                       VerticalAlignment="Center" TextWrapping="Wrap"/>
+                        </StackPanel>
+                        <ProgressBar x:Name="ExtProgress" IsIndeterminate="False" Minimum="0" Maximum="100"
+                                     Visibility="Collapsed" Height="4" Foreground="{StaticResource Pink}"/>
+                        <StackPanel x:Name="ExtItemsPanel" Spacing="10"/>
+                    </StackPanel>
+                </ScrollViewer>
                 <!-- 首页：视频卡片网格 -->
                 <GridView x:Name="CardGrid" SelectionMode="None" IsItemClickEnabled="True" CanReorderItems="True" AllowDrop="True"
                           ItemClick="Card_ItemClick" Margin="16,12" Padding="0,0,0,16"
