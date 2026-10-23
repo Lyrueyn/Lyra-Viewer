@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.Text.Json;
 using System.Threading.Tasks;
+using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using Microsoft.Web.WebView2.Core;
 using Windows.Graphics;
@@ -27,7 +28,21 @@ namespace WinUIGui
             _entry = string.IsNullOrWhiteSpace(entry) ? "index.html" : entry;
             _bookPath = bookPath;
             Title = "璃鸢镜 · " + (string.IsNullOrWhiteSpace(name) ? extensionId : name);
-            try { AppWindow.Resize(new SizeInt32(1180, 820)); } catch { }
+            try
+            {
+                // 阅读器/扩展窗口默认最大化，避免小窗口阅读
+                if (AppWindow.Presenter is OverlappedPresenter p) p.Maximize();
+            }
+            catch
+            {
+                try
+                {
+                    var area = DisplayArea.GetFromWindowId(AppWindow.Id, DisplayAreaFallback.Primary);
+                    var wa = area.WorkArea;
+                    AppWindow.MoveAndResize(new Windows.Graphics.RectInt32(wa.X, wa.Y, wa.Width, wa.Height));
+                }
+                catch { }
+            }
         }
 
         private async void Root_Loaded(object sender, RoutedEventArgs e)

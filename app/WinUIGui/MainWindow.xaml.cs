@@ -766,6 +766,13 @@ public sealed partial class MainWindow : Window
         var buttons = new StackPanel { Orientation = Orientation.Horizontal, Spacing = 8, VerticalAlignment = VerticalAlignment.Center };
         var open = MakeExtButton("打开", true); open.Click += (_, _) => OpenExtension(ext); buttons.Children.Add(open);
         var toggle = MakeExtButton(ext.Enabled ? "禁用" : "启用"); toggle.Click += (_, _) => { ExtensionCatalog.SetEnabled(ext.Id, !ext.Enabled); RefreshExtensionsPage(); }; buttons.Children.Add(toggle);
+        var av = AvailableExtensions.FirstOrDefault(a => string.Equals(a.Id, ext.Id, StringComparison.OrdinalIgnoreCase));
+        if (av != null)
+        {
+            var upd = MakeExtButton("更新");
+            upd.Click += async (_, _) => await InstallExtensionAsync(av);
+            buttons.Children.Add(upd);
+        }
         var del = MakeExtButton("删除"); del.Click += (_, _) => DeleteExtension(ext); buttons.Children.Add(del);
 
         var grid = new Grid();
@@ -812,6 +819,7 @@ public sealed partial class MainWindow : Window
         {
             string dir = Path.Combine(ExtensionCatalog.ExtensionsDir, ext.Id);
             if (Directory.Exists(dir)) Directory.Delete(dir, true);
+            UpdateEpubTabVisibility();   // ★ 删除后立即隐藏 EPUB Tab，不用重启
             RefreshExtensionsPage();
             ExtStatusText.Text = "已删除扩展：" + ext.Name;
         }
