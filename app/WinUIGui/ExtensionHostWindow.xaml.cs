@@ -30,19 +30,15 @@ namespace WinUIGui
             Title = "璃鸢镜 · " + (string.IsNullOrWhiteSpace(name) ? extensionId : name);
             try
             {
-                // 阅读器/扩展窗口默认最大化，避免小窗口阅读
-                if (AppWindow.Presenter is OverlappedPresenter p) p.Maximize();
+                // ★ 和视频窗口默认尺寸一致：工作区 88% 宽 / 93% 高，居中（不默认全屏）
+                var area = DisplayArea.GetFromWindowId(AppWindow.Id, DisplayAreaFallback.Primary);
+                var wa = area.WorkArea;
+                int w = (int)Math.Min(wa.Width - 60, wa.Width * 0.88);
+                int h = (int)Math.Min(wa.Height - 60, wa.Height * 0.93);
+                AppWindow.MoveAndResize(new Windows.Graphics.RectInt32(
+                    wa.X + (wa.Width - w) / 2, wa.Y + (wa.Height - h) / 2, w, h));
             }
-            catch
-            {
-                try
-                {
-                    var area = DisplayArea.GetFromWindowId(AppWindow.Id, DisplayAreaFallback.Primary);
-                    var wa = area.WorkArea;
-                    AppWindow.MoveAndResize(new Windows.Graphics.RectInt32(wa.X, wa.Y, wa.Width, wa.Height));
-                }
-                catch { }
-            }
+            catch { try { AppWindow.Resize(new SizeInt32(1400, 900)); } catch { } }
         }
 
         private async void Root_Loaded(object sender, RoutedEventArgs e)
