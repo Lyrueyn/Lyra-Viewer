@@ -122,7 +122,11 @@
 
             <StackPanel Grid.Column="2" Orientation="Horizontal" Spacing="10" VerticalAlignment="Center" Margin="12,0,16,0">
                 <Button Content="打开视频" Click="OpenBtn_Click" Background="{StaticResource Pink}" BorderThickness="0"
-                        Foreground="{StaticResource TextMain}" CornerRadius="16"/>
+                        Foreground="{StaticResource TextMain}" CornerRadius="16"
+                        ToolTipService.ToolTip="直接打开本地视频播放（不复制到视频库）"/>
+                <Button Content="＋ 添加视频" Click="AddVideoBtn_Click" Background="#33FFFFFF" BorderThickness="0"
+                        Foreground="{StaticResource TextMain}" CornerRadius="16"
+                        ToolTipService.ToolTip="复制到视频库并登记（可在首页看到；日期用文件创建时间；简介可编辑）"/>
             </StackPanel>
         </Grid>
 

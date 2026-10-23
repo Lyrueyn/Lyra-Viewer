@@ -482,9 +482,40 @@ public sealed partial class MainWindow : Window
     }
 
     // ---- 打开视频文件 ----
+    /// <summary>添加视频：复制到视频库（data/local_videos）并登记，随后刷新首页。</summary>
+    private async void AddVideoBtn_Click(object sender, RoutedEventArgs e)
+    {
+        try
+        {
+            var picker = new FileOpenPicker();
+            picker.ViewMode = PickerViewMode.Thumbnail;
+            foreach (var ext in Exts) picker.FileTypeFilter.Add(ext);
+            InitializeWithWindow.Initialize(picker, WindowNative.GetWindowHandle(this));
+            var file = await picker.PickSingleFileAsync();
+            if (file == null) return;
+            string resp = await Backend.ImportLocalVideoAsync(file.Path);
+            System.Text.Json.JsonElement root;
+            try { root = System.Text.Json.JsonDocument.Parse(resp).RootElement; }
+            catch { return; }
+            bool ok = root.ValueKind == System.Text.Json.JsonValueKind.Object
+                      && root.TryGetProperty("ok", out var okEl) && okEl.ValueKind == System.Text.Json.JsonValueKind.True;
+            if (!ok)
+            {
+                string err = "";
+                try { if (root.TryGetProperty("detail", out var d)) err = d.ToString(); } catch { }
+                HomeCountText.Text = "添加失败：" + (err.Length > 0 ? err : resp);
+                return;
+            }
+            string copied = "";
+            try { if (root.TryGetProperty("copied_to", out var p)) copied = p.GetString() ?? ""; } catch { }
+            LoadVideosAsync();                // 首页卡片立即出现
+            if (!string.IsNullOrEmpty(copied) && File.Exists(copied)) ShowVideo(copied);
+        }
+        catch (Exception ex) { HomeCountText.Text = "添加失败：" + ex.Message; }
+    }
+
     private async void OpenBtn_Click(object sender, RoutedEventArgs e)
     {
-        if (_video is null) return;
         var picker = new FileOpenPicker();
         picker.ViewMode = PickerViewMode.Thumbnail;
         foreach (var ext in Exts) picker.FileTypeFilter.Add(ext);

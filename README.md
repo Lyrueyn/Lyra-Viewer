@@ -1,9 +1,9 @@
 # 璃鸢镜（Lyra Viewer）v1.0.0
 
+> 🤖 **本项目由 AI（DeepSeek Harness）制作/协作开发。**
+>
 > 一个面向 Windows 的本地媒体播放器：自研 Vulkan / D3D11 视频渲染引擎 + WinUI 3 界面 + Python 后端。
 > 支持 B 站 / YouTube 下载、弹幕、评论、字幕、AI 字幕（Whisper）、RTX VSR 超分、HDR、音频增强等。
-
-![璃鸢镜主界面](docs/screenshot.png)
 
 ## 功能
 

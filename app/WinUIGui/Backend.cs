@@ -246,6 +246,23 @@ public static class Backend
     public static Task<string> ReDownloadSubtitleAsync(int videoId)
         => SendLongAsync(HttpMethod.Post, $"/api/videos/{videoId}/subtitle/redownload", new { });
 
+    // ---- ★ 本地视频：打开/添加/编辑简介 ----
+    public static async Task<string> ImportLocalVideoAsync(string path, string title = "")
+    {
+        try
+        {
+            using var payload = new StringContent(
+                JsonSerializer.Serialize(new { path, title }),
+                System.Text.Encoding.UTF8, "application/json");
+            var r = await LongHttp.PostAsync("/api/videos/import", payload);
+            return await r.Content.ReadAsStringAsync();
+        }
+        catch (Exception ex) { return "添加失败: " + ex.Message; }
+    }
+
+    public static Task<string> UpdateVideoDescAsync(int videoId, string desc)
+        => SendAsync(HttpMethod.Post, $"/api/videos/{videoId}/desc", new { desc });
+
     public static Task<string> PathsAsync() => SendAsync(HttpMethod.Get, "/api/paths");
     // ★ YouTube 登录 Cookie（登录窗口抓来的整串；解决 "Sign in to confirm you're not a bot" 风控）
     public static async Task<string> YtCookieStatusAsync()

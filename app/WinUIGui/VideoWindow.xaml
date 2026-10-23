@@ -274,9 +274,32 @@
                     <!-- 统计 -->
                     <TextBlock x:Name="StatsText" Text="—" Foreground="{StaticResource BiliSub}" FontSize="12"/>
 
-                    <!-- ★ 简介（从 B站 view 接口取；没有 bvid 的本地视频不显示） -->
+                    <!-- ★ 简介（B站有简介；本地添加的视频可编辑） -->
                     <TextBlock x:Name="DescText" Text="" Foreground="{StaticResource BiliSub}" FontSize="12"
                                TextWrapping="Wrap" Visibility="Collapsed" LineHeight="18"/>
+                    <Button x:Name="DescEditBtn" Content="编辑简介" Click="DescEditBtn_Click"
+                            AutomationProperties.AutomationId="DescEditBtn"
+                            Padding="10,4" FontSize="11" Background="{StaticResource BiliCard}"
+                            Foreground="{StaticResource BiliText}" BorderThickness="0"
+                            HorizontalAlignment="Left" Visibility="Collapsed"
+                            ToolTipService.ToolTip="本地添加的视频可以编辑简介"/>
+                    <StackPanel x:Name="DescEditPanel" Spacing="6" Visibility="Collapsed">
+                        <TextBox x:Name="DescEditBox" AutomationProperties.AutomationId="DescEditBox"
+                                 AcceptsReturn="True" Height="84" TextWrapping="Wrap" FontSize="12"
+                                 Background="#141414" Foreground="{StaticResource BiliText}"
+                                 BorderBrush="#33FFFFFF" BorderThickness="1" CornerRadius="4"
+                                 PlaceholderText="写一点这个视频的简介…"/>
+                        <StackPanel Orientation="Horizontal" Spacing="6">
+                            <Button x:Name="DescSaveBtn" Content="保存" Click="DescSaveBtn_Click"
+                                    AutomationProperties.AutomationId="DescSaveBtn"
+                                    Padding="10,4" FontSize="11" Background="{StaticResource BiliCard}"
+                                    Foreground="{StaticResource BiliText}" BorderThickness="0"/>
+                            <Button x:Name="DescCancelBtn" Content="取消" Click="DescCancelBtn_Click"
+                                    AutomationProperties.AutomationId="DescCancelBtn"
+                                    Padding="10,4" FontSize="11" Background="{StaticResource BiliCard}"
+                                    Foreground="{StaticResource BiliSub}" BorderThickness="0"/>
+                        </StackPanel>
+                    </StackPanel>
 
                     <!-- 刷新弹幕（全量）：后端按天抓 B 站历史弹幕 + 实时补缺、按 id 去重 -->
                     <StackPanel Orientation="Horizontal" Spacing="8">
@@ -461,7 +484,8 @@
                                                     Foreground="{StaticResource BiliSub}" BorderThickness="0"/>
                                         </StackPanel>
                                         <TextBlock Foreground="{StaticResource BiliSub}" FontSize="11" TextWrapping="Wrap"
-                                                   Text="NVIDIA RTX Video SDK 有独立许可，安装包不附带它的 nvngx DLL。下载 SDK 后选择其根目录（自动找 bin\Windowsdel），RTX VSR 即可使用；选择结果会记住。"/>
+                                                   Text="NVIDIA RTX Video SDK 有独立许可，安装包不附带它的 nvngx DLL。下载 SDK 后选择其根目录（自动找 bin\Windowsd
+el），RTX VSR 即可使用；选择结果会记住。"/>
                                     </StackPanel>
                                 </Border>
                                 <TextBlock x:Name="RtxVsrHint" AutomationProperties.AutomationId="RtxVsrHint"

@@ -2935,6 +2935,51 @@ public sealed partial class VideoWindow : Window
         DmLog($"切换画质完成 → {quality}（位置 {pos}ms）");
     }
 
+    // ---- ★ 本地视频简介编辑 ----
+    private void DescEditBtn_Click(object sender, RoutedEventArgs e)
+    {
+        try
+        {
+            DescEditBox.Text = DescText.Text ?? "";
+            DescEditPanel.Visibility = Visibility.Visible;
+            DescEditBtn.Visibility = Visibility.Collapsed;
+            DescEditBox.Focus(FocusState.Programmatic);
+        }
+        catch { }
+    }
+
+    private async void DescSaveBtn_Click(object sender, RoutedEventArgs e)
+    {
+        try
+        {
+            if (_videoId <= 0) { DmLog("编辑简介：当前视频不在库里"); return; }
+            string desc = (DescEditBox.Text ?? "").Trim();
+            string resp = await Backend.UpdateVideoDescAsync(_videoId, desc);
+            bool ok = false;
+            try { var r = System.Text.Json.JsonDocument.Parse(resp).RootElement; ok = r.TryGetProperty("ok", out var okEl) && okEl.ValueKind == System.Text.Json.JsonValueKind.True; } catch { }
+            if (ok)
+            {
+                DescText.Text = desc;
+                DescText.Visibility = string.IsNullOrWhiteSpace(desc) ? Visibility.Collapsed : Visibility.Visible;
+                DescEditPanel.Visibility = Visibility.Collapsed;
+                DescEditBtn.Visibility = Visibility.Visible;
+                DmLog("简介已保存");
+            }
+            else DmLog("保存简介失败: " + resp);
+        }
+        catch (Exception ex) { DmLog("保存简介异常: " + ex.Message); }
+    }
+
+    private void DescCancelBtn_Click(object sender, RoutedEventArgs e)
+    {
+        try
+        {
+            DescEditPanel.Visibility = Visibility.Collapsed;
+            DescEditBtn.Visibility = Visibility.Visible;
+        }
+        catch { }
+    }
+
     /// <summary>把当前视频加入合集（信息栏按钮）：复用首页那套"加入合集"菜单。</summary>
     private async void AddToCollection_Click(object sender, RoutedEventArgs e)
     {
@@ -5672,6 +5717,12 @@ public sealed partial class VideoWindow : Window
             StatsText.Text = fstats;
             // ★ B 站专属功能显隐：非 B 站（YouTube / 本地）不显示评论 tab、弹幕设置、刷新弹幕
             bool isBili = !string.IsNullOrEmpty(bvidMatched);
+            if (!isBili && pubUnix > 0)
+            {
+                // ★ 本地添加的视频：日期 = 文件创建日期（后端 pub_time 就是源文件 st_ctime）
+                StatsText.Text = "本地视频 · 创建于 " + DateTimeOffset.FromUnixTimeSeconds(pubUnix).LocalDateTime.ToString("yyyy-MM-dd");
+                StatsText.Visibility = Visibility.Visible;
+            }
             CommentTab.Visibility = isBili ? Visibility.Visible : Visibility.Collapsed;
             RefreshDmBtn.Visibility = isBili ? Visibility.Visible : Visibility.Collapsed;
             SetDanmakuSettingsVisible(isBili);
@@ -5680,6 +5731,11 @@ public sealed partial class VideoWindow : Window
             string descShow = isBili ? fdesc : localDesc;
             DescText.Text = descShow;
             DescText.Visibility = string.IsNullOrWhiteSpace(descShow) ? Visibility.Collapsed : Visibility.Visible;
+            // ★ 本地添加的视频（库内有 id、bvid 为空）允许编辑简介
+            bool canEditDesc = videoId > 0 && !isBili;
+            DescEditBtn.Visibility = canEditDesc ? Visibility.Visible : Visibility.Collapsed;
+            DescEditPanel.Visibility = Visibility.Collapsed;
+            if (!canEditDesc) DescEditBox.Text = "";
             // ★ 频道/来源标注：非 B 站显示"频道 · 网络视频"
             UpSubText.Text = isBili ? fsub
                 : (string.IsNullOrWhiteSpace(fup) || fup == "本地视频" ? "本地视频" : fup + " · 网络视频");

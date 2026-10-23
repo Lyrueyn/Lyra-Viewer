@@ -249,6 +249,8 @@ class Handler(BaseHTTPRequestHandler):
                 ))
             elif (m := re.fullmatch(r"/api/videos/(\d+)/refresh", path)):
                 self._send(services.refresh_video(int(m.group(1))))
+            elif (m := re.fullmatch(r"/api/videos/(\d+)/desc", path)):
+                self._send(services.update_video_desc(int(m.group(1)), str(body.get("desc", "") or "")))
             elif (m := re.fullmatch(r"/api/videos/(\d+)/subtitle/redownload", path)):
                 self._send(services.backfill_subtitles(int(m.group(1))))
             elif (m := re.fullmatch(r"/api/download/tasks/(\d+)/cancel", path)):

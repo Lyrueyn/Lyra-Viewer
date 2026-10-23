@@ -2024,14 +2024,30 @@ def import_local_video(path: str, title: str = "") -> dict:
     shutil.copy2(str(src), str(tmp_dst))
     tmp_dst.rename(dst)
 
+    # ★ 本地视频：发布日期 = 源文件创建时间（Windows 上 st_ctime 就是创建时间）
+    try:
+        pub_time = int(src.stat().st_ctime)
+    except Exception:
+        pub_time = 0
     with get_conn() as c:
         cur = c.execute(
-            "INSERT INTO videos (bvid, title, up_name, local_path, quality) "
-            "VALUES ('', ?, '本地导入', ?, '')",
-            (name, str(dst)),
+            "INSERT INTO videos (bvid, title, up_name, local_path, quality, pub_time, desc) "
+            "VALUES ('', ?, '本地视频', ?, '', ?, '')",
+            (name, str(dst), pub_time),
         )
         vid = int(cur.lastrowid)
-    return {"ok": True, "video_id": vid, "duplicate": False, "copied_to": str(dst)}
+    return {"ok": True, "video_id": vid, "duplicate": False, "copied_to": str(dst),
+            "pub_time": pub_time}
+
+
+def update_video_desc(video_id: int, desc: str) -> dict:
+    """更新视频简介（本地添加的视频允许编辑）。"""
+    with get_conn() as c:
+        row = c.execute("SELECT id FROM videos WHERE id=?", (video_id,)).fetchone()
+        if not row:
+            return {"ok": False, "error": "视频不存在"}
+        c.execute("UPDATE videos SET desc=? WHERE id=?", (desc or "", video_id))
+    return {"ok": True, "video_id": video_id, "desc": desc or ""}
 
 
 def get_video_record(bvid: str, page: int = 0, quality: Optional[str] = None) -> Optional[dict]:
