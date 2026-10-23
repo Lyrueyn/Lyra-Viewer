@@ -19,6 +19,26 @@ public sealed partial class MainWindow : Window
     private VideoWindow? _video;
     private readonly List<ExtensionHostWindow> _extHosts = new();   // ★ 已打开的扩展宿主窗口
 
+    // ================= ★ EPUB 书库（扩展贡献的 Tab）=================
+    private sealed class EpubCard
+    {
+        public string Id { get; set; } = "";
+        public string Title { get; set; } = "";
+        public string Author { get; set; } = "";
+        public string Path { get; set; } = "";
+        public string DateText { get; set; } = "";
+    }
+    private sealed class EpubEntry
+    {
+        public string Id { get; set; } = "";
+        public string Title { get; set; } = "";
+        public string Author { get; set; } = "";
+        public string Path { get; set; } = "";
+        public string AddedAt { get; set; } = "";
+    }
+    private static readonly string EpubLibraryFile = Path.Combine(AppContext.BaseDirectory, "data", "epub_library.json");
+    private static readonly string EpubLibraryDir = Path.Combine(AppContext.BaseDirectory, "data", "epub_library");
+
     private sealed class AvailableExtension
     {
         public string Id = "", Name = "", Description = "", Repo = "", Asset = "";
@@ -71,6 +91,7 @@ public sealed partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
+        UpdateEpubTabVisibility();
         try
         {
             var ver = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
@@ -306,9 +327,11 @@ public sealed partial class MainWindow : Window
             DownloadPanel.Visibility = tag == "download" ? Visibility.Visible : Visibility.Collapsed;
             CollectionsPanel.Visibility = tag == "collections" ? Visibility.Visible : Visibility.Collapsed;
             ExtensionsPanel.Visibility = tag == "extensions" ? Visibility.Visible : Visibility.Collapsed;
+            EpubPanel.Visibility = tag == "epub" ? Visibility.Visible : Visibility.Collapsed;
             UpdateNavHighlight(tag);   // ★ 以前只切面板、没切颜色 → "首页"永远是粉色
             if (tag == "collections") LoadPlaylistsAsync();
             if (tag == "extensions") RefreshExtensionsPage();
+            if (tag == "epub") RefreshEpubLibrary();
         }
     }
 
@@ -321,7 +344,7 @@ public sealed partial class MainWindow : Window
         var res = ((FrameworkElement)Content).Resources;   // 根 Grid 的资源字典（Pink / TextSub 定义在那）
         Brush pink = res.TryGetValue("Pink", out var p) && p is Brush pb ? pb : new SolidColorBrush(Windows.UI.Color.FromArgb(255, 0xFB, 0x72, 0x99));
         Brush sub = res.TryGetValue("TextSub", out var s) && s is Brush sb ? sb : new SolidColorBrush(Windows.UI.Color.FromArgb(255, 0x9B, 0xA0, 0xA5));
-        foreach (var (btn, tag) in new[] { (HomeNav, "home"), (DlNav, "download"), (CollNav, "collections"), (ExtNav, "extensions"), (ExtNav, "extensions") })
+        foreach (var (btn, tag) in new[] { (HomeNav, "home"), (DlNav, "download"), (CollNav, "collections"), (ExtNav, "extensions"), (EpubNav, "epub"), (ExtNav, "extensions") })
         {
             Brush brush = tag == activeTag ? pink : sub;
             if (btn.Content is not StackPanel sp) continue;
@@ -527,6 +550,163 @@ public sealed partial class MainWindow : Window
         catch (Exception ex) { HomeCountText.Text = "添加失败：" + ex.Message; }
     }
 
+    // ================= ★ EPUB 扩展：Tab / 书库 =================
+    private bool EpubExtensionInstalled()
+    {
+        try
+        {
+            foreach (var e in ExtensionCatalog.LoadAll())
+                if (e.Enabled && string.Equals(e.Id, "epub", StringComparison.OrdinalIgnoreCase)) return true;
+        }
+        catch { }
+        return false;
+    }
+
+    private void UpdateEpubTabVisibility()
+    {
+        try { EpubNav.Visibility = EpubExtensionInstalled() ? Visibility.Visible : Visibility.Collapsed; }
+        catch { EpubNav.Visibility = Visibility.Collapsed; }
+    }
+
+    private List<EpubEntry> LoadEpubEntries()
+    {
+        try
+        {
+            if (!File.Exists(EpubLibraryFile)) return new List<EpubEntry>();
+            return System.Text.Json.JsonSerializer.Deserialize<List<EpubEntry>>(File.ReadAllText(EpubLibraryFile))
+                   ?? new List<EpubEntry>();
+        }
+        catch { return new List<EpubEntry>(); }
+    }
+
+    private void SaveEpubEntries(List<EpubEntry> list)
+    {
+        Directory.CreateDirectory(Path.GetDirectoryName(EpubLibraryFile)!);
+        File.WriteAllText(EpubLibraryFile, System.Text.Json.JsonSerializer.Serialize(list,
+            new System.Text.Json.JsonSerializerOptions { WriteIndented = true }));
+    }
+
+    private void RefreshEpubLibrary()
+    {
+        try
+        {
+            var cards = new List<EpubCard>();
+            foreach (var e in LoadEpubEntries())
+            {
+                if (!File.Exists(e.Path)) continue;
+                cards.Add(new EpubCard { Id = e.Id, Title = e.Title, Author = e.Author, Path = e.Path,
+                    DateText = e.AddedAt.Length >= 10 ? e.AddedAt.Substring(0, 10) : e.AddedAt });
+            }
+            EpubGrid.ItemsSource = cards;
+            EpubStatusText.Text = cards.Count == 0 ? "书库还是空的，点「添加 EPUB 文件」加入" : $"共 {cards.Count} 本";
+        }
+        catch (Exception ex) { EpubStatusText.Text = "读取书库失败：" + ex.Message; }
+    }
+
+    private async void EpubOpenFile_Click(object sender, RoutedEventArgs e)
+    {
+        try
+        {
+            if (!EpubExtensionInstalled()) { EpubStatusText.Text = "请先在扩展 Tab 安装 EPUB 阅读器扩展"; return; }
+            var picker = new Windows.Storage.Pickers.FileOpenPicker();
+            picker.ViewMode = Windows.Storage.Pickers.PickerViewMode.List;
+            picker.FileTypeFilter.Add(".epub");
+            InitializeWithWindow.Initialize(picker, WindowNative.GetWindowHandle(this));
+            var file = await picker.PickSingleFileAsync();
+            if (file == null) return;
+            OpenEpubReader(file.Path);
+        }
+        catch (Exception ex) { EpubStatusText.Text = "打开失败：" + ex.Message; }
+    }
+
+    private async void EpubAddFile_Click(object sender, RoutedEventArgs e)
+    {
+        try
+        {
+            if (!EpubExtensionInstalled()) { EpubStatusText.Text = "请先在扩展 Tab 安装 EPUB 阅读器扩展"; return; }
+            var picker = new Windows.Storage.Pickers.FileOpenPicker();
+            picker.ViewMode = Windows.Storage.Pickers.PickerViewMode.List;
+            picker.FileTypeFilter.Add(".epub");
+            InitializeWithWindow.Initialize(picker, WindowNative.GetWindowHandle(this));
+            var file = await picker.PickSingleFileAsync();
+            if (file == null) return;
+
+            Directory.CreateDirectory(EpubLibraryDir);
+            string name = Path.GetFileName(file.Path);
+            string dst = Path.Combine(EpubLibraryDir, name);
+            int n = 1;
+            while (File.Exists(dst))
+            {
+                dst = Path.Combine(EpubLibraryDir, Path.GetFileNameWithoutExtension(name) + $" ({n++})" + Path.GetExtension(name));
+            }
+            File.Copy(file.Path, dst);
+            var meta = ReadEpubMeta(dst);
+            var list = LoadEpubEntries();
+            var entry = new EpubEntry
+            {
+                Id = Guid.NewGuid().ToString("N"),
+                Title = string.IsNullOrWhiteSpace(meta.Title) ? Path.GetFileNameWithoutExtension(dst) : meta.Title,
+                Author = string.IsNullOrWhiteSpace(meta.Author) ? "本地 EPUB" : meta.Author,
+                Path = dst,
+                AddedAt = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
+            };
+            list.Add(entry);
+            SaveEpubEntries(list);
+            RefreshEpubLibrary();
+            EpubStatusText.Text = "已添加：" + entry.Title;
+        }
+        catch (Exception ex) { EpubStatusText.Text = "添加失败：" + ex.Message; }
+    }
+
+    private void EpubCard_ItemClick(object sender, ItemClickEventArgs e)
+    {
+        try
+        {
+            if (e.ClickedItem is EpubCard card) OpenEpubReader(card.Path);
+        }
+        catch (Exception ex) { EpubStatusText.Text = "打开失败：" + ex.Message; }
+    }
+
+    private void OpenEpubReader(string path)
+    {
+        try
+        {
+            var ext = ExtensionCatalog.LoadAll().FirstOrDefault(x => string.Equals(x.Id, "epub", StringComparison.OrdinalIgnoreCase));
+            if (ext == null || !ext.Enabled) { EpubStatusText.Text = "EPUB 扩展未安装或已禁用"; return; }
+            string dir = Path.Combine(ExtensionCatalog.ExtensionsDir, ext.Id);
+            string entry = string.IsNullOrWhiteSpace(ext.Entry) ? "index.html" : ext.Entry;
+            var win = new ExtensionHostWindow(ext.Id, ext.Name, dir, entry, path);
+            win.Closed += (_, _) => _extHosts.Remove(win);
+            _extHosts.Add(win);
+            win.Activate();
+            EpubStatusText.Text = "正在打开：" + Path.GetFileName(path);
+        }
+        catch (Exception ex) { EpubStatusText.Text = "打开失败：" + ex.Message; }
+    }
+
+    private static (string Title, string Author) ReadEpubMeta(string path)
+    {
+        try
+        {
+            using var zip = System.IO.Compression.ZipFile.OpenRead(path);
+            var container = zip.GetEntry("META-INF/container.xml");
+            if (container == null) return ("", "");
+            using var cs = container.Open();
+            var cdoc = System.Xml.Linq.XDocument.Load(cs);
+            var root = cdoc.Descendants().FirstOrDefault(e => e.Name.LocalName == "rootfile");
+            string opf = root?.Attribute("full-path")?.Value ?? "";
+            if (opf.Length == 0) return ("", "");
+            var oe = zip.GetEntry(opf);
+            if (oe == null) return ("", "");
+            using var os = oe.Open();
+            var odoc = System.Xml.Linq.XDocument.Load(os);
+            string title = odoc.Descendants().FirstOrDefault(e => e.Name.LocalName == "title")?.Value?.Trim() ?? "";
+            string author = odoc.Descendants().FirstOrDefault(e => e.Name.LocalName == "creator")?.Value?.Trim() ?? "";
+            return (title, author);
+        }
+        catch { return ("", ""); }
+    }
+
     // ================= ★ 扩展中心：下载 / 管理 =================
     private void RefreshExtBtn_Click(object sender, RoutedEventArgs e) => RefreshExtensionsPage();
 
@@ -698,6 +878,7 @@ public sealed partial class MainWindow : Window
             try { File.Delete(zip); Directory.Delete(tmp, true); } catch { }
 
             ExtProgress.Value = 100;
+            UpdateEpubTabVisibility();
             RefreshExtensionsPage();
             ExtStatusText.Text = $"已安装 {av.Name}，点「打开」启动";
         }
