@@ -91,7 +91,9 @@ public sealed partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
+        AppVersionText.Text = "v" + UpdateChecker.CurrentVersionText;
         UpdateEpubTabVisibility();
+        _ = AutoCheckUpdatesAsync();
         try
         {
             var ver = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
@@ -899,6 +901,98 @@ public sealed partial class MainWindow : Window
         Directory.CreateDirectory(dst);
         foreach (var f in Directory.GetFiles(src)) File.Copy(f, Path.Combine(dst, Path.GetFileName(f)), true);
         foreach (var d in Directory.GetDirectories(src)) CopyDir(d, Path.Combine(dst, Path.GetFileName(d)));
+    }
+
+    // ================= ★ 自动更新 =================
+    private bool _updateBusy;
+    private async Task AutoCheckUpdatesAsync()
+    {
+        try { await Task.Delay(5000); } catch { }
+        await CheckUpdatesAsync(true);
+    }
+
+    private async void CheckUpdateBtn_Click(object sender, RoutedEventArgs e) => await CheckUpdatesAsync(false);
+
+    private async Task CheckUpdatesAsync(bool silent)
+    {
+        if (_updateBusy) return;
+        _updateBusy = true;
+        try
+        {
+            var info = await UpdateChecker.CheckAsync();
+            if (info == null)
+            {
+                if (!silent)
+                {
+                    var ok = new ContentDialog
+                    {
+                        Title = "检查更新",
+                        Content = "当前已是最新版本：v" + UpdateChecker.CurrentVersionText,
+                        CloseButtonText = "好",
+                        XamlRoot = Content.XamlRoot,
+                    };
+                    await ok.ShowAsync();
+                }
+                return;
+            }
+
+            string notes = (info.Notes ?? "").Trim();
+            if (notes.Length > 700) notes = notes.Substring(0, 700) + "…";
+            var dlg = new ContentDialog
+            {
+                Title = "发现新版本 v" + info.Version.ToString(3),
+                Content = "当前版本：v" + UpdateChecker.CurrentVersionText + "\n\n" + notes,
+                PrimaryButtonText = "下载并安装",
+                CloseButtonText = "以后再说",
+                DefaultButton = ContentDialogButton.Primary,
+                XamlRoot = Content.XamlRoot,
+            };
+            if (await dlg.ShowAsync() != ContentDialogResult.Primary) return;
+
+            var text = new TextBlock { Text = "准备下载…", Foreground = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 230, 230, 230)) };
+            var bar = new ProgressBar { Minimum = 0, Maximum = 100, Value = 0, Width = 360 };
+            var panel = new StackPanel { Spacing = 10 };
+            panel.Children.Add(text); panel.Children.Add(bar);
+            var pd = new ContentDialog
+            {
+                Title = "正在下载更新",
+                Content = panel,
+                XamlRoot = Content.XamlRoot,
+            };
+            var showTask = pd.ShowAsync();
+            string path = await UpdateChecker.DownloadAsync(info.AssetUrl, info.AssetName, pct =>
+            {
+                DispatcherQueue.TryEnqueue(() =>
+                {
+                    bar.Value = pct;
+                    text.Text = $"正在下载 {info.AssetName}：{pct:0.0}%";
+                });
+            });
+            pd.Hide();
+            text.Text = "下载完成，正在启动安装程序…";
+            var psi = new System.Diagnostics.ProcessStartInfo(path) { UseShellExecute = true };
+            System.Diagnostics.Process.Start(psi);
+            try { await Task.Delay(500); } catch { }
+            Microsoft.UI.Xaml.Application.Current.Exit();
+        }
+        catch (Exception ex)
+        {
+            if (!silent)
+            {
+                try
+                {
+                    await new ContentDialog
+                    {
+                        Title = "更新失败",
+                        Content = ex.Message,
+                        CloseButtonText = "好",
+                        XamlRoot = Content.XamlRoot,
+                    }.ShowAsync();
+                }
+                catch { }
+            }
+        }
+        finally { _updateBusy = false; }
     }
 
     private async void OpenBtn_Click(object sender, RoutedEventArgs e)

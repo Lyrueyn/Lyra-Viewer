@@ -123,26 +123,44 @@ def models_status() -> list:
     return out
 
 
+_DEV_CACHE = {"ts": 0.0, "info": None}
+
+
 def _device_info() -> dict:
-    """返回当前识别设备（GPU/CPU），供界面显示与用户判断速度。"""
+    """返回识别设备信息。
+
+    ★ 不要 import torch：AI 字幕设置页会定时查 status，一 import torch 后端常驻内存会多几百 MB，
+      即使你根本没打开 AI 字幕。这里用 nvidia-smi（只读命令行）探测显卡，结果缓存 5 分钟。
+    """
+    import time as _time
+    now = _time.time()
+    with _lock:
+        info = _DEV_CACHE.get("info")
+        if info and now - float(_DEV_CACHE.get("ts") or 0) < 300:
+            return dict(info)
     force = (os.environ.get("LMP_WHISPER_DEVICE") or "").strip().lower()
-    try:
-        import torch
-        torch_v = getattr(torch, "__version__", "")
-        if force == "cpu":
-            return {"device": "cpu", "gpu": False, "name": "CPU（环境变量强制）",
-                    "torch": torch_v, "reason": "LMP_WHISPER_DEVICE=cpu"}
-        if torch.cuda.is_available():
-            try:
-                nm = torch.cuda.get_device_name(0)
-            except Exception:
-                nm = "NVIDIA GPU"
-            return {"device": "cuda", "gpu": True, "name": nm, "torch": torch_v}
-        return {"device": "cpu", "gpu": False, "name": "CPU", "torch": torch_v,
-                "reason": "未检测到可用 CUDA 显卡"}
-    except Exception as e:
-        return {"device": "cpu", "gpu": False, "name": "CPU（torch 不可用）",
-                "torch": "", "reason": str(e)[:120]}
+    if force == "cpu":
+        info = {"device": "cpu", "gpu": False, "name": "CPU（环境变量强制）",
+                "torch": "", "reason": "LMP_WHISPER_DEVICE=cpu"}
+    else:
+        name, reason = "", ""
+        try:
+            r = subprocess.run(["nvidia-smi", "--query-gpu=name", "--format=csv,noheader"],
+                               capture_output=True, text=True, encoding="utf-8",
+                               errors="replace", timeout=5)
+            if r.returncode == 0 and (r.stdout or "").strip():
+                name = (r.stdout or "").strip().splitlines()[0].strip()
+        except Exception as e:
+            reason = "未检测到 nvidia-smi（没有 NVIDIA 驱动或不在 PATH）: " + str(e)[:80]
+        if name:
+            info = {"device": "cuda", "gpu": True, "name": name, "torch": ""}
+        else:
+            info = {"device": "cpu", "gpu": False, "name": "CPU",
+                    "torch": "", "reason": reason or "未检测到可用 NVIDIA 显卡"}
+    with _lock:
+        _DEV_CACHE["ts"] = now
+        _DEV_CACHE["info"] = info
+    return dict(info)
 
 
 def _ensure_zhconv() -> bool:

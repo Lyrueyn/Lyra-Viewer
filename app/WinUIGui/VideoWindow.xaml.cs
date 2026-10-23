@@ -4073,6 +4073,7 @@ public sealed partial class VideoWindow : Window
             var root = doc.RootElement;
             if (root.ValueKind != System.Text.Json.JsonValueKind.Object) return;
             bool depsReady = root.TryGetProperty("deps_ready", out var dr) && dr.ValueKind == System.Text.Json.JsonValueKind.True;
+            bool anyJob = false;   // ★ 只有真的有任务在跑才保持轮询（防后台无意义轮询）
             // ★ 识别设备（GPU/CPU）展示
             try
             {
@@ -4130,7 +4131,7 @@ public sealed partial class VideoWindow : Window
                 if (depRunning)
                 {
                     AiSubModelProgressText.Text = "正在安装语音识别依赖（openai-whisper）…";
-                    _aiSubJobsActive = true;
+                    anyJob = true;
                 }
             }
             catch { }
@@ -4148,7 +4149,7 @@ public sealed partial class VideoWindow : Window
                 string error = GetStr(djob, "error");
                 if (running)
                 {
-                    _aiSubJobsActive = true;
+                    anyJob = true;
                     AiSubModelProgress.Visibility = Visibility.Visible;
                     AiSubModelCancelBtn.Visibility = Visibility.Visible;
                     AiSubModelCancelBtn.IsEnabled = true;
@@ -4182,7 +4183,7 @@ public sealed partial class VideoWindow : Window
                 string error = GetStr(gjob, "error");
                 if (running)
                 {
-                    _aiSubJobsActive = true;
+                    anyJob = true;
                     AiSubGenText.Text = string.Format("正在用 AI 识别：{0:0.0}% · {1} 条", percent, segs);
                     AiSubGenCancelBtn.Visibility = Visibility.Visible;
                     AiSubGenCancelBtn.IsEnabled = true;
@@ -4226,6 +4227,7 @@ public sealed partial class VideoWindow : Window
                 }
             }
 
+            _aiSubJobsActive = anyJob;
         }
         catch { }
         finally { _aiSubRefreshBusy = false; }

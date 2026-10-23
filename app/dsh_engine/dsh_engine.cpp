@@ -312,8 +312,19 @@ static bool dsh_avc_speed_reanchor_enabled(){
 //   本文件从那个块开始的定义都是 **C 链接**，前置声明必须同链接，否则 GCC 报
 //   "conflicting declaration ... with 'C' linkage"（编译验证时踩过一次）。
 
+static int qCap(){
+    // ★ 帧队列总预算 192MB：1080p BGRA(8MB) 可留 16 帧，4K BGRA(33MB) 只留 4~5 帧，避免高分辨率时内存暴涨
+    long long frameBytes = (long long)g.vw * (long long)g.vh * 4;
+    if(frameBytes <= 0) return QMAX;
+    long long budget = 192LL * 1024 * 1024;
+    int cap = (int)(budget / frameBytes);
+    if(cap < 4) cap = 4;
+    if(cap > QMAX) cap = QMAX;
+    return cap;
+}
 static void qPush(std::vector<uint8_t>&& bg,int w,int h,int64_t ptsUs){
-    if(g_qCount>=QMAX){
+    int cap = qCap();
+    if(g_qCount>=cap){
         // 队列满：覆盖最旧一帧（丢最旧），count 封顶
         QF& e=g_q[g_qWrite]; e.bg=std::move(bg); e.w=w; e.h=h; e.ptsUs=ptsUs; e.used=true;
         g_qWrite=(g_qWrite+1)%QMAX;
