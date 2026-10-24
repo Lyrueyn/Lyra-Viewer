@@ -18,6 +18,8 @@ public sealed partial class MainWindow : Window
 {
     private VideoWindow? _video;
     private readonly List<ExtensionHostWindow> _extHosts = new();   // ★ 已打开的扩展宿主窗口
+    private readonly Dictionary<string, string> _extLatest = new(StringComparer.OrdinalIgnoreCase);   // 扩展最新版本
+    private bool _extChecking, _extCheckDone;
 
     // ================= ★ EPUB 书库（扩展贡献的 Tab）=================
     private sealed class EpubCard
@@ -686,6 +688,49 @@ public sealed partial class MainWindow : Window
         catch (Exception ex) { EpubStatusText.Text = "打开失败：" + ex.Message; }
     }
 
+    // ---- 扩展更新检查：查 GitHub 最新 Release，显示是否有新版本 ----
+    private async Task CheckExtensionUpdatesAsync()
+    {
+        if (_extChecking) return;
+        _extChecking = true;
+        try
+        {
+            using var http = new System.Net.Http.HttpClient { Timeout = TimeSpan.FromSeconds(12) };
+            http.DefaultRequestHeaders.UserAgent.ParseAdd("LyraViewer-ExtUpdate/1.0");
+            foreach (var ext in ExtensionCatalog.LoadAll())
+            {
+                var av = AvailableExtensions.FirstOrDefault(a => string.Equals(a.Id, ext.Id, StringComparison.OrdinalIgnoreCase));
+                if (av == null || string.IsNullOrEmpty(av.Repo)) continue;
+                try
+                {
+                    string url = $"https://api.github.com/repos/{av.Repo}/releases/latest";
+                    string json = await http.GetStringAsync(url);
+                    using var doc = System.Text.Json.JsonDocument.Parse(json);
+                    if (doc.RootElement.TryGetProperty("tag_name", out var t))
+                    {
+                        string tag = (t.GetString() ?? "").TrimStart('v', 'V');
+                        if (!string.IsNullOrEmpty(tag)) _extLatest[ext.Id] = tag;
+                    }
+                }
+                catch { }
+            }
+        }
+        catch { }
+        finally
+        {
+            _extChecking = false;
+            _extCheckDone = true;
+            RefreshExtensionsPage();
+        }
+    }
+
+    private static bool IsNewerVersion(string latest, string installed)
+    {
+        if (!Version.TryParse(latest.TrimStart('v', 'V'), out var l)) return false;
+        if (!Version.TryParse(installed.TrimStart('v', 'V'), out var i)) return true;
+        return l > i;
+    }
+
     private static (string Title, string Author) ReadEpubMeta(string path)
     {
         try
@@ -710,7 +755,12 @@ public sealed partial class MainWindow : Window
     }
 
     // ================= ★ 扩展中心：下载 / 管理 =================
-    private void RefreshExtBtn_Click(object sender, RoutedEventArgs e) => RefreshExtensionsPage();
+    private void RefreshExtBtn_Click(object sender, RoutedEventArgs e)
+    {
+        _extCheckDone = false;
+        _extLatest.Clear();
+        RefreshExtensionsPage();
+    }
 
     private void RefreshExtensionsPage()
     {
@@ -728,6 +778,7 @@ public sealed partial class MainWindow : Window
             if (ExtItemsPanel.Children.Count == 0)
                 ExtItemsPanel.Children.Add(new TextBlock { Text = "暂无扩展", Foreground = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 155, 160, 165)) });
             ExtStatusText.Text = installed.Count == 0 ? "尚未安装扩展" : $"已安装 {installed.Count} 个扩展";
+            if (!_extChecking && !_extCheckDone) _ = CheckExtensionUpdatesAsync();
         }
         catch (Exception ex) { ExtStatusText.Text = "读取扩展失败：" + ex.Message; }
     }
@@ -771,9 +822,24 @@ public sealed partial class MainWindow : Window
         var av = AvailableExtensions.FirstOrDefault(a => string.Equals(a.Id, ext.Id, StringComparison.OrdinalIgnoreCase));
         if (av != null)
         {
-            var upd = MakeExtButton("更新");
-            upd.Click += async (_, _) => await InstallExtensionAsync(av);
-            buttons.Children.Add(upd);
+            string latest = _extLatest.TryGetValue(ext.Id, out var lv) ? lv : "";
+            string updateLine = latest.Length == 0 ? "正在检查更新…"
+                : (IsNewerVersion(latest, ext.Version) ? "发现新版本 v" + latest : "已是最新版本 v" + latest);
+            info.Children.Add(new TextBlock
+            {
+                Text = updateLine,
+                Foreground = new SolidColorBrush(latest.Length > 0 && IsNewerVersion(latest, ext.Version)
+                    ? Windows.UI.Color.FromArgb(255, 255, 180, 90)
+                    : Windows.UI.Color.FromArgb(255, 155, 160, 165)),
+                FontSize = 11,
+            });
+            bool hasUpdate = latest.Length == 0 || IsNewerVersion(latest, ext.Version);
+            if (hasUpdate)
+            {
+                var upd = MakeExtButton(latest.Length > 0 ? "更新到 v" + latest : "更新");
+                upd.Click += async (_, _) => await InstallExtensionAsync(av);
+                buttons.Children.Add(upd);
+            }
         }
         var del = MakeExtButton("删除"); del.Click += (_, _) => DeleteExtension(ext); buttons.Children.Add(del);
 
@@ -821,6 +887,8 @@ public sealed partial class MainWindow : Window
         {
             string dir = Path.Combine(ExtensionCatalog.ExtensionsDir, ext.Id);
             if (Directory.Exists(dir)) Directory.Delete(dir, true);
+            _extLatest.Remove(ext.Id);
+            _extCheckDone = false;
             UpdateEpubTabVisibility();   // ★ 删除后立即隐藏 EPUB Tab，不用重启
             RefreshExtensionsPage();
             ExtStatusText.Text = "已删除扩展：" + ext.Name;
@@ -888,6 +956,8 @@ public sealed partial class MainWindow : Window
             try { File.Delete(zip); Directory.Delete(tmp, true); } catch { }
 
             ExtProgress.Value = 100;
+            _extLatest.Remove(av.Id);
+            _extCheckDone = false;
             UpdateEpubTabVisibility();
             RefreshExtensionsPage();
             ExtStatusText.Text = $"已安装 {av.Name}，点「打开」启动";
