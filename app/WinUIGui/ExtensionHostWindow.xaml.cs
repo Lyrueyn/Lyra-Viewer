@@ -4,6 +4,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Input;
 using Microsoft.Web.WebView2.Core;
 using Windows.Graphics;
 
@@ -20,6 +21,8 @@ namespace WinUIGui
         private readonly string? _bookPath;
         private readonly string _host = "lyra-extension-" + Guid.NewGuid().ToString("N").Substring(0,8) + ".local";
         private bool _sentBook;
+        private bool _overlayHidden;
+        private bool _pendingOverlayClick;
 
         public ExtensionHostWindow(string extensionId, string name, string dir, string entry, string? bookPath = null)
         {
@@ -49,9 +52,21 @@ namespace WinUIGui
                 if (Wv.CoreWebView2 == null) return;
                 Wv.CoreWebView2.SetVirtualHostNameToFolderMapping(_host, _extensionDir,
                     CoreWebView2HostResourceAccessKind.Allow);
-                Wv.CoreWebView2.NavigationCompleted += async (_, _) =>
+                Wv.CoreWebView2.Settings.IsWebMessageEnabled = true;
+                Wv.CoreWebView2.WebMessageReceived += (snd, args) =>
                 {
-                    await Task.Delay(500);
+                    try
+                    {
+                        string raw = args.WebMessageAsJson ?? "";
+                        if (raw.Contains("lyra-ready")) _ = SendBookAsync();
+                        if (raw.Contains("lyra-book-ready")) DispatcherQueue.TryEnqueue(HideLoadingOverlay);
+                    }
+                    catch { }
+                };
+                Wv.CoreWebView2.NavigationCompleted += async (snd2, ev2) =>
+                {
+                    await Task.Delay(1200);   // 普通扩展兜底；EPUB 会提前收到 book-ready
+                    DispatcherQueue.TryEnqueue(HideLoadingOverlay);
                     await SendBookScriptAsync();
                     await SendBookAsync();
                 };
@@ -113,6 +128,28 @@ namespace WinUIGui
             catch (Exception ex)
             {
                 try { Title = "璃鸢镜 · EPUB 发送失败：" + ex.Message; } catch { }
+            }
+        }
+
+        private void LoadingOverlay_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            _pendingOverlayClick = true;   // 加载中点击：记住一次，稳定后补翻下一页
+        }
+
+        private async void HideLoadingOverlay()
+        {
+            if (_overlayHidden) return;
+            _overlayHidden = true;
+            try { LoadingOverlay.Visibility = Visibility.Collapsed; } catch { }
+            if (_pendingOverlayClick)
+            {
+                _pendingOverlayClick = false;
+                try
+                {
+                    await Task.Delay(120);
+                    await Wv.CoreWebView2.ExecuteScriptAsync("document.getElementById('main')&&document.getElementById('main').click();");
+                }
+                catch { }
             }
         }
 

@@ -10,5 +10,12 @@
     mc:Ignorable="d">
     <Grid x:Name="Root" Background="#0F0F0F" Loaded="Root_Loaded">
         <WebView2 x:Name="Wv" AutomationProperties.AutomationId="ExtensionWebView"/>
+        <!-- ★ 加载帷幕：页面/书没准备好之前遮住白屏，并拦截误点击 -->
+        <Grid x:Name="LoadingOverlay" Background="#0F0F0F" Tapped="LoadingOverlay_Tapped">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="12">
+                <ProgressRing IsActive="True" Width="36" Height="36" Foreground="#FB7299"/>
+                <TextBlock Text="正在打开…" Foreground="#9BA0A5" FontSize="13" HorizontalAlignment="Center"/>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Window>
