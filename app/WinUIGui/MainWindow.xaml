@@ -125,8 +125,18 @@
                     <TextBlock Text="多视频窗口" Foreground="{StaticResource TextMain}" FontSize="13" VerticalAlignment="Center"/>
                     <ToggleSwitch x:Name="MultiWindowToggle" AutomationProperties.AutomationId="MultiWindowToggle"
                                   Toggled="MultiWindowToggle_Toggled"
+                                  OnContent="" OffContent=""
                                   VerticalAlignment="Center"
-                                  ToolTipService.ToolTip="开启后每打开一个视频都会启动独立播放器进程，可同时播放多个视频"/>
+                                  ToolTipService.ToolTip="开启后每打开一个视频都会启动独立播放器进程，可同时播放多个视频">
+                        <ToggleSwitch.Resources>
+                            <SolidColorBrush x:Key="ToggleSwitchFillOff" Color="#4A4A4A"/>
+                            <SolidColorBrush x:Key="ToggleSwitchStrokeOff" Color="#8A8A8A"/>
+                            <SolidColorBrush x:Key="ToggleSwitchKnobFillOff" Color="#E8E8E8"/>
+                            <SolidColorBrush x:Key="ToggleSwitchFillOn" Color="#66CCFF"/>
+                            <SolidColorBrush x:Key="ToggleSwitchStrokeOn" Color="#66CCFF"/>
+                            <SolidColorBrush x:Key="ToggleSwitchKnobFillOn" Color="#FFFFFF"/>
+                        </ToggleSwitch.Resources>
+                    </ToggleSwitch>
                 </StackPanel>
                 <Button Content="检查更新" Click="CheckUpdateBtn_Click" Background="#22FFFFFF" BorderThickness="0"
                         Foreground="{StaticResource TextMain}" CornerRadius="16"
@@ -181,6 +191,14 @@
                         <TextBlock Text="EPUB" Foreground="{StaticResource TextSub}" FontSize="11" HorizontalAlignment="Center"/>
                     </StackPanel>
                 </Button>
+                <!-- ★ PDF 扩展贡献的 Tab -->
+                <Button x:Name="PdfNav" AutomationProperties.AutomationId="NavPdfBtn" Background="Transparent"
+                        BorderThickness="0" Click="Nav_Click" Tag="pdf" Visibility="Collapsed">
+                    <StackPanel Orientation="Vertical" Spacing="2" HorizontalAlignment="Center">
+                        <FontIcon Glyph="&#xE8A5;" FontSize="20" Foreground="{StaticResource TextSub}" HorizontalAlignment="Center"/>
+                        <TextBlock Text="PDF" Foreground="{StaticResource TextSub}" FontSize="11" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
                 <!-- ★ 扩展中心：下载/管理网页扩展（不把扩展代码打进播放器） -->
             </StackPanel>
 
@@ -214,6 +232,47 @@
                                             BorderBrush="#2A2A2A" BorderThickness="1">
                                         <Grid>
                                             <TextBlock Text="📖" FontSize="42" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            <TextBlock Text="{Binding DateText}" Foreground="#9BA0A5" FontSize="10"
+                                                       VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="8"/>
+                                        </Grid>
+                                    </Border>
+                                    <TextBlock Text="{Binding Title}" Foreground="{StaticResource TextMain}" FontSize="13"
+                                               TextWrapping="Wrap" MaxLines="2" TextTrimming="CharacterEllipsis"/>
+                                    <TextBlock Text="{Binding Author}" Foreground="{StaticResource TextSub}" FontSize="11"
+                                               TextTrimming="CharacterEllipsis"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridView.ItemTemplate>
+                    </GridView>
+                </Grid>
+                <Grid x:Name="PdfPanel" Visibility="Collapsed" Margin="24,16" RowSpacing="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <StackPanel Grid.Row="0" Spacing="3">
+                        <TextBlock Text="PDF 阅读" Foreground="{StaticResource TextMain}" FontSize="22" FontWeight="SemiBold"/>
+                        <TextBlock Text="打开 PDF 文件不复制；添加 PDF 文件会复制到书库并可在这里看到。"
+                                   Foreground="{StaticResource TextSub}" FontSize="12" TextWrapping="Wrap"/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="1" Orientation="Horizontal" Spacing="10" VerticalAlignment="Center">
+                        <Button Content="打开 PDF 文件" Click="PdfOpenFile_Click" Background="{StaticResource Pink}"
+                                BorderThickness="0" Foreground="{StaticResource TextMain}" CornerRadius="14" Padding="12,5"/>
+                        <Button Content="＋ 添加 PDF 文件" Click="PdfAddFile_Click" Background="#33FFFFFF"
+                                BorderThickness="0" Foreground="{StaticResource TextMain}" CornerRadius="14" Padding="12,5"/>
+                        <TextBlock x:Name="PdfStatusText" Text="" Foreground="{StaticResource TextSub}" FontSize="12"
+                                   VerticalAlignment="Center" TextWrapping="Wrap"/>
+                    </StackPanel>
+                    <GridView x:Name="PdfGrid" Grid.Row="2" SelectionMode="None" IsItemClickEnabled="True"
+                              ItemClick="PdfCard_ItemClick" Padding="0,0,0,16">
+                        <GridView.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Width="170" Spacing="6" Margin="0,0,14,16">
+                                    <Border Width="170" Height="210" CornerRadius="8" Background="#1E1E1E"
+                                            BorderBrush="#2A2A2A" BorderThickness="1">
+                                        <Grid>
+                                            <TextBlock Text="📄" FontSize="42" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                             <TextBlock Text="{Binding DateText}" Foreground="#9BA0A5" FontSize="10"
                                                        VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="8"/>
                                         </Grid>

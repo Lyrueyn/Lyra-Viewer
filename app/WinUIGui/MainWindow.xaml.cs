@@ -41,6 +41,26 @@ public sealed partial class MainWindow : Window
     private static readonly string EpubLibraryFile = Path.Combine(AppContext.BaseDirectory, "data", "epub_library.json");
     private static readonly string EpubLibraryDir = Path.Combine(AppContext.BaseDirectory, "data", "epub_library");
 
+    // ================= ★ PDF 书库（扩展贡献的 Tab）=================
+    private sealed class PdfCard
+    {
+        public string Id { get; set; } = "";
+        public string Title { get; set; } = "";
+        public string Author { get; set; } = "";
+        public string Path { get; set; } = "";
+        public string DateText { get; set; } = "";
+    }
+    private sealed class PdfEntry
+    {
+        public string Id { get; set; } = "";
+        public string Title { get; set; } = "";
+        public string Author { get; set; } = "";
+        public string Path { get; set; } = "";
+        public string AddedAt { get; set; } = "";
+    }
+    private static readonly string PdfLibraryFile = Path.Combine(AppContext.BaseDirectory, "data", "pdf_library.json");
+    private static readonly string PdfLibraryDir = Path.Combine(AppContext.BaseDirectory, "data", "pdf_library");
+
     private sealed class AvailableExtension
     {
         public string Id = "", Name = "", Description = "", Repo = "", Asset = "";
@@ -133,6 +153,7 @@ public sealed partial class MainWindow : Window
         }
         catch { _multiWindowLoading = false; }
         UpdateEpubTabVisibility();
+        UpdatePdfTabVisibility();
         _ = AutoCheckUpdatesAsync();
         try
         {
@@ -370,10 +391,12 @@ public sealed partial class MainWindow : Window
             CollectionsPanel.Visibility = tag == "collections" ? Visibility.Visible : Visibility.Collapsed;
             ExtensionsPanel.Visibility = tag == "extensions" ? Visibility.Visible : Visibility.Collapsed;
             EpubPanel.Visibility = tag == "epub" ? Visibility.Visible : Visibility.Collapsed;
+            PdfPanel.Visibility = tag == "pdf" ? Visibility.Visible : Visibility.Collapsed;
             UpdateNavHighlight(tag);   // ★ 以前只切面板、没切颜色 → "首页"永远是粉色
             if (tag == "collections") LoadPlaylistsAsync();
             if (tag == "extensions") RefreshExtensionsPage();
             if (tag == "epub") RefreshEpubLibrary();
+            if (tag == "pdf") RefreshPdfLibrary();
         }
     }
 
@@ -386,7 +409,7 @@ public sealed partial class MainWindow : Window
         var res = ((FrameworkElement)Content).Resources;   // 根 Grid 的资源字典（Pink / TextSub 定义在那）
         Brush pink = res.TryGetValue("Pink", out var p) && p is Brush pb ? pb : new SolidColorBrush(Windows.UI.Color.FromArgb(255, 0xFB, 0x72, 0x99));
         Brush sub = res.TryGetValue("TextSub", out var s) && s is Brush sb ? sb : new SolidColorBrush(Windows.UI.Color.FromArgb(255, 0x9B, 0xA0, 0xA5));
-        foreach (var (btn, tag) in new[] { (HomeNav, "home"), (DlNav, "download"), (CollNav, "collections"), (ExtNav, "extensions"), (EpubNav, "epub"), (ExtNav, "extensions") })
+        foreach (var (btn, tag) in new[] { (HomeNav, "home"), (DlNav, "download"), (CollNav, "collections"), (ExtNav, "extensions"), (EpubNav, "epub"), (PdfNav, "pdf"), (ExtNav, "extensions") })
         {
             Brush brush = tag == activeTag ? pink : sub;
             if (btn.Content is not StackPanel sp) continue;
@@ -726,6 +749,137 @@ public sealed partial class MainWindow : Window
         catch (Exception ex) { EpubStatusText.Text = "打开失败：" + ex.Message; }
     }
 
+    // ================= ★ PDF 扩展：Tab / 书库 =================
+    private bool PdfExtensionInstalled()
+    {
+        try
+        {
+            foreach (var e in ExtensionCatalog.LoadAll())
+                if (e.Enabled && string.Equals(e.Id, "pdf", StringComparison.OrdinalIgnoreCase)) return true;
+        }
+        catch { }
+        return false;
+    }
+
+    private void UpdatePdfTabVisibility()
+    {
+        try { PdfNav.Visibility = PdfExtensionInstalled() ? Visibility.Visible : Visibility.Collapsed; }
+        catch { PdfNav.Visibility = Visibility.Collapsed; }
+    }
+
+    private List<PdfEntry> LoadPdfEntries()
+    {
+        try
+        {
+            if (!File.Exists(PdfLibraryFile)) return new List<PdfEntry>();
+            return System.Text.Json.JsonSerializer.Deserialize<List<PdfEntry>>(File.ReadAllText(PdfLibraryFile))
+                   ?? new List<PdfEntry>();
+        }
+        catch { return new List<PdfEntry>(); }
+    }
+
+    private void SavePdfEntries(List<PdfEntry> list)
+    {
+        Directory.CreateDirectory(Path.GetDirectoryName(PdfLibraryFile)!);
+        File.WriteAllText(PdfLibraryFile, System.Text.Json.JsonSerializer.Serialize(list,
+            new System.Text.Json.JsonSerializerOptions { WriteIndented = true }));
+    }
+
+    private void RefreshPdfLibrary()
+    {
+        try
+        {
+            var cards = new List<PdfCard>();
+            foreach (var e in LoadPdfEntries())
+            {
+                if (!File.Exists(e.Path)) continue;
+                cards.Add(new PdfCard { Id = e.Id, Title = e.Title, Author = e.Author, Path = e.Path,
+                    DateText = e.AddedAt.Length >= 10 ? e.AddedAt.Substring(0, 10) : e.AddedAt });
+            }
+            PdfGrid.ItemsSource = cards;
+            PdfStatusText.Text = cards.Count == 0 ? "书库还是空的，点「添加 PDF 文件」加入" : $"共 {cards.Count} 个 PDF";
+        }
+        catch (Exception ex) { PdfStatusText.Text = "读取书库失败：" + ex.Message; }
+    }
+
+    private async void PdfOpenFile_Click(object sender, RoutedEventArgs e)
+    {
+        try
+        {
+            if (!PdfExtensionInstalled()) { PdfStatusText.Text = "请先在扩展 Tab 安装 PDF 阅读器扩展"; return; }
+            var picker = new Windows.Storage.Pickers.FileOpenPicker();
+            picker.ViewMode = Windows.Storage.Pickers.PickerViewMode.List;
+            picker.FileTypeFilter.Add(".pdf");
+            InitializeWithWindow.Initialize(picker, WindowNative.GetWindowHandle(this));
+            var file = await picker.PickSingleFileAsync();
+            if (file == null) return;
+            OpenPdfReader(file.Path);
+        }
+        catch (Exception ex) { PdfStatusText.Text = "打开失败：" + ex.Message; }
+    }
+
+    private async void PdfAddFile_Click(object sender, RoutedEventArgs e)
+    {
+        try
+        {
+            if (!PdfExtensionInstalled()) { PdfStatusText.Text = "请先在扩展 Tab 安装 PDF 阅读器扩展"; return; }
+            var picker = new Windows.Storage.Pickers.FileOpenPicker();
+            picker.ViewMode = Windows.Storage.Pickers.PickerViewMode.List;
+            picker.FileTypeFilter.Add(".pdf");
+            InitializeWithWindow.Initialize(picker, WindowNative.GetWindowHandle(this));
+            var file = await picker.PickSingleFileAsync();
+            if (file == null) return;
+
+            Directory.CreateDirectory(PdfLibraryDir);
+            string name = Path.GetFileName(file.Path);
+            string dst = Path.Combine(PdfLibraryDir, name);
+            int n = 1;
+            while (File.Exists(dst))
+                dst = Path.Combine(PdfLibraryDir, Path.GetFileNameWithoutExtension(name) + $" ({n++})" + Path.GetExtension(name));
+            File.Copy(file.Path, dst);
+            var list = LoadPdfEntries();
+            var entry = new PdfEntry
+            {
+                Id = Guid.NewGuid().ToString("N"),
+                Title = Path.GetFileNameWithoutExtension(dst),
+                Author = "本地 PDF",
+                Path = dst,
+                AddedAt = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
+            };
+            list.Add(entry);
+            SavePdfEntries(list);
+            RefreshPdfLibrary();
+            PdfStatusText.Text = "已添加：" + entry.Title;
+        }
+        catch (Exception ex) { PdfStatusText.Text = "添加失败：" + ex.Message; }
+    }
+
+    private void PdfCard_ItemClick(object sender, ItemClickEventArgs e)
+    {
+        try
+        {
+            if (e.ClickedItem is PdfCard card) OpenPdfReader(card.Path);
+        }
+        catch (Exception ex) { PdfStatusText.Text = "打开失败：" + ex.Message; }
+    }
+
+    private void OpenPdfReader(string path)
+    {
+        try
+        {
+            var ext = ExtensionCatalog.LoadAll().FirstOrDefault(x => string.Equals(x.Id, "pdf", StringComparison.OrdinalIgnoreCase));
+            if (ext == null || !ext.Enabled) { PdfStatusText.Text = "PDF 扩展未安装或已禁用"; return; }
+            string dir = Path.Combine(ExtensionCatalog.ExtensionsDir, ext.Id);
+            string entry = string.IsNullOrWhiteSpace(ext.Entry) ? "index.html" : ext.Entry;
+            var win = new ExtensionHostWindow(ext.Id, ext.Name, dir, entry, path);
+            win.Closed += (_, _) => _extHosts.Remove(win);
+            _extHosts.Add(win);
+            win.Activate();
+            PdfStatusText.Text = "正在打开：" + Path.GetFileName(path);
+        }
+        catch (Exception ex) { PdfStatusText.Text = "打开失败：" + ex.Message; }
+    }
+
     // ---- 扩展更新检查：查 GitHub 最新 Release，显示是否有新版本 ----
     private async Task CheckExtensionUpdatesAsync()
     {
@@ -928,6 +1082,7 @@ public sealed partial class MainWindow : Window
             _extLatest.Remove(ext.Id);
             _extCheckDone = false;
             UpdateEpubTabVisibility();   // ★ 删除后立即隐藏 EPUB Tab，不用重启
+            UpdatePdfTabVisibility();
             RefreshExtensionsPage();
             ExtStatusText.Text = "已删除扩展：" + ext.Name;
         }
@@ -997,6 +1152,7 @@ public sealed partial class MainWindow : Window
             _extLatest.Remove(av.Id);
             _extCheckDone = false;
             UpdateEpubTabVisibility();
+            UpdatePdfTabVisibility();
             RefreshExtensionsPage();
             ExtStatusText.Text = $"已安装 {av.Name}，点「打开」启动";
         }

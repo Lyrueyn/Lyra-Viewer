@@ -20,6 +20,7 @@ namespace WinUIGui
         private readonly string _entry;
         private readonly string? _bookPath;
         private readonly string _host = "lyra-extension-" + Guid.NewGuid().ToString("N").Substring(0,8) + ".local";
+        private readonly bool _isPdf;
         private bool _sentBook;
         private bool _overlayHidden;
         private bool _pendingOverlayClick;
@@ -30,6 +31,7 @@ namespace WinUIGui
             _extensionDir = dir;
             _entry = string.IsNullOrWhiteSpace(entry) ? "index.html" : entry;
             _bookPath = bookPath;
+            _isPdf = !string.IsNullOrEmpty(bookPath) && bookPath.EndsWith(".pdf", StringComparison.OrdinalIgnoreCase);
             Title = "璃鸢镜 · " + (string.IsNullOrWhiteSpace(name) ? extensionId : name);
             try
             {
@@ -65,22 +67,28 @@ namespace WinUIGui
                 };
                 Wv.CoreWebView2.NavigationCompleted += async (snd2, ev2) =>
                 {
-                    await Task.Delay(1200);   // 普通扩展兜底；EPUB 会提前收到 book-ready
+                    await Task.Delay(1200);   // 普通扩展兜底；EPUB/PDF 会提前发 ready
                     DispatcherQueue.TryEnqueue(HideLoadingOverlay);
-                    await SendBookScriptAsync();
-                    await SendBookAsync();
+                    if (!_isPdf)
+                    {
+                        await SendBookScriptAsync();
+                        await SendBookAsync();
+                    }
                 };
                 string folder = _extensionDir;
                 string query = "";
                 if (!string.IsNullOrEmpty(_bookPath) && File.Exists(_bookPath))
                 {
-                    // 同源目录：扩展文件 + book.epub，扩展用 ?book=book.epub 直接 fetch
-                    string temp = Path.Combine(Path.GetTempPath(), "lyra_epub_host", Guid.NewGuid().ToString("N"));
+                    // 同源目录：扩展文件 + 文档，扩展用 ?book=book.epub / ?file=document.pdf 直接 fetch
+                    string temp = Path.Combine(Path.GetTempPath(), "lyra_ext_host", Guid.NewGuid().ToString("N"));
                     Directory.CreateDirectory(temp);
                     CopyDir(_extensionDir, temp);
-                    File.Copy(_bookPath!, Path.Combine(temp, "book.epub"), true);
+                    string inner = _isPdf ? "document.pdf" : "book.epub";
+                    File.Copy(_bookPath!, Path.Combine(temp, inner), true);
                     folder = temp;
-                    query = "?book=book.epub&t=" + Environment.TickCount64;
+                    query = _isPdf
+                        ? "?file=document.pdf&name=" + Uri.EscapeDataString(Path.GetFileName(_bookPath!)) + "&t=" + Environment.TickCount64
+                        : "?book=book.epub&t=" + Environment.TickCount64;
                 }
                 Wv.CoreWebView2.SetVirtualHostNameToFolderMapping(_host, folder, CoreWebView2HostResourceAccessKind.Allow);
                 string rel = _entry.Replace('\\', '/').TrimStart('/');
