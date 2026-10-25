@@ -18,9 +18,9 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <!-- ★ 1.0.0 正式版：程序集/文件/产品版本（主页面显示这里的前三段） -->
-    <Version>1.1.4</Version>
-    <AssemblyVersion>1.1.4.0</AssemblyVersion>
-    <FileVersion>1.1.4.0</FileVersion>
+    <Version>1.1.5</Version>
+    <AssemblyVersion>1.1.5.0</AssemblyVersion>
+    <FileVersion>1.1.5.0</FileVersion>
     <Product>璃鸢镜</Product>
     <AssemblyTitle>璃鸢镜</AssemblyTitle>
     <Company>Lyrueyn</Company>

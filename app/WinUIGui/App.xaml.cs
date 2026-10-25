@@ -10,6 +10,8 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using Microsoft.UI.Xaml.Shapes;
+using System.Runtime.InteropServices;
+using System.Threading;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -50,12 +52,47 @@ public partial class App : Application
         catch { }
     }
 
+    private static Mutex? _singleInstanceMutex;
+
+    [DllImport("user32.dll", CharSet = CharSet.Unicode, SetLastError = true)]
+    private static extern IntPtr FindWindow(string? lpClassName, string lpWindowName);
+    [DllImport("user32.dll")] private static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
+    [DllImport("user32.dll")] private static extern bool IsIconic(IntPtr hWnd);
+    [DllImport("user32.dll")] private static extern bool SetForegroundWindow(IntPtr hWnd);
+
+    /// <summary>单实例：已有璃鸢镜窗口时激活它并退出本次启动。</summary>
+    private static bool TryAcquireSingleInstance()
+    {
+        bool created;
+        _singleInstanceMutex = new Mutex(true, @"Local\LyraViewer.SingleInstance", out created);
+        if (created) return true;
+        try { _singleInstanceMutex.Dispose(); } catch { }
+        _singleInstanceMutex = null;
+        for (int i = 0; i < 50; i++)
+        {
+            IntPtr hwnd = FindWindow(null, "璃鸢镜");
+            if (hwnd != IntPtr.Zero)
+            {
+                try
+                {
+                    if (IsIconic(hwnd)) ShowWindow(hwnd, 9);
+                    SetForegroundWindow(hwnd);
+                }
+                catch { }
+                return false;
+            }
+            Thread.Sleep(100);
+        }
+        return false;
+    }
+
     /// <summary>
     /// Invoked when the application is launched.
     /// </summary>
     /// <param name="args">Details about the launch request and process.</param>
     protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
     {
+        if (!TryAcquireSingleInstance()) { Environment.Exit(0); return; }
         var mw = new MainWindow();
         _window = mw;
         Main = mw;
