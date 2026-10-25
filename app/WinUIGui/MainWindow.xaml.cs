@@ -56,8 +56,37 @@ public sealed partial class MainWindow : Window
     // ★ fromPlaylistId：从哪个合集打开的视频（-1 = 从视频库/本地文件打开）
     //   → 视频窗口右侧"合集"区块只在这种情况下显示对应合集；视频库打开则整块不显示。
     //   窗口是复用的，所以每次打开都要重新设置来源。
+    private bool _multiWindowLoading;
+    private static DateTime _lastMultiSpawnUtc = DateTime.MinValue;
+
+    private void MultiWindowToggle_Toggled(object sender, RoutedEventArgs e)
+    {
+        if (_multiWindowLoading) return;
+        try { Backend.SaveMultiVideoWindows(MultiWindowToggle.IsOn); } catch { }
+    }
+
     private void ShowVideo(string path, int fromPlaylistId = -1)
     {
+        // ★ 多视频窗口：每个视频启动独立进程（独立引擎），可真正同时播放
+        try
+        {
+            if (Backend.LoadMultiVideoWindows())
+            {
+                // 双击卡片会触发两次 ItemClick：700ms 内只生成一个独立视频窗
+                if ((DateTime.UtcNow - _lastMultiSpawnUtc).TotalMilliseconds < 700) return;
+                _lastMultiSpawnUtc = DateTime.UtcNow;
+                var psi = new System.Diagnostics.ProcessStartInfo(Environment.ProcessPath ?? "")
+                {
+                    UseShellExecute = false,
+                    WorkingDirectory = AppContext.BaseDirectory,
+                };
+                psi.ArgumentList.Add("--video");
+                psi.ArgumentList.Add(path);
+                System.Diagnostics.Process.Start(psi);
+                return;
+            }
+        }
+        catch { }
         if (_video == null)
         {
             _video = new VideoWindow();
@@ -94,6 +123,13 @@ public sealed partial class MainWindow : Window
     {
         InitializeComponent();
         AppVersionText.Text = "v" + UpdateChecker.CurrentVersionText;
+        try
+        {
+            _multiWindowLoading = true;
+            MultiWindowToggle.IsOn = Backend.LoadMultiVideoWindows();
+            _multiWindowLoading = false;
+        }
+        catch { _multiWindowLoading = false; }
         UpdateEpubTabVisibility();
         _ = AutoCheckUpdatesAsync();
         try

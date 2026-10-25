@@ -92,6 +92,24 @@ public partial class App : Application
     /// <param name="args">Details about the launch request and process.</param>
     protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
     {
+        // ★ 独立视频窗口模式：多视频窗开关启动，绕过单实例锁
+        try
+        {
+            var argv = Environment.GetCommandLineArgs();
+            for (int i = 1; i + 1 < argv.Length; i++)
+            {
+                if (argv[i] == "--video")
+                {
+                    var vw = new VideoWindow();
+                    _window = vw;
+                    vw.Activate();
+                    vw.OpenMedia(argv[i + 1]);
+                    return;
+                }
+            }
+        }
+        catch { }
+
         if (!TryAcquireSingleInstance()) { Environment.Exit(0); return; }
         var mw = new MainWindow();
         _window = mw;

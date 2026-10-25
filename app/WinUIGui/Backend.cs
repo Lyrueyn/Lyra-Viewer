@@ -502,6 +502,18 @@ public static class Backend
         try { var o = ReadSettingsObj(); o["rtx_sdk_path"] = path ?? ""; WriteSettingsObj(o); } catch { }
     }
 
+    // ★ 允许多视频窗口（每个视频独立进程，真正同时播放）
+    public static bool LoadMultiVideoWindows()
+    {
+        try { var v = ReadSettingsObj()["multi_video_windows"]; return v is JsonValue jv && jv.TryGetValue(out bool b) && b; }
+        catch { return false; }
+    }
+
+    public static void SaveMultiVideoWindows(bool on)
+    {
+        try { var o = ReadSettingsObj(); o["multi_video_windows"] = on; WriteSettingsObj(o); } catch { }
+    }
+
     // ★ 窗口置顶（Pin）记忆：player_settings.json 的 "always_on_top"
     public static bool LoadAlwaysOnTop()
     {
