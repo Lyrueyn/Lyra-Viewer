@@ -5360,6 +5360,7 @@ public sealed partial class VideoWindow : Window
     /// <summary>auto=true = 自动连播（合集连播/列表循环）发起；auto=false = 用户手动（点卡片/画质/增强版）。</summary>
     private void OpenMedia(string path, bool auto)
     {
+        try { Title = "璃鸢镜 · " + System.IO.Path.GetFileNameWithoutExtension(path); } catch { }
         if (string.IsNullOrEmpty(path) || !System.IO.File.Exists(path)) return;
         var nowUtc = DateTime.UtcNow;
 

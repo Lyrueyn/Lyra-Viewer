@@ -123,7 +123,7 @@
             <StackPanel Grid.Column="2" Orientation="Horizontal" Spacing="10" VerticalAlignment="Center" Margin="12,0,16,0">
                 <ToggleSwitch x:Name="MultiWindowToggle" AutomationProperties.AutomationId="MultiWindowToggle"
                               OffContent="单视频窗" OnContent="多视频窗" Toggled="MultiWindowToggle_Toggled"
-                              VerticalAlignment="Center" Margin="0,0,4,0"
+                              VerticalAlignment="Center" Margin="0,0,4,0" Foreground="{StaticResource TextMain}"
                               ToolTipService.ToolTip="开启后每打开一个视频都会启动独立播放器进程，可同时播放多个视频"/>
                 <Button Content="检查更新" Click="CheckUpdateBtn_Click" Background="#22FFFFFF" BorderThickness="0"
                         Foreground="{StaticResource TextMain}" CornerRadius="16"
