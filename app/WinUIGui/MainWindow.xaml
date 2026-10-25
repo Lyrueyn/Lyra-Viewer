@@ -122,9 +122,16 @@
 
             <StackPanel Grid.Column="2" Orientation="Horizontal" Spacing="10" VerticalAlignment="Center" Margin="12,0,16,0">
                 <ToggleSwitch x:Name="MultiWindowToggle" AutomationProperties.AutomationId="MultiWindowToggle"
-                              OffContent="单视频窗" OnContent="多视频窗" Toggled="MultiWindowToggle_Toggled"
-                              VerticalAlignment="Center" Margin="0,0,4,0" Foreground="{StaticResource TextMain}"
-                              ToolTipService.ToolTip="开启后每打开一个视频都会启动独立播放器进程，可同时播放多个视频"/>
+                              Toggled="MultiWindowToggle_Toggled"
+                              VerticalAlignment="Center" Margin="0,0,4,0" Foreground="#E8E8E8"
+                              ToolTipService.ToolTip="开启后每打开一个视频都会启动独立播放器进程，可同时播放多个视频">
+                    <ToggleSwitch.OffContent>
+                        <TextBlock Text="单视频窗" Foreground="#E8E8E8"/>
+                    </ToggleSwitch.OffContent>
+                    <ToggleSwitch.OnContent>
+                        <TextBlock Text="多视频窗" Foreground="#E8E8E8"/>
+                    </ToggleSwitch.OnContent>
+                </ToggleSwitch>
                 <Button Content="检查更新" Click="CheckUpdateBtn_Click" Background="#22FFFFFF" BorderThickness="0"
                         Foreground="{StaticResource TextMain}" CornerRadius="16"
                         ToolTipService.ToolTip="从 GitHub 检查新版本并自动下载安装"/>
