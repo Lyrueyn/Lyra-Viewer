@@ -49,6 +49,8 @@ public sealed partial class MainWindow : Window
     {
         new AvailableExtension { Id = "epub", Name = "EPUB 阅读器", Repo = "Lyrueyn/Lyra-Extension-Epub",
             Asset = "lyra-ext-epub.zip", Description = "在璃鸢镜里阅读 EPUB：目录、章节、字号、进度记忆。" },
+        new AvailableExtension { Id = "pdf", Name = "PDF 阅读器", Repo = "Lyrueyn/Lyra-Extention-PDF_Reader",
+            Asset = "lyra-ext-pdf.zip", Description = "在璃鸢镜里阅读 PDF：连续翻页、页码跳转、缩放、夜间模式。" },
     };
     public IReadOnlyList<VideoWindow> VideoWindows => _video is null ? Array.Empty<VideoWindow>() : new[] { _video };
 
