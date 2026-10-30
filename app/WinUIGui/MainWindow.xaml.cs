@@ -19,6 +19,7 @@ public sealed partial class MainWindow : Window
     private VideoWindow? _video;
     private readonly List<ExtensionHostWindow> _extHosts = new();   // ★ 已打开的扩展宿主窗口
     private readonly Dictionary<string, string> _extLatest = new(StringComparer.OrdinalIgnoreCase);   // 扩展最新版本
+    private readonly HashSet<string> _extLatestFailed = new(StringComparer.OrdinalIgnoreCase);       // 本轮检查失败的扩展
     private bool _extChecking, _extCheckDone;
 
     // ================= ★ EPUB 书库（扩展贡献的 Tab）=================
@@ -885,26 +886,16 @@ public sealed partial class MainWindow : Window
     {
         if (_extChecking) return;
         _extChecking = true;
+        _extLatestFailed.Clear();
         try
         {
-            using var http = new System.Net.Http.HttpClient { Timeout = TimeSpan.FromSeconds(12) };
-            http.DefaultRequestHeaders.UserAgent.ParseAdd("LyraViewer-ExtUpdate/1.0");
             foreach (var ext in ExtensionCatalog.LoadAll())
             {
                 var av = AvailableExtensions.FirstOrDefault(a => string.Equals(a.Id, ext.Id, StringComparison.OrdinalIgnoreCase));
                 if (av == null || string.IsNullOrEmpty(av.Repo)) continue;
-                try
-                {
-                    string url = $"https://api.github.com/repos/{av.Repo}/releases/latest";
-                    string json = await http.GetStringAsync(url);
-                    using var doc = System.Text.Json.JsonDocument.Parse(json);
-                    if (doc.RootElement.TryGetProperty("tag_name", out var t))
-                    {
-                        string tag = (t.GetString() ?? "").TrimStart('v', 'V');
-                        if (!string.IsNullOrEmpty(tag)) _extLatest[ext.Id] = tag;
-                    }
-                }
-                catch { }
+                string latestTag = await FetchLatestTagAsync(av.Repo);
+                if (latestTag.Length > 0) _extLatest[ext.Id] = latestTag;
+                else _extLatestFailed.Add(ext.Id);
             }
         }
         catch { }
@@ -914,6 +905,44 @@ public sealed partial class MainWindow : Window
             _extCheckDone = true;
             RefreshExtensionsPage();
         }
+    }
+
+    /// <summary>
+    /// 取仓库最新 Release 的版本号。先走网页跳转 github.com/…/releases/latest → …/releases/tag/vX.Y.Z，
+    /// 这条路不受 GitHub API 每小时 60 次/IP 的匿名限流（限流时 API 返回 403，以前就一直显示「正在检查更新…」）；
+    /// 跳转拿不到再退回 API。都失败返回空串。
+    /// </summary>
+    private static async Task<string> FetchLatestTagAsync(string repo)
+    {
+        try
+        {
+            using var handler = new System.Net.Http.HttpClientHandler { AllowAutoRedirect = false };
+            using var http = new System.Net.Http.HttpClient(handler) { Timeout = TimeSpan.FromSeconds(12) };
+            http.DefaultRequestHeaders.UserAgent.ParseAdd("LyraViewer-ExtUpdate/1.0");
+            using var resp = await http.GetAsync($"https://github.com/{repo}/releases/latest");
+            string loc = resp.Headers.Location?.ToString() ?? "";
+            int i = loc.LastIndexOf("/tag/", StringComparison.OrdinalIgnoreCase);
+            if (i >= 0)
+            {
+                string tag = Uri.UnescapeDataString(loc.Substring(i + 5)).Trim().TrimStart('v', 'V');
+                if (Version.TryParse(tag, out _)) return tag;
+            }
+        }
+        catch { }
+        try
+        {
+            using var http = new System.Net.Http.HttpClient { Timeout = TimeSpan.FromSeconds(12) };
+            http.DefaultRequestHeaders.UserAgent.ParseAdd("LyraViewer-ExtUpdate/1.0");
+            string json = await http.GetStringAsync($"https://api.github.com/repos/{repo}/releases/latest");
+            using var doc = System.Text.Json.JsonDocument.Parse(json);
+            if (doc.RootElement.TryGetProperty("tag_name", out var t))
+            {
+                string tag = (t.GetString() ?? "").TrimStart('v', 'V');
+                if (Version.TryParse(tag, out _)) return tag;
+            }
+        }
+        catch { }
+        return "";
     }
 
     private static bool IsNewerVersion(string latest, string installed)
@@ -1015,7 +1044,8 @@ public sealed partial class MainWindow : Window
         if (av != null)
         {
             string latest = _extLatest.TryGetValue(ext.Id, out var lv) ? lv : "";
-            string updateLine = latest.Length == 0 ? "正在检查更新…"
+            string updateLine = latest.Length == 0
+                ? (_extLatestFailed.Contains(ext.Id) && !_extChecking ? "检查更新失败（网络或 GitHub 暂时不可用），点刷新重试" : "正在检查更新…")
                 : (IsNewerVersion(latest, ext.Version) ? "发现新版本 v" + latest : "已是最新版本 v" + latest);
             info.Children.Add(new TextBlock
             {

@@ -51,33 +51,63 @@ namespace WinUIGui
         {
             try
             {
-                using var http = new HttpClient { Timeout = TimeSpan.FromSeconds(20) };
-                http.DefaultRequestHeaders.UserAgent.ParseAdd("LyraViewer-UpdateChecker/1.0");
-                http.DefaultRequestHeaders.Accept.ParseAdd("application/vnd.github+json");
-                string url = $"https://api.github.com/repos/{Owner}/{Repo}/releases/latest";
-                string json = await http.GetStringAsync(url);
-                using var doc = JsonDocument.Parse(json);
-                var root = doc.RootElement;
-                string tag = root.TryGetProperty("tag_name", out var t) ? (t.GetString() ?? "") : "";
-                string notes = root.TryGetProperty("body", out var b) ? (b.GetString() ?? "") : "";
-                if (!Version.TryParse(tag.TrimStart('v', 'V'), out var latest)) return null;
-                if (latest <= CurrentVersion) return null;
-
-                string assetName = "", assetUrl = "";
-                if (root.TryGetProperty("assets", out var assets) && assets.ValueKind == JsonValueKind.Array)
+                // 先走网页跳转 releases/latest → releases/tag/vX.Y.Z：不受 GitHub API 每小时 60 次/IP 的匿名限流
+                string redirectTag = "";
+                try
                 {
-                    foreach (var a in assets.EnumerateArray())
-                    {
-                        string name = a.TryGetProperty("name", out var n) ? (n.GetString() ?? "") : "";
-                        string dl = a.TryGetProperty("browser_download_url", out var u) ? (u.GetString() ?? "") : "";
-                        if (name.EndsWith(".exe", StringComparison.OrdinalIgnoreCase) && name.Contains("Setup", StringComparison.OrdinalIgnoreCase))
-                        { assetName = name; assetUrl = dl; break; }
-                        if (string.IsNullOrEmpty(assetName) && name.EndsWith(".exe", StringComparison.OrdinalIgnoreCase))
-                        { assetName = name; assetUrl = dl; }
-                    }
+                    using var handler = new HttpClientHandler { AllowAutoRedirect = false };
+                    using var web = new HttpClient(handler) { Timeout = TimeSpan.FromSeconds(15) };
+                    web.DefaultRequestHeaders.UserAgent.ParseAdd("LyraViewer-UpdateChecker/1.0");
+                    using var resp = await web.GetAsync($"https://github.com/{Owner}/{Repo}/releases/latest");
+                    string loc = resp.Headers.Location?.ToString() ?? "";
+                    int i = loc.LastIndexOf("/tag/", StringComparison.OrdinalIgnoreCase);
+                    if (i >= 0) redirectTag = Uri.UnescapeDataString(loc.Substring(i + 5)).Trim();
                 }
-                if (string.IsNullOrEmpty(assetUrl)) return null;
-                return new UpdateInfo { Version = latest, Tag = tag, Notes = notes, AssetName = assetName, AssetUrl = assetUrl };
+                catch { }
+                if (Version.TryParse(redirectTag.TrimStart('v', 'V'), out var redirectVer) && redirectVer <= CurrentVersion) return null;
+
+                try
+                {
+                    using var http = new HttpClient { Timeout = TimeSpan.FromSeconds(20) };
+                    http.DefaultRequestHeaders.UserAgent.ParseAdd("LyraViewer-UpdateChecker/1.0");
+                    http.DefaultRequestHeaders.Accept.ParseAdd("application/vnd.github+json");
+                    string url = $"https://api.github.com/repos/{Owner}/{Repo}/releases/latest";
+                    string json = await http.GetStringAsync(url);
+                    using var doc = JsonDocument.Parse(json);
+                    var root = doc.RootElement;
+                    string tag = root.TryGetProperty("tag_name", out var t) ? (t.GetString() ?? "") : "";
+                    string notes = root.TryGetProperty("body", out var b) ? (b.GetString() ?? "") : "";
+                    if (!Version.TryParse(tag.TrimStart('v', 'V'), out var latest)) return null;
+                    if (latest <= CurrentVersion) return null;
+
+                    string assetName = "", assetUrl = "";
+                    if (root.TryGetProperty("assets", out var assets) && assets.ValueKind == JsonValueKind.Array)
+                    {
+                        foreach (var a in assets.EnumerateArray())
+                        {
+                            string name = a.TryGetProperty("name", out var n) ? (n.GetString() ?? "") : "";
+                            string dl = a.TryGetProperty("browser_download_url", out var u) ? (u.GetString() ?? "") : "";
+                            if (name.EndsWith(".exe", StringComparison.OrdinalIgnoreCase) && name.Contains("Setup", StringComparison.OrdinalIgnoreCase))
+                            { assetName = name; assetUrl = dl; break; }
+                            if (string.IsNullOrEmpty(assetName) && name.EndsWith(".exe", StringComparison.OrdinalIgnoreCase))
+                            { assetName = name; assetUrl = dl; }
+                        }
+                    }
+                    if (string.IsNullOrEmpty(assetUrl)) return null;
+                    return new UpdateInfo { Version = latest, Tag = tag, Notes = notes, AssetName = assetName, AssetUrl = assetUrl };
+                }
+                catch when (redirectVer != null && redirectVer > CurrentVersion)
+                {
+                    // API 被限流但跳转已确认有新版：按约定的资产名直接下载
+                    string v = $"{redirectVer.Major}.{redirectVer.Minor}.{Math.Max(0, redirectVer.Build)}";
+                    string assetName = $"LyraViewer-Setup-{v}.exe";
+                    return new UpdateInfo
+                    {
+                        Version = redirectVer, Tag = redirectTag, Notes = "",
+                        AssetName = assetName,
+                        AssetUrl = $"https://github.com/{Owner}/{Repo}/releases/download/{Uri.EscapeDataString(redirectTag)}/{assetName}",
+                    };
+                }
             }
             catch { return null; }
         }

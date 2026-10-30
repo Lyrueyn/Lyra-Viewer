@@ -10,11 +10,15 @@
     mc:Ignorable="d">
     <Grid x:Name="Root" Background="#0F0F0F" Loaded="Root_Loaded">
         <WebView2 x:Name="Wv" AutomationProperties.AutomationId="ExtensionWebView"/>
-        <!-- ★ 加载帷幕：页面/书没准备好之前遮住白屏，并拦截误点击 -->
-        <Grid x:Name="LoadingOverlay" Background="#0F0F0F" Tapped="LoadingOverlay_Tapped">
+        <Grid x:Name="LoadingOverlay" Background="#0F0F0F">
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="12">
-                <ProgressRing IsActive="True" Width="36" Height="36" Foreground="#FB7299"/>
-                <TextBlock Text="正在打开…" Foreground="#9BA0A5" FontSize="13" HorizontalAlignment="Center"/>
+                <ProgressRing x:Name="LoadingRing" IsActive="True" Width="36" Height="36" Foreground="#FB7299"/>
+                <TextBlock x:Name="LoadingText" Text="正在打开…" Foreground="#E8E8E8" FontSize="14" HorizontalAlignment="Center" TextWrapping="Wrap" MaxWidth="560" TextAlignment="Center"/>
+                <TextBlock x:Name="LoadingDetail" Text="" Foreground="#9BA0A5" FontSize="12" HorizontalAlignment="Center" TextWrapping="Wrap" MaxWidth="520" TextAlignment="Center"/>
+                <StackPanel Orientation="Horizontal" Spacing="10" HorizontalAlignment="Center">
+                    <Button x:Name="LoadingRetry" Content="重试" Visibility="Collapsed" Click="LoadingRetry_Click" Background="#FB7299" Foreground="White" BorderThickness="0" CornerRadius="14" Padding="14,5"/>
+                    <Button x:Name="LoadingCancel" Content="取消" Visibility="Collapsed" Click="LoadingCancel_Click" Background="#33FFFFFF" Foreground="#E8E8E8" BorderThickness="0" CornerRadius="14" Padding="14,5"/>
+                </StackPanel>
             </StackPanel>
         </Grid>
     </Grid>
