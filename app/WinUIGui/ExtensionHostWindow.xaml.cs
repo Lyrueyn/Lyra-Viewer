@@ -43,6 +43,7 @@ namespace WinUIGui
         private bool _finalizePending;
         private string _finalizeRequestId = "";
         private bool _closeStarted;
+        private bool _supportsFinalize;   // 收到过当前协议的合法消息 = 新版扩展，关闭时值得等 finalize；PDF 0.3.0 等旧扩展不走等待
         private bool _suppressNavigationRotation;
         private long _activationEpoch;
         private long _navEpoch;
@@ -85,7 +86,7 @@ namespace WinUIGui
             }
             catch { }
             try { AppWindow.Closing += OnAppWindowClosing; } catch { }
-            Closed += (_, _) => CleanupTemp();
+            Closed += (_, _) => { try { Wv.CoreWebView2?.Stop(); } catch { } CleanupTemp(); };
         }
 
         private async void Root_Loaded(object sender, RoutedEventArgs e)
@@ -339,6 +340,8 @@ namespace WinUIGui
                     if (ReaderProtocol.GetString(root, "protocol", 32) != ReaderProtocol.Protocol) return;
                     string type = ReaderProtocol.GetString(root, "type", 64);
                     string sessionId = ReaderProtocol.GetString(root, "sessionId", 128);
+                    // 能发出当前协议对象消息的扩展，关闭时才等 host.finalize 回执；PDF 0.3.0 只发旧 book-ready
+                    if (!string.IsNullOrEmpty(sessionId) && sessionId == _sessionId) _supportsFinalize = true;
                     string requestId = ReaderProtocol.GetString(root, "requestId", 128);
                     int reqVersion = root.TryGetProperty("version", out var ver) && ver.ValueKind == JsonValueKind.Number ? ver.GetInt32() : 0;
                     if (reqVersion != ReaderProtocol.Version)
@@ -566,16 +569,24 @@ namespace WinUIGui
             _closeStarted = true;
             _finalizePending = true;
             _finalizeRequestId = Guid.NewGuid().ToString("N");
-            LogHost("CLOSING request=" + _finalizeRequestId);
             args.Cancel = true;
+            // ★ 先让窗口消失：finalize/状态保存仍在后台完成，用户不再盯着 1.5 秒的关闭等待。
+            try { AppWindow.Hide(); } catch { }
+            LogHost("CLOSING request=" + _finalizeRequestId + " supportsFinalize=" + _supportsFinalize);
             try
             {
                 var req = new JsonObject { ["type"] = "host.finalize", ["requestId"] = _finalizeRequestId };
                 Wv.CoreWebView2?.PostWebMessageAsJson(req.ToJsonString());
             }
             catch { }
+            // PDF 0.3.0 没有 finalize：直接关，不要固定等满 1.5s。新扩展最多等 250ms 回执兜底。
+            if (!_supportsFinalize)
+            {
+                FinishFinalizeAndClose("legacy", _finalizeRequestId, 0);
+                return;
+            }
             // 即使 WebView2 尚未创建，关闭期限也必须独立存在且不能被初始化/导航取消。
-            _closeTimer = StartTimer(TimeSpan.FromMilliseconds(1500), () => FinishFinalizeAndClose("timeout", _finalizeRequestId, 0));
+            _closeTimer = StartTimer(TimeSpan.FromMilliseconds(250), () => FinishFinalizeAndClose("timeout", _finalizeRequestId, 0));
         }
 
         private void FinishFinalizeAndClose(string reason, string requestId, long revision)
@@ -653,11 +664,18 @@ namespace WinUIGui
         private void CleanupTemp()
         {
             // 临时书目录清理不等于窗口关闭；绝不能在此停止关闭期限。
-            if (!string.IsNullOrEmpty(_tempDir))
+            // ★ 不阻塞关闭路径：WebView2 可能还短暂持有目录映射，后台重试删除。
+            string dir = _tempDir;
+            _tempDir = null;
+            if (string.IsNullOrEmpty(dir)) return;
+            _ = Task.Run(async () =>
             {
-                try { Directory.Delete(_tempDir, true); } catch { }
-                _tempDir = null;
-            }
+                for (int i = 0; i < 10; i++)
+                {
+                    try { Directory.Delete(dir, true); return; }
+                    catch { await Task.Delay(50); }
+                }
+            });
         }
 
         private static void CopyDir(string src, string dst)

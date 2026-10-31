@@ -194,6 +194,8 @@ struct RtxVsrState {
     std::atomic<int> redrawPending{0};   // 暂停中切换 VSR：请求立即重绘一帧，让画面当场变化
 };
 static RtxVsrState g_vsr;
+static std::recursive_mutex g_vsrMtx;      // VSR 生命周期/评估串行化（UI Present 与后台 Init 不能同时碰 NGX）
+static std::atomic<bool> g_vsrBusy{false}; // 后台初始化中：Present 跳过 VSR 本帧，避免它在 UI 线程等锁
 
 #include "audio_out.h"      // ★ 音频输出（WASAPI）——必须在 g 声明之后（内部要用 g.paused）
 static dmlanes::DanmakuEngine g_dm;   // 弹幕引擎（独立于视频引擎；SetDanmaku/GetDanmakuLayout 用）
@@ -205,6 +207,7 @@ static std::atomic<bool> g_run{true};                 // 解码线程运行标�
 static std::mutex g_reqMtx;                           // 保护 g_reqPath + cv
 static std::condition_variable g_reqCv;
 static std::atomic<int> g_reqType{0};                 // 0=无 1=load 2=preview-seek 3=jump-seek
+static std::atomic<int64_t> g_reqStartMs{0};          // OpenMediaAt 的起始位置（ms）；load 请求专用
 static std::atomic<int64_t> g_reqPts{0};             // seek 目标（ms）
 static std::atomic<int> g_reqGen{0};                  // ★ 该 seek 请求属于第几"代"媒体
 static std::atomic<int> g_mediaGen{0};                // ★ 媒体代号：每次打开新视频 +1（防止陈旧 seek 打到新视频上）
@@ -513,6 +516,7 @@ static int vsr_probe(){
     dsh_log(b); return ok;
 }
 static void vsr_release_feature(){
+    std::lock_guard<std::recursive_mutex> lk(g_vsrMtx);
     if(g_vsr.dll && g_vsr.pShutdown) g_vsr.pShutdown();
     g_vsr.ready=0; g_vsr.outSrv=nullptr; g_vsr.dev=nullptr; g_vsr.outW=g_vsr.outH=0;
 }
@@ -533,6 +537,7 @@ static bool vsr_calc_target(int& tw,int& th){
     return true;
 }
 static bool vsr_prepare(){
+    std::lock_guard<std::recursive_mutex> lk(g_vsrMtx);
     if(!g_vsr.enabled) return false;
     if(g.hdr.load()) return false;          // VSR 只支持 SDR（HDR 走原色调映射路径）
     if(!g.dev) return false;
@@ -554,6 +559,8 @@ static bool vsr_prepare(){
     return g_vsr.ready!=0;
 }
 static void vsr_eval_frame(ID3D11Texture2D* tex,int w,int h){
+    if(g_vsrBusy.load()) return;
+    std::lock_guard<std::recursive_mutex> lk(g_vsrMtx);
     if(!vsr_prepare()) return;
     static double s_ms=0; static int s_n=0;
     auto t0=std::chrono::steady_clock::now();
@@ -567,6 +574,8 @@ static void vsr_eval_frame(ID3D11Texture2D* tex,int w,int h){
 
 // Vulkan 渲染路径专用：CPU 帧 → bridge(D3D11) VSR → CPU 帧（引擎再喂给 Vulkan）
 static bool vsr_process_cpu(const uint8_t* in,int inW,int inH,const uint8_t** out,int& outW,int& outH,int& outStride){
+    if(g_vsrBusy.load()) return false;   // 后台正在 Rv_Init：本帧先不超分，绝不让 UI 线程等锁
+    std::lock_guard<std::recursive_mutex> lk(g_vsrMtx);
     if(!g_vsr.enabled || !g_vsr.pCpu) return false;
     if(!vsr_prepare()) return false;
     if(!g_vsr.pCpu) return false;
@@ -1502,11 +1511,11 @@ static std::string w2utf8(const wchar_t* w){
 
 // 打开媒体（FFmpeg 解码器；Unicode 路径）
 // 打开媒体：发"加载请求"给解码线程（解码线程独占解资源 → 负载/解码无跨线程竞态）；立即返回
-__declspec(dllexport) int WINAPI DshEngine_OpenMedia(const wchar_t* path){
+static int open_media_impl(const wchar_t* path, int64_t startMs){
     if(!g.init) return -1;
     std::string utf8=w2utf8(path);
     if(utf8.empty()) return -10;
-    { std::lock_guard<std::mutex> lk(g_reqMtx); g_reqPath=utf8; }
+    { std::lock_guard<std::mutex> lk(g_reqMtx); g_reqPath=utf8; g_reqStartMs.store(startMs>0?startMs:0); }
     g_mediaLoaded.store(false);
     // ★ T6 语义 (a)：判死状态下换片 = 用户给了新场景 → **真正尝试重建设备**（不是只清标志位）。
     //   复用同一套有界退避逻辑（最多 3 次、绝不风暴）：这里做第 1 次尝试；失败会再次判死，
@@ -1526,6 +1535,10 @@ __declspec(dllexport) int WINAPI DshEngine_OpenMedia(const wchar_t* path){
     g_reqCv.notify_one();
     return 0;
 }
+// 兼容旧接口：从 0 开始
+extern "C" __declspec(dllexport) int WINAPI DshEngine_OpenMedia(const wchar_t* path){ return open_media_impl(path,0); }
+// ★ 新接口：加载完成后直接从 startMs 开始（切画质不闪片头；落点前帧不进入队列）
+extern "C" __declspec(dllexport) int WINAPI DshEngine_OpenMediaAt(const wchar_t* path, int64_t startMs){ return open_media_impl(path,startMs); }
 // 暂停/恢复（暂停时保留当前帧画面；续播时把墙钟基线重置到暂停位置，避免暂停期间墙钟继续走导致快进）
 __declspec(dllexport) void WINAPI DshEngine_SetPaused(int p){
     g.paused.store(p!=0);
@@ -2029,7 +2042,7 @@ __declspec(dllexport) void WINAPI DshEngine_Seek(int64_t ms){ DshEngine_SeekJump
 static void DecodeAhead();   // 前向声明
 
 // 加载媒体（解码线程执行：打开 fmt/cc/sws，重置队列/时钟）
-static void LoadMedia(const std::string& path){
+static void LoadMedia(const std::string& path, int64_t startMs = 0){
     std::lock_guard<std::mutex> lk(g_mtx);
     if(g.fmt){ avformat_close_input(&g.fmt); g.fmt=nullptr; }
     if(g.sws){ sws_freeContext(g.sws); g.sws=nullptr; }
@@ -2110,8 +2123,37 @@ static void LoadMedia(const std::string& path){
     { int rt = g_reqType.load();
       if(rt == 2 || rt == 3){ g_reqType.store(0); g_reqPts.store(0); dsh_log("换片：丢弃上一个视频遗留的 seek 请求"); } }
     g.startUs=-1; g_qCount=0; g_qWrite=0; g_originUs=0; g_originPts=0;
-    // ★ A/V 主时钟重新锚到片头，并留 2s 重同步窗口（换片后 T1 的 fedMediaUs/环内数据要过一会才刷新）
-    dsh_clock_anchor_to(0, "换片", 2000, false);
+    // ★ OpenMediaAt：加载完立刻定位到 startMs，而不是先出 0ms 帧再让前端轮询 SeekJump。
+    //   关键：queueFirstAfterSeek=false + skipsToClock=true，落点之前的帧直接丢弃，绝不先上屏。
+    int64_t startUs = startMs * 1000;
+    bool startSeeked = false;
+    if(startUs > 0 && g.fmt && g.fmt->duration > 0){
+        int64_t durUs = g.fmt->duration;
+        if(startUs > durUs - 1000000) startUs = durUs - 1000000;   // 留 1s 余量，避免刚开就 EOF
+        if(startUs < 0) startUs = 0;
+        int64_t ts = av_rescale_q(startUs, AV_TIME_BASE_Q, g.fmt->streams[g.vstream]->time_base);
+        int sr = avformat_seek_file(g.fmt, g.vstream, INT64_MIN, ts, INT64_MAX, 0);
+        if(sr >= 0){
+            avcodec_flush_buffers(g.cc);
+            g_qCount=0; g_qWrite=0;
+            g.lastPtsUs.store(startUs);
+            g.eof=false;
+            g.skipsToClock.store(true);
+            g.seekTargetUs=startUs; g.seekSkipN=0;
+            g.seekStamp=(int64_t)std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::steady_clock::now().time_since_epoch()).count();
+            g.seekCatchT0=g.seekStamp;
+            g.queueFirstAfterSeek=false;             // 不要"落点关键帧先上屏"，那会闪到目标之前
+            g_originPts=startUs;
+            g_originUs=(int64_t)std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::steady_clock::now().time_since_epoch()).count();
+            g_audio.flush(startUs);                  // 音频也直接到目标（openFile 时先按 0 开了）
+            dsh_clock_anchor_to(startUs, "OpenMediaAt", 1500, false);
+            startSeeked=true;
+            { char b[180]; snprintf(b,sizeof(b),"OpenMediaAt: 起点 %.3fs（clamp 后 %.3fs），落点前帧不入队", (double)startMs/1000.0,(double)startUs/1e6); dsh_log(b); }
+        } else {
+            char b[160]; snprintf(b,sizeof(b),"OpenMediaAt: seek 失败 r=%d → 从片头开始", sr); dsh_log(b);
+        }
+    }
+    if(!startSeeked) dsh_clock_anchor_to(0, "换片", 2000, false);
     g_mediaLoaded.store(true);
     { char b[240]; snprintf(b,sizeof(b),"LoadMedia ok %dx%d codec=%s depth=%d trc=%d prim=%d space=%d range=%s hdr=%d",
         g.vw,g.vh,codec->name,g.hdrInfo.depth,g.hdrInfo.trc,g.hdrInfo.prim,g.hdrInfo.space,g.hdrInfo.rangeName,(int)g.hdrInfo.hdr); dsh_log(b); }
@@ -2171,7 +2213,7 @@ static void DecodeLoop(){
             if(g_reqType.load()!=0) req=g_reqType.exchange(0);
         }
         if(!g_run.load()) break;
-        if(req==1){ std::string p; { std::lock_guard<std::mutex> lk(g_reqMtx); p=g_reqPath; } LoadMedia(p); }
+        if(req==1){ std::string p; int64_t startMs=0; { std::lock_guard<std::mutex> lk(g_reqMtx); p=g_reqPath; startMs=g_reqStartMs.load(); } LoadMedia(p,startMs); }
         else if((req==2 || req==3) && g_reqGen.load()!=g_mediaGen.load()){
             // ★ 陈旧 seek（属于上一个视频）：绝不能打到新视频上，
             //   否则新视频会被 seek 到自己片尾附近 → 播一点就 EOF → 画面冻住、进度条不动。
@@ -2465,7 +2507,14 @@ static void dsh_check_present_hr(HRESULT hr){
 extern "C" __declspec(dllexport) int WINAPI DshEngine_GpuDead(){ return g_gpuDead ? 1 : 0; }
 // ★ 引擎/界面 ABI 版本：C# Init 后强校验，防止旧 dsh_engine.dll 缺导出时"探测静默失效"（白屏可读化链路）。
 //   改动导出/结构体语义时 +1；C# 侧 DshNative.ExpectedEngineApiVersion 必须同步。
-extern "C" __declspec(dllexport) int WINAPI DshEngine_GetApiVersion(){ return 2; }
+extern "C" __declspec(dllexport) int WINAPI DshEngine_GetApiVersion(){ return 3; }
+// ★ 供前端判断"媒体是否已加载、尺寸是否就绪"：避免 VSR 在 OpenMedia 后立刻调用必然返回 -5
+extern "C" __declspec(dllexport) int WINAPI DshEngine_IsMediaReady(){ return (g_mediaLoaded.load() && g.vw>0 && g.vh>0) ? 1 : 0; }
+// ★ 切画质前暂停 VSR：只清 enabled，不 Rv_Shutdown，避免在旧 VSR GPU 工作还在飞时销毁 NGX 特性
+extern "C" __declspec(dllexport) int WINAPI DshEngine_SuspendRtxVsr(){
+    if(g_vsr.enabled){ g_vsr.enabled=0; dsh_log("RTX VSR: 切画质前暂停（保留已建特性，不在 Present 里 Rv_Shutdown）"); }
+    return 0;
+}
 // ★ 结束状态位：bit0=音频已 EOF，bit1=视频已 EOF。前端"结束判定"用双条件，避免短音轨提前 EOF 时每 3m57s 自循环重播。
 extern "C" __declspec(dllexport) int WINAPI DshEngine_GetEndFlags(){
     int f = 0;
@@ -2527,12 +2576,16 @@ extern "C" __declspec(dllexport) int WINAPI DshEngine_SetRtxVsr(int on){
         return -4;
     }
     g_vsr.enabled=1;
-    if(!vsr_prepare()){ g_vsr.enabled=0; return -5; }
-    // 立刻把最后一帧跑一遍，避免等下一帧才生效
-    if(g.ctx && g.videoTex && !g.lastFrame.empty() && g.lastFrameW==g.vw && g.lastFrameH==g.vh){
-        g.ctx->UpdateSubresource(g.videoTex,0,nullptr,g.lastFrame.data(),(UINT)(g.lastFrameW*4),0);
-        vsr_eval_frame(g.videoTex,g.vw,g.vh);
-    }
+    // ★ 后台初始化保护：Rv_Init 可能 0.4s+；此期间 Present 看到 busy 会跳过 VSR，本帧走普通上传，绝不冻结 UI。
+    g_vsrBusy.store(true);
+    auto vsrT0=std::chrono::steady_clock::now();
+    bool vsrOk=vsr_prepare();
+    double vsrMs=std::chrono::duration<double,std::milli>(std::chrono::steady_clock::now()-vsrT0).count();
+    g_vsrBusy.store(false);
+    if(!vsrOk){ g_vsr.enabled=0; char b[160]; snprintf(b,sizeof(b),"RTX VSR: 初始化失败（耗时 %.1f ms）",vsrMs); dsh_log(b); return -5; }
+    { char b[180]; snprintf(b,sizeof(b),"[性能] RTX VSR: Rv_Init+准备 %.1f ms（%dx%d→%dx%d）",vsrMs,g.vw,g.vh,g_vsr.outW,g_vsr.outH); dsh_log(b); }
+    // ★ 不在这里立刻跑最后一帧 VSR：这是 UI 线程调用路径，4K 下会造成 0.4s+ 冻结。
+    //   下一帧 Present 会自动用新特性；切换瞬间保持上一帧即可。
     g_vsr.redrawPending.store(1);
     char b[260]; snprintf(b,sizeof(b),"RTX VSR: 已开启（%s路径，%dx%d→%dx%d，质量 %d）",
         g_useVulkan?"Vulkan":"D3D11", g.vw,g.vh,g_vsr.outW,g_vsr.outH,g_vsr.quality);

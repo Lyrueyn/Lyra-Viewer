@@ -50,6 +50,9 @@
             <Grid Grid.Column="0" x:Name="VideoHost" Background="Transparent"
                   PointerMoved="Video_PointerMoved" PointerExited="Video_PointerExited">
                 <SwapChainPanel x:Name="VideoPanel" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0,0"/>
+                <!-- ★ 切画质遮罩：OpenMediaAt 加载/定位期间盖住旧视频，避免先看到新文件片头帧 -->
+                <Border x:Name="QualitySwitchMask" Background="#FF000000" Visibility="Collapsed"
+                        HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsHitTestVisible="False"/>
                 <Canvas x:Name="DanmakuLayer" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsHitTestVisible="True" Background="Transparent" Tapped="Video_Tapped"/>
                 <!-- ★ 字幕层：TextBlock 叠加在视频上（前端按引擎播放时钟刷新；IsHitTestVisible=False 不影响操作） -->
                 <Border x:Name="SubtitleBar" VerticalAlignment="Bottom" HorizontalAlignment="Center"

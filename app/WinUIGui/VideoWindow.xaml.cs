@@ -23,6 +23,8 @@ public static class DshNative
     public static extern int DshEngine_Init(IntPtr panelNative, int w, int h);
     [DllImport("dsh_engine.dll", CallingConvention = CallingConvention.Winapi, CharSet = CharSet.Unicode)]
     public static extern int DshEngine_OpenMedia(string path);
+    [DllImport("dsh_engine.dll", CallingConvention = CallingConvention.Winapi, CharSet = CharSet.Unicode)]
+    public static extern int DshEngine_OpenMediaAt(string path, long startMs);
     [DllImport("dsh_engine.dll", CallingConvention = CallingConvention.Winapi)]
     public static extern void DshEngine_SetPaused(int paused);
     [DllImport("dsh_engine.dll", CallingConvention = CallingConvention.Winapi)]
@@ -106,9 +108,13 @@ public static class DshNative
     [DllImport("dsh_engine.dll", CallingConvention = CallingConvention.Winapi)]
     public static extern int DshEngine_GpuDead();
     // ★ 引擎 ABI 版本：Init 后强校验；旧 DLL 缺导出时不再静默当作"正常"，而是提示版本不匹配。
-    public const int ExpectedEngineApiVersion = 2;
+    public const int ExpectedEngineApiVersion = 3;
     [DllImport("dsh_engine.dll", CallingConvention = CallingConvention.Winapi)]
     public static extern int DshEngine_GetApiVersion();
+    [DllImport("dsh_engine.dll", CallingConvention = CallingConvention.Winapi)]
+    public static extern int DshEngine_IsMediaReady();
+    [DllImport("dsh_engine.dll", CallingConvention = CallingConvention.Winapi)]
+    public static extern int DshEngine_SuspendRtxVsr();
     // bit0=音频 EOF，bit1=视频 EOF（结束判定双条件；短音轨不能单独触发重播）
     [DllImport("dsh_engine.dll", CallingConvention = CallingConvention.Winapi)]
     public static extern int DshEngine_GetEndFlags();
@@ -169,6 +175,7 @@ public sealed partial class VideoWindow : Window
     private Microsoft.UI.Dispatching.DispatcherQueueTimer? _aiSubTimer;
     private string _aiSubLastGenSrt = "";
     private string _rtxSdkPath = "";          // ★ 用户选择的 NVIDIA RTX Video SDK 根目录（不打包 SDK）
+    private static string _rtxSdkAppliedSig = "";   // 本进程已复制/探测过的 SDK 签名（路径+DLL大小/修改时间）
     // ---- ★ AI 字幕多版本（<视频名>.ai.<模型>.srt）----
     private readonly List<(string Path, string Label)> _aiSubVersions = new();
     private int _aiSubVersionIdx = -1;
@@ -176,6 +183,7 @@ public sealed partial class VideoWindow : Window
     private int  _rtxVsrQuality = 2;                          // ★ RTX VSR 挡位 1~4（player_settings.json 的 rtx_vsr_quality）
     private int  _rtxVsrAvail = -1;                           // ★ 可用性：-1 未检测 0 不可用 1 可用
     private bool _rtxVsrSuppress;                             // ★ 程序化改 Toggle 时抑制 Toggled 回调
+    private int _rtxEnableSerial;                              // ★ 后台 VSR 初始化代次：换片/关开关时旧任务作废
     private bool _hdrSwitching;                               // 开关正在切换（交换链重建要一帧），避免连点
     // ---- 控制条自动隐藏（B站/YouTube 同款）----
     private Microsoft.UI.Dispatching.DispatcherQueueTimer? _barTimer;   // 无操作计时器
@@ -595,6 +603,23 @@ public sealed partial class VideoWindow : Window
     }
 
     /// <summary>引擎就绪后调用：检测 N 卡可用性，回填开关状态（不主动开，等 OpenMedia 后套用记忆）。</summary>
+    private static string RtxSdkSignature(string dllDir)
+    {
+        try
+        {
+            var sb = new System.Text.StringBuilder(dllDir);
+            foreach (var name in new[] { "nvngx_vsr.dll", "nvngx_truehdr.dll" })
+            {
+                string p = Path.Combine(dllDir, name);
+                if (!File.Exists(p)) { sb.Append("|missing:").Append(name); continue; }
+                var fi = new FileInfo(p);
+                sb.Append('|').Append(name).Append(':').Append(fi.Length).Append(':').Append(fi.LastWriteTimeUtc.Ticks);
+            }
+            return sb.ToString();
+        }
+        catch { return ""; }
+    }
+
     private void InitRtxVsrUi()
     {
         try
@@ -606,9 +631,18 @@ public sealed partial class VideoWindow : Window
                 string dllDir = ResolveRtxSdkDllDir(_rtxSdkPath);
                 if (!string.IsNullOrEmpty(dllDir))
                 {
-                    CopyRtxDllsToApp(dllDir);
-                    DshNative.DshEngine_SetRtxSdkPath("");
-                    DmLog("RTX SDK: 已从设置应用路径并复制 DLL 到程序目录 " + dllDir);
+                    // ★ NVNGX 探测很贵（本机 p50 609ms）：同一进程内 SDK 未变化时不再复制 23MB、不再 SetRtxSdkPath 重探。
+                    string sig = RtxSdkSignature(dllDir);
+                    string appDll = Path.Combine(AppContext.BaseDirectory, "nvngx_vsr.dll");
+                    bool needApply = !File.Exists(appDll) || !string.Equals(sig, _rtxSdkAppliedSig, StringComparison.Ordinal);
+                    if (needApply)
+                    {
+                        CopyRtxDllsToApp(dllDir);
+                        DshNative.DshEngine_SetRtxSdkPath("");
+                        _rtxSdkAppliedSig = sig;
+                        DmLog("RTX SDK: 已从设置应用路径并复制 DLL 到程序目录 " + dllDir);
+                    }
+                    else DmLog("RTX SDK: SDK 未变化 → 跳过复制与重探测（每进程一次）");
                 }
                 else
                 {
@@ -660,7 +694,7 @@ public sealed partial class VideoWindow : Window
         }
     }
 
-    /// <summary>换片后套用记忆：开启失败就回退开关并给出原因，不让 UI 显示假状态。</summary>
+    /// <summary>换片后套用记忆：后台初始化 VSR，避免在 UI 线程 Rv_Init 造成 0.4~0.6s 冻结。</summary>
     private void ApplyRtxVsrOnOpen()
     {
         if (_rtxVsrAvail != 1 || !_engineReady) return;
@@ -671,54 +705,68 @@ public sealed partial class VideoWindow : Window
             return;
         }
         DshNative.DshEngine_SetRtxVsrQuality(Math.Clamp(_rtxVsrQuality, 1, 4));
-        int rc = DshNative.DshEngine_SetRtxVsr(1);
-        if (rc <= 0)
-        {
-            // 首次换片瞬间引擎可能还没准备好（比如 Vulkan 目标刚建），稍等自动重试一次再报错
-            RtxVsrStatusText.Text = "初始化中…";
-            RtxVsrDetailText.Text = "正在初始化 AI 超分（首次换片可能需要 1~2 秒）…";
-            DmLog($"RTX VSR: ApplyRtxVsrOnOpen 首次失败 rc={rc} → 1.2 秒后重试");
-            _ = RetryRtxVsrOnOpenAsync(1);
-        }
-        else
-        {
-            _rtxVsrSuppress = true; RtxVsrToggle.IsOn = true; _rtxVsrSuppress = false;
-            RtxVsrStatusText.Text = "已开启";
-            try
-            {
-                var sb = new System.Text.StringBuilder(200);
-                DshNative.DshEngine_GetRtxVsrInfo(sb, sb.Capacity);
-                RtxVsrDetailText.Text = sb.ToString();
-            }
-            catch { RtxVsrDetailText.Text = "已开启"; }
-            DmLog("RTX VSR: 已按记忆开启");
-        }
+        if (DshNative.DshEngine_GetRtxVsr() == 1) { MarkRtxVsrOnUi(); return; }
+        int serial = ++_rtxEnableSerial;
+        RtxVsrStatusText.Text = "初始化中…";
+        RtxVsrDetailText.Text = "正在后台初始化 AI 超分（不阻塞 UI）…";
+        _ = EnableRtxVsrBackgroundAsync(serial, 0);
     }
 
-    /// <summary>换片后第一次开启失败时的延迟重试（最多再试 2 次）。</summary>
-    private async Task RetryRtxVsrOnOpenAsync(int attempt)
+    private async Task EnableRtxVsrBackgroundAsync(int serial, int attempt)
     {
         try
         {
-            await Task.Delay(1200);
-            if (_rtxVsrAvail != 1 || !_engineReady || !_rtxVsr) return;
-            if (RtxVsrToggle.IsOn && DshNative.DshEngine_GetRtxVsr() == 1) return;   // 已经开着了
-            int rc = DshNative.DshEngine_SetRtxVsr(1);
-            if (rc > 0)
+            // 等引擎媒体就绪（OpenMedia 是异步的；此处避免旧的"立刻失败 rc=-5 → 1.2s 后重试"）
+            bool ready = false;
+            for (int i = 0; i < 40; i++)
             {
-                _rtxVsrSuppress = true; RtxVsrToggle.IsOn = true; _rtxVsrSuppress = false;
-                RtxVsrStatusText.Text = "已开启";
-                try
-                {
-                    var sb = new System.Text.StringBuilder(200);
-                    DshNative.DshEngine_GetRtxVsrInfo(sb, sb.Capacity);
-                    RtxVsrDetailText.Text = sb.ToString();
-                }
-                catch { RtxVsrDetailText.Text = "已开启"; }
-                DmLog($"RTX VSR: 延迟重试开启成功（第 {attempt} 次重试）");
+                if (serial != _rtxEnableSerial || !_rtxVsr || !_engineReady || _rtxVsrAvail != 1) return;
+                if (DshNative.DshEngine_IsMediaReady() == 1) { ready = true; break; }
+                await Task.Delay(100);
+            }
+            if (!ready) { DmLog("RTX VSR: 媒体迟迟未就绪，放弃自动开启（可手动点开关）"); return; }
+            if (DshNative.DshEngine_GetRtxVsr() == 1)
+            {
+                DispatcherQueue.TryEnqueue(() => { if (serial == _rtxEnableSerial) MarkRtxVsrOnUi(); });
                 return;
             }
-            if (attempt < 2) { _ = RetryRtxVsrOnOpenAsync(attempt + 1); return; }
+            // ★ 关键：Rv_Init 放到线程池；引擎用 g_vsrBusy 让 Present 本帧跳过 VSR，不阻塞 UI。
+            int rc = await Task.Run(() => DshNative.DshEngine_SetRtxVsr(1)).ConfigureAwait(false);
+            if (serial != _rtxEnableSerial) return;
+            if (rc > 0)
+            {
+                DispatcherQueue.TryEnqueue(() => { if (serial == _rtxEnableSerial) MarkRtxVsrOnUi(); });
+                return;
+            }
+            if (attempt < 2)
+            {
+                await Task.Delay(300).ConfigureAwait(false);
+                await EnableRtxVsrBackgroundAsync(serial, attempt + 1);
+                return;
+            }
+            DispatcherQueue.TryEnqueue(() => { if (serial == _rtxEnableSerial) MarkRtxVsrFailUi(rc); });
+        }
+        catch (Exception ex) { DmLog("RTX VSR: 后台初始化异常 " + ex.GetType().Name + " " + ex.Message); }
+    }
+
+    private void MarkRtxVsrOnUi()
+    {
+        try
+        {
+            _rtxVsrSuppress = true; RtxVsrToggle.IsOn = true; _rtxVsrSuppress = false;
+            RtxVsrStatusText.Text = "已开启";
+            var sb = new System.Text.StringBuilder(200);
+            DshNative.DshEngine_GetRtxVsrInfo(sb, sb.Capacity);
+            RtxVsrDetailText.Text = sb.ToString();
+            DmLog("RTX VSR: 已按记忆开启（后台初始化完成）");
+        }
+        catch { }
+    }
+
+    private void MarkRtxVsrFailUi(int rc)
+    {
+        try
+        {
             _rtxVsrSuppress = true; RtxVsrToggle.IsOn = false; _rtxVsrSuppress = false;
             string why = rc switch
             {
@@ -729,9 +777,9 @@ public sealed partial class VideoWindow : Window
             };
             RtxVsrStatusText.Text = "本视频未启用";
             RtxVsrDetailText.Text = why;
-            DmLog($"RTX VSR: 重试后仍失败 rc={rc}（{why}）");
+            DmLog($"RTX VSR: 初始化仍失败 rc={rc}（{why}）");
         }
-        catch (Exception ex) { DmLog("RTX VSR: 重试异常 " + ex.Message); }
+        catch { }
     }
 
     private void RtxVsrQualityCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -2979,18 +3027,33 @@ public sealed partial class VideoWindow : Window
         if (!System.IO.File.Exists(path)) { DmLog($"切换画质失败：文件不存在 {path}"); return; }
         long pos = DshNative.DshEngine_GetPosMs();
         bool wasPaused = _paused;
-        DmLog($"切换画质 → {quality}（位置 {pos}ms，暂停={wasPaused}）");
-        OpenMedia(path);                    // 同一视频换清晰度：弹幕/元数据会自动重新加载（videoId 不变）
-        _currentQuality = quality;
-        QualityBtn.Content = quality + " ▾";
-        for (int i = 0; i < 60; i++)        // 等新文件加载完（时长出来）再跳回原位置，最多 ~6 秒
+        bool vsrWasOn = _rtxVsr && _rtxVsrAvail == 1;
+        DmLog($"切换画质 → {quality}（位置 {pos}ms，暂停={wasPaused}，OpenMediaAt）");
+        SetQualitySwitchMask(true);
+        try
         {
-            await Task.Delay(100);
-            if (DshNative.DshEngine_GetDurationMs() > 0) break;
+            // 先暂停 VSR（只清开关，不 Rv_Shutdown）：避免旧 VSR GPU 工作还在飞时销毁 NGX 特性触发 TDR
+            if (vsrWasOn) { try { DshNative.DshEngine_SuspendRtxVsr(); } catch { } }
+            OpenMedia(path, auto: false, startMs: pos > 500 ? pos : 0);
+            _currentQuality = quality;
+            QualityBtn.Content = quality + " ▾";
+            // 只等媒体加载/时长就绪，不再"等够 6 秒再 SeekJump"；OpenMediaAt 已在引擎内定好位置
+            for (int i = 0; i < 20; i++)
+            {
+                await Task.Delay(50);
+                if (DshNative.DshEngine_GetDurationMs() > 0) break;
+            }
+            if (wasPaused) DshNative.DshEngine_SetPaused(1);
+            await Task.Delay(280);   // 让新画质第一帧完成上屏，再撤遮罩
         }
-        if (pos > 500) DshNative.DshEngine_SeekJump(pos);   // 精确跳回原位置
-        if (wasPaused) DshNative.DshEngine_SetPaused(1);
-        DmLog($"切换画质完成 → {quality}（位置 {pos}ms）");
+        catch (Exception ex) { DmLog("切换画质异常: " + ex.GetType().Name + " " + ex.Message); }
+        finally { SetQualitySwitchMask(false); }
+        DmLog($"切换画质完成 → {quality}（位置 {pos}ms，OpenMediaAt）");
+    }
+
+    private void SetQualitySwitchMask(bool on)
+    {
+        try { QualitySwitchMask.Visibility = on ? Visibility.Visible : Visibility.Collapsed; } catch { }
     }
 
     // ---- ★ 本地视频简介编辑 ----
@@ -5421,10 +5484,10 @@ public sealed partial class VideoWindow : Window
     }
 
     /// <summary>打开视频文件（GUI 调用）。</summary>
-    public void OpenMedia(string path) => OpenMedia(path, auto: false);
+    public void OpenMedia(string path) => OpenMedia(path, auto: false, startMs: 0);
 
     /// <summary>auto=true = 自动连播（合集连播/列表循环）发起；auto=false = 用户手动（点卡片/画质/增强版）。</summary>
-    private void OpenMedia(string path, bool auto)
+    private void OpenMedia(string path, bool auto, long startMs = 0)
     {
         try { Title = "璃鸢镜 · " + System.IO.Path.GetFileNameWithoutExtension(path); } catch { }
         if (string.IsNullOrEmpty(path) || !System.IO.File.Exists(path)) return;
@@ -5493,8 +5556,8 @@ public sealed partial class VideoWindow : Window
         // ★ 只有**真的交给引擎**了才记"最近打开"——否则引擎就绪前的暂存 + VideoPanel_Loaded 补开会撞上闸门①，视频打不开（自测发现）
         _lastOpenPath = path;
         _lastOpenUtc = nowUtc;
-        int mrc = DshNative.DshEngine_OpenMedia(path);
-        System.Diagnostics.Debug.WriteLine($"[DshEngine] OpenMedia rc={mrc} path={path}");
+        int mrc = startMs > 0 ? DshNative.DshEngine_OpenMediaAt(path, startMs) : DshNative.DshEngine_OpenMedia(path);
+        System.Diagnostics.Debug.WriteLine($"[DshEngine] OpenMedia{(startMs>0?"At":"")} rc={mrc} path={path} start={startMs}");
         _ = UpdateMetaAsync(path, gen);   // 信息栏接真实元数据（带代次：迟到的结果会被丢弃）
         ApplySpeed();   // ★ 每次换片都确保倍速被引擎知道（引擎侧是全局状态，幂等）
         ApplyExclusive();   // ★ 同理：保证引擎的独占意图与界面一致（幂等；真正协商发生在打开音频设备时）
