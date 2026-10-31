@@ -49,16 +49,16 @@
 - PDF `reader.js` 监听 `host.finalize`，回 `{type:"host.finalized", requestId, sessionId, ok:true, revision:0}`；`sessionId` 从 URL 取。
 - `extension.json` 版本 0.3.0 → 0.3.1。
 
-### 1.7 EPUB 翻页冷却 / 动画串行 —— 0.6.3 → 0.6.6（追加）
+### 1.7 EPUB 翻页冷却 / 动画串行 —— 0.6.3 → 0.6.7（追加）
 
-分支 `fix/toc-overflow` 提交 `dfb54e7`、`2ce9012`、`81d141e`、`7442063`：
+分支 `fix/toc-overflow` 提交 `dfb54e7`、`2ce9012`、`81d141e`、`7442063`、`963e1ff`：
 
 - `paginator.js` 把翻页动画时长常量化为 `TURN_ANIM_OUT_MS=90` + `TURN_ANIM_IN_MS=130`，总 220ms，并导出 `TURN_ANIM_MS`。
 - `reader.js` 计算 `TURN_COOLDOWN_MS = TURN_ANIM_MS / 3 ≈ 73ms`；`userTurn` 在冷却期内直接丢弃下一次翻页，不再排队。
 - 用户反馈“快速点击时极少数页无动画”后，追加串行化：`processTurns` 按完整动画时长（220ms+40ms 余量）等待后再处理下一次翻页，避免连续 `cancelAnimation` 吞掉中间页动画。
 - 减少动画模式下没有动画可打断，冷却为 0。
-- 用户又反馈“点几下就翻不了页”：确认是等动画 Promise 在 rAF 被暂停时会永久挂起、`turnBusy` 卡死；改为纯计时器串行（不依赖 rAF Promise），并保留 1/3 冷却。\n- 用户继续反馈“翻页越来越快/进第二章第一下特别快/停手后还继续翻”：去掉待处理队列，动画进行中的点击直接丢弃；并让 `navigateToSpine` 等章节淡入完成后再返回，避免第二章第一页的切章动画被下一次翻页 cancel。\n- 扩展版本 0.6.2 → 0.6.3 → 0.6.4 → 0.6.5 → 0.6.6，`index.html` 缓存版本同步。
-- 新增回归 A12b（动画中点击丢弃、空闲后可继续）与 A12c（100ms 间隔连点 5 次不积压、停手后队列为空、busy 结束）；smoke **14 项全 PASS**。
+- 用户又反馈“点几下就翻不了页”：确认是等动画 Promise 在 rAF 被暂停时会永久挂起、`turnBusy` 卡死；改为纯计时器串行（不依赖 rAF Promise），并保留 1/3 冷却。\n- 用户继续反馈“翻页越来越快/进第二章第一下特别快/停手后还继续翻”：取消队列积压，动画进行中的点击最多保留 1 个；`navigateToSpine` 等章节淡入完成后再返回，避免第二章第一页的切章动画被下一次翻页 cancel。\n- 用户再反馈“翻页冷却过长”：冷却后不再等整段 220ms 动画；给 paginator 增加 `finishAnimationNow()`，下一翻页到来时把当前页立即定格到目标页再开始下一页（每页仍至少有约 1/3 动画时长）。\n- 扩展版本 0.6.2 → 0.6.3 → 0.6.4 → 0.6.5 → 0.6.6 → 0.6.7，`index.html` 缓存版本同步。
+- 新增回归 A12b（冷却内丢弃、空闲后可继续）与 A12c（100ms 间隔连点 5 次全部快速前进且停手后队列为空）；smoke **14 项全 PASS**。
 
 ## 2. 构建与安装
 
@@ -68,7 +68,7 @@
 - 主程序 Debug：`D:\Temp\lyra_host_round2_rebuild\WinUIGui.dll`  
   SHA-256 `8E8C4B262682BC0CD6BD672187759982DF71DC9284F9E8770B9F7F47EF2DDD08`
   - 0 errors。
-- 已把上述 host/engine + EPUB 0.6.6 + PDF 0.3.1 装入：
+- 已把上述 host/engine + EPUB 0.6.7 + PDF 0.3.1 装入：
   `D:\Users\Administrator\AppData\Local\LocalMediaPlayer`
 - 旧文件备份：`D:\Temp\LocalMediaPlayer-installed-backup-round2-20261031`
 - 版本号仍为 1.1.13（本地热更新，不冒充新版本；未发安装包）。
