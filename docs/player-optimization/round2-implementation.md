@@ -49,14 +49,15 @@
 - PDF `reader.js` 监听 `host.finalize`，回 `{type:"host.finalized", requestId, sessionId, ok:true, revision:0}`；`sessionId` 从 URL 取。
 - `extension.json` 版本 0.3.0 → 0.3.1。
 
-### 1.7 EPUB 翻页冷却 —— 0.6.3（追加）
+### 1.7 EPUB 翻页冷却 / 动画串行 —— 0.6.3 → 0.6.4（追加）
 
-分支 `fix/toc-overflow` 提交 `dfb54e7`：
+分支 `fix/toc-overflow` 提交 `dfb54e7`、`2ce9012`：
 
 - `paginator.js` 把翻页动画时长常量化为 `TURN_ANIM_OUT_MS=90` + `TURN_ANIM_IN_MS=130`，总 220ms，并导出 `TURN_ANIM_MS`。
-- `reader.js` 计算 `TURN_COOLDOWN_MS = TURN_ANIM_MS / 3 ≈ 73ms`；`userTurn` 在冷却期内直接丢弃下一次翻页，不再排队，避免快速连点反复打断动画。
+- `reader.js` 计算 `TURN_COOLDOWN_MS = TURN_ANIM_MS / 3 ≈ 73ms`；`userTurn` 在冷却期内直接丢弃下一次翻页，不再排队。
+- 用户反馈“快速点击时极少数页无动画”后，追加串行化：`goToPage` 返回动画 Promise；`processTurns` 等当前页动画真正结束再处理队列里的下一次翻页，避免连续 `cancelAnimation` 吞掉中间页动画。
 - 减少动画模式下没有动画可打断，冷却为 0。
-- 扩展版本 0.6.2 → 0.6.3，`index.html` 缓存版本同步。
+- 扩展版本 0.6.2 → 0.6.3 → 0.6.4，`index.html` 缓存版本同步。
 - 新增回归 A12b：两次立即点击只前进一步，等过冷却后再点才继续；smoke **13 项全 PASS**（含 A12b）。
 
 ## 2. 构建与安装
@@ -67,7 +68,7 @@
 - 主程序 Debug：`D:\Temp\lyra_host_round2_rebuild\WinUIGui.dll`  
   SHA-256 `8E8C4B262682BC0CD6BD672187759982DF71DC9284F9E8770B9F7F47EF2DDD08`
   - 0 errors。
-- 已把上述 host/engine + EPUB 0.6.3 + PDF 0.3.1 装入：
+- 已把上述 host/engine + EPUB 0.6.4 + PDF 0.3.1 装入：
   `D:\Users\Administrator\AppData\Local\LocalMediaPlayer`
 - 旧文件备份：`D:\Temp\LocalMediaPlayer-installed-backup-round2-20261031`
 - 版本号仍为 1.1.13（本地热更新，不冒充新版本；未发安装包）。
