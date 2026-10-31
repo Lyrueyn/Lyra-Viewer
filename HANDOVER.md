@@ -3,7 +3,7 @@
 > 交接对象：GPT-6  
 > 项目位置：`F:\DSH\LocalMediaPlayer-Workspace`  
 > 文档更新时间：2026-10-31  
-> 当前主线版本：**璃鸢镜 1.1.13**（已发布）  
+> 当前主线版本：**璃鸢镜 1.1.14**（已发布）  
 > 项目性质：Windows 本地媒体播放器，自研 C++ 音视频引擎 + WinUI 3 前端 + Python 后端 + 网页扩展系统。
 
 ---
@@ -26,9 +26,9 @@
 
 | 项目 | 版本 | 安装/更新资产 |
 |---|---|---|
-| 主程序 | **v1.1.13** | `LyraViewer-Setup-1.1.13.exe`（约 389 MB，安装在用户目录，不需要管理员权限之外的额外操作；安装包会安装 .NET 10 Desktop Runtime） |
-| EPUB 扩展 | **v0.6.1** | `lyra-ext-epub.zip` |
-| PDF 扩展 | **v0.2.0** | `lyra-ext-pdf.zip` |
+| 主程序 | **v1.1.14** | `LyraViewer-Setup-1.1.14.exe`（约 389 MB，安装在用户目录，不需要管理员权限之外的额外操作；安装包会安装 .NET 10 Desktop Runtime） |
+| EPUB 扩展 | **v0.6.9** | `lyra-ext-epub.zip` |
+| PDF 扩展 | **v0.3.1** | `lyra-ext-pdf.zip`（本地构建；GitHub Release 待发） |
 
 扩展必须和主程序版本配套使用；扩展中心会自动检查 GitHub 最新 Release。
 
@@ -170,7 +170,7 @@ extensions/<id>/
 - 打开后前 0.9 秒左右有加载保护，防止初始化重排闪回
 - 已修复：宿主重复投递同一本书导致重新打开、点几页后回开头
 
-### 5.6 PDF 阅读器（v0.2.0）
+### 5.6 PDF 阅读器（v0.3.1 本地）
 
 - 独立仓库：`Lyrueyn/Lyra-Extention-PDF_Reader`
 - 基于 PDF.js（`lib/pdf.min.js` + worker）
@@ -261,9 +261,9 @@ F:\DSH\LocalMediaPlayer-Workspace\packaging\_pkg_t34\lmp-setup-user.iss
 
 | 项目 | 版本 | 状态 |
 |---|---|---|
-| 主程序 | 1.1.13 | 已发布；新增宿主位置存储、固定扩展域名、检查更新跳转兜底 |
-| EPUB 扩展 | 0.6.1 | 已发布；切章过渡动画、版本缓存号更新 |
-| PDF 扩展 | 0.2.0 | 已发布；本机已安装 |
+| 主程序 | 1.1.14 | 已发布；第二轮现场问题修复：OpenMediaAt/切画质遮罩、VSR 后台初始化与 NVNGX 缓存、扩展关闭优化、ABI 3；EPUB 0.6.9 配套 |
+| EPUB 扩展 | 0.6.9 | 已发布；目录溢出、翻页冷却/串行、跨章首翻、动画缩短 |
+| PDF 扩展 | 0.3.1 | 本地构建（finalize 握手）；GitHub Release 待发 |
 | .NET 运行时 | 10.x | 安装包会安装；本机全局已有 10.0.9 / 10.0.13 |
 
 已知历史问题（已修）：
