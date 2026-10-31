@@ -124,6 +124,9 @@ namespace WinUIGui
                 ShowLoading("正在打开…");
                 string folder = _extensionDir;
                 string query = "?sessionId=" + Uri.EscapeDataString(_sessionId) + "&loadId=" + Uri.EscapeDataString(_loadId);
+                // 网页扩展需要调用本机 AI 后端（如 PDF 页面 Real-ESRGAN 超分）时，把当前实际端口传过去，
+                // 不能假设固定 8765（多实例时端口会顺延）。
+                try { query += "&backend=" + Uri.EscapeDataString(Backend.BaseUrl); } catch { }
                 if (_hasBook)
                 {
                     CleanupTemp();

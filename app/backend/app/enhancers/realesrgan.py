@@ -288,6 +288,44 @@ class RealesrganEnhancer:
             progress_cb(1.0)
         return dst
 
+    def enhance_image_bytes(self, data: bytes, out_scale: Optional[int] = None) -> bytes:
+        """PDF/图片页超分：输入图片字节，直接返回 PNG 字节（不落盘）。
+
+        只接受 8bit/24bit 图片；PDF 页面由前端渲染成 PNG 后传入。
+        """
+        import cv2
+        import numpy as np
+
+        arr = np.frombuffer(data, np.uint8)
+        img = cv2.imdecode(arr, cv2.IMREAD_UNCHANGED)
+        if img is None:
+            raise RuntimeError("超分失败：无法解码页面图片")
+        if img.ndim != 3 or img.shape[2] not in (3, 4):
+            raise RuntimeError("超分失败：页面图片不是 RGB/BGRA")
+        if img.shape[2] == 4:
+            img = cv2.cvtColor(img, cv2.COLOR_BGRA2BGR)
+        h, w = img.shape[:2]
+        if w * h > 40_000_000:
+            raise RuntimeError("超分失败：页面图片过大（{}x{}），请减小渲染宽度".format(w, h))
+        scale = int(out_scale or self.scale)
+        if scale not in (2, 4):
+            raise RuntimeError("超分倍率只支持 2 或 4")
+        self.scale = scale
+        self._memory_guard(w, h)
+        upsampler = self._load_model(w, h)
+        try:
+            import torch as _torch
+            with _torch.inference_mode():
+                output, _ = upsampler.enhance(img, outscale=scale)
+        except Exception as e:
+            if "out of memory" in str(e).lower() or "OutOfMemory" in type(e).__name__:
+                raise RuntimeError("显存不足：请把「倍率」调小后重试。") from e
+            raise
+        ok, enc = cv2.imencode(".png", output)
+        if not ok:
+            raise RuntimeError("超分失败：PNG 编码失败")
+        return enc.tobytes()
+
     # ---- 视频：流式管线（不落盘 + 切块 + NVENC）----
     def _enhance_video(self, src: Path, dst: Path, progress_cb) -> Path:
         if not FFMPEG:

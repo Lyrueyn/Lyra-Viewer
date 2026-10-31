@@ -3832,6 +3832,53 @@ def _version_tree(rows: list[dict]) -> list[dict]:
     return ordered
 
 
+_pdf_sr_lock = threading.Lock()
+_pdf_sr_cache: dict = {}
+
+
+def upscale_pdf_image(image_data_url: str, scale: int = 2) -> dict:
+    """PDF 页面超分（Real-ESRGAN）：输入 data URL，返回放大后的 PNG data URL。
+
+    仅供 PDF 阅读器扩展调用；GPU 推理串行化，避免并发请求同时吃显存。
+    """
+    import base64
+
+    if not isinstance(image_data_url, str) or "," not in image_data_url:
+        raise ValueError("缺少页面图片")
+    head, b64 = image_data_url.split(",", 1)
+    if not head.startswith("data:image/") or ";base64" not in head:
+        raise ValueError("页面图片必须是 base64 data URL")
+    try:
+        data = base64.b64decode(b64, validate=True)
+    except Exception as e:
+        raise ValueError("页面图片 base64 解码失败") from e
+    if len(data) > 30 * 1024 * 1024:
+        raise ValueError("页面图片过大（超过 30MB）")
+    try:
+        scale = int(scale)
+    except Exception:
+        raise ValueError("倍率必须是 2 或 4")
+    if scale not in (2, 4):
+        raise ValueError("倍率只支持 2 或 4")
+    t0 = time.monotonic()
+    from .enhancers.realesrgan import RealesrganEnhancer
+
+    # 同一进程缓存模型；锁住整个推理，PDF 逐页请求不会同时抢 GPU。
+    with _pdf_sr_lock:
+        enh = _pdf_sr_cache.get(scale)
+        if enh is None:
+            enh = RealesrganEnhancer(device="cuda", model_name="RealESRGAN_x4plus", scale=scale)
+            _pdf_sr_cache[scale] = enh
+        out = enh.enhance_image_bytes(data, scale)
+    return {
+        "ok": True,
+        "image": "data:image/png;base64," + base64.b64encode(out).decode("ascii"),
+        "scale": scale,
+        "bytes": len(out),
+        "elapsed_ms": round((time.monotonic() - t0) * 1000, 1),
+    }
+
+
 def list_enhanced_versions(media_type: str, media_id: int) -> dict:
     """某媒体的已完成增强版本（血缘树排序，带版本名，供播放器版本菜单）。
 

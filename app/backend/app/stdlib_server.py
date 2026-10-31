@@ -72,6 +72,9 @@ class Handler(BaseHTTPRequestHandler):
             elif path == "/api/media/info":
                 _pth = (q.get("path") or [""])[0]
                 self._send(services.media_info(_pth))
+            elif path == "/api/pdf/upscale":
+                # 能力探测：PDF 扩展用它找“带页面超分接口”的本机后端（GET 不触发 CORS 预检）。
+                self._send({"ok": True, "service": "pdf-upscale"})
             elif path == "/api/bilibili/parse":
                 url = (q.get("url") or [""])[0]
                 self._send(downloader_parse(url))
@@ -141,6 +144,16 @@ class Handler(BaseHTTPRequestHandler):
             logger.exception("GET %s 失败", path)
             self._send_error(500, str(e))
 
+    def do_OPTIONS(self) -> None:
+        # PDF 阅读器等网页扩展从 https://lyra_ext_* 调本地 HTTP 后端时的 CORS 预检。
+        self.send_response(204)
+        self.send_header("Access-Control-Allow-Origin", "*")
+        self.send_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
+        self.send_header("Access-Control-Allow-Headers", "Content-Type")
+        self.send_header("Access-Control-Max-Age", "86400")
+        self.send_header("Content-Length", "0")
+        self.end_headers()
+
     def do_POST(self) -> None:
         parsed = urllib.parse.urlparse(self.path)
         path = parsed.path
@@ -182,6 +195,11 @@ class Handler(BaseHTTPRequestHandler):
             elif (m := re.fullmatch(r"/api/playlists/(\d+)/order", path)):
                 # ★ 合集内拖拽排序：按新顺序重排 position（显示时的 P 几）
                 self._send(services.set_playlist_order(int(m.group(1)), body.get("video_ids") or []))
+            elif path == "/api/pdf/upscale":
+                self._send(services.upscale_pdf_image(
+                    str(body.get("image", "")),
+                    int(body.get("scale", 2)),
+                ))
             elif path == "/api/enhance/submit_chain":
                 # ★ T27：提交增强链（多节点串行）。1~8 个节点，一条 task 记录 + 节点序列。
                 # ★ 2026-10-20：新增 nodes=[{key, params}]（节点图每个节点可带自己的参数）；
