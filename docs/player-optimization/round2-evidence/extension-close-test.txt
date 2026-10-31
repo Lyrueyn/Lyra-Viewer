@@ -1,0 +1,5 @@
+﻿安装版扩展关闭实测（2026-10-31，round2 host）
+- 安装目录：D:\Users\Administrator\AppData\Local\LocalMediaPlayer
+- 用 UIA WindowPattern.Close 关闭已打开的扩展窗口
+- 观察：EPUB 阅读器 137ms、TXT 阅读器 130ms；共 4 个扩展窗口全部消失，剩余 0
+- PDF 0.3.0 属于 legacy 扩展（未发过协议消息）→ 宿主直接关，不等待 1500ms
