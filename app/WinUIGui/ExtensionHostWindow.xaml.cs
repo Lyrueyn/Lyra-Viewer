@@ -97,6 +97,9 @@ namespace WinUIGui
                 await Wv.EnsureCoreWebView2Async();
                 if (Wv.CoreWebView2 == null || _closeStarted) return;
                 Wv.CoreWebView2.Settings.IsWebMessageEnabled = true;
+                // PDF/EPUB 阅读时不要 WebView2 默认右键菜单（返回/刷新/另存为/打印/检查）。
+                Wv.CoreWebView2.Settings.AreDefaultContextMenusEnabled = false;
+                Wv.CoreWebView2.Settings.AreDevToolsEnabled = false;
                 Wv.CoreWebView2.WebMessageReceived += OnWebMessageReceived;
                 Wv.CoreWebView2.NavigationCompleted += OnNavigationCompleted;
                 Wv.CoreWebView2.NavigationStarting += OnNavigationStarting;
