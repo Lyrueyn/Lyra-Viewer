@@ -1,0 +1,8 @@
+﻿R8 Top3 重启按钮动态测试（2026-10-31）
+- 测试程序：D:\Temp\lyra_1113_test（隔离，非用户安装目录）
+- 引擎：旧版 dsh_engine.dll（无 GetApiVersion，显示 ABI 不匹配横幅）
+- 旧进程 PID 45648，`--video F:\...\app\dsh_engine\testclip.mp4`
+- UIA 找到 RestartPlayerBtn，InvokePattern 调用成功
+- 旧进程 10 秒内退出：old alive=False
+- 新进程 PID 42612，ParentProcessId=45648，命令行确认带 `--video ...testclip.mp4`
+- 结论：新进程确实以独立视频窗口启动，旧进程随后退出；修好了“点重启只关掉自己”的路径

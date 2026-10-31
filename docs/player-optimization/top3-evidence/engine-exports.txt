@@ -1,0 +1,3 @@
+﻿[   3] DshEngine_GetApiVersion
+[   9] DshEngine_GetEndFlags
+[  15] DshEngine_GpuDead
