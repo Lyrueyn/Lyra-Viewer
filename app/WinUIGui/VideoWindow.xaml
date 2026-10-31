@@ -151,10 +151,10 @@
                         Padding="18,12" CornerRadius="8" MaxWidth="760"
                         Background="#E6101010" BorderThickness="2" BorderBrush="{StaticResource BiliBlue}">
                     <StackPanel Spacing="5">
-                        <TextBlock AutomationProperties.AutomationId="GpuDeadBannerTitle"
+                        <TextBlock x:Name="GpuDeadBannerTitle" AutomationProperties.AutomationId="GpuDeadBannerTitle"
                                    Text="⚠ 显卡设备已丢失（驱动故障），画面已停止"
                                    Foreground="{StaticResource BiliBlue}" FontSize="16" FontWeight="SemiBold"/>
-                        <TextBlock Text="点下方按钮即可重启播放器（会自动开好新窗口再关掉当前这个）；若频繁出现，请做一次真正的重启（不是关机再开）。"
+                        <TextBlock x:Name="GpuDeadBannerBody" Text="点下方按钮即可重启播放器（会自动开好新窗口再关掉当前这个）；若频繁出现，请做一次真正的重启（不是关机再开）。"
                                    Foreground="#FFFFFF" FontSize="13" TextWrapping="Wrap"/>
                         <!-- ★ 一键重启（文字按钮、天依蓝；不用图标）。点一次就自动开新实例 → 等它起来 → 再关自己，
                              用户不必再"手动关掉 + 手动打开"两步。 -->
@@ -167,7 +167,7 @@
                         <TextBlock x:Name="RestartHint" AutomationProperties.AutomationId="RestartHint"
                                    Text="" Visibility="Collapsed"
                                    Foreground="#FFD479" FontSize="12" TextWrapping="Wrap"/>
-                        <TextBlock AutomationProperties.AutomationId="GpuDeadBannerSub"
+                        <TextBlock x:Name="GpuDeadBannerSub" AutomationProperties.AutomationId="GpuDeadBannerSub"
                                    Text="（画面已停止刷新，下方控制条已置灰 —— 重启后即可恢复）"
                                    Foreground="#B9BEC4" FontSize="12" TextWrapping="Wrap"/>
                     </StackPanel>

@@ -313,26 +313,25 @@ static bool dsh_avc_speed_reanchor_enabled(){
 //   "conflicting declaration ... with 'C' linkage"（编译验证时踩过一次）。
 
 static int qCap(){
-    // ★ 帧队列总预算 192MB：1080p BGRA(8MB) 可留 16 帧，4K BGRA(33MB) 只留 4~5 帧，避免高分辨率时内存暴涨
+    // ★ 帧队列总预算默认 320MB（原 192MB）：1080p BGRA(8MB) 可留 16 帧，4K BGRA(33MB) 约留 9 帧。
+    //   192MB 时 4K 只有 5 帧，加上背压判据错误会造成解码空转/画面定格；这里同时修正判据（见 DecodeAhead）。
+    //   可用 DSH_FRAME_QUEUE_MB 覆盖（32~1024MB），便于低内存机器回退。
     long long frameBytes = (long long)g.vw * (long long)g.vh * 4;
     if(frameBytes <= 0) return QMAX;
-    long long budget = 192LL * 1024 * 1024;
+    long long budget = 320LL * 1024 * 1024;
+    { const char* e = getenv("DSH_FRAME_QUEUE_MB"); if(e && *e){ long v = strtol(e, nullptr, 10); if(v >= 32 && v <= 1024) budget = v * 1024LL * 1024LL; } }
     int cap = (int)(budget / frameBytes);
     if(cap < 4) cap = 4;
     if(cap > QMAX) cap = QMAX;
     return cap;
 }
-static void qPush(std::vector<uint8_t>&& bg,int w,int h,int64_t ptsUs){
+static bool qPush(std::vector<uint8_t>&& bg,int w,int h,int64_t ptsUs){
     int cap = qCap();
-    if(g_qCount>=cap){
-        // 队列满：覆盖最旧一帧（丢最旧），count 封顶
-        QF& e=g_q[g_qWrite]; e.bg=std::move(bg); e.w=w; e.h=h; e.ptsUs=ptsUs; e.used=true;
-        g_qWrite=(g_qWrite+1)%QMAX;
-        return;
-    }
+    if(g_qCount>=cap) return false;   // ★ 真正背压：满就拒绝，由调用方停止解码；不再静默覆盖最旧帧（会隐藏"满"并造成解码空转）
     QF& e=g_q[g_qWrite];
     e.bg=std::move(bg); e.w=w; e.h=h; e.ptsUs=ptsUs; e.used=true;
     g_qWrite=(g_qWrite+1)%QMAX; g_qCount++;
+    return true;
 }
 static bool qPopOldest(std::vector<uint8_t>& out,int& w,int& h,int64_t& ptsUs){
     if(g_qCount<=0) return false;
@@ -1654,7 +1653,7 @@ static double dsh_clock_ms_double(){
     //   mediaGeneration() = T1 显式重置锚点（seek/flush/换片）的代号
     int64_t obsUs = 0, obsStampUs = 0;
     uint32_t obsGen = 0;
-    if(g_audio.ok){
+    if(g_audio.ok && !g_audio.fileEnded()){
         obsGen = g_audio.mediaGeneration();
         int64_t m = g_audio.mediaUs();
         if(m > 0){ obsUs = m; obsStampUs = g_audio.mediaUsStampUs(); }
@@ -2210,7 +2209,7 @@ static void DecodeAhead(){
     { std::lock_guard<std::mutex> lk(g_mtx); if(g_originUs==0){ g_originUs=nowUs; g_originPts=0; } }
     int64_t clockUs = (int64_t)(dsh_clock_ms_double()*1000.0);
     for(int guard=0; guard<300; guard++){
-        { std::lock_guard<std::mutex> lk(g_mtx); if(g_qCount>=QMAX) break; }
+        { std::lock_guard<std::mutex> lk(g_mtx); if(g_qCount>=qCap()) break; }
         if(g.eof) break;
         int rr=avcodec_receive_frame(g.cc,fr);
         if(rr==0){
@@ -2278,8 +2277,10 @@ static void DecodeAhead(){
                     g.seekSkipN,(double)(nowU-g.seekStamp)/1000.0);
                 dsh_log(b); g.seekSkipN=0;   // ★ 只清帧计数：seekStamp 留给 Present，seekCatchT0 留给追赶计时
             }
-            { std::lock_guard<std::mutex> lk(g_mtx); qPush(std::move(buf), w, h, ptsUs); }
+            bool pushed = false;
+            { std::lock_guard<std::mutex> lk(g_mtx); pushed = qPush(std::move(buf), w, h, ptsUs); }
             av_frame_unref(fr);
+            if(!pushed) break;
         } else if(rr==AVERROR(EAGAIN)){
             int r=av_read_frame(g.fmt,pkt);
             if(r<0){ g.eof=true; break; }
@@ -2461,6 +2462,17 @@ static void dsh_check_present_hr(HRESULT hr){
     }
 }
 // ★ 只读导出：显卡是否已被判死（1=已判死）。C# 侧据此提示"显卡/驱动故障，请重启程序"，而不是让用户对着白屏干等。
+extern "C" __declspec(dllexport) int WINAPI DshEngine_GpuDead(){ return g_gpuDead ? 1 : 0; }
+// ★ 引擎/界面 ABI 版本：C# Init 后强校验，防止旧 dsh_engine.dll 缺导出时"探测静默失效"（白屏可读化链路）。
+//   改动导出/结构体语义时 +1；C# 侧 DshNative.ExpectedEngineApiVersion 必须同步。
+extern "C" __declspec(dllexport) int WINAPI DshEngine_GetApiVersion(){ return 2; }
+// ★ 结束状态位：bit0=音频已 EOF，bit1=视频已 EOF。前端"结束判定"用双条件，避免短音轨提前 EOF 时每 3m57s 自循环重播。
+extern "C" __declspec(dllexport) int WINAPI DshEngine_GetEndFlags(){
+    int f = 0;
+    if(g_audio.ok && g_audio.fileEnded()) f |= 1;
+    if(g.eof) f |= 2;
+    return f;
+}
 // ================= ★ RTX VSR 开关（UI 设置里那个"超分辨率"开关）=================
 // ★ 允许用户指定 RTX Video SDK 的 DLL 目录（包含 nvngx_vsr.dll / nvngx_truehdr.dll）。
 //   传入空字符串 = 清除（恢复默认搜索，例如 DLL 就在程序目录时）。

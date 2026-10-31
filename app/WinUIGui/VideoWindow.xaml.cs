@@ -105,6 +105,13 @@ public static class DshNative
     //   界面据此弹"显卡故障请重启"提示条，而不是让用户对着白屏干等（白屏可读化）。
     [DllImport("dsh_engine.dll", CallingConvention = CallingConvention.Winapi)]
     public static extern int DshEngine_GpuDead();
+    // ★ 引擎 ABI 版本：Init 后强校验；旧 DLL 缺导出时不再静默当作"正常"，而是提示版本不匹配。
+    public const int ExpectedEngineApiVersion = 2;
+    [DllImport("dsh_engine.dll", CallingConvention = CallingConvention.Winapi)]
+    public static extern int DshEngine_GetApiVersion();
+    // bit0=音频 EOF，bit1=视频 EOF（结束判定双条件；短音轨不能单独触发重播）
+    [DllImport("dsh_engine.dll", CallingConvention = CallingConvention.Winapi)]
+    public static extern int DshEngine_GetEndFlags();
     [DllImport("dsh_engine.dll", CallingConvention = CallingConvention.Winapi)]
     public static extern void DshEngine_Shutdown();
 }
@@ -130,6 +137,7 @@ public sealed partial class VideoWindow : Window
     private Microsoft.UI.Dispatching.DispatcherQueueTimer? _gpuDeadTimer;
     private bool _gpuDeadShown;          // 提示条当前是否已显示（1→0 时恢复控件，0→1 时置灰）
     private bool _gpuDeadProbeBroken;    // 探测接口不可用（引擎没加载/旧 DLL 无此导出）：只记一次日志
+    private bool _engineApiMismatch;     // 引擎 ABI 与界面不一致：显示提示条，避免"白屏可读化"静默失效
     private bool _engineReady;
     private bool _paused;
     private bool _seeking;   // 拖动进度条时不回写，避免从 ValueChanged 回灌触发 seek
@@ -330,6 +338,36 @@ public sealed partial class VideoWindow : Window
         _gpuDeadTimer.Start();
     }
 
+    /// <summary>Init 后校验引擎 ABI；旧 DLL 缺导出时显示可读提示，避免判死链/结束状态静默失效。</summary>
+    private void CheckEngineApiVersion()
+    {
+        try
+        {
+            int api = DshNative.DshEngine_GetApiVersion();
+            if (api == DshNative.ExpectedEngineApiVersion) return;
+            ShowEngineApiMismatch($"引擎 ABI 版本 {api}，界面需要 {DshNative.ExpectedEngineApiVersion}");
+        }
+        catch (Exception ex)
+        {
+            ShowEngineApiMismatch($"旧版 dsh_engine.dll 缺少 GetApiVersion 导出（{ex.GetType().Name}）");
+        }
+    }
+
+    private void ShowEngineApiMismatch(string reason)
+    {
+        _engineApiMismatch = true;
+        try
+        {
+            GpuDeadBannerTitle.Text = "⚠ 引擎与界面版本不匹配";
+            GpuDeadBannerBody.Text = "当前 dsh_engine.dll 不是本程序配套版本，显卡故障提示/结束判定等接口可能失效。"
+                                   + "请用安装包重新安装或点下方按钮重启；若仍出现，请退回完整安装包覆盖。\n" + reason;
+            try { GpuDeadBannerSub.Visibility = Visibility.Collapsed; } catch { }   // ABI 不匹配时画面未必已停，别误报"控制条已置灰"
+            GpuDeadBanner.Visibility = Visibility.Visible;
+        }
+        catch { }
+        DmLog("★ 引擎/界面 ABI 不匹配：" + reason);
+    }
+
     /// <summary>每 1 秒：读一次引擎的判死状态；状态翻转才改界面。探测异常一律吞掉。</summary>
     private void CheckGpuDead()
     {
@@ -357,10 +395,12 @@ public sealed partial class VideoWindow : Window
     /// <summary>判死状态翻转时更新界面：提示条 + 控制条置灰/恢复 + 写一条日志。</summary>
     private void ApplyGpuDeadUi(bool dead)
     {
+        if (_engineApiMismatch && !dead) return;   // ABI 不匹配提示不能被每秒的"未判死"轮询收起
         _gpuDeadShown = dead;
         try
         {
             GpuDeadBanner.Visibility = dead ? Visibility.Visible : Visibility.Collapsed;
+            try { GpuDeadBannerSub.Visibility = dead ? Visibility.Visible : Visibility.Collapsed; } catch { }
             ApplyCtrlEnabled(!dead);
             if (dead && !_paused)
             {
@@ -395,6 +435,12 @@ public sealed partial class VideoWindow : Window
     {
         bool was = _gpuDeadShown;
         _gpuDeadShown = false;
+        if (_engineApiMismatch)
+        {
+            // ABI 不匹配提示不能因为换片被 ResetGpuDeadUi 收起（否则用户只在第一次打开时看到一眼）
+            try { ApplyCtrlEnabled(true); } catch { }
+            return;
+        }
         try { GpuDeadBanner.Visibility = Visibility.Collapsed; ApplyCtrlEnabled(true); } catch { }
         if (was) DmLog("★ 换片：复位显卡判死提示（引擎在 LoadMedia 里已重新允许 Present）");
     }
@@ -2753,15 +2799,20 @@ public sealed partial class VideoWindow : Window
             string? exe = Environment.ProcessPath;
             if (string.IsNullOrEmpty(exe)) throw new InvalidOperationException("Environment.ProcessPath 取不到可执行文件路径");
 
-            System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
+            var psi = new System.Diagnostics.ProcessStartInfo
             {
                 FileName = exe,
                 WorkingDirectory = AppContext.BaseDirectory,
                 UseShellExecute = true,
-            });
-            DmLog($"重启: 已发起新实例 {exe}（工作目录 {AppContext.BaseDirectory}）");
+            };
+            // ★ 必须带 --video：否则新进程走单实例锁（主窗已存在 → Exit(0)），当前窗随后退出 = 两个窗口都没了
+            psi.ArgumentList.Add("--video");
+            psi.ArgumentList.Add(string.IsNullOrEmpty(_currentPath) ? "" : _currentPath);
+            System.Diagnostics.Process.Start(psi);
+            DmLog($"重启: 已发起新实例 {exe} --video \"{_currentPath}\"（工作目录 {AppContext.BaseDirectory}）");
 
-            // 等新实例起来：最多 8 秒，必须是另一个 PID（按进程名找，排除自己）
+            // 等新实例起来：最多 8 秒，必须是另一个 PID 且已有视频窗（标题 "璃鸢镜 · "）。
+            // 不能只按进程名判断：主窗口进程一直存在，会被误当成新实例。
             string procName = Path.GetFileNameWithoutExtension(exe);
             const int waitMs = 8000;
             int newPid = 0;
@@ -2771,7 +2822,14 @@ public sealed partial class VideoWindow : Window
                 try
                 {
                     foreach (var p in System.Diagnostics.Process.GetProcessesByName(procName))
-                        if (p.Id != self) { newPid = p.Id; break; }
+                    {
+                        if (p.Id == self) continue;
+                        p.Refresh();
+                        if (p.HasExited) continue;
+                        if (p.MainWindowHandle != IntPtr.Zero &&
+                            p.MainWindowTitle.StartsWith("璃鸢镜 · ", StringComparison.Ordinal))
+                        { newPid = p.Id; break; }
+                    }
                 }
                 catch { }
                 if (newPid != 0) break;
@@ -3063,6 +3121,7 @@ public sealed partial class VideoWindow : Window
         Marshal.Release(p);
         System.Diagnostics.Debug.WriteLine($"[DshEngine] Init rc={rc}");
         _engineReady = true;
+        CheckEngineApiVersion();   // ★ 先校验引擎 ABI：旧 dsh_engine.dll 缺 GpuDead/EndFlags 时明确提示，而不是静默失效
         ApplyExclusive();   // ★ 独占/共享：尽早把界面意图下发给引擎（这样"记忆=独占"能对第一个视频就生效）
         InitRtxVsrUi();     // ★ RTX VSR：检测 N 卡可用性 + 回填开关（真正的启用在 OpenMedia 后由 ApplyRtxVsrOnOpen）
         StartAiSubPolling();                        // ★ AI 字幕：模型下载/识别任务轮询
@@ -4843,12 +4902,19 @@ public sealed partial class VideoWindow : Window
                 else { _lastEndStall = 0; _lastEndPos = pos; }
             }
             else { _lastEndStall = 0; _lastEndPos = pos; }
-            if (nearEnd || stalled)
+            int endFlags = 0;
+            try { endFlags = DshNative.DshEngine_GetEndFlags(); } catch { }
+            bool audioEof = (endFlags & 1) != 0;
+            bool videoEof = (endFlags & 2) != 0;
+            // ★ 结束判定双条件：stalled 只有在音频和视频都真的 EOF 时才允许自动重播/连播。
+            //   短音轨提前 EOF 时音频结束、视频还在放（日志 37 次每 3m57s 自循环重播的根因），不能只看 stalled。
+            bool ended = nearEnd || (stalled && audioEof && videoEof);
+            if (ended)
             {
                 if (!_eofHandled)
                 {
                     _eofHandled = true;
-                    DmLog($"结束判定成立: pos={pos} dur={dur} nearEnd={nearEnd} stalled={stalled}");
+                    DmLog($"结束判定成立: pos={pos} dur={dur} nearEnd={nearEnd} stalled={stalled} audioEof={audioEof} videoEof={videoEof}");
                     OnMediaEnded();
                     return;
                 }

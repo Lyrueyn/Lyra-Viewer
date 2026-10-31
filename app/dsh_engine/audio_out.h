@@ -139,7 +139,7 @@ struct AudioOut {
         srcCh   = cc->ch_layout.nb_channels; if (srcCh <= 0) srcCh = 2;
         maxInFrame = cc->frame_size > 0 ? (size_t)cc->frame_size : 4096;   // ★ 最坏输出突发量的初值（WAV=4096/AAC=1024）
         decName = dec->name;
-        seekBaseUs = startUs; posUs.store(startUs); framesOut.store(0); eof = false;
+        seekBaseUs = startUs; posUs.store(startUs); framesOut.store(0); eof = false; endedFlag.store(false);
         // ★ 媒体时钟归零 + 代号 +1（新的一段媒体；单调钳制从这里重新起算）
         mediaUsFloor.store(startUs);
         mediaAnchorUs.store(startUs);
@@ -167,6 +167,7 @@ struct AudioOut {
         }
         if (cc) avcodec_flush_buffers(cc);
         eof = false;
+        endedFlag.store(false);
         { std::lock_guard<std::mutex> lk(rm); ringFill = ringRead = ringWrote = 0; ringMediaUs = 0; ringBlks.clear(); rsPhase = 0.0; }
         rsTailValid = false;   // cubic 的块边界历史也要清（换片/seek 后不能拿旧样本当邻居）
         devMediaUs.store(0); devSamples.store(0); lastPad.store(0);
@@ -201,6 +202,7 @@ private:
     std::string url, decName;
     int64_t seekBaseUs = 0;
     bool eof = false;
+    std::atomic<bool> endedFlag{false};   // ★ 供引擎读"音频已 EOF"（前端结束判定用；eof 本身由渲染/解码线程私有）
     std::thread decTh, rendTh;
     std::atomic<bool> decRun{false};
     std::atomic<bool> rendReady{false};
@@ -350,7 +352,7 @@ private:
             if (r < 0) {
                 if (!eofLogged) { eofLogged = true;
                     char b[160]; snprintf(b, sizeof(b), "音频: av_read_frame 失败 r=%d（音频将静音）", r); dsh_log(b); }
-                eof = true; av_packet_unref(pkt); av_frame_free(&fr); av_packet_free(&pkt); return -1;
+                eof = true; endedFlag.store(true); av_packet_unref(pkt); av_frame_free(&fr); av_packet_free(&pkt); return -1;
             }
             if (!firstReadLogged) { firstReadLogged = true; dsh_log("音频: 首次读到音频包 ✔"); }
             if (pkt->stream_index == aStream) {
@@ -443,6 +445,8 @@ public:   // ★ 倍速接口供引擎调用（原 struct 内部有 private 区�
     //   ★ 单调不减：只允许前进（seek/flush 时显式重置，用 mediaGen 区分）
     //   ★ 同时给锚点的墙钟时间戳，引擎用"锚点 + 墙钟插值"就能得到没有台阶、不会来回抖的主时钟
     //   ★ 故意不用 playUs（= 已写设备 − 端点 padding）：它每 22ms 上下浮动 → 时钟来回跳（历史上弹幕"一抖一抖"）
+    // 音频是否已读到 EOF（只读、跨线程安全；引擎据此在 EOF 后切墙钟继续推进，避免主时钟冻结）
+    bool fileEnded() { return endedFlag.load(); }
     int64_t mediaUs() {
         uint32_t g0 = mediaGen.load();
         int64_t ringM = 0;
