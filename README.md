@@ -1,31 +1,92 @@
-# 璃鸢镜（Lyra Viewer）v1.0.0
+# 璃鸢镜（Lyra Viewer）v1.1.15
 
 > 🤖 **本项目由 AI（DeepSeek Harness）制作/协作开发。**
 >
-> 一个面向 Windows 的本地媒体播放器：自研 Vulkan / D3D11 视频渲染引擎 + WinUI 3 界面 + Python 后端。
-> 支持 B 站 / YouTube 下载、弹幕、评论、字幕、AI 字幕（Whisper）、RTX VSR 超分、HDR、音频增强等。
+> 一个面向 Windows 的本地/在线媒体播放器：
+> **WinUI 3 前端 + 自研 C++ 音视频引擎 + 本地 Python 后端 + WebView2 阅读扩展**。
+> 支持 B 站 / YouTube 下载、弹幕、评论、字幕、AI 字幕（Whisper）、RTX VSR、HDR、音频增强，以及 EPUB / PDF 阅读。
+
+## 下载安装
+
+最新版本：**璃鸢镜 1.1.15**
+
+| 内容 | 地址 |
+|---|---|
+| 主程序 Release | https://github.com/Lyrueyn/Lyra-Viewer/releases/latest |
+| 安装包 | `LyraViewer-Setup-1.1.15.exe` |
+| EPUB 扩展 | https://github.com/Lyrueyn/Lyra-Extension-Epub |
+| PDF 扩展 | https://github.com/Lyrueyn/Lyra-Extention-PDF_Reader |
+
+- 安装到当前用户目录，不需要管理员权限，不写 Program Files / ProgramData。
+- 安装包会安装 .NET 10 Desktop Runtime；需要 Windows 10/11 x64。
+- EPUB / PDF 扩展由扩展中心自动检查 GitHub Release 更新；主程序更新也会跟随 Release。
 
 ## 功能
 
-- **本地播放**：Vulkan 视频渲染（D3D11 回退）、HDR / HDR→SDR 色调映射、去隔行、FSRCNNX 超分、ICC 校色、字幕（SRT/VTT/ASS）
-- **在线视频**：B 站 / YouTube 解析与下载；B 站弹幕、评论；视频库、合集、播放列表
-- **字幕**：B 站 CC 字幕下载、YouTube 字幕抓取；**AI 字幕**（本地 Whisper，可选 tiny/base/small/medium/large-v3；每模型单独一版；繁→简统一；GPU/CPU 自动选择）
-- **画质增强**：RTX VSR（NVIDIA RTX Video SDK）、Real-ESRGAN、RIFE 补帧、DeepFilterNet 降噪、LavaSR 音频超分
-- **音频**：WASAPI 独占共享模式、Hi-Res 输出、ASIO 支持
+### 本地播放
+
+- Vulkan 视频渲染，D3D11 回退；HDR / HDR→SDR（ITU-R BT.2390）色调映射。
+- FSRCNNX 2× 超分、去隔行（bwdif/yadif）、ICC 校色、字幕链路（SRT/VTT/ASS）。
+- WASAPI 独占 / 共享输出、Hi-Res、ASIO；音频采样率在打开设备前正确设置。
+- 多视频窗口、播放列表、播放位置记忆、播放完成后的结束判定与回调。
+
+### 在线视频与下载
+
+- B 站 / YouTube 解析与下载；B 站弹幕、评论、合集、播放列表。
+- 视频库、收藏、合集、下载任务管理；B 站 Cookie / YouTube 登录态管理。
+- 支持 Hi-Res 音频优选、分 P、播放列表批量下载。
+
+### 字幕与增强
+
+- B 站 CC 字幕、YouTube 字幕抓取；可手动导入本地字幕。
+- **AI 字幕**：本地 Whisper，可选 tiny/base/small/medium/large-v3，按模型单独管理，繁→简统一，GPU/CPU 自动选择。
+- **画质增强**：RTX VSR、Real-ESRGAN、RIFE 补帧、DeepFilterNet 降噪、LavaSR 音频超分；支持增强链和版本管理。
+- 1.1.14 起：切画质使用 `DshEngine_OpenMediaAt(path, startMs)`，不再先闪片头帧；VSR 生命周期移出 Present，降低 TDR/未响应风险；NVNGX 探测按进程缓存。
+
+### EPUB / PDF 阅读扩展
+
+- **EPUB 0.6.9**：目录长标题换行、侧栏不横向溢出、正文序号修复；翻页冷却与串行化、跨章过渡、快速翻页不积压；1/3 动画冷却、页内/跨章动画协调。
+- **PDF 0.4.6**：PPT 式单页放映（左右点击翻页、留白、退出恢复缩放、F5）；Real-ESRGAN 页面超分（整篇/范围、2×/4×）；每页超分完成后才出现独立版本选择（原图/已生成倍率），切换不卡顿；禁用 WebView2 默认右键菜单。
+- PDF 超分需要主程序 **1.1.15+** 的 `/api/pdf/upscale` 后端接口；主程序会自动把实际后端端口传给扩展，避免多实例端口顺延。
+
+### 扩展系统
+
+- 扩展中心安装/启用/更新网页扩展（EPUB、PDF）。
+- 扩展宿主为每个窗口使用独立虚拟域名，支持 EPUB/PDF 与宿主之间的阅读位置、书签、偏好持久化协议。
+- 关闭扩展窗口有 finalize 握手和超时兜底；旧版扩展不会拖满固定 1500ms。
+
+## 版本状态
+
+| 项目 | 版本 | 状态 |
+|---|---|---|
+| 主程序 | 1.1.15 | 已发布 |
+| EPUB 扩展 | 0.6.9 | 已发布 |
+| PDF 扩展 | 0.4.6 | 已发布 |
+| Python 后端 | 0.1.0 | 随主程序打包 |
+
+近期主线变更：
+
+- 1.1.15：PDF 超分后端接口、扩展宿主传递后端端口、禁用扩展默认右键菜单。
+- 1.1.14：第二轮现场问题修复（OpenMediaAt、切画质遮罩、VSR 后台初始化、NVNGX 缓存、扩展关闭优化、ABI 3）。
+- 1.1.13：宿主阅读位置存储、固定扩展域名、检查更新兜底。
 
 ## 目录结构
 
-```
+```text
 app/
-  WinUIGui/         WinUI 3 前端（C#）
-  dsh_engine/       自研 C++ 视频/音频引擎（Vulkan / D3D11 / WASAPI）
-  backend/          Python 后端（标准库 HTTP 服务，B站/YouTube/字幕/AI）
-  CHANGELOG.md      开发记录
-  docs/             说明文档
+  WinUIGui/               WinUI 3 前端（C#）
+  dsh_engine/             自研 C++ 音视频引擎（Vulkan / D3D11 / WASAPI / ASIO）
+  backend/                Python 后端（本地 HTTP 服务：解析/下载/字幕/AI/增强/PDF 超分）
+  docs/                   使用手册与方案文档
+  data/                   运行时数据（书库、PDF、配置、数据库）
 packaging/
-  setup.iss          Inno Setup 安装包脚本
+  _pkg_t34/               打包工作目录
+    lmp-setup-user.iss    Inno Setup 安装脚本（当前使用）
+docs/
+  player-optimization/    播放器优化与第二轮现场问题报告/证据
 third_party/
-  rtx_vsr_bridge/    NVIDIA RTX VSR 的 C++ 桥接源码（需自行安装 RTX Video SDK，SDK 本体不入库）
+  rtx_vsr_bridge/         RTX VSR 的 C++ 桥接源码（SDK 本体不入库）
+refs/                     本地构建参考与工具（不随安装包分发）
 ```
 
 ## 构建 / 运行
@@ -38,7 +99,8 @@ app\backend\.venv\Scripts\pip install -r app\backend\requirements.txt
 app\backend\.venv\Scripts\python app\backend\run_backend.py --port 8765
 ```
 
-需要 `yt-dlp`、`ffmpeg`（可放在 `app\backend\third_party\ffmpeg` 或 PATH）。AI 字幕/增强依赖不随仓库提供，在播放器设置里点「下载 AI 依赖 / 下载语音识别依赖」按需安装。
+需要 `yt-dlp`、`ffmpeg` / `ffprobe`（可用 `FFMPEG_PATH` 指定，或放到 PATH / `third_party\ffmpeg`）。
+AI 字幕/增强/Real-ESRGAN 的模型与依赖不随仓库提供，在播放器设置里按需下载。
 
 ### 2. 前端
 
@@ -50,21 +112,25 @@ dotnet build app\WinUIGui\WinUIGui.csproj -c Release
 
 ### 3. 引擎
 
-需要 Visual Studio（C++ 工具链）、Vulkan SDK、FFmpeg 开发库和 MinGW（工程当前使用 MinGW g++ 构建 `dsh_engine.dll`）。构建脚本见 `refs/rtx_vsr_bridge/build_engine.bat`（本地开发用路径，按自己的依赖位置修改）。
+需要 Visual Studio C++ 工具链、Vulkan SDK、FFmpeg 开发库和 MinGW（当前使用 MinGW g++ 构建 `dsh_engine.dll`）。
+构建脚本见 `refs/rtx_vsr_bridge/build_engine.bat`（本地开发用路径，按自己的依赖位置修改）。
 
 ### 4. 安装包
 
-先构建/部署到 `packaging/_pkg_t34/final`，再执行：
+先把主程序、依赖、引擎和运行库布置到 `packaging\_pkg_t34\final`，再执行：
 
 ```bat
-"D:\tools\Inno Setup 7\ISCC.exe" packaging\setup.iss
+"F:\DSH\LocalMediaPlayer-Workspace\refs\_tools\InnoSetup\ISCC.exe" ^
+  "F:\DSH\LocalMediaPlayer-Workspace\packaging\_pkg_t34\lmp-setup-user.iss"
 ```
+
+产物在 `packaging\_pkg_t34\inno-out-1115\璃鸢镜-Setup-1.1.15.exe`。
 
 ## 说明 / 许可
 
-- 本仓库只包含项目源码与自有资源；**不包含**第三方 SDK 二进制、FFmpeg / Qt / Vulkan 运行库、Whisper 模型、下载的视频等大文件。
+- 本仓库只包含项目源码与自有资源；**不包含**第三方 SDK 二进制、FFmpeg / Qt / Vulkan 运行库、Whisper / Real-ESRGAN 模型、下载的视频等大文件。
 - **NVIDIA RTX Video SDK** 为 NVIDIA 专有许可，SDK 头文件/库/运行 DLL 不入库；使用 RTX VSR 功能需自行取得 SDK 并遵守其许可。
-- 第三方组件遵循各自许可（FFmpeg LGPL/GPL、Qt LGPL/GPL、whisper MIT 等）。
+- 第三方组件遵循各自许可（FFmpeg LGPL/GPL、Qt LGPL/GPL、Whisper MIT 等）。
 - 本仓库根目录的 `LICENSE` 为 GNU GPL v3。
 
-版本：**1.0.0**
+版本：**1.1.15**
