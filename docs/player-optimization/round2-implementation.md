@@ -49,6 +49,16 @@
 - PDF `reader.js` 监听 `host.finalize`，回 `{type:"host.finalized", requestId, sessionId, ok:true, revision:0}`；`sessionId` 从 URL 取。
 - `extension.json` 版本 0.3.0 → 0.3.1。
 
+### 1.7 EPUB 翻页冷却 —— 0.6.3（追加）
+
+分支 `fix/toc-overflow` 提交 `dfb54e7`：
+
+- `paginator.js` 把翻页动画时长常量化为 `TURN_ANIM_OUT_MS=90` + `TURN_ANIM_IN_MS=130`，总 220ms，并导出 `TURN_ANIM_MS`。
+- `reader.js` 计算 `TURN_COOLDOWN_MS = TURN_ANIM_MS / 3 ≈ 73ms`；`userTurn` 在冷却期内直接丢弃下一次翻页，不再排队，避免快速连点反复打断动画。
+- 减少动画模式下没有动画可打断，冷却为 0。
+- 扩展版本 0.6.2 → 0.6.3，`index.html` 缓存版本同步。
+- 新增回归 A12b：两次立即点击只前进一步，等过冷却后再点才继续；smoke **13 项全 PASS**（含 A12b）。
+
 ## 2. 构建与安装
 
 - 引擎：`dsh_engine_vsr.dll` 5,248,091 bytes  
@@ -57,7 +67,7 @@
 - 主程序 Debug：`D:\Temp\lyra_host_round2_rebuild\WinUIGui.dll`  
   SHA-256 `8E8C4B262682BC0CD6BD672187759982DF71DC9284F9E8770B9F7F47EF2DDD08`
   - 0 errors。
-- 已把上述 host/engine + EPUB 0.6.2 + PDF 0.3.1 装入：
+- 已把上述 host/engine + EPUB 0.6.3 + PDF 0.3.1 装入：
   `D:\Users\Administrator\AppData\Local\LocalMediaPlayer`
 - 旧文件备份：`D:\Temp\LocalMediaPlayer-installed-backup-round2-20261031`
 - 版本号仍为 1.1.13（本地热更新，不冒充新版本；未发安装包）。
@@ -89,6 +99,7 @@
 - `docs/player-optimization/round2-evidence/openmediaat-start3000.bmp`
 - `docs/player-optimization/round2-evidence/vsr-background-init.log`
 - `docs/player-optimization/round2-evidence/epub-smoke.log`
+- `docs/player-optimization/round2-evidence/epub-turn-cooldown-smoke.log`
 - `D:\Temp\installed-round2-video.png`
 
 结论：**第二轮 5 个问题的代码修复已落地、编译通过、关键机制有本地证据；但切画质 TDR、真实 4K、EPUB 长目录这三项需要用户现场实测后才能算闭环。**
