@@ -29,6 +29,7 @@ namespace WinUIGui
         // 以前每开一次窗口换一个随机域名，扩展存下的进度/设置下次就找不到了。
         private readonly string _host;
         private readonly bool _isPdf;
+        private readonly bool _isTxt;
         private readonly bool _hasBook;
         private ReaderStateStore? _store;
         private string _sessionId = Guid.NewGuid().ToString("N");
@@ -59,6 +60,7 @@ namespace WinUIGui
             _entry = string.IsNullOrWhiteSpace(entry) ? "index.html" : entry;
             _bookPath = bookPath;
             _isPdf = !string.IsNullOrEmpty(bookPath) && bookPath.EndsWith(".pdf", StringComparison.OrdinalIgnoreCase);
+            _isTxt = !string.IsNullOrEmpty(bookPath) && bookPath.EndsWith(".txt", StringComparison.OrdinalIgnoreCase);
             _hasBook = !string.IsNullOrEmpty(bookPath) && File.Exists(bookPath);
             Title = "璃鸢镜 · " + (string.IsNullOrWhiteSpace(name) ? extensionId : name);
             try
@@ -136,12 +138,16 @@ namespace WinUIGui
                     _tempDir = Path.Combine(Path.GetTempPath(), "lyra_ext_host", Guid.NewGuid().ToString("N"));
                     Directory.CreateDirectory(_tempDir);
                     CopyDir(_extensionDir, _tempDir);
-                    string inner = _isPdf ? "document.pdf" : "book.epub";
+                    string inner = _isPdf ? "document.pdf" : _isTxt ? "document.txt" : "book.epub";
                     File.Copy(_bookPath!, Path.Combine(_tempDir, inner), true);
                     folder = _tempDir;
                     string realName = Path.GetFileName(_bookPath!);
                     query += "&name=" + Uri.EscapeDataString(realName);
-                    query += _isPdf ? "&file=document.pdf" : "&book=book.epub";
+                    if (_isTxt)
+                    {
+                        try { query += "&mtime=" + new DateTimeOffset(File.GetLastWriteTimeUtc(_bookPath!)).ToUnixTimeMilliseconds(); } catch { }
+                    }
+                    query += _isPdf ? "&file=document.pdf" : _isTxt ? "&file=document.txt" : "&book=book.epub";
                 }
                 Wv.CoreWebView2.SetVirtualHostNameToFolderMapping(_host, folder, CoreWebView2HostResourceAccessKind.Allow);
                 string rel = _entry.Replace('\\', '/').TrimStart('/');

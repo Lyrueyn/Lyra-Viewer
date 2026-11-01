@@ -62,6 +62,26 @@ public sealed partial class MainWindow : Window
     private static readonly string PdfLibraryFile = Path.Combine(AppContext.BaseDirectory, "data", "pdf_library.json");
     private static readonly string PdfLibraryDir = Path.Combine(AppContext.BaseDirectory, "data", "pdf_library");
 
+    // ================= ★ TXT 书库（扩展贡献的 Tab）=================
+    private sealed class TxtCard
+    {
+        public string Id { get; set; } = "";
+        public string Title { get; set; } = "";
+        public string Author { get; set; } = "";
+        public string Path { get; set; } = "";
+        public string DateText { get; set; } = "";
+    }
+    private sealed class TxtEntry
+    {
+        public string Id { get; set; } = "";
+        public string Title { get; set; } = "";
+        public string Author { get; set; } = "";
+        public string Path { get; set; } = "";
+        public string AddedAt { get; set; } = "";
+    }
+    private static readonly string TxtLibraryFile = Path.Combine(AppContext.BaseDirectory, "data", "txt_library.json");
+    private static readonly string TxtLibraryDir = Path.Combine(AppContext.BaseDirectory, "data", "txt_library");
+
     private sealed class AvailableExtension
     {
         public string Id = "", Name = "", Description = "", Repo = "", Asset = "";
@@ -71,7 +91,9 @@ public sealed partial class MainWindow : Window
         new AvailableExtension { Id = "epub", Name = "EPUB 阅读器", Repo = "Lyrueyn/Lyra-Extension-Epub",
             Asset = "lyra-ext-epub.zip", Description = "在璃鸢镜里阅读 EPUB：目录、章节、字号、进度记忆。" },
         new AvailableExtension { Id = "pdf", Name = "PDF 阅读器", Repo = "Lyrueyn/Lyra-Extention-PDF_Reader",
-            Asset = "lyra-ext-pdf.zip", Description = "在璃鸢镜里阅读 PDF：连续翻页、页码跳转、缩放、夜间模式。" },
+            Asset = "lyra-ext-pdf.zip", Description = "在璃鸢镜里阅读 PDF：连续翻页、页码跳转、缩放、夜间模式、放映与超分。" },
+        new AvailableExtension { Id = "txt", Name = "TXT 阅读器", Repo = "Lyrueyn/Lyra-Extension-txt_Reader",
+            Asset = "lyra-ext-txt.zip", Description = "在璃鸢镜里阅读 TXT：自动编码、字号行距、深浅主题与阅读位置恢复。" },
     };
     public IReadOnlyList<VideoWindow> VideoWindows => _video is null ? Array.Empty<VideoWindow>() : new[] { _video };
 
@@ -155,6 +177,7 @@ public sealed partial class MainWindow : Window
         catch { _multiWindowLoading = false; }
         UpdateEpubTabVisibility();
         UpdatePdfTabVisibility();
+        UpdateTxtTabVisibility();
         _ = AutoCheckUpdatesAsync();
         try
         {
@@ -393,11 +416,13 @@ public sealed partial class MainWindow : Window
             ExtensionsPanel.Visibility = tag == "extensions" ? Visibility.Visible : Visibility.Collapsed;
             EpubPanel.Visibility = tag == "epub" ? Visibility.Visible : Visibility.Collapsed;
             PdfPanel.Visibility = tag == "pdf" ? Visibility.Visible : Visibility.Collapsed;
+            TxtPanel.Visibility = tag == "txt" ? Visibility.Visible : Visibility.Collapsed;
             UpdateNavHighlight(tag);   // ★ 以前只切面板、没切颜色 → "首页"永远是粉色
             if (tag == "collections") LoadPlaylistsAsync();
             if (tag == "extensions") RefreshExtensionsPage();
             if (tag == "epub") RefreshEpubLibrary();
             if (tag == "pdf") RefreshPdfLibrary();
+            if (tag == "txt") RefreshTxtLibrary();
         }
     }
 
@@ -410,7 +435,7 @@ public sealed partial class MainWindow : Window
         var res = ((FrameworkElement)Content).Resources;   // 根 Grid 的资源字典（Pink / TextSub 定义在那）
         Brush pink = res.TryGetValue("Pink", out var p) && p is Brush pb ? pb : new SolidColorBrush(Windows.UI.Color.FromArgb(255, 0xFB, 0x72, 0x99));
         Brush sub = res.TryGetValue("TextSub", out var s) && s is Brush sb ? sb : new SolidColorBrush(Windows.UI.Color.FromArgb(255, 0x9B, 0xA0, 0xA5));
-        foreach (var (btn, tag) in new[] { (HomeNav, "home"), (DlNav, "download"), (CollNav, "collections"), (ExtNav, "extensions"), (EpubNav, "epub"), (PdfNav, "pdf"), (ExtNav, "extensions") })
+        foreach (var (btn, tag) in new[] { (HomeNav, "home"), (DlNav, "download"), (CollNav, "collections"), (ExtNav, "extensions"), (EpubNav, "epub"), (PdfNav, "pdf"), (TxtNav, "txt"), (ExtNav, "extensions") })
         {
             Brush brush = tag == activeTag ? pink : sub;
             if (btn.Content is not StackPanel sp) continue;
@@ -881,6 +906,137 @@ public sealed partial class MainWindow : Window
         catch (Exception ex) { PdfStatusText.Text = "打开失败：" + ex.Message; }
     }
 
+    // ================= ★ TXT 扩展：Tab / 书库 =================
+    private bool TxtExtensionInstalled()
+    {
+        try
+        {
+            foreach (var e in ExtensionCatalog.LoadAll())
+                if (e.Enabled && string.Equals(e.Id, "txt", StringComparison.OrdinalIgnoreCase)) return true;
+        }
+        catch { }
+        return false;
+    }
+
+    private void UpdateTxtTabVisibility()
+    {
+        try { TxtNav.Visibility = TxtExtensionInstalled() ? Visibility.Visible : Visibility.Collapsed; }
+        catch { TxtNav.Visibility = Visibility.Collapsed; }
+    }
+
+    private List<TxtEntry> LoadTxtEntries()
+    {
+        try
+        {
+            if (!File.Exists(TxtLibraryFile)) return new List<TxtEntry>();
+            return System.Text.Json.JsonSerializer.Deserialize<List<TxtEntry>>(File.ReadAllText(TxtLibraryFile))
+                   ?? new List<TxtEntry>();
+        }
+        catch { return new List<TxtEntry>(); }
+    }
+
+    private void SaveTxtEntries(List<TxtEntry> list)
+    {
+        Directory.CreateDirectory(Path.GetDirectoryName(TxtLibraryFile)!);
+        File.WriteAllText(TxtLibraryFile, System.Text.Json.JsonSerializer.Serialize(list,
+            new System.Text.Json.JsonSerializerOptions { WriteIndented = true }));
+    }
+
+    private void RefreshTxtLibrary()
+    {
+        try
+        {
+            var cards = new List<TxtCard>();
+            foreach (var e in LoadTxtEntries())
+            {
+                if (!File.Exists(e.Path)) continue;
+                cards.Add(new TxtCard { Id = e.Id, Title = e.Title, Author = e.Author, Path = e.Path,
+                    DateText = e.AddedAt.Length >= 10 ? e.AddedAt.Substring(0, 10) : e.AddedAt });
+            }
+            TxtGrid.ItemsSource = cards;
+            TxtStatusText.Text = cards.Count == 0 ? "书库还是空的，点「添加 TXT 文件」加入" : $"共 {cards.Count} 个 TXT";
+        }
+        catch (Exception ex) { TxtStatusText.Text = "读取书库失败：" + ex.Message; }
+    }
+
+    private async void TxtOpenFile_Click(object sender, RoutedEventArgs e)
+    {
+        try
+        {
+            if (!TxtExtensionInstalled()) { TxtStatusText.Text = "请先在扩展 Tab 安装 TXT 阅读器扩展"; return; }
+            var picker = new Windows.Storage.Pickers.FileOpenPicker();
+            picker.ViewMode = Windows.Storage.Pickers.PickerViewMode.List;
+            picker.FileTypeFilter.Add(".txt");
+            InitializeWithWindow.Initialize(picker, WindowNative.GetWindowHandle(this));
+            var file = await picker.PickSingleFileAsync();
+            if (file == null) return;
+            OpenTxtReader(file.Path);
+        }
+        catch (Exception ex) { TxtStatusText.Text = "打开失败：" + ex.Message; }
+    }
+
+    private async void TxtAddFile_Click(object sender, RoutedEventArgs e)
+    {
+        try
+        {
+            if (!TxtExtensionInstalled()) { TxtStatusText.Text = "请先在扩展 Tab 安装 TXT 阅读器扩展"; return; }
+            var picker = new Windows.Storage.Pickers.FileOpenPicker();
+            picker.ViewMode = Windows.Storage.Pickers.PickerViewMode.List;
+            picker.FileTypeFilter.Add(".txt");
+            InitializeWithWindow.Initialize(picker, WindowNative.GetWindowHandle(this));
+            var file = await picker.PickSingleFileAsync();
+            if (file == null) return;
+
+            Directory.CreateDirectory(TxtLibraryDir);
+            string name = Path.GetFileName(file.Path);
+            string dst = Path.Combine(TxtLibraryDir, name);
+            int n = 1;
+            while (File.Exists(dst))
+                dst = Path.Combine(TxtLibraryDir, Path.GetFileNameWithoutExtension(name) + $" ({n++})" + Path.GetExtension(name));
+            File.Copy(file.Path, dst);
+            var list = LoadTxtEntries();
+            var entry = new TxtEntry
+            {
+                Id = Guid.NewGuid().ToString("N"),
+                Title = Path.GetFileNameWithoutExtension(dst),
+                Author = "本地 TXT",
+                Path = dst,
+                AddedAt = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
+            };
+            list.Add(entry);
+            SaveTxtEntries(list);
+            RefreshTxtLibrary();
+            TxtStatusText.Text = "已添加：" + entry.Title;
+        }
+        catch (Exception ex) { TxtStatusText.Text = "添加失败：" + ex.Message; }
+    }
+
+    private void TxtCard_ItemClick(object sender, ItemClickEventArgs e)
+    {
+        try
+        {
+            if (e.ClickedItem is TxtCard card) OpenTxtReader(card.Path);
+        }
+        catch (Exception ex) { TxtStatusText.Text = "打开失败：" + ex.Message; }
+    }
+
+    private void OpenTxtReader(string path)
+    {
+        try
+        {
+            var ext = ExtensionCatalog.LoadAll().FirstOrDefault(x => string.Equals(x.Id, "txt", StringComparison.OrdinalIgnoreCase));
+            if (ext == null || !ext.Enabled) { TxtStatusText.Text = "TXT 扩展未安装或已禁用"; return; }
+            string dir = Path.Combine(ExtensionCatalog.ExtensionsDir, ext.Id);
+            string entry = string.IsNullOrWhiteSpace(ext.Entry) ? "index.html" : ext.Entry;
+            var win = new ExtensionHostWindow(ext.Id, ext.Name, dir, entry, path);
+            win.Closed += (_, _) => _extHosts.Remove(win);
+            _extHosts.Add(win);
+            win.Activate();
+            TxtStatusText.Text = "正在打开：" + Path.GetFileName(path);
+        }
+        catch (Exception ex) { TxtStatusText.Text = "打开失败：" + ex.Message; }
+    }
+
     // ---- 扩展更新检查：查 GitHub 最新 Release，显示是否有新版本 ----
     private async Task CheckExtensionUpdatesAsync()
     {
@@ -1113,6 +1269,7 @@ public sealed partial class MainWindow : Window
             _extCheckDone = false;
             UpdateEpubTabVisibility();   // ★ 删除后立即隐藏 EPUB Tab，不用重启
             UpdatePdfTabVisibility();
+            UpdateTxtTabVisibility();
             RefreshExtensionsPage();
             ExtStatusText.Text = "已删除扩展：" + ext.Name;
         }
@@ -1183,6 +1340,7 @@ public sealed partial class MainWindow : Window
             _extCheckDone = false;
             UpdateEpubTabVisibility();
             UpdatePdfTabVisibility();
+            UpdateTxtTabVisibility();
             RefreshExtensionsPage();
             ExtStatusText.Text = $"已安装 {av.Name}，点「打开」启动";
         }

@@ -1,9 +1,9 @@
-﻿# 璃鸢镜（Lyra Viewer）项目交接文档
+# 璃鸢镜（Lyra Viewer）项目交接文档
 
 > 交接对象：GPT-6  
 > 项目位置：`F:\DSH\LocalMediaPlayer-Workspace`  
 > 文档更新时间：2026-10-31  
-> 当前主线版本：**璃鸢镜 1.1.15**（已发布）  
+> 当前主线版本：**璃鸢镜 1.1.16**（已发布）  
 > 项目性质：Windows 本地媒体播放器，自研 C++ 音视频引擎 + WinUI 3 前端 + Python 后端 + 网页扩展系统。
 
 ---
@@ -26,9 +26,10 @@
 
 | 项目 | 版本 | 安装/更新资产 |
 |---|---|---|
-| 主程序 | **v1.1.15** | `LyraViewer-Setup-1.1.15.exe`（安装在用户目录，安装包会安装 .NET 10 Desktop Runtime） |
+| 主程序 | **v1.1.16** | `LyraViewer-Setup-1.1.16.exe`（安装在用户目录，安装包会安装 .NET 10 Desktop Runtime） |
 | EPUB 扩展 | **v0.6.9** | `lyra-ext-epub.zip` |
 | PDF 扩展 | **v0.4.6** | `lyra-ext-pdf.zip` |
+| TXT 扩展 | **v0.1.1** | `lyra-ext-txt.zip` |
 
 扩展必须和主程序版本配套使用；扩展中心会自动检查 GitHub 最新 Release。
 
@@ -180,6 +181,14 @@ extensions/<id>/
 - 页码输入：回车、失焦、停止输入约 0.42 秒都会跳页
 - PDF 书库 Tab：打开 PDF（不复制）/ 添加 PDF（复制到书库）/ 卡片阅读
 
+### 5.7 TXT 阅读器（v0.1.1）
+
+- 独立仓库：`Lyrueyn/Lyra-Extension-txt_Reader`
+- 左侧栏 TXT Tab：安装并启用 TXT 扩展后显示
+- TXT 书库：打开 TXT（不复制）/ 添加 TXT（复制到 `data/txt_library`）/ 卡片阅读
+- 宿主注入：`.txt` 复制到临时目录的 `document.txt`，查询参数 `?file=document.txt&name=…&mtime=…`；扩展加载后发 `lyra-book-ready`
+- 阅读功能：自动/手动编码、字号行距宽度、深浅主题、位置恢复、键盘/拖放
+
 ---
 
 ## 6. 构建与打包
@@ -261,9 +270,10 @@ F:\DSH\LocalMediaPlayer-Workspace\packaging\_pkg_t34\lmp-setup-user.iss
 
 | 项目 | 版本 | 状态 |
 |---|---|---|
-| 主程序 | 1.1.15 | 已发布；第二轮现场问题修复 + PDF 超分后端接口 / 扩展宿主后端端口传递 / 禁用扩展右键菜单 |
+| 主程序 | 1.1.16 | 已发布；TXT 阅读器侧栏/书库、.txt 宿主注入、lyra-book-ready 生命周期 |
 | EPUB 扩展 | 0.6.9 | 已发布；目录溢出、翻页冷却/串行、跨章首翻、动画缩短 |
 | PDF 扩展 | 0.4.6 | 已发布；PPT 式放映、Real-ESRGAN 页面超分、每页独立版本切换、右键菜单禁用 |
+| TXT 扩展 | 0.1.1 | 已发布；TXT 侧栏/书库、宿主文件注入、编码与阅读位置 |
 | .NET 运行时 | 10.x | 安装包会安装；本机全局已有 10.0.9 / 10.0.13 |
 
 已知历史问题（已修）：
@@ -286,7 +296,7 @@ F:\DSH\LocalMediaPlayer-Workspace\packaging\_pkg_t34\lmp-setup-user.iss
 2. **不要把 .NET 运行时文件打进安装包**  
    见第 6.1。检查 `final` 根目录不能有 `hostfxr.dll`、`coreclr.dll`、`System.Private.CoreLib.dll` 等。
 
-3. **不要在主仓库提交 EPUB/PDF 扩展源码**  
+3. **不要在主仓库提交 EPUB/PDF/TXT 扩展源码**  
    扩展是独立仓库，主仓库只保存扩展的下载地址（`AvailableExtensions` 映射）。
 
 4. **不要重复投喂同一本书/PDF**  
@@ -353,3 +363,4 @@ F:\DSH\LocalMediaPlayer-Workspace\packaging\_pkg_t34\lmp-setup-user.iss
 - 视频窗口（播放/设置/RTX/弹幕）：`app\WinUIGui\VideoWindow.xaml.cs`
 - EPUB 扩展：`https://github.com/Lyrueyn/Lyra-Extension-Epub`
 - PDF 扩展：`https://github.com/Lyrueyn/Lyra-Extention-PDF_Reader`
+- TXT 扩展：`https://github.com/Lyrueyn/Lyra-Extension-txt_Reader`

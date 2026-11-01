@@ -1,4 +1,4 @@
-# 璃鸢镜（Lyra Viewer）v1.1.15
+# 璃鸢镜（Lyra Viewer）v1.1.16
 
 > 🤖 **本项目由 AI（DeepSeek Harness）制作/协作开发。**
 >
@@ -8,14 +8,15 @@
 
 ## 下载安装
 
-最新版本：**璃鸢镜 1.1.15**
+最新版本：**璃鸢镜 1.1.16**
 
 | 内容 | 地址 |
 |---|---|
 | 主程序 Release | https://github.com/Lyrueyn/Lyra-Viewer/releases/latest |
-| 安装包 | `LyraViewer-Setup-1.1.15.exe` |
+| 安装包 | `LyraViewer-Setup-1.1.16.exe` |
 | EPUB 扩展 | https://github.com/Lyrueyn/Lyra-Extension-Epub |
 | PDF 扩展 | https://github.com/Lyrueyn/Lyra-Extention-PDF_Reader |
+| TXT 扩展 | https://github.com/Lyrueyn/Lyra-Extension-txt_Reader |
 
 - 安装到当前用户目录，不需要管理员权限，不写 Program Files / ProgramData。
 - 安装包会安装 .NET 10 Desktop Runtime；需要 Windows 10/11 x64。
@@ -49,6 +50,12 @@
 - **PDF 0.4.6**：PPT 式单页放映（左右点击翻页、留白、退出恢复缩放、F5）；Real-ESRGAN 页面超分（整篇/范围、2×/4×）；每页超分完成后才出现独立版本选择（原图/已生成倍率），切换不卡顿；禁用 WebView2 默认右键菜单。
 - PDF 超分需要主程序 **1.1.15+** 的 `/api/pdf/upscale` 后端接口；主程序会自动把实际后端端口传给扩展，避免多实例端口顺延。
 
+### TXT 阅读扩展
+
+- **TXT 0.1.1**：左侧栏 TXT Tab、TXT 书库（打开/添加/卡片）、自动编码（UTF-8/BOM、GB18030、UTF-16）、字号/行距/内容宽度、深浅主题、阅读位置恢复。
+- 主程序支持 `.txt` 宿主注入：复制到临时目录后通过 `?file=document.txt&name=…&mtime=…` 传入，扩展自动加载并发 `lyra-book-ready`。
+- 扩展中心可安装/更新 TXT 扩展；书库保存在 `data/txt_library.json` / `data/txt_library`。
+
 ### 扩展系统
 
 - 扩展中心安装/启用/更新网页扩展（EPUB、PDF）。
@@ -59,13 +66,15 @@
 
 | 项目 | 版本 | 状态 |
 |---|---|---|
-| 主程序 | 1.1.15 | 已发布 |
+| 主程序 | 1.1.16 | 已发布 |
 | EPUB 扩展 | 0.6.9 | 已发布 |
 | PDF 扩展 | 0.4.6 | 已发布 |
+| TXT 扩展 | 0.1.1 | 已发布 |
 | Python 后端 | 0.1.0 | 随主程序打包 |
 
 近期主线变更：
 
+- 1.1.16：TXT 阅读器侧栏/书库、`.txt` 宿主注入与 `lyra-book-ready` 生命周期。
 - 1.1.15：PDF 超分后端接口、扩展宿主传递后端端口、禁用扩展默认右键菜单。
 - 1.1.14：第二轮现场问题修复（OpenMediaAt、切画质遮罩、VSR 后台初始化、NVNGX 缓存、扩展关闭优化、ABI 3）。
 - 1.1.13：宿主阅读位置存储、固定扩展域名、检查更新兜底。
@@ -124,7 +133,7 @@ dotnet build app\WinUIGui\WinUIGui.csproj -c Release
   "F:\DSH\LocalMediaPlayer-Workspace\packaging\_pkg_t34\lmp-setup-user.iss"
 ```
 
-产物在 `packaging\_pkg_t34\inno-out-1115\璃鸢镜-Setup-1.1.15.exe`。
+产物在 `packaging\_pkg_t34\inno-out-1116\璃鸢镜-Setup-1.1.16.exe`。
 
 ## 说明 / 许可
 
@@ -133,4 +142,4 @@ dotnet build app\WinUIGui\WinUIGui.csproj -c Release
 - 第三方组件遵循各自许可（FFmpeg LGPL/GPL、Qt LGPL/GPL、Whisper MIT 等）。
 - 本仓库根目录的 `LICENSE` 为 GNU GPL v3。
 
-版本：**1.1.15**
+版本：**1.1.16**
