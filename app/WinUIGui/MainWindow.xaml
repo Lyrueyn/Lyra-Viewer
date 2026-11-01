@@ -240,6 +240,8 @@
                                             BorderBrush="#2A2A2A" BorderThickness="1">
                                         <Grid>
                                             <TextBlock Text="📖" FontSize="42" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            <Image Source="{Binding Cover}" Stretch="UniformToFill" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                            <Button Content="封面" Tag="{Binding Id}" Click="EpubCoverBtn_Click" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="6" Padding="6,2" FontSize="10" MinHeight="24" Background="#B3000000" Foreground="White" BorderThickness="0" CornerRadius="10"/>
                                             <TextBlock Text="{Binding DateText}" Foreground="#9BA0A5" FontSize="10"
                                                        VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="8"/>
                                         </Grid>
@@ -281,6 +283,8 @@
                                             BorderBrush="#2A2A2A" BorderThickness="1">
                                         <Grid>
                                             <TextBlock Text="📄" FontSize="42" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            <Image Source="{Binding Cover}" Stretch="UniformToFill" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                            <Button Content="封面" Tag="{Binding Id}" Click="PdfCoverBtn_Click" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="6" Padding="6,2" FontSize="10" MinHeight="24" Background="#B3000000" Foreground="White" BorderThickness="0" CornerRadius="10"/>
                                             <TextBlock Text="{Binding DateText}" Foreground="#9BA0A5" FontSize="10"
                                                        VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="8"/>
                                         </Grid>
@@ -322,6 +326,8 @@
                                             BorderBrush="#2A2A2A" BorderThickness="1">
                                         <Grid>
                                             <TextBlock Text="📃" FontSize="42" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            <Image Source="{Binding Cover}" Stretch="UniformToFill" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                            <Button Content="封面" Tag="{Binding Id}" Click="TxtCoverBtn_Click" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="6" Padding="6,2" FontSize="10" MinHeight="24" Background="#B3000000" Foreground="White" BorderThickness="0" CornerRadius="10"/>
                                             <TextBlock Text="{Binding DateText}" Foreground="#9BA0A5" FontSize="10"
                                                        VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="8"/>
                                         </Grid>

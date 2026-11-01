@@ -30,6 +30,7 @@ public sealed partial class MainWindow : Window
         public string Author { get; set; } = "";
         public string Path { get; set; } = "";
         public string DateText { get; set; } = "";
+        public ImageSource? Cover { get; set; }
     }
     private sealed class EpubEntry
     {
@@ -38,6 +39,7 @@ public sealed partial class MainWindow : Window
         public string Author { get; set; } = "";
         public string Path { get; set; } = "";
         public string AddedAt { get; set; } = "";
+        public string CoverPath { get; set; } = "";
     }
     private static readonly string EpubLibraryFile = Path.Combine(AppContext.BaseDirectory, "data", "epub_library.json");
     private static readonly string EpubLibraryDir = Path.Combine(AppContext.BaseDirectory, "data", "epub_library");
@@ -50,6 +52,7 @@ public sealed partial class MainWindow : Window
         public string Author { get; set; } = "";
         public string Path { get; set; } = "";
         public string DateText { get; set; } = "";
+        public ImageSource? Cover { get; set; }
     }
     private sealed class PdfEntry
     {
@@ -58,6 +61,7 @@ public sealed partial class MainWindow : Window
         public string Author { get; set; } = "";
         public string Path { get; set; } = "";
         public string AddedAt { get; set; } = "";
+        public string CoverPath { get; set; } = "";
     }
     private static readonly string PdfLibraryFile = Path.Combine(AppContext.BaseDirectory, "data", "pdf_library.json");
     private static readonly string PdfLibraryDir = Path.Combine(AppContext.BaseDirectory, "data", "pdf_library");
@@ -70,6 +74,7 @@ public sealed partial class MainWindow : Window
         public string Author { get; set; } = "";
         public string Path { get; set; } = "";
         public string DateText { get; set; } = "";
+        public ImageSource? Cover { get; set; }
     }
     private sealed class TxtEntry
     {
@@ -78,6 +83,7 @@ public sealed partial class MainWindow : Window
         public string Author { get; set; } = "";
         public string Path { get; set; } = "";
         public string AddedAt { get; set; } = "";
+        public string CoverPath { get; set; } = "";
     }
     private static readonly string TxtLibraryFile = Path.Combine(AppContext.BaseDirectory, "data", "txt_library.json");
     private static readonly string TxtLibraryDir = Path.Combine(AppContext.BaseDirectory, "data", "txt_library");
@@ -472,7 +478,12 @@ public sealed partial class MainWindow : Window
     internal static ImageSource? LoadCoverBitmap(string coverPath)
     {
         if (string.IsNullOrEmpty(coverPath) || !File.Exists(coverPath)) return null;
-        try { return new Microsoft.UI.Xaml.Media.Imaging.BitmapImage(new Uri(coverPath)); }
+        try
+        {
+            if (coverPath.EndsWith(".svg", StringComparison.OrdinalIgnoreCase))
+                return new Microsoft.UI.Xaml.Media.Imaging.SvgImageSource(new Uri(coverPath));
+            return new Microsoft.UI.Xaml.Media.Imaging.BitmapImage(new Uri(coverPath));
+        }
         catch { return null; }
     }
 
@@ -686,10 +697,12 @@ public sealed partial class MainWindow : Window
             {
                 if (!File.Exists(e.Path)) continue;
                 cards.Add(new EpubCard { Id = e.Id, Title = e.Title, Author = e.Author, Path = e.Path,
-                    DateText = e.AddedAt.Length >= 10 ? e.AddedAt.Substring(0, 10) : e.AddedAt });
+                    DateText = e.AddedAt.Length >= 10 ? e.AddedAt.Substring(0, 10) : e.AddedAt,
+                    Cover = LoadCoverBitmap(e.CoverPath) });
             }
             EpubGrid.ItemsSource = cards;
             EpubStatusText.Text = cards.Count == 0 ? "书库还是空的，点「添加 EPUB 文件」加入" : $"共 {cards.Count} 本";
+            QueueMissingCovers("epub");
         }
         catch (Exception ex) { EpubStatusText.Text = "读取书库失败：" + ex.Message; }
     }
@@ -745,6 +758,7 @@ public sealed partial class MainWindow : Window
             SaveEpubEntries(list);
             RefreshEpubLibrary();
             EpubStatusText.Text = "已添加：" + entry.Title;
+            _ = GenerateFirstPageCoverAsync("epub", entry.Id);
         }
         catch (Exception ex) { EpubStatusText.Text = "添加失败：" + ex.Message; }
     }
@@ -820,10 +834,12 @@ public sealed partial class MainWindow : Window
             {
                 if (!File.Exists(e.Path)) continue;
                 cards.Add(new PdfCard { Id = e.Id, Title = e.Title, Author = e.Author, Path = e.Path,
-                    DateText = e.AddedAt.Length >= 10 ? e.AddedAt.Substring(0, 10) : e.AddedAt });
+                    DateText = e.AddedAt.Length >= 10 ? e.AddedAt.Substring(0, 10) : e.AddedAt,
+                    Cover = LoadCoverBitmap(e.CoverPath) });
             }
             PdfGrid.ItemsSource = cards;
             PdfStatusText.Text = cards.Count == 0 ? "书库还是空的，点「添加 PDF 文件」加入" : $"共 {cards.Count} 个 PDF";
+            QueueMissingCovers("pdf");
         }
         catch (Exception ex) { PdfStatusText.Text = "读取书库失败：" + ex.Message; }
     }
@@ -876,6 +892,7 @@ public sealed partial class MainWindow : Window
             SavePdfEntries(list);
             RefreshPdfLibrary();
             PdfStatusText.Text = "已添加：" + entry.Title;
+            _ = GenerateFirstPageCoverAsync("pdf", entry.Id);
         }
         catch (Exception ex) { PdfStatusText.Text = "添加失败：" + ex.Message; }
     }
@@ -951,10 +968,12 @@ public sealed partial class MainWindow : Window
             {
                 if (!File.Exists(e.Path)) continue;
                 cards.Add(new TxtCard { Id = e.Id, Title = e.Title, Author = e.Author, Path = e.Path,
-                    DateText = e.AddedAt.Length >= 10 ? e.AddedAt.Substring(0, 10) : e.AddedAt });
+                    DateText = e.AddedAt.Length >= 10 ? e.AddedAt.Substring(0, 10) : e.AddedAt,
+                    Cover = LoadCoverBitmap(e.CoverPath) });
             }
             TxtGrid.ItemsSource = cards;
             TxtStatusText.Text = cards.Count == 0 ? "书库还是空的，点「添加 TXT 文件」加入" : $"共 {cards.Count} 个 TXT";
+            QueueMissingCovers("txt");
         }
         catch (Exception ex) { TxtStatusText.Text = "读取书库失败：" + ex.Message; }
     }
@@ -1007,6 +1026,7 @@ public sealed partial class MainWindow : Window
             SaveTxtEntries(list);
             RefreshTxtLibrary();
             TxtStatusText.Text = "已添加：" + entry.Title;
+            _ = GenerateFirstPageCoverAsync("txt", entry.Id);
         }
         catch (Exception ex) { TxtStatusText.Text = "添加失败：" + ex.Message; }
     }
@@ -1035,6 +1055,202 @@ public sealed partial class MainWindow : Window
             TxtStatusText.Text = "正在打开：" + Path.GetFileName(path);
         }
         catch (Exception ex) { TxtStatusText.Text = "打开失败：" + ex.Message; }
+    }
+
+    // ================= ★ 三扩展书库封面 =================
+    private readonly HashSet<string> _coverPending = new(StringComparer.OrdinalIgnoreCase);
+    private readonly HashSet<string> _coverTried = new(StringComparer.OrdinalIgnoreCase);
+    private static string CoverKey(string kind, string id) => kind + ":" + id;
+    private static string CoversDir => Path.Combine(AppContext.BaseDirectory, "data", "covers");
+
+    private void EpubCoverBtn_Click(object sender, RoutedEventArgs e)
+    {
+        if (sender is Button b && b.Tag is string id) ShowCoverMenu(b, "epub", id);
+    }
+    private void PdfCoverBtn_Click(object sender, RoutedEventArgs e)
+    {
+        if (sender is Button b && b.Tag is string id) ShowCoverMenu(b, "pdf", id);
+    }
+    private void TxtCoverBtn_Click(object sender, RoutedEventArgs e)
+    {
+        if (sender is Button b && b.Tag is string id) ShowCoverMenu(b, "txt", id);
+    }
+
+    private void ShowCoverMenu(Button anchor, string kind, string id)
+    {
+        var flyout = new MenuFlyout();
+        var choose = new MenuFlyoutItem { Text = "选择封面图片…" };
+        choose.Click += async (_, _) => await PickCustomCoverAsync(kind, id);
+        var first = new MenuFlyoutItem { Text = "使用第一页作封面" };
+        first.Click += async (_, _) => await ResetFirstPageCoverAsync(kind, id);
+        var del = new MenuFlyoutItem { Text = "删除封面（回到第一页）" };
+        del.Click += async (_, _) => await DeleteCoverAsync(kind, id);
+        flyout.Items.Add(choose);
+        flyout.Items.Add(first);
+        flyout.Items.Add(del);
+        flyout.ShowAt(anchor);
+    }
+
+    private EpubEntry? FindEpubEntry(string id) => LoadEpubEntries().FirstOrDefault(x => x.Id == id);
+    private PdfEntry? FindPdfEntry(string id) => LoadPdfEntries().FirstOrDefault(x => x.Id == id);
+    private TxtEntry? FindTxtEntry(string id) => LoadTxtEntries().FirstOrDefault(x => x.Id == id);
+
+    private string GetCoverPath(string kind, string id) => kind switch
+    {
+        "epub" => FindEpubEntry(id)?.CoverPath ?? "",
+        "pdf" => FindPdfEntry(id)?.CoverPath ?? "",
+        "txt" => FindTxtEntry(id)?.CoverPath ?? "",
+        _ => "",
+    };
+
+    private string GetSourcePath(string kind, string id) => kind switch
+    {
+        "epub" => FindEpubEntry(id)?.Path ?? "",
+        "pdf" => FindPdfEntry(id)?.Path ?? "",
+        "txt" => FindTxtEntry(id)?.Path ?? "",
+        _ => "",
+    };
+
+    private void SaveCoverPath(string kind, string id, string coverPath)
+    {
+        switch (kind)
+        {
+            case "epub":
+                var epub = LoadEpubEntries(); var ee = epub.FirstOrDefault(x => x.Id == id);
+                if (ee != null) { ee.CoverPath = coverPath; SaveEpubEntries(epub); }
+                break;
+            case "pdf":
+                var pdf = LoadPdfEntries(); var pe = pdf.FirstOrDefault(x => x.Id == id);
+                if (pe != null) { pe.CoverPath = coverPath; SavePdfEntries(pdf); }
+                break;
+            case "txt":
+                var txt = LoadTxtEntries(); var te = txt.FirstOrDefault(x => x.Id == id);
+                if (te != null) { te.CoverPath = coverPath; SaveTxtEntries(txt); }
+                break;
+        }
+    }
+
+    private void RefreshCoverKind(string kind)
+    {
+        if (kind == "epub") RefreshEpubLibrary();
+        else if (kind == "pdf") RefreshPdfLibrary();
+        else if (kind == "txt") RefreshTxtLibrary();
+    }
+
+    private async Task PickCustomCoverAsync(string kind, string id)
+    {
+        try
+        {
+            var picker = new Windows.Storage.Pickers.FileOpenPicker();
+            picker.ViewMode = Windows.Storage.Pickers.PickerViewMode.Thumbnail;
+            picker.FileTypeFilter.Add(".png");
+            picker.FileTypeFilter.Add(".jpg");
+            picker.FileTypeFilter.Add(".jpeg");
+            picker.FileTypeFilter.Add(".webp");
+            picker.FileTypeFilter.Add(".bmp");
+            InitializeWithWindow.Initialize(picker, WindowNative.GetWindowHandle(this));
+            var file = await picker.PickSingleFileAsync();
+            if (file == null) return;
+            Directory.CreateDirectory(CoversDir);
+            string ext = Path.GetExtension(file.Path);
+            if (string.IsNullOrWhiteSpace(ext)) ext = ".png";
+            string dest = Path.Combine(CoversDir, $"{kind}_{id}_custom{ext}");
+            File.Copy(file.Path, dest, true);
+            SaveCoverPath(kind, id, dest);
+            RefreshCoverKind(kind);
+        }
+        catch { }
+    }
+
+    private async Task DeleteCoverAsync(string kind, string id)
+    {
+        string old = GetCoverPath(kind, id);
+        try
+        {
+            if (!string.IsNullOrWhiteSpace(old) && old.Contains("_custom", StringComparison.OrdinalIgnoreCase) && File.Exists(old))
+                File.Delete(old);
+        }
+        catch { }
+        SaveCoverPath(kind, id, "");
+        _coverTried.Remove(CoverKey(kind, id));
+        RefreshCoverKind(kind);
+        await GenerateFirstPageCoverAsync(kind, id, true);
+    }
+
+    private async Task ResetFirstPageCoverAsync(string kind, string id)
+    {
+        string old = GetCoverPath(kind, id);
+        try
+        {
+            if (!string.IsNullOrWhiteSpace(old) && old.Contains("_custom", StringComparison.OrdinalIgnoreCase) && File.Exists(old))
+                File.Delete(old);
+        }
+        catch { }
+        SaveCoverPath(kind, id, "");
+        _coverTried.Remove(CoverKey(kind, id));
+        await GenerateFirstPageCoverAsync(kind, id, true);
+    }
+
+    private async Task GenerateFirstPageCoverAsync(string kind, string id, bool force = false)
+    {
+        string source = GetSourcePath(kind, id);
+        if (string.IsNullOrEmpty(source) || !File.Exists(source)) return;
+        try
+        {
+            string cover = await LibraryCoverService.EnsureAsync(kind, id, source, force ? "" : GetCoverPath(kind, id));
+            if (!string.IsNullOrWhiteSpace(cover))
+            {
+                SaveCoverPath(kind, id, cover);
+                RefreshCoverKind(kind);
+            }
+            else _coverTried.Add(CoverKey(kind, id));
+        }
+        catch { _coverTried.Add(CoverKey(kind, id)); }
+    }
+
+    private async Task EnsureMissingCoversAsync(string kind)
+    {
+        var entries = kind switch
+        {
+            "epub" => LoadEpubEntries().Select(e => (e.Id, e.Path, e.CoverPath)).ToList(),
+            "pdf" => LoadPdfEntries().Select(e => (e.Id, e.Path, e.CoverPath)).ToList(),
+            "txt" => LoadTxtEntries().Select(e => (e.Id, e.Path, e.CoverPath)).ToList(),
+            _ => new List<(string Id, string Path, string CoverPath)>(),
+        };
+        bool changed = false;
+        foreach (var (id, path, cover) in entries)
+        {
+            if (!string.IsNullOrWhiteSpace(cover) && File.Exists(cover)) continue;
+            string key = CoverKey(kind, id);
+            if (_coverTried.Contains(key)) continue;
+            _coverPending.Add(key);
+            try
+            {
+                string generated = await LibraryCoverService.EnsureAsync(kind, id, path);
+                if (!string.IsNullOrWhiteSpace(generated))
+                {
+                    SaveCoverPath(kind, id, generated);
+                    changed = true;
+                    _coverTried.Remove(key);
+                }
+                else _coverTried.Add(key);
+            }
+            catch { _coverTried.Add(key); }
+            finally { _coverPending.Remove(key); }
+        }
+        if (changed) RefreshCoverKind(kind);
+    }
+
+    private void QueueMissingCovers(string kind)
+    {
+        bool any = kind switch
+        {
+            "epub" => LoadEpubEntries().Any(e => string.IsNullOrWhiteSpace(e.CoverPath) && !_coverTried.Contains(CoverKey(kind, e.Id))),
+            "pdf" => LoadPdfEntries().Any(e => string.IsNullOrWhiteSpace(e.CoverPath) && !_coverTried.Contains(CoverKey(kind, e.Id))),
+            "txt" => LoadTxtEntries().Any(e => string.IsNullOrWhiteSpace(e.CoverPath) && !_coverTried.Contains(CoverKey(kind, e.Id))),
+            _ => false,
+        };
+        if (any) _ = EnsureMissingCoversAsync(kind);
     }
 
     // ---- 扩展更新检查：查 GitHub 最新 Release，显示是否有新版本 ----
