@@ -1,4 +1,4 @@
-using Microsoft.UI.Xaml;
+﻿using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
@@ -176,6 +176,8 @@ public sealed partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
+        CardGrid.AddHandler(UIElement.PointerMovedEvent, new PointerEventHandler(CardGrid_PointerMoved), true);
+        CardGrid.PointerExited += CardGrid_PointerExited;
         AppVersionText.Text = "v" + UpdateChecker.CurrentVersionText;
         try
         {
@@ -547,6 +549,58 @@ public sealed partial class MainWindow : Window
     }
 
     // 把首页卡片加入合集（＋ 按钮）：弹出合集菜单，选一个即加入；也可新建合集并加入
+    private GridViewItem? _hoveredVideoItem;
+
+    private void CardGrid_PointerMoved(object sender, PointerRoutedEventArgs e)
+    {
+        var item = FindAncestor<GridViewItem>(e.OriginalSource as DependencyObject);
+        if (ReferenceEquals(item, _hoveredVideoItem)) return;
+        if (_hoveredVideoItem != null) SetVideoCardActions(_hoveredVideoItem, false);
+        _hoveredVideoItem = item;
+        if (item != null) SetVideoCardActions(item, true);
+    }
+
+    private void CardGrid_PointerExited(object sender, PointerRoutedEventArgs e)
+    {
+        if (_hoveredVideoItem == null) return;
+        SetVideoCardActions(_hoveredVideoItem, false);
+        _hoveredVideoItem = null;
+    }
+
+    private static T? FindAncestor<T>(DependencyObject? node) where T : DependencyObject
+    {
+        while (node != null)
+        {
+            if (node is T match) return match;
+            node = VisualTreeHelper.GetParent(node);
+        }
+        return null;
+    }
+
+    private static void SetVideoCardActions(object sender, bool show)
+    {
+        if (sender is not DependencyObject root) return;
+        foreach (var child in Descendants(root))
+        {
+            if (child is Button button)
+            {
+                button.Opacity = show ? 1 : 0;
+                button.IsHitTestVisible = show;
+            }
+        }
+    }
+
+    private static IEnumerable<DependencyObject> Descendants(DependencyObject root)
+    {
+        int count = VisualTreeHelper.GetChildrenCount(root);
+        for (int i = 0; i < count; i++)
+        {
+            var child = VisualTreeHelper.GetChild(root, i);
+            yield return child;
+            foreach (var d in Descendants(child)) yield return d;
+        }
+    }
+
     private async void CardAddToCollection_Click(object sender, RoutedEventArgs e)
     {
         if ((sender as FrameworkElement)?.Tag is not VideoItem vi || vi.Id <= 0) { ShowStatus("仅库内视频可加入合集（本地导入的视频没有库记录）"); return; }
@@ -1084,6 +1138,72 @@ public sealed partial class MainWindow : Window
     {
         _showTxtCoverButtons = TxtCoverToggle.IsChecked == true;
         RefreshTxtLibrary();
+    }
+
+    private void EpubDeleteBtn_Click(object sender, RoutedEventArgs e)
+    {
+        if (sender is Button b && b.Tag is string id) _ = DeleteLibraryEntryAsync("epub", id);
+    }
+    private void PdfDeleteBtn_Click(object sender, RoutedEventArgs e)
+    {
+        if (sender is Button b && b.Tag is string id) _ = DeleteLibraryEntryAsync("pdf", id);
+    }
+    private void TxtDeleteBtn_Click(object sender, RoutedEventArgs e)
+    {
+        if (sender is Button b && b.Tag is string id) _ = DeleteLibraryEntryAsync("txt", id);
+    }
+
+    private async Task DeleteLibraryEntryAsync(string kind, string id)
+    {
+        try
+        {
+            string path = GetSourcePath(kind, id);
+            string cover = GetCoverPath(kind, id);
+            string title = kind switch
+            {
+                "epub" => FindEpubEntry(id)?.Title ?? "",
+                "pdf" => FindPdfEntry(id)?.Title ?? "",
+                "txt" => FindTxtEntry(id)?.Title ?? "",
+                _ => "",
+            };
+            if (string.IsNullOrEmpty(path)) return;
+            bool inLibrary = IsUnderDirectory(path, kind == "epub" ? EpubLibraryDir : kind == "pdf" ? PdfLibraryDir : TxtLibraryDir);
+            string hint = inLibrary ? "会同时删除书库里的副本。" : "只从书库移除，不删除原文件。";
+            var dialog = new ContentDialog
+            {
+                Title = "删除文件",
+                Content = $"确定删除“{title}”吗？\n{hint}",
+                PrimaryButtonText = "删除",
+                CloseButtonText = "取消",
+                DefaultButton = ContentDialogButton.Close,
+                XamlRoot = ((FrameworkElement)Content).XamlRoot,
+            };
+            if (await dialog.ShowAsync() != ContentDialogResult.Primary) return;
+            switch (kind)
+            {
+                case "epub":
+                    var e = LoadEpubEntries(); e.RemoveAll(x => x.Id == id); SaveEpubEntries(e); break;
+                case "pdf":
+                    var p = LoadPdfEntries(); p.RemoveAll(x => x.Id == id); SavePdfEntries(p); break;
+                case "txt":
+                    var t = LoadTxtEntries(); t.RemoveAll(x => x.Id == id); SaveTxtEntries(t); break;
+            }
+            try { if (inLibrary && File.Exists(path)) File.Delete(path); } catch { }
+            try { if (!string.IsNullOrWhiteSpace(cover) && IsUnderDirectory(cover, CoversDir) && File.Exists(cover)) File.Delete(cover); } catch { }
+            RefreshCoverKind(kind);
+        }
+        catch { }
+    }
+
+    private static bool IsUnderDirectory(string path, string dir)
+    {
+        try
+        {
+            string full = Path.GetFullPath(path).TrimEnd('\\') + "\\";
+            string root = Path.GetFullPath(dir).TrimEnd('\\') + "\\";
+            return full.StartsWith(root, StringComparison.OrdinalIgnoreCase);
+        }
+        catch { return false; }
     }
 
     private void EpubCoverBtn_Click(object sender, RoutedEventArgs e)
@@ -2485,3 +2605,6 @@ public class DownloadTaskVm : System.ComponentModel.INotifyPropertyChanged
 
 public class FmtItem { public string Label { get; set; } = ""; public int Qn { get; set; } public string FormatSel { get; set; } = ""; }
 public class PageItem { public string Label { get; set; } = ""; public int Page { get; set; } }
+
+
+

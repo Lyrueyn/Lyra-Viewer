@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <Window
     x:Class="WinUIGui.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -228,9 +228,9 @@
                                 BorderThickness="0" Foreground="{StaticResource TextMain}" CornerRadius="14" Padding="12,5"/>
                         <Button Content="＋ 添加 EPUB 文件" Click="EpubAddFile_Click" Background="#33FFFFFF"
                                 BorderThickness="0" Foreground="{StaticResource TextMain}" CornerRadius="14" Padding="12,5"/>
-                        <ToggleButton x:Name="EpubCoverToggle" Content="改封面" IsChecked="False" Click="EpubCoverToggle_Click"
+                        <ToggleButton x:Name="EpubCoverToggle" Content="管理" IsChecked="False" Click="EpubCoverToggle_Click"
                                       Background="#33FFFFFF" BorderThickness="0" Foreground="{StaticResource TextMain}"
-                                      CornerRadius="14" Padding="12,5" ToolTipService.ToolTip="显示/隐藏卡片上的封面按钮"/>
+                                      CornerRadius="14" Padding="12,5" ToolTipService.ToolTip="显示/隐藏卡片上的封面、删除按钮"/>
                         <TextBlock x:Name="EpubStatusText" Text="" Foreground="{StaticResource TextSub}" FontSize="12"
                                    VerticalAlignment="Center" TextWrapping="Wrap"/>
                     </StackPanel>
@@ -245,6 +245,7 @@
                                             <TextBlock Text="📖" FontSize="42" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                             <Image Source="{Binding Cover}" Stretch="UniformToFill" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
                                             <Button Content="封面" Tag="{Binding Id}" Click="EpubCoverBtn_Click" Visibility="{Binding CoverButtonVisibility}" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="6" Padding="6,2" FontSize="10" MinHeight="24" Background="#B3000000" Foreground="White" BorderThickness="0" CornerRadius="10"/>
+                                            <Button Content="删除" Tag="{Binding Id}" Click="EpubDeleteBtn_Click" Visibility="{Binding CoverButtonVisibility}" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,6,60,0" Padding="6,2" FontSize="10" MinHeight="24" Background="#B3B00020" Foreground="White" BorderThickness="0" CornerRadius="10"/>
                                             <TextBlock Text="{Binding DateText}" Foreground="#9BA0A5" FontSize="10"
                                                        VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="8"/>
                                         </Grid>
@@ -274,9 +275,9 @@
                                 BorderThickness="0" Foreground="{StaticResource TextMain}" CornerRadius="14" Padding="12,5"/>
                         <Button Content="＋ 添加 PDF 文件" Click="PdfAddFile_Click" Background="#33FFFFFF"
                                 BorderThickness="0" Foreground="{StaticResource TextMain}" CornerRadius="14" Padding="12,5"/>
-                        <ToggleButton x:Name="PdfCoverToggle" Content="改封面" IsChecked="False" Click="PdfCoverToggle_Click"
+                        <ToggleButton x:Name="PdfCoverToggle" Content="管理" IsChecked="False" Click="PdfCoverToggle_Click"
                                       Background="#33FFFFFF" BorderThickness="0" Foreground="{StaticResource TextMain}"
-                                      CornerRadius="14" Padding="12,5" ToolTipService.ToolTip="显示/隐藏卡片上的封面按钮"/>
+                                      CornerRadius="14" Padding="12,5" ToolTipService.ToolTip="显示/隐藏卡片上的封面、删除按钮"/>
                         <TextBlock x:Name="PdfStatusText" Text="" Foreground="{StaticResource TextSub}" FontSize="12"
                                    VerticalAlignment="Center" TextWrapping="Wrap"/>
                     </StackPanel>
@@ -291,6 +292,7 @@
                                             <TextBlock Text="📄" FontSize="42" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                             <Image Source="{Binding Cover}" Stretch="UniformToFill" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
                                             <Button Content="封面" Tag="{Binding Id}" Click="PdfCoverBtn_Click" Visibility="{Binding CoverButtonVisibility}" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="6" Padding="6,2" FontSize="10" MinHeight="24" Background="#B3000000" Foreground="White" BorderThickness="0" CornerRadius="10"/>
+                                            <Button Content="删除" Tag="{Binding Id}" Click="PdfDeleteBtn_Click" Visibility="{Binding CoverButtonVisibility}" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,6,60,0" Padding="6,2" FontSize="10" MinHeight="24" Background="#B3B00020" Foreground="White" BorderThickness="0" CornerRadius="10"/>
                                             <TextBlock Text="{Binding DateText}" Foreground="#9BA0A5" FontSize="10"
                                                        VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="8"/>
                                         </Grid>
@@ -320,9 +322,9 @@
                                 BorderThickness="0" Foreground="{StaticResource TextMain}" CornerRadius="14" Padding="12,5"/>
                         <Button Content="＋ 添加 TXT 文件" Click="TxtAddFile_Click" Background="#33FFFFFF"
                                 BorderThickness="0" Foreground="{StaticResource TextMain}" CornerRadius="14" Padding="12,5"/>
-                        <ToggleButton x:Name="TxtCoverToggle" Content="改封面" IsChecked="False" Click="TxtCoverToggle_Click"
+                        <ToggleButton x:Name="TxtCoverToggle" Content="管理" IsChecked="False" Click="TxtCoverToggle_Click"
                                       Background="#33FFFFFF" BorderThickness="0" Foreground="{StaticResource TextMain}"
-                                      CornerRadius="14" Padding="12,5" ToolTipService.ToolTip="显示/隐藏卡片上的封面按钮"/>
+                                      CornerRadius="14" Padding="12,5" ToolTipService.ToolTip="显示/隐藏卡片上的封面、删除按钮"/>
                         <TextBlock x:Name="TxtStatusText" Text="" Foreground="{StaticResource TextSub}" FontSize="12"
                                    VerticalAlignment="Center" TextWrapping="Wrap"/>
                     </StackPanel>
@@ -337,6 +339,7 @@
                                             <TextBlock Text="📃" FontSize="42" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                             <Image Source="{Binding Cover}" Stretch="UniformToFill" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
                                             <Button Content="封面" Tag="{Binding Id}" Click="TxtCoverBtn_Click" Visibility="{Binding CoverButtonVisibility}" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="6" Padding="6,2" FontSize="10" MinHeight="24" Background="#B3000000" Foreground="White" BorderThickness="0" CornerRadius="10"/>
+                                            <Button Content="删除" Tag="{Binding Id}" Click="TxtDeleteBtn_Click" Visibility="{Binding CoverButtonVisibility}" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,6,60,0" Padding="6,2" FontSize="10" MinHeight="24" Background="#B3B00020" Foreground="White" BorderThickness="0" CornerRadius="10"/>
                                             <TextBlock Text="{Binding DateText}" Foreground="#9BA0A5" FontSize="10"
                                                        VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="8"/>
                                         </Grid>
@@ -372,7 +375,8 @@
                           Visibility="Visible">
                     <GridView.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Width="250" Spacing="6" Margin="0,0,12,16">
+                            <StackPanel Width="250" Spacing="6" Margin="0,0,12,16"
+                                        >
                                 <Border Height="140" CornerRadius="8" Background="{Binding ThumbBrush}">
                                     <Grid>
                                         <!-- ★ 真实封面（下载时一起抓下来的 B站封面图；没有封面时它是透明的，
@@ -390,11 +394,13 @@
                                         <Button Content="＋" Tag="{Binding}" Click="CardAddToCollection_Click"
                                                 Width="26" Height="26" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,4,34,0"
                                                 Background="#CC000000" BorderThickness="0" Foreground="{StaticResource TextMain}"
-                                                FontSize="14" Padding="0" ToolTipService.ToolTip="加入合集"/>
+                                                FontSize="14" Padding="0" ToolTipService.ToolTip="加入合集"
+                                                Opacity="0" IsHitTestVisible="False"/>
                                         <Button Content="✕" Tag="{Binding}" Click="CardDelete_Click"
                                                 Width="26" Height="26" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,4,4,0"
                                                 Background="#CC000000" BorderThickness="0" Foreground="{StaticResource TextMain}"
-                                                FontSize="12" Padding="0" ToolTipService.ToolTip="删除视频"/>
+                                                FontSize="12" Padding="0" ToolTipService.ToolTip="删除视频"
+                                                Opacity="0" IsHitTestVisible="False"/>
                                     </Grid>
                                 </Border>
                                 <!-- ★ 标题固定占两行高度（20px 行高×2）：原来不固定，标题两行的卡片会把下面的
@@ -689,3 +695,4 @@
         </Grid>
     </Grid>
 </Window>
+

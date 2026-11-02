@@ -3,7 +3,7 @@
 > 交接对象：GPT-6  
 > 项目位置：`F:\DSH\LocalMediaPlayer-Workspace`  
 > 文档更新时间：2026-10-31  
-> 当前主线版本：**璃鸢镜 1.1.17**（已发布）  
+> 当前主线版本：**璃鸢镜 1.2.0**（已发布）  
 > 项目性质：Windows 本地媒体播放器，自研 C++ 音视频引擎 + WinUI 3 前端 + Python 后端 + 网页扩展系统。
 
 ---
@@ -26,7 +26,7 @@
 
 | 项目 | 版本 | 安装/更新资产 |
 |---|---|---|
-| 主程序 | **v1.1.17** | `LyraViewer-Setup-1.1.17.exe`（安装在用户目录，安装包会安装 .NET 10 Desktop Runtime） |
+| 主程序 | **v1.2.0** | `LyraViewer-Setup-1.2.0.exe`（安装在用户目录，安装包会安装 .NET 10 Desktop Runtime） |
 | EPUB 扩展 | **v0.6.9** | `lyra-ext-epub.zip` |
 | PDF 扩展 | **v0.4.6** | `lyra-ext-pdf.zip` |
 | TXT 扩展 | **v0.1.1** | `lyra-ext-txt.zip` |
@@ -171,7 +171,7 @@ extensions/<id>/
 - 打开后前 0.9 秒左右有加载保护，防止初始化重排闪回
 - 已修复：宿主重复投递同一本书导致重新打开、点几页后回开头
 
-### 5.6 PDF 阅读器（v0.4.6）
+### 5.6 PDF 阅读器（v0.4.7）
 
 - 独立仓库：`Lyrueyn/Lyra-Extention-PDF_Reader`
 - 基于 PDF.js（`lib/pdf.min.js` + worker）
@@ -181,7 +181,7 @@ extensions/<id>/
 - 页码输入：回车、失焦、停止输入约 0.42 秒都会跳页
 - PDF 书库 Tab：打开 PDF（不复制）/ 添加 PDF（复制到书库）/ 卡片阅读
 
-### 5.7 TXT 阅读器（v0.1.1）
+### 5.7 TXT 阅读器（v0.1.2）
 
 - 独立仓库：`Lyrueyn/Lyra-Extension-txt_Reader`
 - 左侧栏 TXT Tab：安装并启用 TXT 扩展后显示
@@ -270,10 +270,10 @@ F:\DSH\LocalMediaPlayer-Workspace\packaging\_pkg_t34\lmp-setup-user.iss
 
 | 项目 | 版本 | 状态 |
 |---|---|---|
-| 主程序 | 1.1.17 | 已发布；三扩展书库封面、第一页自动封面、每 Tab 改封面开关 |
+| 主程序 | 1.2.0 | 已发布；视频 +/× 悬停显示、三扩展书库删除、PDF/TXT 选中文字开关、PDF 手动缩放、PDF 放映高清重绘 |
 | EPUB 扩展 | 0.6.9 | 已发布；目录溢出、翻页冷却/串行、跨章首翻、动画缩短 |
-| PDF 扩展 | 0.4.6 | 已发布；PPT 式放映、Real-ESRGAN 页面超分、每页独立版本切换、右键菜单禁用 |
-| TXT 扩展 | 0.1.1 | 已发布；TXT 侧栏/书库、宿主文件注入、编码与阅读位置 |
+| PDF 扩展 | 0.4.7 | 已发布；PPT 式放映、Real-ESRGAN 页面超分、每页独立版本切换、右键菜单禁用 |
+| TXT 扩展 | 0.1.2 | 已发布；TXT 侧栏/书库、宿主文件注入、编码与阅读位置 |
 | .NET 运行时 | 10.x | 安装包会安装；本机全局已有 10.0.9 / 10.0.13 |
 
 已知历史问题（已修）：
