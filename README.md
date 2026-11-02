@@ -1,4 +1,4 @@
-﻿# 璃鸢镜（Lyra Viewer）v1.2.1
+﻿# 璃鸢镜（Lyra Viewer）v1.2.2
 
 > 🤖 **本项目由 AI（DeepSeek Harness）制作/协作开发。**
 >
@@ -8,12 +8,12 @@
 
 ## 下载安装
 
-最新版本：**璃鸢镜 1.2.1**
+最新版本：**璃鸢镜 1.2.2**
 
 | 内容 | 地址 |
 |---|---|
 | 主程序 Release | https://github.com/Lyrueyn/Lyra-Viewer/releases/latest |
-| 安装包 | `LyraViewer-Setup-1.2.1.exe` |
+| 安装包 | `LyraViewer-Setup-1.2.2.exe` |
 | EPUB 扩展 | https://github.com/Lyrueyn/Lyra-Extension-Epub |
 | PDF 扩展 | https://github.com/Lyrueyn/Lyra-Extention-PDF_Reader |
 | TXT 扩展 | https://github.com/Lyrueyn/Lyra-Extension-txt_Reader |
@@ -67,7 +67,7 @@
 
 | 项目 | 版本 | 状态 |
 |---|---|---|
-| 主程序 | 1.2.1 | 已发布 |
+| 主程序 | 1.2.2 | 已发布 |
 | EPUB 扩展 | 0.6.9 | 已发布 |
 | PDF 扩展 | 0.4.7 | 已发布 |
 | TXT 扩展 | 0.1.2 | 已发布 |
@@ -75,6 +75,7 @@
 
 近期主线变更：
 
+- 1.2.2：AI 字幕改由一次性子进程转写，完成后子进程退出，不再让常驻后端持有 PyTorch 模型、CUDA 上下文和显存；识别进度继续实时更新。
 - 1.2.1：AI 字幕识别进度改为按 Whisper 内部帧进度实时更新；加载模型/识别阶段有明确提示，不再长时间停在 0%。
 - 1.2.0：视频卡片 +/× 仅悬停显示；三扩展书库支持管理删除文件；PDF/TXT 可切换选中文字；PDF 缩放可手动输入；PDF 放映清晰度不再受普通缩放影响。
 - 1.1.17：三扩展书库封面；自定义封面 / 删除后回退第一页；每 Tab 独立「管理」开关。
@@ -137,7 +138,7 @@ dotnet build app\WinUIGui\WinUIGui.csproj -c Release
   "F:\DSH\LocalMediaPlayer-Workspace\packaging\_pkg_t34\lmp-setup-user.iss"
 ```
 
-产物在 `packaging\_pkg_t34\inno-out-121\璃鸢镜-Setup-1.2.1.exe`。
+产物在 `packaging\_pkg_t34\inno-out-122\璃鸢镜-Setup-1.2.2.exe`。
 
 ## 说明 / 许可
 

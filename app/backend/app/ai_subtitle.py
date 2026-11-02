@@ -1,4 +1,4 @@
-"""AI 字幕（Whisper 语音识别）：依赖安装、模型下载/选择/删除、离线转写生成 SRT。
+﻿"""AI 字幕（Whisper 语音识别）：依赖安装、模型下载/选择/删除、离线转写生成 SRT。
 
 设计目标（用户要求）：
 · 依赖和模型都走「下载按钮 + 进度条（x/x MB）+ 取消按钮」，不要求用户手动 pip；
@@ -502,9 +502,55 @@ def _transcribe_with_progress(model, audio, *, device: str, language,
         wt.tqdm.tqdm = original_tqdm
 
 
+def _release_model_resources(model=None) -> None:
+    """字幕任务结束后主动释放模型和 CUDA 缓存。
+
+    Whisper 模型占用很大（large-v3 约 3GB 显存）。转写完成后如果只等 Python
+    垃圾回收，CUDA 缓存池仍会长期占着显存，所以这里显式删除、GC、
+    torch.cuda.empty_cache()。后端进程本身是常驻服务，不能因为一次字幕就退出；
+    但它可以在空闲时把模型和显存还给系统。
+    """
+    try:
+        del model
+    except Exception:
+        pass
+    try:
+        import gc
+        gc.collect()
+    except Exception:
+        pass
+    try:
+        import torch
+        if torch.cuda.is_available():
+            try:
+                torch.cuda.synchronize()
+            except Exception:
+                pass
+            try:
+                torch.cuda.empty_cache()
+                torch.cuda.ipc_collect()
+            except Exception:
+                pass
+    except Exception:
+        pass
+    try:
+        import gc
+        gc.collect()
+    except Exception:
+        pass
+
+
 def _gen_worker(media: Path) -> None:
+    """父进程只负责准备音频和监控，真正的 Whisper 在一次性子进程中运行。
+
+    字幕完成后子进程退出，模型、CUDA 上下文和显存全部释放；后端 HTTP 服务
+    保持常驻但不会把 PyTorch/Whisper 常驻在自己的进程里。
+    """
     _cancel_gen.clear()
     wav = DATA_DIR / "temp_whisper.wav"
+    status_path = DATA_DIR / "temp_whisper_progress.json"
+    cancel_marker = status_path.with_suffix(".cancel")
+    proc = None
     try:
         if not deps_ready(force=True):
             raise RuntimeError("缺少语音识别依赖（openai-whisper），请先安装依赖")
@@ -530,98 +576,87 @@ def _gen_worker(media: Path) -> None:
         if rc.returncode != 0 or not wav.exists():
             raise RuntimeError("音频提取失败（ffmpeg rc=%s）" % rc.returncode)
         dur = _probe_duration(media)
-        import torch
-        import whisper
         force = (os.environ.get("LMP_WHISPER_DEVICE") or "").strip().lower()
-        if force == "cpu":
-            dev = "cpu"
-        elif force == "cuda":
-            dev = "cuda"
+        if force in ("cpu", "cuda"):
+            dev = force
         else:
-            dev = "cuda" if torch.cuda.is_available() else "cpu"
-        if dev == "cuda" and not torch.cuda.is_available():
-            dev = "cpu"
+            dev = str(_device_info().get("device") or "cpu")
         logger.info("AI 字幕转写：model=%s device=%s media=%s", name, dev, media)
         if dev == "cpu":
             logger.info("AI 字幕：没有可用 CUDA 显卡，使用 CPU 识别（速度会慢很多）")
-        with _lock:
-            _gen_job.update({"percent": 1.0, "stage": "加载模型"})
-        model = whisper.load_model(name, download_root=str(MODEL_DIR), device=dev)
-        with _lock:
-            _gen_job.update({"percent": 2.0, "stage": "识别中"})
-        # ★ 每个模型单独存一版：<视频名>.ai.<模型>.srt
         srt_path = media.parent / (media.stem + ".ai." + name + ".srt")
-        _ensure_zhconv()
-        segs = []
-        n = 0
-
-        # ★ 不要把 wav 路径交给 whisper.transcribe —— 它内部会再调系统 `ffmpeg`，
-        #   而安装版后端的 PATH 里没有 ffmpeg（会 WinError 2）。这里自己读 wav 成 float32 数组。
-        import numpy as _np
-        with wave.open(str(wav), "rb") as wf:
-            _frames = wf.readframes(wf.getnframes())
-        audio = _np.frombuffer(_frames, dtype=_np.int16).astype(_np.float32) / 32768.0
-        total_samples = max(1, len(audio))
-        sr = 16000
-        chunk_samples = sr * 60          # 每段 60 秒：段间写 SRT + 可取消；细进度由下面的 tqdm 钩子提供
-        total_sec = float(dur) if dur and dur > 0 else total_samples / float(sr)
-
-        def write_srt() -> None:
+        status_path.unlink(missing_ok=True)
+        cancel_marker.unlink(missing_ok=True)
+        worker = Path(__file__).with_name("ai_subtitle_worker.py")
+        cmd = [PYTHON, str(worker),
+               "--wav", str(wav), "--srt", str(srt_path), "--model", name,
+               "--model-dir", str(MODEL_DIR), "--device", dev,
+               "--total-sec", str(dur or 0), "--status", str(status_path)]
+        creationflags = 0x08000000 if os.name == "nt" else 0
+        with _lock:
+            _gen_job.update({"percent": 1.0, "stage": "加载模型", "model": name, "device": dev})
+        proc = subprocess.Popen(cmd, cwd=str(Path(__file__).resolve().parents[1]),
+                                stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
+                                creationflags=creationflags)
+        cancelled = False
+        last_status = {}
+        while True:
+            if _cancel_gen.is_set() and not cancelled:
+                cancelled = True
+                try:
+                    proc.terminate()
+                except Exception:
+                    pass
             try:
-                # ★ 必须 newline="" + 只用 \n：文本模式写 \r\n 会被 Python 再翻译一次，
-                #   变成 CR CR LF，前端解析时会在时间行后多出一个空行 → 正文被当成空 → 字幕永远不显示。
-                with open(srt_path, "w", encoding="utf-8", newline="") as f:
-                    for i, s in enumerate(segs, 1):
-                        f.write("%d\n%s --> %s\n%s\n\n" % (
-                            i, _fmt_ts(s["start"]), _fmt_ts(s["end"]), s["text"]))
+                if status_path.exists():
+                    last_status = json.loads(status_path.read_text(encoding="utf-8"))
+                    with _lock:
+                        for key in ("percent", "segments", "language", "stage"):
+                            if key in last_status:
+                                _gen_job[key] = last_status[key]
             except Exception:
                 pass
-
-        lang = ""
-        for off in range(0, total_samples, chunk_samples):
-            if _cancel_gen.is_set():
-                raise RuntimeError("已取消")
-            part = audio[off:off + chunk_samples]
-            if len(part) == 0:
+            if proc.poll() is not None:
                 break
-            # verbose=False → 返回 dict；内部 tqdm 进度会被钩子换算成整体百分比。
-            base_sec = off / float(sr)
-            res = _transcribe_with_progress(
-                model, part, device=dev, language=None,
-                base_sec=base_sec, span_sec=len(part) / float(sr), total_sec=total_sec)
-            if isinstance(res, dict):
-                lang = (res.get("language") or lang) or ""
-                seg_list = res.get("segments") or []
-            else:
-                seg_list = res
-            for s in seg_list:
-                st = float(_seg_get(s, "start", 0) or 0) + base_sec
-                en = float(_seg_get(s, "end", 0) or 0) + base_sec
-                tx = (_seg_get(s, "text", "") or "").strip()
-                if tx:
-                    # ★ 中文统一转简体（large-v3 默认常输出繁体）
-                    tx = _to_simplified(tx, lang)
-                    segs.append({"start": st, "end": en, "text": tx})
-            n = len(segs)
-            with _lock:
-                _gen_job["segments"] = n
-                _gen_job["language"] = lang
-                _gen_job["percent"] = round(min(99.0, (off + len(part)) / float(total_samples) * 100.0), 1)
-            write_srt()
-        write_srt()
+            time.sleep(0.25)
+        if cancelled:
+            raise RuntimeError("已取消")
+        try:
+            if status_path.exists():
+                last_status = json.loads(status_path.read_text(encoding="utf-8"))
+        except Exception:
+            last_status = {}
+        if not (last_status.get("ok") and Path(str(last_status.get("srt") or "")).is_file()):
+            err = str(last_status.get("error") or "").strip()
+            if not err:
+                err = "转写子进程退出（code=%s）" % proc.returncode
+            raise RuntimeError(err[:300])
         with _lock:
             _gen_job.update({"ok": True, "done": True, "running": False, "percent": 100.0,
-                             "srt": str(srt_path), "model": name, "device": dev})
-        logger.info("AI 字幕生成完成: %s（%d 条）", srt_path, n)
+                             "stage": "完成", "srt": str(last_status.get("srt") or srt_path),
+                             "segments": int(last_status.get("segments") or 0),
+                             "language": str(last_status.get("language") or "")})
+        logger.info("AI 字幕生成完成: %s（子进程已退出）", srt_path)
     except Exception as e:
         with _lock:
-            _gen_job.update({"ok": False, "done": True, "running": False, "error": str(e)[:300]})
+            _gen_job.update({"ok": False, "done": True, "running": False,
+                             "stage": "失败", "error": str(e)[:300]})
         logger.warning("AI 字幕生成失败: %s", e)
     finally:
         try:
-            wav.unlink(missing_ok=True)
+            if proc is not None and proc.poll() is None:
+                proc.terminate()
+                try:
+                    proc.wait(timeout=3)
+                except Exception:
+                    proc.kill()
         except Exception:
             pass
+        for f in (wav, status_path, cancel_marker):
+            try:
+                f.unlink(missing_ok=True)
+            except Exception:
+                pass
 
 
 def start_generate(media_path: str) -> dict:
