@@ -1,4 +1,4 @@
-# 璃鸢镜（Lyra Viewer）v1.1.16
+# 璃鸢镜（Lyra Viewer）v1.1.17
 
 > 🤖 **本项目由 AI（DeepSeek Harness）制作/协作开发。**
 >
@@ -8,12 +8,12 @@
 
 ## 下载安装
 
-最新版本：**璃鸢镜 1.1.16**
+最新版本：**璃鸢镜 1.1.17**
 
 | 内容 | 地址 |
 |---|---|
 | 主程序 Release | https://github.com/Lyrueyn/Lyra-Viewer/releases/latest |
-| 安装包 | `LyraViewer-Setup-1.1.16.exe` |
+| 安装包 | `LyraViewer-Setup-1.1.17.exe` |
 | EPUB 扩展 | https://github.com/Lyrueyn/Lyra-Extension-Epub |
 | PDF 扩展 | https://github.com/Lyrueyn/Lyra-Extention-PDF_Reader |
 | TXT 扩展 | https://github.com/Lyrueyn/Lyra-Extension-txt_Reader |
@@ -58,15 +58,16 @@
 
 ### 扩展系统
 
-- 扩展中心安装/启用/更新网页扩展（EPUB、PDF）。
+- 扩展中心安装/启用/更新网页扩展（EPUB、PDF、TXT）。
 - 扩展宿主为每个窗口使用独立虚拟域名，支持 EPUB/PDF 与宿主之间的阅读位置、书签、偏好持久化协议。
 - 关闭扩展窗口有 finalize 握手和超时兜底；旧版扩展不会拖满固定 1500ms。
+- 三个阅读书库都支持封面：卡片显示封面；每个 Tab 有独立的「改封面」开关，默认隐藏封面按钮；无自定义封面或删除后自动生成第一页封面（PDF 渲染第 1 页、EPUB 取封面图/第一段正文、TXT 取开头正文）。
 
 ## 版本状态
 
 | 项目 | 版本 | 状态 |
 |---|---|---|
-| 主程序 | 1.1.16 | 已发布 |
+| 主程序 | 1.1.17 | 已发布 |
 | EPUB 扩展 | 0.6.9 | 已发布 |
 | PDF 扩展 | 0.4.6 | 已发布 |
 | TXT 扩展 | 0.1.1 | 已发布 |
@@ -74,6 +75,7 @@
 
 近期主线变更：
 
+- 1.1.17：三扩展书库封面；自定义封面 / 删除后回退第一页；每 Tab 独立「改封面」开关。
 - 1.1.16：TXT 阅读器侧栏/书库、`.txt` 宿主注入与 `lyra-book-ready` 生命周期。
 - 1.1.15：PDF 超分后端接口、扩展宿主传递后端端口、禁用扩展默认右键菜单。
 - 1.1.14：第二轮现场问题修复（OpenMediaAt、切画质遮罩、VSR 后台初始化、NVNGX 缓存、扩展关闭优化、ABI 3）。
@@ -133,7 +135,7 @@ dotnet build app\WinUIGui\WinUIGui.csproj -c Release
   "F:\DSH\LocalMediaPlayer-Workspace\packaging\_pkg_t34\lmp-setup-user.iss"
 ```
 
-产物在 `packaging\_pkg_t34\inno-out-1116\璃鸢镜-Setup-1.1.16.exe`。
+产物在 `packaging\_pkg_t34\inno-out-1117\璃鸢镜-Setup-1.1.17.exe`。
 
 ## 说明 / 许可
 
@@ -142,4 +144,4 @@ dotnet build app\WinUIGui\WinUIGui.csproj -c Release
 - 第三方组件遵循各自许可（FFmpeg LGPL/GPL、Qt LGPL/GPL、Whisper MIT 等）。
 - 本仓库根目录的 `LICENSE` 为 GNU GPL v3。
 
-版本：**1.1.16**
+版本：**1.1.17**

@@ -1,9 +1,9 @@
-# 璃鸢镜（Lyra Viewer）项目交接文档
+﻿# 璃鸢镜（Lyra Viewer）项目交接文档
 
 > 交接对象：GPT-6  
 > 项目位置：`F:\DSH\LocalMediaPlayer-Workspace`  
 > 文档更新时间：2026-10-31  
-> 当前主线版本：**璃鸢镜 1.1.16**（已发布）  
+> 当前主线版本：**璃鸢镜 1.1.17**（已发布）  
 > 项目性质：Windows 本地媒体播放器，自研 C++ 音视频引擎 + WinUI 3 前端 + Python 后端 + 网页扩展系统。
 
 ---
@@ -26,7 +26,7 @@
 
 | 项目 | 版本 | 安装/更新资产 |
 |---|---|---|
-| 主程序 | **v1.1.16** | `LyraViewer-Setup-1.1.16.exe`（安装在用户目录，安装包会安装 .NET 10 Desktop Runtime） |
+| 主程序 | **v1.1.17** | `LyraViewer-Setup-1.1.17.exe`（安装在用户目录，安装包会安装 .NET 10 Desktop Runtime） |
 | EPUB 扩展 | **v0.6.9** | `lyra-ext-epub.zip` |
 | PDF 扩展 | **v0.4.6** | `lyra-ext-pdf.zip` |
 | TXT 扩展 | **v0.1.1** | `lyra-ext-txt.zip` |
@@ -270,7 +270,7 @@ F:\DSH\LocalMediaPlayer-Workspace\packaging\_pkg_t34\lmp-setup-user.iss
 
 | 项目 | 版本 | 状态 |
 |---|---|---|
-| 主程序 | 1.1.16 | 已发布；TXT 阅读器侧栏/书库、.txt 宿主注入、lyra-book-ready 生命周期 |
+| 主程序 | 1.1.17 | 已发布；三扩展书库封面、第一页自动封面、每 Tab 改封面开关 |
 | EPUB 扩展 | 0.6.9 | 已发布；目录溢出、翻页冷却/串行、跨章首翻、动画缩短 |
 | PDF 扩展 | 0.4.6 | 已发布；PPT 式放映、Real-ESRGAN 页面超分、每页独立版本切换、右键菜单禁用 |
 | TXT 扩展 | 0.1.1 | 已发布；TXT 侧栏/书库、宿主文件注入、编码与阅读位置 |
