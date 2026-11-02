@@ -4303,10 +4303,12 @@ public sealed partial class VideoWindow : Window
                 int segs = gjob.TryGetProperty("segments", out var sg) && sg.ValueKind == System.Text.Json.JsonValueKind.Number ? sg.GetInt32() : 0;
                 string srt = GetStr(gjob, "srt");
                 string error = GetStr(gjob, "error");
+                string stage = GetStr(gjob, "stage");
                 if (running)
                 {
                     anyJob = true;
-                    AiSubGenText.Text = string.Format("正在用 AI 识别：{0:0.0}% · {1} 条", percent, segs);
+                    if (stage == "加载模型") AiSubGenText.Text = "正在加载 AI 模型…";
+                    else AiSubGenText.Text = string.Format("正在用 AI 识别：{0:0.0}% · {1} 条", percent, segs);
                     AiSubGenCancelBtn.Visibility = Visibility.Visible;
                     AiSubGenCancelBtn.IsEnabled = true;
                     AiSubGenBtn.IsEnabled = false;

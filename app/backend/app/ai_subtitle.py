@@ -52,7 +52,7 @@ _dep_job = {"running": False, "done": False, "ok": False, "percent": 0.0,
 _dl_job = {"running": False, "done": False, "ok": False, "model": "", "downloaded": 0,
            "total": 0, "percent": 0.0, "error": "", "cancel_requested": False, "started_at": 0.0}
 _gen_job = {"running": False, "done": False, "ok": False, "media": "", "srt": "",
-            "percent": 0.0, "segments": 0, "language": "", "error": "",
+            "percent": 0.0, "segments": 0, "language": "", "stage": "", "error": "",
             "cancel_requested": False, "started_at": 0.0}
 _cancel_deps = threading.Event()
 _cancel_dl = threading.Event()
@@ -445,6 +445,63 @@ def _probe_duration(path: Path) -> float:
     return 0.0
 
 
+def _transcribe_with_progress(model, audio, *, device: str, language,
+                              base_sec: float, span_sec: float, total_sec: float):
+    """跑 whisper.transcribe，并把它内部的 tqdm 帧进度换算成整段任务的百分比。
+
+    Whisper 自己不提供进度回调；它内部只有一个 tqdm 进度条（verbose=False 时启用）。
+    这里临时替换 whisper.transcribe 模块里的 tqdm 工厂，既拿到细粒度进度，又不用改
+    第三方包文件。回调只写内存里的 _gen_job，前端轮询 status 就能看到连续百分比。
+    """
+    import importlib
+    wt = importlib.import_module("whisper.transcribe")
+
+    original_tqdm = wt.tqdm.tqdm
+
+    class _ProgressTqdm:
+        def __init__(self, *args, **kwargs):
+            self.total = int(kwargs.get("total") or (args[0] if args else 0) or 0)
+            self.n = 0
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *args):
+            return False
+
+        def update(self, n=1):
+            try:
+                self.n += int(n or 0)
+                total = max(1, self.total)
+                frac = min(1.0, max(0.0, self.n / total))
+                pct = (base_sec + span_sec * frac) / max(0.01, total_sec) * 100.0
+                with _lock:
+                    _gen_job["percent"] = round(min(99.0, max(1.0, pct)), 1)
+                    _gen_job["stage"] = "识别中"
+            except Exception:
+                pass
+
+        def close(self):
+            pass
+
+        def set_description(self, *args, **kwargs):
+            pass
+
+        def set_postfix(self, *args, **kwargs):
+            pass
+
+        def __getattr__(self, _name):
+            return lambda *args, **kwargs: None
+
+    wt.tqdm.tqdm = _ProgressTqdm
+    try:
+        return model.transcribe(audio, language=language, task="transcribe",
+                                fp16=(device == "cuda"), verbose=False,
+                                condition_on_previous_text=False)
+    finally:
+        wt.tqdm.tqdm = original_tqdm
+
+
 def _gen_worker(media: Path) -> None:
     _cancel_gen.clear()
     wav = DATA_DIR / "temp_whisper.wav"
@@ -460,7 +517,8 @@ def _gen_worker(media: Path) -> None:
         with _lock:
             _gen_job.update({"running": True, "done": False, "ok": False, "media": str(media),
                              "srt": "", "percent": 0.0, "segments": 0, "language": "",
-                             "error": "", "cancel_requested": False, "started_at": time.time()})
+                             "stage": "提取音频", "error": "", "cancel_requested": False,
+                             "started_at": time.time()})
         ff = ffmpeg_tools.find_ffmpeg(required=True)
         try:
             wav.unlink(missing_ok=True)
@@ -486,7 +544,11 @@ def _gen_worker(media: Path) -> None:
         logger.info("AI 字幕转写：model=%s device=%s media=%s", name, dev, media)
         if dev == "cpu":
             logger.info("AI 字幕：没有可用 CUDA 显卡，使用 CPU 识别（速度会慢很多）")
+        with _lock:
+            _gen_job.update({"percent": 1.0, "stage": "加载模型"})
         model = whisper.load_model(name, download_root=str(MODEL_DIR), device=dev)
+        with _lock:
+            _gen_job.update({"percent": 2.0, "stage": "识别中"})
         # ★ 每个模型单独存一版：<视频名>.ai.<模型>.srt
         srt_path = media.parent / (media.stem + ".ai." + name + ".srt")
         _ensure_zhconv()
@@ -501,7 +563,8 @@ def _gen_worker(media: Path) -> None:
         audio = _np.frombuffer(_frames, dtype=_np.int16).astype(_np.float32) / 32768.0
         total_samples = max(1, len(audio))
         sr = 16000
-        chunk_samples = sr * 60          # 每段 60 秒：段间报进度 + 可取消（长视频不会一直卡在 0%）
+        chunk_samples = sr * 60          # 每段 60 秒：段间写 SRT + 可取消；细进度由下面的 tqdm 钩子提供
+        total_sec = float(dur) if dur and dur > 0 else total_samples / float(sr)
 
         def write_srt() -> None:
             try:
@@ -521,16 +584,16 @@ def _gen_worker(media: Path) -> None:
             part = audio[off:off + chunk_samples]
             if len(part) == 0:
                 break
-            # verbose=False → 返回 dict（新版 whisper 的 transcribe 不再返回生成器）
-            res = model.transcribe(part, language=None, task="transcribe",
-                                   fp16=(dev == "cuda"), verbose=False,
-                                   condition_on_previous_text=False)
+            # verbose=False → 返回 dict；内部 tqdm 进度会被钩子换算成整体百分比。
+            base_sec = off / float(sr)
+            res = _transcribe_with_progress(
+                model, part, device=dev, language=None,
+                base_sec=base_sec, span_sec=len(part) / float(sr), total_sec=total_sec)
             if isinstance(res, dict):
                 lang = (res.get("language") or lang) or ""
                 seg_list = res.get("segments") or []
             else:
                 seg_list = res
-            base_sec = off / float(sr)
             for s in seg_list:
                 st = float(_seg_get(s, "start", 0) or 0) + base_sec
                 en = float(_seg_get(s, "end", 0) or 0) + base_sec
