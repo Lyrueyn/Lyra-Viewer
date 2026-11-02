@@ -31,6 +31,7 @@ public sealed partial class MainWindow : Window
         public string Path { get; set; } = "";
         public string DateText { get; set; } = "";
         public ImageSource? Cover { get; set; }
+        public Visibility CoverButtonVisibility { get; set; } = Visibility.Collapsed;
     }
     private sealed class EpubEntry
     {
@@ -53,6 +54,7 @@ public sealed partial class MainWindow : Window
         public string Path { get; set; } = "";
         public string DateText { get; set; } = "";
         public ImageSource? Cover { get; set; }
+        public Visibility CoverButtonVisibility { get; set; } = Visibility.Collapsed;
     }
     private sealed class PdfEntry
     {
@@ -75,6 +77,7 @@ public sealed partial class MainWindow : Window
         public string Path { get; set; } = "";
         public string DateText { get; set; } = "";
         public ImageSource? Cover { get; set; }
+        public Visibility CoverButtonVisibility { get; set; } = Visibility.Collapsed;
     }
     private sealed class TxtEntry
     {
@@ -698,7 +701,8 @@ public sealed partial class MainWindow : Window
                 if (!File.Exists(e.Path)) continue;
                 cards.Add(new EpubCard { Id = e.Id, Title = e.Title, Author = e.Author, Path = e.Path,
                     DateText = e.AddedAt.Length >= 10 ? e.AddedAt.Substring(0, 10) : e.AddedAt,
-                    Cover = LoadCoverBitmap(e.CoverPath) });
+                    Cover = LoadCoverBitmap(e.CoverPath),
+                    CoverButtonVisibility = _showEpubCoverButtons ? Visibility.Visible : Visibility.Collapsed });
             }
             EpubGrid.ItemsSource = cards;
             EpubStatusText.Text = cards.Count == 0 ? "书库还是空的，点「添加 EPUB 文件」加入" : $"共 {cards.Count} 本";
@@ -835,7 +839,8 @@ public sealed partial class MainWindow : Window
                 if (!File.Exists(e.Path)) continue;
                 cards.Add(new PdfCard { Id = e.Id, Title = e.Title, Author = e.Author, Path = e.Path,
                     DateText = e.AddedAt.Length >= 10 ? e.AddedAt.Substring(0, 10) : e.AddedAt,
-                    Cover = LoadCoverBitmap(e.CoverPath) });
+                    Cover = LoadCoverBitmap(e.CoverPath),
+                    CoverButtonVisibility = _showPdfCoverButtons ? Visibility.Visible : Visibility.Collapsed });
             }
             PdfGrid.ItemsSource = cards;
             PdfStatusText.Text = cards.Count == 0 ? "书库还是空的，点「添加 PDF 文件」加入" : $"共 {cards.Count} 个 PDF";
@@ -969,7 +974,8 @@ public sealed partial class MainWindow : Window
                 if (!File.Exists(e.Path)) continue;
                 cards.Add(new TxtCard { Id = e.Id, Title = e.Title, Author = e.Author, Path = e.Path,
                     DateText = e.AddedAt.Length >= 10 ? e.AddedAt.Substring(0, 10) : e.AddedAt,
-                    Cover = LoadCoverBitmap(e.CoverPath) });
+                    Cover = LoadCoverBitmap(e.CoverPath),
+                    CoverButtonVisibility = _showTxtCoverButtons ? Visibility.Visible : Visibility.Collapsed });
             }
             TxtGrid.ItemsSource = cards;
             TxtStatusText.Text = cards.Count == 0 ? "书库还是空的，点「添加 TXT 文件」加入" : $"共 {cards.Count} 个 TXT";
@@ -1060,8 +1066,25 @@ public sealed partial class MainWindow : Window
     // ================= ★ 三扩展书库封面 =================
     private readonly HashSet<string> _coverPending = new(StringComparer.OrdinalIgnoreCase);
     private readonly HashSet<string> _coverTried = new(StringComparer.OrdinalIgnoreCase);
+    private bool _showEpubCoverButtons, _showPdfCoverButtons, _showTxtCoverButtons;
     private static string CoverKey(string kind, string id) => kind + ":" + id;
     private static string CoversDir => Path.Combine(AppContext.BaseDirectory, "data", "covers");
+
+    private void EpubCoverToggle_Click(object sender, RoutedEventArgs e)
+    {
+        _showEpubCoverButtons = EpubCoverToggle.IsChecked == true;
+        RefreshEpubLibrary();
+    }
+    private void PdfCoverToggle_Click(object sender, RoutedEventArgs e)
+    {
+        _showPdfCoverButtons = PdfCoverToggle.IsChecked == true;
+        RefreshPdfLibrary();
+    }
+    private void TxtCoverToggle_Click(object sender, RoutedEventArgs e)
+    {
+        _showTxtCoverButtons = TxtCoverToggle.IsChecked == true;
+        RefreshTxtLibrary();
+    }
 
     private void EpubCoverBtn_Click(object sender, RoutedEventArgs e)
     {
