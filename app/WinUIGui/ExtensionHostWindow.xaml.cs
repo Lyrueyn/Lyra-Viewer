@@ -322,8 +322,17 @@ namespace WinUIGui
                 if (root.ValueKind != JsonValueKind.Object) return false;
                 string type = ReaderProtocol.GetString(root, "type", 80);
                 if (type != "host.capabilities" && type != "host.importBook" &&
-                    type != "host.workspace.load" && type != "host.workspace.save") return false;
+                    type != "host.workspace.load" && type != "host.workspace.save" &&
+                    type != "host.ready") return false;
                 string requestId = ReaderProtocol.GetString(root, "requestId", 128);
+                if (type == "host.ready")
+                {
+                    // 笔记本等工具窗口不走 lyra-reader 生命周期，页面加载后主动解除加载层。
+                    _bookReady = true;
+                    _bookFailed = false;
+                    HideLoadingOverlay();
+                    return true;
+                }
                 if (type == "host.capabilities")
                 {
                     var arr = new JsonArray();

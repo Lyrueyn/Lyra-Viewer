@@ -4,7 +4,7 @@
 ;                 → 不需要管理员权限、不弹 UAC、装到 %LOCALAPPDATA%，控制面板可卸载。
 
 #define MyAppName "璃鸢镜"
-#define MyAppVersion "1.3.4"
+#define MyAppVersion "1.3.5"
 #define MyAppPublisher "Lyrueyn"
 #define MyAppExeName "WinUIGui.exe"
 #define SrcDir "final"
@@ -18,8 +18,8 @@ AppPublisher={#MyAppPublisher}
 DefaultDirName={localappdata}\LocalMediaPlayer
 DefaultGroupName={#MyAppName}
 DisableProgramGroupPage=yes
-OutputDir=F:\DSH\LocalMediaPlayer-Workspace\packaging\_pkg_t34\inno-out-134
-OutputBaseFilename=璃鸢镜-Setup-1.3.4
+OutputDir=F:\DSH\LocalMediaPlayer-Workspace\packaging\_pkg_t34\inno-out-135
+OutputBaseFilename=璃鸢镜-Setup-1.3.5
 Compression=lzma2/normal
 SolidCompression=yes
 WizardStyle=modern
@@ -54,6 +54,7 @@ Name: "{userdesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: de
 [Run]
 Filename: "{tmp}\windowsdesktop-runtime-win-x64.exe"; Parameters: "/install /quiet /norestart"; StatusMsg: "正在安装 .NET 10 运行时（首次需要，约 1 分钟）..."; Flags: waituntilterminated runhidden
 Filename: "{app}\{#MyAppExeName}"; Description: "立即启动 {#MyAppName}"; Flags: nowait postinstall skipifsilent
+
 
 
 
