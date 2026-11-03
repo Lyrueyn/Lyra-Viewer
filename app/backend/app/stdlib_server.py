@@ -1,4 +1,4 @@
-"""标准库 HTTP 后端（零第三方依赖，http.server 实现）。
+﻿"""标准库 HTTP 后端（零第三方依赖，http.server 实现）。
 
 路由与 app/api.py（fastapi 版）一致，全部调用 app/services.py 的服务层。
 未安装 fastapi/uvicorn 也能跑；yt-dlp 未装时仅"解析/下载"接口不可用。

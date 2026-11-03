@@ -1,5 +1,6 @@
 ﻿using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Automation;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using System;
@@ -23,87 +24,9 @@ public sealed partial class MainWindow : Window
     private bool _extChecking, _extCheckDone;
 
     // ================= ★ EPUB 书库（扩展贡献的 Tab）=================
-    private sealed class EpubCard
-    {
-        public string Id { get; set; } = "";
-        public string Title { get; set; } = "";
-        public string Author { get; set; } = "";
-        public string Path { get; set; } = "";
-        public string DateText { get; set; } = "";
-        public ImageSource? Cover { get; set; }
-        public Visibility CoverButtonVisibility { get; set; } = Visibility.Collapsed;
-    }
-    private sealed class EpubEntry
-    {
-        public string Id { get; set; } = "";
-        public string Title { get; set; } = "";
-        public string Author { get; set; } = "";
-        public string Path { get; set; } = "";
-        public string AddedAt { get; set; } = "";
-        public string CoverPath { get; set; } = "";
-    }
-    private static readonly string EpubLibraryFile = Path.Combine(AppContext.BaseDirectory, "data", "epub_library.json");
-    private static readonly string EpubLibraryDir = Path.Combine(AppContext.BaseDirectory, "data", "epub_library");
 
-    // ================= ★ PDF 书库（扩展贡献的 Tab）=================
-    private sealed class PdfCard
-    {
-        public string Id { get; set; } = "";
-        public string Title { get; set; } = "";
-        public string Author { get; set; } = "";
-        public string Path { get; set; } = "";
-        public string DateText { get; set; } = "";
-        public ImageSource? Cover { get; set; }
-        public Visibility CoverButtonVisibility { get; set; } = Visibility.Collapsed;
-    }
-    private sealed class PdfEntry
-    {
-        public string Id { get; set; } = "";
-        public string Title { get; set; } = "";
-        public string Author { get; set; } = "";
-        public string Path { get; set; } = "";
-        public string AddedAt { get; set; } = "";
-        public string CoverPath { get; set; } = "";
-    }
-    private static readonly string PdfLibraryFile = Path.Combine(AppContext.BaseDirectory, "data", "pdf_library.json");
-    private static readonly string PdfLibraryDir = Path.Combine(AppContext.BaseDirectory, "data", "pdf_library");
-
-    // ================= ★ TXT 书库（扩展贡献的 Tab）=================
-    private sealed class TxtCard
-    {
-        public string Id { get; set; } = "";
-        public string Title { get; set; } = "";
-        public string Author { get; set; } = "";
-        public string Path { get; set; } = "";
-        public string DateText { get; set; } = "";
-        public ImageSource? Cover { get; set; }
-        public Visibility CoverButtonVisibility { get; set; } = Visibility.Collapsed;
-    }
-    private sealed class TxtEntry
-    {
-        public string Id { get; set; } = "";
-        public string Title { get; set; } = "";
-        public string Author { get; set; } = "";
-        public string Path { get; set; } = "";
-        public string AddedAt { get; set; } = "";
-        public string CoverPath { get; set; } = "";
-    }
-    private static readonly string TxtLibraryFile = Path.Combine(AppContext.BaseDirectory, "data", "txt_library.json");
-    private static readonly string TxtLibraryDir = Path.Combine(AppContext.BaseDirectory, "data", "txt_library");
-
-    private sealed class AvailableExtension
-    {
-        public string Id = "", Name = "", Description = "", Repo = "", Asset = "";
-    }
-    private static readonly AvailableExtension[] AvailableExtensions = new[]
-    {
-        new AvailableExtension { Id = "epub", Name = "EPUB 阅读器", Repo = "Lyrueyn/Lyra-Extension-Epub",
-            Asset = "lyra-ext-epub.zip", Description = "在璃鸢镜里阅读 EPUB：目录、章节、字号、进度记忆。" },
-        new AvailableExtension { Id = "pdf", Name = "PDF 阅读器", Repo = "Lyrueyn/Lyra-Extention-PDF_Reader",
-            Asset = "lyra-ext-pdf.zip", Description = "在璃鸢镜里阅读 PDF：连续翻页、页码跳转、缩放、夜间模式、放映与超分。" },
-        new AvailableExtension { Id = "txt", Name = "TXT 阅读器", Repo = "Lyrueyn/Lyra-Extension-txt_Reader",
-            Asset = "lyra-ext-txt.zip", Description = "在璃鸢镜里阅读 TXT：自动编码、字号行距、深浅主题与阅读位置恢复。" },
-    };
+    // 扩展中心可安装列表来自 Assets/extension_catalog.json；新增扩展不需要改 C#。
+    private static List<ExtensionCatalog.AvailableExtensionInfo> AvailableExtensions => ExtensionCatalog.LoadAvailable();
     public IReadOnlyList<VideoWindow> VideoWindows => _video is null ? Array.Empty<VideoWindow>() : new[] { _video };
 
     // 按需创建/复用视频窗：点视频时才建（启动不弹），窗口关闭后下次点击重建
@@ -186,9 +109,7 @@ public sealed partial class MainWindow : Window
             _multiWindowLoading = false;
         }
         catch { _multiWindowLoading = false; }
-        UpdateEpubTabVisibility();
-        UpdatePdfTabVisibility();
-        UpdateTxtTabVisibility();
+        RefreshExtensionTabs();
         _ = AutoCheckUpdatesAsync();
         try
         {
@@ -421,35 +342,41 @@ public sealed partial class MainWindow : Window
     {
         if (sender is Button b && b.Tag is string tag)
         {
+            bool isExtensionTab = TryShowExtensionTab(tag);
             CardGrid.Visibility = tag == "home" ? Visibility.Visible : Visibility.Collapsed;
             DownloadPanel.Visibility = tag == "download" ? Visibility.Visible : Visibility.Collapsed;
             CollectionsPanel.Visibility = tag == "collections" ? Visibility.Visible : Visibility.Collapsed;
             ExtensionsPanel.Visibility = tag == "extensions" ? Visibility.Visible : Visibility.Collapsed;
-            EpubPanel.Visibility = tag == "epub" ? Visibility.Visible : Visibility.Collapsed;
-            PdfPanel.Visibility = tag == "pdf" ? Visibility.Visible : Visibility.Collapsed;
-            TxtPanel.Visibility = tag == "txt" ? Visibility.Visible : Visibility.Collapsed;
+            ExtensionTabsHost.Visibility = isExtensionTab ? Visibility.Visible : Visibility.Collapsed;
             UpdateNavHighlight(tag);   // ★ 以前只切面板、没切颜色 → "首页"永远是粉色
             if (tag == "collections") LoadPlaylistsAsync();
             if (tag == "extensions") RefreshExtensionsPage();
-            if (tag == "epub") RefreshEpubLibrary();
-            if (tag == "pdf") RefreshPdfLibrary();
-            if (tag == "txt") RefreshTxtLibrary();
         }
     }
 
     /// <summary>
     /// 左侧导航高亮：当前 Tab 用粉色（Pink），其它用次要色（TextSub）。
-    /// 以前 XAML 里把"首页"的颜色写死了，Nav_Click 又只切面板 → 不管点哪个 Tab，都是"首页"两个字粉色。
     /// </summary>
     private void UpdateNavHighlight(string activeTag)
     {
         var res = ((FrameworkElement)Content).Resources;   // 根 Grid 的资源字典（Pink / TextSub 定义在那）
         Brush pink = res.TryGetValue("Pink", out var p) && p is Brush pb ? pb : new SolidColorBrush(Windows.UI.Color.FromArgb(255, 0xFB, 0x72, 0x99));
         Brush sub = res.TryGetValue("TextSub", out var s) && s is Brush sb ? sb : new SolidColorBrush(Windows.UI.Color.FromArgb(255, 0x9B, 0xA0, 0xA5));
-        foreach (var (btn, tag) in new[] { (HomeNav, "home"), (DlNav, "download"), (CollNav, "collections"), (ExtNav, "extensions"), (EpubNav, "epub"), (PdfNav, "pdf"), (TxtNav, "txt"), (ExtNav, "extensions") })
+        var fixedNavs = new[] { (HomeNav, "home"), (DlNav, "download"), (CollNav, "collections"), (ExtNav, "extensions") };
+        foreach (var (btn, tag) in fixedNavs)
         {
             Brush brush = tag == activeTag ? pink : sub;
             if (btn.Content is not StackPanel sp) continue;
+            foreach (var child in sp.Children)
+            {
+                if (child is FontIcon fi) fi.Foreground = brush;
+                else if (child is TextBlock tb) tb.Foreground = brush;
+            }
+        }
+        foreach (var pair in _extensionNavButtons)
+        {
+            Brush brush = pair.Key == activeTag ? pink : sub;
+            if (pair.Value.Content is not StackPanel sp) continue;
             foreach (var child in sp.Children)
             {
                 if (child is FontIcon fi) fi.Foreground = brush;
@@ -709,692 +636,133 @@ public sealed partial class MainWindow : Window
         catch (Exception ex) { HomeCountText.Text = "添加失败：" + ex.Message; }
     }
 
-    // ================= ★ EPUB 扩展：Tab / 书库 =================
-    private bool EpubExtensionInstalled()
+    // ================= 通用扩展 Tab =================
+    private readonly Dictionary<string, ExtensionTabView> _extensionViews = new(StringComparer.OrdinalIgnoreCase);
+    private readonly Dictionary<string, Button> _extensionNavButtons = new(StringComparer.OrdinalIgnoreCase);
+
+    /// <summary>
+    /// 清单驱动：安装/启用一个带 sidebar 的读者扩展后，自动生成左侧 Tab + 书库页。
+    /// 这里不出现任何 EPUB/PDF/TXT 分支；它们只是三个普通 ExtensionDefinition。
+    /// </summary>
+    private void RefreshExtensionTabs()
     {
         try
         {
-            foreach (var e in ExtensionCatalog.LoadAll())
-                if (e.Enabled && string.Equals(e.Id, "epub", StringComparison.OrdinalIgnoreCase)) return true;
-        }
-        catch { }
-        return false;
-    }
+            ExtensionTabsHost.Children.Clear();
+            ExtensionTabsHost.Visibility = Visibility.Collapsed;
+            ExtensionNavs.Children.Clear();
+            _extensionViews.Clear();
+            _extensionNavButtons.Clear();
 
-    private void UpdateEpubTabVisibility()
-    {
-        try { EpubNav.Visibility = EpubExtensionInstalled() ? Visibility.Visible : Visibility.Collapsed; }
-        catch { EpubNav.Visibility = Visibility.Collapsed; }
-    }
-
-    private List<EpubEntry> LoadEpubEntries()
-    {
-        try
-        {
-            if (!File.Exists(EpubLibraryFile)) return new List<EpubEntry>();
-            return System.Text.Json.JsonSerializer.Deserialize<List<EpubEntry>>(File.ReadAllText(EpubLibraryFile))
-                   ?? new List<EpubEntry>();
-        }
-        catch { return new List<EpubEntry>(); }
-    }
-
-    private void SaveEpubEntries(List<EpubEntry> list)
-    {
-        Directory.CreateDirectory(Path.GetDirectoryName(EpubLibraryFile)!);
-        File.WriteAllText(EpubLibraryFile, System.Text.Json.JsonSerializer.Serialize(list,
-            new System.Text.Json.JsonSerializerOptions { WriteIndented = true }));
-    }
-
-    private void RefreshEpubLibrary()
-    {
-        try
-        {
-            var cards = new List<EpubCard>();
-            foreach (var e in LoadEpubEntries())
+            var res = ((FrameworkElement)Content).Resources;
+            Brush subBrush = res.TryGetValue("TextSub", out var subObj) && subObj is Brush sb ? sb : new SolidColorBrush(Windows.UI.Color.FromArgb(255, 156, 160, 165));
+            foreach (var def in ExtensionCatalog.LoadDefinitions().Where(x => x.Library.Sidebar))
             {
-                if (!File.Exists(e.Path)) continue;
-                cards.Add(new EpubCard { Id = e.Id, Title = e.Title, Author = e.Author, Path = e.Path,
-                    DateText = e.AddedAt.Length >= 10 ? e.AddedAt.Substring(0, 10) : e.AddedAt,
-                    Cover = LoadCoverBitmap(e.CoverPath),
-                    CoverButtonVisibility = _showEpubCoverButtons ? Visibility.Visible : Visibility.Collapsed });
+                var view = new ExtensionTabView(def) { Visibility = Visibility.Collapsed };
+                ExtensionTabsHost.Children.Add(view);
+                _extensionViews[def.Info.Id] = view;
+
+                var icon = new FontIcon
+                {
+                    Glyph = string.IsNullOrWhiteSpace(def.Library.Glyph) ? "\uE8A5" : def.Library.Glyph,
+                    FontSize = 20,
+                    Foreground = subBrush,
+                    HorizontalAlignment = HorizontalAlignment.Center,
+                };
+                var label = new TextBlock
+                {
+                    Text = string.IsNullOrWhiteSpace(def.Library.NavLabel) ? def.Info.Name : def.Library.NavLabel,
+                    Foreground = subBrush,
+                    FontSize = 11,
+                    HorizontalAlignment = HorizontalAlignment.Center,
+                };
+                var stack = new StackPanel { Orientation = Orientation.Vertical, Spacing = 2, HorizontalAlignment = HorizontalAlignment.Center };
+                stack.Children.Add(icon);
+                stack.Children.Add(label);
+                var button = new Button
+                {
+                    Background = new SolidColorBrush(Microsoft.UI.Colors.Transparent),
+                    BorderThickness = new Thickness(0),
+                    Tag = def.Info.Id,
+                    Content = stack,
+                    Visibility = Visibility.Visible,
+                };
+                AutomationProperties.SetAutomationId(button, "NavExt_" + def.Info.Id);
+                button.Click += Nav_Click;
+                ExtensionNavs.Children.Add(button);
+                _extensionNavButtons[def.Info.Id] = button;
             }
-            EpubGrid.ItemsSource = cards;
-            EpubStatusText.Text = cards.Count == 0 ? "书库还是空的，点「添加 EPUB 文件」加入" : $"共 {cards.Count} 本";
-            QueueMissingCovers("epub");
-        }
-        catch (Exception ex) { EpubStatusText.Text = "读取书库失败：" + ex.Message; }
+            UpdateExtensionTabVisibility();
+        }catch (Exception ex) { try { ExtStatusText.Text = "扩展 Tab 初始化失败：" + ex.Message; } catch { } }
     }
 
-    private async void EpubOpenFile_Click(object sender, RoutedEventArgs e)
+    private void UpdateExtensionTabVisibility()
+    {
+        foreach (var pair in _extensionViews)
+        {
+            bool visible = ExtensionCatalog.IsEnabled(pair.Key);
+            pair.Value.Visibility = Visibility.Collapsed;
+            if (_extensionNavButtons.TryGetValue(pair.Key, out var btn))
+                btn.Visibility = visible ? Visibility.Visible : Visibility.Collapsed;
+        }
+    }
+
+    private bool TryShowExtensionTab(string id)
+    {
+        if (!_extensionViews.TryGetValue(id, out var view)) return false;
+        bool enabled = ExtensionCatalog.IsEnabled(id);
+        if (!enabled) return false;
+        foreach (var v in _extensionViews.Values) v.Visibility = Visibility.Collapsed;
+        view.Visibility = Visibility.Visible;
+        view.Refresh();
+        return true;
+    }
+
+    /// <summary>
+    /// 通用宿主桥接：工具扩展下载完文件后，交给对应读者扩展的书库。
+    /// 例如工具扩展下载了 .epub，就找已安装且支持 .epub 的读者扩展，调用它的书库添加逻辑。
+    /// </summary>
+    public (bool ok, string extensionId, string title, string error) ImportDownloadedBook(string path)
     {
         try
         {
-            if (!EpubExtensionInstalled()) { EpubStatusText.Text = "请先在扩展 Tab 安装 EPUB 阅读器扩展"; return; }
-            var picker = new Windows.Storage.Pickers.FileOpenPicker();
-            picker.ViewMode = Windows.Storage.Pickers.PickerViewMode.List;
-            picker.FileTypeFilter.Add(".epub");
-            InitializeWithWindow.Initialize(picker, WindowNative.GetWindowHandle(this));
-            var file = await picker.PickSingleFileAsync();
-            if (file == null) return;
-            OpenEpubReader(file.Path);
-        }
-        catch (Exception ex) { EpubStatusText.Text = "打开失败：" + ex.Message; }
-    }
+            string full = Path.GetFullPath(path);
+            string novelRoot = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "data", "novel_library"));
+            if (!full.StartsWith(novelRoot, StringComparison.OrdinalIgnoreCase))
+                return (false, "", "", "只允许导入 data/novel_library 下的文件");
+            if (!File.Exists(full)) return (false, "", "", "文件不存在");
+            string ext = Path.GetExtension(full).ToLowerInvariant();
+            var def = ExtensionCatalog.LoadDefinitions().FirstOrDefault(d =>
+                d.IsReader && d.Library.Sidebar &&
+                d.Info.FileTypes.Any(t => string.Equals(t, ext, StringComparison.OrdinalIgnoreCase)));
+            if (def == null) return (false, "", "", "没有安装支持 " + ext + " 的阅读器扩展");
 
-    private async void EpubAddFile_Click(object sender, RoutedEventArgs e)
-    {
-        try
-        {
-            if (!EpubExtensionInstalled()) { EpubStatusText.Text = "请先在扩展 Tab 安装 EPUB 阅读器扩展"; return; }
-            var picker = new Windows.Storage.Pickers.FileOpenPicker();
-            picker.ViewMode = Windows.Storage.Pickers.PickerViewMode.List;
-            picker.FileTypeFilter.Add(".epub");
-            InitializeWithWindow.Initialize(picker, WindowNative.GetWindowHandle(this));
-            var file = await picker.PickSingleFileAsync();
-            if (file == null) return;
-
-            Directory.CreateDirectory(EpubLibraryDir);
-            string name = Path.GetFileName(file.Path);
-            string dst = Path.Combine(EpubLibraryDir, name);
-            int n = 1;
-            while (File.Exists(dst))
-            {
-                dst = Path.Combine(EpubLibraryDir, Path.GetFileNameWithoutExtension(name) + $" ({n++})" + Path.GetExtension(name));
-            }
-            File.Copy(file.Path, dst);
-            var meta = ReadEpubMeta(dst);
-            var list = LoadEpubEntries();
-            var entry = new EpubEntry
-            {
-                Id = Guid.NewGuid().ToString("N"),
-                Title = string.IsNullOrWhiteSpace(meta.Title) ? Path.GetFileNameWithoutExtension(dst) : meta.Title,
-                Author = string.IsNullOrWhiteSpace(meta.Author) ? "本地 EPUB" : meta.Author,
-                Path = dst,
-                AddedAt = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
-            };
-            list.Add(entry);
-            SaveEpubEntries(list);
-            RefreshEpubLibrary();
-            EpubStatusText.Text = "已添加：" + entry.Title;
-            _ = GenerateFirstPageCoverAsync("epub", entry.Id);
-        }
-        catch (Exception ex) { EpubStatusText.Text = "添加失败：" + ex.Message; }
-    }
-
-    private void EpubCard_ItemClick(object sender, ItemClickEventArgs e)
-    {
-        try
-        {
-            if (e.ClickedItem is EpubCard card) OpenEpubReader(card.Path);
-        }
-        catch (Exception ex) { EpubStatusText.Text = "打开失败：" + ex.Message; }
-    }
-
-    private void OpenEpubReader(string path)
-    {
-        try
-        {
-            var ext = ExtensionCatalog.LoadAll().FirstOrDefault(x => string.Equals(x.Id, "epub", StringComparison.OrdinalIgnoreCase));
-            if (ext == null || !ext.Enabled) { EpubStatusText.Text = "EPUB 扩展未安装或已禁用"; return; }
-            string dir = Path.Combine(ExtensionCatalog.ExtensionsDir, ext.Id);
-            string entry = string.IsNullOrWhiteSpace(ext.Entry) ? "index.html" : ext.Entry;
-            var win = new ExtensionHostWindow(ext.Id, ext.Name, dir, entry, path);
-            win.Closed += (_, _) => _extHosts.Remove(win);
-            _extHosts.Add(win);
-            win.Activate();
-            EpubStatusText.Text = "正在打开：" + Path.GetFileName(path);
-        }
-        catch (Exception ex) { EpubStatusText.Text = "打开失败：" + ex.Message; }
-    }
-
-    // ================= ★ PDF 扩展：Tab / 书库 =================
-    private bool PdfExtensionInstalled()
-    {
-        try
-        {
-            foreach (var e in ExtensionCatalog.LoadAll())
-                if (e.Enabled && string.Equals(e.Id, "pdf", StringComparison.OrdinalIgnoreCase)) return true;
-        }
-        catch { }
-        return false;
-    }
-
-    private void UpdatePdfTabVisibility()
-    {
-        try { PdfNav.Visibility = PdfExtensionInstalled() ? Visibility.Visible : Visibility.Collapsed; }
-        catch { PdfNav.Visibility = Visibility.Collapsed; }
-    }
-
-    private List<PdfEntry> LoadPdfEntries()
-    {
-        try
-        {
-            if (!File.Exists(PdfLibraryFile)) return new List<PdfEntry>();
-            return System.Text.Json.JsonSerializer.Deserialize<List<PdfEntry>>(File.ReadAllText(PdfLibraryFile))
-                   ?? new List<PdfEntry>();
-        }
-        catch { return new List<PdfEntry>(); }
-    }
-
-    private void SavePdfEntries(List<PdfEntry> list)
-    {
-        Directory.CreateDirectory(Path.GetDirectoryName(PdfLibraryFile)!);
-        File.WriteAllText(PdfLibraryFile, System.Text.Json.JsonSerializer.Serialize(list,
-            new System.Text.Json.JsonSerializerOptions { WriteIndented = true }));
-    }
-
-    private void RefreshPdfLibrary()
-    {
-        try
-        {
-            var cards = new List<PdfCard>();
-            foreach (var e in LoadPdfEntries())
-            {
-                if (!File.Exists(e.Path)) continue;
-                cards.Add(new PdfCard { Id = e.Id, Title = e.Title, Author = e.Author, Path = e.Path,
-                    DateText = e.AddedAt.Length >= 10 ? e.AddedAt.Substring(0, 10) : e.AddedAt,
-                    Cover = LoadCoverBitmap(e.CoverPath),
-                    CoverButtonVisibility = _showPdfCoverButtons ? Visibility.Visible : Visibility.Collapsed });
-            }
-            PdfGrid.ItemsSource = cards;
-            PdfStatusText.Text = cards.Count == 0 ? "书库还是空的，点「添加 PDF 文件」加入" : $"共 {cards.Count} 个 PDF";
-            QueueMissingCovers("pdf");
-        }
-        catch (Exception ex) { PdfStatusText.Text = "读取书库失败：" + ex.Message; }
-    }
-
-    private async void PdfOpenFile_Click(object sender, RoutedEventArgs e)
-    {
-        try
-        {
-            if (!PdfExtensionInstalled()) { PdfStatusText.Text = "请先在扩展 Tab 安装 PDF 阅读器扩展"; return; }
-            var picker = new Windows.Storage.Pickers.FileOpenPicker();
-            picker.ViewMode = Windows.Storage.Pickers.PickerViewMode.List;
-            picker.FileTypeFilter.Add(".pdf");
-            InitializeWithWindow.Initialize(picker, WindowNative.GetWindowHandle(this));
-            var file = await picker.PickSingleFileAsync();
-            if (file == null) return;
-            OpenPdfReader(file.Path);
-        }
-        catch (Exception ex) { PdfStatusText.Text = "打开失败：" + ex.Message; }
-    }
-
-    private async void PdfAddFile_Click(object sender, RoutedEventArgs e)
-    {
-        try
-        {
-            if (!PdfExtensionInstalled()) { PdfStatusText.Text = "请先在扩展 Tab 安装 PDF 阅读器扩展"; return; }
-            var picker = new Windows.Storage.Pickers.FileOpenPicker();
-            picker.ViewMode = Windows.Storage.Pickers.PickerViewMode.List;
-            picker.FileTypeFilter.Add(".pdf");
-            InitializeWithWindow.Initialize(picker, WindowNative.GetWindowHandle(this));
-            var file = await picker.PickSingleFileAsync();
-            if (file == null) return;
-
-            Directory.CreateDirectory(PdfLibraryDir);
-            string name = Path.GetFileName(file.Path);
-            string dst = Path.Combine(PdfLibraryDir, name);
-            int n = 1;
-            while (File.Exists(dst))
-                dst = Path.Combine(PdfLibraryDir, Path.GetFileNameWithoutExtension(name) + $" ({n++})" + Path.GetExtension(name));
-            File.Copy(file.Path, dst);
-            var list = LoadPdfEntries();
-            var entry = new PdfEntry
-            {
-                Id = Guid.NewGuid().ToString("N"),
-                Title = Path.GetFileNameWithoutExtension(dst),
-                Author = "本地 PDF",
-                Path = dst,
-                AddedAt = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
-            };
-            list.Add(entry);
-            SavePdfEntries(list);
-            RefreshPdfLibrary();
-            PdfStatusText.Text = "已添加：" + entry.Title;
-            _ = GenerateFirstPageCoverAsync("pdf", entry.Id);
-        }
-        catch (Exception ex) { PdfStatusText.Text = "添加失败：" + ex.Message; }
-    }
-
-    private void PdfCard_ItemClick(object sender, ItemClickEventArgs e)
-    {
-        try
-        {
-            if (e.ClickedItem is PdfCard card) OpenPdfReader(card.Path);
-        }
-        catch (Exception ex) { PdfStatusText.Text = "打开失败：" + ex.Message; }
-    }
-
-    private void OpenPdfReader(string path)
-    {
-        try
-        {
-            var ext = ExtensionCatalog.LoadAll().FirstOrDefault(x => string.Equals(x.Id, "pdf", StringComparison.OrdinalIgnoreCase));
-            if (ext == null || !ext.Enabled) { PdfStatusText.Text = "PDF 扩展未安装或已禁用"; return; }
-            string dir = Path.Combine(ExtensionCatalog.ExtensionsDir, ext.Id);
-            string entry = string.IsNullOrWhiteSpace(ext.Entry) ? "index.html" : ext.Entry;
-            var win = new ExtensionHostWindow(ext.Id, ext.Name, dir, entry, path);
-            win.Closed += (_, _) => _extHosts.Remove(win);
-            _extHosts.Add(win);
-            win.Activate();
-            PdfStatusText.Text = "正在打开：" + Path.GetFileName(path);
-        }
-        catch (Exception ex) { PdfStatusText.Text = "打开失败：" + ex.Message; }
-    }
-
-    // ================= ★ TXT 扩展：Tab / 书库 =================
-    private bool TxtExtensionInstalled()
-    {
-        try
-        {
-            foreach (var e in ExtensionCatalog.LoadAll())
-                if (e.Enabled && string.Equals(e.Id, "txt", StringComparison.OrdinalIgnoreCase)) return true;
-        }
-        catch { }
-        return false;
-    }
-
-    private void UpdateTxtTabVisibility()
-    {
-        try { TxtNav.Visibility = TxtExtensionInstalled() ? Visibility.Visible : Visibility.Collapsed; }
-        catch { TxtNav.Visibility = Visibility.Collapsed; }
-    }
-
-    private List<TxtEntry> LoadTxtEntries()
-    {
-        try
-        {
-            if (!File.Exists(TxtLibraryFile)) return new List<TxtEntry>();
-            return System.Text.Json.JsonSerializer.Deserialize<List<TxtEntry>>(File.ReadAllText(TxtLibraryFile))
-                   ?? new List<TxtEntry>();
-        }
-        catch { return new List<TxtEntry>(); }
-    }
-
-    private void SaveTxtEntries(List<TxtEntry> list)
-    {
-        Directory.CreateDirectory(Path.GetDirectoryName(TxtLibraryFile)!);
-        File.WriteAllText(TxtLibraryFile, System.Text.Json.JsonSerializer.Serialize(list,
-            new System.Text.Json.JsonSerializerOptions { WriteIndented = true }));
-    }
-
-    private void RefreshTxtLibrary()
-    {
-        try
-        {
-            var cards = new List<TxtCard>();
-            foreach (var e in LoadTxtEntries())
-            {
-                if (!File.Exists(e.Path)) continue;
-                cards.Add(new TxtCard { Id = e.Id, Title = e.Title, Author = e.Author, Path = e.Path,
-                    DateText = e.AddedAt.Length >= 10 ? e.AddedAt.Substring(0, 10) : e.AddedAt,
-                    Cover = LoadCoverBitmap(e.CoverPath),
-                    CoverButtonVisibility = _showTxtCoverButtons ? Visibility.Visible : Visibility.Collapsed });
-            }
-            TxtGrid.ItemsSource = cards;
-            TxtStatusText.Text = cards.Count == 0 ? "书库还是空的，点「添加 TXT 文件」加入" : $"共 {cards.Count} 个 TXT";
-            QueueMissingCovers("txt");
-        }
-        catch (Exception ex) { TxtStatusText.Text = "读取书库失败：" + ex.Message; }
-    }
-
-    private async void TxtOpenFile_Click(object sender, RoutedEventArgs e)
-    {
-        try
-        {
-            if (!TxtExtensionInstalled()) { TxtStatusText.Text = "请先在扩展 Tab 安装 TXT 阅读器扩展"; return; }
-            var picker = new Windows.Storage.Pickers.FileOpenPicker();
-            picker.ViewMode = Windows.Storage.Pickers.PickerViewMode.List;
-            picker.FileTypeFilter.Add(".txt");
-            InitializeWithWindow.Initialize(picker, WindowNative.GetWindowHandle(this));
-            var file = await picker.PickSingleFileAsync();
-            if (file == null) return;
-            OpenTxtReader(file.Path);
-        }
-        catch (Exception ex) { TxtStatusText.Text = "打开失败：" + ex.Message; }
-    }
-
-    private async void TxtAddFile_Click(object sender, RoutedEventArgs e)
-    {
-        try
-        {
-            if (!TxtExtensionInstalled()) { TxtStatusText.Text = "请先在扩展 Tab 安装 TXT 阅读器扩展"; return; }
-            var picker = new Windows.Storage.Pickers.FileOpenPicker();
-            picker.ViewMode = Windows.Storage.Pickers.PickerViewMode.List;
-            picker.FileTypeFilter.Add(".txt");
-            InitializeWithWindow.Initialize(picker, WindowNative.GetWindowHandle(this));
-            var file = await picker.PickSingleFileAsync();
-            if (file == null) return;
-
-            Directory.CreateDirectory(TxtLibraryDir);
-            string name = Path.GetFileName(file.Path);
-            string dst = Path.Combine(TxtLibraryDir, name);
-            int n = 1;
-            while (File.Exists(dst))
-                dst = Path.Combine(TxtLibraryDir, Path.GetFileNameWithoutExtension(name) + $" ({n++})" + Path.GetExtension(name));
-            File.Copy(file.Path, dst);
-            var list = LoadTxtEntries();
-            var entry = new TxtEntry
-            {
-                Id = Guid.NewGuid().ToString("N"),
-                Title = Path.GetFileNameWithoutExtension(dst),
-                Author = "本地 TXT",
-                Path = dst,
-                AddedAt = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
-            };
-            list.Add(entry);
-            SaveTxtEntries(list);
-            RefreshTxtLibrary();
-            TxtStatusText.Text = "已添加：" + entry.Title;
-            _ = GenerateFirstPageCoverAsync("txt", entry.Id);
-        }
-        catch (Exception ex) { TxtStatusText.Text = "添加失败：" + ex.Message; }
-    }
-
-    private void TxtCard_ItemClick(object sender, ItemClickEventArgs e)
-    {
-        try
-        {
-            if (e.ClickedItem is TxtCard card) OpenTxtReader(card.Path);
-        }
-        catch (Exception ex) { TxtStatusText.Text = "打开失败：" + ex.Message; }
-    }
-
-    private void OpenTxtReader(string path)
-    {
-        try
-        {
-            var ext = ExtensionCatalog.LoadAll().FirstOrDefault(x => string.Equals(x.Id, "txt", StringComparison.OrdinalIgnoreCase));
-            if (ext == null || !ext.Enabled) { TxtStatusText.Text = "TXT 扩展未安装或已禁用"; return; }
-            string dir = Path.Combine(ExtensionCatalog.ExtensionsDir, ext.Id);
-            string entry = string.IsNullOrWhiteSpace(ext.Entry) ? "index.html" : ext.Entry;
-            var win = new ExtensionHostWindow(ext.Id, ext.Name, dir, entry, path);
-            win.Closed += (_, _) => _extHosts.Remove(win);
-            _extHosts.Add(win);
-            win.Activate();
-            TxtStatusText.Text = "正在打开：" + Path.GetFileName(path);
-        }
-        catch (Exception ex) { TxtStatusText.Text = "打开失败：" + ex.Message; }
-    }
-
-    // ================= ★ 三扩展书库封面 =================
-    private readonly HashSet<string> _coverPending = new(StringComparer.OrdinalIgnoreCase);
-    private readonly HashSet<string> _coverTried = new(StringComparer.OrdinalIgnoreCase);
-    private bool _showEpubCoverButtons, _showPdfCoverButtons, _showTxtCoverButtons;
-    private static string CoverKey(string kind, string id) => kind + ":" + id;
-    private static string CoversDir => Path.Combine(AppContext.BaseDirectory, "data", "covers");
-
-    private void EpubCoverToggle_Click(object sender, RoutedEventArgs e)
-    {
-        _showEpubCoverButtons = EpubCoverToggle.IsChecked == true;
-        RefreshEpubLibrary();
-    }
-    private void PdfCoverToggle_Click(object sender, RoutedEventArgs e)
-    {
-        _showPdfCoverButtons = PdfCoverToggle.IsChecked == true;
-        RefreshPdfLibrary();
-    }
-    private void TxtCoverToggle_Click(object sender, RoutedEventArgs e)
-    {
-        _showTxtCoverButtons = TxtCoverToggle.IsChecked == true;
-        RefreshTxtLibrary();
-    }
-
-    private void EpubDeleteBtn_Click(object sender, RoutedEventArgs e)
-    {
-        if (sender is Button b && b.Tag is string id) _ = DeleteLibraryEntryAsync("epub", id);
-    }
-    private void PdfDeleteBtn_Click(object sender, RoutedEventArgs e)
-    {
-        if (sender is Button b && b.Tag is string id) _ = DeleteLibraryEntryAsync("pdf", id);
-    }
-    private void TxtDeleteBtn_Click(object sender, RoutedEventArgs e)
-    {
-        if (sender is Button b && b.Tag is string id) _ = DeleteLibraryEntryAsync("txt", id);
-    }
-
-    private async Task DeleteLibraryEntryAsync(string kind, string id)
-    {
-        try
-        {
-            string path = GetSourcePath(kind, id);
-            string cover = GetCoverPath(kind, id);
-            string title = kind switch
-            {
-                "epub" => FindEpubEntry(id)?.Title ?? "",
-                "pdf" => FindPdfEntry(id)?.Title ?? "",
-                "txt" => FindTxtEntry(id)?.Title ?? "",
-                _ => "",
-            };
-            if (string.IsNullOrEmpty(path)) return;
-            bool inLibrary = IsUnderDirectory(path, kind == "epub" ? EpubLibraryDir : kind == "pdf" ? PdfLibraryDir : TxtLibraryDir);
-            string hint = inLibrary ? "会同时删除书库里的副本。" : "只从书库移除，不删除原文件。";
-            var dialog = new ContentDialog
-            {
-                Title = "删除文件",
-                Content = $"确定删除“{title}”吗？\n{hint}",
-                PrimaryButtonText = "删除",
-                CloseButtonText = "取消",
-                DefaultButton = ContentDialogButton.Close,
-                XamlRoot = ((FrameworkElement)Content).XamlRoot,
-            };
-            if (await dialog.ShowAsync() != ContentDialogResult.Primary) return;
-            switch (kind)
-            {
-                case "epub":
-                    var e = LoadEpubEntries(); e.RemoveAll(x => x.Id == id); SaveEpubEntries(e); break;
-                case "pdf":
-                    var p = LoadPdfEntries(); p.RemoveAll(x => x.Id == id); SavePdfEntries(p); break;
-                case "txt":
-                    var t = LoadTxtEntries(); t.RemoveAll(x => x.Id == id); SaveTxtEntries(t); break;
-            }
-            try { if (inLibrary && File.Exists(path)) File.Delete(path); } catch { }
-            try { if (!string.IsNullOrWhiteSpace(cover) && IsUnderDirectory(cover, CoversDir) && File.Exists(cover)) File.Delete(cover); } catch { }
-            RefreshCoverKind(kind);
-        }
-        catch { }
-    }
-
-    private static bool IsUnderDirectory(string path, string dir)
-    {
-        try
-        {
-            string full = Path.GetFullPath(path).TrimEnd('\\') + "\\";
-            string root = Path.GetFullPath(dir).TrimEnd('\\') + "\\";
-            return full.StartsWith(root, StringComparison.OrdinalIgnoreCase);
-        }
-        catch { return false; }
-    }
-
-    private void EpubCoverBtn_Click(object sender, RoutedEventArgs e)
-    {
-        if (sender is Button b && b.Tag is string id) ShowCoverMenu(b, "epub", id);
-    }
-    private void PdfCoverBtn_Click(object sender, RoutedEventArgs e)
-    {
-        if (sender is Button b && b.Tag is string id) ShowCoverMenu(b, "pdf", id);
-    }
-    private void TxtCoverBtn_Click(object sender, RoutedEventArgs e)
-    {
-        if (sender is Button b && b.Tag is string id) ShowCoverMenu(b, "txt", id);
-    }
-
-    private void ShowCoverMenu(Button anchor, string kind, string id)
-    {
-        var flyout = new MenuFlyout();
-        var choose = new MenuFlyoutItem { Text = "选择封面图片…" };
-        choose.Click += async (_, _) => await PickCustomCoverAsync(kind, id);
-        var first = new MenuFlyoutItem { Text = "使用第一页作封面" };
-        first.Click += async (_, _) => await ResetFirstPageCoverAsync(kind, id);
-        var del = new MenuFlyoutItem { Text = "删除封面（回到第一页）" };
-        del.Click += async (_, _) => await DeleteCoverAsync(kind, id);
-        flyout.Items.Add(choose);
-        flyout.Items.Add(first);
-        flyout.Items.Add(del);
-        flyout.ShowAt(anchor);
-    }
-
-    private EpubEntry? FindEpubEntry(string id) => LoadEpubEntries().FirstOrDefault(x => x.Id == id);
-    private PdfEntry? FindPdfEntry(string id) => LoadPdfEntries().FirstOrDefault(x => x.Id == id);
-    private TxtEntry? FindTxtEntry(string id) => LoadTxtEntries().FirstOrDefault(x => x.Id == id);
-
-    private string GetCoverPath(string kind, string id) => kind switch
-    {
-        "epub" => FindEpubEntry(id)?.CoverPath ?? "",
-        "pdf" => FindPdfEntry(id)?.CoverPath ?? "",
-        "txt" => FindTxtEntry(id)?.CoverPath ?? "",
-        _ => "",
-    };
-
-    private string GetSourcePath(string kind, string id) => kind switch
-    {
-        "epub" => FindEpubEntry(id)?.Path ?? "",
-        "pdf" => FindPdfEntry(id)?.Path ?? "",
-        "txt" => FindTxtEntry(id)?.Path ?? "",
-        _ => "",
-    };
-
-    private void SaveCoverPath(string kind, string id, string coverPath)
-    {
-        switch (kind)
-        {
-            case "epub":
-                var epub = LoadEpubEntries(); var ee = epub.FirstOrDefault(x => x.Id == id);
-                if (ee != null) { ee.CoverPath = coverPath; SaveEpubEntries(epub); }
-                break;
-            case "pdf":
-                var pdf = LoadPdfEntries(); var pe = pdf.FirstOrDefault(x => x.Id == id);
-                if (pe != null) { pe.CoverPath = coverPath; SavePdfEntries(pdf); }
-                break;
-            case "txt":
-                var txt = LoadTxtEntries(); var te = txt.FirstOrDefault(x => x.Id == id);
-                if (te != null) { te.CoverPath = coverPath; SaveTxtEntries(txt); }
-                break;
-        }
-    }
-
-    private void RefreshCoverKind(string kind)
-    {
-        if (kind == "epub") RefreshEpubLibrary();
-        else if (kind == "pdf") RefreshPdfLibrary();
-        else if (kind == "txt") RefreshTxtLibrary();
-    }
-
-    private async Task PickCustomCoverAsync(string kind, string id)
-    {
-        try
-        {
-            var picker = new Windows.Storage.Pickers.FileOpenPicker();
-            picker.ViewMode = Windows.Storage.Pickers.PickerViewMode.Thumbnail;
-            picker.FileTypeFilter.Add(".png");
-            picker.FileTypeFilter.Add(".jpg");
-            picker.FileTypeFilter.Add(".jpeg");
-            picker.FileTypeFilter.Add(".webp");
-            picker.FileTypeFilter.Add(".bmp");
-            InitializeWithWindow.Initialize(picker, WindowNative.GetWindowHandle(this));
-            var file = await picker.PickSingleFileAsync();
-            if (file == null) return;
-            Directory.CreateDirectory(CoversDir);
-            string ext = Path.GetExtension(file.Path);
-            if (string.IsNullOrWhiteSpace(ext)) ext = ".png";
-            string dest = Path.Combine(CoversDir, $"{kind}_{id}_custom{ext}");
-            File.Copy(file.Path, dest, true);
-            SaveCoverPath(kind, id, dest);
-            RefreshCoverKind(kind);
-        }
-        catch { }
-    }
-
-    private async Task DeleteCoverAsync(string kind, string id)
-    {
-        string old = GetCoverPath(kind, id);
-        try
-        {
-            if (!string.IsNullOrWhiteSpace(old) && old.Contains("_custom", StringComparison.OrdinalIgnoreCase) && File.Exists(old))
-                File.Delete(old);
-        }
-        catch { }
-        SaveCoverPath(kind, id, "");
-        _coverTried.Remove(CoverKey(kind, id));
-        RefreshCoverKind(kind);
-        await GenerateFirstPageCoverAsync(kind, id, true);
-    }
-
-    private async Task ResetFirstPageCoverAsync(string kind, string id)
-    {
-        string old = GetCoverPath(kind, id);
-        try
-        {
-            if (!string.IsNullOrWhiteSpace(old) && old.Contains("_custom", StringComparison.OrdinalIgnoreCase) && File.Exists(old))
-                File.Delete(old);
-        }
-        catch { }
-        SaveCoverPath(kind, id, "");
-        _coverTried.Remove(CoverKey(kind, id));
-        await GenerateFirstPageCoverAsync(kind, id, true);
-    }
-
-    private async Task GenerateFirstPageCoverAsync(string kind, string id, bool force = false)
-    {
-        string source = GetSourcePath(kind, id);
-        if (string.IsNullOrEmpty(source) || !File.Exists(source)) return;
-        try
-        {
-            string cover = await LibraryCoverService.EnsureAsync(kind, id, source, force ? "" : GetCoverPath(kind, id));
-            if (!string.IsNullOrWhiteSpace(cover))
-            {
-                SaveCoverPath(kind, id, cover);
-                RefreshCoverKind(kind);
-            }
-            else _coverTried.Add(CoverKey(kind, id));
-        }
-        catch { _coverTried.Add(CoverKey(kind, id)); }
-    }
-
-    private async Task EnsureMissingCoversAsync(string kind)
-    {
-        var entries = kind switch
-        {
-            "epub" => LoadEpubEntries().Select(e => (e.Id, e.Path, e.CoverPath)).ToList(),
-            "pdf" => LoadPdfEntries().Select(e => (e.Id, e.Path, e.CoverPath)).ToList(),
-            "txt" => LoadTxtEntries().Select(e => (e.Id, e.Path, e.CoverPath)).ToList(),
-            _ => new List<(string Id, string Path, string CoverPath)>(),
-        };
-        bool changed = false;
-        foreach (var (id, path, cover) in entries)
-        {
-            if (!string.IsNullOrWhiteSpace(cover) && File.Exists(cover)) continue;
-            string key = CoverKey(kind, id);
-            if (_coverTried.Contains(key)) continue;
-            _coverPending.Add(key);
+            // 下载工具会在书目录写 book.json；优先用它拿真实书名/作者/封面，
+            // 这样阅读器书库里不会再显示“本地 EPUB”和空白封面。
+            string sourceId = "", title = "", author = "", cover = "";
             try
             {
-                string generated = await LibraryCoverService.EnsureAsync(kind, id, path);
-                if (!string.IsNullOrWhiteSpace(generated))
+                string sidecar = Path.Combine(Path.GetDirectoryName(full)!, "book.json");
+                if (File.Exists(sidecar))
                 {
-                    SaveCoverPath(kind, id, generated);
-                    changed = true;
-                    _coverTried.Remove(key);
+                    using var sd = JsonDocument.Parse(File.ReadAllText(sidecar));
+                    if (sd.RootElement.TryGetProperty("book", out var bk) && bk.ValueKind == JsonValueKind.Object)
+                    {
+                        if (bk.TryGetProperty("book_id", out var bid) && bid.ValueKind == JsonValueKind.String) sourceId = bid.GetString() ?? "";
+                        if (bk.TryGetProperty("book_name", out var bn) && bn.ValueKind == JsonValueKind.String) title = bn.GetString() ?? "";
+                        if (bk.TryGetProperty("author", out var au) && au.ValueKind == JsonValueKind.String) author = au.GetString() ?? "";
+                        if (bk.TryGetProperty("cover", out var cv) && cv.ValueKind == JsonValueKind.String) cover = cv.GetString() ?? "";
+                    }
                 }
-                else _coverTried.Add(key);
             }
-            catch { _coverTried.Add(key); }
-            finally { _coverPending.Remove(key); }
+            catch { }
+            var item = ExtensionLibraryService.ImportOrUpdate(def, full, sourceId, title, author, cover);
+            if (_extensionViews.TryGetValue(def.Info.Id, out var view)) view.Refresh();
+            return (true, def.Info.Id, item.Title, "");
         }
-        if (changed) RefreshCoverKind(kind);
+        catch (Exception ex) { return (false, "", "", ex.Message); }
     }
 
-    private void QueueMissingCovers(string kind)
-    {
-        bool any = kind switch
-        {
-            "epub" => LoadEpubEntries().Any(e => string.IsNullOrWhiteSpace(e.CoverPath) && !_coverTried.Contains(CoverKey(kind, e.Id))),
-            "pdf" => LoadPdfEntries().Any(e => string.IsNullOrWhiteSpace(e.CoverPath) && !_coverTried.Contains(CoverKey(kind, e.Id))),
-            "txt" => LoadTxtEntries().Any(e => string.IsNullOrWhiteSpace(e.CoverPath) && !_coverTried.Contains(CoverKey(kind, e.Id))),
-            _ => false,
-        };
-        if (any) _ = EnsureMissingCoversAsync(kind);
-    }
 
     // ---- 扩展更新检查：查 GitHub 最新 Release，显示是否有新版本 ----
     private async Task CheckExtensionUpdatesAsync()
@@ -1514,6 +882,7 @@ public sealed partial class MainWindow : Window
             if (ExtItemsPanel.Children.Count == 0)
                 ExtItemsPanel.Children.Add(new TextBlock { Text = "暂无扩展", Foreground = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 155, 160, 165)) });
             ExtStatusText.Text = installed.Count == 0 ? "尚未安装扩展" : $"已安装 {installed.Count} 个扩展";
+            RefreshExtensionTabs();
             if (!_extChecking && !_extCheckDone) _ = CheckExtensionUpdatesAsync();
         }
         catch (Exception ex) { ExtStatusText.Text = "读取扩展失败：" + ex.Message; }
@@ -1588,7 +957,7 @@ public sealed partial class MainWindow : Window
         var b = MakeExtCard(); b.Child = grid; return b;
     }
 
-    private UIElement BuildAvailableExtCard(AvailableExtension av)
+    private UIElement BuildAvailableExtCard(ExtensionCatalog.AvailableExtensionInfo av)
     {
         var info = new StackPanel { Spacing = 3 };
         info.Children.Add(new TextBlock { Text = av.Name, Foreground = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 255, 255, 255)), FontSize = 14, FontWeight = Microsoft.UI.Text.FontWeights.SemiBold });
@@ -1626,20 +995,30 @@ public sealed partial class MainWindow : Window
             if (Directory.Exists(dir)) Directory.Delete(dir, true);
             _extLatest.Remove(ext.Id);
             _extCheckDone = false;
-            UpdateEpubTabVisibility();   // ★ 删除后立即隐藏 EPUB Tab，不用重启
-            UpdatePdfTabVisibility();
-            UpdateTxtTabVisibility();
+            RefreshExtensionTabs();
             RefreshExtensionsPage();
             ExtStatusText.Text = "已删除扩展：" + ext.Name;
         }
         catch (Exception ex) { ExtStatusText.Text = "删除失败：" + ex.Message; }
     }
 
-    private async Task InstallExtensionAsync(AvailableExtension av)
+    private async Task InstallExtensionAsync(ExtensionCatalog.AvailableExtensionInfo av)
     {
         try
         {
             if (ExtProgress.Visibility == Visibility.Visible) return;
+            if (av.RequiresAny.Count > 0)
+            {
+                var installedOk = ExtensionCatalog.LoadAll()
+                    .Where(e => e.Enabled)
+                    .Select(e => e.Id)
+                    .ToHashSet(StringComparer.OrdinalIgnoreCase);
+                if (!av.RequiresAny.Any(id => installedOk.Contains(id)))
+                {
+                    ExtStatusText.Text = "需要先安装以下任一扩展：" + string.Join(" / ", av.RequiresAny);
+                    return;
+                }
+            }
             ExtProgress.Visibility = Visibility.Visible;
             ExtProgress.Value = 0;
             ExtStatusText.Text = "正在下载 " + av.Name + "…";
@@ -1697,9 +1076,7 @@ public sealed partial class MainWindow : Window
             ExtProgress.Value = 100;
             _extLatest.Remove(av.Id);
             _extCheckDone = false;
-            UpdateEpubTabVisibility();
-            UpdatePdfTabVisibility();
-            UpdateTxtTabVisibility();
+            RefreshExtensionTabs();
             RefreshExtensionsPage();
             ExtStatusText.Text = $"已安装 {av.Name}，点「打开」启动";
         }

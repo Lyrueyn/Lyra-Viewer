@@ -36,11 +36,14 @@ namespace WinUIGui
                 Directory.CreateDirectory(CoverDir);
                 string fallback = Path.Combine(CoverDir, kind + "_" + id + "_first.png");
                 if (File.Exists(fallback) && new FileInfo(fallback).Length > 0) return fallback;
-                bool ok = kind switch
+                // 按“文件类型”而不是扩展 id 选择首图生成器：任何声明 .epub/.pdf/.txt 的读者扩展
+                // 都能复用第一页封面，不需要再往 C# 里加分支。
+                string ext = Path.GetExtension(sourcePath).ToLowerInvariant();
+                bool ok = ext switch
                 {
-                    "pdf" => await RenderPdfFirstPageAsync(sourcePath, fallback),
-                    "epub" => await RenderEpubAsync(sourcePath, fallback),
-                    "txt" => await RenderTxtAsync(sourcePath, fallback),
+                    ".pdf" => await RenderPdfFirstPageAsync(sourcePath, fallback),
+                    ".epub" => await RenderEpubAsync(sourcePath, fallback),
+                    ".txt" => await RenderTxtAsync(sourcePath, fallback),
                     _ => false,
                 };
                 return ok ? fallback : "";

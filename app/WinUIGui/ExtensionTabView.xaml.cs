@@ -1,0 +1,254 @@
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Media;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
+using Windows.Storage.Pickers;
+
+namespace WinUIGui
+{
+    /// <summary>
+    /// 一个扩展贡献的书库 Tab。构造时只吃 ExtensionDefinition（清单数据），
+    /// 不包含任何 EPUB/PDF/TXT 专属分支，新增读者扩展不需要再改 C#。
+    /// </summary>
+    public sealed partial class ExtensionTabView : UserControl
+    {
+        private readonly ExtensionDefinition _def;
+        private readonly HashSet<string> _coverTried = new(StringComparer.OrdinalIgnoreCase);
+        private bool _showActions;
+
+        public string ExtensionId => _def.Info.Id;
+
+        public ExtensionTabView(ExtensionDefinition def)
+        {
+            InitializeComponent();
+            _def = def;
+            TitleText.Text = def.Library.Title;
+            DescriptionText.Text = def.Library.Description;
+            OpenFileBtn.Content = def.Library.OpenLabel;
+            AddFileBtn.Content = def.Library.AddLabel;
+            Loaded += (_, _) => Refresh();
+        }
+
+        public void Refresh()
+        {
+            try
+            {
+                var items = ExtensionLibraryService.Load(_def.Info.Id)
+                    .Where(x => File.Exists(x.Path)).ToList();
+                var cards = items.Select(x => new ExtensionLibraryCard
+                {
+                    Id = x.Id,
+                    Title = x.Title,
+                    Author = x.Author,
+                    Path = x.Path,
+                    DateText = x.AddedAt.Length >= 10 ? x.AddedAt.Substring(0, 10) : x.AddedAt,
+                    Cover = ExtensionLibraryService.LoadCover(x.CoverPath),
+                    CoverButtonVisibility = _showActions ? Visibility.Visible : Visibility.Collapsed,
+                }).ToList();
+                LibraryGrid.ItemsSource = cards;
+                StatusText.Text = cards.Count == 0
+                    ? "书库还是空的，点「" + _def.Library.AddLabel + "」加入"
+                    : $"共 {cards.Count} 个文件";
+                if (_def.Library.Cover == "first-page") _ = EnsureMissingCoversAsync(items);
+            }
+            catch (Exception ex) { StatusText.Text = "刷新失败：" + ex.Message; }
+        }
+
+        private void ManageToggle_Click(object sender, RoutedEventArgs e)
+        {
+            _showActions = ManageToggle.IsChecked == true;
+            Refresh();
+        }
+
+        private async void OpenFile_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var picker = new FileOpenPicker { ViewMode = PickerViewMode.List };
+                foreach (var t in _def.Info.FileTypes) picker.FileTypeFilter.Add(t);
+                if (picker.FileTypeFilter.Count == 0) picker.FileTypeFilter.Add("*");
+                InitializePicker(picker);
+                var file = await picker.PickSingleFileAsync();
+                if (file == null) return;
+                OpenPath(file.Path);
+            }
+            catch (Exception ex) { StatusText.Text = "打开失败：" + ex.Message; }
+        }
+
+        private async void AddFile_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var picker = new FileOpenPicker { ViewMode = PickerViewMode.List };
+                foreach (var t in _def.Info.FileTypes) picker.FileTypeFilter.Add(t);
+                if (picker.FileTypeFilter.Count == 0) picker.FileTypeFilter.Add("*");
+                InitializePicker(picker);
+                var file = await picker.PickSingleFileAsync();
+                if (file == null) return;
+                var item = ExtensionLibraryService.AddFile(_def, file.Path);
+                Refresh();
+                _ = EnsureCoverAsync(item, force: false);
+                StatusText.Text = "已添加：" + item.Title;
+            }
+            catch (Exception ex) { StatusText.Text = "添加失败：" + ex.Message; }
+        }
+
+        private void LibraryGrid_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            if (e.ClickedItem is ExtensionLibraryCard card) OpenPath(card.Path);
+        }
+
+        private void OpenPath(string path)
+        {
+            try
+            {
+                var win = ExtensionManager.OpenReader(_def, path);
+                if (win == null) { StatusText.Text = "扩展目录不存在或未启用"; return; }
+                win.Closed += (_, _) => { };
+                win.Activate();
+                StatusText.Text = "正在打开：" + Path.GetFileName(path);
+            }
+            catch (Exception ex) { StatusText.Text = "打开失败：" + ex.Message; }
+        }
+
+        private void CoverBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is not Button b || b.Tag is not string id) return;
+            var flyout = new MenuFlyout();
+            var choose = new MenuFlyoutItem { Text = "选择封面图片…" };
+            choose.Click += async (_, _) => await PickCoverAsync(id);
+            var first = new MenuFlyoutItem { Text = "使用第一页作封面" };
+            first.Click += async (_, _) => await ResetFirstPageAsync(id);
+            var del = new MenuFlyoutItem { Text = "删除封面（回到第一页）" };
+            del.Click += async (_, _) => await DeleteCoverAsync(id);
+            flyout.Items.Add(choose);
+            flyout.Items.Add(first);
+            flyout.Items.Add(del);
+            flyout.ShowAt(b);
+        }
+
+        private void DeleteBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button b && b.Tag is string id) _ = DeleteItemAsync(id);
+        }
+
+        private async Task PickCoverAsync(string id)
+        {
+            try
+            {
+                var picker = new FileOpenPicker { ViewMode = PickerViewMode.Thumbnail };
+                foreach (var t in new[] { ".png", ".jpg", ".jpeg", ".webp", ".bmp" }) picker.FileTypeFilter.Add(t);
+                InitializePicker(picker);
+                var file = await picker.PickSingleFileAsync();
+                if (file == null) return;
+                Directory.CreateDirectory(ExtensionLibraryService.CoversDir);
+                string e = Path.GetExtension(file.Path);
+                if (string.IsNullOrWhiteSpace(e)) e = ".png";
+                string dst = Path.Combine(ExtensionLibraryService.CoversDir, $"{_def.Info.Id}_{id}_custom{e}");
+                File.Copy(file.Path, dst, true);
+                ExtensionLibraryService.UpdateCover(_def.Info.Id, id, dst);
+                Refresh();
+            }
+            catch { }
+        }
+
+        private async Task DeleteCoverAsync(string id)
+        {
+            var item = ExtensionLibraryService.Find(_def.Info.Id, id);
+            if (item == null) return;
+            string old = item.CoverPath;
+            if (!string.IsNullOrWhiteSpace(old) && old.Contains("_custom", StringComparison.OrdinalIgnoreCase))
+            {
+                try { if (File.Exists(old)) File.Delete(old); } catch { }
+            }
+            ExtensionLibraryService.UpdateCover(_def.Info.Id, id, "");
+            _coverTried.Remove(id);
+            Refresh();
+            await EnsureCoverAsync(item, force: true);
+        }
+
+        private async Task ResetFirstPageAsync(string id)
+        {
+            var item = ExtensionLibraryService.Find(_def.Info.Id, id);
+            if (item == null) return;
+            string old = item.CoverPath;
+            if (!string.IsNullOrWhiteSpace(old) && old.Contains("_custom", StringComparison.OrdinalIgnoreCase))
+            {
+                try { if (File.Exists(old)) File.Delete(old); } catch { }
+            }
+            ExtensionLibraryService.UpdateCover(_def.Info.Id, id, "");
+            _coverTried.Remove(id);
+            await EnsureCoverAsync(item, force: true);
+        }
+
+        private async Task EnsureMissingCoversAsync(List<ExtensionLibraryItem> items)
+        {
+            foreach (var item in items)
+            {
+                if (!string.IsNullOrWhiteSpace(item.CoverPath) && File.Exists(item.CoverPath)) continue;
+                if (_coverTried.Contains(item.Id)) continue;
+                await EnsureCoverAsync(item, force: false);
+            }
+        }
+
+        private async Task EnsureCoverAsync(ExtensionLibraryItem? item, bool force)
+        {
+            if (item == null || _def.Library.Cover != "first-page") return;
+            _coverTried.Add(item.Id);
+            try
+            {
+                string cover = await LibraryCoverService.EnsureAsync(_def.Info.Id, item.Id, item.Path,
+                    force ? "" : item.CoverPath);
+                if (!string.IsNullOrWhiteSpace(cover))
+                {
+                    ExtensionLibraryService.UpdateCover(_def.Info.Id, item.Id, cover);
+                    Refresh();
+                }
+            }
+            catch { }
+        }
+
+        private async Task DeleteItemAsync(string id)
+        {
+            var item = ExtensionLibraryService.Find(_def.Info.Id, id);
+            if (item == null) return;
+            bool inLibrary = ExtensionLibraryService.IsUnderLibrary(_def.Info.Id, item.Path);
+            var dialog = new ContentDialog
+            {
+                Title = "删除文件",
+                Content = $"确定删除“{item.Title}”吗？\n{(inLibrary ? "会同时删除书库里的副本。" : "只从书库移除，不删除原文件。")}",
+                PrimaryButtonText = "删除",
+                CloseButtonText = "取消",
+                DefaultButton = ContentDialogButton.Close,
+                XamlRoot = XamlRoot,
+            };
+            if (await dialog.ShowAsync() != ContentDialogResult.Primary) return;
+            ExtensionLibraryService.Remove(_def.Info.Id, id);
+            try { if (inLibrary && File.Exists(item.Path)) File.Delete(item.Path); } catch { }
+            try
+            {
+                if (!string.IsNullOrWhiteSpace(item.CoverPath) &&
+                    item.CoverPath.StartsWith(ExtensionLibraryService.CoversDir, StringComparison.OrdinalIgnoreCase) &&
+                    File.Exists(item.CoverPath)) File.Delete(item.CoverPath);
+            }
+            catch { }
+            Refresh();
+        }
+
+        private static void InitializePicker(object picker)
+        {
+            try
+            {
+                var mw = App.Main;
+                if (mw != null)
+                    WinRT.Interop.InitializeWithWindow.Initialize(picker,
+                        WinRT.Interop.WindowNative.GetWindowHandle(mw));
+            }
+            catch { }
+        }
+    }
+}

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.IO;
 using System.Linq;
 using System.Collections.Generic;
@@ -28,8 +28,7 @@ namespace WinUIGui
         // ★ 固定虚拟域名（按扩展 id）：网页的本地存储按“网址来源”隔离，
         // 以前每开一次窗口换一个随机域名，扩展存下的进度/设置下次就找不到了。
         private readonly string _host;
-        private readonly bool _isPdf;
-        private readonly bool _isTxt;
+        private readonly ExtensionCatalog.HostSpec? _hostSpec;
         private readonly bool _hasBook;
         private ReaderStateStore? _store;
         private string _sessionId = Guid.NewGuid().ToString("N");
@@ -52,6 +51,12 @@ namespace WinUIGui
         private DispatcherTimer? _closeTimer;
 
         public ExtensionHostWindow(string extensionId, string name, string dir, string entry, string? bookPath = null)
+            : this(extensionId, name, dir, entry, bookPath, null)
+        {
+        }
+
+        public ExtensionHostWindow(string extensionId, string name, string dir, string entry,
+                                   string? bookPath, ExtensionCatalog.HostSpec? hostSpec)
         {
             InitializeComponent();
             _extensionId = extensionId;
@@ -59,8 +64,7 @@ namespace WinUIGui
             _extensionDir = dir;
             _entry = string.IsNullOrWhiteSpace(entry) ? "index.html" : entry;
             _bookPath = bookPath;
-            _isPdf = !string.IsNullOrEmpty(bookPath) && bookPath.EndsWith(".pdf", StringComparison.OrdinalIgnoreCase);
-            _isTxt = !string.IsNullOrEmpty(bookPath) && bookPath.EndsWith(".txt", StringComparison.OrdinalIgnoreCase);
+            _hostSpec = hostSpec;
             _hasBook = !string.IsNullOrEmpty(bookPath) && File.Exists(bookPath);
             Title = "璃鸢镜 · " + (string.IsNullOrWhiteSpace(name) ? extensionId : name);
             try
@@ -138,16 +142,28 @@ namespace WinUIGui
                     _tempDir = Path.Combine(Path.GetTempPath(), "lyra_ext_host", Guid.NewGuid().ToString("N"));
                     Directory.CreateDirectory(_tempDir);
                     CopyDir(_extensionDir, _tempDir);
-                    string inner = _isPdf ? "document.pdf" : _isTxt ? "document.txt" : "book.epub";
+                    // ★ 清单接口：innerName/fileParam/keepMtime 由 extension.json 提供；
+                    //   旧版 EPUB/PDF/TXT 清单没写时按扩展 id 兼容。
+                    string extId = (_extensionId ?? "").ToLowerInvariant();
+                    string inner = !string.IsNullOrWhiteSpace(_hostSpec?.InnerName)
+                        ? _hostSpec!.InnerName
+                        : extId == "epub" ? "book.epub"
+                        : extId == "pdf" ? "document.pdf"
+                        : extId == "txt" ? "document.txt"
+                        : "document" + Path.GetExtension(_bookPath!);
+                    string fileParam = !string.IsNullOrWhiteSpace(_hostSpec?.FileParam)
+                        ? _hostSpec!.FileParam
+                        : extId == "epub" ? "book" : "file";
+                    bool keepMtime = _hostSpec?.KeepMtime ?? (extId == "pdf" || extId == "txt");
                     File.Copy(_bookPath!, Path.Combine(_tempDir, inner), true);
                     folder = _tempDir;
                     string realName = Path.GetFileName(_bookPath!);
                     query += "&name=" + Uri.EscapeDataString(realName);
-                    if (_isTxt)
+                    if (keepMtime)
                     {
                         try { query += "&mtime=" + new DateTimeOffset(File.GetLastWriteTimeUtc(_bookPath!)).ToUnixTimeMilliseconds(); } catch { }
                     }
-                    query += _isPdf ? "&file=document.pdf" : _isTxt ? "&file=document.txt" : "&book=book.epub";
+                    query += "&" + Uri.EscapeDataString(fileParam) + "=" + Uri.EscapeDataString(inner);
                 }
                 Wv.CoreWebView2.SetVirtualHostNameToFolderMapping(_host, folder, CoreWebView2HostResourceAccessKind.Allow);
                 string rel = _entry.Replace('\\', '/').TrimStart('/');
@@ -297,6 +313,57 @@ namespace WinUIGui
             return _store;
         }
 
+        private bool TryHandleToolHostMessage(string raw)
+        {
+            try
+            {
+                using var doc = JsonDocument.Parse(raw, new JsonDocumentOptions { MaxDepth = 16 });
+                var root = doc.RootElement;
+                if (root.ValueKind != JsonValueKind.Object) return false;
+                string type = ReaderProtocol.GetString(root, "type", 80);
+                if (type != "host.capabilities" && type != "host.importBook") return false;
+                string requestId = ReaderProtocol.GetString(root, "requestId", 128);
+                if (type == "host.capabilities")
+                {
+                    var arr = new JsonArray();
+                    foreach (var def in ExtensionCatalog.LoadDefinitions().Where(d => d.IsReader))
+                    {
+                        var ft = new JsonArray();
+                        foreach (var t in def.Info.FileTypes) ft.Add(t);
+                        arr.Add(new JsonObject
+                        {
+                            ["id"] = def.Info.Id,
+                            ["name"] = def.Info.Name,
+                            ["fileTypes"] = ft,
+                            ["navLabel"] = def.Library.NavLabel,
+                        });
+                    }
+                    var reply = new JsonObject
+                    {
+                        ["type"] = "host.capabilities.result",
+                        ["requestId"] = requestId,
+                        ["extensions"] = arr,
+                    };
+                    Wv.CoreWebView2?.PostWebMessageAsJson(reply.ToJsonString());
+                    return true;
+                }
+                string path = ReaderProtocol.GetString(root, "path", 2048);
+                var result = App.Main?.ImportDownloadedBook(path) ?? (false, "", "", "主窗口不可用");
+                var resp = new JsonObject
+                {
+                    ["type"] = "host.importBook.result",
+                    ["requestId"] = requestId,
+                    ["ok"] = result.Item1,
+                    ["extensionId"] = result.Item2,
+                    ["title"] = result.Item3,
+                    ["error"] = result.Item4,
+                };
+                Wv.CoreWebView2?.PostWebMessageAsJson(resp.ToJsonString());
+                return true;
+            }
+            catch { return false; }
+        }
+
         private async void OnWebMessageReceived(CoreWebView2 sender, CoreWebView2WebMessageReceivedEventArgs args)
         {
             string raw = args.WebMessageAsJson ?? "";
@@ -345,6 +412,9 @@ namespace WinUIGui
                     }
                 }
                 catch { }
+                // 工具扩展通用桥接：不要求 lyra-reader 协议版本，
+                // 只做「查询已安装读者扩展」和「把下载文件导入对应书库」两件事。
+                if (TryHandleToolHostMessage(raw)) return;
                 if (!ReaderProtocol.TryParse(raw, out JsonDocument doc)) return;
                 using (doc)
                 {
