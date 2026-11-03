@@ -70,6 +70,8 @@ notebook.lyrnb
 - `bulletList` / `orderedList`（`items`: `{children: 行内数组, blocks: 子列表块数组}`；旧版行内数组仍兼容）
 - `taskList`（`items`: `{checked, children}`）\n- `blockquote`
 - `codeBlock`
+- `image`（`assetId` 指向 manifest.assets）
+- `table`（`rows`: 二维单元格数组，每格 `{children}`）
 - `divider`
 
 后续版本增加表格、图片、待办、折叠块等；未知节点必须原样保留，旧版本不能打开再保存时丢数据。
