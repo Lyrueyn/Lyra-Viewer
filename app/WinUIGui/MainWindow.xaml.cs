@@ -1,4 +1,4 @@
-﻿using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Automation;
 using Microsoft.UI.Xaml.Input;
@@ -118,6 +118,15 @@ public sealed partial class MainWindow : Window
         }
         catch { }
         Backend.Start();          // 拉起 Python 后端（B站下载/视频库）
+        // 资源管理器双击 .lyrnb 时由安装器把文件路径作为参数传进来。
+        try
+        {
+            string? notebookArg = Environment.GetCommandLineArgs().Skip(1)
+                .FirstOrDefault(p => p.EndsWith(".lyrnb", StringComparison.OrdinalIgnoreCase) && File.Exists(p));
+            if (!string.IsNullOrEmpty(notebookArg))
+                DispatcherQueue.TryEnqueue(() => OpenNotebookFile(notebookArg));
+        }
+        catch { }
         // ★ 先绑定拖拽排序的集合，再加载数据（LoadVideosAsync 会往 _cards 里填）
         CardGrid.ItemsSource = _cards;
         _cards.CollectionChanged += (_, _) => ScheduleCardOrderSave();
@@ -716,6 +725,32 @@ public sealed partial class MainWindow : Window
         view.Visibility = Visibility.Visible;
         view.Refresh();
         return true;
+    }
+
+    /// <summary>
+    /// 打开一个 .lyrnb：文件关联/双击启动和外部路径共用。
+    /// 若笔记本扩展已安装，则链接式加入书库（不复制文件）并打开编辑窗口。
+    /// </summary>
+    public bool OpenNotebookFile(string path)
+    {
+        try
+        {
+            string full = Path.GetFullPath(path);
+            if (!File.Exists(full)) return false;
+            string ext = Path.GetExtension(full).ToLowerInvariant();
+            var def = ExtensionCatalog.LoadDefinitions().FirstOrDefault(d =>
+                d.IsNotebook && d.Info.FileTypes.Any(t => string.Equals(t, ext, StringComparison.OrdinalIgnoreCase)));
+            if (def == null) return false;
+            var existing = ExtensionLibraryService.Load(def.Info.Id)
+                .FirstOrDefault(x => string.Equals(Path.GetFullPath(x.Path), full, StringComparison.OrdinalIgnoreCase));
+            if (existing == null) ExtensionLibraryService.AddLinkedFile(def, full);
+            if (_extensionViews.TryGetValue(def.Info.Id, out var view)) view.Refresh();
+            var win = ExtensionManager.OpenReader(def, full);
+            if (win == null) return false;
+            win.Activate();
+            return true;
+        }
+        catch { return false; }
     }
 
     /// <summary>

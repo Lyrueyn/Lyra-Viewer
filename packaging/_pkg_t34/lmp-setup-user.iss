@@ -4,7 +4,7 @@
 ;                 → 不需要管理员权限、不弹 UAC、装到 %LOCALAPPDATA%，控制面板可卸载。
 
 #define MyAppName "璃鸢镜"
-#define MyAppVersion "1.3.5"
+#define MyAppVersion "1.3.6"
 #define MyAppPublisher "Lyrueyn"
 #define MyAppExeName "WinUIGui.exe"
 #define SrcDir "final"
@@ -18,8 +18,8 @@ AppPublisher={#MyAppPublisher}
 DefaultDirName={localappdata}\LocalMediaPlayer
 DefaultGroupName={#MyAppName}
 DisableProgramGroupPage=yes
-OutputDir=F:\DSH\LocalMediaPlayer-Workspace\packaging\_pkg_t34\inno-out-135
-OutputBaseFilename=璃鸢镜-Setup-1.3.5
+OutputDir=F:\DSH\LocalMediaPlayer-Workspace\packaging\_pkg_t34\inno-out-136
+OutputBaseFilename=璃鸢镜-Setup-1.3.6
 Compression=lzma2/normal
 SolidCompression=yes
 WizardStyle=modern
@@ -39,6 +39,11 @@ Name: "chinesesimp"; MessagesFile: "compiler:Languages\ChineseSimplified.isl"
 [Tasks]
 Name: "desktopicon"; Description: "创建桌面快捷方式"; GroupDescription: "附加图标:"; Flags: checkedonce
 
+[Registry]
+Root: HKCU; Subkey: "Software\Classes\.lyrnb"; ValueType: string; ValueName: ""; ValueData: "LyraNotebook"; Flags: uninsdeletekey
+Root: HKCU; Subkey: "Software\Classes\LyraNotebook"; ValueType: string; ValueName: ""; ValueData: "Lyra 笔记本"; Flags: uninsdeletekey
+Root: HKCU; Subkey: "Software\Classes\LyraNotebook\DefaultIcon"; ValueType: string; ValueName: ""; ValueData: "{app}\WinUIGui.exe,0"; Flags: uninsdeletekey
+Root: HKCU; Subkey: "Software\Classes\LyraNotebook\shell\open\command"; ValueType: string; ValueName: ""; ValueData: """{app}\WinUIGui.exe"" ""%1"""; Flags: uninsdeletekey
 [Files]
 Source: "runtime\windowsdesktop-runtime-win-x64.exe"; DestDir: "{tmp}"; Flags: deleteafterinstall
 Source: "{#SrcDir}\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs; Excludes: "post-install.ps1,uninstall.ps1,setup-log.txt,crash.log,*.log,*.log.old,dm_debug.log,dm_recv.log,dsh_engine.log,audio_dump.f32,local_media.db,local_media.db-wal,local_media.db-shm,config.json,player_settings.json,playwright_cookies.json,data\*"
@@ -54,6 +59,7 @@ Name: "{userdesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: de
 [Run]
 Filename: "{tmp}\windowsdesktop-runtime-win-x64.exe"; Parameters: "/install /quiet /norestart"; StatusMsg: "正在安装 .NET 10 运行时（首次需要，约 1 分钟）..."; Flags: waituntilterminated runhidden
 Filename: "{app}\{#MyAppExeName}"; Description: "立即启动 {#MyAppName}"; Flags: nowait postinstall skipifsilent
+
 
 
 
