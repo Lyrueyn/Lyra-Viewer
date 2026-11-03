@@ -67,7 +67,7 @@ notebook.lyrnb
 
 - `paragraph`
 - `heading`（`level` 1–6）
-- `bulletList` / `orderedList`（`items` 为行内数组的数组）
+- `bulletList` / `orderedList`（`items`: `{children: 行内数组, blocks: 子列表块数组}`；旧版行内数组仍兼容）
 - `taskList`（`items`: `{checked, children}`）\n- `blockquote`
 - `codeBlock`
 - `divider`
