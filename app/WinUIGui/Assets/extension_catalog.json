@@ -31,5 +31,12 @@
                             "epub",
                             "pdf"
                         ]
+    },
+    {
+        "id":  "notebook",
+        "name":  "笔记本",
+        "repo":  "Lyrueyn/Lyra-Extension-Notebook",
+        "asset":  "lyra-ext-notebook.zip",
+        "description":  "本地优先笔记本；一个 .lyrnb 文件包含多篇笔记，支持富文本和自动保存。"
     }
 ]

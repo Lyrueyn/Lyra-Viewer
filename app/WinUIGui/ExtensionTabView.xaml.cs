@@ -83,6 +83,11 @@ namespace WinUIGui
         {
             try
             {
+                if (_def.IsNotebook)
+                {
+                    await CreateNotebookAsync();
+                    return;
+                }
                 var picker = new FileOpenPicker { ViewMode = PickerViewMode.List };
                 foreach (var t in _def.Info.FileTypes) picker.FileTypeFilter.Add(t);
                 if (picker.FileTypeFilter.Count == 0) picker.FileTypeFilter.Add("*");
@@ -95,6 +100,25 @@ namespace WinUIGui
                 StatusText.Text = "已添加：" + item.Title;
             }
             catch (Exception ex) { StatusText.Text = "添加失败：" + ex.Message; }
+        }
+
+        /// <summary>
+        /// 笔记本包由扩展自己初始化；主程序只负责让用户选一个 .lyrnb 路径、
+        /// 建一个空文件并加入书库，不在这里实现任何笔记本格式逻辑。
+        /// </summary>
+        private async Task CreateNotebookAsync()
+        {
+            var picker = new FileSavePicker { SuggestedFileName = "新建笔记本" };
+            string ext = _def.Info.FileTypes.FirstOrDefault() ?? ".lyrnb";
+            picker.FileTypeChoices.Add("笔记本", new List<string> { ext });
+            InitializePicker(picker);
+            var file = await picker.PickSaveFileAsync();
+            if (file == null) return;
+            if (!File.Exists(file.Path)) using (File.Create(file.Path)) { }
+            var item = ExtensionLibraryService.AddFile(_def, file.Path);
+            Refresh();
+            StatusText.Text = "已创建：" + item.Title;
+            OpenPath(item.Path);
         }
 
         private void LibraryGrid_ItemClick(object sender, ItemClickEventArgs e)

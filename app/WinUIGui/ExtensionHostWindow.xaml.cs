@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Linq;
 using System.Collections.Generic;
@@ -321,7 +321,8 @@ namespace WinUIGui
                 var root = doc.RootElement;
                 if (root.ValueKind != JsonValueKind.Object) return false;
                 string type = ReaderProtocol.GetString(root, "type", 80);
-                if (type != "host.capabilities" && type != "host.importBook") return false;
+                if (type != "host.capabilities" && type != "host.importBook" &&
+                    type != "host.workspace.load" && type != "host.workspace.save") return false;
                 string requestId = ReaderProtocol.GetString(root, "requestId", 128);
                 if (type == "host.capabilities")
                 {
@@ -347,8 +348,94 @@ namespace WinUIGui
                     Wv.CoreWebView2?.PostWebMessageAsJson(reply.ToJsonString());
                     return true;
                 }
-                string path = ReaderProtocol.GetString(root, "path", 2048);
-                var result = App.Main?.ImportDownloadedBook(path) ?? (false, "", "", "主窗口不可用");
+                if (type == "host.workspace.load")
+                {
+                    string path = _bookPath ?? "";
+                    if (string.IsNullOrWhiteSpace(path) || !File.Exists(path))
+                    {
+                        Wv.CoreWebView2?.PostWebMessageAsJson(new JsonObject
+                        {
+                            ["type"] = "host.workspace.load.result",
+                            ["requestId"] = requestId,
+                            ["ok"] = false,
+                            ["error"] = "笔记本路径不可用",
+                        }.ToJsonString());
+                        return true;
+                    }
+                    byte[] bytes = File.ReadAllBytes(path);
+                    Wv.CoreWebView2?.PostWebMessageAsJson(new JsonObject
+                    {
+                        ["type"] = "host.workspace.load.result",
+                        ["requestId"] = requestId,
+                        ["ok"] = true,
+                        ["data"] = Convert.ToBase64String(bytes),
+                        ["name"] = Path.GetFileName(path),
+                    }.ToJsonString());
+                    return true;
+                }
+                if (type == "host.workspace.save")
+                {
+                    string path = _bookPath ?? "";
+                    if (string.IsNullOrWhiteSpace(path))
+                    {
+                        Wv.CoreWebView2?.PostWebMessageAsJson(new JsonObject
+                        {
+                            ["type"] = "host.workspace.save.result",
+                            ["requestId"] = requestId,
+                            ["ok"] = false,
+                            ["error"] = "笔记本路径不可用",
+                        }.ToJsonString());
+                        return true;
+                    }
+                    string? b64 = root.TryGetProperty("data", out var dataEl) && dataEl.ValueKind == JsonValueKind.String
+                        ? dataEl.GetString() : null;
+                    if (string.IsNullOrEmpty(b64))
+                    {
+                        Wv.CoreWebView2?.PostWebMessageAsJson(new JsonObject
+                        {
+                            ["type"] = "host.workspace.save.result",
+                            ["requestId"] = requestId,
+                            ["ok"] = false,
+                            ["error"] = "保存数据为空",
+                        }.ToJsonString());
+                        return true;
+                    }
+                    byte[] bytes = Convert.FromBase64String(b64);
+                    if (bytes.Length > 100 * 1024 * 1024)
+                    {
+                        Wv.CoreWebView2?.PostWebMessageAsJson(new JsonObject
+                        {
+                            ["type"] = "host.workspace.save.result",
+                            ["requestId"] = requestId,
+                            ["ok"] = false,
+                            ["error"] = "笔记本超过 100MB",
+                        }.ToJsonString());
+                        return true;
+                    }
+                    string dir = Path.GetDirectoryName(path)!;
+                    Directory.CreateDirectory(dir);
+                    string tmp = path + ".tmp-" + Guid.NewGuid().ToString("N");
+                    string bak = path + ".bak";
+                    try
+                    {
+                        File.WriteAllBytes(tmp, bytes);
+                        if (File.Exists(path)) File.Copy(path, bak, true);
+                        File.Move(tmp, path, true);
+                    }
+                    finally
+                    {
+                        try { if (File.Exists(tmp)) File.Delete(tmp); } catch { }
+                    }
+                    Wv.CoreWebView2?.PostWebMessageAsJson(new JsonObject
+                    {
+                        ["type"] = "host.workspace.save.result",
+                        ["requestId"] = requestId,
+                        ["ok"] = true,
+                    }.ToJsonString());
+                    return true;
+                }
+                string path2 = ReaderProtocol.GetString(root, "path", 2048);
+                var result = App.Main?.ImportDownloadedBook(path2) ?? (false, "", "", "主窗口不可用");
                 var resp = new JsonObject
                 {
                     ["type"] = "host.importBook.result",

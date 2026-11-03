@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
@@ -12,8 +12,8 @@ namespace WinUIGui
     /// ★ 架构约定（2026-11 重构）：
     ///   主程序不再为 EPUB/PDF/TXT 写三套 C# 类、三套 Panel、三套书库方法。
     ///   扩展通过清单声明自己是「读者 + 侧栏书库」还是「工具窗口」，主程序只认这套接口：
-    ///     kind      : "reader" | "tool"
-    ///     fileTypes : 允许打开/添加的扩展名（读者必填）
+    ///     kind      : "reader" | "tool" | "notebook"
+    ///     fileTypes : 允许打开/添加的扩展名（读者/笔记本必填）
     ///     host      : 打开阅读器时把文件复制成什么临时文件名、用什么 query 参数传给网页
     ///     library   : 是否在左侧生成 Tab，以及标题/按钮/作者兜底/封面策略
     ///   新增一个读者扩展只需要放 zip + 清单 + 可选目录条目，不需要再改 MainWindow。
@@ -118,6 +118,8 @@ namespace WinUIGui
             if (string.Equals(info.Kind, "reader", StringComparison.OrdinalIgnoreCase) ||
                 (legacy && (id == "epub" || id == "pdf" || id == "txt")))
                 def.Kind = ExtensionKind.Reader;
+            else if (string.Equals(info.Kind, "notebook", StringComparison.OrdinalIgnoreCase))
+                def.Kind = ExtensionKind.Notebook;
             else
                 def.Kind = ExtensionKind.Tool;
 
@@ -241,7 +243,7 @@ namespace WinUIGui
         }
     }
 
-    public enum ExtensionKind { Tool, Reader }
+    public enum ExtensionKind { Tool, Reader, Notebook }
 
     public sealed class ExtensionDefinition
     {
@@ -250,5 +252,6 @@ namespace WinUIGui
         public ExtensionCatalog.HostSpec Host { get; set; } = new();
         public ExtensionCatalog.LibrarySpec Library { get; set; } = new();
         public bool IsReader => Kind == ExtensionKind.Reader;
+        public bool IsNotebook => Kind == ExtensionKind.Notebook;
     }
 }
