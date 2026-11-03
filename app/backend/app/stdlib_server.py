@@ -15,6 +15,16 @@ import urllib.parse
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 
 from . import ai_subtitle, playlists_db, services
+try:
+    from .tomato_boot import get_jobs as _get_tomato_jobs
+    tomato_jobs = _get_tomato_jobs()
+except Exception:
+    class _MissingTomato:
+        def __getattr__(self, name):
+            def _missing(*args, **kwargs):
+                return {"ok": False, "error": "番茄下载器核心未安装"}
+            return _missing
+    tomato_jobs = _MissingTomato()
 
 logger = logging.getLogger(__name__)
 
@@ -102,6 +112,10 @@ class Handler(BaseHTTPRequestHandler):
                 self._send(services.deps_status())
             elif path == "/api/ai_subtitle/status":
                 self._send(ai_subtitle.status())
+            elif path == "/api/tomato/status":
+                self._send(tomato_jobs.status())
+            elif path == "/api/tomato/library":
+                self._send(tomato_jobs.library())
             elif path == "/api/enhance/tasks":
                 self._send(services.list_enhance_tasks())
             elif path == "/api/enhancers":
@@ -241,6 +255,21 @@ class Handler(BaseHTTPRequestHandler):
                 self._send(ai_subtitle.start_generate(str(body.get("path", "") or "")))
             elif path == "/api/ai_subtitle/generate/cancel":
                 self._send(ai_subtitle.cancel_generate())
+            elif path == "/api/tomato/search":
+                self._send(tomato_jobs.search(str(body.get("keyword", "") or "")))
+            elif path == "/api/tomato/info":
+                self._send(tomato_jobs.info(str(body.get("book_id", "") or "")))
+            elif path == "/api/tomato/refresh":
+                self._send(tomato_jobs.refresh_book(str(body.get("book_id", "") or "")))
+            elif path == "/api/tomato/download":
+                self._send(tomato_jobs.start(str(body.get("book_id", "") or ""),
+                                             int(body.get("start", 1) or 1),
+                                             int(body.get("end", 0) or 0) or None,
+                                             body.get("formats") or ["txt"]))
+            elif path == "/api/tomato/cancel":
+                self._send(tomato_jobs.cancel())
+            elif path == "/api/tomato/identity":
+                self._send(tomato_jobs.register_identity())
             elif path == "/api/enhance/submit":
                 self._send(services.submit_enhance(
                     int(body.get("media_id", 0)),

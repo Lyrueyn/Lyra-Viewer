@@ -1,4 +1,4 @@
-﻿# 璃鸢镜（Lyra Viewer）v1.2.2
+﻿# 璃鸢镜（Lyra Viewer）v1.3.2
 
 > 🤖 **本项目由 AI（DeepSeek Harness）制作/协作开发。**
 >
@@ -8,12 +8,12 @@
 
 ## 下载安装
 
-最新版本：**璃鸢镜 1.2.2**
+最新版本：**璃鸢镜 1.3.2**
 
 | 内容 | 地址 |
 |---|---|
 | 主程序 Release | https://github.com/Lyrueyn/Lyra-Viewer/releases/latest |
-| 安装包 | `LyraViewer-Setup-1.2.2.exe` |
+| 安装包 | `LyraViewer-Setup-1.3.2.exe` |
 | EPUB 扩展 | https://github.com/Lyrueyn/Lyra-Extension-Epub |
 | PDF 扩展 | https://github.com/Lyrueyn/Lyra-Extention-PDF_Reader |
 | TXT 扩展 | https://github.com/Lyrueyn/Lyra-Extension-txt_Reader |
@@ -21,6 +21,10 @@
 - 安装到当前用户目录，不需要管理员权限，不写 Program Files / ProgramData。
 - 安装包会安装 .NET 10 Desktop Runtime；需要 Windows 10/11 x64。
 - EPUB / PDF 扩展由扩展中心自动检查 GitHub Release 更新；主程序更新也会跟随 Release。
+
+## 免责声明与下载器说明
+
+番茄小说下载器扩展仅供网络爬虫技术、网页数据处理及相关研究的学习用途。签名、匿名设备注册、内容密钥和接口地址等核心实现不包含在公开源码中，只以编译加密后的组件随主程序安装包发布。下载内容请自行阅读后删除，禁止转载、传播或商业使用；使用者自行承担相关责任。详见 `DISCLAIMER.md`。
 
 ## 功能
 
@@ -67,14 +71,18 @@
 
 | 项目 | 版本 | 状态 |
 |---|---|---|
-| 主程序 | 1.2.2 | 已发布 |
+| 主程序 | 1.3.2 | 已发布 |
 | EPUB 扩展 | 0.6.9 | 已发布 |
 | PDF 扩展 | 0.4.7 | 已发布 |
 | TXT 扩展 | 0.1.2 | 已发布 |
+| 番茄小说下载器 | 0.2.0 | 已发布（前端开源，核心加密随主程序） |
 | Python 后端 | 0.1.0 | 随主程序打包 |
 
 近期主线变更：
 
+- 1.3.2：番茄下载器恢复发布，但逆向核心改为 .pyc 编译 + AES 加密，随主程序安装包发布；扩展仓库只保留前端和免责声明，不包含签名/注册/接口实现。
+- 1.3.1：番茄下载器封面/真实作者修复；书籍更新（续更合并导出）与旧书库重名清理；下载元数据 book.json 交给阅读器书库。
+- 1.3.0：扩展架构改为清单驱动：新增读者扩展只需 extension.json + 网页，主程序自动生成侧栏 Tab/书库，不再改 MainWindow；新增番茄小说下载器 0.1.1（免登录、按已安装阅读器导出 TXT/EPUB/PDF 并自动入库）。
 - 1.2.2：AI 字幕改由一次性子进程转写，完成后子进程退出，不再让常驻后端持有 PyTorch 模型、CUDA 上下文和显存；识别进度继续实时更新。
 - 1.2.1：AI 字幕识别进度改为按 Whisper 内部帧进度实时更新；加载模型/识别阶段有明确提示，不再长时间停在 0%。
 - 1.2.0：视频卡片 +/× 仅悬停显示；三扩展书库支持管理删除文件；PDF/TXT 可切换选中文字；PDF 缩放可手动输入；PDF 放映清晰度不再受普通缩放影响。
@@ -138,7 +146,7 @@ dotnet build app\WinUIGui\WinUIGui.csproj -c Release
   "F:\DSH\LocalMediaPlayer-Workspace\packaging\_pkg_t34\lmp-setup-user.iss"
 ```
 
-产物在 `packaging\_pkg_t34\inno-out-122\璃鸢镜-Setup-1.2.2.exe`。
+产物在 `packaging\_pkg_t34\inno-out-131\璃鸢镜-Setup-1.3.1.exe`。
 
 ## 说明 / 许可
 
