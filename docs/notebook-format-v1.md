@@ -1,4 +1,4 @@
-# `.lyrnb` 笔记本格式 v1
+﻿# `.lyrnb` 笔记本格式 v1
 
 `.lyrnb` 是一个 ZIP 容器，内含一个笔记本的多篇笔记和资源。它不是 Markdown，也不是 HTML 文档；正文保存为结构化文档树。
 
@@ -68,7 +68,7 @@ notebook.lyrnb
 - `paragraph`
 - `heading`（`level` 1–6）
 - `bulletList` / `orderedList`（`items` 为行内数组的数组）
-- `blockquote`
+- `taskList`（`items`: `{checked, children}`）\n- `blockquote`
 - `codeBlock`
 - `divider`
 
