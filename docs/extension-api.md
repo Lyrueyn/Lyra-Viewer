@@ -51,7 +51,7 @@
 | `id` | 唯一 id，也是 `data/<id>_library.json` 与扩展目录名 |
 | `name` | 扩展中心显示名 |
 | `entry` | 网页入口，默认 `index.html` |
-| `kind` | `reader`（有书库/阅读器）或 `tool`（只有工具窗口） |
+| `kind` | `reader`（有书库/阅读器）、`tool`（只有工具窗口）或 `notebook`（带书库的笔记工作区） |
 | `fileTypes` | 读者扩展能打开的文件扩展名，如 `[".epub"]` |
 | `host` | 打开阅读器时宿主如何把文件交给网页 |
 | `library` | 是否在左侧生成 Tab、书库文案和封面策略 |
@@ -118,3 +118,38 @@ https://lyra-ext-<id>.local/index.html
 
 旧版 EPUB/PDF/TXT 清单没有 `kind/host/library` 时，主程序按扩展 id 自动补默认值；
 新版扩展建议全部显式写出这些字段。新增扩展不再需要改 C#。
+
+## 笔记本扩展（kind: notebook）
+
+`notebook` 和 `reader` 一样有左侧栏书库，但主程序不把它当成阅读器；它用于打开/新建一个可编辑的数据包（例如 `.lyrnb`）。当前通用宿主提供：
+
+- 扩展窗口打开时把文件复制到临时目录，和 reader 一样传 `fileParam`
+- `host.workspace.load`：读取笔记本原始文件字节（base64）
+- `host.workspace.save`：原子写回原始文件，并保留 `.bak`
+- `host.capabilities` / `host.importBook`：原有的通用桥接
+
+扩展自己负责数据包内部格式，主程序只做路径、原子写入和书库管理。新增笔记格式不需要改 C#。
+
+```json
+{
+  "id": "notebook",
+  "name": "笔记本",
+  "kind": "notebook",
+  "fileTypes": [".lyrnb"],
+  "host": { "innerName": "notebook.lyrnb", "fileParam": "notebook" },
+  "library": {
+    "sidebar": true,
+    "navLabel": "笔记",
+    "glyph": "\uE70F",
+    "title": "笔记本",
+    "description": "一个笔记本文件可以包含多篇笔记。",
+    "openLabel": "打开笔记本",
+    "addLabel": "＋ 新建笔记本",
+    "authorFallback": "本地笔记本",
+    "cover": "none",
+    "order": 40
+  }
+}
+```
+
+新建笔记本时主程序让用户选择 `.lyrnb` 路径并创建一个空文件；扩展第一次打开空文件时自行初始化自己的格式。 
