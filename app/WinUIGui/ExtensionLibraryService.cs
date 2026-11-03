@@ -1,4 +1,4 @@
-﻿using Microsoft.UI.Xaml.Media;
+using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Media.Imaging;
 using System;
 using System.Collections.Generic;
@@ -161,6 +161,27 @@ namespace WinUIGui
         }
 
         public static ExtensionLibraryItem? Find(string extId, string id) => Load(extId).FirstOrDefault(x => x.Id == id);
+
+        /// <summary>
+        /// 链接式入库：书库条目指向用户选择的真实文件，不复制副本。
+        /// 适合笔记本这类需要持续原路径保存的扩展。
+        /// </summary>
+        public static ExtensionLibraryItem AddLinkedFile(ExtensionDefinition def, string path)
+        {
+            var item = new ExtensionLibraryItem
+            {
+                Id = Guid.NewGuid().ToString("N"),
+                Title = System.IO.Path.GetFileNameWithoutExtension(path),
+                Author = string.IsNullOrWhiteSpace(def.Library.AuthorFallback) ? "本地文件" : def.Library.AuthorFallback,
+                Path = path,
+                AddedAt = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
+                CoverPath = "",
+            };
+            var list = Load(def.Info.Id);
+            list.Add(item);
+            Save(def.Info.Id, list);
+            return item;
+        }
 
         /// <summary>把外部文件复制进书库；返回新条目。标题先按文件名，EPUB 可选读内嵌标题。</summary>
         public static ExtensionLibraryItem AddFile(ExtensionDefinition def, string sourcePath)

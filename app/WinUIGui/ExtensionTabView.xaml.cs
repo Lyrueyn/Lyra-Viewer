@@ -115,7 +115,7 @@ namespace WinUIGui
             var file = await picker.PickSaveFileAsync();
             if (file == null) return;
             if (!File.Exists(file.Path)) using (File.Create(file.Path)) { }
-            var item = ExtensionLibraryService.AddFile(_def, file.Path);
+            var item = ExtensionLibraryService.AddLinkedFile(_def, file.Path);
             Refresh();
             StatusText.Text = "已创建：" + item.Title;
             OpenPath(item.Path);
