@@ -30,7 +30,7 @@
 | EPUB 扩展 | **v0.6.9** | `lyra-ext-epub.zip` |
 | PDF 扩展 | **v0.4.7** | `lyra-ext-pdf.zip` |
 | TXT 扩展 | **v0.1.2** | `lyra-ext-txt.zip` |
-| 笔记本 | **v1.1.0** | `lyra-ext-notebook.zip` |
+| 笔记本 | **v1.2.0** | `lyra-ext-notebook.zip` |
 | 番茄小说下载器 | **v0.2.0** | `lyra-ext-tomato.zip`（前端；核心加密随主程序） |
 
 扩展必须和主程序版本配套使用；扩展中心会自动检查 GitHub 最新 Release。
