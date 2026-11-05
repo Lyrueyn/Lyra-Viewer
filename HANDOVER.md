@@ -26,11 +26,11 @@
 
 | 项目 | 版本 | 安装/更新资产 |
 |---|---|---|
-| 主程序 | **v1.4.2** | `LyraViewer-Setup-1.4.2.exe`（安装在用户目录，安装包会安装 .NET 10 Desktop Runtime） |
+| 主程序 | **v1.4.3** | `LyraViewer-Setup-1.4.3.exe`（安装在用户目录，安装包会安装 .NET 10 Desktop Runtime） |
 | EPUB 扩展 | **v0.6.9** | `lyra-ext-epub.zip` |
 | PDF 扩展 | **v0.4.7** | `lyra-ext-pdf.zip` |
 | TXT 扩展 | **v0.1.2** | `lyra-ext-txt.zip` |
-| HTML 阅读器 | **v1.2.13** | `lyra-ext-html-reader.zip` |
+| HTML 阅读器 | **v1.3.0** | `lyra-ext-html-reader.zip` |
 | HTML 编辑器层 | **v1.17.0** | `lyra-ext-html-editor.zip` |
 | 笔记本 | **v2.3.16** | `lyra-ext-notebook.zip` |
 | 番茄小说下载器 | **v0.2.0** | `lyra-ext-tomato.zip`（前端；核心加密随主程序） |
@@ -571,3 +571,12 @@ HTML_Reader（reader，独立 Tab）
   4. `GET /api/download/playlist-items` 返回 405，不再触发 `name 'body' is not defined` 500。
 - 隔离测试脚本验证 4 项全部 PASS（临时 DB + 临时 config + 本机 HTTP handler）。
 - 用户明确：播放位置记忆不做；README 已去掉该宣传。
+
+
+### 1.4.3 HTML 打开时自动迁移媒体到 assets
+
+- 主程序新增 `host.file.import`：按原 HTML 所在目录解析相对路径，或直接接受绝对路径；图片/视频/音频按 SHA-256 前缀复制到 `assets/`，返回相对路径。
+- HTML_Reader 打开 HTML 时自动扫描 `<img>/<video>/<audio>/<source>/<track>/poster`、`srcset`、CSS `url(...)`；本地相对/绝对路径全部迁移到 `assets/`，重写源码并原子保存（保留 .bak）。
+- data:/http:/blob:/已有 assets/ 路径跳过。
+- 实机测试：相对图片、绝对图片、视频、poster、CSS background、srcset 全部迁移并改写；源文件保存。
+- 播放位置记忆不实现（按用户要求）。

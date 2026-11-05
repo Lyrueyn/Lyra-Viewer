@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Nodes;
+using System.Security.Cryptography;
 using System.Threading.Tasks;
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
@@ -351,7 +352,7 @@ namespace WinUIGui
                 if (root.ValueKind != JsonValueKind.Object) return false;
                 string type = ReaderProtocol.GetString(root, "type", 80);
                 if (type != "host.capabilities" && type != "host.importBook" &&
-                    type != "host.workspace.load" && type != "host.workspace.save" && type != "host.file.save" &&
+                    type != "host.workspace.load" && type != "host.workspace.save" && type != "host.file.save" && type != "host.file.import" &&
                     type != "host.ready") return false;
                 string requestId = ReaderProtocol.GetString(root, "requestId", 128);
                 if (type == "host.ready")
@@ -527,6 +528,71 @@ namespace WinUIGui
                         Wv.CoreWebView2?.PostWebMessageAsJson(new JsonObject
                         {
                             ["type"] = "host.file.save.result",
+                            ["requestId"] = requestId,
+                            ["ok"] = false,
+                            ["error"] = ex.Message,
+                        }.ToJsonString());
+                    }
+                    return true;
+                }
+                if (type == "host.file.import")
+                {
+                    string source = ReaderProtocol.GetString(root, "path", 4096) ?? "";
+                    if (string.IsNullOrWhiteSpace(source) || string.IsNullOrEmpty(_bookPath))
+                    {
+                        Wv.CoreWebView2?.PostWebMessageAsJson(new JsonObject
+                        {
+                            ["type"] = "host.file.import.result",
+                            ["requestId"] = requestId,
+                            ["ok"] = false,
+                            ["error"] = "资源路径或当前文件路径不可用",
+                        }.ToJsonString());
+                        return true;
+                    }
+                    try
+                    {
+                        string importRaw = Uri.UnescapeDataString(source.Trim().Trim('"'));
+                        if (importRaw.StartsWith("file://", StringComparison.OrdinalIgnoreCase))
+                        {
+                            try { importRaw = new Uri(importRaw).LocalPath; } catch { }
+                        }
+                        int cut = importRaw.IndexOfAny(new[] { '?', '#' });
+                        if (cut >= 0) importRaw = importRaw.Substring(0, cut);
+                        string baseDir = Path.GetDirectoryName(Path.GetFullPath(_bookPath)) ?? "";
+                        string full = Path.IsPathRooted(importRaw)
+                            ? Path.GetFullPath(importRaw)
+                            : Path.GetFullPath(Path.Combine(baseDir, importRaw.Replace('/', Path.DirectorySeparatorChar)));
+                        if (!File.Exists(full)) throw new InvalidOperationException("文件不存在：" + full);
+                        string ext = Path.GetExtension(full).ToLowerInvariant();
+                        string[] allowed = { ".png", ".jpg", ".jpeg", ".webp", ".gif", ".bmp", ".svg", ".avif", ".mp4", ".webm", ".ogv", ".mov", ".m4v", ".mp3", ".wav", ".m4a", ".aac", ".flac", ".ogg" };
+                        if (!allowed.Contains(ext)) throw new InvalidOperationException("只允许图片/视频/音频：" + ext);
+                        string hash;
+                        using (var fs = File.OpenRead(full)) hash = Convert.ToHexString(SHA256.HashData(fs)).ToLowerInvariant().Substring(0, 12);
+                        string safeName = Path.GetFileName(full);
+                        foreach (char bad in Path.GetInvalidFileNameChars()) safeName = safeName.Replace(bad, '_');
+                        string relAsset = "assets/" + hash + "-" + safeName;
+                        string dest = Path.Combine(baseDir, "assets", hash + "-" + safeName);
+                        Directory.CreateDirectory(Path.GetDirectoryName(dest)!);
+                        if (!File.Exists(dest))
+                        {
+                            string tmp = dest + ".tmp-" + Guid.NewGuid().ToString("N");
+                            try { File.Copy(full, tmp, true); File.Move(tmp, dest, true); }
+                            finally { try { if (File.Exists(tmp)) File.Delete(tmp); } catch { } }
+                        }
+                        Wv.CoreWebView2?.PostWebMessageAsJson(new JsonObject
+                        {
+                            ["type"] = "host.file.import.result",
+                            ["requestId"] = requestId,
+                            ["ok"] = true,
+                            ["path"] = relAsset,
+                            ["source"] = full,
+                        }.ToJsonString());
+                    }
+                    catch (Exception ex)
+                    {
+                        Wv.CoreWebView2?.PostWebMessageAsJson(new JsonObject
+                        {
+                            ["type"] = "host.file.import.result",
                             ["requestId"] = requestId,
                             ["ok"] = false,
                             ["error"] = ex.Message,
