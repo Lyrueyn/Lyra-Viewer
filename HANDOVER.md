@@ -422,3 +422,11 @@ HTML_Reader（reader，独立 Tab）
 - HTML_Reader 读取本地 HTML 时，`<img src="相对路径">` 相对路径解析仍以扩展页为基准，尚未映射原文件目录；data URL / 绝对 URL 正常。
 - layer 扩展会被扩展中心列出（安装前置），但没有独立 Tab。
 - Notebook 2.0 顶部壳较简化；旧 1.14 的完整 DevTool 功能保留在 HTML_Editor 层内。
+
+### 1.0.1 / 2.1.0 追加
+
+- HTML_Editor 1.0.1：Format 先按块级标签断行；多行属性标签 +2、style 声明再 +2、`>` 回标签列；`<style>` 内 CSS 自动换行缩进；标签按 doc/style/script/block/text/media 分色。
+- Notebook 2.1.0：笔记自动补全完整 HTML 头（DOCTYPE/html/head/meta/title/style/body）；旧片段加载时包装；顶部编辑/阅读切换；阅读 iframe 把 assets 转 data URL。
+- 本机安装：主程序 1.4.0、HTML_Editor 1.0.1、HTML_Reader 1.0.0、Notebook 2.1.0。
+- 发布：HTML_Editor v1.0.1、Notebook v2.1.0；HTML_Reader 仍 v1.0.0。
+- 验证：Playwright 检查 Format 行缩进、标签颜色 class、Notebook 阅读 iframe、full HTML 默认文档；实机 Notebook 源码已显示完整头。
