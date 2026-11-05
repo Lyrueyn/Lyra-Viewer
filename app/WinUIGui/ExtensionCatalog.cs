@@ -47,6 +47,8 @@ namespace WinUIGui
             public int Order { get; set; } = 100;
             /// <summary>epub 等内置元数据读取器；留空则用文件名当标题。</summary>
             public string Metadata { get; set; } = "";
+            /// <summary>true=书库条目链接原文件，不复制副本（适合带同目录 assets 的 HTML）。</summary>
+            public bool Link { get; set; }
         }
 
         public sealed class ExtensionInfo
