@@ -6,6 +6,7 @@ using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Text.Json;
+using System.Text.RegularExpressions;
 using System.Xml.Linq;
 
 namespace WinUIGui
@@ -126,7 +127,16 @@ namespace WinUIGui
                 }
                 Directory.CreateDirectory(Path.GetDirectoryName(target)!);
                 if (!string.Equals(Path.GetFullPath(target), Path.GetFullPath(sourcePath), StringComparison.OrdinalIgnoreCase))
+                {
                     File.Copy(sourcePath, target, true);
+                    if (string.Equals(extId, "html-reader", StringComparison.OrdinalIgnoreCase))
+                    {
+                        string sourceDir = Path.GetDirectoryName(Path.GetFullPath(sourcePath)) ?? "";
+                        string sourceAssets = Path.Combine(sourceDir, "assets");
+                        if (Directory.Exists(sourceAssets))
+                            CopyDirectoryFiles(sourceAssets, Path.Combine(LibraryDir(extId), "assets"));
+                    }
+                }
                 item.Path = target;
             }
 
@@ -181,6 +191,135 @@ namespace WinUIGui
             list.Add(item);
             Save(def.Info.Id, list);
             return item;
+        }
+
+        private static void CopyDirectoryFiles(string source, string dest)
+        {
+            Directory.CreateDirectory(dest);
+            foreach (string file in Directory.EnumerateFiles(source))
+                File.Copy(file, Path.Combine(dest, Path.GetFileName(file)), true);
+            foreach (string dir in Directory.EnumerateDirectories(source))
+                CopyDirectoryFiles(dir, Path.Combine(dest, Path.GetFileName(dir)));
+        }
+
+        public static string AssetsDir(string extId) => Path.Combine(LibraryDir(extId), "assets");
+        public static string OrphanedAssetsDir(string extId) => Path.Combine(AppContext.BaseDirectory, "data", extId + "_orphaned_assets");
+        public static string AssetUsageFile(string extId) => Path.Combine(AppContext.BaseDirectory, "data", extId + "_asset_usage.json");
+
+        private static readonly Regex HtmlMediaTag = new(@"<(img|video|audio|source|track)\b[^>]*>", RegexOptions.IgnoreCase | RegexOptions.Compiled);
+        private static readonly Regex HtmlMediaAttr = new(@"\b(?:src|poster)\s*=\s*(?:""([^""]+)""|'([^']+)'|([^\s>]+))", RegexOptions.IgnoreCase | RegexOptions.Compiled);
+        private static readonly Regex HtmlSrcsetAttr = new(@"\bsrcset\s*=\s*(?:""([^""]+)""|'([^']+)'|([^\s>]+))", RegexOptions.IgnoreCase | RegexOptions.Compiled);
+        private static readonly Regex HtmlCssUrl = new(@"url\(\s*['""]?([^'""\)]+)['""]?\s*\)", RegexOptions.IgnoreCase | RegexOptions.Compiled);
+
+        private static bool IsRemoteOrDataUrl(string url)
+        {
+            string v = (url ?? "").Trim();
+            if (v.Length == 0) return true;
+            return v.StartsWith("#", StringComparison.Ordinal) ||
+                   v.StartsWith("data:", StringComparison.OrdinalIgnoreCase) ||
+                   v.StartsWith("blob:", StringComparison.OrdinalIgnoreCase) ||
+                   v.StartsWith("http:", StringComparison.OrdinalIgnoreCase) ||
+                   v.StartsWith("https:", StringComparison.OrdinalIgnoreCase) ||
+                   v.StartsWith("//", StringComparison.Ordinal) ||
+                   v.StartsWith("mailto:", StringComparison.OrdinalIgnoreCase) ||
+                   v.StartsWith("javascript:", StringComparison.OrdinalIgnoreCase);
+        }
+
+        /// <summary>收集一个 HTML 实际引用的库内 assets 文件（相对路径 assets/xxx）。</summary>
+        public static List<string> CollectAssetRefs(string extId, string htmlPath)
+        {
+            var result = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+            try
+            {
+                if (string.IsNullOrWhiteSpace(htmlPath) || !File.Exists(htmlPath)) return new List<string>();
+                string htmlDir = Path.GetDirectoryName(Path.GetFullPath(htmlPath)) ?? "";
+                string assetsRoot = Path.GetFullPath(AssetsDir(extId)).TrimEnd('\\') + "\\";
+                string html = File.ReadAllText(htmlPath);
+                var urls = new List<string>();
+                foreach (Match tag in HtmlMediaTag.Matches(html))
+                {
+                    foreach (Match m in HtmlMediaAttr.Matches(tag.Value))
+                        urls.Add(m.Groups[1].Success ? m.Groups[1].Value : m.Groups[2].Success ? m.Groups[2].Value : m.Groups[3].Value);
+                    foreach (Match m in HtmlSrcsetAttr.Matches(tag.Value))
+                    {
+                        string set = m.Groups[1].Success ? m.Groups[1].Value : m.Groups[2].Success ? m.Groups[2].Value : m.Groups[3].Value;
+                        foreach (string part in set.Split(','))
+                        {
+                            string u = part.Trim().Split(new[] { ' ', '\t', '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries).FirstOrDefault() ?? "";
+                            if (u.Length > 0) urls.Add(u);
+                        }
+                    }
+                }
+                foreach (Match m in HtmlCssUrl.Matches(html)) urls.Add(m.Groups[1].Value);
+                foreach (string url in urls)
+                {
+                    if (IsRemoteOrDataUrl(url)) continue;
+                    string clean = Uri.UnescapeDataString(url.Trim());
+                    int cut = clean.IndexOfAny(new[] { '?', '#' });
+                    if (cut >= 0) clean = clean.Substring(0, cut);
+                    string full;
+                    try
+                    {
+                        full = Path.IsPathRooted(clean)
+                            ? Path.GetFullPath(clean)
+                            : Path.GetFullPath(Path.Combine(htmlDir, clean.Replace('/', Path.DirectorySeparatorChar)));
+                    }
+                    catch { continue; }
+                    if (!full.StartsWith(assetsRoot, StringComparison.OrdinalIgnoreCase)) continue;
+                    if (!File.Exists(full)) continue;
+                    string rel = full.Substring(assetsRoot.Length).TrimStart('\\').Replace('\\', '/');
+                    if (rel.Length > 0) result.Add("assets/" + rel);
+                }
+            }
+            catch { }
+            return result.ToList();
+        }
+
+        /// <summary>重算并保存每个 asset 被多少个库内 HTML 引用。</summary>
+        public static Dictionary<string, int> RefreshAssetUsage(string extId)
+        {
+            var counts = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase);
+            try
+            {
+                foreach (var item in Load(extId))
+                {
+                    if (string.IsNullOrWhiteSpace(item.Path) || !File.Exists(item.Path)) continue;
+                    if (!item.Path.EndsWith(".html", StringComparison.OrdinalIgnoreCase) && !item.Path.EndsWith(".htm", StringComparison.OrdinalIgnoreCase)) continue;
+                    foreach (string rel in CollectAssetRefs(extId, item.Path))
+                        counts[rel] = counts.TryGetValue(rel, out int n) ? n + 1 : 1;
+                }
+                Directory.CreateDirectory(Path.GetDirectoryName(AssetUsageFile(extId))!);
+                File.WriteAllText(AssetUsageFile(extId), JsonSerializer.Serialize(counts, new JsonSerializerOptions { WriteIndented = true }));
+            }
+            catch { }
+            return counts;
+        }
+
+        /// <summary>删除 HTML 后，把已不再被任何库内 HTML 使用的 assets 移到 orphaned 目录（不删除，便于转移）。</summary>
+        public static void OrphanUnusedAssets(string extId, IEnumerable<string> candidates)
+        {
+            try
+            {
+                var candidateList = (candidates ?? Enumerable.Empty<string>()).Distinct(StringComparer.OrdinalIgnoreCase).ToList();
+                if (candidateList.Count == 0) return;
+                var counts = RefreshAssetUsage(extId);
+                foreach (string rel in candidateList)
+                {
+                    if (counts.TryGetValue(rel, out int n) && n > 0) continue;
+                    string src = Path.Combine(LibraryDir(extId), rel.Replace('/', Path.DirectorySeparatorChar));
+                    if (!File.Exists(src)) continue;
+                    string dst = Path.Combine(OrphanedAssetsDir(extId), rel.Replace('/', Path.DirectorySeparatorChar));
+                    Directory.CreateDirectory(Path.GetDirectoryName(dst)!);
+                    if (File.Exists(dst))
+                    {
+                        string stem = Path.GetFileNameWithoutExtension(dst);
+                        string ext = Path.GetExtension(dst);
+                        dst = Path.Combine(Path.GetDirectoryName(dst)!, stem + "-" + DateTime.Now.ToString("yyyyMMddHHmmssfff") + ext);
+                    }
+                    try { File.Move(src, dst); } catch { }
+                }
+            }
+            catch { }
         }
 
         /// <summary>把外部文件复制进书库；返回新条目。标题先按文件名，EPUB 可选读内嵌标题。</summary>

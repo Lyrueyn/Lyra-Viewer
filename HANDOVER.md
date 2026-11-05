@@ -26,11 +26,11 @@
 
 | 项目 | 版本 | 安装/更新资产 |
 |---|---|---|
-| 主程序 | **v1.4.4** | `LyraViewer-Setup-1.4.4.exe`（安装在用户目录，安装包会安装 .NET 10 Desktop Runtime） |
+| 主程序 | **v1.4.6** | `LyraViewer-Setup-1.4.6.exe`（安装在用户目录，安装包会安装 .NET 10 Desktop Runtime） |
 | EPUB 扩展 | **v0.6.9** | `lyra-ext-epub.zip` |
 | PDF 扩展 | **v0.4.7** | `lyra-ext-pdf.zip` |
 | TXT 扩展 | **v0.1.2** | `lyra-ext-txt.zip` |
-| HTML 阅读器 | **v1.3.3** | `lyra-ext-html-reader.zip` |
+| HTML 阅读器 | **v1.3.4** | `lyra-ext-html-reader.zip` |
 | HTML 编辑器层 | **v1.17.1** | `lyra-ext-html-editor.zip` |
 | 笔记本 | **v2.3.17** | `lyra-ext-notebook.zip` |
 | 番茄小说下载器 | **v0.2.0** | `lyra-ext-tomato.zip`（前端；核心加密随主程序） |
@@ -596,9 +596,26 @@ HTML_Reader（reader，独立 Tab）
 - 实测 class 2.html：视频迁移到 assets/ 67MB，read/edit 背景视频均显示，状态不再报失败。
 
 
-### 1.4.4 / HTML_Reader 1.3.3
+### 1.4.6 / HTML_Reader 1.3.3
 
 - 根因：HTML 阅读器书库「添加 HTML 文件」原来会复制一份 HTML 到 data/html-reader_library，但不会复制同目录 assets。迁移后源码写的是 assets/...，书库副本里没有 assets → 背景视频/图片 404。打开原文件则正常。
 - 主程序新增 library.link；HTML_Reader 配置 link=true，添加书库改为链接原文件，不再复制 HTML 副本。
 - 已删除本机书库中失效的 class 2 副本条目，保留指向原文件的链接条目。
 - 仍需 Editor 1.17.1 / Reader 1.3.x / Notebook 2.3.17 的 iframe allow="autoplay" 修复编辑预览不自动播放。
+
+
+### 1.4.6 / HTML_Reader 1.3.4
+
+- 按用户要求恢复“复制 HTML 到书库”，不再链接源文件。
+- 主程序 AddFile 对 html-reader 同时递归复制 HTML 同目录 assets 到 data/html-reader_library/assets。
+- 已手工修复本机 class 2 书库副本：复制 HTML + 67MB 背景视频到书库，打开书库副本背景正常。
+- Reader 1.3.4 移除 link 配置。
+
+
+### 1.4.6 asset 引用计数与孤儿回收
+
+- `data/html-reader_asset_usage.json` 记录每个库内 assets 被多少个书库 HTML 引用（同一 HTML 多次引用只计 1）。
+- 添加 HTML 到书库时自动复制 HTML + 同目录 assets，并刷新引用计数。
+- 删除书库 HTML 时：先收集该 HTML 引用的 assets；删除后重算计数；计数为 0 的 assets 移动到 `data/html-reader_orphaned_assets/assets/`，不直接删除，便于转移。
+- 多 HTML 共用的 asset 只要还有引用就留在库内。
+- 已用真实 WinUIGui.dll 反射测试：x 被两个 HTML 引用时计数 2；删一个保留；删最后一个后 x/y 都移入 orphaned 目录，usage 变空。
