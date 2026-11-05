@@ -30,9 +30,9 @@
 | EPUB 扩展 | **v0.6.9** | `lyra-ext-epub.zip` |
 | PDF 扩展 | **v0.4.7** | `lyra-ext-pdf.zip` |
 | TXT 扩展 | **v0.1.2** | `lyra-ext-txt.zip` |
-| HTML 阅读器 | **v1.2.11** | `lyra-ext-html-reader.zip` |
-| HTML 编辑器层 | **v1.15.0** | `lyra-ext-html-editor.zip` |
-| 笔记本 | **v2.3.14** | `lyra-ext-notebook.zip` |
+| HTML 阅读器 | **v1.2.12** | `lyra-ext-html-reader.zip` |
+| HTML 编辑器层 | **v1.16.0** | `lyra-ext-html-editor.zip` |
+| 笔记本 | **v2.3.15** | `lyra-ext-notebook.zip` |
 | 番茄小说下载器 | **v0.2.0** | `lyra-ext-tomato.zip`（前端；核心加密随主程序） |
 
 扩展必须和主程序版本配套使用；扩展中心会自动检查 GitHub 最新 Release。
@@ -545,3 +545,10 @@ HTML_Reader（reader，独立 Tab）
 - Apply 移到 CSS 面板顶部，避免补全弹层遮挡；多 selector 格式化保持单行。
 - 实测无 CSS 文件时选 .card + .title，加 margin:12px，生成 `.card, .title { margin: 12px; }`。
 - 缓存版本 250。
+
+### 1.16.0 / 1.2.12 / 2.3.15
+
+- 编辑预览 BASE_CSS 移除 body 字体/边距/颜色/表格等强制样式，只保留 img/video/canvas/svg 的 max-width:100% 约束；用户 body width/padding/font 原样生效。
+- Reader 阅读模式注入同一 image 约束；不再出现编辑图片变小、阅读变大的差异。
+- Playwright 实测 body width:800、padding:20 时，read/edit 的 body 宽均 840，图片宽均 800。
+- 缓存版本 260。
