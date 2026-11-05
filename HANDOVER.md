@@ -30,9 +30,9 @@
 | EPUB 扩展 | **v0.6.9** | `lyra-ext-epub.zip` |
 | PDF 扩展 | **v0.4.7** | `lyra-ext-pdf.zip` |
 | TXT 扩展 | **v0.1.2** | `lyra-ext-txt.zip` |
-| HTML 阅读器 | **v1.2.5** | `lyra-ext-html-reader.zip` |
-| HTML 编辑器层 | **v1.9.0** | `lyra-ext-html-editor.zip` |
-| 笔记本 | **v2.3.8** | `lyra-ext-notebook.zip` |
+| HTML 阅读器 | **v1.2.6** | `lyra-ext-html-reader.zip` |
+| HTML 编辑器层 | **v1.10.0** | `lyra-ext-html-editor.zip` |
+| 笔记本 | **v2.3.9** | `lyra-ext-notebook.zip` |
 | 番茄小说下载器 | **v0.2.0** | `lyra-ext-tomato.zip`（前端；核心加密随主程序） |
 
 扩展必须和主程序版本配套使用；扩展中心会自动检查 GitHub 最新 Release。
@@ -501,3 +501,10 @@ HTML_Reader（reader，独立 Tab）
 - 删除规则列表、New rule、筛选、Managed/Advanced 展示入口。
 - property/value 补全保留；实测 `.card` 三行属性可编辑，`.c` 不再需要（selector 是下拉）。
 - 缓存版本 190。
+
+### 1.10.0 / 1.2.6 / 2.3.9
+
+- selector 下拉：全部默认 HTML 标签 + 文档标签/class/id + 多级 class 链（.a .b、.a > .b、.a .b .c、tag.class）。
+- 多 selector 规则（.a, .b）作为完整条目；编辑属性保留逗号。
+- 选中不存在的 selector 后 Apply 自动建规则。
+- 缓存版本 200。
