@@ -30,9 +30,9 @@
 | EPUB 扩展 | **v0.6.9** | `lyra-ext-epub.zip` |
 | PDF 扩展 | **v0.4.7** | `lyra-ext-pdf.zip` |
 | TXT 扩展 | **v0.1.2** | `lyra-ext-txt.zip` |
-| HTML 阅读器 | **v1.3.4** | `lyra-ext-html-reader.zip` |
-| HTML 编辑器层 | **v1.17.1** | `lyra-ext-html-editor.zip` |
-| 笔记本 | **v2.3.17** | `lyra-ext-notebook.zip` |
+| HTML 阅读器 | **v1.3.5** | `lyra-ext-html-reader.zip` |
+| HTML 编辑器层 | **v1.17.2** | `lyra-ext-html-editor.zip` |
+| 笔记本 | **v2.3.18** | `lyra-ext-notebook.zip` |
 | 番茄小说下载器 | **v0.2.0** | `lyra-ext-tomato.zip`（前端；核心加密随主程序） |
 
 扩展必须和主程序版本配套使用；扩展中心会自动检查 GitHub 最新 Release。
@@ -619,3 +619,11 @@ HTML_Reader（reader，独立 Tab）
 - 删除书库 HTML 时：先收集该 HTML 引用的 assets；删除后重算计数；计数为 0 的 assets 移动到 `data/html-reader_orphaned_assets/assets/`，不直接删除，便于转移。
 - 多 HTML 共用的 asset 只要还有引用就留在库内。
 - 已用真实 WinUIGui.dll 反射测试：x 被两个 HTML 引用时计数 2；删一个保留；删最后一个后 x/y 都移入 orphaned 目录，usage 变空。
+
+
+### Editor 1.17.2 Console
+
+- Dev Tool 新增 Console：console 输出、JS 运行时错误、unhandled rejection、资源加载失败。
+- 资源失败条目通过 data-lyra-src 跳到源码；最大 200 条，带计数徽标/Clear。
+- Editor 缓存 281；Reader 1.3.5 / Notebook 2.3.18 跟进。
+- Playwright 实测：log/warn/error/missing img 四条均捕获，resource 条目点击后 inspector 跳到 Ln 1。
