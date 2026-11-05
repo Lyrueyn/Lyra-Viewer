@@ -313,6 +313,8 @@ def _migrate_videos(conn) -> None:
     """videos 表升级：加 quality + page 列；去掉 bvid 唯一约束（支持同视频多画质/多分P共存）。"""
     cols = {r[1] for r in conn.execute("PRAGMA table_info(videos)")}
     if "quality" in cols and "page" in cols:
+        if "source_path" not in cols:
+            conn.execute("ALTER TABLE videos ADD COLUMN source_path TEXT DEFAULT ''")
         return  # 已是最新
     # 重建表（数据复制到新表，不丢数据；旧库 page 默认 0）
     conn.executescript("""
@@ -334,3 +336,6 @@ def _migrate_videos(conn) -> None:
     DROP TABLE videos;
     ALTER TABLE videos_new RENAME TO videos;
     """)
+    vcols = {r[1] for r in conn.execute("PRAGMA table_info(videos)")}
+    if "source_path" not in vcols:
+        conn.execute("ALTER TABLE videos ADD COLUMN source_path TEXT DEFAULT ''")

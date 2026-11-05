@@ -220,7 +220,8 @@ def save_danmaku_settings(settings: dict) -> dict:
                 cur[k] = v
         cfg["danmaku_settings"] = cur
         return cfg
-    return _update_config(mutate)
+    _update_config(mutate)
+    return get_danmaku_settings()
 
 
 def get_cookie_detail() -> dict:
@@ -1659,6 +1660,7 @@ def delete_video(video_id: int, delete_file: bool = True) -> dict:
     with get_conn() as c:
         row = c.execute("SELECT local_path FROM videos WHERE id=?", (video_id,)).fetchone()
         c.execute("DELETE FROM videos WHERE id=?", (video_id,))
+        c.execute("DELETE FROM playlist_items WHERE media_type='video' AND media_id=?", (video_id,))
         c.execute("DELETE FROM danmaku WHERE video_id=?", (video_id,))
         c.execute("DELETE FROM comments WHERE video_id=?", (video_id,))
     if delete_file and row and row["local_path"]:
@@ -1676,6 +1678,7 @@ def delete_video_by_bvid(bvid: str, delete_file: bool = True, page: int = -1) ->
         for r in rows:
             vid = r["id"]
             c.execute("DELETE FROM videos WHERE id=?", (vid,))
+            c.execute("DELETE FROM playlist_items WHERE media_type='video' AND media_id=?", (vid,))
             c.execute("DELETE FROM danmaku WHERE video_id=?", (vid,))
             c.execute("DELETE FROM comments WHERE video_id=?", (vid,))
     if delete_file:
@@ -2004,6 +2007,11 @@ def import_local_video(path: str, title: str = "") -> dict:
     # 目标目录：data/local_videos/
     local_dir = DATA_DIR / "local_videos"
     local_dir.mkdir(parents=True, exist_ok=True)
+    src_key = str(src.resolve())
+    with get_conn() as c:
+        row = c.execute("SELECT id, local_path FROM videos WHERE source_path=?", (src_key,)).fetchone()
+        if row:
+            return {"ok": True, "video_id": int(row["id"]), "duplicate": True, "copied_to": row["local_path"] or ""}
     # 目标文件名：防重名加序号（如 视频名 (1).mp4）
     name = title.strip() or src.stem
     dst = local_dir / (src.name)
@@ -2031,9 +2039,9 @@ def import_local_video(path: str, title: str = "") -> dict:
         pub_time = 0
     with get_conn() as c:
         cur = c.execute(
-            "INSERT INTO videos (bvid, title, up_name, local_path, quality, pub_time, desc) "
-            "VALUES ('', ?, '本地视频', ?, '', ?, '')",
-            (name, str(dst), pub_time),
+            "INSERT INTO videos (bvid, title, up_name, local_path, quality, pub_time, desc, source_path) "
+            "VALUES ('', ?, '本地视频', ?, '', ?, '', ?)",
+            (name, str(dst), pub_time, src_key),
         )
         vid = int(cur.lastrowid)
     return {"ok": True, "video_id": vid, "duplicate": False, "copied_to": str(dst),

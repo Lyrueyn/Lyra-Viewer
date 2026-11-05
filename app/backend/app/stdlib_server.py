@@ -1,4 +1,4 @@
-﻿"""标准库 HTTP 后端（零第三方依赖，http.server 实现）。
+"""标准库 HTTP 后端（零第三方依赖，http.server 实现）。
 
 路由与 app/api.py（fastapi 版）一致，全部调用 app/services.py 的服务层。
 未安装 fastapi/uvicorn 也能跑；yt-dlp 未装时仅"解析/下载"接口不可用。
@@ -37,12 +37,25 @@ class Handler(BaseHTTPRequestHandler):
         logger.debug(fmt, *args)  # 静默请求日志
 
     # ---- 响应工具 ----
+    # ---- CORS：只允许璃鸢镜扩展的固定虚拟域名 ----
+    _TRUSTED_ORIGIN_RE = re.compile(r"^https://lyra-ext-[a-z0-9.-]+\.local$|^https://lyra-extensions\.local$", re.I)
+
+    def _cors_origin(self) -> str:
+        origin = self.headers.get("Origin") or ""
+        return origin if self._TRUSTED_ORIGIN_RE.match(origin) else ""
+
+    def _send_cors_headers(self) -> None:
+        origin = self._cors_origin()
+        if origin:
+            self.send_header("Access-Control-Allow-Origin", origin)
+            self.send_header("Vary", "Origin")
+
     def _send(self, obj, code: int = 200) -> None:
         body = json.dumps(obj, ensure_ascii=False).encode("utf-8")
         self.send_response(code)
         self.send_header("Content-Type", "application/json; charset=utf-8")
         self.send_header("Content-Length", str(len(body)))
-        self.send_header("Access-Control-Allow-Origin", "*")
+        self._send_cors_headers()
         self.end_headers()
         self.wfile.write(body)
 
@@ -93,10 +106,7 @@ class Handler(BaseHTTPRequestHandler):
             elif path == "/api/videos":
                 self._send(services.list_videos())
             elif path == "/api/download/playlist-items":
-                self._send(services.submit_playlist_items(
-                    body.get("items") or [],
-                    str(body.get("playlist_name", "")),
-                ))
+                self._send_error(405, "请使用 POST 提交合集下载")
             elif path == "/api/playlists":
                 self._send(playlists_db.list_playlists())
             elif (m := re.fullmatch(r"/api/playlists/(\d+)", path)):
@@ -159,9 +169,17 @@ class Handler(BaseHTTPRequestHandler):
             self._send_error(500, str(e))
 
     def do_OPTIONS(self) -> None:
-        # PDF 阅读器等网页扩展从 https://lyra_ext_* 调本地 HTTP 后端时的 CORS 预检。
+        # 仅允许璃鸢镜扩展的固定虚拟域名做 CORS 预检；普通网页/恶意来源直接拒绝。
+        origin = self._cors_origin()
+        if not origin and self.headers.get("Origin"):
+            self.send_response(403)
+            self.send_header("Content-Length", "0")
+            self.end_headers()
+            return
         self.send_response(204)
-        self.send_header("Access-Control-Allow-Origin", "*")
+        if origin:
+            self.send_header("Access-Control-Allow-Origin", origin)
+            self.send_header("Vary", "Origin")
         self.send_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
         self.send_header("Access-Control-Allow-Headers", "Content-Type")
         self.send_header("Access-Control-Max-Age", "86400")

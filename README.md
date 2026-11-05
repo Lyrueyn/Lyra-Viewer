@@ -1,4 +1,4 @@
-﻿# 璃鸢镜（Lyra Viewer）v1.4.1
+﻿# 璃鸢镜（Lyra Viewer）v1.4.2
 
 > 🤖 **本项目由 AI（DeepSeek Harness）制作/协作开发。**
 >
@@ -8,12 +8,12 @@
 
 ## 下载安装
 
-最新版本：**璃鸢镜 1.4.1**
+最新版本：**璃鸢镜 1.4.2**
 
 | 内容 | 地址 |
 |---|---|
 | 主程序 Release | https://github.com/Lyrueyn/Lyra-Viewer/releases/latest |
-| 安装包 | `LyraViewer-Setup-1.4.1.exe` |
+| 安装包 | `LyraViewer-Setup-1.4.2.exe` |
 | EPUB 扩展 | https://github.com/Lyrueyn/Lyra-Extension-Epub |
 | PDF 扩展 | https://github.com/Lyrueyn/Lyra-Extention-PDF_Reader |
 | TXT 扩展 | https://github.com/Lyrueyn/Lyra-Extension-txt_Reader |
@@ -35,7 +35,7 @@
 - Vulkan 视频渲染，D3D11 回退；HDR / HDR→SDR（ITU-R BT.2390）色调映射。
 - FSRCNNX 2× 超分、去隔行（bwdif/yadif）、ICC 校色、字幕链路（SRT/VTT/ASS）。
 - WASAPI 独占 / 共享输出、Hi-Res、ASIO；音频采样率在打开设备前正确设置。
-- 多视频窗口、播放列表、播放位置记忆、播放完成后的结束判定与回调。
+- 多视频窗口、播放列表、播放完成后的结束判定与回调（播放位置记忆不实现）。
 
 ### 在线视频与下载
 
@@ -81,7 +81,7 @@
 
 | 项目 | 版本 | 状态 |
 |---|---|---|
-| 主程序 | 1.4.1 | 已发布 |
+| 主程序 | 1.4.2 | 已发布 |
 | EPUB 扩展 | 0.6.9 | 已发布 |
 | PDF 扩展 | 0.4.7 | 已发布 |
 | TXT 扩展 | 0.1.2 | 已发布 |

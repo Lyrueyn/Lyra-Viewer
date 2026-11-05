@@ -26,7 +26,7 @@
 
 | 项目 | 版本 | 安装/更新资产 |
 |---|---|---|
-| 主程序 | **v1.4.1** | `LyraViewer-Setup-1.4.1.exe`（安装在用户目录，安装包会安装 .NET 10 Desktop Runtime） |
+| 主程序 | **v1.4.2** | `LyraViewer-Setup-1.4.2.exe`（安装在用户目录，安装包会安装 .NET 10 Desktop Runtime） |
 | EPUB 扩展 | **v0.6.9** | `lyra-ext-epub.zip` |
 | PDF 扩展 | **v0.4.7** | `lyra-ext-pdf.zip` |
 | TXT 扩展 | **v0.1.2** | `lyra-ext-txt.zip` |
@@ -560,3 +560,14 @@ HTML_Reader（reader，独立 Tab）
 - Assets 删除同步清理所有笔记中的 <img> 引用并 notifyParentAssets，避免孤立 img 标签。
 - 实测：HTML 属性补全、class 值 card、CSS backg→background 列表；删除 foo.png 后源码 img 被移除、assets=0。
 - 缓存版本 270。
+
+
+### 1.4.2 后端四问题修复 + 播放记忆不做
+
+- 测试报告 4 项后端问题经代码与隔离后端复测全部属实，已修复：
+  1. `POST /api/config/danmaku-settings` 不再返回整个 config（含 cookie），只返回弹幕设置；CORS 从 `*` 改为仅允许 `https://lyra-ext-*.local` / `https://lyra-extensions.local`，普通网页拿不到 CORS 头。
+  2. `delete_video` / `delete_video_by_bvid` 同步删除 `playlist_items` 关联。
+  3. `import_local_video` 新增 `videos.source_path` 迁移与按源路径去重；同路径重复导入返回已有记录，不同目录同名仍分别导入。
+  4. `GET /api/download/playlist-items` 返回 405，不再触发 `name 'body' is not defined` 500。
+- 隔离测试脚本验证 4 项全部 PASS（临时 DB + 临时 config + 本机 HTTP handler）。
+- 用户明确：播放位置记忆不做；README 已去掉该宣传。
