@@ -369,3 +369,56 @@ F:\DSH\LocalMediaPlayer-Workspace\packaging\_pkg_t34\lmp-setup-user.iss
 - EPUB 扩展：`https://github.com/Lyrueyn/Lyra-Extension-Epub`
 - PDF 扩展：`https://github.com/Lyrueyn/Lyra-Extention-PDF_Reader`
 - TXT 扩展：`https://github.com/Lyrueyn/Lyra-Extension-txt_Reader`
+
+## 扩展分层架构（主程序 1.4.0+）
+
+```text
+HTML_Reader（reader，独立 Tab）
+└─ HTML_Editor（layer，无 Tab，iframe 嵌入）
+   └─ Notebook（notebook，独立 Tab，多笔记壳）
+```
+
+### 主程序改动
+
+- `ExtensionCatalog.cs`
+  - 新增 `ExtensionKind.Layer`（`kind:"layer"`）。
+  - `ExtensionInfo.Requires` 运行时前置列表。
+  - `MissingRequires(def)`：打开阅读器/笔记本前校验前置。
+- `ExtensionHostWindow.xaml.cs`
+  - 固定共享虚拟域名 `lyra-extensions.local` 映射整个 `extensions/` 根目录。
+  - 打开扩展时 URL 增加 `extensionsOrigin`、`extensionId`。
+  - 父扩展可 iframe：`https://lyra-extensions.local/html-editor/index.html?embedded=1`。
+- `ExtensionTabView.xaml.cs`
+  - 打开前检查 `requires`，缺少时给出提示。
+- `MainWindow.xaml.cs`
+  - 命令行 `WinUIGui.exe xxx.html` 自动寻找 reader 扩展打开。
+- `WinUIGui.csproj`：1.4.0。
+
+### 扩展仓
+
+| 扩展 | 版本 | 仓库 | 资产 |
+| --- | --- | --- | --- |
+| HTML_Reader | 1.0.0 | https://github.com/Lyrueyn/Lyra-Extension-HTML-Reader | `lyra-ext-html-reader.zip` |
+| HTML_Editor | 1.0.0 | https://github.com/Lyrueyn/Lyra-Extension-HTML-Editor | `lyra-ext-html-editor.zip` |
+| Notebook | 2.0.0 | https://github.com/Lyrueyn/Lyra-Extension-Notebook | `lyra-ext-notebook.zip` |
+
+- HTML_Editor：由旧 notebook 1.14.0 的 UI 抽成 `embedded=1` 模式；隐藏自身标题栏，通过 `lyra-editor` 通道交换 HTML/assets。
+- HTML_Reader：`kind: reader`，`requires:["html-editor"]`；阅读/编辑切换，`host.workspace.load/save` 写回原 `.html`。
+- Notebook 2.0：`kind: notebook`，`requires:["html-reader","html-editor"]`；壳负责 `.lyrnb` 包、笔记列表、assets 与自动保存；主区域 iframe 嵌入编辑器。
+- 旧 Notebook 1.14.0 源码备份：`D:\Temp\Lyra-Extension-Notebook-1.14-src`（git tag v1.14.0 也保留）。
+- `.lyrnb` v2 格式未变；v1 JSON 笔记读取时转换为 HTML。
+
+### 本机验证
+
+- 主程序 1.4.0 安装到 `%LOCALAPPDATA%\LocalMediaPlayer`。
+- 层扩展安装：`extensions/html-editor`、`extensions/html-reader`、`extensions/notebook` 2.0.0。
+- Notebook：用测试 `.lyrnb` 启动，壳 + 编辑器 iframe 正常显示三栏。
+- HTML_Reader：命令行打开测试 HTML，阅读模式正常；点击“编辑”后编辑器层加载并显示源码/预览/DevTool；修改源码后保存，原文件 mtime 与内容变化。
+- Playwright 验证 Notebook assets 桥：`.lyrnb` 中 `assets/tiny.png` 被传给编辑器，预览 `img` 解码为 data URL（1×1）。
+- Playwright 验证 Notebook 保存：编辑后 mock `host.workspace.save` 收到包数据。
+
+### 已知限制
+
+- HTML_Reader 读取本地 HTML 时，`<img src="相对路径">` 相对路径解析仍以扩展页为基准，尚未映射原文件目录；data URL / 绝对 URL 正常。
+- layer 扩展会被扩展中心列出（安装前置），但没有独立 Tab。
+- Notebook 2.0 顶部壳较简化；旧 1.14 的完整 DevTool 功能保留在 HTML_Editor 层内。

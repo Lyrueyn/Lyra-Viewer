@@ -1,4 +1,4 @@
-# 璃鸢镜扩展接口（Extension API）
+﻿# 璃鸢镜扩展接口（Extension API）
 
 从主程序 1.3.0 起，扩展 Tab / 书库不再在 `MainWindow` 里为每个扩展写一套 C# 代码。
 主程序读取扩展目录里的 `extension.json`，按下面这套字段自动生成左侧 Tab、书库和阅读器窗口。
@@ -51,7 +51,7 @@
 | `id` | 唯一 id，也是 `data/<id>_library.json` 与扩展目录名 |
 | `name` | 扩展中心显示名 |
 | `entry` | 网页入口，默认 `index.html` |
-| `kind` | `reader`（有书库/阅读器）、`tool`（只有工具窗口）或 `notebook`（带书库的笔记工作区） |
+| `kind` | `reader`（有书库/阅读器）、`tool`（只有工具窗口）、`notebook`（带书库的笔记工作区）或 `layer`（无 Tab 的可嵌入层，1.4.0+） |
 | `fileTypes` | 读者扩展能打开的文件扩展名，如 `[".epub"]` |
 | `host` | 打开阅读器时宿主如何把文件交给网页 |
 | `library` | 是否在左侧生成 Tab、书库文案和封面策略 |
