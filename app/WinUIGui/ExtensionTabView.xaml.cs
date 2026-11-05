@@ -130,6 +130,12 @@ namespace WinUIGui
         {
             try
             {
+                var missing = ExtensionCatalog.MissingRequires(_def);
+                if (missing.Count > 0)
+                {
+                    StatusText.Text = "需要先安装前置扩展：" + string.Join(" / ", missing);
+                    return;
+                }
                 var win = ExtensionManager.OpenReader(_def, path);
                 if (win == null) { StatusText.Text = "扩展目录不存在或未启用"; return; }
                 win.Closed += (_, _) => { };

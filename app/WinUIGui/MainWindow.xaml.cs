@@ -125,6 +125,11 @@ public sealed partial class MainWindow : Window
                 .FirstOrDefault(p => p.EndsWith(".lyrnb", StringComparison.OrdinalIgnoreCase) && File.Exists(p));
             if (!string.IsNullOrEmpty(notebookArg))
                 DispatcherQueue.TryEnqueue(() => OpenNotebookFile(notebookArg));
+                string? htmlArg = Environment.GetCommandLineArgs().Skip(1)
+                    .FirstOrDefault(p => (p.EndsWith(".html", StringComparison.OrdinalIgnoreCase) ||
+                                          p.EndsWith(".htm", StringComparison.OrdinalIgnoreCase)) && File.Exists(p));
+                if (!string.IsNullOrEmpty(htmlArg))
+                    DispatcherQueue.TryEnqueue(() => OpenReaderFile(htmlArg));
         }
         catch { }
         // ★ 先绑定拖拽排序的集合，再加载数据（LoadVideosAsync 会往 _cards 里填）
@@ -731,6 +736,29 @@ public sealed partial class MainWindow : Window
     /// 打开一个 .lyrnb：文件关联/双击启动和外部路径共用。
     /// 若笔记本扩展已安装，则链接式加入书库（不复制文件）并打开编辑窗口。
     /// </summary>
+    /// <summary>用已安装的 reader 扩展打开一个文件（命令行 / 拖放 / 关联启动）。</summary>
+    public bool OpenReaderFile(string path)
+    {
+        try
+        {
+            string full = Path.GetFullPath(path);
+            if (!File.Exists(full)) return false;
+            string ext = Path.GetExtension(full).ToLowerInvariant();
+            var def = ExtensionCatalog.LoadDefinitions().FirstOrDefault(d =>
+                d.IsReader && d.Info.FileTypes.Any(t => string.Equals(t, ext, StringComparison.OrdinalIgnoreCase)));
+            if (def == null || ExtensionCatalog.MissingRequires(def).Count > 0) return false;
+            var existing = ExtensionLibraryService.Load(def.Info.Id)
+                .FirstOrDefault(x => string.Equals(Path.GetFullPath(x.Path), full, StringComparison.OrdinalIgnoreCase));
+            if (existing == null) ExtensionLibraryService.AddLinkedFile(def, full);
+            if (_extensionViews.TryGetValue(def.Info.Id, out var view)) view.Refresh();
+            var win = ExtensionManager.OpenReader(def, full);
+            if (win == null) return false;
+            win.Activate();
+            return true;
+        }
+        catch { return false; }
+    }
+
     public bool OpenNotebookFile(string path)
     {
         try
@@ -2017,6 +2045,5 @@ public class DownloadTaskVm : System.ComponentModel.INotifyPropertyChanged
 
 public class FmtItem { public string Label { get; set; } = ""; public int Qn { get; set; } public string FormatSel { get; set; } = ""; }
 public class PageItem { public string Label { get; set; } = ""; public int Page { get; set; } }
-
 
 

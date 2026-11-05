@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.IO;
 using System.Linq;
 using System.Collections.Generic;
@@ -21,6 +21,10 @@ namespace WinUIGui
     /// </summary>
     public sealed partial class ExtensionHostWindow : Window
     {
+        // 所有扩展共享的静态资源域名：阅读器可同源 iframe 已安装的 layer 扩展
+        // （例如 HTML_Editor）。映射整个 extensions 根目录，不复制文件。
+        private const string SharedExtensionsHost = "lyra-extensions.local";
+
         private readonly string _extensionId;
         private readonly string _extensionDir;
         private readonly string _entry;
@@ -109,6 +113,15 @@ namespace WinUIGui
                 Wv.CoreWebView2.WebMessageReceived += OnWebMessageReceived;
                 Wv.CoreWebView2.NavigationCompleted += OnNavigationCompleted;
                 Wv.CoreWebView2.NavigationStarting += OnNavigationStarting;
+                // 共享扩展根目录：layer 扩展（HTML_Editor 等）可通过固定域名被当前窗口嵌入。
+                try
+                {
+                    var extRoot = ExtensionCatalog.ExtensionsDir;
+                    if (Directory.Exists(extRoot))
+                        Wv.CoreWebView2.SetVirtualHostNameToFolderMapping(
+                            SharedExtensionsHost, extRoot, CoreWebView2HostResourceAccessKind.Allow);
+                }
+                catch { }
                 NavigateToExtension();
             }
             catch (Exception ex)
@@ -133,6 +146,8 @@ namespace WinUIGui
                 ShowLoading("正在打开…");
                 string folder = _extensionDir;
                 string query = "?sessionId=" + Uri.EscapeDataString(_sessionId) + "&loadId=" + Uri.EscapeDataString(_loadId);
+                query += "&extensionsOrigin=" + Uri.EscapeDataString("https://" + SharedExtensionsHost);
+                query += "&extensionId=" + Uri.EscapeDataString(_extensionId);
                 // 网页扩展需要调用本机 AI 后端（如 PDF 页面 Real-ESRGAN 超分）时，把当前实际端口传过去，
                 // 不能假设固定 8765（多实例时端口会顺延）。
                 try { query += "&backend=" + Uri.EscapeDataString(Backend.BaseUrl); } catch { }

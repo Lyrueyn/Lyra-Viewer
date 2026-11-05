@@ -153,3 +153,79 @@ https://lyra-ext-<id>.local/index.html
 ```
 
 新建笔记本时主程序让用户选择 `.lyrnb` 路径并创建一个空文件；扩展第一次打开空文件时自行初始化自己的格式。 
+
+## 分层扩展（kind: layer，主程序 1.4.0+）
+
+`layer` 是**没有独立 Tab、不单独开窗**的扩展包，供 reader/notebook 以一个 iframe 或静态资源层嵌入。典型用途：
+
+- HTML_Reader（reader，独立 Tab）
+- HTML_Editor（layer，无 Tab，被 Reader / Notebook 嵌入）
+- Notebook（notebook，独立 Tab，复用 Reader/Editor）
+
+### 清单
+
+```json
+{
+  "id": "html-editor",
+  "kind": "layer",
+  "entry": "index.html",
+  "library": { "sidebar": false }
+}
+```
+
+父扩展声明前置：
+
+```json
+{
+  "requires": ["html-editor"]
+}
+```
+
+`requires` 是**运行时前置**：缺少时阅读器/笔记本打开会被拒绝；`library.sidebar` 为 `false` 的 layer 不生成 Tab。
+
+### 共享资源域名
+
+主程序把所有已安装扩展目录映射到固定虚拟域名：
+
+```text
+https://lyra-extensions.local/<extension-id>/<entry>
+```
+
+父扩展页面可直接 iframe 嵌入已安装的 layer；跨域通信使用 `postMessage`，父扩展负责最终文件保存。主程序打开扩展时会在 URL 加：
+
+```text
+&extensionsOrigin=https://lyra-extensions.local
+&extensionId=<当前扩展 id>
+```
+
+### 编辑器层协议（HTML_Editor 参考实现）
+
+父 → 编辑器：
+
+```js
+{ channel: "lyra-editor", type: "init", html, title, assets }
+{ channel: "lyra-editor", type: "set-document", html, title, assets }
+{ channel: "lyra-editor", type: "request-document" }
+```
+
+编辑器 → 父：
+
+```js
+{ channel: "lyra-editor", type: "ready" }
+{ channel: "lyra-editor", type: "loaded", title }
+{ channel: "lyra-editor", type: "change", html }
+{ channel: "lyra-editor", type: "document", html }
+{ channel: "lyra-editor", type: "assets", assets }
+```
+
+父扩展负责 `host.workspace.save`；layer 不应自行保存文件。
+
+### 命令行打开 reader
+
+主程序 1.4.0+ 支持：
+
+```text
+WinUIGui.exe D:\notes\index.html
+```
+
+会找到声明支持 `.html/.htm` 的 reader 扩展并打开；笔记本仍支持直接传 `.lyrnb`。

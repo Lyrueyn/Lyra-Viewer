@@ -60,6 +60,8 @@ namespace WinUIGui
             public List<string> FileTypes { get; set; } = new();
             public HostSpec? Host { get; set; }
             public LibrarySpec? Library { get; set; }
+            /// <summary>运行时前置扩展 id；layer 扩展可被阅读器/笔记本嵌入。</summary>
+            public List<string> Requires { get; set; } = new();
             public bool Enabled { get; set; } = true;
         }
 
@@ -120,6 +122,8 @@ namespace WinUIGui
                 def.Kind = ExtensionKind.Reader;
             else if (string.Equals(info.Kind, "notebook", StringComparison.OrdinalIgnoreCase))
                 def.Kind = ExtensionKind.Notebook;
+            else if (string.Equals(info.Kind, "layer", StringComparison.OrdinalIgnoreCase))
+                def.Kind = ExtensionKind.Layer;
             else
                 def.Kind = ExtensionKind.Tool;
 
@@ -180,6 +184,17 @@ namespace WinUIGui
                 if (info.Enabled) list.Add(Resolve(info));
             list.Sort((a, b) => a.Library.Order.CompareTo(b.Library.Order));
             return list;
+        }
+
+        /// <summary>返回 def 缺少的运行时前置扩展 id。</summary>
+        public static List<string> MissingRequires(ExtensionDefinition def)
+        {
+            var installed = new HashSet<string>(
+                LoadDefinitions().Select(d => d.Info.Id),
+                StringComparer.OrdinalIgnoreCase);
+            return (def.Info.Requires ?? new List<string>())
+                .Where(id => !string.IsNullOrWhiteSpace(id) && !installed.Contains(id))
+                .ToList();
         }
 
         public static bool IsEnabled(string id)
@@ -243,7 +258,7 @@ namespace WinUIGui
         }
     }
 
-    public enum ExtensionKind { Tool, Reader, Notebook }
+    public enum ExtensionKind { Tool, Reader, Notebook, Layer }
 
     public sealed class ExtensionDefinition
     {
@@ -253,5 +268,6 @@ namespace WinUIGui
         public ExtensionCatalog.LibrarySpec Library { get; set; } = new();
         public bool IsReader => Kind == ExtensionKind.Reader;
         public bool IsNotebook => Kind == ExtensionKind.Notebook;
+        public bool IsLayer => Kind == ExtensionKind.Layer;
     }
 }

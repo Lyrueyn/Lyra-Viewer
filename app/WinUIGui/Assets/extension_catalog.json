@@ -37,6 +37,30 @@
         "name":  "笔记本",
         "repo":  "Lyrueyn/Lyra-Extension-Notebook",
         "asset":  "lyra-ext-notebook.zip",
-        "description":  "本地优先笔记本；一个 .lyrnb 文件包含多篇笔记，支持富文本和自动保存。"
+        "description":  "本地优先笔记本 2.0：Notebook 壳 + HTML_Reader/HTML_Editor 分层；一个 .lyrnb 包含多篇笔记。",
+        "requiresAny":  [
+                            "html-reader",
+                            "html-editor"
+                        ]
+    },
+    {
+        "id":  "html-editor",
+        "name":  "HTML 编辑器层",
+        "repo":  "Lyrueyn/Lyra-Extension-HTML-Editor",
+        "asset":  "lyra-ext-html-editor.zip",
+        "description":  "无独立 Tab 的编辑器层，供 HTML_Reader / Notebook 嵌入。",
+        "requiresAny":  [
+
+                        ]
+    },
+    {
+        "id":  "html-reader",
+        "name":  "HTML 阅读器",
+        "repo":  "Lyrueyn/Lyra-Extension-HTML-Reader",
+        "asset":  "lyra-ext-html-reader.zip",
+        "description":  "独立 HTML 阅读 Tab，阅读模式与嵌入编辑器模式切换。",
+        "requiresAny":  [
+                            "html-editor"
+                        ]
     }
 ]
