@@ -30,9 +30,9 @@
 | EPUB 扩展 | **v0.6.9** | `lyra-ext-epub.zip` |
 | PDF 扩展 | **v0.4.7** | `lyra-ext-pdf.zip` |
 | TXT 扩展 | **v0.1.2** | `lyra-ext-txt.zip` |
-| HTML 阅读器 | **v1.2.10** | `lyra-ext-html-reader.zip` |
-| HTML 编辑器层 | **v1.14.0** | `lyra-ext-html-editor.zip` |
-| 笔记本 | **v2.3.13** | `lyra-ext-notebook.zip` |
+| HTML 阅读器 | **v1.2.11** | `lyra-ext-html-reader.zip` |
+| HTML 编辑器层 | **v1.15.0** | `lyra-ext-html-editor.zip` |
+| 笔记本 | **v2.3.14** | `lyra-ext-notebook.zip` |
 | 番茄小说下载器 | **v0.2.0** | `lyra-ext-tomato.zip`（前端；核心加密随主程序） |
 
 扩展必须和主程序版本配套使用；扩展中心会自动检查 GitHub 最新 Release。
@@ -537,3 +537,11 @@ HTML_Reader（reader，独立 Tab）
 - CSS 格式化不再把 `.card, .title` 拆成两行（selector_separator_newline=false + 逗号空白归一化）。
 - Playwright 实测：option 文本 ".card, .title"；属性 background/color；Apply 后源码保持 ".card, .title"。
 - 缓存版本 240。
+
+### 1.15.0 / 1.2.11 / 2.3.14
+
+- 右栏 CSS 可直接组合多个 selector 创建规则：下拉依次选择 .card、.title，chips 显示两者；编辑属性后 Apply 生成 `.card, .title { ... }`。
+- 已有规则选中后 chips 显示 selector 列表，继续加 selector 可扩展规则。
+- Apply 移到 CSS 面板顶部，避免补全弹层遮挡；多 selector 格式化保持单行。
+- 实测无 CSS 文件时选 .card + .title，加 margin:12px，生成 `.card, .title { margin: 12px; }`。
+- 缓存版本 250。
