@@ -30,9 +30,9 @@
 | EPUB 扩展 | **v0.6.9** | `lyra-ext-epub.zip` |
 | PDF 扩展 | **v0.4.7** | `lyra-ext-pdf.zip` |
 | TXT 扩展 | **v0.1.2** | `lyra-ext-txt.zip` |
-| HTML 阅读器 | **v1.0.0** | `lyra-ext-html-reader.zip` |
-| HTML 编辑器层 | **v1.1.0** | `lyra-ext-html-editor.zip` |
-| 笔记本 | **v2.2.0** | `lyra-ext-notebook.zip` |
+| HTML 阅读器 | **v1.1.0** | `lyra-ext-html-reader.zip` |
+| HTML 编辑器层 | **v1.2.0** | `lyra-ext-html-editor.zip` |
+| 笔记本 | **v2.3.0** | `lyra-ext-notebook.zip` |
 | 番茄小说下载器 | **v0.2.0** | `lyra-ext-tomato.zip`（前端；核心加密随主程序） |
 
 扩展必须和主程序版本配套使用；扩展中心会自动检查 GitHub 最新 Release。
@@ -436,3 +436,10 @@ HTML_Reader（reader，独立 Tab）
 - HTML_Editor 1.1.0：预览缩放 50–150%；inline style 颜色属性系统取色器，取色直接写回源码。
 - Notebook 2.2.0：阅读字号 A−/A+、浅色/护眼/深色主题、窄/中/宽宽度；设置写入 `.lyrnb`；笔记上移/下移/复制。
 - Playwright 验证：阅读设置 16→18px、护眼主题、680px 宽度生效；复制笔记生成第二篇；保存包。
+
+### 1.2.0 / 2.3.0 / 1.1.0
+
+- HTML_Editor 1.2.0：CSS 标签页新增 Style blocks，右栏直接编辑 `<style>` 内容并写回源码；新增 Wrap 开关处理超长 data URI。
+- Notebook 2.3.0：阅读模式不再注入字号/主题/宽度/body 样式，完整 HTML 原样渲染；移除阅读调参控件。
+- HTML_Reader 1.1.0：阅读模式同样原样渲染，不再注入 padding/字体/背景。
+- 实测：Notebook 阅读 iframe 中页面自己的 body `background:#123456; color:#abcdef; font-size:30px; width:600px` 全部保留；Reader 同样保留。
