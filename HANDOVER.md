@@ -30,9 +30,9 @@
 | EPUB 扩展 | **v0.6.9** | `lyra-ext-epub.zip` |
 | PDF 扩展 | **v0.4.7** | `lyra-ext-pdf.zip` |
 | TXT 扩展 | **v0.1.2** | `lyra-ext-txt.zip` |
-| HTML 阅读器 | **v1.2.1** | `lyra-ext-html-reader.zip` |
-| HTML 编辑器层 | **v1.5.1** | `lyra-ext-html-editor.zip` |
-| 笔记本 | **v2.3.4** | `lyra-ext-notebook.zip` |
+| HTML 阅读器 | **v1.2.2** | `lyra-ext-html-reader.zip` |
+| HTML 编辑器层 | **v1.6.0** | `lyra-ext-html-editor.zip` |
+| 笔记本 | **v2.3.5** | `lyra-ext-notebook.zip` |
 | 番茄小说下载器 | **v0.2.0** | `lyra-ext-tomato.zip`（前端；核心加密随主程序） |
 
 扩展必须和主程序版本配套使用；扩展中心会自动检查 GitHub 最新 Release。
@@ -475,3 +475,9 @@ HTML_Reader（reader，独立 Tab）
 - 修复 external assets 模式下右栏 Assets 仍用 state.assets 检查，把真实存在的 `assets/<timestamp>-name.jpg` 误报为 Missing。
 - Reader external 模式隐藏 Assets 标签；不再显示该误报。
 - 缓存版本 151。
+
+### 1.6.0 / 1.2.2 / 2.3.5
+
+- CSS 标签页新增 existing rule 下拉与规则列表：自动列出所有 <style> 规则，选择后填入 selector/declarations，Apply 直接改对应 style 块。
+- 实机 Playwright 验证：`.card` 规则可选中并改写为 background #00ff00；源码 style 块更新，不再只操作 managed block。
+- 缓存版本 160。
