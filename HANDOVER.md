@@ -30,9 +30,9 @@
 | EPUB 扩展 | **v0.6.9** | `lyra-ext-epub.zip` |
 | PDF 扩展 | **v0.4.7** | `lyra-ext-pdf.zip` |
 | TXT 扩展 | **v0.1.2** | `lyra-ext-txt.zip` |
-| HTML 阅读器 | **v1.3.0** | `lyra-ext-html-reader.zip` |
-| HTML 编辑器层 | **v1.17.0** | `lyra-ext-html-editor.zip` |
-| 笔记本 | **v2.3.16** | `lyra-ext-notebook.zip` |
+| HTML 阅读器 | **v1.3.2** | `lyra-ext-html-reader.zip` |
+| HTML 编辑器层 | **v1.17.1** | `lyra-ext-html-editor.zip` |
+| 笔记本 | **v2.3.17** | `lyra-ext-notebook.zip` |
 | 番茄小说下载器 | **v0.2.0** | `lyra-ext-tomato.zip`（前端；核心加密随主程序） |
 
 扩展必须和主程序版本配套使用；扩展中心会自动检查 GitHub 最新 Release。
@@ -580,3 +580,17 @@ HTML_Reader（reader，独立 Tab）
 - data:/http:/blob:/已有 assets/ 路径跳过。
 - 实机测试：相对图片、绝对图片、视频、poster、CSS background、srcset 全部迁移并改写；源文件保存。
 - 播放位置记忆不实现（按用户要求）。
+
+
+### 1.17.1 / 1.3.1 / 2.3.17
+
+- 修复编辑模式预览里背景视频不显示：`previewFrame`/`readFrame`/`editFrame`/Notebook iframe 增加 `allow="autoplay"`，并把 preview sandbox 和阅读模式对齐（allow-forms/allow-modals）。
+- 实测 class 2.html：迁移后 read 模式与 edit 模式都能看到 67MB 背景视频；video readyState=4、paused=false。
+- Reader 迁移失败状态现在显示首个失败路径和原因。
+
+### HTML_Reader 1.3.2
+
+- 迁移扫描只针对 img/video/audio/source/track 的 src/poster/srcset 与 CSS url()。
+- 修复 class 2.html 中 `../../../preview.js` 被误报为“本地媒体迁移失败”。
+- 背景视频不显示的真正原因是编辑预览 iframe 未授予 autoplay：Editor 1.17.1 / Reader 1.3.1 / Notebook 2.3.17 已统一加 allow="autoplay"。
+- 实测 class 2.html：视频迁移到 assets/ 67MB，read/edit 背景视频均显示，状态不再报失败。
