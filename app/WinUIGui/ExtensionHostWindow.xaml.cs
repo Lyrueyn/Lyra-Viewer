@@ -564,8 +564,8 @@ namespace WinUIGui
                             : Path.GetFullPath(Path.Combine(baseDir, importRaw.Replace('/', Path.DirectorySeparatorChar)));
                         if (!File.Exists(full)) throw new InvalidOperationException("文件不存在：" + full);
                         string ext = Path.GetExtension(full).ToLowerInvariant();
-                        string[] allowed = { ".png", ".jpg", ".jpeg", ".webp", ".gif", ".bmp", ".svg", ".avif", ".mp4", ".webm", ".ogv", ".mov", ".m4v", ".mp3", ".wav", ".m4a", ".aac", ".flac", ".ogg" };
-                        if (!allowed.Contains(ext)) throw new InvalidOperationException("只允许图片/视频/音频：" + ext);
+                        string[] allowed = { ".png", ".jpg", ".jpeg", ".webp", ".gif", ".bmp", ".svg", ".avif", ".mp4", ".webm", ".ogv", ".mov", ".m4v", ".mp3", ".wav", ".m4a", ".aac", ".flac", ".ogg", ".css", ".js", ".mjs", ".json", ".woff", ".woff2", ".ttf", ".otf", ".eot", ".ico" };
+                        if (!allowed.Contains(ext)) throw new InvalidOperationException("只允许网页资源：" + ext);
                         string hash;
                         using (var fs = File.OpenRead(full)) hash = Convert.ToHexString(SHA256.HashData(fs)).ToLowerInvariant().Substring(0, 12);
                         string safeName = Path.GetFileName(full);

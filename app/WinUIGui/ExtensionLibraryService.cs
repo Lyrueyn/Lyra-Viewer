@@ -207,7 +207,9 @@ namespace WinUIGui
         public static string AssetUsageFile(string extId) => Path.Combine(AppContext.BaseDirectory, "data", extId + "_asset_usage.json");
 
         private static readonly Regex HtmlMediaTag = new(@"<(img|video|audio|source|track)\b[^>]*>", RegexOptions.IgnoreCase | RegexOptions.Compiled);
-        private static readonly Regex HtmlMediaAttr = new(@"\b(?:src|poster)\s*=\s*(?:""([^""]+)""|'([^']+)'|([^\s>]+))", RegexOptions.IgnoreCase | RegexOptions.Compiled);
+        private static readonly Regex HtmlMediaAttr = new(@"\b(?:src|poster|href)\s*=\s*(?:""([^""]+)""|'([^']+)'|([^\s>]+))", RegexOptions.IgnoreCase | RegexOptions.Compiled);
+        private static readonly Regex HtmlLinkTag = new(@"<link\b[^>]*>", RegexOptions.IgnoreCase | RegexOptions.Compiled);
+        private static readonly Regex HtmlScriptTag = new(@"<script\b[^>]*>", RegexOptions.IgnoreCase | RegexOptions.Compiled);
         private static readonly Regex HtmlSrcsetAttr = new(@"\bsrcset\s*=\s*(?:""([^""]+)""|'([^']+)'|([^\s>]+))", RegexOptions.IgnoreCase | RegexOptions.Compiled);
         private static readonly Regex HtmlCssUrl = new(@"url\(\s*['""]?([^'""\)]+)['""]?\s*\)", RegexOptions.IgnoreCase | RegexOptions.Compiled);
 
@@ -250,6 +252,12 @@ namespace WinUIGui
                         }
                     }
                 }
+                foreach (Match tag in HtmlLinkTag.Matches(html))
+                    foreach (Match m in HtmlMediaAttr.Matches(tag.Value))
+                        urls.Add(m.Groups[1].Success ? m.Groups[1].Value : m.Groups[2].Success ? m.Groups[2].Value : m.Groups[3].Value);
+                foreach (Match tag in HtmlScriptTag.Matches(html))
+                    foreach (Match m in HtmlMediaAttr.Matches(tag.Value))
+                        urls.Add(m.Groups[1].Success ? m.Groups[1].Value : m.Groups[2].Success ? m.Groups[2].Value : m.Groups[3].Value);
                 foreach (Match m in HtmlCssUrl.Matches(html)) urls.Add(m.Groups[1].Value);
                 foreach (string url in urls)
                 {
