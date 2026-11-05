@@ -30,9 +30,9 @@
 | EPUB 扩展 | **v0.6.9** | `lyra-ext-epub.zip` |
 | PDF 扩展 | **v0.4.7** | `lyra-ext-pdf.zip` |
 | TXT 扩展 | **v0.1.2** | `lyra-ext-txt.zip` |
-| HTML 阅读器 | **v1.2.7** | `lyra-ext-html-reader.zip` |
-| HTML 编辑器层 | **v1.11.0** | `lyra-ext-html-editor.zip` |
-| 笔记本 | **v2.3.10** | `lyra-ext-notebook.zip` |
+| HTML 阅读器 | **v1.2.8** | `lyra-ext-html-reader.zip` |
+| HTML 编辑器层 | **v1.12.0** | `lyra-ext-html-editor.zip` |
+| 笔记本 | **v2.3.11** | `lyra-ext-notebook.zip` |
 | 番茄小说下载器 | **v0.2.0** | `lyra-ext-tomato.zip`（前端；核心加密随主程序） |
 
 扩展必须和主程序版本配套使用；扩展中心会自动检查 GitHub 最新 Release。
@@ -515,3 +515,11 @@ HTML_Reader（reader，独立 Tab）
 - Assets 标签恢复显示：Reader external 模式列出 assets/ 引用卡片（预览 via bookAssetsOrigin + Copy path）；Notebook package 模式显示 .lyrnb 资产。
 - Assets 顶部说明根据 package/external/inline 动态变化。
 - 缓存版本 210。
+
+### 1.12.0 / 1.2.8 / 2.3.11
+
+- CSS 声明区完全复用 Style 标签页组件：深色 property 搜索框、深色 autocomplete 弹层、inline-style-row 属性行（属性名 + 值输入 + ×）。
+- 移除原生 datalist 白底下拉；补全颜色/主题与 Style 一致。
+- 属性搜索选中后新增属性行；值输入用同一套深色补全；Apply 写回。
+- 实机 Playwright：`.card` 显示 background/color/border-radius 三行；搜索 margin 添加行；Apply 后源码更新。
+- 缓存版本 220。
