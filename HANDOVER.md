@@ -30,9 +30,9 @@
 | EPUB 扩展 | **v0.6.9** | `lyra-ext-epub.zip` |
 | PDF 扩展 | **v0.4.7** | `lyra-ext-pdf.zip` |
 | TXT 扩展 | **v0.1.2** | `lyra-ext-txt.zip` |
-| HTML 阅读器 | **v1.1.0** | `lyra-ext-html-reader.zip` |
-| HTML 编辑器层 | **v1.3.1** | `lyra-ext-html-editor.zip` |
-| 笔记本 | **v2.3.0** | `lyra-ext-notebook.zip` |
+| HTML 阅读器 | **v1.1.2** | `lyra-ext-html-reader.zip` |
+| HTML 编辑器层 | **v1.4.0** | `lyra-ext-html-editor.zip` |
+| 笔记本 | **v2.3.2** | `lyra-ext-notebook.zip` |
 | 番茄小说下载器 | **v0.2.0** | `lyra-ext-tomato.zip`（前端；核心加密随主程序） |
 
 扩展必须和主程序版本配套使用；扩展中心会自动检查 GitHub 最新 Release。
@@ -453,3 +453,11 @@ HTML_Reader（reader，独立 Tab）
 
 - 增加 normalizeOpeningTags 兜底后处理：多行属性强制缩进标签 +2、删除开标签内空行、`>` 回标签列；不再依赖 beautify 的 wrap 输出。
 - 自动格式化/Format 都走该后处理；用于修复 `<img` 后空行、src 顶格、alt 缩进不齐。
+
+### 1.4.0 / 2.3.2 / 1.1.2
+
+- 根因修正：截图里的乱不是格式器缩进错，而是 CodeMirror 软换行把超长 src 行折到行号下面。Editor 1.4.0 默认关闭 Wrap；需要软换行再点 Wrap。
+- 真 assets bug：Editor 嵌入模式新增/替换/删除图片后从未调用 notifyParentAssets，父 Notebook 收不到资产。已修复并在 Playwright 验证保存的 .lyrnb 里有 manifest assets、assets/<sha>.png、note 引用。
+- Reader 嵌入使用 inline assets：图片转 data URL 写回 HTML，不再生成失效的 assets/ 路径。
+- Notebook/Reader 编辑器 iframe 版本 query=140，避免旧 bundle 缓存。
+- 实机：安装后打开乱格式 .lyrnb，源码 `<img>`/src/alt/> 已正确缩进，长行横向滚动。
