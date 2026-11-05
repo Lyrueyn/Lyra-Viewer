@@ -31,8 +31,8 @@
 | PDF 扩展 | **v0.4.7** | `lyra-ext-pdf.zip` |
 | TXT 扩展 | **v0.1.2** | `lyra-ext-txt.zip` |
 | HTML 阅读器 | **v1.0.0** | `lyra-ext-html-reader.zip` |
-| HTML 编辑器层 | **v1.0.1** | `lyra-ext-html-editor.zip` |
-| 笔记本 | **v2.1.0** | `lyra-ext-notebook.zip` |
+| HTML 编辑器层 | **v1.1.0** | `lyra-ext-html-editor.zip` |
+| 笔记本 | **v2.2.0** | `lyra-ext-notebook.zip` |
 | 番茄小说下载器 | **v0.2.0** | `lyra-ext-tomato.zip`（前端；核心加密随主程序） |
 
 扩展必须和主程序版本配套使用；扩展中心会自动检查 GitHub 最新 Release。
@@ -430,3 +430,9 @@ HTML_Reader（reader，独立 Tab）
 - 本机安装：主程序 1.4.0、HTML_Editor 1.0.1、HTML_Reader 1.0.0、Notebook 2.1.0。
 - 发布：HTML_Editor v1.0.1、Notebook v2.1.0；HTML_Reader 仍 v1.0.0。
 - 验证：Playwright 检查 Format 行缩进、标签颜色 class、Notebook 阅读 iframe、full HTML 默认文档；实机 Notebook 源码已显示完整头。
+
+### 1.1.0 / 2.2.0 追加
+
+- HTML_Editor 1.1.0：预览缩放 50–150%；inline style 颜色属性系统取色器，取色直接写回源码。
+- Notebook 2.2.0：阅读字号 A−/A+、浅色/护眼/深色主题、窄/中/宽宽度；设置写入 `.lyrnb`；笔记上移/下移/复制。
+- Playwright 验证：阅读设置 16→18px、护眼主题、680px 宽度生效；复制笔记生成第二篇；保存包。
