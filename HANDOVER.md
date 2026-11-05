@@ -30,9 +30,9 @@
 | EPUB 扩展 | **v0.6.9** | `lyra-ext-epub.zip` |
 | PDF 扩展 | **v0.4.7** | `lyra-ext-pdf.zip` |
 | TXT 扩展 | **v0.1.2** | `lyra-ext-txt.zip` |
-| HTML 阅读器 | **v1.2.12** | `lyra-ext-html-reader.zip` |
-| HTML 编辑器层 | **v1.16.0** | `lyra-ext-html-editor.zip` |
-| 笔记本 | **v2.3.15** | `lyra-ext-notebook.zip` |
+| HTML 阅读器 | **v1.2.13** | `lyra-ext-html-reader.zip` |
+| HTML 编辑器层 | **v1.17.0** | `lyra-ext-html-editor.zip` |
+| 笔记本 | **v2.3.16** | `lyra-ext-notebook.zip` |
 | 番茄小说下载器 | **v0.2.0** | `lyra-ext-tomato.zip`（前端；核心加密随主程序） |
 
 扩展必须和主程序版本配套使用；扩展中心会自动检查 GitHub 最新 Release。
@@ -552,3 +552,11 @@ HTML_Reader（reader，独立 Tab）
 - Reader 阅读模式注入同一 image 约束；不再出现编辑图片变小、阅读变大的差异。
 - Playwright 实测 body width:800、padding:20 时，read/edit 的 body 宽均 840，图片宽均 800。
 - 缓存版本 260。
+
+### 1.17.0 / 1.2.13 / 2.3.16
+
+- 源码自动补全：HTML 标签/属性/class、id、href、src 值；CSS 属性/值；JS 基础补全。Ctrl+Space 保留。
+- 图片拖拽到左侧源码区、粘贴剪贴板图片插入（package/external 均走现有资产流程）。
+- Assets 删除同步清理所有笔记中的 <img> 引用并 notifyParentAssets，避免孤立 img 标签。
+- 实测：HTML 属性补全、class 值 card、CSS backg→background 列表；删除 foo.png 后源码 img 被移除、assets=0。
+- 缓存版本 270。
