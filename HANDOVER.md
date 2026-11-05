@@ -26,13 +26,13 @@
 
 | 项目 | 版本 | 安装/更新资产 |
 |---|---|---|
-| 主程序 | **v1.4.0** | `LyraViewer-Setup-1.4.0.exe`（安装在用户目录，安装包会安装 .NET 10 Desktop Runtime） |
+| 主程序 | **v1.4.1** | `LyraViewer-Setup-1.4.1.exe`（安装在用户目录，安装包会安装 .NET 10 Desktop Runtime） |
 | EPUB 扩展 | **v0.6.9** | `lyra-ext-epub.zip` |
 | PDF 扩展 | **v0.4.7** | `lyra-ext-pdf.zip` |
 | TXT 扩展 | **v0.1.2** | `lyra-ext-txt.zip` |
-| HTML 阅读器 | **v1.1.2** | `lyra-ext-html-reader.zip` |
-| HTML 编辑器层 | **v1.4.0** | `lyra-ext-html-editor.zip` |
-| 笔记本 | **v2.3.2** | `lyra-ext-notebook.zip` |
+| HTML 阅读器 | **v1.2.0** | `lyra-ext-html-reader.zip` |
+| HTML 编辑器层 | **v1.5.0** | `lyra-ext-html-editor.zip` |
+| 笔记本 | **v2.3.3** | `lyra-ext-notebook.zip` |
 | 番茄小说下载器 | **v0.2.0** | `lyra-ext-tomato.zip`（前端；核心加密随主程序） |
 
 扩展必须和主程序版本配套使用；扩展中心会自动检查 GitHub 最新 Release。
@@ -461,3 +461,11 @@ HTML_Reader（reader，独立 Tab）
 - Reader 嵌入使用 inline assets：图片转 data URL 写回 HTML，不再生成失效的 assets/ 路径。
 - Notebook/Reader 编辑器 iframe 版本 query=140，避免旧 bundle 缓存。
 - 实机：安装后打开乱格式 .lyrnb，源码 `<img>`/src/alt/> 已正确缩进，长行横向滚动。
+
+### 1.4.1 host / 1.5.0 editor / 1.2.0 reader
+
+- 主程序 1.4.1 新增 `host.file.save`（相对 book 目录，只允许图片，禁止路径越界）与 `bookAssetsOrigin`（原文件目录固定虚拟域名映射）。
+- HTML_Reader 1.2.0：插入图片保存到 HTML 同目录 `assets/`，源码只写相对路径；阅读/编辑预览通过 base 加载本地图片，不再使用 base64。
+- HTML_Editor 1.5.0：external asset 协议（asset-request / asset-result），Notebook 继续 package assets。
+- 实机：Reader 阅读模式加载 `assets/local.png` 成功；host.file.save 写入 `D:\Temp\assets\__probe.png` 成功（随后清理）。
+- Notebook 2.3.3 仅是 iframe cache 150。

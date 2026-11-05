@@ -24,6 +24,7 @@ namespace WinUIGui
         // 所有扩展共享的静态资源域名：阅读器可同源 iframe 已安装的 layer 扩展
         // （例如 HTML_Editor）。映射整个 extensions 根目录，不复制文件。
         private const string SharedExtensionsHost = "lyra-extensions.local";
+        private const string BookAssetsHost = "lyra-book-assets.local";
 
         private readonly string _extensionId;
         private readonly string _extensionDir;
@@ -147,6 +148,7 @@ namespace WinUIGui
                 string folder = _extensionDir;
                 string query = "?sessionId=" + Uri.EscapeDataString(_sessionId) + "&loadId=" + Uri.EscapeDataString(_loadId);
                 query += "&extensionsOrigin=" + Uri.EscapeDataString("https://" + SharedExtensionsHost);
+                    query += "&bookAssetsOrigin=" + Uri.EscapeDataString("https://" + BookAssetsHost);
                 query += "&extensionId=" + Uri.EscapeDataString(_extensionId);
                 // 网页扩展需要调用本机 AI 后端（如 PDF 页面 Real-ESRGAN 超分）时，把当前实际端口传过去，
                 // 不能假设固定 8765（多实例时端口会顺延）。
@@ -181,6 +183,18 @@ namespace WinUIGui
                     query += "&" + Uri.EscapeDataString(fileParam) + "=" + Uri.EscapeDataString(inner);
                 }
                 Wv.CoreWebView2.SetVirtualHostNameToFolderMapping(_host, folder, CoreWebView2HostResourceAccessKind.Allow);
+                // HTML_Reader 编辑本地 HTML 时，用固定域名映射原文件所在目录，相对图片/资源可直接加载。
+                try
+                {
+                    if (!string.IsNullOrEmpty(_bookPath) && File.Exists(_bookPath))
+                    {
+                        var bookDir = Path.GetDirectoryName(_bookPath);
+                        if (!string.IsNullOrEmpty(bookDir) && Directory.Exists(bookDir))
+                            Wv.CoreWebView2.SetVirtualHostNameToFolderMapping(
+                                BookAssetsHost, bookDir, CoreWebView2HostResourceAccessKind.Allow);
+                    }
+                }
+                catch { }
                 string rel = _entry.Replace('\\', '/').TrimStart('/');
                 string url = "https://" + _host + "/" + string.Join("/",
                     rel.Split('/', StringSplitOptions.RemoveEmptyEntries).Select(Uri.EscapeDataString)) + query;
@@ -337,7 +351,7 @@ namespace WinUIGui
                 if (root.ValueKind != JsonValueKind.Object) return false;
                 string type = ReaderProtocol.GetString(root, "type", 80);
                 if (type != "host.capabilities" && type != "host.importBook" &&
-                    type != "host.workspace.load" && type != "host.workspace.save" &&
+                    type != "host.workspace.load" && type != "host.workspace.save" && type != "host.file.save" &&
                     type != "host.ready") return false;
                 string requestId = ReaderProtocol.GetString(root, "requestId", 128);
                 if (type == "host.ready")
@@ -456,6 +470,68 @@ namespace WinUIGui
                         ["requestId"] = requestId,
                         ["ok"] = true,
                     }.ToJsonString());
+                    return true;
+                }
+                if (type == "host.file.save")
+                {
+                    string rel = ReaderProtocol.GetString(root, "path", 2048) ?? "";
+                    string? fileB64 = root.TryGetProperty("data", out var fileDataEl) && fileDataEl.ValueKind == JsonValueKind.String
+                        ? fileDataEl.GetString() : null;
+                    if (string.IsNullOrWhiteSpace(rel) || string.IsNullOrEmpty(fileB64))
+                    {
+                        Wv.CoreWebView2?.PostWebMessageAsJson(new JsonObject
+                        {
+                            ["type"] = "host.file.save.result",
+                            ["requestId"] = requestId,
+                            ["ok"] = false,
+                            ["error"] = "文件路径或数据为空",
+                        }.ToJsonString());
+                        return true;
+                    }
+                    if (string.IsNullOrEmpty(_bookPath))
+                    {
+                        Wv.CoreWebView2?.PostWebMessageAsJson(new JsonObject
+                        {
+                            ["type"] = "host.file.save.result",
+                            ["requestId"] = requestId,
+                            ["ok"] = false,
+                            ["error"] = "当前文件路径不可用",
+                        }.ToJsonString());
+                        return true;
+                    }
+                    try
+                    {
+                        byte[] fileBytes = Convert.FromBase64String(fileB64);
+                        string baseDir = Path.GetDirectoryName(Path.GetFullPath(_bookPath)) ?? "";
+                        string full = Path.GetFullPath(Path.Combine(baseDir, rel.Replace('/', Path.DirectorySeparatorChar)));
+                        string prefix = baseDir.TrimEnd(Path.DirectorySeparatorChar) + Path.DirectorySeparatorChar;
+                        if (!full.StartsWith(prefix, StringComparison.OrdinalIgnoreCase)) throw new InvalidOperationException("路径越界");
+                        string ext = Path.GetExtension(full).ToLowerInvariant();
+                        if (ext != ".png" && ext != ".jpg" && ext != ".jpeg" && ext != ".webp" && ext != ".gif" && ext != ".bmp" && ext != ".svg")
+                            throw new InvalidOperationException("只允许图片文件");
+                        if (fileBytes.Length > 50 * 1024 * 1024) throw new InvalidOperationException("图片超过 50MB");
+                        Directory.CreateDirectory(Path.GetDirectoryName(full)!);
+                        string tmp = full + ".tmp-" + Guid.NewGuid().ToString("N");
+                        try { File.WriteAllBytes(tmp, fileBytes); File.Move(tmp, full, true); }
+                        finally { try { if (File.Exists(tmp)) File.Delete(tmp); } catch { } }
+                        Wv.CoreWebView2?.PostWebMessageAsJson(new JsonObject
+                        {
+                            ["type"] = "host.file.save.result",
+                            ["requestId"] = requestId,
+                            ["ok"] = true,
+                            ["path"] = rel,
+                        }.ToJsonString());
+                    }
+                    catch (Exception ex)
+                    {
+                        Wv.CoreWebView2?.PostWebMessageAsJson(new JsonObject
+                        {
+                            ["type"] = "host.file.save.result",
+                            ["requestId"] = requestId,
+                            ["ok"] = false,
+                            ["error"] = ex.Message,
+                        }.ToJsonString());
+                    }
                     return true;
                 }
                 string path2 = ReaderProtocol.GetString(root, "path", 2048);
