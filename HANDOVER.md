@@ -30,9 +30,9 @@
 | EPUB 扩展 | **v0.6.9** | `lyra-ext-epub.zip` |
 | PDF 扩展 | **v0.4.7** | `lyra-ext-pdf.zip` |
 | TXT 扩展 | **v0.1.2** | `lyra-ext-txt.zip` |
-| HTML 阅读器 | **v1.2.0** | `lyra-ext-html-reader.zip` |
-| HTML 编辑器层 | **v1.5.0** | `lyra-ext-html-editor.zip` |
-| 笔记本 | **v2.3.3** | `lyra-ext-notebook.zip` |
+| HTML 阅读器 | **v1.2.1** | `lyra-ext-html-reader.zip` |
+| HTML 编辑器层 | **v1.5.1** | `lyra-ext-html-editor.zip` |
+| 笔记本 | **v2.3.4** | `lyra-ext-notebook.zip` |
 | 番茄小说下载器 | **v0.2.0** | `lyra-ext-tomato.zip`（前端；核心加密随主程序） |
 
 扩展必须和主程序版本配套使用；扩展中心会自动检查 GitHub 最新 Release。
@@ -469,3 +469,9 @@ HTML_Reader（reader，独立 Tab）
 - HTML_Editor 1.5.0：external asset 协议（asset-request / asset-result），Notebook 继续 package assets。
 - 实机：Reader 阅读模式加载 `assets/local.png` 成功；host.file.save 写入 `D:\Temp\assets\__probe.png` 成功（随后清理）。
 - Notebook 2.3.3 仅是 iframe cache 150。
+
+### 1.5.1 / 1.2.1 / 2.3.4
+
+- 修复 external assets 模式下右栏 Assets 仍用 state.assets 检查，把真实存在的 `assets/<timestamp>-name.jpg` 误报为 Missing。
+- Reader external 模式隐藏 Assets 标签；不再显示该误报。
+- 缓存版本 151。
