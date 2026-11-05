@@ -31,7 +31,7 @@
 | PDF 扩展 | **v0.4.7** | `lyra-ext-pdf.zip` |
 | TXT 扩展 | **v0.1.2** | `lyra-ext-txt.zip` |
 | HTML 阅读器 | **v1.1.0** | `lyra-ext-html-reader.zip` |
-| HTML 编辑器层 | **v1.2.0** | `lyra-ext-html-editor.zip` |
+| HTML 编辑器层 | **v1.3.0** | `lyra-ext-html-editor.zip` |
 | 笔记本 | **v2.3.0** | `lyra-ext-notebook.zip` |
 | 番茄小说下载器 | **v0.2.0** | `lyra-ext-tomato.zip`（前端；核心加密随主程序） |
 
@@ -443,3 +443,8 @@ HTML_Reader（reader，独立 Tab）
 - Notebook 2.3.0：阅读模式不再注入字号/主题/宽度/body 样式，完整 HTML 原样渲染；移除阅读调参控件。
 - HTML_Reader 1.1.0：阅读模式同样原样渲染，不再注入 padding/字体/背景。
 - 实测：Notebook 阅读 iframe 中页面自己的 body `background:#123456; color:#abcdef; font-size:30px; width:600px` 全部保留；Reader 同样保留。
+
+### Editor 1.3.0
+
+- 打开文档 / 切换笔记 / Reader 进入编辑模式时自动格式化一次，解决旧笔记 source 中的 `<img>` 属性缩进凌乱问题。
+- 自动格式化 silent：不标记 dirty；用户编辑/保存才写回。
