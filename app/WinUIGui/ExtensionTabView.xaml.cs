@@ -30,6 +30,11 @@ namespace WinUIGui
             DescriptionText.Text = def.Library.Description;
             OpenFileBtn.Content = def.Library.OpenLabel;
             AddFileBtn.Content = def.Library.AddLabel;
+            if (!string.IsNullOrWhiteSpace(def.Library.NewLabel))
+            {
+                NewFileBtn.Content = def.Library.NewLabel;
+                NewFileBtn.Visibility = Visibility.Visible;
+            }
             Loaded += (_, _) => Refresh();
         }
 
@@ -101,6 +106,32 @@ namespace WinUIGui
             }
             catch (Exception ex) { StatusText.Text = "添加失败：" + ex.Message; }
         }
+        private async void NewFile_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var picker = new FileSavePicker
+                  {
+                      SuggestedStartLocation = PickerLocationId.DocumentsLibrary,
+                      SuggestedFileName = "新建 HTML " + DateTime.Now.ToString("yyyyMMdd-HHmm"),
+                  };
+                picker.FileTypeChoices.Add("HTML 文件", new List<string> { ".html" });
+                InitializePicker(picker);
+                var file = await picker.PickSaveFileAsync();
+                if (file == null) return;
+                if (!File.Exists(file.Path))
+                {
+                    const string template = "<!DOCTYPE html>\n<html lang=\"zh-CN\">\n<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <title>新建 HTML</title>\n  <style>\n    body { margin: 0; padding: 24px; font-family: \"Microsoft YaHei\", \"Segoe UI\", sans-serif; line-height: 1.7; color: #1f2937; background: #ffffff; }\n  </style>\n</head>\n<body>\n  <h1>新建 HTML</h1>\n  <p>在这里开始写内容。</p>\n</body>\n</html>\n";
+                    File.WriteAllText(file.Path, template, new System.Text.UTF8Encoding(false));
+                }
+                var item = ExtensionLibraryService.AddLinkedFile(_def, file.Path);
+                Refresh();
+                StatusText.Text = "已新建：" + item.Path;
+                OpenPath(item.Path);
+            }
+            catch (Exception ex) { StatusText.Text = "新建失败：" + ex.Message; }
+        }
+
 
         /// <summary>
         /// 笔记本包由扩展自己初始化；主程序只负责让用户选一个 .lyrnb 路径、

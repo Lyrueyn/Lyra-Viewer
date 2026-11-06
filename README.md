@@ -1,4 +1,4 @@
-﻿# 璃鸢镜（Lyra Viewer）v1.4.9
+﻿# 璃鸢镜（Lyra Viewer）v1.4.10
 
 > 🤖 **本项目由 AI（DeepSeek Harness）制作/协作开发。**
 >
@@ -8,12 +8,12 @@
 
 ## 下载安装
 
-最新版本：**璃鸢镜 1.4.9**
+最新版本：**璃鸢镜 1.4.10**
 
 | 内容 | 地址 |
 |---|---|
 | 主程序 Release | https://github.com/Lyrueyn/Lyra-Viewer/releases/latest |
-| 安装包 | `LyraViewer-Setup-1.4.9.exe` |
+| 安装包 | `LyraViewer-Setup-1.4.10.exe` |
 | EPUB 扩展 | https://github.com/Lyrueyn/Lyra-Extension-Epub |
 | PDF 扩展 | https://github.com/Lyrueyn/Lyra-Extention-PDF_Reader |
 | TXT 扩展 | https://github.com/Lyrueyn/Lyra-Extension-txt_Reader |
@@ -81,7 +81,7 @@
 
 | 项目 | 版本 | 状态 |
 |---|---|---|
-| 主程序 | 1.4.9 | 已发布 |
+| 主程序 | 1.4.10 | 已发布 |
 | EPUB 扩展 | 0.6.9 | 已发布 |
 | PDF 扩展 | 0.4.7 | 已发布 |
 | TXT 扩展 | 0.1.2 | 已发布 |

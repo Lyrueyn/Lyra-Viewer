@@ -26,7 +26,7 @@
 
 | 项目 | 版本 | 安装/更新资产 |
 |---|---|---|
-| 主程序 | **v1.4.9** | `LyraViewer-Setup-1.4.9.exe`（安装在用户目录，安装包会安装 .NET 10 Desktop Runtime） |
+| 主程序 | **v1.4.10** | `LyraViewer-Setup-1.4.10.exe`（安装在用户目录，安装包会安装 .NET 10 Desktop Runtime） |
 | EPUB 扩展 | **v0.6.9** | `lyra-ext-epub.zip` |
 | PDF 扩展 | **v0.4.7** | `lyra-ext-pdf.zip` |
 | TXT 扩展 | **v0.1.2** | `lyra-ext-txt.zip` |
@@ -596,7 +596,7 @@ HTML_Reader（reader，独立 Tab）
 - 实测 class 2.html：视频迁移到 assets/ 67MB，read/edit 背景视频均显示，状态不再报失败。
 
 
-### 1.4.9 / HTML_Reader 1.3.3
+### 1.4.10 / HTML_Reader 1.3.3
 
 - 根因：HTML 阅读器书库「添加 HTML 文件」原来会复制一份 HTML 到 data/html-reader_library，但不会复制同目录 assets。迁移后源码写的是 assets/...，书库副本里没有 assets → 背景视频/图片 404。打开原文件则正常。
 - 主程序新增 library.link；HTML_Reader 配置 link=true，添加书库改为链接原文件，不再复制 HTML 副本。
@@ -604,7 +604,7 @@ HTML_Reader（reader，独立 Tab）
 - 仍需 Editor 1.17.1 / Reader 1.3.x / Notebook 2.3.17 的 iframe allow="autoplay" 修复编辑预览不自动播放。
 
 
-### 1.4.9 / HTML_Reader 1.3.4
+### 1.4.10 / HTML_Reader 1.3.4
 
 - 按用户要求恢复“复制 HTML 到书库”，不再链接源文件。
 - 主程序 AddFile 对 html-reader 同时递归复制 HTML 同目录 assets 到 data/html-reader_library/assets。
@@ -612,7 +612,7 @@ HTML_Reader（reader，独立 Tab）
 - Reader 1.3.4 移除 link 配置。
 
 
-### 1.4.9 asset 引用计数与孤儿回收
+### 1.4.10 asset 引用计数与孤儿回收
 
 - `data/html-reader_asset_usage.json` 记录每个库内 assets 被多少个书库 HTML 引用（同一 HTML 多次引用只计 1）。
 - 添加 HTML 到书库时自动复制 HTML + 同目录 assets，并刷新引用计数。
@@ -629,7 +629,7 @@ HTML_Reader（reader，独立 Tab）
 - Playwright 实测：log/warn/error/missing img 四条均捕获，resource 条目点击后 inspector 跳到 Ln 1。
 
 
-### 1.4.9 / HTML_Reader 1.3.6
+### 1.4.10 / HTML_Reader 1.3.6
 
 - 迁移范围增加 `<link rel="stylesheet" href>` 与 `<script src>`：本地 CSS/JS/fonts 也复制进 assets 并重写路径。
 - host.file.import 扩展名放宽：.css/.js/.mjs/.json/.woff/.woff2/.ttf/.otf/.eot/.ico。
@@ -637,7 +637,7 @@ HTML_Reader（reader，独立 Tab）
 - 实测 class 2.html：style.css、preview.js 均迁入 assets；源文件与书库副本路径改写；书库副本 CSS 生效。
 
 
-### 1.4.9 / Editor 1.17.8 HTML 外部资产操作
+### 1.4.10 / Editor 1.17.8 HTML 外部资产操作
 
 - 宿主新增 host.file.delete / host.file.rename，并限制在 HTML 同目录 assets/ 下。
 - Editor Assets 外部资源卡片支持 Replace / Rename / Delete；重命名/删除会同步改写 HTML 引用。
@@ -645,9 +645,14 @@ HTML_Reader（reader，独立 Tab）
 - 缓存 287。
 '
 
-### 1.4.9 / Reader 1.3.18
+### 1.4.10 / Reader 1.3.18
 
 - HTML 书库新增「＋ 新建 HTML」按钮：FileSavePicker 选择保存路径，生成基础 HTML 模板，加入书库并直接打开。
 - Reader 新增 Ctrl+S 保存、Ctrl+E 切换阅读/编辑。
 - 新建文件走链接式书库条目，不复制副本。
+''
+
+### 1.4.10
+
+- 新建 HTML 的 FileSavePicker 默认位置改为文档库，建议文件名带时间戳；状态栏显示完整路径。
 '
