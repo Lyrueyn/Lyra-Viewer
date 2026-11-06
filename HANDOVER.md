@@ -30,7 +30,7 @@
 | EPUB 扩展 | **v0.6.9** | `lyra-ext-epub.zip` |
 | PDF 扩展 | **v0.4.7** | `lyra-ext-pdf.zip` |
 | TXT 扩展 | **v0.1.2** | `lyra-ext-txt.zip` |
-| HTML 阅读器 | **v1.3.12** | `lyra-ext-html-reader.zip` |
+| HTML 阅读器 | **v1.3.13** | `lyra-ext-html-reader.zip` |
 | HTML 编辑器层 | **v1.17.6** | `lyra-ext-html-editor.zip` |
 | 笔记本 | **v2.3.23** | `lyra-ext-notebook.zip` |
 | 番茄小说下载器 | **v0.2.0** | `lyra-ext-tomato.zip`（前端；核心加密随主程序） |
