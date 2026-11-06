@@ -352,7 +352,7 @@ namespace WinUIGui
                 if (root.ValueKind != JsonValueKind.Object) return false;
                 string type = ReaderProtocol.GetString(root, "type", 80);
                 if (type != "host.capabilities" && type != "host.importBook" &&
-                    type != "host.workspace.load" && type != "host.workspace.save" && type != "host.file.save" && type != "host.file.import" &&
+                    type != "host.workspace.load" && type != "host.workspace.save" && type != "host.file.save" && type != "host.file.import" && type != "host.file.delete" && type != "host.file.rename" &&
                     type != "host.ready") return false;
                 string requestId = ReaderProtocol.GetString(root, "requestId", 128);
                 if (type == "host.ready")
@@ -532,6 +532,57 @@ namespace WinUIGui
                             ["ok"] = false,
                             ["error"] = ex.Message,
                         }.ToJsonString());
+                    }
+                    return true;
+                }
+                if (type == "host.file.delete")
+                {
+                    string rel = ReaderProtocol.GetString(root, "path", 4096) ?? "";
+                    if (string.IsNullOrWhiteSpace(rel) || string.IsNullOrEmpty(_bookPath))
+                    {
+                        Wv.CoreWebView2?.PostWebMessageAsJson(new JsonObject { ["type"] = "host.file.delete.result", ["requestId"] = requestId, ["ok"] = false, ["error"] = "路径不可用" }.ToJsonString());
+                        return true;
+                    }
+                    try
+                    {
+                        string baseDir = Path.GetDirectoryName(Path.GetFullPath(_bookPath)) ?? "";
+                        string assetsRoot = Path.GetFullPath(Path.Combine(baseDir, "assets")).TrimEnd(Path.DirectorySeparatorChar) + Path.DirectorySeparatorChar;
+                        string full = Path.GetFullPath(Path.Combine(baseDir, rel.Replace('/', Path.DirectorySeparatorChar)));
+                        if (!full.StartsWith(assetsRoot, StringComparison.OrdinalIgnoreCase)) throw new InvalidOperationException("只允许删除 assets 目录内的文件");
+                        if (File.Exists(full)) File.Delete(full);
+                        Wv.CoreWebView2?.PostWebMessageAsJson(new JsonObject { ["type"] = "host.file.delete.result", ["requestId"] = requestId, ["ok"] = true }.ToJsonString());
+                    }
+                    catch (Exception ex)
+                    {
+                        Wv.CoreWebView2?.PostWebMessageAsJson(new JsonObject { ["type"] = "host.file.delete.result", ["requestId"] = requestId, ["ok"] = false, ["error"] = ex.Message }.ToJsonString());
+                    }
+                    return true;
+                }
+                if (type == "host.file.rename")
+                {
+                    string fromRel = ReaderProtocol.GetString(root, "from", 4096) ?? "";
+                    string toRel = ReaderProtocol.GetString(root, "to", 4096) ?? "";
+                    if (string.IsNullOrWhiteSpace(fromRel) || string.IsNullOrWhiteSpace(toRel) || string.IsNullOrEmpty(_bookPath))
+                    {
+                        Wv.CoreWebView2?.PostWebMessageAsJson(new JsonObject { ["type"] = "host.file.rename.result", ["requestId"] = requestId, ["ok"] = false, ["error"] = "路径不可用" }.ToJsonString());
+                        return true;
+                    }
+                    try
+                    {
+                        string baseDir = Path.GetDirectoryName(Path.GetFullPath(_bookPath)) ?? "";
+                        string assetsRoot = Path.GetFullPath(Path.Combine(baseDir, "assets")).TrimEnd(Path.DirectorySeparatorChar) + Path.DirectorySeparatorChar;
+                        string fromFull = Path.GetFullPath(Path.Combine(baseDir, fromRel.Replace('/', Path.DirectorySeparatorChar)));
+                        string toFull = Path.GetFullPath(Path.Combine(baseDir, toRel.Replace('/', Path.DirectorySeparatorChar)));
+                        if (!fromFull.StartsWith(assetsRoot, StringComparison.OrdinalIgnoreCase) || !toFull.StartsWith(assetsRoot, StringComparison.OrdinalIgnoreCase)) throw new InvalidOperationException("只允许重命名 assets 目录内的文件");
+                        if (!File.Exists(fromFull)) throw new InvalidOperationException("源文件不存在");
+                        if (File.Exists(toFull)) throw new InvalidOperationException("目标文件已存在");
+                        Directory.CreateDirectory(Path.GetDirectoryName(toFull)!);
+                        File.Move(fromFull, toFull);
+                        Wv.CoreWebView2?.PostWebMessageAsJson(new JsonObject { ["type"] = "host.file.rename.result", ["requestId"] = requestId, ["ok"] = true, ["path"] = toRel }.ToJsonString());
+                    }
+                    catch (Exception ex)
+                    {
+                        Wv.CoreWebView2?.PostWebMessageAsJson(new JsonObject { ["type"] = "host.file.rename.result", ["requestId"] = requestId, ["ok"] = false, ["error"] = ex.Message }.ToJsonString());
                     }
                     return true;
                 }
