@@ -20,6 +20,7 @@ namespace WinUIGui
         public string Path { get; set; } = "";
         public string AddedAt { get; set; } = "";
         public string CoverPath { get; set; } = "";
+            public string EntryRel { get; set; } = "";
     }
 
     public sealed class ExtensionLibraryCard
@@ -29,6 +30,7 @@ namespace WinUIGui
         public string Author { get; set; } = "";
         public string Path { get; set; } = "";
         public string DateText { get; set; } = "";
+            public string EntryRel { get; set; } = "";
         public ImageSource? Cover { get; set; }
         public Microsoft.UI.Xaml.Visibility CoverButtonVisibility { get; set; } = Microsoft.UI.Xaml.Visibility.Collapsed;
     }
@@ -176,12 +178,16 @@ namespace WinUIGui
         /// 链接式入库：书库条目指向用户选择的真实文件，不复制副本。
         /// 适合笔记本这类需要持续原路径保存的扩展。
         /// </summary>
-        public static ExtensionLibraryItem AddLinkedFolder(ExtensionDefinition def, string path)
+        public static ExtensionLibraryItem AddLinkedFolder(ExtensionDefinition def, string path, string entryRel = "")
         {
             string full = System.IO.Path.GetFullPath(path).TrimEnd(System.IO.Path.DirectorySeparatorChar);
             var list = Load(def.Info.Id);
             var existing = list.FirstOrDefault(x => !string.IsNullOrWhiteSpace(x.Path) && string.Equals(System.IO.Path.GetFullPath(x.Path).TrimEnd(System.IO.Path.DirectorySeparatorChar), full, StringComparison.OrdinalIgnoreCase));
-            if (existing != null) return existing;
+            if (existing != null)
+            {
+                if (!string.IsNullOrWhiteSpace(entryRel)) { existing.EntryRel = entryRel; Save(def.Info.Id, list); }
+                return existing;
+            }
             var item = new ExtensionLibraryItem
             {
                 Id = Guid.NewGuid().ToString("N"),
@@ -190,6 +196,7 @@ namespace WinUIGui
                 Path = full,
                 AddedAt = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
                 CoverPath = "",
+                EntryRel = entryRel ?? "",
             };
             list.Add(item);
             Save(def.Info.Id, list);

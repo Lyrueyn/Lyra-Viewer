@@ -15,14 +15,14 @@ namespace WinUIGui
                 .FirstOrDefault(x => string.Equals(x.Id, id, StringComparison.OrdinalIgnoreCase));
         }
 
-        public static ExtensionHostWindow? OpenReader(ExtensionDefinition def, string path)
+        public static ExtensionHostWindow? OpenReader(ExtensionDefinition def, string path, string? entryRel = null)
         {
             try
             {
                 string dir = Path.Combine(ExtensionCatalog.ExtensionsDir, def.Info.Id);
                 if (!Directory.Exists(dir)) return null;
                 string entry = string.IsNullOrWhiteSpace(def.Info.Entry) ? "index.html" : def.Info.Entry;
-                var win = new ExtensionHostWindow(def.Info.Id, def.Info.Name, dir, entry, path, def.Host);
+                var win = new ExtensionHostWindow(def.Info.Id, def.Info.Name, dir, entry, path, def.Host, entryRel);
                 return win;
             }
             catch { return null; }

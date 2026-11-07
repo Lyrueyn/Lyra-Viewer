@@ -44,7 +44,7 @@ namespace WinUIGui
             try
             {
                 var items = ExtensionLibraryService.Load(_def.Info.Id)
-                    .Where(x => File.Exists(x.Path)).ToList();
+                    .Where(x => IsProjectMode ? Directory.Exists(x.Path) : File.Exists(x.Path)).ToList();
                 var cards = items.Select(x => new ExtensionLibraryCard
                 {
                     Id = x.Id,
@@ -52,14 +52,15 @@ namespace WinUIGui
                     Author = IsProjectMode ? x.Path : x.Author,
                     Path = x.Path,
                     DateText = x.AddedAt.Length >= 10 ? x.AddedAt.Substring(0, 10) : x.AddedAt,
+                    EntryRel = x.EntryRel,
                     Cover = ExtensionLibraryService.LoadCover(x.CoverPath),
                     CoverButtonVisibility = _showActions ? Visibility.Visible : Visibility.Collapsed,
                 }).ToList();
                 LibraryGrid.ItemsSource = cards;
                 StatusText.Text = cards.Count == 0
                     ? "书库还是空的，点「" + _def.Library.AddLabel + "」加入"
-                    : $"共 {cards.Count} 个文件";
-                if (_def.Library.Cover == "first-page") _ = EnsureMissingCoversAsync(items);
+                    : (IsProjectMode ? $"共 {cards.Count} 个项目（只记录路径，不复制）" : $"共 {cards.Count} 个文件");
+                if (!IsProjectMode && _def.Library.Cover == "first-page") _ = EnsureMissingCoversAsync(items);
             }
             catch (Exception ex) { StatusText.Text = "刷新失败：" + ex.Message; }
         }
@@ -74,6 +75,15 @@ namespace WinUIGui
         {
             try
             {
+                if (IsProjectMode)
+                {
+                    var folder = await PickFolderAsync();
+                    if (folder == null) return;
+                    var item = ExtensionLibraryService.AddLinkedFolder(_def, folder.Path);
+                    Refresh();
+                    OpenPath(item.Path, item.EntryRel);
+                    return;
+                }
                 var picker = new FileOpenPicker { ViewMode = PickerViewMode.List };
                 foreach (var t in _def.Info.FileTypes) picker.FileTypeFilter.Add(t);
                 if (picker.FileTypeFilter.Count == 0) picker.FileTypeFilter.Add("*");
@@ -92,6 +102,22 @@ namespace WinUIGui
                 if (_def.IsNotebook)
                 {
                     await CreateNotebookAsync();
+                    return;
+                }
+                if (IsProjectMode)
+                {
+                    var htmlPicker = new FileOpenPicker { ViewMode = PickerViewMode.List };
+                    foreach (var t in _def.Info.FileTypes) htmlPicker.FileTypeFilter.Add(t);
+                    if (htmlPicker.FileTypeFilter.Count == 0) htmlPicker.FileTypeFilter.Add(".html");
+                    InitializePicker(htmlPicker);
+                    var htmlFile = await htmlPicker.PickSingleFileAsync();
+                    if (htmlFile == null) return;
+                    string root = Path.GetDirectoryName(htmlFile.Path) ?? "";
+                    string rel = Path.GetFileName(htmlFile.Path);
+                    var project = ExtensionLibraryService.AddLinkedFolder(_def, root, rel);
+                    Refresh();
+                    StatusText.Text = "已导入项目：" + project.Path + "（未复制文件）";
+                    OpenPath(project.Path, project.EntryRel);
                     return;
                 }
                 var picker = new FileOpenPicker { ViewMode = PickerViewMode.List };
@@ -180,10 +206,10 @@ namespace WinUIGui
 
         private void LibraryGrid_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if (e.ClickedItem is ExtensionLibraryCard card) OpenPath(card.Path);
+            if (e.ClickedItem is ExtensionLibraryCard card) OpenPath(card.Path, card.EntryRel);
         }
 
-        private void OpenPath(string path)
+        private void OpenPath(string path, string entryRel = "")
         {
             try
             {
@@ -193,7 +219,7 @@ namespace WinUIGui
                     StatusText.Text = "需要先安装前置扩展：" + string.Join(" / ", missing);
                     return;
                 }
-                var win = ExtensionManager.OpenReader(_def, path);
+                var win = ExtensionManager.OpenReader(_def, path, entryRel);
                 if (win == null) { StatusText.Text = "扩展目录不存在或未启用"; return; }
                 win.Closed += (_, _) => { };
                 win.Activate();
@@ -303,19 +329,23 @@ namespace WinUIGui
         {
             var item = ExtensionLibraryService.Find(_def.Info.Id, id);
             if (item == null) return;
-            bool inLibrary = ExtensionLibraryService.IsUnderLibrary(_def.Info.Id, item.Path);
+            bool isProject = IsProjectMode && Directory.Exists(item.Path);
+            bool inLibrary = !isProject && ExtensionLibraryService.IsUnderLibrary(_def.Info.Id, item.Path);
             var dialog = new ContentDialog
             {
-                Title = "删除文件",
-                Content = $"确定删除“{item.Title}”吗？\n{(inLibrary ? "会同时删除书库里的副本。" : "只从书库移除，不删除原文件。")}",
-                PrimaryButtonText = "删除",
+                Title = isProject ? "移除项目" : "删除文件",
+                Content = isProject ? $"确定从书库移除项目“{item.Title}”吗？\n不会删除磁盘上的项目文件夹。" : $"确定删除“{item.Title}”吗？\n{(inLibrary ? "会同时删除书库里的副本。" : "只从书库移除，不删除原文件。")}",
+                PrimaryButtonText = isProject ? "移除" : "删除",
                 CloseButtonText = "取消",
                 DefaultButton = ContentDialogButton.Close,
                 XamlRoot = XamlRoot,
             };
             if (await dialog.ShowAsync() != ContentDialogResult.Primary) return;
             ExtensionLibraryService.Remove(_def.Info.Id, id);
-            try { if (inLibrary && File.Exists(item.Path)) File.Delete(item.Path); } catch { }
+            if (!isProject)
+            {
+                try { if (inLibrary && File.Exists(item.Path)) File.Delete(item.Path); } catch { }
+            }
             try
             {
                 if (!string.IsNullOrWhiteSpace(item.CoverPath) &&
