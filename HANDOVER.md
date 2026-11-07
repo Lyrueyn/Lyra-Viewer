@@ -26,13 +26,13 @@
 
 | 项目 | 版本 | 安装/更新资产 |
 |---|---|---|
-| 主程序 | **v1.4.10** | `LyraViewer-Setup-1.4.10.exe`（安装在用户目录，安装包会安装 .NET 10 Desktop Runtime） |
+| 主程序 | **v2.0.0** | `LyraViewer-Setup-2.0.0.exe`（安装在用户目录，安装包会安装 .NET 10 Desktop Runtime） |
 | EPUB 扩展 | **v0.6.9** | `lyra-ext-epub.zip` |
 | PDF 扩展 | **v0.4.7** | `lyra-ext-pdf.zip` |
 | TXT 扩展 | **v0.1.2** | `lyra-ext-txt.zip` |
 | HTML 阅读器 | **v1.3.13** | `lyra-ext-html-reader.zip` |
-| HTML 编辑器层 | **v1.18.1** | `lyra-ext-html-editor.zip` |
-| 笔记本 | **v2.3.27** | `lyra-ext-notebook.zip` |
+| HTML 编辑器层 | **v1.19.0** | `lyra-ext-html-editor.zip` |
+| 笔记本 | **v2.3.28** | `lyra-ext-notebook.zip` |
 | 番茄小说下载器 | **v0.2.0** | `lyra-ext-tomato.zip`（前端；核心加密随主程序） |
 
 扩展必须和主程序版本配套使用；扩展中心会自动检查 GitHub 最新 Release。
@@ -596,7 +596,7 @@ HTML_Reader（reader，独立 Tab）
 - 实测 class 2.html：视频迁移到 assets/ 67MB，read/edit 背景视频均显示，状态不再报失败。
 
 
-### 1.4.10 / HTML_Reader 1.3.3
+### 2.0.0 / HTML_Reader 1.3.3
 
 - 根因：HTML 阅读器书库「添加 HTML 文件」原来会复制一份 HTML 到 data/html-reader_library，但不会复制同目录 assets。迁移后源码写的是 assets/...，书库副本里没有 assets → 背景视频/图片 404。打开原文件则正常。
 - 主程序新增 library.link；HTML_Reader 配置 link=true，添加书库改为链接原文件，不再复制 HTML 副本。
@@ -604,7 +604,7 @@ HTML_Reader（reader，独立 Tab）
 - 仍需 Editor 1.17.1 / Reader 1.3.x / Notebook 2.3.17 的 iframe allow="autoplay" 修复编辑预览不自动播放。
 
 
-### 1.4.10 / HTML_Reader 1.3.4
+### 2.0.0 / HTML_Reader 1.3.4
 
 - 按用户要求恢复“复制 HTML 到书库”，不再链接源文件。
 - 主程序 AddFile 对 html-reader 同时递归复制 HTML 同目录 assets 到 data/html-reader_library/assets。
@@ -612,7 +612,7 @@ HTML_Reader（reader，独立 Tab）
 - Reader 1.3.4 移除 link 配置。
 
 
-### 1.4.10 asset 引用计数与孤儿回收
+### 2.0.0 asset 引用计数与孤儿回收
 
 - `data/html-reader_asset_usage.json` 记录每个库内 assets 被多少个书库 HTML 引用（同一 HTML 多次引用只计 1）。
 - 添加 HTML 到书库时自动复制 HTML + 同目录 assets，并刷新引用计数。
@@ -629,7 +629,7 @@ HTML_Reader（reader，独立 Tab）
 - Playwright 实测：log/warn/error/missing img 四条均捕获，resource 条目点击后 inspector 跳到 Ln 1。
 
 
-### 1.4.10 / HTML_Reader 1.3.6
+### 2.0.0 / HTML_Reader 1.3.6
 
 - 迁移范围增加 `<link rel="stylesheet" href>` 与 `<script src>`：本地 CSS/JS/fonts 也复制进 assets 并重写路径。
 - host.file.import 扩展名放宽：.css/.js/.mjs/.json/.woff/.woff2/.ttf/.otf/.eot/.ico。
@@ -637,7 +637,7 @@ HTML_Reader（reader，独立 Tab）
 - 实测 class 2.html：style.css、preview.js 均迁入 assets；源文件与书库副本路径改写；书库副本 CSS 生效。
 
 
-### 1.4.10 / Editor 1.17.8 HTML 外部资产操作
+### 2.0.0 / Editor 1.17.8 HTML 外部资产操作
 
 - 宿主新增 host.file.delete / host.file.rename，并限制在 HTML 同目录 assets/ 下。
 - Editor Assets 外部资源卡片支持 Replace / Rename / Delete；重命名/删除会同步改写 HTML 引用。
@@ -645,14 +645,24 @@ HTML_Reader（reader，独立 Tab）
 - 缓存 287。
 '
 
-### 1.4.10 / Reader 1.3.18
+### 2.0.0 / Reader 1.3.18
 
 - HTML 书库新增「＋ 新建 HTML」按钮：FileSavePicker 选择保存路径，生成基础 HTML 模板，加入书库并直接打开。
 - Reader 新增 Ctrl+S 保存、Ctrl+E 切换阅读/编辑。
 - 新建文件走链接式书库条目，不复制副本。
 ''
 
-### 1.4.10
+### 2.0.0
 
 - 新建 HTML 的 FileSavePicker 默认位置改为文档库，建议文件名带时间戳；状态栏显示完整路径。
+''
+
+### 2.0.0 HTML 项目制
+
+- 主程序 HTML 书库改为项目制：打开/导入/新建项目都走 FolderPicker，只记录文件夹路径，不复制文件。
+- 新建项目在所选文件夹生成 index.html 与 assets/；删除项目仅移除书库记录，不删除文件夹。
+- Reader 2.0.0 读取 host.project.list，顶部「项目」按钮显示项目内 HTML 文件树；切换文件时自动保存当前文件，保存写回对应相对路径。
+- 每个 HTML 用自身所在子目录作为资源 base；项目模式关闭自动媒体迁移。
+- 宿主新增 host.project.list / host.project.info；workspace.load/save 支持项目相对路径。
+- 扩展：Editor 1.19.0 / Reader 2.0.0 / Notebook 2.3.28，缓存 290。
 '
