@@ -176,6 +176,26 @@ namespace WinUIGui
         /// 链接式入库：书库条目指向用户选择的真实文件，不复制副本。
         /// 适合笔记本这类需要持续原路径保存的扩展。
         /// </summary>
+        public static ExtensionLibraryItem AddLinkedFolder(ExtensionDefinition def, string path)
+        {
+            string full = System.IO.Path.GetFullPath(path).TrimEnd(System.IO.Path.DirectorySeparatorChar);
+            var list = Load(def.Info.Id);
+            var existing = list.FirstOrDefault(x => !string.IsNullOrWhiteSpace(x.Path) && string.Equals(System.IO.Path.GetFullPath(x.Path).TrimEnd(System.IO.Path.DirectorySeparatorChar), full, StringComparison.OrdinalIgnoreCase));
+            if (existing != null) return existing;
+            var item = new ExtensionLibraryItem
+            {
+                Id = Guid.NewGuid().ToString("N"),
+                Title = System.IO.Path.GetFileName(full),
+                Author = string.IsNullOrWhiteSpace(def.Library.AuthorFallback) ? "本地项目" : def.Library.AuthorFallback,
+                Path = full,
+                AddedAt = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
+                CoverPath = "",
+            };
+            list.Add(item);
+            Save(def.Info.Id, list);
+            return item;
+        }
+
         public static ExtensionLibraryItem AddLinkedFile(ExtensionDefinition def, string path)
         {
             var item = new ExtensionLibraryItem

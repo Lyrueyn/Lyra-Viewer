@@ -19,6 +19,7 @@ namespace WinUIGui
         private readonly ExtensionDefinition _def;
         private readonly HashSet<string> _coverTried = new(StringComparer.OrdinalIgnoreCase);
         private bool _showActions;
+        private bool IsProjectMode => _def.Library.ProjectMode;
 
         public string ExtensionId => _def.Info.Id;
 
@@ -48,7 +49,7 @@ namespace WinUIGui
                 {
                     Id = x.Id,
                     Title = x.Title,
-                    Author = x.Author,
+                    Author = IsProjectMode ? x.Path : x.Author,
                     Path = x.Path,
                     DateText = x.AddedAt.Length >= 10 ? x.AddedAt.Substring(0, 10) : x.AddedAt,
                     Cover = ExtensionLibraryService.LoadCover(x.CoverPath),
@@ -110,11 +111,28 @@ namespace WinUIGui
         {
             try
             {
+                if (IsProjectMode)
+                {
+                    var folder = await PickFolderAsync();
+                    if (folder == null) return;
+                    string index = Path.Combine(folder.Path, "index.html");
+                    if (!File.Exists(index))
+                    {
+                        const string template = "<!DOCTYPE html>\n<html lang=\"zh-CN\">\n<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <title>新建项目</title>\n  <style>\n    body { margin: 0; padding: 24px; font-family: \"Microsoft YaHei\", \"Segoe UI\", sans-serif; line-height: 1.7; color: #1f2937; background: #ffffff; }\n  </style>\n</head>\n<body>\n  <h1>新建项目</h1>\n  <p>这是项目根目录的 index.html，可以直接开始编辑。</p>\n</body>\n</html>\n";
+                        File.WriteAllText(index, template, new System.Text.UTF8Encoding(false));
+                    }
+                    Directory.CreateDirectory(Path.Combine(folder.Path, "assets"));
+                    var project = ExtensionLibraryService.AddLinkedFolder(_def, folder.Path);
+                    Refresh();
+                    StatusText.Text = "已新建项目：" + project.Path;
+                    OpenPath(project.Path);
+                    return;
+                }
                 var picker = new FileSavePicker
-                  {
-                      SuggestedStartLocation = PickerLocationId.DocumentsLibrary,
-                      SuggestedFileName = "新建 HTML " + DateTime.Now.ToString("yyyyMMdd-HHmm"),
-                  };
+                {
+                    SuggestedStartLocation = PickerLocationId.DocumentsLibrary,
+                    SuggestedFileName = "新建 HTML " + DateTime.Now.ToString("yyyyMMdd-HHmm"),
+                };
                 picker.FileTypeChoices.Add("HTML 文件", new List<string> { ".html" });
                 InitializePicker(picker);
                 var file = await picker.PickSaveFileAsync();
@@ -130,6 +148,14 @@ namespace WinUIGui
                 OpenPath(item.Path);
             }
             catch (Exception ex) { StatusText.Text = "新建失败：" + ex.Message; }
+        }
+        
+        private async Task<Windows.Storage.StorageFolder?> PickFolderAsync()
+        {
+            var picker = new FolderPicker { SuggestedStartLocation = PickerLocationId.DocumentsLibrary };
+            picker.FileTypeFilter.Add("*");
+            InitializePicker(picker);
+            return await picker.PickSingleFolderAsync();
         }
 
 

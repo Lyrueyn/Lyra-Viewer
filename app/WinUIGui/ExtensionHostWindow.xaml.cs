@@ -31,6 +31,8 @@ namespace WinUIGui
         private readonly string _extensionDir;
         private readonly string _entry;
         private readonly string? _bookPath;
+        private readonly string? _projectRoot;
+        private readonly bool _isProject;
         // ★ 固定虚拟域名（按扩展 id）：网页的本地存储按“网址来源”隔离，
         // 以前每开一次窗口换一个随机域名，扩展存下的进度/设置下次就找不到了。
         private readonly string _host;
@@ -71,8 +73,11 @@ namespace WinUIGui
             _entry = string.IsNullOrWhiteSpace(entry) ? "index.html" : entry;
             _bookPath = bookPath;
             _hostSpec = hostSpec;
+            _isProject = !string.IsNullOrEmpty(bookPath) && Directory.Exists(bookPath);
+            _projectRoot = _isProject ? Path.GetFullPath(bookPath!) : null;
             _hasBook = !string.IsNullOrEmpty(bookPath) && File.Exists(bookPath);
             Title = "璃鸢镜 · " + (string.IsNullOrWhiteSpace(name) ? extensionId : name);
+            if (_isProject) Title = "璃鸢镜 · " + Path.GetFileName(_projectRoot!.TrimEnd(Path.DirectorySeparatorChar));
             try
             {
                 var area = DisplayArea.GetFromWindowId(AppWindow.Id, DisplayAreaFallback.Primary);
@@ -150,6 +155,7 @@ namespace WinUIGui
                 string query = "?sessionId=" + Uri.EscapeDataString(_sessionId) + "&loadId=" + Uri.EscapeDataString(_loadId);
                 query += "&extensionsOrigin=" + Uri.EscapeDataString("https://" + SharedExtensionsHost);
                     query += "&bookAssetsOrigin=" + Uri.EscapeDataString("https://" + BookAssetsHost);
+                    if (_isProject) query += "&project=1&projectName=" + Uri.EscapeDataString(Path.GetFileName((_projectRoot ?? "").TrimEnd(Path.DirectorySeparatorChar)));
                 query += "&extensionId=" + Uri.EscapeDataString(_extensionId);
                 // 网页扩展需要调用本机 AI 后端（如 PDF 页面 Real-ESRGAN 超分）时，把当前实际端口传过去，
                 // 不能假设固定 8765（多实例时端口会顺延）。
@@ -184,10 +190,14 @@ namespace WinUIGui
                     query += "&" + Uri.EscapeDataString(fileParam) + "=" + Uri.EscapeDataString(inner);
                 }
                 Wv.CoreWebView2.SetVirtualHostNameToFolderMapping(_host, folder, CoreWebView2HostResourceAccessKind.Allow);
-                // HTML_Reader 编辑本地 HTML 时，用固定域名映射原文件所在目录，相对图片/资源可直接加载。
                 try
                 {
-                    if (!string.IsNullOrEmpty(_bookPath) && File.Exists(_bookPath))
+                    if (_isProject && !string.IsNullOrEmpty(_projectRoot) && Directory.Exists(_projectRoot))
+                    {
+                        Wv.CoreWebView2.SetVirtualHostNameToFolderMapping(
+                            BookAssetsHost, _projectRoot, CoreWebView2HostResourceAccessKind.Allow);
+                    }
+                    else if (!string.IsNullOrEmpty(_bookPath) && File.Exists(_bookPath))
                     {
                         var bookDir = Path.GetDirectoryName(_bookPath);
                         if (!string.IsNullOrEmpty(bookDir) && Directory.Exists(bookDir))
@@ -352,7 +362,7 @@ namespace WinUIGui
                 if (root.ValueKind != JsonValueKind.Object) return false;
                 string type = ReaderProtocol.GetString(root, "type", 80);
                 if (type != "host.capabilities" && type != "host.importBook" &&
-                    type != "host.workspace.load" && type != "host.workspace.save" && type != "host.file.save" && type != "host.file.import" && type != "host.file.delete" && type != "host.file.rename" &&
+                    type != "host.workspace.load" && type != "host.workspace.save" && type != "host.file.save" && type != "host.file.import" && type != "host.file.delete" && type != "host.file.rename" && type != "host.project.list" && type != "host.project.info" &&
                     type != "host.ready") return false;
                 string requestId = ReaderProtocol.GetString(root, "requestId", 128);
                 if (type == "host.ready")
@@ -387,9 +397,84 @@ namespace WinUIGui
                     Wv.CoreWebView2?.PostWebMessageAsJson(reply.ToJsonString());
                     return true;
                 }
+                if (type == "host.project.list" || type == "host.project.info")
+                {
+                    if (!_isProject || string.IsNullOrEmpty(_projectRoot) || !Directory.Exists(_projectRoot))
+                    {
+                        Wv.CoreWebView2?.PostWebMessageAsJson(new JsonObject
+                        {
+                            ["type"] = type + ".result",
+                            ["requestId"] = requestId,
+                            ["ok"] = false,
+                            ["error"] = "当前打开的不是 HTML 项目",
+                        }.ToJsonString());
+                        return true;
+                    }
+                    try
+                    {
+                        var files = new JsonArray();
+                        var skipDirs = new HashSet<string>(StringComparer.OrdinalIgnoreCase) { ".git", "node_modules", ".vs", "bin", "obj", ".idea", "dist", "build" };
+                        foreach (string full in Directory.EnumerateFiles(_projectRoot, "*.*", SearchOption.AllDirectories))
+                        {
+                            string rel = Path.GetRelativePath(_projectRoot, full).Replace('\\', '/');
+                            string ext = Path.GetExtension(rel).ToLowerInvariant();
+                            if (ext != ".html" && ext != ".htm") continue;
+                            if (rel.Split('/').Any(seg => skipDirs.Contains(seg))) continue;
+                            string dir = rel.Contains('/') ? rel.Substring(0, rel.LastIndexOf('/')) : "";
+                            files.Add(new JsonObject
+                            {
+                                ["rel"] = rel,
+                                ["title"] = Path.GetFileNameWithoutExtension(rel),
+                                ["dir"] = dir,
+                                ["isIndex"] = rel.Equals("index.html", StringComparison.OrdinalIgnoreCase) || rel.Equals("index.htm", StringComparison.OrdinalIgnoreCase),
+                            });
+                            if (files.Count >= 2000) break;
+                        }
+                        Wv.CoreWebView2?.PostWebMessageAsJson(new JsonObject
+                        {
+                            ["type"] = type + ".result",
+                            ["requestId"] = requestId,
+                            ["ok"] = true,
+                            ["root"] = _projectRoot,
+                            ["name"] = Path.GetFileName(_projectRoot.TrimEnd(Path.DirectorySeparatorChar)),
+                            ["files"] = files,
+                        }.ToJsonString());
+                    }
+                    catch (Exception ex)
+                    {
+                        Wv.CoreWebView2?.PostWebMessageAsJson(new JsonObject
+                        {
+                            ["type"] = type + ".result",
+                            ["requestId"] = requestId,
+                            ["ok"] = false,
+                            ["error"] = ex.Message,
+                        }.ToJsonString());
+                    }
+                    return true;
+                }
                 if (type == "host.workspace.load")
                 {
-                    string path = _bookPath ?? "";
+                    string? relRequest = ReaderProtocol.GetString(root, "path", 4096);
+                    string path = "";
+                    string relOut = "";
+                    if (_isProject && !string.IsNullOrEmpty(_projectRoot))
+                    {
+                        string rel = (relRequest ?? "").Replace('\\', '/').TrimStart('/');
+                        if (string.IsNullOrWhiteSpace(rel))
+                        {
+                            string? index = Directory.EnumerateFiles(_projectRoot, "index.htm*", SearchOption.TopDirectoryOnly).FirstOrDefault();
+                            if (index == null) index = Directory.EnumerateFiles(_projectRoot, "*.htm*", SearchOption.TopDirectoryOnly).FirstOrDefault();
+                            if (index == null) index = Directory.EnumerateFiles(_projectRoot, "*.htm*", SearchOption.AllDirectories).FirstOrDefault();
+                            if (index == null) throw new InvalidOperationException("项目里没有 HTML 文件");
+                            rel = Path.GetRelativePath(_projectRoot, index).Replace('\\', '/');
+                        }
+                        string full = Path.GetFullPath(Path.Combine(_projectRoot, rel.Replace('/', Path.DirectorySeparatorChar)));
+                        string prefix = _projectRoot.TrimEnd(Path.DirectorySeparatorChar) + Path.DirectorySeparatorChar;
+                        if (!full.StartsWith(prefix, StringComparison.OrdinalIgnoreCase)) throw new InvalidOperationException("项目路径越界");
+                        if (!File.Exists(full)) throw new InvalidOperationException("项目文件不存在：" + rel);
+                        path = full; relOut = rel;
+                    }
+                    else path = _bookPath ?? "";
                     if (string.IsNullOrWhiteSpace(path) || !File.Exists(path))
                     {
                         Wv.CoreWebView2?.PostWebMessageAsJson(new JsonObject
@@ -397,7 +482,7 @@ namespace WinUIGui
                             ["type"] = "host.workspace.load.result",
                             ["requestId"] = requestId,
                             ["ok"] = false,
-                            ["error"] = "笔记本路径不可用",
+                            ["error"] = "笔记本文档路径不可用",
                         }.ToJsonString());
                         return true;
                     }
@@ -409,12 +494,26 @@ namespace WinUIGui
                         ["ok"] = true,
                         ["data"] = Convert.ToBase64String(bytes),
                         ["name"] = Path.GetFileName(path),
+                        ["path"] = _isProject ? relOut : path,
+                        ["rel"] = relOut,
+                        ["project"] = _isProject,
                     }.ToJsonString());
                     return true;
                 }
                 if (type == "host.workspace.save")
                 {
+                    string? relRequest = ReaderProtocol.GetString(root, "path", 4096);
                     string path = _bookPath ?? "";
+                    string relOut = "";
+                    if (_isProject && !string.IsNullOrEmpty(_projectRoot))
+                    {
+                        string rel = (relRequest ?? "").Replace('\\', '/').TrimStart('/');
+                        if (string.IsNullOrWhiteSpace(rel)) rel = "index.html";
+                        string full = Path.GetFullPath(Path.Combine(_projectRoot, rel.Replace('/', Path.DirectorySeparatorChar)));
+                        string prefix = _projectRoot.TrimEnd(Path.DirectorySeparatorChar) + Path.DirectorySeparatorChar;
+                        if (!full.StartsWith(prefix, StringComparison.OrdinalIgnoreCase)) throw new InvalidOperationException("项目路径越界");
+                        path = full; relOut = rel;
+                    }
                     if (string.IsNullOrWhiteSpace(path))
                     {
                         Wv.CoreWebView2?.PostWebMessageAsJson(new JsonObject
@@ -503,7 +602,7 @@ namespace WinUIGui
                     try
                     {
                         byte[] fileBytes = Convert.FromBase64String(fileB64);
-                        string baseDir = Path.GetDirectoryName(Path.GetFullPath(_bookPath)) ?? "";
+                        string baseDir = _isProject && _projectRoot != null ? _projectRoot : (Path.GetDirectoryName(Path.GetFullPath(_bookPath)) ?? "");
                         string full = Path.GetFullPath(Path.Combine(baseDir, rel.Replace('/', Path.DirectorySeparatorChar)));
                         string prefix = baseDir.TrimEnd(Path.DirectorySeparatorChar) + Path.DirectorySeparatorChar;
                         if (!full.StartsWith(prefix, StringComparison.OrdinalIgnoreCase)) throw new InvalidOperationException("路径越界");
@@ -545,8 +644,8 @@ namespace WinUIGui
                     }
                     try
                     {
-                        string baseDir = Path.GetDirectoryName(Path.GetFullPath(_bookPath)) ?? "";
-                        string assetsRoot = Path.GetFullPath(Path.Combine(baseDir, "assets")).TrimEnd(Path.DirectorySeparatorChar) + Path.DirectorySeparatorChar;
+                        string baseDir = _isProject && _projectRoot != null ? _projectRoot : (Path.GetDirectoryName(Path.GetFullPath(_bookPath)) ?? "");
+                        string assetsRoot = _isProject ? Path.GetFullPath(baseDir).TrimEnd(Path.DirectorySeparatorChar) + Path.DirectorySeparatorChar : Path.GetFullPath(Path.Combine(baseDir, "assets")).TrimEnd(Path.DirectorySeparatorChar) + Path.DirectorySeparatorChar;
                         string full = Path.GetFullPath(Path.Combine(baseDir, rel.Replace('/', Path.DirectorySeparatorChar)));
                         if (!full.StartsWith(assetsRoot, StringComparison.OrdinalIgnoreCase)) throw new InvalidOperationException("只允许删除 assets 目录内的文件");
                         if (File.Exists(full)) File.Delete(full);
@@ -569,8 +668,8 @@ namespace WinUIGui
                     }
                     try
                     {
-                        string baseDir = Path.GetDirectoryName(Path.GetFullPath(_bookPath)) ?? "";
-                        string assetsRoot = Path.GetFullPath(Path.Combine(baseDir, "assets")).TrimEnd(Path.DirectorySeparatorChar) + Path.DirectorySeparatorChar;
+                        string baseDir = _isProject && _projectRoot != null ? _projectRoot : (Path.GetDirectoryName(Path.GetFullPath(_bookPath)) ?? "");
+                        string assetsRoot = _isProject ? Path.GetFullPath(baseDir).TrimEnd(Path.DirectorySeparatorChar) + Path.DirectorySeparatorChar : Path.GetFullPath(Path.Combine(baseDir, "assets")).TrimEnd(Path.DirectorySeparatorChar) + Path.DirectorySeparatorChar;
                         string fromFull = Path.GetFullPath(Path.Combine(baseDir, fromRel.Replace('/', Path.DirectorySeparatorChar)));
                         string toFull = Path.GetFullPath(Path.Combine(baseDir, toRel.Replace('/', Path.DirectorySeparatorChar)));
                         if (!fromFull.StartsWith(assetsRoot, StringComparison.OrdinalIgnoreCase) || !toFull.StartsWith(assetsRoot, StringComparison.OrdinalIgnoreCase)) throw new InvalidOperationException("只允许重命名 assets 目录内的文件");
@@ -609,7 +708,7 @@ namespace WinUIGui
                         }
                         int cut = importRaw.IndexOfAny(new[] { '?', '#' });
                         if (cut >= 0) importRaw = importRaw.Substring(0, cut);
-                        string baseDir = Path.GetDirectoryName(Path.GetFullPath(_bookPath)) ?? "";
+                        string baseDir = _isProject && _projectRoot != null ? _projectRoot : (Path.GetDirectoryName(Path.GetFullPath(_bookPath)) ?? "");
                         string full = Path.IsPathRooted(importRaw)
                             ? Path.GetFullPath(importRaw)
                             : Path.GetFullPath(Path.Combine(baseDir, importRaw.Replace('/', Path.DirectorySeparatorChar)));

@@ -22,6 +22,8 @@
                     Foreground="#FFFFFF" CornerRadius="14" Padding="12,5"/>
             <Button x:Name="AddFileBtn" Click="AddFile_Click" Background="#33FFFFFF" BorderThickness="0"
                     Foreground="#FFFFFF" CornerRadius="14" Padding="12,5"/>
+            <Button x:Name="NewFileBtn" Click="NewFile_Click" Background="#33FFFFFF" BorderThickness="0"
+                    Foreground="#FFFFFF" CornerRadius="14" Padding="12,5" Visibility="Collapsed"/>
             <ToggleButton x:Name="ManageToggle" Content="管理" IsChecked="False" Click="ManageToggle_Click"
                           Background="#33FFFFFF" BorderThickness="0" Foreground="#FFFFFF"
                           CornerRadius="14" Padding="12,5" ToolTipService.ToolTip="显示/隐藏卡片上的封面、删除按钮"/>

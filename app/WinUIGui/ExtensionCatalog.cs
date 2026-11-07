@@ -49,6 +49,10 @@ namespace WinUIGui
             public string Metadata { get; set; } = "";
             /// <summary>true=书库条目链接原文件，不复制副本（适合带同目录 assets 的 HTML）。</summary>
             public bool Link { get; set; }
+            /// <summary>非空时显示「新建」按钮，内容即按钮文案。</summary>
+            public string NewLabel { get; set; } = "";
+            /// <summary>true=书库条目为项目文件夹；打开/导入/新建都走 FolderPicker，不复制文件。</summary>
+            public bool ProjectMode { get; set; }
         }
 
         public sealed class ExtensionInfo
