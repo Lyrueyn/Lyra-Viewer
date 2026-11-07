@@ -106,18 +106,12 @@ namespace WinUIGui
                 }
                 if (IsProjectMode)
                 {
-                    var htmlPicker = new FileOpenPicker { ViewMode = PickerViewMode.List };
-                    foreach (var t in _def.Info.FileTypes) htmlPicker.FileTypeFilter.Add(t);
-                    if (htmlPicker.FileTypeFilter.Count == 0) htmlPicker.FileTypeFilter.Add(".html");
-                    InitializePicker(htmlPicker);
-                    var htmlFile = await htmlPicker.PickSingleFileAsync();
-                    if (htmlFile == null) return;
-                    string root = Path.GetDirectoryName(htmlFile.Path) ?? "";
-                    string rel = Path.GetFileName(htmlFile.Path);
-                    var project = ExtensionLibraryService.AddLinkedFolder(_def, root, rel);
+                    var folder = await PickFolderAsync();
+                    if (folder == null) return;
+                    var project = ExtensionLibraryService.AddLinkedFolder(_def, folder.Path);
                     Refresh();
-                    StatusText.Text = "已导入项目：" + project.Path + "（未复制文件）";
-                    OpenPath(project.Path, project.EntryRel);
+                    StatusText.Text = "已导入项目：" + project.Path + "（只记录路径，未复制文件）";
+                    OpenPath(project.Path);
                     return;
                 }
                 var picker = new FileOpenPicker { ViewMode = PickerViewMode.List };
@@ -131,7 +125,7 @@ namespace WinUIGui
                 _ = EnsureCoverAsync(item, force: false);
                 StatusText.Text = "已添加：" + item.Title;
             }
-            catch (Exception ex) { StatusText.Text = "添加失败：" + ex.Message; }
+            catch (Exception ex) { StatusText.Text = "导入失败：" + ex.Message; }
         }
         private async void NewFile_Click(object sender, RoutedEventArgs e)
         {
