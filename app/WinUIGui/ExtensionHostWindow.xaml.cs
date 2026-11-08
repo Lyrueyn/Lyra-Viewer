@@ -423,18 +423,23 @@ namespace WinUIGui
                         foreach (string full in Directory.EnumerateFiles(_projectRoot, "*.*", SearchOption.AllDirectories))
                         {
                             string rel = Path.GetRelativePath(_projectRoot, full).Replace('\\', '/');
-                            string ext = Path.GetExtension(rel).ToLowerInvariant();
-                            if (ext != ".html" && ext != ".htm") continue;
                             if (rel.Split('/').Any(seg => skipDirs.Contains(seg))) continue;
+                            string fileName = Path.GetFileName(rel);
+                            if (fileName.StartsWith(".")) continue;
+                            string ext = Path.GetExtension(rel).ToLowerInvariant();
+                            bool isHtml = ext == ".html" || ext == ".htm";
                             string dir = rel.Contains('/') ? rel.Substring(0, rel.LastIndexOf('/')) : "";
                             files.Add(new JsonObject
                             {
                                 ["rel"] = rel,
+                                ["name"] = fileName,
                                 ["title"] = Path.GetFileNameWithoutExtension(rel),
                                 ["dir"] = dir,
+                                ["ext"] = ext,
+                                ["html"] = isHtml,
                                 ["isIndex"] = rel.Equals("index.html", StringComparison.OrdinalIgnoreCase) || rel.Equals("index.htm", StringComparison.OrdinalIgnoreCase),
                             });
-                            if (files.Count >= 2000) break;
+                            if (files.Count >= 3000) break;
                         }
                         Wv.CoreWebView2?.PostWebMessageAsJson(new JsonObject
                         {
