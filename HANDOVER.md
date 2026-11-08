@@ -26,13 +26,13 @@
 
 | 项目 | 版本 | 安装/更新资产 |
 |---|---|---|
-| 主程序 | **v2.0.5** | `LyraViewer-Setup-2.0.5.exe`（安装在用户目录，安装包会安装 .NET 10 Desktop Runtime） |
+| 主程序 | **v2.0.6** | `LyraViewer-Setup-2.0.6.exe`（安装在用户目录，安装包会安装 .NET 10 Desktop Runtime） |
 | EPUB 扩展 | **v0.6.9** | `lyra-ext-epub.zip` |
 | PDF 扩展 | **v0.4.7** | `lyra-ext-pdf.zip` |
 | TXT 扩展 | **v0.1.2** | `lyra-ext-txt.zip` |
 | HTML 阅读器 | **v1.3.13** | `lyra-ext-html-reader.zip` |
-| HTML 编辑器层 | **v1.19.0** | `lyra-ext-html-editor.zip` |
-| 笔记本 | **v2.3.28** | `lyra-ext-notebook.zip` |
+| HTML 编辑器层 | **v1.19.1** | `lyra-ext-html-editor.zip` |
+| 笔记本 | **v2.3.29** | `lyra-ext-notebook.zip` |
 | 番茄小说下载器 | **v0.2.0** | `lyra-ext-tomato.zip`（前端；核心加密随主程序） |
 
 扩展必须和主程序版本配套使用；扩展中心会自动检查 GitHub 最新 Release。
@@ -400,7 +400,7 @@ HTML_Reader（reader，独立 Tab）
 | --- | --- | --- | --- |
 | HTML_Reader | 1.0.0 | https://github.com/Lyrueyn/Lyra-Extension-HTML-Reader | `lyra-ext-html-reader.zip` |
 | HTML_Editor | 1.0.0 | https://github.com/Lyrueyn/Lyra-Extension-HTML-Editor | `lyra-ext-html-editor.zip` |
-| Notebook | 2.0.5 | https://github.com/Lyrueyn/Lyra-Extension-Notebook | `lyra-ext-notebook.zip` |
+| Notebook | 2.0.6 | https://github.com/Lyrueyn/Lyra-Extension-Notebook | `lyra-ext-notebook.zip` |
 
 - HTML_Editor：由旧 notebook 1.14.0 的 UI 抽成 `embedded=1` 模式；隐藏自身标题栏，通过 `lyra-editor` 通道交换 HTML/assets。
 - HTML_Reader：`kind: reader`，`requires:["html-editor"]`；阅读/编辑切换，`host.workspace.load/save` 写回原 `.html`。
@@ -411,7 +411,7 @@ HTML_Reader（reader，独立 Tab）
 ### 本机验证
 
 - 主程序 1.4.0 安装到 `%LOCALAPPDATA%\LocalMediaPlayer`。
-- 层扩展安装：`extensions/html-editor`、`extensions/html-reader`、`extensions/notebook` 2.0.5。
+- 层扩展安装：`extensions/html-editor`、`extensions/html-reader`、`extensions/notebook` 2.0.6。
 - Notebook：用测试 `.lyrnb` 启动，壳 + 编辑器 iframe 正常显示三栏。
 - HTML_Reader：命令行打开测试 HTML，阅读模式正常；点击“编辑”后编辑器层加载并显示源码/预览/DevTool；修改源码后保存，原文件 mtime 与内容变化。
 - Playwright 验证 Notebook assets 桥：`.lyrnb` 中 `assets/tiny.png` 被传给编辑器，预览 `img` 解码为 data URL（1×1）。
@@ -596,7 +596,7 @@ HTML_Reader（reader，独立 Tab）
 - 实测 class 2.html：视频迁移到 assets/ 67MB，read/edit 背景视频均显示，状态不再报失败。
 
 
-### 2.0.5 / HTML_Reader 1.3.3
+### 2.0.6 / HTML_Reader 1.3.3
 
 - 根因：HTML 阅读器书库「添加 HTML 文件」原来会复制一份 HTML 到 data/html-reader_library，但不会复制同目录 assets。迁移后源码写的是 assets/...，书库副本里没有 assets → 背景视频/图片 404。打开原文件则正常。
 - 主程序新增 library.link；HTML_Reader 配置 link=true，添加书库改为链接原文件，不再复制 HTML 副本。
@@ -604,7 +604,7 @@ HTML_Reader（reader，独立 Tab）
 - 仍需 Editor 1.17.1 / Reader 1.3.x / Notebook 2.3.17 的 iframe allow="autoplay" 修复编辑预览不自动播放。
 
 
-### 2.0.5 / HTML_Reader 1.3.4
+### 2.0.6 / HTML_Reader 1.3.4
 
 - 按用户要求恢复“复制 HTML 到书库”，不再链接源文件。
 - 主程序 AddFile 对 html-reader 同时递归复制 HTML 同目录 assets 到 data/html-reader_library/assets。
@@ -612,7 +612,7 @@ HTML_Reader（reader，独立 Tab）
 - Reader 1.3.4 移除 link 配置。
 
 
-### 2.0.5 asset 引用计数与孤儿回收
+### 2.0.6 asset 引用计数与孤儿回收
 
 - `data/html-reader_asset_usage.json` 记录每个库内 assets 被多少个书库 HTML 引用（同一 HTML 多次引用只计 1）。
 - 添加 HTML 到书库时自动复制 HTML + 同目录 assets，并刷新引用计数。
@@ -629,7 +629,7 @@ HTML_Reader（reader，独立 Tab）
 - Playwright 实测：log/warn/error/missing img 四条均捕获，resource 条目点击后 inspector 跳到 Ln 1。
 
 
-### 2.0.5 / HTML_Reader 1.3.6
+### 2.0.6 / HTML_Reader 1.3.6
 
 - 迁移范围增加 `<link rel="stylesheet" href>` 与 `<script src>`：本地 CSS/JS/fonts 也复制进 assets 并重写路径。
 - host.file.import 扩展名放宽：.css/.js/.mjs/.json/.woff/.woff2/.ttf/.otf/.eot/.ico。
@@ -637,7 +637,7 @@ HTML_Reader（reader，独立 Tab）
 - 实测 class 2.html：style.css、preview.js 均迁入 assets；源文件与书库副本路径改写；书库副本 CSS 生效。
 
 
-### 2.0.5 / Editor 1.17.8 HTML 外部资产操作
+### 2.0.6 / Editor 1.17.8 HTML 外部资产操作
 
 - 宿主新增 host.file.delete / host.file.rename，并限制在 HTML 同目录 assets/ 下。
 - Editor Assets 外部资源卡片支持 Replace / Rename / Delete；重命名/删除会同步改写 HTML 引用。
@@ -645,59 +645,66 @@ HTML_Reader（reader，独立 Tab）
 - 缓存 287。
 '
 
-### 2.0.5 / Reader 1.3.18
+### 2.0.6 / Reader 1.3.18
 
 - HTML 书库新增「＋ 新建 HTML」按钮：FileSavePicker 选择保存路径，生成基础 HTML 模板，加入书库并直接打开。
 - Reader 新增 Ctrl+S 保存、Ctrl+E 切换阅读/编辑。
 - 新建文件走链接式书库条目，不复制副本。
 ''
 
-### 2.0.5
+### 2.0.6
 
 - 新建 HTML 的 FileSavePicker 默认位置改为文档库，建议文件名带时间戳；状态栏显示完整路径。
 ''
 
-### 2.0.5 HTML 项目制
+### 2.0.6 HTML 项目制
 
 - 主程序 HTML 书库改为项目制：打开/导入/新建项目都走 FolderPicker，只记录文件夹路径，不复制文件。
 - 新建项目在所选文件夹生成 index.html 与 assets/；删除项目仅移除书库记录，不删除文件夹。
-- Reader 2.0.5 读取 host.project.list，顶部「项目」按钮显示项目内 HTML 文件树；切换文件时自动保存当前文件，保存写回对应相对路径。
+- Reader 2.0.6 读取 host.project.list，顶部「项目」按钮显示项目内 HTML 文件树；切换文件时自动保存当前文件，保存写回对应相对路径。
 - 每个 HTML 用自身所在子目录作为资源 base；项目模式关闭自动媒体迁移。
 - 宿主新增 host.project.list / host.project.info；workspace.load/save 支持项目相对路径。
-- 扩展：Editor 1.19.0 / Reader 2.0.5 / Notebook 2.3.28，缓存 290。
+- 扩展：Editor 1.19.0 / Reader 2.0.6 / Notebook 2.3.28，缓存 290。
 ''
 
-### 2.0.5
+### 2.0.6
 
 - HTML 项目导入改为选择 HTML 文件，以所在文件夹为项目根，并默认打开该文件（EntryRel）。
 - 项目文件树只在编辑模式显示；阅读模式隐藏。
 - 编辑模式切换项目文件时，嵌入编辑器预览热切换到新文件。
-- Reader 缓存/版本 2.0.5；Editor 1.19.0 / Notebook 2.3.28 不变。
+- Reader 缓存/版本 2.0.6；Editor 1.19.0 / Notebook 2.3.28 不变。
 ''
 
-### 2.0.5
+### 2.0.6
 
 - 修正导入项目：重新使用文件夹选择器，只记录项目目录，不复制文件。
 - Reader 文件树仅编辑模式显示；编辑模式切换文件时预览跟随。
 ''
 
-### 2.0.5 WebStorm 项目树
+### 2.0.6 WebStorm 项目树
 
 - Reader 项目树改为目录树：文件夹展开/折叠、层级缩进、文件类型图标、当前文件高亮、刷新。
 - 编辑模式左侧停靠；阅读模式隐藏；自动展开当前文件所在目录。
 - 宿主 project.list 返回项目全部文件；非 HTML 文件显示但不可打开。
-- Reader 版本 2.0.5；主程序 2.0.5。
+- Reader 版本 2.0.6；主程序 2.0.6。
 ''
 
-### 2.0.5
+### 2.0.6
 
 - 修复切换项目文件后文件树被隐藏：openProjectFile 不再关闭 projectPanel。
 - 修复子目录 HTML 使用错误 base：withBookBase/sendEditorDocument 改用 state.baseHref（当前文件目录）。
-- 主程序 2.0.5 用 WebResourceRequested 自定义响应 BookAssetsHost，支持 Range/206/Content-Range/MIME，修复项目视频无法加载/拖动；不再依赖 SetVirtualHostNameToFolderMapping 的媒体限制。
+- 主程序 2.0.6 用 WebResourceRequested 自定义响应 BookAssetsHost，支持 Range/206/Content-Range/MIME，修复项目视频无法加载/拖动；不再依赖 SetVirtualHostNameToFolderMapping 的媒体限制。
 '
 
-### 2.0.5
+### 2.0.6
 
 - 恢复 BookAssetsHost 虚拟目录映射（2.0.4 自定义 Range 响应未生效，导致全部资源 Failed to load）。
 - 实机验证：Sylinx's Notes 项目 Console 0 资源错误，背景视频连续帧有变化（正常播放）。
 - 保留 Reader 2.0.4 的文件树常驻/子目录 base 修复。
+
+
+### 2.0.6
+
+- Inspect 按钮开启时使用主题 accent 实心高亮。
+- WebView2 IsStatusBarEnabled=false，隐藏 lyra-book-assets.local 等内部资源链接状态栏。
+- 扩展：Editor 1.19.1 / Reader 2.0.5 / Notebook 2.3.29，缓存 291。
