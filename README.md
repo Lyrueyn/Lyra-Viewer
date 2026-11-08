@@ -1,4 +1,4 @@
-﻿# 璃鸢镜（Lyra Viewer）v2.0.6
+﻿# 璃鸢镜（Lyra Viewer）v2.0.7
 
 > 🤖 **本项目由 AI（DeepSeek Harness）制作/协作开发。**
 >
@@ -8,12 +8,12 @@
 
 ## 下载安装
 
-最新版本：**璃鸢镜 2.0.6**
+最新版本：**璃鸢镜 2.0.7**
 
 | 内容 | 地址 |
 |---|---|
 | 主程序 Release | https://github.com/Lyrueyn/Lyra-Viewer/releases/latest |
-| 安装包 | `LyraViewer-Setup-2.0.6.exe` |
+| 安装包 | `LyraViewer-Setup-2.0.7.exe` |
 | EPUB 扩展 | https://github.com/Lyrueyn/Lyra-Extension-Epub |
 | PDF 扩展 | https://github.com/Lyrueyn/Lyra-Extention-PDF_Reader |
 | TXT 扩展 | https://github.com/Lyrueyn/Lyra-Extension-txt_Reader |
@@ -81,14 +81,14 @@
 
 | 项目 | 版本 | 状态 |
 |---|---|---|
-| 主程序 | 2.0.6 | 已发布 |
+| 主程序 | 2.0.7 | 已发布 |
 | EPUB 扩展 | 0.6.9 | 已发布 |
 | PDF 扩展 | 0.4.7 | 已发布 |
 | TXT 扩展 | 0.1.2 | 已发布 |
 | 番茄小说下载器 | 0.2.0 | 已发布（前端开源，核心加密随主程序） |
-| HTML 阅读器 | 2.0.6 | 已发布 |
-| HTML 编辑器层 | 1.19.2 | 已发布 |
-| 笔记本 | 2.3.30 | 已发布 |
+| HTML 阅读器 | 2.0.7 | 已发布 |
+| HTML 编辑器层 | 1.19.3 | 已发布 |
+| 笔记本 | 2.3.31 | 已发布 |
 
 扩展分层（1.4.0+）：HTML_Reader（阅读器 Tab）→ HTML_Editor（无 Tab 的编辑器层）→ Notebook（多笔记容器 Tab）。
 | Python 后端 | 0.1.0 | 随主程序打包 |
