@@ -34,6 +34,7 @@ namespace WinUIGui
         private readonly string? _projectRoot;
         private readonly bool _isProject;
         private readonly string _projectEntry = "";
+        private string? _bookAssetsRoot;
         // ★ 固定虚拟域名（按扩展 id）：网页的本地存储按“网址来源”隔离，
         // 以前每开一次窗口换一个随机域名，扩展存下的进度/设置下次就找不到了。
         private readonly string _host;
@@ -120,6 +121,12 @@ namespace WinUIGui
                 Wv.CoreWebView2.Settings.AreDefaultContextMenusEnabled = false;
                 Wv.CoreWebView2.Settings.AreDevToolsEnabled = false;
                 Wv.CoreWebView2.WebMessageReceived += OnWebMessageReceived;
+                try
+                {
+                    Wv.CoreWebView2.AddWebResourceRequestedFilter("https://" + BookAssetsHost + "/*", CoreWebView2WebResourceContext.All);
+                    Wv.CoreWebView2.WebResourceRequested += OnBookAssetsRequested;
+                }
+                catch { }
                 Wv.CoreWebView2.NavigationCompleted += OnNavigationCompleted;
                 Wv.CoreWebView2.NavigationStarting += OnNavigationStarting;
                 // 共享扩展根目录：layer 扩展（HTML_Editor 等）可通过固定域名被当前窗口嵌入。
@@ -199,19 +206,11 @@ namespace WinUIGui
                 try
                 {
                     if (_isProject && !string.IsNullOrEmpty(_projectRoot) && Directory.Exists(_projectRoot))
-                    {
-                        Wv.CoreWebView2.SetVirtualHostNameToFolderMapping(
-                            BookAssetsHost, _projectRoot, CoreWebView2HostResourceAccessKind.Allow);
-                    }
+                        _bookAssetsRoot = _projectRoot;
                     else if (!string.IsNullOrEmpty(_bookPath) && File.Exists(_bookPath))
-                    {
-                        var bookDir = Path.GetDirectoryName(_bookPath);
-                        if (!string.IsNullOrEmpty(bookDir) && Directory.Exists(bookDir))
-                            Wv.CoreWebView2.SetVirtualHostNameToFolderMapping(
-                                BookAssetsHost, bookDir, CoreWebView2HostResourceAccessKind.Allow);
-                    }
+                        _bookAssetsRoot = Path.GetDirectoryName(_bookPath);
                 }
-                catch { }
+                catch { _bookAssetsRoot = null; }
                 string rel = _entry.Replace('\\', '/').TrimStart('/');
                 string url = "https://" + _host + "/" + string.Join("/",
                     rel.Split('/', StringSplitOptions.RemoveEmptyEntries).Select(Uri.EscapeDataString)) + query;
@@ -1157,6 +1156,163 @@ namespace WinUIGui
             try { Close(); } catch { }
         }
 
+        private void OnBookAssetsRequested(CoreWebView2 sender, CoreWebView2WebResourceRequestedEventArgs args)
+        {
+            try
+            {
+                string root = _bookAssetsRoot ?? "";
+                if (string.IsNullOrEmpty(root) || !Directory.Exists(root)) return;
+                var uri = new Uri(args.Request.Uri);
+                if (!string.Equals(uri.Host, BookAssetsHost, StringComparison.OrdinalIgnoreCase)) return;
+                string rel = Uri.UnescapeDataString(uri.AbsolutePath).TrimStart('/');
+                string full = Path.GetFullPath(Path.Combine(root, rel.Replace('/', Path.DirectorySeparatorChar)));
+                string prefix = Path.GetFullPath(root).TrimEnd(Path.DirectorySeparatorChar) + Path.DirectorySeparatorChar;
+                if (!full.StartsWith(prefix, StringComparison.OrdinalIgnoreCase))
+                {
+                    args.Response = Wv.CoreWebView2.Environment.CreateWebResourceResponse(Ras(new MemoryStream()), 403, "Forbidden", "Content-Type: text/plain");
+                    return;
+                }
+                if (!File.Exists(full))
+                {
+                    args.Response = Wv.CoreWebView2.Environment.CreateWebResourceResponse(Ras(new MemoryStream()), 404, "Not Found", "Content-Type: text/plain");
+                    return;
+                }
+                string contentType = MimeForPath(full);
+                long total = new FileInfo(full).Length;
+                long start = 0, end = total - 1;
+                bool partial = false;
+                string? range = null;
+                try { range = args.Request.Headers.GetHeader("Range"); } catch { }
+                if (!string.IsNullOrWhiteSpace(range) && range.StartsWith("bytes=", StringComparison.OrdinalIgnoreCase))
+                {
+                    string spec = range.Substring(6).Split(',')[0].Trim();
+                    string[] pieces = spec.Split('-');
+                    if (pieces.Length == 2)
+                    {
+                        if (string.IsNullOrWhiteSpace(pieces[0]))
+                        {
+                            if (long.TryParse(pieces[1], out long suffix) && suffix > 0)
+                            {
+                                start = Math.Max(0, total - suffix);
+                                end = total - 1;
+                                partial = true;
+                            }
+                        }
+                        else if (long.TryParse(pieces[0], out long from))
+                        {
+                            start = Math.Max(0, from);
+                            end = string.IsNullOrWhiteSpace(pieces[1]) ? total - 1 : Math.Min(total - 1, long.Parse(pieces[1]));
+                            if (start <= end) partial = true;
+                        }
+                    }
+                }
+                if (start > end || total <= 0)
+                {
+                    args.Response = Wv.CoreWebView2.Environment.CreateWebResourceResponse(Ras(new MemoryStream()), 416, "Range Not Satisfiable", "Content-Range: bytes */" + total);
+                    return;
+                }
+                long length = end - start + 1;
+                var fs = new FileStream(full, FileMode.Open, FileAccess.Read, FileShare.ReadWrite, 128 * 1024, FileOptions.SequentialScan);
+                fs.Seek(start, SeekOrigin.Begin);
+                Stream responseStream = partial ? new LimitedReadStream(fs, length) : fs;
+                var headers = new StringBuilder();
+                headers.Append("Content-Type: ").Append(contentType).Append("\r\n");
+                headers.Append("Accept-Ranges: bytes\r\n");
+                headers.Append("Access-Control-Allow-Origin: *\r\n");
+                headers.Append("Cross-Origin-Resource-Policy: cross-origin\r\n");
+                headers.Append("Cache-Control: no-cache\r\n");
+                headers.Append("Content-Length: ").Append(length).Append("\r\n");
+                if (partial) headers.Append("Content-Range: bytes ").Append(start).Append('-').Append(end).Append('/').Append(total).Append("\r\n");
+                args.Response = Wv.CoreWebView2.Environment.CreateWebResourceResponse(
+                    Ras(responseStream), partial ? 206 : 200, partial ? "Partial Content" : "OK", headers.ToString());
+            }
+            catch { }
+        }
+
+        private static Windows.Storage.Streams.IRandomAccessStream Ras(Stream stream)
+            => WindowsRuntimeStreamExtensions.AsRandomAccessStream(stream);
+
+        private static string MimeForPath(string path)
+        {
+            string ext = Path.GetExtension(path).ToLowerInvariant();
+            return ext switch
+            {
+                ".html" or ".htm" => "text/html; charset=utf-8",
+                ".css" => "text/css; charset=utf-8",
+                ".js" or ".mjs" => "text/javascript; charset=utf-8",
+                ".json" => "application/json; charset=utf-8",
+                ".svg" => "image/svg+xml",
+                ".png" => "image/png",
+                ".jpg" or ".jpeg" => "image/jpeg",
+                ".gif" => "image/gif",
+                ".webp" => "image/webp",
+                ".bmp" => "image/bmp",
+                ".ico" => "image/x-icon",
+                ".mp4" or ".m4v" => "video/mp4",
+                ".webm" => "video/webm",
+                ".ogv" => "video/ogg",
+                ".mov" => "video/quicktime",
+                ".avi" => "video/x-msvideo",
+                ".mkv" => "video/x-matroska",
+                ".mp3" => "audio/mpeg",
+                ".m4a" => "audio/mp4",
+                ".wav" => "audio/wav",
+                ".ogg" or ".oga" => "audio/ogg",
+                ".flac" => "audio/flac",
+                ".woff" => "font/woff",
+                ".woff2" => "font/woff2",
+                ".ttf" => "font/ttf",
+                ".otf" => "font/otf",
+                ".eot" => "application/vnd.ms-fontobject",
+                ".txt" or ".md" => "text/plain; charset=utf-8",
+                _ => "application/octet-stream",
+            };
+        }
+
+        private sealed class LimitedReadStream : Stream
+        {
+            private readonly FileStream _inner;
+            private readonly long _start;
+            private readonly long _length;
+            private long _pos;
+            public LimitedReadStream(FileStream inner, long length)
+            {
+                _inner = inner;
+                _start = inner.Position;
+                _length = length;
+                _pos = 0;
+            }
+            public override bool CanRead => true;
+            public override bool CanSeek => true;
+            public override bool CanWrite => false;
+            public override long Length => _length;
+            public override long Position { get => _pos; set => Seek(value, SeekOrigin.Begin); }
+            public override int Read(byte[] buffer, int offset, int count)
+            {
+                long remaining = _length - _pos;
+                if (remaining <= 0) return 0;
+                _inner.Position = _start + _pos;
+                int n = _inner.Read(buffer, offset, (int)Math.Min(count, remaining));
+                _pos += n;
+                return n;
+            }
+            public override void Flush() { }
+            public override long Seek(long offset, SeekOrigin origin)
+            {
+                long next = origin switch
+                {
+                    SeekOrigin.Begin => offset,
+                    SeekOrigin.Current => _pos + offset,
+                    SeekOrigin.End => _length + offset,
+                    _ => 0,
+                };
+                _pos = Math.Max(0, Math.Min(_length, next));
+                return _pos;
+            }
+            public override void SetLength(long value) => throw new NotSupportedException();
+            public override void Write(byte[] buffer, int offset, int count) => throw new NotSupportedException();
+            protected override void Dispose(bool disposing) { if (disposing) _inner.Dispose(); base.Dispose(disposing); }
+        }
         private void CleanupTemp()
         {
             // 临时书目录清理不等于窗口关闭；绝不能在此停止关闭期限。
