@@ -123,8 +123,8 @@ namespace WinUIGui
                 Wv.CoreWebView2.WebMessageReceived += OnWebMessageReceived;
                 try
                 {
-                    Wv.CoreWebView2.AddWebResourceRequestedFilter("https://" + BookAssetsHost + "/*", CoreWebView2WebResourceContext.All);
-                    Wv.CoreWebView2.WebResourceRequested += OnBookAssetsRequested;
+//                    Wv.CoreWebView2.AddWebResourceRequestedFilter("*", CoreWebView2WebResourceContext.All);
+//                    Wv.CoreWebView2.WebResourceRequested += OnBookAssetsRequested;
                 }
                 catch { }
                 Wv.CoreWebView2.NavigationCompleted += OnNavigationCompleted;
@@ -209,6 +209,8 @@ namespace WinUIGui
                         _bookAssetsRoot = _projectRoot;
                     else if (!string.IsNullOrEmpty(_bookPath) && File.Exists(_bookPath))
                         _bookAssetsRoot = Path.GetDirectoryName(_bookPath);
+                        if (!string.IsNullOrEmpty(_bookAssetsRoot) && Directory.Exists(_bookAssetsRoot))
+                            Wv.CoreWebView2.SetVirtualHostNameToFolderMapping(BookAssetsHost, _bookAssetsRoot, CoreWebView2HostResourceAccessKind.Allow);
                 }
                 catch { _bookAssetsRoot = null; }
                 string rel = _entry.Replace('\\', '/').TrimStart('/');
