@@ -31,8 +31,8 @@
 | PDF 扩展 | **v0.4.7** | `lyra-ext-pdf.zip` |
 | TXT 扩展 | **v0.1.2** | `lyra-ext-txt.zip` |
 | HTML 阅读器 | **v1.3.13** | `lyra-ext-html-reader.zip` |
-| HTML 编辑器层 | **v1.19.1** | `lyra-ext-html-editor.zip` |
-| 笔记本 | **v2.3.29** | `lyra-ext-notebook.zip` |
+| HTML 编辑器层 | **v1.19.2** | `lyra-ext-html-editor.zip` |
+| 笔记本 | **v2.3.30** | `lyra-ext-notebook.zip` |
 | 番茄小说下载器 | **v0.2.0** | `lyra-ext-tomato.zip`（前端；核心加密随主程序） |
 
 扩展必须和主程序版本配套使用；扩展中心会自动检查 GitHub 最新 Release。
@@ -707,4 +707,11 @@ HTML_Reader（reader，独立 Tab）
 
 - Inspect 按钮开启时使用主题 accent 实心高亮。
 - WebView2 IsStatusBarEnabled=false，隐藏 lyra-book-assets.local 等内部资源链接状态栏。
-- 扩展：Editor 1.19.1 / Reader 2.0.5 / Notebook 2.3.29，缓存 291。
+- 扩展：Editor 1.19.2 / Reader 2.0.6 / Notebook 2.3.30，缓存 291。
+
+
+### Theme harmony
+
+- Editor 主题通过 iframe postMessage 同步给 Reader 外壳；文件树、工具栏、TOC、查找条统一配色。
+- Responsive/100% 使用主题面板色，预览按钮与源栏按钮同风格。
+- 文件树选中项改为主题面板色 + accent 左边条。
