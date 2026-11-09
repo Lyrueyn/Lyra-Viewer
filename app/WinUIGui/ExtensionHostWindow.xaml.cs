@@ -523,6 +523,24 @@ namespace WinUIGui
                             Wv.CoreWebView2?.PostWebMessageAsJson(new JsonObject { ["type"] = "editor.open-file.result", ["requestId"] = requestId, ["ok"] = true, ["plugin"] = "html-editor" }.ToJsonString());
                             return true;
                         }
+                        if (ext == ".js" || ext == ".mjs" || ext == ".cjs" || ext == ".jsx" || ext == ".ts" || ext == ".tsx" || ext == ".json")
+                        {
+                            var jsDef = defs.FirstOrDefault(d => d.IsEditorPlugin && string.Equals(d.Info.Id, "js-editor", StringComparison.OrdinalIgnoreCase));
+                            if (jsDef == null)
+                            {
+                                Wv.CoreWebView2?.PostWebMessageAsJson(new JsonObject { ["type"] = "editor.open-file.result", ["requestId"] = requestId, ["ok"] = false, ["error"] = "需要先安装 JavaScript 编辑器插件" }.ToJsonString());
+                                return true;
+                            }
+                            var jsWin = ExtensionManager.OpenReader(jsDef, _projectRoot, rel);
+                            if (jsWin == null)
+                            {
+                                Wv.CoreWebView2?.PostWebMessageAsJson(new JsonObject { ["type"] = "editor.open-file.result", ["requestId"] = requestId, ["ok"] = false, ["error"] = "无法打开 JavaScript 编辑器窗口" }.ToJsonString());
+                                return true;
+                            }
+                            jsWin.Activate();
+                            Wv.CoreWebView2?.PostWebMessageAsJson(new JsonObject { ["type"] = "editor.open-file.result", ["requestId"] = requestId, ["ok"] = true, ["plugin"] = "js-editor" }.ToJsonString());
+                            return true;
+                        }
                         Wv.CoreWebView2?.PostWebMessageAsJson(new JsonObject { ["type"] = "editor.open-file.result", ["requestId"] = requestId, ["ok"] = false, ["error"] = "还没有适配 " + (string.IsNullOrEmpty(ext) ? "该文件类型" : ext) + " 的编辑器插件" }.ToJsonString());
                         return true;
                     }
