@@ -245,3 +245,28 @@ HTML 编辑器 1.21.0    242,428 bytes      DD4FD8E82F4DA485893EDBC10D670337CC26
 笔记本 2.3.39         55,179 bytes       E7C03B41CA045E2D7ED2147FBFBACA50CC76F6C80DF6DBA05B93DEA0181341BD
 编辑器扩展 1.1.1      6,375 bytes        DC9620790C34EC7170F54D9FE356EE62C6334F9AF9FDED76CE1E9C43185BCCA7
 ```
+
+
+## JavaScript 编辑器插件 1.1.0
+
+编辑器插件按文件类型使用不同 UI：
+
+- 编辑器扩展项目库：带 `package.json` 的 JS 项目优先打开 JavaScript 编辑器；HTML 项目打开 HTML 编辑器。项目卡片右键可强制选择插件。
+- JS 插件文件树：
+  - `.js/.mjs/.cjs/.json` 在 JS 编辑器内打开
+  - `.html/.htm` 自动交给 HTML 编辑器插件打开
+  - `.css` 等待后续 CSS 编辑器插件
+- JS 专属 UI：文件 / 代码 / Outline 三栏，Console + REPL 输入，运行文件 / 运行选中；不再使用 HTML 的 DevTool 或通用 Preview。
+- Outline 自动提取函数、类、箭头函数、顶层变量，点击跳转。
+- 运行代码在浏览器沙箱 iframe 中执行，console 输出回 Console。
+
+### 版本
+
+```
+主程序 2.1.2            433,957,343 bytes  3963EEE07A4D29A06EE888A6F16823605E09F5E3BCB357F924345E183DC8EBCF
+JavaScript 编辑器 1.1.0  93,357 bytes       9F14BFA26030072C809F7E32C408385EC6C3ED8F1D1836EF8E602ED02EEB7F8C
+HTML 阅读器 2.1.3        33,095 bytes       F85A0C93B37CD264B85388303F131572864D1F45C2A8ED353545C54B12FFA707
+HTML 编辑器 1.21.0       242,428 bytes      DD4FD8E82F4DA485893EDBC10D670337CC26272DA714E6C4DA3BE78E8AF171CA
+编辑器扩展 1.1.1         6,375 bytes        DC9620790C34EC7170F54D9FE356EE62C6334F9AF9FDED76CE1E9C43185BCCA7
+笔记本 2.3.39            55,179 bytes       E7C03B41CA045E2D7ED2147FBFBACA50CC76F6C80DF6DBA05B93DEA0181341BD
+```

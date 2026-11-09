@@ -786,3 +786,11 @@ HTML_Reader（reader，独立 Tab）
 - C# 宿主：host.file.mkdir；项目模式下 host.file.save/delete/rename 允许操作项目根目录内任意文件/文件夹。
 - host.project.list 返回 dirs 数组，空文件夹可见。
 - 当前文件被重命名/删除时，Reader 自动切换当前路径或下一个 HTML。
+
+
+## JS 编辑器插件（2.1.2 / JS Plugin 1.1.0）
+
+- 编辑器扩展项目库按项目类型/右键选择插件：package.json -> JS 插件，HTML -> HTML 插件。
+- JS 插件 UI：文件树 + CodeMirror + Outline + Console/REPL + 运行文件/选中。
+- JS 插件文件树中 .html 通过主程序 `editor.open-file` 交给 HTML 编辑器插件；.css 等待 CSS 插件。
+- 主程序新增 editor.open-file 宿主 API。
