@@ -808,3 +808,10 @@ HTML_Reader（reader，独立 Tab）
 - 外壳提供固定文件树 + iframe；HTML/JS 插件通过 shell-host-request 桥接宿主 API。
 - Reader/JS 插件支持 `shell=1` 内嵌模式。
 - Reader shell 模式隐藏项目按钮/项目侧栏，并覆盖 project-tree-open 的 frame 左偏移。
+
+
+## 编辑器外壳主题（1.1.0）
+
+- shell 6 主题；localStorage key lyra.shell.theme。
+- 通过 postMessage `{type:"theme",theme}` 同步给 Reader/JS 插件。
+- Reader 新增 parent theme 监听；JS 新增 theme 监听。
