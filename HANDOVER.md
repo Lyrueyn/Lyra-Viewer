@@ -800,3 +800,11 @@ HTML_Reader（reader，独立 Tab）
 
 - 折叠/查找替换/撤销重做/自动保存/运行结束标记/7 主题。
 - HTML 编辑器 1.22.0 补全源代码折叠。
+
+
+## 编辑器单窗口外壳（2.1.4）
+
+- 新扩展种类 editor-shell；主程序目录新增 Editor Shell 条目。
+- 外壳提供固定文件树 + iframe；HTML/JS 插件通过 shell-host-request 桥接宿主 API。
+- Reader/JS 插件支持 `shell=1` 内嵌模式。
+- Reader shell 模式隐藏项目按钮/项目侧栏，并覆盖 project-tree-open 的 frame 左偏移。
