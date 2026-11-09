@@ -770,3 +770,11 @@ HTML_Reader（reader，独立 Tab）
 - 没有编辑器扩展或 HTML 编辑器插件时，HTML 阅读器只读（editorEnabled=0，隐藏编辑/保存）。
 - 主程序不再内置编辑器工作台；EditorHostView 已移除。
 - 安装链路：HTML 阅读器 → 编辑器 → HTML 编辑器插件。
+
+
+## DevTool 增强（HTML 编辑器 1.21.0）
+
+- Inspect hover：预览内浮层显示 selector/size/Color/Font/Padding/Margin/Border/Accessibility/Contrast。
+- Styles：CSSOM 收集匹配规则 + inline style，按 important/inline/specificity/order 求每个 longhand 的胜者，标记生效/覆盖。
+- Computed/Box model/Accessibility 面板。
+- 缓存 301；Reader 2.1.2 / Notebook 2.3.39 / Editor 1.1.1 同步。
