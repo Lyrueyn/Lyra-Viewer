@@ -412,7 +412,7 @@ JavaScript 编辑器 1.2.2  103,643 bytes      F7F8B038DCA5C8DD25AA6B989DE41FA24
 - 版本：编辑器外壳 1.2.1（11,596 bytes，SHA-256 9F93698E657CF4305E7591E6552116222BFC724609FE6E9E5C8F2499D3E2FC60）。
 
 
-## JavaScript 自动补全（JavaScript 编辑器 1.3.4）
+## JavaScript 自动补全（JavaScript 编辑器 1.4.0）
 
 - 自动弹出补全 + 工具栏「补全」按钮 + Ctrl+Space 手动补全。
 - 补全内容：
@@ -432,7 +432,7 @@ JavaScript 编辑器 1.2.2  103,643 bytes      F7F8B038DCA5C8DD25AA6B989DE41FA24
 编辑器外壳 1.2.1         11,596 bytes       9F93698E657CF4305E7591E6552116222BFC724609FE6E9E5C8F2499D3E2FC60
 HTML 阅读器 2.1.9        34,360 bytes       64D0CE46FE3E26BAF6E85D14E5E29D7E51190701EDA8E11105B3CC89C3D23371
 HTML 编辑器 1.23.2       246,956 bytes      A1DCA5948EF42563C6CF28DDF744E9BE44233FA510A39A556D9D5687927CC61D
-JavaScript 编辑器 1.3.4  114,822 bytes      30D8A8CE7515A1526E88EBC5656A22BD73283AD2499667B3B6328DFA09386AFC
+JavaScript 编辑器 1.4.0  127,285 bytes      37CC310AB2A2AC4D17A5C2C3CE24C23F92BB47A43A9DE54FA61BCE7F85AB590E
 编辑器扩展 1.1.1         6,375 bytes        DC9620790C34EC7170F54D9FE356EE62C6334F9AF9FDED76CE1E9C43185BCCA7
 笔记本 2.3.39            55,179 bytes       E7C03B41CA045E2D7ED2147FBFBACA50CC76F6C80DF6DBA05B93DEA0181341BD
 ```
@@ -448,3 +448,15 @@ JavaScript 编辑器 1.3.4  114,822 bytes      30D8A8CE7515A1526E88EBC5656A22BD7
 
 - 修复补全弹窗已打开时继续输入，候选仍停在旧前缀的问题。
 - 现在输入 i → in → ins 会随每次输入重新过滤候选，ins 首项变为 instanceof，不再停留 if。
+
+
+## JavaScript 语言功能（1.4.0）
+
+- 参数提示：调用时显示函数签名，高亮当前参数；支持 JSDoc 和 TS 注解。
+- 悬停提示：显示符号类型、签名、JSDoc、定义文件与行号。
+- 跳转定义：F12 / Ctrl+点击；支持 import 指向的模块。
+- 查找引用：Shift+F12，右侧「引用」面板，点击跳到对应文件行。
+- 重命名符号：F2，确认后项目内批量替换。
+- 自动导入：操作菜单 / Ctrl+. / Ctrl+Alt+I，从项目导出符号中选择并插入 import。
+- 「操作」菜单集中提供上述命令；右侧面板支持「大纲 / 引用」切换。
+- 状态栏显示当前符号类型。
