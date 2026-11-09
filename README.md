@@ -1,4 +1,4 @@
-﻿# 璃鸢镜（Lyra Viewer）v2.0.13
+# 璃鸢镜（Lyra Viewer）v2.0.13
 
 > 🤖 **本项目由 AI（DeepSeek Harness）制作/协作开发。**
 >
@@ -172,3 +172,30 @@ dotnet build app\WinUIGui\WinUIGui.csproj -c Release
 - 本仓库根目录的 `LICENSE` 为 GNU GPL v3。
 
 版本：**1.1.17**
+
+
+## 2.1.0 编辑器扩展架构
+
+- 编辑器本身是扩展（`kind=editor`），提供左侧「编辑器」Tab；Tab 只记录项目路径，不复制文件。
+- 点击编辑器项目库里的项目 → 在独立窗口打开；该窗口复用 HTML 阅读器窗口，HTML 编辑器插件存在时直接进入编辑模式。
+- HTML_Editor 改为 `kind=editor-plugin`，由编辑器扩展在独立窗口中加载；UI 与之前完全一致，也可被 HTML_Reader 嵌入。
+- 没有编辑器扩展/HTML 编辑器插件时，HTML_Reader 只能阅读，隐藏编辑/保存按钮。
+- HTML_Reader 支持 `startEdit=1`，从编辑器项目库打开时直接进入编辑模式；阅读/编辑模式可正常切换。
+- 扩展安装顺序：HTML 阅读器 → 编辑器 → HTML 编辑器插件。
+
+### 2.1.0 安装包
+
+```
+F:\DSH\LocalMediaPlayer-Workspace\packaging\_pkg_210\inno-out-210\璃鸢镜-Setup-2.1.0.exe
+433,990,115 bytes
+SHA-256: 41EA0EFE744CFBC08790FFE1D816D9D5D28F7C996B81D83C9332DBC46498066E
+```
+
+### 扩展包
+
+```
+编辑器 1.1.0       6,359 bytes   C932C6B0AB528BA16EC1C4A4CDC536ED635597DB5E5F768D935EC539BB157EA1
+HTML编辑器 1.20.0  234,751 bytes 089ACBC8BA2222AEE1237B4E223D9CAF3A75AFBF7665F27A725C96AC40AC8019
+HTML阅读器 2.1.1   29,960 bytes   4C6857ECBD8D72D599126326B191246F23A7273D92774C21B6A51506D6B5C374
+笔记本 2.3.38      55,177 bytes   50B4A0E330E31487133620E3E550A0326146887E7944B9EE7D6E3FC795A19366
+```

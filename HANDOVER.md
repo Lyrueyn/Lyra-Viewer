@@ -1,4 +1,4 @@
-﻿# 璃鸢镜（Lyra Viewer）项目交接文档
+# 璃鸢镜（Lyra Viewer）项目交接文档
 
 > 交接对象：GPT-6  
 > 项目位置：`F:\DSH\LocalMediaPlayer-Workspace`  
@@ -760,3 +760,13 @@ HTML_Reader（reader，独立 Tab）
 - 编辑预览内点击项目 HTML 链接，Reader 打开对应文件，树/源码/预览同步。
 - 新页面继续注入 inspector，Inspect 可用。
 - 修复无 head 的 HTML 预览 base href 丢失。
+
+
+## 编辑器扩展架构（2.1.0）
+
+- `editor` 扩展：项目库 Tab；只记录 HTML 项目路径；点击项目打开独立窗口。
+- 编辑器项目窗口复用 HTML 阅读器窗口；`startEdit=1` 时直接编辑，否则阅读。
+- `html-editor` 扩展改为 editor-plugin；Reader 窗口/编辑器窗口都通过嵌入方式复用其 UI。
+- 没有编辑器扩展或 HTML 编辑器插件时，HTML 阅读器只读（editorEnabled=0，隐藏编辑/保存）。
+- 主程序不再内置编辑器工作台；EditorHostView 已移除。
+- 安装链路：HTML 阅读器 → 编辑器 → HTML 编辑器插件。
