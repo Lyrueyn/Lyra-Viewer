@@ -412,7 +412,7 @@ JavaScript 编辑器 1.2.2  103,643 bytes      F7F8B038DCA5C8DD25AA6B989DE41FA24
 - 版本：编辑器外壳 1.2.1（11,596 bytes，SHA-256 9F93698E657CF4305E7591E6552116222BFC724609FE6E9E5C8F2499D3E2FC60）。
 
 
-## JavaScript 自动补全（JavaScript 编辑器 1.4.3）
+## JavaScript 自动补全（JavaScript 编辑器 1.4.4）
 
 - 自动弹出补全 + 工具栏「补全」按钮 + Ctrl+Space 手动补全。
 - 补全内容：
@@ -432,7 +432,7 @@ JavaScript 编辑器 1.2.2  103,643 bytes      F7F8B038DCA5C8DD25AA6B989DE41FA24
 编辑器外壳 1.2.1         11,596 bytes       9F93698E657CF4305E7591E6552116222BFC724609FE6E9E5C8F2499D3E2FC60
 HTML 阅读器 2.1.9        34,360 bytes       64D0CE46FE3E26BAF6E85D14E5E29D7E51190701EDA8E11105B3CC89C3D23371
 HTML 编辑器 1.23.2       246,956 bytes      A1DCA5948EF42563C6CF28DDF744E9BE44233FA510A39A556D9D5687927CC61D
-JavaScript 编辑器 1.4.3  129,960 bytes      38BF3DDCED7DA79AA6AFD260B4D3EBD4055DB177D0864B6FE5918B71E9B9B066
+JavaScript 编辑器 1.4.4  130,496 bytes      E66EBEFA9DF41779F4CBF711A6540EA97BB48D7587E5E0C13A2E40FE81C76A08
 编辑器扩展 1.1.1         6,375 bytes        DC9620790C34EC7170F54D9FE356EE62C6334F9AF9FDED76CE1E9C43185BCCA7
 笔记本 2.3.39            55,179 bytes       E7C03B41CA045E2D7ED2147FBFBACA50CC76F6C80DF6DBA05B93DEA0181341BD
 ```
@@ -471,3 +471,9 @@ JavaScript 编辑器 1.4.3  129,960 bytes      38BF3DDCED7DA79AA6AFD260B4D3EBD40
 - 悬停位置改为 lineAtHeight 取行 + coordsChar 取列，整个标识符的每个字符都能命中。
 - 常见内置成员（addEventListener、map、filter、querySelector 等）支持通用签名。
 - 未找到声明的标识符也会显示基础悬停信息，不再完全无提示。
+
+## 参数提示与属性悬停（JS 1.4.4）
+
+- 参数提示跟随光标显示，并带「参数」标签，避免和鼠标悬停提示混淆。
+- 对象字面量属性支持悬停，例如 once: true → PROP once: boolean。
+- 悬停坐标改用 lineAtHeight + coordsChar，整个标识符每个字符都能命中。
