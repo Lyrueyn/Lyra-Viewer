@@ -830,3 +830,10 @@ HTML_Reader（reader，独立 Tab）
 - 修复：notifyParent 参数 + Reader 外壳模式忽略编辑器主题 + 同主题早退。
 - Reader 首开编辑模式跳过 readFrame 渲染。
 - Playwright 验证主题只变化一次。
+
+
+## 编辑器外壳文件树 CRUD（1.2.0）
+
+- 根节点显示项目名；文件夹/文件 row dataset kind/rel/name。
+- 右键菜单：root/folder 新建文件/文件夹；folder 重命名/删除；file 重命名/删除。
+- 自绘 dialog + context menu；宿主 API host.file.*；操作后 reloadProjectTree。
