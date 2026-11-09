@@ -815,3 +815,10 @@ HTML_Reader（reader，独立 Tab）
 - shell 6 主题；localStorage key lyra.shell.theme。
 - 通过 postMessage `{type:"theme",theme}` 同步给 Reader/JS 插件。
 - Reader 新增 parent theme 监听；JS 新增 theme 监听。
+
+
+## DOM hover/主题（HTML 编辑器 1.23.0）
+
+- DOM row mouseenter → postToPreview hoverById → 预览 setHover 蓝框；mouseleave clearHighlight。
+- Reader 把 shadow 主题 sendEditor theme → HTML 编辑器 applyEditorTheme。
+- DOM 树 CSS 改用主题变量；light 主题单独降亮。
