@@ -387,7 +387,7 @@ namespace WinUIGui
                 if (root.ValueKind != JsonValueKind.Object) return false;
                 string type = ReaderProtocol.GetString(root, "type", 80);
                 if (type != "host.capabilities" && type != "host.importBook" &&
-                    type != "host.workspace.load" && type != "host.workspace.save" && type != "host.file.save" && type != "host.file.import" && type != "host.file.delete" && type != "host.file.rename" && type != "host.project.list" && type != "host.project.info" &&
+                    type != "host.workspace.load" && type != "host.workspace.save" && type != "host.file.save" && type != "host.file.import" && type != "host.file.delete" && type != "host.file.rename" && type != "host.file.mkdir" && type != "host.project.list" && type != "host.project.info" &&
                     type != "host.ready") return false;
                 string requestId = ReaderProtocol.GetString(root, "requestId", 128);
                 if (type == "host.ready")
@@ -438,7 +438,16 @@ namespace WinUIGui
                     try
                     {
                         var files = new JsonArray();
+                        var dirs = new JsonArray();
                         var skipDirs = new HashSet<string>(StringComparer.OrdinalIgnoreCase) { ".git", "node_modules", ".vs", "bin", "obj", ".idea", "dist", "build" };
+                        foreach (string fullDir in Directory.EnumerateDirectories(_projectRoot, "*", SearchOption.AllDirectories))
+                        {
+                            string relDir = Path.GetRelativePath(_projectRoot, fullDir).Replace('\\', '/');
+                            if (relDir.Split('/').Any(seg => skipDirs.Contains(seg))) continue;
+                            if (Path.GetFileName(relDir).StartsWith(".")) continue;
+                            dirs.Add(relDir);
+                            if (dirs.Count >= 1000) break;
+                        }
                         foreach (string full in Directory.EnumerateFiles(_projectRoot, "*.*", SearchOption.AllDirectories))
                         {
                             string rel = Path.GetRelativePath(_projectRoot, full).Replace('\\', '/');
@@ -468,6 +477,7 @@ namespace WinUIGui
                             ["root"] = _projectRoot,
                             ["name"] = Path.GetFileName(_projectRoot.TrimEnd(Path.DirectorySeparatorChar)),
                             ["files"] = files,
+                            ["dirs"] = dirs,
                         }.ToJsonString());
                     }
                     catch (Exception ex)
@@ -607,7 +617,8 @@ namespace WinUIGui
                     string rel = ReaderProtocol.GetString(root, "path", 2048) ?? "";
                     string? fileB64 = root.TryGetProperty("data", out var fileDataEl) && fileDataEl.ValueKind == JsonValueKind.String
                         ? fileDataEl.GetString() : null;
-                    if (string.IsNullOrWhiteSpace(rel) || string.IsNullOrEmpty(fileB64))
+                    bool projectMode = _isProject && _projectRoot != null;
+                    if (string.IsNullOrWhiteSpace(rel) || (fileB64 == null && !projectMode) || string.IsNullOrEmpty(_bookPath))
                     {
                         Wv.CoreWebView2?.PostWebMessageAsJson(new JsonObject
                         {
@@ -618,28 +629,25 @@ namespace WinUIGui
                         }.ToJsonString());
                         return true;
                     }
-                    if (string.IsNullOrEmpty(_bookPath))
-                    {
-                        Wv.CoreWebView2?.PostWebMessageAsJson(new JsonObject
-                        {
-                            ["type"] = "host.file.save.result",
-                            ["requestId"] = requestId,
-                            ["ok"] = false,
-                            ["error"] = "当前文件路径不可用",
-                        }.ToJsonString());
-                        return true;
-                    }
                     try
                     {
-                        byte[] fileBytes = Convert.FromBase64String(fileB64);
-                        string baseDir = _isProject && _projectRoot != null ? _projectRoot : (Path.GetDirectoryName(Path.GetFullPath(_bookPath)) ?? "");
+                        byte[] fileBytes = Convert.FromBase64String(fileB64 ?? "");
+                        string baseDir = projectMode ? _projectRoot! : (Path.GetDirectoryName(Path.GetFullPath(_bookPath)) ?? "");
+                        string prefix = Path.GetFullPath(baseDir).TrimEnd(Path.DirectorySeparatorChar) + Path.DirectorySeparatorChar;
                         string full = Path.GetFullPath(Path.Combine(baseDir, rel.Replace('/', Path.DirectorySeparatorChar)));
-                        string prefix = baseDir.TrimEnd(Path.DirectorySeparatorChar) + Path.DirectorySeparatorChar;
                         if (!full.StartsWith(prefix, StringComparison.OrdinalIgnoreCase)) throw new InvalidOperationException("路径越界");
-                        string ext = Path.GetExtension(full).ToLowerInvariant();
-                        if (ext != ".png" && ext != ".jpg" && ext != ".jpeg" && ext != ".webp" && ext != ".gif" && ext != ".bmp" && ext != ".svg")
-                            throw new InvalidOperationException("只允许图片文件");
-                        if (fileBytes.Length > 50 * 1024 * 1024) throw new InvalidOperationException("图片超过 50MB");
+                        if (!projectMode)
+                        {
+                            string ext = Path.GetExtension(full).ToLowerInvariant();
+                            if (ext != ".png" && ext != ".jpg" && ext != ".jpeg" && ext != ".webp" && ext != ".gif" && ext != ".bmp" && ext != ".svg")
+                                throw new InvalidOperationException("只允许图片文件");
+                            if (fileBytes.Length > 50 * 1024 * 1024) throw new InvalidOperationException("图片超过 50MB");
+                        }
+                        else
+                        {
+                            if (Directory.Exists(full)) throw new InvalidOperationException("目标路径是文件夹");
+                            if (fileBytes.Length > 100 * 1024 * 1024) throw new InvalidOperationException("文件超过 100MB");
+                        }
                         Directory.CreateDirectory(Path.GetDirectoryName(full)!);
                         string tmp = full + ".tmp-" + Guid.NewGuid().ToString("N");
                         try { File.WriteAllBytes(tmp, fileBytes); File.Move(tmp, full, true); }
@@ -674,11 +682,27 @@ namespace WinUIGui
                     }
                     try
                     {
-                        string baseDir = _isProject && _projectRoot != null ? _projectRoot : (Path.GetDirectoryName(Path.GetFullPath(_bookPath)) ?? "");
-                        string assetsRoot = _isProject ? Path.GetFullPath(baseDir).TrimEnd(Path.DirectorySeparatorChar) + Path.DirectorySeparatorChar : Path.GetFullPath(Path.Combine(baseDir, "assets")).TrimEnd(Path.DirectorySeparatorChar) + Path.DirectorySeparatorChar;
+                        bool projectMode = _isProject && _projectRoot != null;
+                        string baseDir = projectMode ? _projectRoot! : (Path.GetDirectoryName(Path.GetFullPath(_bookPath)) ?? "");
+                        string allowedRoot = projectMode
+                            ? Path.GetFullPath(baseDir).TrimEnd(Path.DirectorySeparatorChar) + Path.DirectorySeparatorChar
+                            : Path.GetFullPath(Path.Combine(baseDir, "assets")).TrimEnd(Path.DirectorySeparatorChar) + Path.DirectorySeparatorChar;
                         string full = Path.GetFullPath(Path.Combine(baseDir, rel.Replace('/', Path.DirectorySeparatorChar)));
-                        if (!full.StartsWith(assetsRoot, StringComparison.OrdinalIgnoreCase)) throw new InvalidOperationException("只允许删除 assets 目录内的文件");
-                        if (File.Exists(full)) File.Delete(full);
+                        if (!full.StartsWith(allowedRoot, StringComparison.OrdinalIgnoreCase)) throw new InvalidOperationException(projectMode ? "路径越界" : "只允许删除 assets 目录内的文件");
+                        if (Directory.Exists(full))
+                        {
+                            if (!projectMode) throw new InvalidOperationException("只允许删除 assets 目录内的文件");
+                            if ((File.GetAttributes(full) & FileAttributes.ReparsePoint) != 0) throw new InvalidOperationException("不允许删除链接目录");
+                            Directory.Delete(full, true);
+                        }
+                        else if (File.Exists(full))
+                        {
+                            File.Delete(full);
+                        }
+                        else
+                        {
+                            throw new FileNotFoundException("文件或文件夹不存在");
+                        }
                         Wv.CoreWebView2?.PostWebMessageAsJson(new JsonObject { ["type"] = "host.file.delete.result", ["requestId"] = requestId, ["ok"] = true }.ToJsonString());
                     }
                     catch (Exception ex)
@@ -698,20 +722,61 @@ namespace WinUIGui
                     }
                     try
                     {
-                        string baseDir = _isProject && _projectRoot != null ? _projectRoot : (Path.GetDirectoryName(Path.GetFullPath(_bookPath)) ?? "");
-                        string assetsRoot = _isProject ? Path.GetFullPath(baseDir).TrimEnd(Path.DirectorySeparatorChar) + Path.DirectorySeparatorChar : Path.GetFullPath(Path.Combine(baseDir, "assets")).TrimEnd(Path.DirectorySeparatorChar) + Path.DirectorySeparatorChar;
+                        bool projectMode = _isProject && _projectRoot != null;
+                        string baseDir = projectMode ? _projectRoot! : (Path.GetDirectoryName(Path.GetFullPath(_bookPath)) ?? "");
+                        string allowedRoot = projectMode
+                            ? Path.GetFullPath(baseDir).TrimEnd(Path.DirectorySeparatorChar) + Path.DirectorySeparatorChar
+                            : Path.GetFullPath(Path.Combine(baseDir, "assets")).TrimEnd(Path.DirectorySeparatorChar) + Path.DirectorySeparatorChar;
                         string fromFull = Path.GetFullPath(Path.Combine(baseDir, fromRel.Replace('/', Path.DirectorySeparatorChar)));
                         string toFull = Path.GetFullPath(Path.Combine(baseDir, toRel.Replace('/', Path.DirectorySeparatorChar)));
-                        if (!fromFull.StartsWith(assetsRoot, StringComparison.OrdinalIgnoreCase) || !toFull.StartsWith(assetsRoot, StringComparison.OrdinalIgnoreCase)) throw new InvalidOperationException("只允许重命名 assets 目录内的文件");
-                        if (!File.Exists(fromFull)) throw new InvalidOperationException("源文件不存在");
-                        if (File.Exists(toFull)) throw new InvalidOperationException("目标文件已存在");
-                        Directory.CreateDirectory(Path.GetDirectoryName(toFull)!);
-                        File.Move(fromFull, toFull);
+                        if (!fromFull.StartsWith(allowedRoot, StringComparison.OrdinalIgnoreCase) || !toFull.StartsWith(allowedRoot, StringComparison.OrdinalIgnoreCase))
+                            throw new InvalidOperationException(projectMode ? "路径越界" : "只允许重命名 assets 目录内的文件");
+                        if (string.Equals(fromFull, toFull, StringComparison.OrdinalIgnoreCase)) throw new InvalidOperationException("源和目标相同");
+                        if (File.Exists(toFull) || Directory.Exists(toFull)) throw new InvalidOperationException("目标已存在");
+                        if (Directory.Exists(fromFull))
+                        {
+                            if (!projectMode) throw new InvalidOperationException("只允许重命名 assets 目录内的文件");
+                            Directory.CreateDirectory(Path.GetDirectoryName(toFull)!);
+                            Directory.Move(fromFull, toFull);
+                        }
+                        else if (File.Exists(fromFull))
+                        {
+                            Directory.CreateDirectory(Path.GetDirectoryName(toFull)!);
+                            File.Move(fromFull, toFull);
+                        }
+                        else
+                        {
+                            throw new FileNotFoundException("源文件或文件夹不存在");
+                        }
                         Wv.CoreWebView2?.PostWebMessageAsJson(new JsonObject { ["type"] = "host.file.rename.result", ["requestId"] = requestId, ["ok"] = true, ["path"] = toRel }.ToJsonString());
                     }
                     catch (Exception ex)
                     {
                         Wv.CoreWebView2?.PostWebMessageAsJson(new JsonObject { ["type"] = "host.file.rename.result", ["requestId"] = requestId, ["ok"] = false, ["error"] = ex.Message }.ToJsonString());
+                    }
+                    return true;
+                }
+                if (type == "host.file.mkdir")
+                {
+                    string rel = ReaderProtocol.GetString(root, "path", 4096) ?? "";
+                    if (string.IsNullOrWhiteSpace(rel) || !_isProject || _projectRoot == null)
+                    {
+                        Wv.CoreWebView2?.PostWebMessageAsJson(new JsonObject { ["type"] = "host.file.mkdir.result", ["requestId"] = requestId, ["ok"] = false, ["error"] = "仅项目模式支持新建文件夹" }.ToJsonString());
+                        return true;
+                    }
+                    try
+                    {
+                        string baseDir = Path.GetFullPath(_projectRoot);
+                        string prefix = baseDir.TrimEnd(Path.DirectorySeparatorChar) + Path.DirectorySeparatorChar;
+                        string full = Path.GetFullPath(Path.Combine(baseDir, rel.Replace('/', Path.DirectorySeparatorChar)));
+                        if (!full.StartsWith(prefix, StringComparison.OrdinalIgnoreCase)) throw new InvalidOperationException("路径越界");
+                        if (File.Exists(full)) throw new InvalidOperationException("同名文件已存在");
+                        Directory.CreateDirectory(full);
+                        Wv.CoreWebView2?.PostWebMessageAsJson(new JsonObject { ["type"] = "host.file.mkdir.result", ["requestId"] = requestId, ["ok"] = true, ["path"] = rel }.ToJsonString());
+                    }
+                    catch (Exception ex)
+                    {
+                        Wv.CoreWebView2?.PostWebMessageAsJson(new JsonObject { ["type"] = "host.file.mkdir.result", ["requestId"] = requestId, ["ok"] = false, ["error"] = ex.Message }.ToJsonString());
                     }
                     return true;
                 }
