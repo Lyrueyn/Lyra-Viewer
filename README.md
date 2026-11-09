@@ -410,3 +410,29 @@ JavaScript 编辑器 1.2.2  103,643 bytes      F7F8B038DCA5C8DD25AA6B989DE41FA24
 - 文件夹行增加小三角，显示展开/折叠状态。
 - 文件行保留隐藏占位三角，同层级文件夹和文件的图标/文件名对齐。
 - 版本：编辑器外壳 1.2.1（11,596 bytes，SHA-256 9F93698E657CF4305E7591E6552116222BFC724609FE6E9E5C8F2499D3E2FC60）。
+
+
+## JavaScript 自动补全（JavaScript 编辑器 1.3.1）
+
+- 自动弹出补全 + 工具栏「补全」按钮 + Ctrl+Space 手动补全。
+- 补全内容：
+  - JavaScript 关键字 / 字面量
+  - 全局对象：console、document、window、Math、JSON、Promise、localStorage 等
+  - 当前文件里的函数、类、箭头函数、顶层变量（来自 Outline 解析）
+  - 成员补全：console. / document. / Math. / location. / history. 等
+  - 代码片段：function、async function、arrow function、if、for、for…of、try/catch、class、console.log、querySelector、addEventListener
+- 补全项带类型徽标（KW/FN/VAR/CLS/SNIP/GLB/PROP）与说明。
+- 跟随编辑器主题（深色/浅色）。
+- HTML 编辑器原有的 HTML 标签、属性、class/id、CSS 属性/值补全保持不变。
+
+### 版本
+
+```
+主程序 2.1.4            433,963,636 bytes  1FE72DE5F26B98A31FF88F6FA80EEEB6561666FB0D64EE1D4D85EA7E2591A2FC
+编辑器外壳 1.2.1         11,596 bytes       9F93698E657CF4305E7591E6552116222BFC724609FE6E9E5C8F2499D3E2FC60
+HTML 阅读器 2.1.9        34,360 bytes       64D0CE46FE3E26BAF6E85D14E5E29D7E51190701EDA8E11105B3CC89C3D23371
+HTML 编辑器 1.23.1       244,446 bytes      A074700483A62FEE65801E1A173D172BCDBDF913CFA8BA2160A337676ED40153
+JavaScript 编辑器 1.3.1  114,398 bytes      775D5DB2BC90F2C4AC5CE257D94EFFCC63EA91A85A7F3454DF6F09EF85B64315
+编辑器扩展 1.1.1         6,375 bytes        DC9620790C34EC7170F54D9FE356EE62C6334F9AF9FDED76CE1E9C43185BCCA7
+笔记本 2.3.39            55,179 bytes       E7C03B41CA045E2D7ED2147FBFBACA50CC76F6C80DF6DBA05B93DEA0181341BD
+```
