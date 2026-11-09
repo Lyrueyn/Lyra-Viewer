@@ -79,5 +79,15 @@
         "repo": "Lyrueyn/Lyra-Extension-HTML-Reader",
         "asset": "lyra-ext-html-reader.zip",
         "description": "独立 HTML 阅读 Tab；安装编辑器扩展 + HTML 编辑器插件后可进入编辑模式，否则只读。"
+    },
+    {
+        "id": "editor-shell",
+        "name": "编辑器窗口",
+        "repo": "Lyrueyn/Lyra-Editor-Shell",
+        "asset": "lyra-ext-editor-shell.zip",
+        "description": "编辑器扩展的单窗口外壳：左侧项目文件树，右侧按文件类型内嵌 HTML / JavaScript 编辑器插件。需要先安装编辑器扩展。",
+        "requiresAny": [
+            "editor"
+        ]
     }
 ]

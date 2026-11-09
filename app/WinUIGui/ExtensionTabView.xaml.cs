@@ -231,6 +231,20 @@ namespace WinUIGui
         private void OpenEditorProject(string path, string entryRel, string preferredPlugin)
         {
             var defs = ExtensionCatalog.LoadDefinitions();
+            if (string.IsNullOrWhiteSpace(preferredPlugin))
+            {
+                var shellDef = defs.FirstOrDefault(d => d.IsEditorShell);
+                if (shellDef != null)
+                {
+                    var shellWin = ExtensionManager.OpenReader(shellDef, path, entryRel);
+                    if (shellWin != null)
+                    {
+                        shellWin.Activate();
+                        StatusText.Text = "正在打开编辑器窗口：" + Path.GetFileName(path);
+                        return;
+                    }
+                }
+            }
             var plugins = defs.Where(d => d.IsEditorPlugin).ToList();
             if (plugins.Count == 0)
             {

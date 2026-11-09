@@ -146,6 +146,8 @@ namespace WinUIGui
                     def.Kind = ExtensionKind.EditorHost;
                 else if (string.Equals(info.Kind, "editor-plugin", StringComparison.OrdinalIgnoreCase))
                     def.Kind = ExtensionKind.EditorPlugin;
+                    else if (string.Equals(info.Kind, "editor-shell", StringComparison.OrdinalIgnoreCase))
+                        def.Kind = ExtensionKind.EditorShell;
             else
                 def.Kind = ExtensionKind.Tool;
 
@@ -280,7 +282,7 @@ namespace WinUIGui
         }
     }
 
-    public enum ExtensionKind { Tool, Reader, Notebook, Layer, EditorHost, EditorPlugin }
+    public enum ExtensionKind { Tool, Reader, Notebook, Layer, EditorHost, EditorPlugin, EditorShell }
 
     public sealed class ExtensionDefinition
     {
@@ -293,5 +295,6 @@ namespace WinUIGui
         public bool IsLayer => Kind == ExtensionKind.Layer;
         public bool IsEditorHost => Kind == ExtensionKind.EditorHost;
         public bool IsEditorPlugin => Kind == ExtensionKind.EditorPlugin;
+            public bool IsEditorShell => Kind == ExtensionKind.EditorShell;
     }
 }
