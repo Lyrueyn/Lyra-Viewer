@@ -778,3 +778,11 @@ HTML_Reader（reader，独立 Tab）
 - Styles：CSSOM 收集匹配规则 + inline style，按 important/inline/specificity/order 求每个 longhand 的胜者，标记生效/覆盖。
 - Computed/Box model/Accessibility 面板。
 - 缓存 301；Reader 2.1.2 / Notebook 2.3.39 / Editor 1.1.1 同步。
+
+
+## 项目文件树操作（2.1.1 / Reader 2.1.3）
+
+- Reader 文件树：新建文件/文件夹、重命名、删除（右键菜单 + 顶部按钮）。
+- C# 宿主：host.file.mkdir；项目模式下 host.file.save/delete/rename 允许操作项目根目录内任意文件/文件夹。
+- host.project.list 返回 dirs 数组，空文件夹可见。
+- 当前文件被重命名/删除时，Reader 自动切换当前路径或下一个 HTML。
