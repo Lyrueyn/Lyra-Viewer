@@ -822,3 +822,11 @@ HTML_Reader（reader，独立 Tab）
 - DOM row mouseenter → postToPreview hoverById → 预览 setHover 蓝框；mouseleave clearHighlight。
 - Reader 把 shadow 主题 sendEditor theme → HTML 编辑器 applyEditorTheme。
 - DOM 树 CSS 改用主题变量；light 主题单独降亮。
+
+
+## 主题回环修复（1.23.1 / 2.1.9）
+
+- 原因：HTML 编辑器 applyEditorTheme → postToParent theme → Reader applyReaderTheme → sendEditor theme → 回环。
+- 修复：notifyParent 参数 + Reader 外壳模式忽略编辑器主题 + 同主题早退。
+- Reader 首开编辑模式跳过 readFrame 渲染。
+- Playwright 验证主题只变化一次。
