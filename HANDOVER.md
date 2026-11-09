@@ -794,3 +794,9 @@ HTML_Reader（reader，独立 Tab）
 - JS 插件 UI：文件树 + CodeMirror + Outline + Console/REPL + 运行文件/选中。
 - JS 插件文件树中 .html 通过主程序 `editor.open-file` 交给 HTML 编辑器插件；.css 等待 CSS 插件。
 - 主程序新增 editor.open-file 宿主 API。
+
+
+## JS 编辑器 1.2.0（2026-11）
+
+- 折叠/查找替换/撤销重做/自动保存/运行结束标记/7 主题。
+- HTML 编辑器 1.22.0 补全源代码折叠。
