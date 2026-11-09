@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "revision": 2,
+  "preferences": {
+    "theme": "custom",
+    "bg": "#ABCDEF",
+    "fg": "#2B2620"
+  },
+  "fieldSequences": {},
+  "preferenceOrders": {
+    "theme": 6,
+    "bg": 6,
+    "fg": 5
+  },
+  "updatedAt": "2026-10-29T11:14:42.7262634Z"
+}

@@ -1,0 +1,109 @@
+{
+  "generatedAt": "2026-10-28T15:16:24.673Z",
+  "candidate": "D:\\Temp\\Lyra-Extension-Epub",
+  "identity": {
+    "expectedCommit": "99bd102f4c9b4c1a92668d04e2e12260e523ad94",
+    "expectedPackageSha256": "f2b2741a166749e7108e010151a46246ac2df40bf1f0861050e8e12d612c535c",
+    "hashes": {
+      "epub-book.js": "fdc8b91706bdcff5e0c7bdbfbd4edf7d223085bfc98ccf21e7341beae4d61f89",
+      "search.js": "470c4fe4bb68f299b1aa367cffd1f3b5e616af2dad25e7b1cc1d10f25bea702a",
+      "paginator.js": "f058d30225e1d034df3d29cc3d67f9e5526535d806542a2732257d87b063207c",
+      "reader.js": "4d3b0b868bfa8fdcaaf109ba592087c61ecaf1ecf8bb650ac91bf357142fc5f5"
+    }
+  },
+  "runtime": {
+    "node": "v24.18.0",
+    "jsdom": "29.1.1"
+  },
+  "evidenceKind": "Frozen original JavaScript loaded unmodified; jsdom DOM/Range and real JSZip. Controlled async dependencies and geometry doubles disclosed per case. Not browser visibility, SVG painting or native desktop evidence.",
+  "results": [
+    {
+      "id": "A01",
+      "verdict": "PASS",
+      "title": "Image null text offset remains element-based through original requestLayout",
+      "detail": {
+        "before": {
+          "elementPath": [
+            1
+          ],
+          "textOffset": null,
+          "quote": "",
+          "prefix": "",
+          "suffix": "",
+          "elementId": "",
+          "chapterFraction": 0.6,
+          "pageIndex": 3
+        },
+        "after": {
+          "elementPath": [
+            1
+          ],
+          "textOffset": null,
+          "quote": "",
+          "prefix": "",
+          "suffix": "",
+          "elementId": "",
+          "chapterFraction": 0.4,
+          "pageIndex": 2
+        },
+        "pageW": 900,
+        "pageIndex": 2,
+        "boundary": "Deterministic element rectangles, not browser image painting."
+      }
+    },
+    {
+      "id": "A02",
+      "verdict": "PASS",
+      "title": "Late image relayout preserves confirmed pure-element anchor",
+      "detail": {
+        "supplied": {
+          "elementPath": [
+            1
+          ],
+          "textOffset": null,
+          "quote": "",
+          "prefix": "",
+          "suffix": "",
+          "elementId": "",
+          "chapterFraction": 0.4,
+          "pageIndex": 2
+        },
+        "page": 2,
+        "boundary": "Original timer/layout/locator; late load event timing and image pixels require browser."
+      }
+    },
+    {
+      "id": "A03",
+      "verdict": "PASS",
+      "title": "Hot timer cancellation followed immediately by fresh query",
+      "detail": {
+        "cancelled": true,
+        "timerRan": true,
+        "freshTotal": 1
+      }
+    },
+    {
+      "id": "A04",
+      "verdict": "OBSERVATION",
+      "title": "Cold cancellation is observed after synchronous whole-chapter DOM/model construction",
+      "detail": {
+        "error": "搜索已取消",
+        "trace": [
+          {
+            "stage": "parse-start",
+            "ms": 0.096
+          },
+          {
+            "stage": "parse-end",
+            "ms": 88.616
+          },
+          {
+            "stage": "cancel-timer",
+            "ms": 89.045
+          }
+        ],
+        "boundary": "Controlled immediately resolved readText + Node/jsdom; no internal parser yield, no browser latency/serious jank claim."
+      }
+    }
+  ]
+}

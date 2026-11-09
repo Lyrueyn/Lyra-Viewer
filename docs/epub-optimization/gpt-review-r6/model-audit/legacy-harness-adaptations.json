@@ -1,0 +1,15 @@
+{
+  "changes": [
+    {
+      "source": "audit-reader-flow.cjs",
+      "adapted": "audit-reader-flow-adapted.cjs",
+      "reason": "Old intentional setSection double never populates _committedView. Add captureView to that same double so R6 reader can restore metadata. Assertions unchanged, all real-Paginator suites remain original."
+    },
+    {
+      "source": "audit-r5-late-cancel.cjs",
+      "adapted": "audit-r5-late-cancel-adapted.cjs",
+      "reason": "R6 rollback calls resource wait on old image-free document. Preserve the already captured candidate image when that happens; dispatch remains on exact old candidate image. Assertions unchanged."
+    }
+  ],
+  "originalsKept": true
+}

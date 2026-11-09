@@ -1,0 +1,40 @@
+[
+  {
+    "id": "B13_CORRUPT_LOCAL_POSITION",
+    "ready": false,
+    "error": "打开 EPUB 失败：当前窗口本地阅读状态损坏，未覆盖原数据",
+    "raw": "{invalid-json",
+    "defect": true,
+    "preserved": true
+  },
+  {
+    "id": "B13_CORRUPT_LOCAL_PREFERENCES",
+    "ready": true,
+    "error": "",
+    "raw": "{invalid-json",
+    "defect": false,
+    "preserved": true
+  },
+  {
+    "id": "B13_CORRUPT_LOCAL_BOOKMARKS",
+    "ready": false,
+    "error": "打开 EPUB 失败：当前窗口本地书签损坏，未覆盖原数据",
+    "raw": "{invalid-json",
+    "defect": true,
+    "preserved": true
+  },
+  {
+    "id": "B14_FAILED_SAVE_SWITCH_LOSES_PENDING_POSITION",
+    "book": "FRESH",
+    "modified": false,
+    "oldSaved": null,
+    "writes": [
+      "sha256:2387ace6a1606bf93c703ab139d1ed59aa96bfefe801b743e8f64ebf2feeda3b",
+      "sha256:2387ace6a1606bf93c703ab139d1ed59aa96bfefe801b743e8f64ebf2feeda3b",
+      "sha256:b9c613d578dff1037c786fa1a0744c091d39ef75f96bd68a10ba260004cd1e78"
+    ],
+    "status": "位置已保存在当前窗口",
+    "defect": true,
+    "note": "Controlled temporary storage failure; verifies whether the old-book unsaved snapshot survives switching and later storage recovery."
+  }
+]

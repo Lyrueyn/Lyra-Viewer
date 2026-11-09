@@ -1,4 +1,4 @@
-using Microsoft.UI.Xaml;
+﻿using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Automation;
 using Microsoft.UI.Xaml.Input;
@@ -651,7 +651,7 @@ public sealed partial class MainWindow : Window
     }
 
     // ================= 通用扩展 Tab =================
-    private readonly Dictionary<string, ExtensionTabView> _extensionViews = new(StringComparer.OrdinalIgnoreCase);
+    private readonly Dictionary<string, UserControl> _extensionViews = new(StringComparer.OrdinalIgnoreCase);
     private readonly Dictionary<string, Button> _extensionNavButtons = new(StringComparer.OrdinalIgnoreCase);
 
     /// <summary>
@@ -672,7 +672,8 @@ public sealed partial class MainWindow : Window
             Brush subBrush = res.TryGetValue("TextSub", out var subObj) && subObj is Brush sb ? sb : new SolidColorBrush(Windows.UI.Color.FromArgb(255, 156, 160, 165));
             foreach (var def in ExtensionCatalog.LoadDefinitions().Where(x => x.Library.Sidebar))
             {
-                var view = new ExtensionTabView(def) { Visibility = Visibility.Collapsed };
+                UserControl view = new ExtensionTabView(def);
+                view.Visibility = Visibility.Collapsed;
                 ExtensionTabsHost.Children.Add(view);
                 _extensionViews[def.Info.Id] = view;
 
@@ -728,7 +729,7 @@ public sealed partial class MainWindow : Window
         if (!enabled) return false;
         foreach (var v in _extensionViews.Values) v.Visibility = Visibility.Collapsed;
         view.Visibility = Visibility.Visible;
-        view.Refresh();
+        if (view is ExtensionTabView tabView) tabView.Refresh();
         return true;
     }
 
@@ -750,7 +751,7 @@ public sealed partial class MainWindow : Window
             var existing = ExtensionLibraryService.Load(def.Info.Id)
                 .FirstOrDefault(x => string.Equals(Path.GetFullPath(x.Path), full, StringComparison.OrdinalIgnoreCase));
             if (existing == null) ExtensionLibraryService.AddLinkedFile(def, full);
-            if (_extensionViews.TryGetValue(def.Info.Id, out var view)) view.Refresh();
+            if (_extensionViews.TryGetValue(def.Info.Id, out var view) && view is ExtensionTabView tv) tv.Refresh();
             var win = ExtensionManager.OpenReader(def, full);
             if (win == null) return false;
             win.Activate();
@@ -772,7 +773,7 @@ public sealed partial class MainWindow : Window
             var existing = ExtensionLibraryService.Load(def.Info.Id)
                 .FirstOrDefault(x => string.Equals(Path.GetFullPath(x.Path), full, StringComparison.OrdinalIgnoreCase));
             if (existing == null) ExtensionLibraryService.AddLinkedFile(def, full);
-            if (_extensionViews.TryGetValue(def.Info.Id, out var view)) view.Refresh();
+            if (_extensionViews.TryGetValue(def.Info.Id, out var view) && view is ExtensionTabView tv) tv.Refresh();
             var win = ExtensionManager.OpenReader(def, full);
             if (win == null) return false;
             win.Activate();
@@ -820,7 +821,7 @@ public sealed partial class MainWindow : Window
             }
             catch { }
             var item = ExtensionLibraryService.ImportOrUpdate(def, full, sourceId, title, author, cover);
-            if (_extensionViews.TryGetValue(def.Info.Id, out var view)) view.Refresh();
+            if (_extensionViews.TryGetValue(def.Info.Id, out var view) && view is ExtensionTabView tv) tv.Refresh();
             return (true, def.Info.Id, item.Title, "");
         }
         catch (Exception ex) { return (false, "", "", ex.Message); }

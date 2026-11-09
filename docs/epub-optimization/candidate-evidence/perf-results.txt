@@ -1,0 +1,1 @@
+{"firstReadableMs":466,"tocItems":200,"chapterSwitch200Ms":4462,"chapterSwitchCount":199,"chapterSwitchAvgMs":22,"afterStress":{"spine":199,"iframes":1,"outerNodes":307,"resourceCount":0,"heap":8001532},"searchMs":355,"searchResults":1,"searchInfo":"找到 1 处 · 索引 0.3 MB","afterRebooks":{"iframes":1,"outerNodes":307,"heap":8356591,"resourceCount":0},"errors":[]}

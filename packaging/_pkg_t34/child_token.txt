@@ -1,0 +1,16 @@
+﻿Identity=PURE-20260618EW\Administrator
+IsAdmin=True
+TokenType=2380
+Groups:
+  PURE-20260618EW\None  S-1-5-21-1462119672-371037023-1193573359-513
+  Everyone  S-1-1-0
+  NT AUTHORITY\本地帐户和管理员组成员  S-1-5-114
+  BUILTIN\Administrators  S-1-5-32-544
+  BUILTIN\Users  S-1-5-32-545
+  NT AUTHORITY\INTERACTIVE  S-1-5-4
+  CONSOLE LOGON  S-1-2-1
+  NT AUTHORITY\Authenticated Users  S-1-5-11
+  NT AUTHORITY\This Organization  S-1-5-15
+  NT AUTHORITY\本地帐户  S-1-5-113
+  LOCAL  S-1-2-0
+  NT AUTHORITY\NTLM Authentication  S-1-5-64-10

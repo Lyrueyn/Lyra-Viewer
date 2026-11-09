@@ -1,0 +1,158 @@
+{
+  "evidenceKind": "Original JS/controller/C# serializers and isolated files; explicit capacity/delayed acknowledgement injection",
+  "results": [
+    {
+      "id": "K01-MIXED-FIELD-COMPLETION-PRUNE",
+      "pass": true,
+      "expected": "specified behavior",
+      "actual": {
+        "held": [
+          {
+            "req": {
+              "protocol": "lyra-reader",
+              "version": 3,
+              "type": "state.savePreferences",
+              "requestId": "req-d382c3a8-ad02-4aa1-90ab-c8939f4e4001",
+              "sessionId": "2fb390f050df42b2ba978c1fc7adf4ea",
+              "scope": "global",
+              "preferences": {
+                "theme": "sepia",
+                "bg": "#F5F0E6",
+                "fg": "#2B2620"
+              },
+              "grants": {
+                "theme": "pg-31f74ccba8594a2d96b1fde12de3cb36",
+                "bg": "pg-31f74ccba8594a2d96b1fde12de3cb36",
+                "fg": "pg-31f74ccba8594a2d96b1fde12de3cb36"
+              }
+            },
+            "msg": {
+              "protocol": "lyra-reader",
+              "version": 3,
+              "type": "response",
+              "requestId": "req-d382c3a8-ad02-4aa1-90ab-c8939f4e4001",
+              "sessionId": "2fb390f050df42b2ba978c1fc7adf4ea",
+              "ok": true,
+              "result": {
+                "revision": 2,
+                "applied": [
+                  "fg"
+                ],
+                "idempotent": [],
+                "superseded": [
+                  "theme",
+                  "bg"
+                ]
+              }
+            },
+            "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"req-d382c3a8-ad02-4aa1-90ab-c8939f4e4001\",\"sessionId\":\"2fb390f050df42b2ba978c1fc7adf4ea\",\"ok\":true,\"result\":{\"revision\":2,\"applied\":[\"fg\"],\"idempotent\":[],\"superseded\":[\"theme\",\"bg\"]}}"
+          }
+        ],
+        "committed": {
+          "version": 1,
+          "revision": 2,
+          "preferences": {
+            "theme": "custom",
+            "bg": "#ABCDEF",
+            "fg": "#2B2620"
+          },
+          "fieldSequences": {},
+          "preferenceOrders": {
+            "theme": 4096,
+            "bg": 4096,
+            "fg": 4095
+          },
+          "updatedAt": "2026-10-29T11:18:40.8607994Z"
+        },
+        "count": {
+          "count": 4096,
+          "order": 4097
+        },
+        "file": {
+          "version": 1,
+          "revision": 3,
+          "preferences": {
+            "theme": "custom",
+            "bg": "#ABCDEF",
+            "fg": "#2B2620",
+            "lineHeight": 2.2
+          },
+          "fieldSequences": {},
+          "preferenceOrders": {
+            "theme": 4096,
+            "bg": 4096,
+            "fg": 4095,
+            "lineHeight": 4097
+          },
+          "updatedAt": "2026-10-29T11:18:40.9354153Z"
+        },
+        "pending": [],
+        "acks": [
+          {
+            "type": "host.finalized",
+            "requestId": "8eb197ff64384e13b67c10b7a3fac947",
+            "sessionId": "2fb390f050df42b2ba978c1fc7adf4ea",
+            "ok": true,
+            "revision": 3,
+            "closeDiagnostics": []
+          }
+        ],
+        "requests": [
+          {
+            "protocol": "lyra-reader",
+            "version": 3,
+            "type": "state.savePreferences",
+            "requestId": "req-d382c3a8-ad02-4aa1-90ab-c8939f4e4001",
+            "sessionId": "2fb390f050df42b2ba978c1fc7adf4ea",
+            "scope": "global",
+            "preferences": {
+              "theme": "sepia",
+              "bg": "#F5F0E6",
+              "fg": "#2B2620"
+            },
+            "grants": {
+              "theme": "pg-31f74ccba8594a2d96b1fde12de3cb36",
+              "bg": "pg-31f74ccba8594a2d96b1fde12de3cb36",
+              "fg": "pg-31f74ccba8594a2d96b1fde12de3cb36"
+            }
+          },
+          {
+            "protocol": "lyra-reader",
+            "version": 3,
+            "type": "state.savePreferences",
+            "requestId": "req-c9ad5167-3013-4718-81dd-2ef96da189df",
+            "sessionId": "2fb390f050df42b2ba978c1fc7adf4ea",
+            "scope": "global",
+            "preferences": {
+              "theme": "sepia",
+              "bg": "#F5F0E6",
+              "fg": "#2B2620"
+            },
+            "grants": {
+              "theme": "pg-31f74ccba8594a2d96b1fde12de3cb36",
+              "bg": "pg-31f74ccba8594a2d96b1fde12de3cb36",
+              "fg": "pg-31f74ccba8594a2d96b1fde12de3cb36"
+            }
+          },
+          {
+            "protocol": "lyra-reader",
+            "version": 3,
+            "type": "state.savePreferences",
+            "requestId": "req-26b508ca-cf6a-4960-bcd4-5c47065f2276",
+            "sessionId": "2fb390f050df42b2ba978c1fc7adf4ea",
+            "scope": "global",
+            "preferences": {
+              "lineHeight": 2.2
+            },
+            "grants": {
+              "lineHeight": "pg-ac301e9ceae44fa4ad52be2a98f69f36"
+            }
+          }
+        ],
+        "elapsedMs": 11294,
+        "errors": [],
+        "boundary": "4094 incomplete font grants; original A sepia UI operation; newer original B custom background supersedes A theme/bg; A fg committed but ack held; line grant reclaims completed A token; retry must preserve all field dispositions"
+      }
+    }
+  ]
+}

@@ -1,0 +1,427 @@
+[
+  {
+    "path": "audit.cjs",
+    "bytes": 18752,
+    "sha256": "1275bbe5b7f0eb813156f06653593761886dcd88037246964fc690f2980dbb18"
+  },
+  {
+    "path": "boundary-console.log",
+    "bytes": 207,
+    "sha256": "61a400468c1c90796415102a5339ca798f6a9a7f031b83f710c64b0864a4b185"
+  },
+  {
+    "path": "boundary.cjs",
+    "bytes": 6275,
+    "sha256": "e9231a1536c2414dc70c32d30854632203533eb66dbe14b2d83bd0e6653323b7"
+  },
+  {
+    "path": "build.log",
+    "bytes": 3870,
+    "sha256": "d204327dcb36e27f2b430011d29955713017a9623ee870e74c07aca0ab3278d1"
+  },
+  {
+    "path": "capacity-ack-console.log",
+    "bytes": 40,
+    "sha256": "9f89a11817d1bd8b082ab4ae412a274e32980e226ab1ebdb5f54b92894e5d2ee"
+  },
+  {
+    "path": "capacity-burst-console.log",
+    "bytes": 37,
+    "sha256": "d760b0a630c81c85465f6a25d706e09beb55dd0b8eed1048550322ffb0c4a722"
+  },
+  {
+    "path": "capacity.cjs",
+    "bytes": 2486,
+    "sha256": "4b624345fd91f1e31bac9890571bdbda398b3a46e126f2f9846d7ad30feaa595"
+  },
+  {
+    "path": "finalize-evidence.cjs",
+    "bytes": 3080,
+    "sha256": "caf8ddd858cb2e817d635113c57c590bfcf0e2dcf681b99278e6faac0b80dd02"
+  },
+  {
+    "path": "harness.cjs",
+    "bytes": 9044,
+    "sha256": "15186b8e7907ea0aafd1ca17be8075bc612dfd8b98f961dea77f90f74fc41be1"
+  },
+  {
+    "path": "HostAudit.csproj",
+    "bytes": 668,
+    "sha256": "cf85337f51e4fd1a162d51426edaad210232d1c739d6dd3e7eaa90f7062f8576"
+  },
+  {
+    "path": "inputs-after.json",
+    "bytes": 18939,
+    "sha256": "c3201c4170ebd370c73fe8f8e37cf7d531c2950cad07fcb34cf5521eea034178"
+  },
+  {
+    "path": "inputs-before.json",
+    "bytes": 18939,
+    "sha256": "c3201c4170ebd370c73fe8f8e37cf7d531c2950cad07fcb34cf5521eea034178"
+  },
+  {
+    "path": "integrity.json",
+    "bytes": 5000,
+    "sha256": "5fbbd288a04ab815d67047d6c3e74eeb06e8b4972259710f5c91e20ae0db99af"
+  },
+  {
+    "path": "NuGet.Config",
+    "bytes": 73,
+    "sha256": "e497501960554d323eef45860c14474958accd1ae7f3ae6f95b10e4c1d340401"
+  },
+  {
+    "path": "prepare.cjs",
+    "bytes": 3652,
+    "sha256": "9504935a68a268b68ff7d3501e5fdd7262635f60ec73eed20a2fe3ca2ff6651a"
+  },
+  {
+    "path": "Program.cs",
+    "bytes": 4910,
+    "sha256": "af0363fc4d2d9006fd3764ed5aea1aa0d169a281cd8647916ddca63ca827ca15"
+  },
+  {
+    "path": "regression-console.log",
+    "bytes": 224,
+    "sha256": "9b340ae7c79a1b91d38af88d30badf741f44fa82363c9cf4799009c727bdbb42"
+  },
+  {
+    "path": "regression.cjs",
+    "bytes": 6405,
+    "sha256": "0db171cb53552314db7e2889d9fef05b8acdfba3271ac1f3f823b56954d54841"
+  },
+  {
+    "path": "runs\\boundary\\capacity\\data\\reader\\epub\\preferences.json",
+    "bytes": 210,
+    "sha256": "3768167119afe3df10e5ac3cb525ddddcc7383418b7016a9687e19a2f9081cb0"
+  },
+  {
+    "path": "runs\\boundary\\capacity\\HostAudit.deps.json",
+    "bytes": 421,
+    "sha256": "5d545aac8aba3594adc6ac1209cc6e6429345e60a8957f1ba73a012ef2872eb1"
+  },
+  {
+    "path": "runs\\boundary\\capacity\\HostAudit.runtimeconfig.json",
+    "bytes": 270,
+    "sha256": "256dda2706e1151bb95987b6b5be610bf68d64e058285b19e7e958222fc90414"
+  },
+  {
+    "path": "runs\\boundary\\restart\\data\\reader\\epub\\preferences.json",
+    "bytes": 272,
+    "sha256": "d078a0fb7f6e397ec431b53a2a10e18a0fd6d331f7a92fc5b80c0752ca0b0da8"
+  },
+  {
+    "path": "runs\\boundary\\restart\\HostAudit.deps.json",
+    "bytes": 421,
+    "sha256": "5d545aac8aba3594adc6ac1209cc6e6429345e60a8957f1ba73a012ef2872eb1"
+  },
+  {
+    "path": "runs\\boundary\\restart\\HostAudit.runtimeconfig.json",
+    "bytes": 270,
+    "sha256": "256dda2706e1151bb95987b6b5be610bf68d64e058285b19e7e958222fc90414"
+  },
+  {
+    "path": "runs\\boundary\\results.json",
+    "bytes": 10112,
+    "sha256": "380fad37405db960dd97c076acb33e2bf032f469248c5bb865aa416f2b426825"
+  },
+  {
+    "path": "runs\\boundary\\shared\\data\\reader\\epub\\preferences.json",
+    "bytes": 207,
+    "sha256": "db309233116505234dd0619b692dd285e454eac7468548ad6c52a6a5c0ff40a4"
+  },
+  {
+    "path": "runs\\boundary\\shared\\HostAudit.deps.json",
+    "bytes": 421,
+    "sha256": "5d545aac8aba3594adc6ac1209cc6e6429345e60a8957f1ba73a012ef2872eb1"
+  },
+  {
+    "path": "runs\\boundary\\shared\\HostAudit.runtimeconfig.json",
+    "bytes": 270,
+    "sha256": "256dda2706e1151bb95987b6b5be610bf68d64e058285b19e7e958222fc90414"
+  },
+  {
+    "path": "runs\\boundary\\wire.json",
+    "bytes": 10807407,
+    "sha256": "5eda8669faba6208cf0b8fe4f8af80de965b15addba0968fdf83717481f5e6fb"
+  },
+  {
+    "path": "runs\\capacity-ack\\bin\\data\\reader\\epub\\preferences.json",
+    "bytes": 210,
+    "sha256": "398417dcd3fff44e023841ec28d24d4996ed0a8bc71165d272b19efea0a22c47"
+  },
+  {
+    "path": "runs\\capacity-ack\\bin\\HostAudit.deps.json",
+    "bytes": 421,
+    "sha256": "5d545aac8aba3594adc6ac1209cc6e6429345e60a8957f1ba73a012ef2872eb1"
+  },
+  {
+    "path": "runs\\capacity-ack\\bin\\HostAudit.runtimeconfig.json",
+    "bytes": 270,
+    "sha256": "256dda2706e1151bb95987b6b5be610bf68d64e058285b19e7e958222fc90414"
+  },
+  {
+    "path": "runs\\capacity-ack\\results.json",
+    "bytes": 5064,
+    "sha256": "dcf5f631aafd6f1b489de21414c419a1f6f1e7f5b9775dc8ecaa257d04ee8186"
+  },
+  {
+    "path": "runs\\capacity-ack\\wire.json",
+    "bytes": 3224509,
+    "sha256": "a695f88eff27b2234e3f852c046760f0bb65ba5d1291445ac2e95683d913a63e"
+  },
+  {
+    "path": "runs\\capacity-burst\\bin\\HostAudit.deps.json",
+    "bytes": 421,
+    "sha256": "5d545aac8aba3594adc6ac1209cc6e6429345e60a8957f1ba73a012ef2872eb1"
+  },
+  {
+    "path": "runs\\capacity-burst\\bin\\HostAudit.runtimeconfig.json",
+    "bytes": 270,
+    "sha256": "256dda2706e1151bb95987b6b5be610bf68d64e058285b19e7e958222fc90414"
+  },
+  {
+    "path": "runs\\capacity-burst\\results.json",
+    "bytes": 1429,
+    "sha256": "6a23b98faf06a22fe88f44abff56c5c544b7ebd3b0e3a48e62ad840f3ec0780b"
+  },
+  {
+    "path": "runs\\capacity-burst\\wire.json",
+    "bytes": 3353286,
+    "sha256": "d71aad2bce1c4f5651ac2cd905902ef735f051e424c12be4b0bef20d2e40c2bb"
+  },
+  {
+    "path": "runs\\main\\bin\\data\\reader\\epub\\books\\597c7f765edbbb7603ed913c156e65e8b43d9ec0b59f5f4a771a4843cbaf0a3d.json",
+    "bytes": 5977,
+    "sha256": "00b7e038ad2d00949d6f9961dd0d7957701e7da3f4a9989ebf877b203133b3bc"
+  },
+  {
+    "path": "runs\\main\\bin\\data\\reader\\epub\\books\\85e6172d11cae687da03f4af6d33f5a56d474280856b53aeb5d852c3bde3ce36.json",
+    "bytes": 235,
+    "sha256": "1d0a00b4e20a4736f36d7f9f2c281aebe8e9817820604087104e00cda8c5d3b0"
+  },
+  {
+    "path": "runs\\main\\bin\\data\\reader\\epub\\books\\d6586cd83772a5c5316fee57bc4c3d57a49488d7e1310d79e7743eda36317e32.json",
+    "bytes": 630,
+    "sha256": "fe230b28038717fc90c2a2581266c0d3f79f84b074a772f6586ecedcb04311c3"
+  },
+  {
+    "path": "runs\\main\\bin\\data\\reader\\epub\\books\\f5a2b6cd9c57d4c0c7d057a2dfcedcd24d6dad7fd70a551f5b73ac643b86a683.json",
+    "bytes": 17600,
+    "sha256": "fd5617249a62ff99abf45cd03da950ef115f32bc8f851b95bf7806c1c1a3e011"
+  },
+  {
+    "path": "runs\\main\\bin\\data\\reader\\epub\\books\\fb8e0cf947fc4d790411c49b34bb806de72610de27632d3885d87e69d73505d8.json",
+    "bytes": 235,
+    "sha256": "0d8f2877293a2aeddf8b3bb17a17444e02cc7af69453fc158ed20e17579ae578"
+  },
+  {
+    "path": "runs\\main\\bin\\data\\reader\\epub\\books\\fdd6ed91cc141a2f30faaa8e6b135b2a89b4953311d8e67e9a65027f2bb193b0.json",
+    "bytes": 647,
+    "sha256": "8b431dd2073945d91405bd0adaace1cc81f0802154db79958997ea836e0fabd9"
+  },
+  {
+    "path": "runs\\main\\bin\\evidence\\H01-preferences.json",
+    "bytes": 208,
+    "sha256": "729043f24014d7cfe08029d7acc50cf6cc96dbd927cd474e79133b85e3db973b"
+  },
+  {
+    "path": "runs\\main\\bin\\evidence\\H02-preferences.json",
+    "bytes": 213,
+    "sha256": "c76f5846b4bc38b9f6e78db075016fc399f4295e755c717574d5e022db144a34"
+  },
+  {
+    "path": "runs\\main\\bin\\evidence\\H06-preferences.json",
+    "bytes": 208,
+    "sha256": "019003aa5a2f1172a853f16fd10e9da0dc50992c088f6cc5ae5d63fb5e8ff685"
+  },
+  {
+    "path": "runs\\main\\bin\\evidence\\J01-preferences.json",
+    "bytes": 253,
+    "sha256": "f6eaacca2e27df669226ad9da936ee3624815931b0f49cc88e69f5b6d1d3e91f"
+  },
+  {
+    "path": "runs\\main\\bin\\evidence\\J02-preferences.json",
+    "bytes": 207,
+    "sha256": "1ebf1c20a35ad370b8d1fdfe8f744cbe986729f9390c23bc359e14c2353a055a"
+  },
+  {
+    "path": "runs\\main\\bin\\evidence\\J03-preferences.json",
+    "bytes": 207,
+    "sha256": "c9fe17c445972d522a06cb0b8c2125f24f98d390a98fc28e00d0f336e1bc1152"
+  },
+  {
+    "path": "runs\\main\\bin\\evidence\\J04-preferences.json",
+    "bytes": 207,
+    "sha256": "08338b3f68e71e261a4cc3198fe7a6cb0d8d48f6571eeb86d52e7878eecb3a5d"
+  },
+  {
+    "path": "runs\\main\\bin\\evidence\\J05-preferences.json",
+    "bytes": 207,
+    "sha256": "f6d5c36167756506c31b3c00e3266a711bc7bb29d50c5ab0229957715bc33a1b"
+  },
+  {
+    "path": "runs\\main\\bin\\evidence\\J07-preferences.json",
+    "bytes": 208,
+    "sha256": "13fcbe0f31c375991adff714d2a8d04300b1c9f7838205ba860d1b228a9a76e9"
+  },
+  {
+    "path": "runs\\main\\bin\\evidence\\J08-preferences.json",
+    "bytes": 208,
+    "sha256": "8efa9bd5995730ddacb999732257c6d4457662cbe3d8f0a2d385bee812f6fe4f"
+  },
+  {
+    "path": "runs\\main\\bin\\evidence\\J09-preferences.json",
+    "bytes": 208,
+    "sha256": "0399153105ba6e8a6f0edae9b75b87ae66dd497c18524e8b297de4118b5679b9"
+  },
+  {
+    "path": "runs\\main\\bin\\HostAudit.deps.json",
+    "bytes": 421,
+    "sha256": "5d545aac8aba3594adc6ac1209cc6e6429345e60a8957f1ba73a012ef2872eb1"
+  },
+  {
+    "path": "runs\\main\\bin\\HostAudit.runtimeconfig.json",
+    "bytes": 270,
+    "sha256": "256dda2706e1151bb95987b6b5be610bf68d64e058285b19e7e958222fc90414"
+  },
+  {
+    "path": "runs\\main\\console.log",
+    "bytes": 781,
+    "sha256": "d31863b516b9190c53acf7070a5827e89412a51479e8bc595da62795abefed87"
+  },
+  {
+    "path": "runs\\main\\results.json",
+    "bytes": 51554,
+    "sha256": "106cef6a82d0a7e4503eec19145ca88a3b2f495d02974c8175356e2a7d25cab6"
+  },
+  {
+    "path": "runs\\main\\wire.json",
+    "bytes": 506681,
+    "sha256": "4880af6e50d3bc067ce201584fd5973298305067f800a05d8d264b731ab43830"
+  },
+  {
+    "path": "runs\\regression\\bin\\data\\reader\\epub\\books\\0ad3e8e2a90ff89566cacebc2f1598b42bb038c6a82a4e8b4789fc2a669a1ec2.json",
+    "bytes": 364,
+    "sha256": "e97c0b1293d8ecee82e9f6863e77c18720c617b16589b4d6f72b2530e8536ec5"
+  },
+  {
+    "path": "runs\\regression\\bin\\data\\reader\\epub\\books\\530c973cfd47b092a45aaa61ade64d2ca848be6a691d807b21d9a805aee8408a.json",
+    "bytes": 235,
+    "sha256": "192275ee97a30ef89e6d43e1ad76a60332fad90998f1e42b7feb7d5bc32e6426"
+  },
+  {
+    "path": "runs\\regression\\bin\\data\\reader\\epub\\books\\5a19fa55fb2500a725a69f8f5c04c4ed72028eed893186e028b9f1b7470ad79b.json",
+    "bytes": 37,
+    "sha256": "4dbd2c90e20e586f9883241e3b068842d68a025471d3112ca2a5851e44fe6c3a"
+  },
+  {
+    "path": "runs\\regression\\bin\\data\\reader\\epub\\books\\70d700d15322e7c085b9f3a129df951c71d65aaf769abb565dd880d93b54918e.json",
+    "bytes": 379799,
+    "sha256": "e6e0e0d3ce7d9e57431215a06d8981e7d0815d0c565c1943851277fd5a0159ab"
+  },
+  {
+    "path": "runs\\regression\\bin\\data\\reader\\epub\\books\\d6586cd83772a5c5316fee57bc4c3d57a49488d7e1310d79e7743eda36317e32.json",
+    "bytes": 364,
+    "sha256": "f1c6399c3e531a5b425cdd7971657d8f2a2672c9cf9bc2d64eeb3cc4db81b0db"
+  },
+  {
+    "path": "runs\\regression\\bin\\HostAudit.deps.json",
+    "bytes": 421,
+    "sha256": "5d545aac8aba3594adc6ac1209cc6e6429345e60a8957f1ba73a012ef2872eb1"
+  },
+  {
+    "path": "runs\\regression\\bin\\HostAudit.runtimeconfig.json",
+    "bytes": 270,
+    "sha256": "256dda2706e1151bb95987b6b5be610bf68d64e058285b19e7e958222fc90414"
+  },
+  {
+    "path": "runs\\regression\\results.json",
+    "bytes": 6236,
+    "sha256": "3c82bd909ada208bd0404815bf0f3ee9002f90d82db3c39c7fbace3d99fb20eb"
+  },
+  {
+    "path": "runs\\regression\\wire.json",
+    "bytes": 1167344,
+    "sha256": "8e47bbd1a27e699074ee5e21fdc512caa8d8c6f645eff92331d1be1809f01e14"
+  },
+  {
+    "path": "runs\\supplement\\bin\\data\\reader\\epub\\books\\0ad3e8e2a90ff89566cacebc2f1598b42bb038c6a82a4e8b4789fc2a669a1ec2.json",
+    "bytes": 615,
+    "sha256": "92780e6149ec19d86cd2cd0a928e6b34a958c0fe3be221f448b522423705ecc2"
+  },
+  {
+    "path": "runs\\supplement\\bin\\data\\reader\\epub\\books\\d6586cd83772a5c5316fee57bc4c3d57a49488d7e1310d79e7743eda36317e32.json",
+    "bytes": 235,
+    "sha256": "9601e222af5d1f52e8bf9faca071a140bfcb725d989830ec55047c47ca8986e8"
+  },
+  {
+    "path": "runs\\supplement\\bin\\data\\reader\\epub\\preferences.json",
+    "bytes": 210,
+    "sha256": "3a0af76dd7160605a71120d1b11647d15e2420dec1d349c91ed1b0285b762541"
+  },
+  {
+    "path": "runs\\supplement\\bin\\evidence\\S01-preferences.json",
+    "bytes": 207,
+    "sha256": "bb870917bf6458cb899a2265b77720d4bb0e4a67cc4fb5affd0d84d1a4656696"
+  },
+  {
+    "path": "runs\\supplement\\bin\\evidence\\S04-preferences.json",
+    "bytes": 278,
+    "sha256": "29d47462a2f7c3f878bf4df3659f7ad672912cbab6ba252be9f78e06c4e1c0fa"
+  },
+  {
+    "path": "runs\\supplement\\bin\\evidence\\S05-preferences.json",
+    "bytes": 207,
+    "sha256": "9491cd8ad7c26cc4de6398dd353b15212f8f0a93763d4d80197066aef6831550"
+  },
+  {
+    "path": "runs\\supplement\\bin\\HostAudit.deps.json",
+    "bytes": 421,
+    "sha256": "5d545aac8aba3594adc6ac1209cc6e6429345e60a8957f1ba73a012ef2872eb1"
+  },
+  {
+    "path": "runs\\supplement\\bin\\HostAudit.runtimeconfig.json",
+    "bytes": 270,
+    "sha256": "256dda2706e1151bb95987b6b5be610bf68d64e058285b19e7e958222fc90414"
+  },
+  {
+    "path": "runs\\supplement\\results.json",
+    "bytes": 13935,
+    "sha256": "fad5ad348ee7970f436336b56afddef6814e880c5b3a06600cc2724a41a78343"
+  },
+  {
+    "path": "runs\\supplement\\wire.json",
+    "bytes": 3401185,
+    "sha256": "4760a0ec59e24915bc8c9c3b31ce730374750556a766948a31bdadb2736f390c"
+  },
+  {
+    "path": "sdk-first-use-observation.json",
+    "bytes": 1394,
+    "sha256": "d4963b4fc052a4bc0f30013b94f016e84e4a70b9d058817d05f1d11785809ca5"
+  },
+  {
+    "path": "summary.json",
+    "bytes": 11656,
+    "sha256": "2d998f3d1d531eb0983a46a40ea918ccae4d539c355aafbb81938c879c83309c"
+  },
+  {
+    "path": "supplement-console.log",
+    "bytes": 250,
+    "sha256": "67dccc9b7c181318b06261ac5286ff3a71f0c0d019f5478b50b05ffb0a025fcf"
+  },
+  {
+    "path": "supplement.cjs",
+    "bytes": 7125,
+    "sha256": "c296f99adcdc41d3393d40a50129c2374f29a4d0eb72cc7660a29947e0440520"
+  },
+  {
+    "path": "UiStubs.cs",
+    "bytes": 7320,
+    "sha256": "aac9f334514053460bc1c96f745bccda33e3862b242a8dc7015bea8cb15fd11c"
+  },
+  {
+    "path": "宿主状态通信独立验收-R4.md",
+    "bytes": 29915,
+    "sha256": "5549fa744215f4597fd6f2c6fb9dce675f5564be8d8f2ca51e16fd15889cb288"
+  }
+]

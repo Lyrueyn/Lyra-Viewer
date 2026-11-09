@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "revision": 3,
+  "preferences": {
+    "lineHeight": 2.3,
+    "sidebar": true
+  },
+  "fieldSequences": {},
+  "preferenceOrders": {
+    "lineHeight": 1,
+    "sidebar": 3
+  },
+  "updatedAt": "2026-10-29T13:44:45.8953922Z"
+}

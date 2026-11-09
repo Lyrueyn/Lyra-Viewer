@@ -1,0 +1,124 @@
+{
+  "results": [
+    {
+      "id": "B01_FONT_REOPEN_INDEPENDENT_RANGE",
+      "before": {
+        "page": 7,
+        "path": [
+          21,
+          0
+        ],
+        "offset": 6,
+        "text": "这是用于定位回归的文字。阅读器应保留当前正文位置，保持正确的"
+      },
+      "after": {
+        "page": 7,
+        "text": "这是用于定位回归的文字。阅读器应保留当前正文位置，保持正确的",
+        "left": 232.875,
+        "right": 268.875,
+        "top": 12,
+        "bottom": 58,
+        "visible": true
+      },
+      "defect": false
+    },
+    {
+      "id": "B02_NEW_PREF_LOST_DURING_PENDING_SAVE",
+      "visible": 32,
+      "pending": {},
+      "sent": [
+        {
+          "fontSize": 28
+        },
+        {
+          "fontSize": 32
+        }
+      ],
+      "persisted": {
+        "preferences": {
+          "fontSize": 32
+        },
+        "fieldSequences": {
+          "fontSize": 1793118162462000
+        }
+      },
+      "defect": false
+    },
+    {
+      "id": "B03_LATE_BOOKMARK_ADD_CROSSES_BOOK",
+      "before": 0,
+      "book": "FRESH",
+      "bookmarks": [],
+      "status": "此主程序版本不支持跨窗口保存；阅读位置仅保存在当前窗口",
+      "defect": false
+    },
+    {
+      "id": "B04_SEARCH_STARTS_AFTER_CLOSE",
+      "immediate": 0,
+      "open": false,
+      "reads": 0,
+      "results": 0,
+      "defect": false
+    },
+    {
+      "id": "B05_CANCEL_REOPEN_NEW_QUERY_FAILS",
+      "open": true,
+      "status": "找到 3 处 · 已扫描 3/3 章 · 缓存 27099 字符",
+      "results": 3,
+      "defect": false
+    },
+    {
+      "id": "B06_OLD_RESULTS_VISIBLE_AFTER_NEW_BOOK",
+      "book": "FRESH",
+      "results": [],
+      "panelVisible": true,
+      "defect": false
+    },
+    {
+      "id": "B07_IMAGE_ANCHOR_NULL_AS_ZERO",
+      "anchor": {
+        "textOffset": null,
+        "elementPath": [
+          111,
+          0
+        ],
+        "quote": "",
+        "chapterFraction": 0.5
+      },
+      "actualImagePage": 16,
+      "located": 16,
+      "pageCount": 33,
+      "defect": false
+    },
+    {
+      "id": "B08_IMMEDIATE_PREF_RELOAD",
+      "expected": 32,
+      "font": 32,
+      "persisted": "{\"preferences\":{\"fontSize\":32},\"fieldSequences\":{\"fontSize\":1793118167052000}}",
+      "defect": false
+    },
+    {
+      "id": "B09_TWENTY_TURNS_EXACT_POSITION",
+      "perChapter": 16,
+      "expected": {
+        "spine": 1,
+        "page": 4
+      },
+      "after": {
+        "spine": 1,
+        "page": 4
+      },
+      "defect": false
+    },
+    {
+      "id": "B10_DELAYED_SECTION_FAILURE_RESTORE",
+      "book": "NORMAL",
+      "heading": "NORMAL-0",
+      "status": "打开新书失败，已保留原来的书：正文载入失败",
+      "ready": true,
+      "defect": false,
+      "note": "Controlled renderer failure after candidate setSection completes; verifies rollback path, not claim of this exception occurring spontaneously."
+    }
+  ],
+  "errors": []
+}

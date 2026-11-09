@@ -1,0 +1,108 @@
+{
+  "baseline": "c12fe26275cdec67922cccb64d9b5f2b4c269cd2",
+  "observations": [
+    {
+      "id": "E01_TOC_IS_NOT_SPINE",
+      "toc": [
+        "第一节",
+        "第二节",
+        "第三章",
+        "辅助入口"
+      ],
+      "spineDocuments": 3,
+      "chapterCount": 4,
+      "secondEntryOpens": "CHAPTER-1",
+      "position": "第 1 / 17 页 · 第 2 / 4 章",
+      "scrollLeft": 0
+    },
+    {
+      "id": "E02_FRAGMENT_ONLY_LINK",
+      "before": "第 1 / 17 页 · 第 1 / 3 章",
+      "after": "第 1 / 17 页 · 第 1 / 3 章",
+      "scrollLeft": 0
+    },
+    {
+      "id": "E03_PAGE_PROGRESS_NOT_SAVED",
+      "before": "第 5 / 17 页 · 第 2 / 3 章",
+      "after": "第 1 / 17 页 · 第 2 / 3 章",
+      "stored": {
+        "lyra_epub_selectable": "0",
+        "lyra_epub_idx_book.epub:6124": "1",
+        "lyra_epub_idx_book.epub:6184": "1"
+      }
+    },
+    {
+      "id": "E04_RANDOM_ORIGIN_STORAGE",
+      "before": "第 1 / 17 页 · 第 3 / 3 章",
+      "after": "第 1 / 17 页 · 第 1 / 3 章",
+      "theme": "#121212",
+      "note": "Two origins in one browser context simulate host origin isolation; not a live WebView2 restart."
+    },
+    {
+      "id": "E05_FONT_REFLOW_LOSES_LOCATION",
+      "beforeParagraph": "24",
+      "afterParagraph": "15",
+      "beforePage": "第 5 / 17 页 · 第 3 / 3 章",
+      "afterPage": "第 5 / 26 页 · 第 3 / 3 章"
+    },
+    {
+      "id": "E06_ANIMATION_IDLE_WORK",
+      "first": {
+        "calls": 267,
+        "left": 918
+      },
+      "second": {
+        "calls": 508,
+        "left": 918
+      },
+      "callbacksWhileStationary": 241
+    },
+    {
+      "id": "E07_SLOW_CHAPTER_RACE",
+      "activeChapter": "第3章",
+      "bodyHeading": "CHAPTER-2",
+      "position": "第 1 / 26 页 · 第 3 / 3 章"
+    },
+    {
+      "id": "E08_SELECTION_TURNS_PAGE",
+      "before": "第 1 / 26 页 · 第 2 / 3 章",
+      "after": "第 2 / 26 页 · 第 2 / 3 章",
+      "selection": "段落 000：这是"
+    },
+    {
+      "id": "E09_NARROW_LAYOUT_CLIPS",
+      "main": {
+        "x": 280,
+        "right": 759,
+        "width": 479
+      },
+      "pageFrame": {
+        "x": 320,
+        "right": 719,
+        "width": 399
+      },
+      "pageClip": {
+        "x": 353,
+        "right": 752,
+        "width": 399
+      },
+      "view": {
+        "x": 353,
+        "right": 752,
+        "width": 399
+      }
+    },
+    {
+      "id": "E10_ACTIVE_CONTENT_NOT_REMOVED",
+      "benignImageEventExecuted": true,
+      "onerrorAttributeRemains": "window.__fixtureEventRan = true"
+    },
+    {
+      "id": "E11_HOST_RETRY_AFTER_BAD_BOOK",
+      "firstError": "End of data reached (data length = 3, asked index = 4). Corrupted zip ?",
+      "title": "璃鸢镜 · EPUB 阅读器",
+      "chapters": 0
+    }
+  ],
+  "errors": []
+}

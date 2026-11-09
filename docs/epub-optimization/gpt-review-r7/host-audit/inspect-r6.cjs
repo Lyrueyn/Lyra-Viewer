@@ -1,0 +1,1 @@
+'use strict';const fs=require('fs'),path=require('path');const groups=fs.readdirSync(path.join(__dirname,'runs'));for(const g of groups){const p=path.join(__dirname,'runs',g,'results.json');if(!fs.existsSync(p))continue;const d=JSON.parse(fs.readFileSync(p));console.log(JSON.stringify({group:g,pass:d.results.filter(x=>x.pass).map(x=>x.id),fail:d.results.filter(x=>!x.pass)}));}

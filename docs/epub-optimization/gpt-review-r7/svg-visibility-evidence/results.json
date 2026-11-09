@@ -1,0 +1,23 @@
+{
+  "evidenceKind": "Real Edge, frozen candidate, controlled delays and optional explicitly local bridge fixture",
+  "results": [
+    {
+      "id": "D07_SVG_CHILD_VISIBLE_BUT_SEARCH_OMITS",
+      "before": {
+        "plain": "OVERRIDE_VISIBLE",
+        "innerText": "OVERRIDE_VISIBLE",
+        "visibility": "visible",
+        "bounds": {
+          "width": 196.515625,
+          "height": 28
+        }
+      },
+      "after": {
+        "buttons": 1,
+        "status": "找到 1 处 · 已扫描 1/1 章 · 缓存 16 字符"
+      },
+      "defect": false,
+      "note": "SVG parent visibility:hidden is inherited but child explicitly overrides to visible; no use references and no timing/fault injection."
+    }
+  ]
+}

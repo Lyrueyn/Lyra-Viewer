@@ -1,0 +1,59 @@
+{
+  "evidenceKind": "Real Edge, frozen candidate, controlled delays and optional explicitly local bridge fixture",
+  "results": [
+    {
+      "id": "F05_CSS_IMPORTANT_INVALID_AND_DISPLAY",
+      "before": {
+        "plain": "\nIMPORTANTWORD\n\n\n\n\n",
+        "visible": "IMPORTANTWORD",
+        "items": [
+          {
+            "id": "case1",
+            "text": "IMPORTANTWORD",
+            "style": "visibility:hidden;visibility:visible",
+            "display": "inline",
+            "visibility": "visible"
+          },
+          {
+            "id": "case2",
+            "text": "DISPLAYWORD",
+            "style": "display:none",
+            "display": "none",
+            "visibility": "visible"
+          },
+          {
+            "id": "case3",
+            "text": "INVALIDWORD",
+            "style": "visibility:hidden",
+            "display": "inline",
+            "visibility": "hidden"
+          }
+        ]
+      },
+      "counts": {
+        "IMPORTANTWORD": 1,
+        "DISPLAYWORD": 0,
+        "INVALIDWORD": 0
+      },
+      "defect": false,
+      "note": "No timing/fault injection. Test cold index against sanitized actual browser visibility, not two self-consistent model strings. IMPORTANT visible after sanitizer removes priority; DISPLAY/INVALID hidden after filtering."
+    },
+    {
+      "id": "F06_SVG_NATIVE_MARK_VISIBLE",
+      "after": {
+        "visible": "START  TARGET",
+        "marks": [
+          {
+            "namespace": "http://www.w3.org/2000/svg",
+            "text": "TARGET",
+            "width": 103.671875,
+            "rects": 1
+          }
+        ],
+        "status": "查找结果：TARGET，已定位：TARGET"
+      },
+      "defect": false,
+      "note": "Updated independent oracle checks SVG tspan namespace and actual geometry, not obsolete HTML .lyra-search-mark selector."
+    }
+  ]
+}

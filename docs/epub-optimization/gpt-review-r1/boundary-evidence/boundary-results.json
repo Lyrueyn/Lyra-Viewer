@@ -1,0 +1,41 @@
+{
+  "results": [
+    {
+      "id": "R13_FILE_READ_ORDER",
+      "lastUserChoice": "FRESH",
+      "actual": "OLD",
+      "defect": true
+    },
+    {
+      "id": "R14_OLD_SEARCH_COMMITS_IN_NEW_BOOK",
+      "book": "FRESH",
+      "results": [
+        "c1OLD OLDONLY 旧书段落 0，阅读位置需要正确恢复。 旧书段落 1，阅读位置需要正确恢复。 旧书段落 2，阅读"
+      ],
+      "defect": true
+    },
+    {
+      "id": "R15_HIGHLIGHT_CORRUPTS_SAVED_ANCHOR",
+      "probeError": "page.waitForFunction: Timeout 6000ms exceeded."
+    },
+    {
+      "id": "R16_DANGEROUS_SCHEME_FORWARDED",
+      "href": "javascript:window.__benignProbe=1",
+      "outerWindowOpenCalls": [
+        [
+          "javascript:window.__benignProbe=1",
+          "_blank",
+          "noopener,noreferrer"
+        ]
+      ],
+      "defect": true,
+      "note": "window.open was intercepted; no dangerous URL was executed."
+    },
+    {
+      "id": "R17_CLOSE_SEARCH_DOES_NOT_CANCEL_ENGINE",
+      "cancelCalls": 0,
+      "readCompletions": 1,
+      "defect": true
+    }
+  ]
+}

@@ -1,0 +1,475 @@
+{
+  "checkedAt": "2026-10-27T18:09:03.881Z",
+  "scope": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\model-audit",
+  "candidate": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\candidate",
+  "expectedCommit": "04f6ccb80546d6d04fe3c21f4a08775d83bfc0c6",
+  "expectedPackageSha256": "b128b9dfbe9d7a1085cc3505f9b3edc645847cfa24da33958eb26edd685f184b",
+  "frozenInputCount": 95,
+  "frozenUnchanged": true,
+  "sets": [
+    {
+      "file": "model-results.json",
+      "count": 22,
+      "counts": {
+        "PASS": 21,
+        "OBSERVATION": 1
+      },
+      "harnessError": null,
+      "results": [
+        {
+          "id": "S01",
+          "verdict": "PASS",
+          "title": "Exact 1000, same/cross chapter 1001"
+        },
+        {
+          "id": "S02",
+          "verdict": "PASS",
+          "title": "Over-limit first/middle chapter still scans later chapter; cap unit is UTF-16 code units"
+        },
+        {
+          "id": "S03",
+          "verdict": "PASS",
+          "title": "Hot cache query observes immediate cancellation"
+        },
+        {
+          "id": "S04",
+          "verdict": "PASS",
+          "title": "Cancelled cold build not reused by new query"
+        },
+        {
+          "id": "S05",
+          "verdict": "PASS",
+          "title": "Dense long chapter scan yields"
+        },
+        {
+          "id": "S06",
+          "verdict": "PASS",
+          "title": "Sparse/no-match hot scan yields independently of number of matches"
+        },
+        {
+          "id": "S07",
+          "verdict": "PASS",
+          "title": "Read failure counted, remaining sections still searched"
+        },
+        {
+          "id": "S08",
+          "verdict": "PASS",
+          "title": "Real frozen parser + ZIP oversized chapter coverage and no search resource allocation"
+        },
+        {
+          "id": "R01",
+          "verdict": "PASS",
+          "title": "Destroy while bytes pending prevents allocation"
+        },
+        {
+          "id": "R02",
+          "verdict": "PASS",
+          "title": "True concurrent resource pending deduplication"
+        },
+        {
+          "id": "R03",
+          "verdict": "PASS",
+          "title": "Stale A/B finish after C; actual task cleanup bounds live resources and task metadata"
+        },
+        {
+          "id": "R04",
+          "verdict": "PASS",
+          "title": "Same-book old/new pending shared image survives both interleavings"
+        },
+        {
+          "id": "R05",
+          "verdict": "PASS",
+          "title": "200 sequential image chapter transitions settle with one live resource/task"
+        },
+        {
+          "id": "R06",
+          "verdict": "PASS",
+          "title": "Failed prepare before returned owner does not retain unbounded task sets"
+        },
+        {
+          "id": "P01",
+          "verdict": "PASS",
+          "title": "One decode distinct complete bytes, HTML/SVG href/xlink and fragments"
+        },
+        {
+          "id": "T01",
+          "verdict": "PASS",
+          "title": "Shared UTF-16 model / duplicates / inline / NBSP / virtual block separators"
+        },
+        {
+          "id": "T02",
+          "verdict": "PASS",
+          "title": "Basic hidden/details/SVG defs/desc model semantics fixed"
+        },
+        {
+          "id": "T03",
+          "verdict": "PASS",
+          "title": "Hidden br and retained SVG display/visibility/symbol semantics"
+        },
+        {
+          "id": "E01",
+          "verdict": "PASS",
+          "title": "Exact supported algorithm and ordinary nonfont checks"
+        },
+        {
+          "id": "E02",
+          "verdict": "PASS",
+          "title": "Target must exist in ZIP and MIME must actually identify font"
+        },
+        {
+          "id": "E03",
+          "verdict": "OBSERVATION",
+          "title": "CipherReference non-root fallback permits URI absent at root"
+        },
+        {
+          "id": "P02",
+          "verdict": "PASS",
+          "title": "Sanitizer protocol check, SVG links and forged control attributes"
+        }
+      ],
+      "identity": {
+        "expectedCommit": "04f6ccb80546d6d04fe3c21f4a08775d83bfc0c6",
+        "expectedPackageSha256": "b128b9dfbe9d7a1085cc3505f9b3edc645847cfa24da33958eb26edd685f184b",
+        "hashes": {
+          "epub-book.js": "dd70621ef84ea0ea81a366b0649ffc9198aefc38f584b09a0505074d7e86aa21",
+          "search.js": "564f4b5d783cbb26671046f6332a9717fc22495b132d515ece24b1c3ada8fac9",
+          "paginator.js": "36856bd26e5053c8f809baa1ec65b9b570c03f3df45363ceb49dd14e2e646043",
+          "reader.js": "659a466ff7693fbedd9a0daedbccfba5be35389e9685cccf5178a1c9084dace4"
+        }
+      }
+    },
+    {
+      "file": "reader-flow-results.json",
+      "count": 8,
+      "counts": {
+        "PASS": 8
+      },
+      "harnessError": null,
+      "results": [
+        {
+          "id": "F01",
+          "verdict": "PASS",
+          "title": "Original input-close clears debounce before any read"
+        },
+        {
+          "id": "F02",
+          "verdict": "PASS",
+          "title": "Input then Enter starts only one read/build"
+        },
+        {
+          "id": "F03",
+          "verdict": "PASS",
+          "title": "Cross-book cleared list and retained old button callback reject old result"
+        },
+        {
+          "id": "F04",
+          "verdict": "PASS",
+          "title": "Input invalidates pending old query before debounce"
+        },
+        {
+          "id": "F05",
+          "verdict": "PASS",
+          "title": "Changing query while result navigation pending prevents old highlight commit"
+        },
+        {
+          "id": "F06",
+          "verdict": "PASS",
+          "title": "Late old-book task cannot release current new-book task with same numeric owner"
+        },
+        {
+          "id": "F07",
+          "verdict": "PASS",
+          "title": "Controlled failure after DOM submission restores old actual document and image resource"
+        },
+        {
+          "id": "F08",
+          "verdict": "PASS",
+          "title": "Independent outer whitelist rejects non-http(s) and malformed URL"
+        }
+      ],
+      "identity": {
+        "expectedCommit": "04f6ccb80546d6d04fe3c21f4a08775d83bfc0c6",
+        "expectedPackageSha256": "b128b9dfbe9d7a1085cc3505f9b3edc645847cfa24da33958eb26edd685f184b",
+        "hashes": {
+          "epub-book.js": "dd70621ef84ea0ea81a366b0649ffc9198aefc38f584b09a0505074d7e86aa21",
+          "search.js": "564f4b5d783cbb26671046f6332a9717fc22495b132d515ece24b1c3ada8fac9",
+          "paginator.js": "36856bd26e5053c8f809baa1ec65b9b570c03f3df45363ceb49dd14e2e646043",
+          "reader.js": "659a466ff7693fbedd9a0daedbccfba5be35389e9685cccf5178a1c9084dace4"
+        }
+      }
+    },
+    {
+      "file": "boundary-results.json",
+      "count": 4,
+      "counts": {
+        "OBSERVATION": 2,
+        "PASS": 2
+      },
+      "harnessError": null,
+      "results": [
+        {
+          "id": "B01",
+          "verdict": "OBSERVATION",
+          "title": "Cache limit scope is retained section UTF-16 text, not total heap or bytes"
+        },
+        {
+          "id": "B02",
+          "verdict": "OBSERVATION",
+          "title": "Original cold HTML parse/model has no internal macrotask yield"
+        },
+        {
+          "id": "B03",
+          "verdict": "PASS",
+          "title": "Original locator differentiates null/missing/string offset, text zero, valid image and fraction"
+        },
+        {
+          "id": "B04",
+          "verdict": "PASS",
+          "title": "Ten same-jsdom-realm book replacements retain only current image resources"
+        }
+      ],
+      "identity": {
+        "expectedCommit": "04f6ccb80546d6d04fe3c21f4a08775d83bfc0c6",
+        "expectedPackageSha256": "b128b9dfbe9d7a1085cc3505f9b3edc645847cfa24da33958eb26edd685f184b",
+        "hashes": {
+          "epub-book.js": "dd70621ef84ea0ea81a366b0649ffc9198aefc38f584b09a0505074d7e86aa21",
+          "search.js": "564f4b5d783cbb26671046f6332a9717fc22495b132d515ece24b1c3ada8fac9",
+          "paginator.js": "36856bd26e5053c8f809baa1ec65b9b570c03f3df45363ceb49dd14e2e646043",
+          "reader.js": "659a466ff7693fbedd9a0daedbccfba5be35389e9685cccf5178a1c9084dace4"
+        }
+      }
+    },
+    {
+      "file": "r4-boundary-results.json",
+      "count": 11,
+      "counts": {
+        "FAIL": 6,
+        "OBSERVATION": 3,
+        "PASS": 2
+      },
+      "harnessError": null,
+      "results": [
+        {
+          "id": "X01",
+          "verdict": "FAIL",
+          "title": "True chunk-boundary matches must not disappear"
+        },
+        {
+          "id": "X02",
+          "verdict": "FAIL",
+          "title": "Emoji, whitespace and repeated count at chunk boundaries"
+        },
+        {
+          "id": "X11",
+          "verdict": "OBSERVATION",
+          "title": "Query longer than chunk meets engine regexp-size limit"
+        },
+        {
+          "id": "X03",
+          "verdict": "PASS",
+          "title": "Nonoverlap and case-insensitive UTF16 offsets retain original regexp semantics"
+        },
+        {
+          "id": "X04",
+          "verdict": "FAIL",
+          "title": "Boundary loss must not make 1001 look like exactly 1000"
+        },
+        {
+          "id": "X05",
+          "verdict": "FAIL",
+          "title": "Real ZIP parser crossing actual scan boundary"
+        },
+        {
+          "id": "X06",
+          "verdict": "FAIL",
+          "title": "Search and display share text after publisher style removal"
+        },
+        {
+          "id": "X07",
+          "verdict": "OBSERVATION",
+          "title": "SVG use and child visibility override policy boundary"
+        },
+        {
+          "id": "X08",
+          "verdict": "FAIL",
+          "title": "Failed next prepare must keep previously displayed shared image"
+        },
+        {
+          "id": "X09",
+          "verdict": "PASS",
+          "title": "Exact font MIME and encoded actual ZIP targets, mixed non-font rejection"
+        },
+        {
+          "id": "X10",
+          "verdict": "OBSERVATION",
+          "title": "Encryption URI fallback reinterprets root-invalid relative path"
+        }
+      ],
+      "identity": {
+        "expectedCommit": "04f6ccb80546d6d04fe3c21f4a08775d83bfc0c6",
+        "expectedPackageSha256": "b128b9dfbe9d7a1085cc3505f9b3edc645847cfa24da33958eb26edd685f184b",
+        "hashes": {
+          "epub-book.js": "dd70621ef84ea0ea81a366b0649ffc9198aefc38f584b09a0505074d7e86aa21",
+          "search.js": "564f4b5d783cbb26671046f6332a9717fc22495b132d515ece24b1c3ada8fac9",
+          "paginator.js": "36856bd26e5053c8f809baa1ec65b9b570c03f3df45363ceb49dd14e2e646043",
+          "reader.js": "659a466ff7693fbedd9a0daedbccfba5be35389e9685cccf5178a1c9084dace4"
+        }
+      }
+    },
+    {
+      "file": "r4-reader-stage-results.json",
+      "count": 16,
+      "counts": {
+        "FAIL": 9,
+        "PASS": 7
+      },
+      "harnessError": null,
+      "results": [
+        {
+          "id": "N-prepare-input",
+          "verdict": "FAIL",
+          "title": "Invalidate result navigation before further DOM/layout/location/highlight side effects"
+        },
+        {
+          "id": "NP-prepare-input",
+          "verdict": "PASS",
+          "title": "Subsequent user page turn remains usable"
+        },
+        {
+          "id": "N-prepare-search-close",
+          "verdict": "FAIL",
+          "title": "Invalidate result navigation before further DOM/layout/location/highlight side effects"
+        },
+        {
+          "id": "NP-prepare-search-close",
+          "verdict": "PASS",
+          "title": "Subsequent user page turn remains usable"
+        },
+        {
+          "id": "N-prepare-open-intent",
+          "verdict": "FAIL",
+          "title": "Invalidate result navigation before further DOM/layout/location/highlight side effects"
+        },
+        {
+          "id": "N-prepare-book-replaced",
+          "verdict": "PASS",
+          "title": "Invalidate result navigation before further DOM/layout/location/highlight side effects"
+        },
+        {
+          "id": "N-prepare-host-finalize",
+          "verdict": "FAIL",
+          "title": "Invalidate result navigation before further DOM/layout/location/highlight side effects"
+        },
+        {
+          "id": "N-resources-input",
+          "verdict": "FAIL",
+          "title": "Invalidate result navigation before further DOM/layout/location/highlight side effects"
+        },
+        {
+          "id": "NP-resources-input",
+          "verdict": "PASS",
+          "title": "Subsequent user page turn remains usable"
+        },
+        {
+          "id": "N-resources-search-close",
+          "verdict": "FAIL",
+          "title": "Invalidate result navigation before further DOM/layout/location/highlight side effects"
+        },
+        {
+          "id": "NP-resources-search-close",
+          "verdict": "PASS",
+          "title": "Subsequent user page turn remains usable"
+        },
+        {
+          "id": "N-resources-open-intent",
+          "verdict": "FAIL",
+          "title": "Invalidate result navigation before further DOM/layout/location/highlight side effects"
+        },
+        {
+          "id": "N-resources-book-replaced",
+          "verdict": "PASS",
+          "title": "Invalidate result navigation before further DOM/layout/location/highlight side effects"
+        },
+        {
+          "id": "N-resources-host-finalize",
+          "verdict": "FAIL",
+          "title": "Invalidate result navigation before further DOM/layout/location/highlight side effects"
+        },
+        {
+          "id": "N-ROLLBACK",
+          "verdict": "PASS",
+          "title": "Failure after original DOM submit/layout restores old document, text position and image"
+        },
+        {
+          "id": "N-SHARED-FAIL",
+          "verdict": "FAIL",
+          "title": "Failed same-book prepare retains displayed old shared URL"
+        }
+      ],
+      "identity": {
+        "expectedCommit": "04f6ccb80546d6d04fe3c21f4a08775d83bfc0c6",
+        "expectedPackageSha256": "b128b9dfbe9d7a1085cc3505f9b3edc645847cfa24da33958eb26edd685f184b",
+        "hashes": {
+          "epub-book.js": "dd70621ef84ea0ea81a366b0649ffc9198aefc38f584b09a0505074d7e86aa21",
+          "search.js": "564f4b5d783cbb26671046f6332a9717fc22495b132d515ece24b1c3ada8fac9",
+          "paginator.js": "36856bd26e5053c8f809baa1ec65b9b570c03f3df45363ceb49dd14e2e646043",
+          "reader.js": "659a466ff7693fbedd9a0daedbccfba5be35389e9685cccf5178a1c9084dace4"
+        }
+      }
+    },
+    {
+      "file": "r4-anchor-cancel-results.json",
+      "count": 4,
+      "counts": {
+        "PASS": 3,
+        "OBSERVATION": 1
+      },
+      "harnessError": null,
+      "results": [
+        {
+          "id": "A01",
+          "verdict": "PASS",
+          "title": "Image null text offset remains element-based through original requestLayout"
+        },
+        {
+          "id": "A02",
+          "verdict": "PASS",
+          "title": "Late image relayout preserves confirmed pure-element anchor"
+        },
+        {
+          "id": "A03",
+          "verdict": "PASS",
+          "title": "Hot timer cancellation followed immediately by fresh query"
+        },
+        {
+          "id": "A04",
+          "verdict": "OBSERVATION",
+          "title": "Cold cancellation is observed after synchronous whole-chapter DOM/model construction"
+        }
+      ],
+      "identity": {
+        "expectedCommit": "04f6ccb80546d6d04fe3c21f4a08775d83bfc0c6",
+        "expectedPackageSha256": "b128b9dfbe9d7a1085cc3505f9b3edc645847cfa24da33958eb26edd685f184b",
+        "hashes": {
+          "epub-book.js": "dd70621ef84ea0ea81a366b0649ffc9198aefc38f584b09a0505074d7e86aa21",
+          "search.js": "564f4b5d783cbb26671046f6332a9717fc22495b132d515ece24b1c3ada8fac9",
+          "paginator.js": "36856bd26e5053c8f809baa1ec65b9b570c03f3df45363ceb49dd14e2e646043",
+          "reader.js": "659a466ff7693fbedd9a0daedbccfba5be35389e9685cccf5178a1c9084dace4"
+        }
+      }
+    }
+  ],
+  "counts": {
+    "PASS": 43,
+    "OBSERVATION": 7,
+    "FAIL": 15
+  },
+  "submittedActualHashesMatch": true,
+  "submittedHeaderCommit": "ba6f763f9579a808ddc201b82b5867412265c104",
+  "submittedHeaderPackage": "847d8047702e8de6a8dec8b7ae9e3fb60693686400b71aa65c2b134a7270636c",
+  "notes": [
+    "Only six named current result sets count toward totals. Earlier harness errors and provisional classifications retained separately, excluded.",
+    "All FAIL results were completed assertions, not tool/probe failures. Tool displays exit1 for script process.exitCode=2.",
+    "No browser/desktop, installation, deployment or production mutation performed by this audit."
+  ]
+}

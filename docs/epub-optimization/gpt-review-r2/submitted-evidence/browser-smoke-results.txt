@@ -1,0 +1,13 @@
+{"id":"A01","name":"TOC/spine separation & fragment","status":"PASS","detail":{"toc":["第一节","第二节","第三章"],"tocAfter":{"page":7,"targetPage":7,"spine":0}}}
+{"id":"A03","name":"in-chapter fragment link","status":"PASS","detail":{"beforeLink":{"spine":0,"page":0,"total":15,"quote":"CHAPTER-1 跳到章内第二节 段落 000：这是用于验证阅读位置的测试文"},"afterLink":{"page":7,"targetPage":7,"spine":0}}}
+{"id":"A07","name":"same-source reload restores text position","status":"PASS","detail":{"beforeReload":{"spine":0,"page":12,"total":15,"quote":"ter 1, paragraph 80. 段落 081：这是用于验证阅读位置的测试文本。我们希望字号变化、窗口变化与下一次打开"},"afterReload":{"spine":0,"page":12,"total":15,"quote":"ter 1, paragraph 80. 段落 081：这是用于验证阅读位置的测试文本。我们希望字号变化、窗口变化与下一次打开"}}}
+{"id":"A05","name":"font-size relayout keeps text anchor","status":"PASS","detail":{"beforeFont":{"spine":0,"page":5,"total":15,"quote":"ter 1, paragraph 32. 段落 033：这是用于验证阅读位置的测试文本。我们希望字号变化、窗口变化与下一次打开"},"afterFont":{"page":9,"total":29,"locatedPage":9,"quote":"、窗口变化与下一次打开时，仍然能找到刚才读到的句子。Chapter 1, paragraph 30. 段落 031：这是用于验"}}}
+{"id":"A12","name":"20 rapid page turns","status":"PASS","detail":{"spine":1,"page":5,"total":15,"quote":"ter 2, paragraph 33. 段落 034：这是用于验证阅读位置的测试文本。我们希望字号变化、窗口变化与下一次打开"}}
+{"id":"A14","name":"selection does not page-turn","status":"PASS","detail":{"beforeSel":{"spine":1,"page":5,"total":15,"quote":"ter 2, paragraph 33. 段落 034：这是用于验证阅读位置的测试文本。我们希望字号变化、窗口变化与下一次打开"},"afterSel":{"spine":1,"page":5,"total":15,"quote":"ter 2, paragraph 33. 段落 034：这是用于验证阅读位置的测试文本。我们希望字号变化、窗口变化与下一次打开"}}}
+{"id":"A17","name":"full-text search","status":"PASS","detail":{"searchCount":100,"searchAfter":{"spine":2,"page":0,"total":15,"quote":"CHAPTER-3 段落 000：这是用于验证阅读位置的测试文本。我们希望字号变"},"searchMarks":1}}
+{"id":"A18a","name":"bookmark add/dedupe/jump","status":"PASS","detail":{"bmBefore":1,"bmAfter":1,"bmJump":3,"bmRestored":0}}
+{"id":"A16","name":"book activity isolation","status":"PASS","detail":{"hasOnError":false,"sandbox":"allow-same-origin"}}
+{"id":"A15a","name":"760px narrow layout","status":"PASS","detail":{"viewport":760,"scrollWidth":760,"pageRight":748,"pageLeft":12}}
+{"id":"A06a","name":"corrupt/failed open recoverable","status":"PASS","detail":{"badErrorShown":1,"after":{"spine":2,"page":0,"total":15,"quote":"CHAPTER-3 段落 000：这是用于验证阅读位置的测试文本。我们希望字号变"}}}
+{"id":"A02a","name":"fallback toc","status":"PASS","detail":{"toc":3,"spine":3}}
+SUMMARY A01:PASS A03:PASS A07:PASS A05:PASS A12:PASS A14:PASS A17:PASS A18a:PASS A16:PASS A15a:PASS A06a:PASS A02a:PASS

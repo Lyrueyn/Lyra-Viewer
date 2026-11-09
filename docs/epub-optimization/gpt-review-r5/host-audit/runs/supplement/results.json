@@ -1,0 +1,436 @@
+{
+  "evidenceKind": "Original JS->C#; event/geometry substitutes; real isolated files; synthetic focus mutually exclusive explicitly driven",
+  "results": [
+    {
+      "id": "S01-MUTUALLY-EXCLUSIVE-FOCUS",
+      "pass": true,
+      "expected": "specified behavior",
+      "actual": {
+        "file": {
+          "version": 1,
+          "revision": 2,
+          "preferences": {
+            "fontSize": 32,
+            "lineHeight": 2.2
+          },
+          "fieldSequences": {},
+          "preferenceOrders": {
+            "fontSize": 2,
+            "lineHeight": 3
+          },
+          "updatedAt": "2026-10-27T19:35:27.1859871Z"
+        },
+        "pending": [],
+        "acks": [
+          {
+            "type": "host.finalized",
+            "requestId": "daa6ec8d96c54b58814b082e9b00f7a8",
+            "sessionId": "2cd7d1cc29e7406b9fe6e240f0831ad0",
+            "ok": true,
+            "revision": 2
+          }
+        ],
+        "requests": [
+          {
+            "protocol": "lyra-reader",
+            "version": 3,
+            "type": "state.savePreferences",
+            "requestId": "req-a2e15738-e880-4738-a5fc-78c685ff18c8",
+            "sessionId": "2cd7d1cc29e7406b9fe6e240f0831ad0",
+            "scope": "global",
+            "preferences": {
+              "fontSize": 18,
+              "lineHeight": 2.2
+            },
+            "grants": {
+              "fontSize": "pg-9883022d8c674f8d9521fa3524871809",
+              "lineHeight": "pg-2c2715b04f974881b6366067bc26b0e7"
+            }
+          }
+        ],
+        "focus": [
+          {
+            "session": "2cd7d1cc29e7406b9fe6e240f0831ad0",
+            "source": "https://lyra-extension-25238ff7.local/index.html?sessionId=2cd7d1cc29e7406b9fe6e240f0831ad0&loadId=ed492c9c0be04f1e86909f7cc36d3398",
+            "activationEpoch": 3,
+            "navEpoch": 1,
+            "ClosedCount": 1,
+            "pending": false,
+            "closeRequest": "daa6ec8d96c54b58814b082e9b00f7a8",
+            "closeTimer": false,
+            "ready": false,
+            "ensureCalls": 1
+          },
+          {
+            "session": "733489df100a46f1af4b72566d96fa81",
+            "source": "https://lyra-extension-5595b79b.local/index.html?sessionId=733489df100a46f1af4b72566d96fa81&loadId=a6edd9d7d5cb409bad99e2e222e97950",
+            "activationEpoch": 4,
+            "navEpoch": 1,
+            "ClosedCount": 0,
+            "pending": false,
+            "closeRequest": "",
+            "closeTimer": false,
+            "ready": false,
+            "ensureCalls": 1
+          }
+        ],
+        "boundary": "Exactly one host active at each operation; generated Activated events, NOT OS/native focus automation"
+      }
+    },
+    {
+      "id": "S02-PAGE-DEBOUNCE-DURING-CLOSE",
+      "pass": true,
+      "expected": "Within live pending-close window page input fires; ok:true must not leave latest modified position unwritten",
+      "actual": {
+        "before": {
+          "acks": [],
+          "file": {
+            "version": 1,
+            "revision": 1,
+            "positionRevision": 1,
+            "metadataRevision": 0,
+            "interaction": 2,
+            "interactionOwner": "e67dcb720c8442ed9471312e2ee07d4a",
+            "position": {
+              "spineHref": "a.xhtml",
+              "spineIndex": 0,
+              "locator": {
+                "textOffset": 800,
+                "quote": "synthetic",
+                "chapterFraction": 0.42105263157894735
+              },
+              "chapterFraction": 0.42105263157894735,
+              "savedAt": "2023-11-14T22:13:20.000Z"
+            },
+            "positionToken": 2,
+            "positionSequence": 1700000000000000,
+            "bookmarks": [],
+            "bookmarksRevision": 0,
+            "positionSession": "e67dcb720c8442ed9471312e2ee07d4a",
+            "positionSavedAt": "2026-10-27T19:35:27.2022429Z"
+          },
+          "pending": true
+        },
+        "during": {
+          "page": 8,
+          "modified": true,
+          "op": 2,
+          "host": {
+            "session": "e67dcb720c8442ed9471312e2ee07d4a",
+            "source": "https://lyra-extension-fa2fb39a.local/index.html?sessionId=e67dcb720c8442ed9471312e2ee07d4a&loadId=b2ba8f9c13bc4d37bd44e48fae8fff5f",
+            "activationEpoch": 1,
+            "navEpoch": 1,
+            "ClosedCount": 0,
+            "pending": true,
+            "closeRequest": "10924d455b4c4fb6901c772ade608de9",
+            "closeTimer": true,
+            "ready": false,
+            "ensureCalls": 1
+          }
+        },
+        "acks": [
+          {
+            "type": "host.finalized",
+            "requestId": "10924d455b4c4fb6901c772ade608de9",
+            "sessionId": "e67dcb720c8442ed9471312e2ee07d4a",
+            "ok": true,
+            "revision": 1
+          }
+        ],
+        "modified": false,
+        "visibleOffset": 800,
+        "file": {
+          "version": 1,
+          "revision": 1,
+          "positionRevision": 1,
+          "metadataRevision": 0,
+          "interaction": 2,
+          "interactionOwner": "e67dcb720c8442ed9471312e2ee07d4a",
+          "position": {
+            "spineHref": "a.xhtml",
+            "spineIndex": 0,
+            "locator": {
+              "textOffset": 800,
+              "quote": "synthetic",
+              "chapterFraction": 0.42105263157894735
+            },
+            "chapterFraction": 0.42105263157894735,
+            "savedAt": "2023-11-14T22:13:20.000Z"
+          },
+          "positionToken": 2,
+          "positionSequence": 1700000000000000,
+          "bookmarks": [],
+          "bookmarksRevision": 0,
+          "positionSession": "e67dcb720c8442ed9471312e2ee07d4a",
+          "positionSavedAt": "2026-10-27T19:35:27.2022429Z"
+        },
+        "requests": [
+          {
+            "protocol": "lyra-reader",
+            "version": 3,
+            "type": "state.savePosition",
+            "requestId": "req-b7867497-4ca1-4258-b5a9-5f8ce186a8ca",
+            "sessionId": "e67dcb720c8442ed9471312e2ee07d4a",
+            "bookId": "sha256:0ad3e8e2a90ff89566cacebc2f1598b42bb038c6a82a4e8b4789fc2a669a1ec2",
+            "position": {
+              "spineHref": "a.xhtml",
+              "spineIndex": 0,
+              "locator": {
+                "textOffset": 800,
+                "quote": "synthetic",
+                "chapterFraction": 0.42105263157894735
+              },
+              "chapterFraction": 0.42105263157894735,
+              "savedAt": "2023-11-14T22:13:20.000Z"
+            },
+            "interactionToken": 2,
+            "sequence": 1700000000000000,
+            "operationId": "pos-op-5f37cead-dd4f-4590-8f61-314285da52de"
+          }
+        ]
+      }
+    },
+    {
+      "id": "S03-HOST-FAILED-POSITION-REOPEN",
+      "pass": true,
+      "expected": "specified behavior",
+      "actual": {
+        "failedBefore": {
+          "offset": 100,
+          "baseRevision": 0,
+          "token": 1
+        },
+        "retained": {
+          "offset": 100,
+          "baseRevision": 0
+        },
+        "file": {
+          "version": 1,
+          "revision": 1,
+          "positionRevision": 1,
+          "metadataRevision": 0,
+          "interaction": 1,
+          "interactionOwner": "758650f9029d4fb7a5a2c17a6ea34419",
+          "position": {
+            "spineHref": "a.xhtml",
+            "spineIndex": 0,
+            "locator": {
+              "textOffset": 100,
+              "chapterFraction": 0.05263157894736842
+            },
+            "chapterFraction": 0.05263157894736842,
+            "savedAt": "2023-11-14T22:13:20.420Z"
+          },
+          "positionToken": 1,
+          "positionSequence": 1700000000420001,
+          "bookmarks": [],
+          "bookmarksRevision": 0,
+          "positionSession": "758650f9029d4fb7a5a2c17a6ea34419",
+          "positionSavedAt": "2026-10-27T19:35:27.2689053Z"
+        },
+        "visibleAnchor": {
+          "textOffset": 100,
+          "chapterFraction": 0.05263157894736842
+        },
+        "failedRemaining": 0,
+        "status": "已打开：A.epub",
+        "fixture": "Original file-change/open/save chains; parser/book geometry double; ReadOnly actual A state file across A->B; no externally newer position"
+      }
+    },
+    {
+      "id": "S04-THEME-THREE-FIELDS",
+      "pass": true,
+      "expected": "specified behavior",
+      "actual": {
+        "requests": [
+          {
+            "protocol": "lyra-reader",
+            "version": 3,
+            "type": "app.ready",
+            "sessionId": "084d820a943b4f9abecf4a64ac8c57ce"
+          },
+          {
+            "protocol": "lyra-reader",
+            "version": 3,
+            "type": "hello",
+            "requestId": "hello-ac74c3c6-8cb9-4503-b8b0-ce6dc4e91433",
+            "sessionId": "084d820a943b4f9abecf4a64ac8c57ce"
+          },
+          {
+            "protocol": "lyra-reader",
+            "version": 3,
+            "type": "app.ready",
+            "sessionId": "084d820a943b4f9abecf4a64ac8c57ce"
+          },
+          {
+            "protocol": "lyra-reader",
+            "version": 3,
+            "type": "state.grantPreferences",
+            "requestId": "req-60168882-2a07-4cd9-8642-a8cec8202023",
+            "sessionId": "084d820a943b4f9abecf4a64ac8c57ce",
+            "scope": "global",
+            "fields": [
+              "theme",
+              "bg",
+              "fg"
+            ],
+            "operationId": "pref-op-8c4a7838-a876-42f0-b264-51c6e93dcea9",
+            "activationEpoch": 1,
+            "navEpoch": 1
+          },
+          {
+            "protocol": "lyra-reader",
+            "version": 3,
+            "type": "state.savePreferences",
+            "requestId": "req-cf8437f6-41a5-4b0e-949b-70fe028fd5ec",
+            "sessionId": "084d820a943b4f9abecf4a64ac8c57ce",
+            "scope": "global",
+            "preferences": {
+              "theme": "sepia",
+              "bg": "#F5F0E6",
+              "fg": "#2B2620"
+            },
+            "grants": {
+              "theme": "pg-52c17234a3e24d838b1a14b2cc27e7e8",
+              "bg": "pg-52c17234a3e24d838b1a14b2cc27e7e8",
+              "fg": "pg-52c17234a3e24d838b1a14b2cc27e7e8"
+            }
+          }
+        ],
+        "file": {
+          "version": 1,
+          "revision": 1,
+          "preferences": {
+            "theme": "sepia",
+            "bg": "#F5F0E6",
+            "fg": "#2B2620"
+          },
+          "fieldSequences": {},
+          "preferenceOrders": {
+            "theme": 4,
+            "bg": 4,
+            "fg": 4
+          },
+          "updatedAt": "2026-10-27T19:35:27.2900958Z"
+        }
+      }
+    },
+    {
+      "id": "S05-NEW-GRANT-WRITE-FAIL-OLD-PENDING",
+      "pass": true,
+      "expected": "specified behavior",
+      "actual": {
+        "file": {
+          "version": 1,
+          "revision": 2,
+          "preferences": {
+            "fontSize": 26,
+            "lineHeight": 2.2
+          },
+          "fieldSequences": {},
+          "preferenceOrders": {
+            "fontSize": 5,
+            "lineHeight": 8
+          },
+          "updatedAt": "2026-10-27T19:35:27.3076392Z"
+        },
+        "pendingA": [],
+        "pendingB": [
+          "fontSize"
+        ],
+        "requestsA": [
+          {
+            "protocol": "lyra-reader",
+            "version": 3,
+            "type": "state.savePreferences",
+            "requestId": "req-6002419e-7f91-42fc-993f-a88d606056d9",
+            "sessionId": "2f071ca335d94e689ae890d66b9f210b",
+            "scope": "global",
+            "preferences": {
+              "fontSize": 26
+            },
+            "grants": {
+              "fontSize": "pg-93beca7fd4a644f3b38f6c3122c87ae7"
+            }
+          },
+          {
+            "protocol": "lyra-reader",
+            "version": 3,
+            "type": "state.savePreferences",
+            "requestId": "req-3873c12b-d3fe-4d5b-9add-770b4b7de1f5",
+            "sessionId": "2f071ca335d94e689ae890d66b9f210b",
+            "scope": "global",
+            "preferences": {
+              "fontSize": 18,
+              "lineHeight": 2.2
+            },
+            "grants": {
+              "fontSize": "pg-439b21db06dd47198f900d8d05494f9a",
+              "lineHeight": "pg-3b4927e21ac4418281b93aa1fec36c84"
+            }
+          }
+        ],
+        "requestsB": [
+          {
+            "protocol": "lyra-reader",
+            "version": 3,
+            "type": "state.savePreferences",
+            "requestId": "req-6e245006-d75f-4748-82d0-b13a6ee83b62",
+            "sessionId": "ef03810227394f8c8e5b265a011c640a",
+            "scope": "global",
+            "preferences": {
+              "fontSize": 32
+            },
+            "grants": {
+              "fontSize": "pg-d82eaff6d2884cec968fa85ec08edce0"
+            }
+          }
+        ],
+        "boundary": "New grant save actually fails, old pending still PREFERENCE_STALE and blocks unrelated field; both synthetic active"
+      }
+    },
+    {
+      "id": "S06-CAPACITY-UI-PENDING",
+      "pass": true,
+      "expected": "specified behavior",
+      "actual": {
+        "inputCount": 4089,
+        "start": {
+          "count": 8,
+          "order": 8
+        },
+        "before": {
+          "file": {
+            "version": 1,
+            "revision": 1,
+            "preferences": {
+              "fontSize": 18
+            },
+            "fieldSequences": {},
+            "preferenceOrders": {
+              "fontSize": 4097
+            },
+            "updatedAt": "2026-10-27T19:35:27.6905062Z"
+          },
+          "pending": [],
+          "saveState": "设置已保存",
+          "count": {
+            "count": 4096,
+            "order": 4097
+          }
+        },
+        "acks": [
+          {
+            "type": "host.finalized",
+            "requestId": "8e8ab1cad52b4cd1a3b759ce2a383e1a",
+            "sessionId": "f0d27c39233d4a4eb67f31b6f5a87b68",
+            "ok": true,
+            "revision": 1
+          }
+        ],
+        "grantErrors": 0,
+        "boundary": "Controlled 4097-near-limit original UI input burst without debounce delivery, not claimed ordinary human frequency"
+      }
+    }
+  ]
+}

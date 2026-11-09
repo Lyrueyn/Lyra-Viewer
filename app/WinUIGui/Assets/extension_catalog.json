@@ -1,66 +1,73 @@
-﻿[
+[
     {
-        "id":  "epub",
-        "name":  "EPUB 阅读器",
-        "repo":  "Lyrueyn/Lyra-Extension-Epub",
-        "asset":  "lyra-ext-epub.zip",
-        "description":  "在璃鸢镜里阅读 EPUB：目录、章节、字号、进度记忆。"
+        "id": "editor",
+        "name": "编辑器",
+        "repo": "Lyrueyn/Lyra-Extension-Editor",
+        "asset": "lyra-ext-editor.zip",
+        "description": "编辑器项目库：记录要编辑的 HTML 项目；点项目在独立窗口中打开，由 HTML 阅读器 + HTML 编辑器插件联动进入编辑模式。",
+        "requiresAny": [
+            "html-reader"
+        ]
     },
     {
-        "id":  "pdf",
-        "name":  "PDF 阅读器",
-        "repo":  "Lyrueyn/Lyra-Extention-PDF_Reader",
-        "asset":  "lyra-ext-pdf.zip",
-        "description":  "在璃鸢镜里阅读 PDF：连续翻页、页码跳转、缩放、夜间模式、放映与超分。"
+        "id": "epub",
+        "name": "EPUB 阅读器",
+        "repo": "Lyrueyn/Lyra-Extension-Epub",
+        "asset": "lyra-ext-epub.zip",
+        "description": "在璃鸢镜里阅读 EPUB：目录、章节、字号、进度记忆。"
     },
     {
-        "id":  "txt",
-        "name":  "TXT 阅读器",
-        "repo":  "Lyrueyn/Lyra-Extension-txt_Reader",
-        "asset":  "lyra-ext-txt.zip",
-        "description":  "在璃鸢镜里阅读 TXT：自动编码、字号行距、深浅主题与阅读位置恢复。"
+        "id": "pdf",
+        "name": "PDF 阅读器",
+        "repo": "Lyrueyn/Lyra-Extention-PDF_Reader",
+        "asset": "lyra-ext-pdf.zip",
+        "description": "在璃鸢镜里阅读 PDF：连续翻页、页码跳转、缩放、夜间模式、放映与超分。"
     },
     {
-        "id":  "tomato",
-        "name":  "番茄小说下载器",
-        "repo":  "Lyrueyn/Lyra-Extension-Tomato",
-        "asset":  "lyra-ext-tomato.zip",
-        "description":  "番茄小说下载器前端；核心以加密组件随主程序发布，前端仓库不含签名/注册实现。",
-        "requiresAny":  [
-                            "txt",
-                            "epub",
-                            "pdf"
-                        ]
+        "id": "txt",
+        "name": "TXT 阅读器",
+        "repo": "Lyrueyn/Lyra-Extension-txt_Reader",
+        "asset": "lyra-ext-txt.zip",
+        "description": "在璃鸢镜里阅读 TXT：自动编码、字号行距、深浅主题与阅读位置恢复。"
     },
     {
-        "id":  "notebook",
-        "name":  "笔记本",
-        "repo":  "Lyrueyn/Lyra-Extension-Notebook",
-        "asset":  "lyra-ext-notebook.zip",
-        "description":  "本地优先笔记本 2.0：Notebook 壳 + HTML_Reader/HTML_Editor 分层；一个 .lyrnb 包含多篇笔记。",
-        "requiresAny":  [
-                            "html-reader",
-                            "html-editor"
-                        ]
+        "id": "tomato",
+        "name": "番茄小说下载器",
+        "repo": "Lyrueyn/Lyra-Extension-Tomato",
+        "asset": "lyra-ext-tomato.zip",
+        "description": "番茄小说下载器前端；核心以加密组件随主程序发布，前端仓库不含签名/注册实现。",
+        "requiresAny": [
+            "txt",
+            "epub",
+            "pdf"
+        ]
     },
     {
-        "id":  "html-editor",
-        "name":  "HTML 编辑器层",
-        "repo":  "Lyrueyn/Lyra-Extension-HTML-Editor",
-        "asset":  "lyra-ext-html-editor.zip",
-        "description":  "无独立 Tab 的编辑器层，供 HTML_Reader / Notebook 嵌入。",
-        "requiresAny":  [
-
-                        ]
+        "id": "notebook",
+        "name": "笔记本",
+        "repo": "Lyrueyn/Lyra-Extension-Notebook",
+        "asset": "lyra-ext-notebook.zip",
+        "description": "本地优先笔记本 2.0：Notebook 壳 + HTML_Reader/HTML_Editor 分层；一个 .lyrnb 包含多篇笔记。",
+        "requiresAny": [
+            "html-reader",
+            "html-editor"
+        ]
     },
     {
-        "id":  "html-reader",
-        "name":  "HTML 阅读器",
-        "repo":  "Lyrueyn/Lyra-Extension-HTML-Reader",
-        "asset":  "lyra-ext-html-reader.zip",
-        "description":  "独立 HTML 阅读 Tab，阅读模式与嵌入编辑器模式切换。",
-        "requiresAny":  [
-                            "html-editor"
-                        ]
+        "id": "html-editor",
+        "name": "HTML 编辑器",
+        "repo": "Lyrueyn/Lyra-Extension-HTML-Editor",
+        "asset": "lyra-ext-html-editor.zip",
+        "description": "编辑器插件：CodeMirror 源码、实时预览、Dev Tool。需要先安装编辑器扩展。",
+        "requiresAny": [
+            "editor"
+        ]
+    },
+    {
+        "id": "html-reader",
+        "name": "HTML 阅读器",
+        "repo": "Lyrueyn/Lyra-Extension-HTML-Reader",
+        "asset": "lyra-ext-html-reader.zip",
+        "description": "独立 HTML 阅读 Tab；安装编辑器扩展 + HTML 编辑器插件后可进入编辑模式，否则只读。"
     }
 ]

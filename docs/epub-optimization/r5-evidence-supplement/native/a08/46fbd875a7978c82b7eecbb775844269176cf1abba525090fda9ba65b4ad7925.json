@@ -1,0 +1,57 @@
+{
+  "version": 1,
+  "revision": 2,
+  "positionRevision": 1,
+  "metadataRevision": 1,
+  "interaction": 2,
+  "interactionOwner": "3dba32bf3f4446288ef43f832cdcbb71",
+  "position": {
+    "spineHref": "OPS/c1.xhtml",
+    "spineIndex": 1,
+    "locator": {
+      "elementPath": [
+        0,
+        0
+      ],
+      "textOffset": null,
+      "quote": "",
+      "prefix": "",
+      "suffix": "",
+      "elementId": "",
+      "chapterFraction": 0,
+      "pageIndex": 0
+    },
+    "chapterFraction": 0,
+    "savedAt": "2026-10-27T19:36:10.583Z"
+  },
+  "positionToken": 1,
+  "positionSequence": 0,
+  "bookmarks": [
+    {
+      "id": "bm-mvr365cm-j6zqnx",
+      "_key": "OPS/c1.xhtml|e[0,0]",
+      "spineHref": "OPS/c1.xhtml",
+      "spineIndex": 1,
+      "chapterTitle": "c1",
+      "title": "c1",
+      "summary": "\u56FE\u7247\u9875",
+      "locator": {
+        "elementPath": [
+          0,
+          0
+        ],
+        "textOffset": null,
+        "quote": "",
+        "prefix": "",
+        "suffix": "",
+        "elementId": "",
+        "chapterFraction": 0,
+        "pageIndex": 0
+      },
+      "createdAt": "2026-10-27T19:36:14.998Z"
+    }
+  ],
+  "bookmarksRevision": 1,
+  "positionSession": "3dba32bf3f4446288ef43f832cdcbb71",
+  "positionSavedAt": "2026-10-27T19:36:10.5858513Z"
+}

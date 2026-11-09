@@ -1,0 +1,857 @@
+{
+  "generatedAt": "2026-10-27T19:47:01.475Z",
+  "verdict": "FAIL within module/jsdom scope; no release or native certification",
+  "commit": "76ced4c17efa4526fbc8c00e3fff5261959a7fe7",
+  "packageSha256": "60cc97bf2721bb0239122275b307833d871548c985a56068e649f3d3a1517b80",
+  "sources": {
+    "epub-book.js": "62453a86f64fc9e883af379440c8306a8e218fa55456de490671873044c2cdc2",
+    "search.js": "470c4fe4bb68f299b1aa367cffd1f3b5e616af2dad25e7b1cc1d10f25bea702a",
+    "paginator.js": "15408a60cf6e65f83d2a3b479a878da888be964d7639ffafd468067c81a2a248",
+    "reader.js": "28790e1fb4cd5e04302c26217d80b293d8bdedfc3cd4e1551c9a02c0d93f61fb",
+    "reader-state.js": "fd9e7cad46398d393966358d0813668975d8f93bf915a573e06536c747175e8d",
+    "index.html": "f6b244c642b1842652b4ed733116a26a3e92b1b0271bf7c1b444a1c8af3b411d",
+    "extension.json": "564a8d33896d9d17aadf4066ec40c56a681889aceb4067b34ee0198bea43cca1"
+  },
+  "identityMismatches": [],
+  "inputCount": 137,
+  "inputsUnchanged": true,
+  "suites": [
+    {
+      "file": "model-results.json",
+      "group": "preserved-R4",
+      "counts": {
+        "PASS": 21,
+        "OBSERVATION": 1
+      },
+      "total": 22,
+      "harnessError": null,
+      "wrongHashes": []
+    },
+    {
+      "file": "reader-flow-results.json",
+      "group": "preserved-R4",
+      "counts": {
+        "PASS": 8
+      },
+      "total": 8,
+      "harnessError": null,
+      "wrongHashes": []
+    },
+    {
+      "file": "boundary-results.json",
+      "group": "preserved-R4",
+      "counts": {
+        "OBSERVATION": 2,
+        "PASS": 2
+      },
+      "total": 4,
+      "harnessError": null,
+      "wrongHashes": []
+    },
+    {
+      "file": "r4-boundary-results.json",
+      "group": "preserved-R4",
+      "counts": {
+        "PASS": 8,
+        "OBSERVATION": 3
+      },
+      "total": 11,
+      "harnessError": null,
+      "wrongHashes": []
+    },
+    {
+      "file": "r4-reader-stage-results.json",
+      "group": "preserved-R4",
+      "counts": {
+        "PASS": 16
+      },
+      "total": 16,
+      "harnessError": null,
+      "wrongHashes": []
+    },
+    {
+      "file": "r4-anchor-cancel-results.json",
+      "group": "preserved-R4",
+      "counts": {
+        "PASS": 3,
+        "OBSERVATION": 1
+      },
+      "total": 4,
+      "harnessError": null,
+      "wrongHashes": []
+    },
+    {
+      "file": "r5-reader-consistency-results.json",
+      "group": "new-R5",
+      "counts": {
+        "PASS": 16,
+        "FAIL": 11
+      },
+      "total": 27,
+      "harnessError": null,
+      "wrongHashes": []
+    },
+    {
+      "file": "r5-search-visibility-results.json",
+      "group": "new-R5",
+      "counts": {
+        "PASS": 10,
+        "OBSERVATION": 2,
+        "FAIL": 5
+      },
+      "total": 17,
+      "harnessError": null,
+      "wrongHashes": []
+    },
+    {
+      "file": "r5-resource-trend-results.json",
+      "group": "new-R5",
+      "counts": {
+        "PASS": 5
+      },
+      "total": 5,
+      "harnessError": null,
+      "wrongHashes": []
+    },
+    {
+      "file": "r5-late-cancel-results.json",
+      "group": "new-R5",
+      "counts": {
+        "FAIL": 3
+      },
+      "total": 3,
+      "harnessError": null,
+      "wrongHashes": []
+    }
+  ],
+  "total": 117,
+  "counts": {
+    "PASS": 89,
+    "OBSERVATION": 9,
+    "FAIL": 19
+  },
+  "preservedR4": {
+    "PASS": 58,
+    "OBSERVATION": 7
+  },
+  "preservedR3": {
+    "PASS": 31,
+    "OBSERVATION": 3
+  },
+  "newR5": {
+    "PASS": 31,
+    "FAIL": 19,
+    "OBSERVATION": 2
+  },
+  "assertions": [
+    {
+      "suite": "model-results.json",
+      "id": "S01",
+      "verdict": "PASS",
+      "title": "Exact 1000, same/cross chapter 1001"
+    },
+    {
+      "suite": "model-results.json",
+      "id": "S02",
+      "verdict": "PASS",
+      "title": "Over-limit first/middle chapter still scans later chapter; cap unit is UTF-16 code units"
+    },
+    {
+      "suite": "model-results.json",
+      "id": "S03",
+      "verdict": "PASS",
+      "title": "Hot cache query observes immediate cancellation"
+    },
+    {
+      "suite": "model-results.json",
+      "id": "S04",
+      "verdict": "PASS",
+      "title": "Cancelled cold build not reused by new query"
+    },
+    {
+      "suite": "model-results.json",
+      "id": "S05",
+      "verdict": "PASS",
+      "title": "Dense long chapter scan yields"
+    },
+    {
+      "suite": "model-results.json",
+      "id": "S06",
+      "verdict": "PASS",
+      "title": "Sparse/no-match hot scan yields independently of number of matches"
+    },
+    {
+      "suite": "model-results.json",
+      "id": "S07",
+      "verdict": "PASS",
+      "title": "Read failure counted, remaining sections still searched"
+    },
+    {
+      "suite": "model-results.json",
+      "id": "S08",
+      "verdict": "PASS",
+      "title": "Real frozen parser + ZIP oversized chapter coverage and no search resource allocation"
+    },
+    {
+      "suite": "model-results.json",
+      "id": "R01",
+      "verdict": "PASS",
+      "title": "Destroy while bytes pending prevents allocation"
+    },
+    {
+      "suite": "model-results.json",
+      "id": "R02",
+      "verdict": "PASS",
+      "title": "True concurrent resource pending deduplication"
+    },
+    {
+      "suite": "model-results.json",
+      "id": "R03",
+      "verdict": "PASS",
+      "title": "Stale A/B finish after C; actual task cleanup bounds live resources and task metadata"
+    },
+    {
+      "suite": "model-results.json",
+      "id": "R04",
+      "verdict": "PASS",
+      "title": "Same-book old/new pending shared image survives both interleavings"
+    },
+    {
+      "suite": "model-results.json",
+      "id": "R05",
+      "verdict": "PASS",
+      "title": "200 sequential image chapter transitions settle with one live resource/task"
+    },
+    {
+      "suite": "model-results.json",
+      "id": "R06",
+      "verdict": "PASS",
+      "title": "Failed prepare before returned owner does not retain unbounded task sets"
+    },
+    {
+      "suite": "model-results.json",
+      "id": "P01",
+      "verdict": "PASS",
+      "title": "One decode distinct complete bytes, HTML/SVG href/xlink and fragments"
+    },
+    {
+      "suite": "model-results.json",
+      "id": "T01",
+      "verdict": "PASS",
+      "title": "Shared UTF-16 model / duplicates / inline / NBSP / virtual block separators"
+    },
+    {
+      "suite": "model-results.json",
+      "id": "T02",
+      "verdict": "PASS",
+      "title": "Basic hidden/details/SVG defs/desc model semantics fixed"
+    },
+    {
+      "suite": "model-results.json",
+      "id": "T03",
+      "verdict": "PASS",
+      "title": "Hidden br and retained SVG display/visibility/symbol semantics"
+    },
+    {
+      "suite": "model-results.json",
+      "id": "E01",
+      "verdict": "PASS",
+      "title": "Exact supported algorithm and ordinary nonfont checks"
+    },
+    {
+      "suite": "model-results.json",
+      "id": "E02",
+      "verdict": "PASS",
+      "title": "Target must exist in ZIP and MIME must actually identify font"
+    },
+    {
+      "suite": "model-results.json",
+      "id": "E03",
+      "verdict": "OBSERVATION",
+      "title": "CipherReference non-root fallback permits URI absent at root"
+    },
+    {
+      "suite": "model-results.json",
+      "id": "P02",
+      "verdict": "PASS",
+      "title": "Sanitizer protocol check, SVG links and forged control attributes"
+    },
+    {
+      "suite": "reader-flow-results.json",
+      "id": "F01",
+      "verdict": "PASS",
+      "title": "Original input-close clears debounce before any read"
+    },
+    {
+      "suite": "reader-flow-results.json",
+      "id": "F02",
+      "verdict": "PASS",
+      "title": "Input then Enter starts only one read/build"
+    },
+    {
+      "suite": "reader-flow-results.json",
+      "id": "F03",
+      "verdict": "PASS",
+      "title": "Cross-book cleared list and retained old button callback reject old result"
+    },
+    {
+      "suite": "reader-flow-results.json",
+      "id": "F04",
+      "verdict": "PASS",
+      "title": "Input invalidates pending old query before debounce"
+    },
+    {
+      "suite": "reader-flow-results.json",
+      "id": "F05",
+      "verdict": "PASS",
+      "title": "Changing query while result navigation pending prevents old highlight commit"
+    },
+    {
+      "suite": "reader-flow-results.json",
+      "id": "F06",
+      "verdict": "PASS",
+      "title": "Late old-book task cannot release current new-book task with same numeric owner"
+    },
+    {
+      "suite": "reader-flow-results.json",
+      "id": "F07",
+      "verdict": "PASS",
+      "title": "Controlled failure after DOM submission restores old actual document and image resource"
+    },
+    {
+      "suite": "reader-flow-results.json",
+      "id": "F08",
+      "verdict": "PASS",
+      "title": "Independent outer whitelist rejects non-http(s) and malformed URL"
+    },
+    {
+      "suite": "boundary-results.json",
+      "id": "B01",
+      "verdict": "OBSERVATION",
+      "title": "Cache limit scope is retained section UTF-16 text, not total heap or bytes"
+    },
+    {
+      "suite": "boundary-results.json",
+      "id": "B02",
+      "verdict": "OBSERVATION",
+      "title": "Original cold HTML parse/model has no internal macrotask yield"
+    },
+    {
+      "suite": "boundary-results.json",
+      "id": "B03",
+      "verdict": "PASS",
+      "title": "Original locator differentiates null/missing/string offset, text zero, valid image and fraction"
+    },
+    {
+      "suite": "boundary-results.json",
+      "id": "B04",
+      "verdict": "PASS",
+      "title": "Ten same-jsdom-realm book replacements retain only current image resources"
+    },
+    {
+      "suite": "r4-boundary-results.json",
+      "id": "X01",
+      "verdict": "PASS",
+      "title": "True chunk-boundary matches must not disappear"
+    },
+    {
+      "suite": "r4-boundary-results.json",
+      "id": "X02",
+      "verdict": "PASS",
+      "title": "Emoji, whitespace and repeated count at chunk boundaries"
+    },
+    {
+      "suite": "r4-boundary-results.json",
+      "id": "X11",
+      "verdict": "OBSERVATION",
+      "title": "Query longer than chunk meets engine regexp-size limit"
+    },
+    {
+      "suite": "r4-boundary-results.json",
+      "id": "X03",
+      "verdict": "PASS",
+      "title": "Nonoverlap and case-insensitive UTF16 offsets retain original regexp semantics"
+    },
+    {
+      "suite": "r4-boundary-results.json",
+      "id": "X04",
+      "verdict": "PASS",
+      "title": "Boundary loss must not make 1001 look like exactly 1000"
+    },
+    {
+      "suite": "r4-boundary-results.json",
+      "id": "X05",
+      "verdict": "PASS",
+      "title": "Real ZIP parser crossing actual scan boundary"
+    },
+    {
+      "suite": "r4-boundary-results.json",
+      "id": "X06",
+      "verdict": "PASS",
+      "title": "Search and display share text after publisher style removal"
+    },
+    {
+      "suite": "r4-boundary-results.json",
+      "id": "X07",
+      "verdict": "OBSERVATION",
+      "title": "SVG use and child visibility override policy boundary"
+    },
+    {
+      "suite": "r4-boundary-results.json",
+      "id": "X08",
+      "verdict": "PASS",
+      "title": "Failed next prepare must keep previously displayed shared image"
+    },
+    {
+      "suite": "r4-boundary-results.json",
+      "id": "X09",
+      "verdict": "PASS",
+      "title": "Exact font MIME and encoded actual ZIP targets, mixed non-font rejection"
+    },
+    {
+      "suite": "r4-boundary-results.json",
+      "id": "X10",
+      "verdict": "OBSERVATION",
+      "title": "Encryption URI fallback reinterprets root-invalid relative path"
+    },
+    {
+      "suite": "r4-reader-stage-results.json",
+      "id": "N-prepare-input",
+      "verdict": "PASS",
+      "title": "Invalidate result navigation before further DOM/layout/location/highlight side effects"
+    },
+    {
+      "suite": "r4-reader-stage-results.json",
+      "id": "NP-prepare-input",
+      "verdict": "PASS",
+      "title": "Subsequent user page turn remains usable"
+    },
+    {
+      "suite": "r4-reader-stage-results.json",
+      "id": "N-prepare-search-close",
+      "verdict": "PASS",
+      "title": "Invalidate result navigation before further DOM/layout/location/highlight side effects"
+    },
+    {
+      "suite": "r4-reader-stage-results.json",
+      "id": "NP-prepare-search-close",
+      "verdict": "PASS",
+      "title": "Subsequent user page turn remains usable"
+    },
+    {
+      "suite": "r4-reader-stage-results.json",
+      "id": "N-prepare-open-intent",
+      "verdict": "PASS",
+      "title": "Invalidate result navigation before further DOM/layout/location/highlight side effects"
+    },
+    {
+      "suite": "r4-reader-stage-results.json",
+      "id": "N-prepare-book-replaced",
+      "verdict": "PASS",
+      "title": "Invalidate result navigation before further DOM/layout/location/highlight side effects"
+    },
+    {
+      "suite": "r4-reader-stage-results.json",
+      "id": "N-prepare-host-finalize",
+      "verdict": "PASS",
+      "title": "Invalidate result navigation before further DOM/layout/location/highlight side effects"
+    },
+    {
+      "suite": "r4-reader-stage-results.json",
+      "id": "N-resources-input",
+      "verdict": "PASS",
+      "title": "Invalidate result navigation before further DOM/layout/location/highlight side effects"
+    },
+    {
+      "suite": "r4-reader-stage-results.json",
+      "id": "NP-resources-input",
+      "verdict": "PASS",
+      "title": "Subsequent user page turn remains usable"
+    },
+    {
+      "suite": "r4-reader-stage-results.json",
+      "id": "N-resources-search-close",
+      "verdict": "PASS",
+      "title": "Invalidate result navigation before further DOM/layout/location/highlight side effects"
+    },
+    {
+      "suite": "r4-reader-stage-results.json",
+      "id": "NP-resources-search-close",
+      "verdict": "PASS",
+      "title": "Subsequent user page turn remains usable"
+    },
+    {
+      "suite": "r4-reader-stage-results.json",
+      "id": "N-resources-open-intent",
+      "verdict": "PASS",
+      "title": "Invalidate result navigation before further DOM/layout/location/highlight side effects"
+    },
+    {
+      "suite": "r4-reader-stage-results.json",
+      "id": "N-resources-book-replaced",
+      "verdict": "PASS",
+      "title": "Invalidate result navigation before further DOM/layout/location/highlight side effects"
+    },
+    {
+      "suite": "r4-reader-stage-results.json",
+      "id": "N-resources-host-finalize",
+      "verdict": "PASS",
+      "title": "Invalidate result navigation before further DOM/layout/location/highlight side effects"
+    },
+    {
+      "suite": "r4-reader-stage-results.json",
+      "id": "N-ROLLBACK",
+      "verdict": "PASS",
+      "title": "Failure after original DOM submit/layout restores old document, text position and image"
+    },
+    {
+      "suite": "r4-reader-stage-results.json",
+      "id": "N-SHARED-FAIL",
+      "verdict": "PASS",
+      "title": "Failed same-book prepare retains displayed old shared URL"
+    },
+    {
+      "suite": "r4-anchor-cancel-results.json",
+      "id": "A01",
+      "verdict": "PASS",
+      "title": "Image null text offset remains element-based through original requestLayout"
+    },
+    {
+      "suite": "r4-anchor-cancel-results.json",
+      "id": "A02",
+      "verdict": "PASS",
+      "title": "Late image relayout preserves confirmed pure-element anchor"
+    },
+    {
+      "suite": "r4-anchor-cancel-results.json",
+      "id": "A03",
+      "verdict": "PASS",
+      "title": "Hot timer cancellation followed immediately by fresh query"
+    },
+    {
+      "suite": "r4-anchor-cancel-results.json",
+      "id": "A04",
+      "verdict": "OBSERVATION",
+      "title": "Cold cancellation is observed after synchronous whole-chapter DOM/model construction"
+    },
+    {
+      "suite": "r5-reader-consistency-results.json",
+      "id": "Y-prepare-input",
+      "verdict": "PASS",
+      "title": "Cancellation leaves coherent document/state/ready/resources"
+    },
+    {
+      "suite": "r5-reader-consistency-results.json",
+      "id": "YT-prepare-input",
+      "verdict": "PASS",
+      "title": "After cancel, next page actually moves and save matches displayed document"
+    },
+    {
+      "suite": "r5-reader-consistency-results.json",
+      "id": "YR-prepare-input",
+      "verdict": "PASS",
+      "title": "Explicit subsequent chapter navigation recovers and releases old owners"
+    },
+    {
+      "suite": "r5-reader-consistency-results.json",
+      "id": "Y-prepare-search-close",
+      "verdict": "PASS",
+      "title": "Cancellation leaves coherent document/state/ready/resources"
+    },
+    {
+      "suite": "r5-reader-consistency-results.json",
+      "id": "YT-prepare-search-close",
+      "verdict": "PASS",
+      "title": "After cancel, next page actually moves and save matches displayed document"
+    },
+    {
+      "suite": "r5-reader-consistency-results.json",
+      "id": "YR-prepare-search-close",
+      "verdict": "PASS",
+      "title": "Explicit subsequent chapter navigation recovers and releases old owners"
+    },
+    {
+      "suite": "r5-reader-consistency-results.json",
+      "id": "Y-prepare-open-intent",
+      "verdict": "PASS",
+      "title": "Cancellation leaves coherent document/state/ready/resources"
+    },
+    {
+      "suite": "r5-reader-consistency-results.json",
+      "id": "YT-prepare-open-intent",
+      "verdict": "PASS",
+      "title": "After cancel, next page actually moves and save matches displayed document"
+    },
+    {
+      "suite": "r5-reader-consistency-results.json",
+      "id": "YF-prepare",
+      "verdict": "PASS",
+      "title": "Delayed file eventually replaces cancelled navigation cleanly"
+    },
+    {
+      "suite": "r5-reader-consistency-results.json",
+      "id": "Y-prepare-finalize",
+      "verdict": "PASS",
+      "title": "Cancellation leaves coherent document/state/ready/resources"
+    },
+    {
+      "suite": "r5-reader-consistency-results.json",
+      "id": "YC-prepare",
+      "verdict": "PASS",
+      "title": "Finalize during pending navigation preserves prior stable page locator"
+    },
+    {
+      "suite": "r5-reader-consistency-results.json",
+      "id": "Y-resources-input",
+      "verdict": "FAIL",
+      "title": "Cancellation leaves coherent document/state/ready/resources"
+    },
+    {
+      "suite": "r5-reader-consistency-results.json",
+      "id": "YT-resources-input",
+      "verdict": "FAIL",
+      "title": "After cancel, next page actually moves and save matches displayed document"
+    },
+    {
+      "suite": "r5-reader-consistency-results.json",
+      "id": "YR-resources-input",
+      "verdict": "PASS",
+      "title": "Explicit subsequent chapter navigation recovers and releases old owners"
+    },
+    {
+      "suite": "r5-reader-consistency-results.json",
+      "id": "Y-resources-search-close",
+      "verdict": "FAIL",
+      "title": "Cancellation leaves coherent document/state/ready/resources"
+    },
+    {
+      "suite": "r5-reader-consistency-results.json",
+      "id": "YT-resources-search-close",
+      "verdict": "FAIL",
+      "title": "After cancel, next page actually moves and save matches displayed document"
+    },
+    {
+      "suite": "r5-reader-consistency-results.json",
+      "id": "YR-resources-search-close",
+      "verdict": "PASS",
+      "title": "Explicit subsequent chapter navigation recovers and releases old owners"
+    },
+    {
+      "suite": "r5-reader-consistency-results.json",
+      "id": "Y-resources-open-intent",
+      "verdict": "FAIL",
+      "title": "Cancellation leaves coherent document/state/ready/resources"
+    },
+    {
+      "suite": "r5-reader-consistency-results.json",
+      "id": "YT-resources-open-intent",
+      "verdict": "FAIL",
+      "title": "After cancel, next page actually moves and save matches displayed document"
+    },
+    {
+      "suite": "r5-reader-consistency-results.json",
+      "id": "YF-resources",
+      "verdict": "PASS",
+      "title": "Delayed file eventually replaces cancelled navigation cleanly"
+    },
+    {
+      "suite": "r5-reader-consistency-results.json",
+      "id": "Y-resources-finalize",
+      "verdict": "FAIL",
+      "title": "Cancellation leaves coherent document/state/ready/resources"
+    },
+    {
+      "suite": "r5-reader-consistency-results.json",
+      "id": "YC-resources",
+      "verdict": "FAIL",
+      "title": "Finalize during pending navigation preserves prior stable page locator"
+    },
+    {
+      "suite": "r5-reader-consistency-results.json",
+      "id": "YFAIL-resource-wait",
+      "verdict": "FAIL",
+      "title": "Same-book failure preserves previous actual document and resources"
+    },
+    {
+      "suite": "r5-reader-consistency-results.json",
+      "id": "YFAIL-after-layout",
+      "verdict": "FAIL",
+      "title": "Same-book failure preserves previous actual document and resources"
+    },
+    {
+      "suite": "r5-reader-consistency-results.json",
+      "id": "YQ-4096",
+      "verdict": "PASS",
+      "title": "4096-unit query still supported by original UI"
+    },
+    {
+      "suite": "r5-reader-consistency-results.json",
+      "id": "YQ-4097",
+      "verdict": "FAIL",
+      "title": "Overlength query has specific actionable UI error and does not read chapters"
+    },
+    {
+      "suite": "r5-reader-consistency-results.json",
+      "id": "YQ-recover",
+      "verdict": "PASS",
+      "title": "Ordinary query works immediately after overlength query"
+    },
+    {
+      "suite": "r5-search-visibility-results.json",
+      "id": "Z-SEARCH-EQUIVALENCE",
+      "verdict": "PASS",
+      "title": "Actual 64Ki windows/UTF16/long whitespace/failed first token/nonoverlap/counts equal whole-string regexp"
+    },
+    {
+      "suite": "r5-search-visibility-results.json",
+      "id": "Z-LENGTH-MODULE",
+      "verdict": "PASS",
+      "title": "4096 boundary uses trimmed UTF16 units with no reads for rejection"
+    },
+    {
+      "suite": "r5-search-visibility-results.json",
+      "id": "Z-HOT-CANCEL",
+      "verdict": "PASS",
+      "title": "Hot timer cancellation and immediate fresh query complete"
+    },
+    {
+      "suite": "r5-search-visibility-results.json",
+      "id": "Z-SCHEDULE-OBS",
+      "verdict": "OBSERVATION",
+      "title": "First-token full-remainder exec and one long whitespace candidate are synchronous work"
+    },
+    {
+      "suite": "r5-search-visibility-results.json",
+      "id": "Z-VIS-display-parent-cannot-recover",
+      "verdict": "PASS",
+      "title": "Cleaned display CSS cascade and searchable model agree"
+    },
+    {
+      "suite": "r5-search-visibility-results.json",
+      "id": "Z-VIS-visibility-child-recovers",
+      "verdict": "PASS",
+      "title": "Cleaned display CSS cascade and searchable model agree"
+    },
+    {
+      "suite": "r5-search-visibility-results.json",
+      "id": "Z-VIS-svg-style-overrides-presentation-visible",
+      "verdict": "PASS",
+      "title": "Cleaned display CSS cascade and searchable model agree"
+    },
+    {
+      "suite": "r5-search-visibility-results.json",
+      "id": "Z-VIS-svg-style-overrides-presentation-hidden",
+      "verdict": "PASS",
+      "title": "Cleaned display CSS cascade and searchable model agree"
+    },
+    {
+      "suite": "r5-search-visibility-results.json",
+      "id": "Z-VIS-hidden-br-aria",
+      "verdict": "PASS",
+      "title": "Cleaned display CSS cascade and searchable model agree"
+    },
+    {
+      "suite": "r5-search-visibility-results.json",
+      "id": "Z-VIS-templates-and-use",
+      "verdict": "PASS",
+      "title": "Cleaned display CSS cascade and searchable model agree"
+    },
+    {
+      "suite": "r5-search-visibility-results.json",
+      "id": "Z-VIS-duplicate-hidden-visible",
+      "verdict": "FAIL",
+      "title": "Cleaned display CSS cascade and searchable model agree"
+    },
+    {
+      "suite": "r5-search-visibility-results.json",
+      "id": "Z-VIS-duplicate-visible-hidden",
+      "verdict": "FAIL",
+      "title": "Cleaned display CSS cascade and searchable model agree"
+    },
+    {
+      "suite": "r5-search-visibility-results.json",
+      "id": "Z-VIS-svg-duplicate-hidden-visible",
+      "verdict": "FAIL",
+      "title": "Cleaned display CSS cascade and searchable model agree"
+    },
+    {
+      "suite": "r5-search-visibility-results.json",
+      "id": "Z-VIS-svg-duplicate-visible-hidden",
+      "verdict": "FAIL",
+      "title": "Cleaned display CSS cascade and searchable model agree"
+    },
+    {
+      "suite": "r5-search-visibility-results.json",
+      "id": "Z-VIS-important-first-stripped",
+      "verdict": "FAIL",
+      "title": "Cleaned display CSS cascade and searchable model agree"
+    },
+    {
+      "suite": "r5-search-visibility-results.json",
+      "id": "Z-RANGE-VISIBLE",
+      "verdict": "PASS",
+      "title": "Highlight/clear preserves model and CSS-visible text including hidden interior"
+    },
+    {
+      "suite": "r5-search-visibility-results.json",
+      "id": "Z-RANGE-STRING",
+      "verdict": "OBSERVATION",
+      "title": "Interior hidden DOM remains inside one Range and gets hidden mark wrappers"
+    },
+    {
+      "suite": "r5-resource-trend-results.json",
+      "id": "Z-RESOURCE-FAIL40",
+      "verdict": "PASS",
+      "title": "40 post-acquisition prepare failures keep both old visible Node Blob URLs fetchable"
+    },
+    {
+      "suite": "r5-resource-trend-results.json",
+      "id": "Z-RESOURCE-CANCEL40",
+      "verdict": "PASS",
+      "title": "40 abandoned prepared candidates release only candidate unique image"
+    },
+    {
+      "suite": "r5-resource-trend-results.json",
+      "id": "Z-RESOURCE-200",
+      "verdict": "PASS",
+      "title": "200 committed image transitions retain two current URLs and one owner"
+    },
+    {
+      "suite": "r5-resource-trend-results.json",
+      "id": "Z-RESOURCE-10BOOKS",
+      "verdict": "PASS",
+      "title": "10 same-realm replacements destroy old books while current Node Blob URLs remain fetchable"
+    },
+    {
+      "suite": "r5-resource-trend-results.json",
+      "id": "Z-RESOURCE-DESTROY",
+      "verdict": "PASS",
+      "title": "Final destroy releases all registered Node Blob URLs"
+    },
+    {
+      "suite": "r5-late-cancel-results.json",
+      "id": "Z-LATE-search-close",
+      "verdict": "FAIL",
+      "title": "Real late-image handler must not restart cancelled/finalized navigation layout"
+    },
+    {
+      "suite": "r5-late-cancel-results.json",
+      "id": "Z-LATE-finalize",
+      "verdict": "FAIL",
+      "title": "Real late-image handler must not restart cancelled/finalized navigation layout"
+    },
+    {
+      "suite": "r5-late-cancel-results.json",
+      "id": "Z-FILE-AFTER-FINALIZE",
+      "verdict": "FAIL",
+      "title": "Pending file bytes must not restart open/rollback flow after finalized"
+    }
+  ],
+  "notes": [
+    "No browser/native GUI, no product/source modification, no dependency installation or deployment.",
+    "Original six regression scripts byte-identical to R4; common helper identity updated only.",
+    "Original X11 explanatory label references old regexp engine error; actual R5 length policy is tested separately by Z-LENGTH-MODULE and YQ-4097.",
+    "Timing correction separates original query cancellation completion and subsequent fresh-query completion; no product verdict changed.",
+    "Reader-stage persistence is a call-recording double. Resource trend uses actual Node Blob URL fetch, not Chromium blob registry."
+  ]
+}

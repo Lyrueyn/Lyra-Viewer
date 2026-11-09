@@ -1,0 +1,205 @@
+{
+  "generatedAt": "2026-10-27T16:06:40.221Z",
+  "results": [
+    {
+      "id": "R3-PREF-INFLIGHT",
+      "name": "latest in-flight preference survives ack/debounce",
+      "status": "PASS",
+      "detail": {
+        "prefsDisk": {
+          "preferences": {
+            "fontSize": 32
+          },
+          "fieldSequences": {
+            "fontSize": 1793117178168000
+          }
+        }
+      }
+    },
+    {
+      "id": "R3-PREF-INFLIGHT-ACK",
+      "name": "late ack cannot erase newer in-flight patch",
+      "status": "PASS",
+      "detail": {
+        "disk": {
+          "preferences": {
+            "fontSize": 32
+          },
+          "fieldSequences": {
+            "fontSize": 1793117180086000
+          }
+        },
+        "calls": 2
+      }
+    },
+    {
+      "id": "R3-IMAGE-ANCHOR",
+      "name": "image/element anchor does not treat null textOffset as page 0",
+      "status": "PASS",
+      "detail": {
+        "imageAnchor": {
+          "anchor": {
+            "elementPath": [
+              60,
+              0
+            ],
+            "textOffset": null,
+            "quote": "",
+            "prefix": "",
+            "suffix": "",
+            "elementId": "",
+            "chapterFraction": 1,
+            "pageIndex": 15
+          },
+          "page": 15,
+          "total": 16,
+          "imgPage": 15
+        },
+        "imageRestored": {
+          "page": 15,
+          "imgPage": 15,
+          "total": 16,
+          "anchor": {
+            "elementPath": [
+              60,
+              0
+            ],
+            "textOffset": null,
+            "quote": "",
+            "prefix": "",
+            "suffix": "",
+            "elementId": "",
+            "chapterFraction": 1,
+            "pageIndex": 15
+          }
+        }
+      }
+    },
+    {
+      "id": "R3-SEARCH-RANGE",
+      "name": "cross-chapter 1001 reports 1000 results and truncation",
+      "status": "PASS",
+      "detail": {
+        "info": "找到 1001+ 处 · 已扫描 2/2 章 · 缓存 11903 字符（结果/缓存已截断）",
+        "count": 1000
+      }
+    },
+    {
+      "id": "R3-SEARCH-VISIBLE",
+      "name": "hidden/details/SVG defs excluded, visible AB searchable",
+      "status": "PASS",
+      "detail": {
+        "hiddenSecret": {
+          "count": 0,
+          "info": "没有找到匹配内容 · 已扫描 1/1 章"
+        },
+        "hiddenVisible": {
+          "count": 1,
+          "info": "找到 1 处 · 已扫描 1/1 章 · 缓存 22 字符"
+        }
+      }
+    },
+    {
+      "id": "R3-SEARCH-CLOSE-DEBOUNCE",
+      "name": "closing search cancels pending input debounce",
+      "status": "PASS",
+      "detail": {
+        "count": 0,
+        "info": "",
+        "open": false
+      }
+    },
+    {
+      "id": "R3-SEARCH-CROSSBOOK",
+      "name": "old book result buttons are cleared on new book",
+      "status": "PASS",
+      "detail": {
+        "count": 0,
+        "input": "OLDONLY",
+        "info": ""
+      }
+    },
+    {
+      "id": "R3-LOCAL-CORRUPT",
+      "name": "corrupt local position/bookmarks do not block reading",
+      "status": "PASS",
+      "detail": {
+        "ready": true,
+        "text": "已打开：Normal；当前窗口本地阅读状态损坏，未覆盖原数据"
+      }
+    },
+    {
+      "id": "R3-ROLLBACK-DOC",
+      "name": "mid-commit failure restores actual old document",
+      "status": "PASS",
+      "detail": {
+        "text": "N paragraph 0：重复句 重复句 重复句。This is r3 text for position and search.N paragraph 1：",
+        "ready": true,
+        "status": "打开新书失败，已保留原来的书：正文载入失败"
+      }
+    },
+    {
+      "id": "R3-FAILED-SNAPSHOT",
+      "name": "failed save snapshot retained across switch and retried on reopen",
+      "status": "PASS",
+      "detail": {
+        "oldPage": 0,
+        "afterTurn": {
+          "page": 1,
+          "modified": true,
+          "failed": 1,
+          "saveState": "位置未保存，会在原书重试"
+        },
+        "retrySnapshot": {
+          "page": 0,
+          "failed": 0,
+          "failedKeys": [],
+          "bookId": "sha256:11f2b971d5b8dc2c48b0c62dd430aed6cf074b8886be10c70b5861f198af9465",
+          "storedPage": 1,
+          "text": "位置已保存在当前窗口",
+          "status": "此主程序版本不支持跨窗口保存；阅读位置仅保存在当前窗口"
+        }
+      }
+    },
+    {
+      "id": "R3-BOOKMARK-DELAY",
+      "name": "local single-item limit parity and delayed add cannot enter new book",
+      "status": "PASS",
+      "detail": {
+        "localLimit": "BOOKMARK_TOO_LARGE",
+        "bmBeforeRelease": 0,
+        "delayedBm": {
+          "count": 0,
+          "status": "此主程序版本不支持跨窗口保存；阅读位置仅保存在当前窗口"
+        }
+      }
+    },
+    {
+      "id": "R3-PREF-READ-FAIL",
+      "name": "preference read failure preserves existing fields",
+      "status": "PASS",
+      "detail": {
+        "raw": {
+          "preferences": {
+            "fontSize": 32,
+            "theme": "sepia"
+          },
+          "fieldSequences": {}
+        },
+        "saveState": "位置已保存在当前窗口"
+      }
+    },
+    {
+      "id": "R3-EXTERNAL-WHITELIST",
+      "name": "outer onLink rejects javascript/data and allows https",
+      "status": "PASS",
+      "detail": {
+        "blockedOpens": [],
+        "httpsOpens": [
+          "https://example.com/ok"
+        ]
+      }
+    }
+  ],
+  "errors": []
+}

@@ -1,0 +1,148 @@
+{
+  "generatedAt": "2026-10-26T15:13:52.350Z",
+  "results": [
+    {
+      "id": "A02b",
+      "name": "EPUB2 NCX nested toc",
+      "status": "PASS",
+      "detail": {
+        "ncxInfo": {
+          "toc": [
+            "▾ 第一章",
+            "第一节",
+            "第二章"
+          ],
+          "depths": [
+            8,
+            24,
+            8
+          ]
+        },
+        "ncxTarget": {
+          "page": 0,
+          "target": 0
+        }
+      }
+    },
+    {
+      "id": "A09",
+      "name": "same content shares state, name independent",
+      "status": "PASS",
+      "detail": {
+        "identityA": {
+          "spine": 0,
+          "page": 5,
+          "total": 10,
+          "quote": "段落 055：长文本位置回归测试。Chapter 1, paragraph 55."
+        },
+        "identityB": {
+          "spine": 0,
+          "page": 5,
+          "total": 10,
+          "quote": "段落 055：长文本位置回归测试。Chapter 1, paragraph 55."
+        }
+      }
+    },
+    {
+      "id": "A10b",
+      "name": "long paragraph anchor survives font relayout",
+      "status": "PASS",
+      "detail": {
+        "longAfter": {
+          "page": 3,
+          "located": 3,
+          "anchor": {
+            "elementPath": null,
+            "textNodePath": [
+              1,
+              0
+            ],
+            "offsetUtf16": 1160,
+            "quote": "置恢复，句子重复以制造重复文本。长段落用于验证跨页位置恢复，句子重复以制造重复文本。长段落用于验证跨页位置恢复，句子重复以制造重",
+            "prefix": "置恢复，句子重复以制造重复文本。长段落用于验证跨页位置恢复，句子",
+            "suffix": "重复以制造重复文本。长段落用于验证跨页位置恢复，句子重复以制造重",
+            "elementId": "long-p",
+            "chapterFraction": 0.2857142857142857,
+            "pageIndex": 2
+          }
+        }
+      }
+    },
+    {
+      "id": "A10c",
+      "name": "image page anchor survives relayout",
+      "status": "PASS",
+      "detail": {
+        "page": 0,
+        "located": 0,
+        "hasElementPath": true,
+        "quote": ""
+      }
+    },
+    {
+      "id": "A13",
+      "name": "no idle rAF loop after settling",
+      "status": "PASS",
+      "detail": {
+        "raf1": 3,
+        "raf2": 3,
+        "delta": 0
+      }
+    },
+    {
+      "id": "A18b",
+      "name": "bookmark persists after reload",
+      "status": "PASS",
+      "detail": {
+        "bookmarkCount": 1
+      }
+    },
+    {
+      "id": "A04b",
+      "name": "legacy duplicate cannot take over URL book",
+      "status": "PASS",
+      "detail": {
+        "beforeDup": {
+          "spine": 0,
+          "page": 1,
+          "total": 10,
+          "quote": "段落 011：长文本位置回归测试。Chapter 1, paragraph 11."
+        },
+        "afterDup": {
+          "spine": 0,
+          "page": 1,
+          "total": 10,
+          "quote": "段落 011：长文本位置回归测试。Chapter 1, paragraph 11."
+        },
+        "dup": {}
+      }
+    },
+    {
+      "id": "A15-520",
+      "name": "520px layout no horizontal clipping",
+      "status": "PASS",
+      "detail": {
+        "viewport": 520,
+        "scrollWidth": 520,
+        "pageLeft": 12,
+        "pageRight": 508,
+        "mainLeft": 0,
+        "mainRight": 520
+      }
+    },
+    {
+      "id": "A15-1400",
+      "name": "1400px layout no horizontal clipping",
+      "status": "PASS",
+      "detail": {
+        "viewport": 1400,
+        "scrollWidth": 1400,
+        "pageLeft": 410,
+        "pageRight": 1270,
+        "mainLeft": 280,
+        "mainRight": 1400
+      }
+    }
+  ],
+  "errors": []
+}

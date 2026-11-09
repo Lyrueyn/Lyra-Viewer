@@ -213,6 +213,23 @@ namespace WinUIGui
                     StatusText.Text = "需要先安装前置扩展：" + string.Join(" / ", missing);
                     return;
                 }
+                if (_def.IsEditorHost)
+                {
+                    var defs = ExtensionCatalog.LoadDefinitions();
+                    var readerDef = defs.FirstOrDefault(d => string.Equals(d.Info.Id, "html-reader", StringComparison.OrdinalIgnoreCase));
+                    if (readerDef == null)
+                    {
+                        StatusText.Text = "需要先安装 HTML 阅读器扩展";
+                        return;
+                    }
+                    bool startEdit = defs.Any(d => d.IsEditorPlugin &&
+                        string.Equals(d.Info.Id, "html-editor", StringComparison.OrdinalIgnoreCase));
+                    var editorWin = ExtensionManager.OpenReader(readerDef, path, entryRel, startEdit);
+                    if (editorWin == null) { StatusText.Text = "HTML 阅读器扩展目录不存在或未启用"; return; }
+                    editorWin.Activate();
+                    StatusText.Text = startEdit ? "正在打开编辑窗口：" + Path.GetFileName(path) : "正在打开阅读窗口：" + Path.GetFileName(path);
+                    return;
+                }
                 var win = ExtensionManager.OpenReader(_def, path, entryRel);
                 if (win == null) { StatusText.Text = "扩展目录不存在或未启用"; return; }
                 win.Closed += (_, _) => { };

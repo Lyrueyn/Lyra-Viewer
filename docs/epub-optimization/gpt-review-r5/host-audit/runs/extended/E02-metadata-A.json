@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "revision": 1,
+  "positionRevision": 0,
+  "metadataRevision": 1,
+  "interaction": 1,
+  "interactionOwner": "d4d6608ee5cc46cf9acfc0155e898c56",
+  "position": null,
+  "positionToken": 0,
+  "positionSequence": 0,
+  "bookmarks": [
+    {
+      "id": "metadata-only"
+    }
+  ],
+  "bookmarksRevision": 1
+}

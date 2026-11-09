@@ -1,0 +1,212 @@
+{
+  "evidenceKind": "Original JS/C# plus disclosed events; actual isolated file locks/corruption",
+  "results": [
+    {
+      "id": "R01-POSITION-OWNER-SEQUENCE-UNICODE",
+      "pass": true,
+      "expected": "specified behavior",
+      "actual": {
+        "first": {
+          "ok": true,
+          "result": {
+            "revision": 1,
+            "positionRevision": 1,
+            "positionToken": 1
+          }
+        },
+        "idem": {
+          "ok": true,
+          "result": {
+            "revision": 1,
+            "positionRevision": 1,
+            "positionToken": 1,
+            "idempotent": true
+          }
+        },
+        "conflict": {
+          "ok": false,
+          "code": "DUPLICATE_SEQUENCE"
+        },
+        "reverse": {
+          "ok": false,
+          "code": "STALE_SEQUENCE"
+        },
+        "zero": {
+          "ok": false,
+          "code": "BAD_SEQUENCE"
+        },
+        "stale": {
+          "ok": false,
+          "code": "STALE_INTERACTION"
+        },
+        "owner": {
+          "ok": false,
+          "code": "TOKEN_OWNER_MISMATCH"
+        },
+        "fresh": {
+          "ok": true,
+          "result": {
+            "revision": 2,
+            "positionRevision": 2,
+            "positionToken": 2
+          }
+        },
+        "file": {
+          "version": 1,
+          "revision": 2,
+          "positionRevision": 2,
+          "metadataRevision": 0,
+          "interaction": 2,
+          "interactionOwner": "d8d4ea03d00a4af781ce8ee0231b4c9a",
+          "position": {
+            "page": 5
+          },
+          "positionToken": 2,
+          "positionSequence": 1,
+          "bookmarks": [],
+          "bookmarksRevision": 0,
+          "positionSession": "d8d4ea03d00a4af781ce8ee0231b4c9a",
+          "positionSavedAt": "2026-10-28T15:57:24.9880100Z"
+        }
+      }
+    },
+    {
+      "id": "R02-REAL-BOOK-READFAIL-UNKNOWN-CORRUPT",
+      "pass": true,
+      "expected": "specified behavior",
+      "actual": {
+        "denied": {
+          "ok": false,
+          "code": "STATE_UNREADABLE"
+        },
+        "blocked": {
+          "ok": false,
+          "code": "STATE_UNREADABLE"
+        },
+        "before": {
+          "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r7\\host-audit\\runs\\regression\\bin\\data\\reader\\epub\\books\\d6586cd83772a5c5316fee57bc4c3d57a49488d7e1310d79e7743eda36317e32.json",
+          "raw": "{\r\n  \"version\": 1,\r\n  \"revision\": 1,\r\n  \"positionRevision\": 1,\r\n  \"metadataRevision\": 0,\r\n  \"interaction\": 1,\r\n  \"interactionOwner\": \"bceecd127819453cb2b45371627e1092\",\r\n  \"position\": {\r\n    \"page\": 2\r\n  },\r\n  \"positionToken\": 1,\r\n  \"positionSequence\": 1,\r\n  \"bookmarks\": [],\r\n  \"bookmarksRevision\": 0,\r\n  \"positionSession\": \"bceecd127819453cb2b45371627e1092\",\r\n  \"positionSavedAt\": \"2026-10-28T15:57:24.9943914Z\"\r\n}"
+        },
+        "after": {
+          "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r7\\host-audit\\runs\\regression\\bin\\data\\reader\\epub\\books\\d6586cd83772a5c5316fee57bc4c3d57a49488d7e1310d79e7743eda36317e32.json",
+          "raw": "{\r\n  \"version\": 1,\r\n  \"revision\": 1,\r\n  \"positionRevision\": 1,\r\n  \"metadataRevision\": 0,\r\n  \"interaction\": 1,\r\n  \"interactionOwner\": \"bceecd127819453cb2b45371627e1092\",\r\n  \"position\": {\r\n    \"page\": 2\r\n  },\r\n  \"positionToken\": 1,\r\n  \"positionSequence\": 1,\r\n  \"bookmarks\": [],\r\n  \"bookmarksRevision\": 0,\r\n  \"positionSession\": \"bceecd127819453cb2b45371627e1092\",\r\n  \"positionSavedAt\": \"2026-10-28T15:57:24.9943914Z\"\r\n}"
+        },
+        "version": {
+          "ok": false,
+          "code": "STATE_VERSION_UNSUPPORTED"
+        },
+        "recover": {
+          "ok": true,
+          "result": {
+            "interactionToken": 1
+          }
+        },
+        "backup": [
+          {
+            "file": "530c973cfd47b092a45aaa61ade64d2ca848be6a691d807b21d9a805aee8408a.json.corrupt-20261028155725003",
+            "raw": "{bad"
+          }
+        ]
+      }
+    },
+    {
+      "id": "R03-LARGE-BOOKMARK-PAGES",
+      "pass": true,
+      "expected": "specified behavior",
+      "actual": {
+        "total": 51,
+        "pages": [
+          24,
+          24,
+          3
+        ],
+        "sizes": [
+          181501,
+          181511,
+          22895
+        ],
+        "conflict": {
+          "ok": false,
+          "code": "CONFLICT"
+        }
+      }
+    },
+    {
+      "id": "R04-STRICT-CLIENT-RESPONSE",
+      "pass": true,
+      "expected": "specified behavior",
+      "actual": {
+        "badSettled": false,
+        "correct": {
+          "grant": "pg-6e247797e98947e58f21e04aa305862d",
+          "mode": "host"
+        }
+      }
+    },
+    {
+      "id": "R05-MISSING-EPOCH-AND-RELOAD",
+      "pass": true,
+      "expected": "specified behavior",
+      "actual": {
+        "missing": {
+          "ok": false,
+          "code": "STALE_OPERATION_EPOCH"
+        },
+        "old": {
+          "session": "6ef98cc8f29346b08eb79f18c46461de",
+          "source": "https://lyra-extension-89c74753.local/index.html?sessionId=6ef98cc8f29346b08eb79f18c46461de&loadId=6f7944304dd346b1bad20ea872b440c1",
+          "activationEpoch": 1,
+          "navEpoch": 1,
+          "ClosedCount": 0,
+          "pending": false,
+          "closeRequest": "",
+          "closeTimer": false,
+          "ready": false,
+          "ensureCalls": 1,
+          "loadId": "6f7944304dd346b1bad20ea872b440c1",
+          "overlay": "Collapsed",
+          "loadingText": "正在打开…",
+          "closeInterval": null,
+          "failed": false
+        },
+        "newState": {
+          "session": "578b489ba9f64a169965537e64764d27",
+          "source": "https://lyra-extension-89c74753.local/index.html?sessionId=578b489ba9f64a169965537e64764d27&loadId=b95646864a36403c8085d25dc04f4cb7",
+          "activationEpoch": 1,
+          "navEpoch": 2,
+          "ClosedCount": 0,
+          "pending": false,
+          "closeRequest": "",
+          "closeTimer": false,
+          "ready": false,
+          "ensureCalls": 1,
+          "loadId": "b95646864a36403c8085d25dc04f4cb7",
+          "overlay": "Visible",
+          "loadingText": "正在打开…",
+          "closeInterval": null,
+          "failed": false
+        },
+        "rejected": {
+          "replies": [],
+          "state": {
+            "session": "578b489ba9f64a169965537e64764d27",
+            "source": "https://lyra-extension-89c74753.local/index.html?sessionId=578b489ba9f64a169965537e64764d27&loadId=b95646864a36403c8085d25dc04f4cb7",
+            "activationEpoch": 1,
+            "navEpoch": 2,
+            "ClosedCount": 0,
+            "pending": false,
+            "closeRequest": "",
+            "closeTimer": false,
+            "ready": false,
+            "ensureCalls": 1,
+            "loadId": "b95646864a36403c8085d25dc04f4cb7",
+            "overlay": "Visible",
+            "loadingText": "正在打开…",
+            "closeInterval": null,
+            "failed": false
+          }
+        }
+      }
+    }
+  ]
+}

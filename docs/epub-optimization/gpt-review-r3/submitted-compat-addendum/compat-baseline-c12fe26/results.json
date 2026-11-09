@@ -1,0 +1,61 @@
+﻿{
+    "capturedAt":  "2026-10-28T00:49:39.5649766+08:00",
+    "scenarios":  [
+                      {
+                          "id":  "COMPAT-NEWHOST-C12FE26-WITHBOOK",
+                          "status":  "PASS",
+                          "runtime":  "D:\\Temp\\lyra_r3_compat_newhost_c12fe26",
+                          "pid":  72996,
+                          "extensionCommit":  "c12fe26275cdec67922cccb64d9b5f2b4c269cd2",
+                          "indexLines":  675,
+                          "indexSha256":  "88FA8B2E0537E535B3430B2D8B6D1C3FF7085F3599CF2CD2813267448939721A",
+                          "observed":  "legacy lyra-book-ready accepted; content readable; page turn; old UI",
+                          "evidence":  [
+                                           "compat-baseline-c12fe26/newhost-c12fe26-withbook.png",
+                                           "compat-baseline-c12fe26/newhost-c12fe26-after-turn.png",
+                                           "compat-baseline-c12fe26/newhost-c12fe26-withbook-raw.log",
+                                           "compat-baseline-c12fe26/runtime-identity-withbook.json"
+                                       ]
+                      },
+                      {
+                          "id":  "COMPAT-NEWHOST-C12FE26-NOBOOK",
+                          "status":  "PASS",
+                          "runtime":  "D:\\Temp\\lyra_r3_compat_newhost_c12fe26",
+                          "pid":  72996,
+                          "observed":  "old empty reader UI and select button; close via CLOSE_TIMEOUT",
+                          "evidence":  [
+                                           "compat-baseline-c12fe26/newhost-c12fe26-nobook.png",
+                                           "compat-baseline-c12fe26/newhost-c12fe26-nobook-raw.log",
+                                           "compat-baseline-c12fe26/runtime-identity-nobook.json"
+                                       ]
+                      },
+                      {
+                          "id":  "COMPAT-B978661-NEWEXT",
+                          "status":  "PASS (honest degradation)",
+                          "runtime":  "D:\\Temp\\lyra_r3_compat_oldhost_b978661",
+                          "pid":  55100,
+                          "hostDllSha256":  "57CC576547C1FE8BC51780C722E6F39B7F00838A6CF75B19AAAC539DA2AAF3CD",
+                          "webviewExeVersion":  "1.1.12+b978661b8a9ec7a9c9fee87d5d323ea1db2bc5ae",
+                          "observed":  "0.7.0 opens/reads; page 1/9-\u003e3/9; local-mode footer",
+                          "evidence":  [
+                                           "compat-baseline-c12fe26/oldhost-b978661-newepub-open.png",
+                                           "compat-baseline-c12fe26/oldhost-b978661-newepub-after-turn.png",
+                                           "compat-baseline-c12fe26/oldhost-b978661-identity.json",
+                                           "compat-baseline-c12fe26/oldhost-b978661-build-identity.json"
+                                       ]
+                      },
+                      {
+                          "id":  "COMPAT-OLDOLD-C12FE26-B978661",
+                          "status":  "PASS (basic)",
+                          "runtime":  "D:\\Temp\\lyra_r3_compat_oldold_c12fe26",
+                          "pid":  69852,
+                          "hostDllSha256":  "57CC576547C1FE8BC51780C722E6F39B7F00838A6CF75B19AAAC539DA2AAF3CD",
+                          "extensionIndexSha256":  "88FA8B2E0537E535B3430B2D8B6D1C3FF7085F3599CF2CD2813267448939721A",
+                          "observed":  "true old/old opens with book; screenshot",
+                          "evidence":  [
+                                           "compat-baseline-c12fe26/oldold-b978661-c12fe26-withbook.png",
+                                           "compat-baseline-c12fe26/oldold-b978661-c12fe26-identity.json"
+                                       ]
+                      }
+                  ]
+}

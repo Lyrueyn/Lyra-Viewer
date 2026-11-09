@@ -1,0 +1,80 @@
+{
+  "evidenceKind": "Real Edge, frozen candidate, controlled delays and optional explicitly local bridge fixture",
+  "results": [
+    {
+      "id": "D01_CHUNK_BOUNDARY_LOST_MATCH",
+      "query": "CROSSBOUNDARY",
+      "actualChunkEdge": 65844,
+      "expected": 3,
+      "status": "找到 2 处 · 已扫描 3/3 章 · 缓存 131781 字符",
+      "buttons": 2,
+      "truth": [
+        {
+          "spine": 0,
+          "offset": 8,
+          "length": 28
+        },
+        {
+          "spine": 1,
+          "offset": 65840,
+          "length": 65859
+        },
+        {
+          "spine": 2,
+          "offset": 65875,
+          "length": 65894
+        }
+      ],
+      "defect": true,
+      "note": "Original UI query, actual ZIP and original sanitized text; three unique chapter matches, middle crosses actual chunk end."
+    },
+    {
+      "id": "D02_CHANGED_QUERY_STILL_REPLACES_DOCUMENT",
+      "before": {
+        "spine": 0,
+        "text": "START DOCUMENT\n\nSTART paragraph 0: independent visible reading and position preservation. "
+      },
+      "after": {
+        "spine": 1,
+        "text": "OLDQUERY target\n\nTARGET paragraph 0: independent visible reading and position preservation",
+        "input": "NEWQUERY",
+        "highlights": [],
+        "active": null,
+        "queryGen": 5
+      },
+      "defect": true,
+      "note": "Highlights correctly suppressed; stronger R4 requirement checks the obsolete navigation must not commit a replacement document."
+    },
+    {
+      "id": "D03_CLOSE_DURING_CHAPTER_LOAD_ACKS_UNSAVED_POSITION",
+      "before": {
+        "modified": true,
+        "ready": false,
+        "spine": 0,
+        "page": 1,
+        "saved": null
+      },
+      "ack": {
+        "message": {
+          "type": "host.finalized",
+          "requestId": "close-during-chapter",
+          "sessionId": "local-mvqzqfz1",
+          "ok": true,
+          "revision": 0
+        },
+        "modified": true,
+        "ready": false,
+        "saved": null
+      },
+      "late": {
+        "finalizing": true,
+        "spine": 1,
+        "text": "NEXT paragraph 0: independent visible reading and position preservation. 这是用于验证实际正文的长段落。\n\n",
+        "modified": true,
+        "saved": null
+      },
+      "defect": true,
+      "note": "Actual browser/controller/localStorage; host-message delivery fixture explicitly chooses local capability. Not native C#/WinUI evidence. Delay only old chapter read; tests ready=false skips dirty-save and late navigation still commits."
+    }
+  ]
+}

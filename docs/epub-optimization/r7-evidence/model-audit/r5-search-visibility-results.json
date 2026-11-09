@@ -1,0 +1,2850 @@
+{
+  "generatedAt": "2026-10-28T15:20:44.253Z",
+  "candidate": "D:\\Temp\\Lyra-Extension-Epub",
+  "identity": {
+    "expectedCommit": "99bd102f4c9b4c1a92668d04e2e12260e523ad94",
+    "expectedPackageSha256": "f2b2741a166749e7108e010151a46246ac2df40bf1f0861050e8e12d612c535c",
+    "hashes": {
+      "epub-book.js": "fdc8b91706bdcff5e0c7bdbfbd4edf7d223085bfc98ccf21e7341beae4d61f89",
+      "search.js": "470c4fe4bb68f299b1aa367cffd1f3b5e616af2dad25e7b1cc1d10f25bea702a",
+      "paginator.js": "6db2bad08f16d65203309d41fa44c040e29bc10b347f5face487e01e46f25d18",
+      "reader.js": "b6c4bad74e8af87211e17993fb86020d0db34ffe80be0c1d63a59dd8004e4358"
+    }
+  },
+  "runtime": {
+    "node": "v24.18.0",
+    "jsdom": "29.1.1"
+  },
+  "evidenceKind": "Frozen original JavaScript loaded unmodified; jsdom DOM/Range and real JSZip. Controlled async dependencies and geometry doubles disclosed per case. Not browser visibility, SVG painting or native desktop evidence.",
+  "results": [
+    {
+      "id": "Z-SEARCH-EQUIVALENCE",
+      "verdict": "PASS",
+      "title": "Actual 64Ki windows/UTF16/long whitespace/failed first token/nonoverlap/counts equal whole-string regexp",
+      "detail": {
+        "seed": 123456789,
+        "cases": [
+          {
+            "name": "boundary-NEEDL-65536--6",
+            "qUnits": 6,
+            "textUnits": 65539,
+            "expectedCount": 1,
+            "actualCount": 1,
+            "truncated": false,
+            "retained": 1,
+            "expectedHead": [
+              {
+                "offset": 65530,
+                "length": 6
+              }
+            ],
+            "actualHead": [
+              {
+                "offset": 65530,
+                "length": 6
+              }
+            ],
+            "pass": true
+          },
+          {
+            "name": "boundary-NEEDL-65536--2",
+            "qUnits": 6,
+            "textUnits": 65543,
+            "expectedCount": 1,
+            "actualCount": 1,
+            "truncated": false,
+            "retained": 1,
+            "expectedHead": [
+              {
+                "offset": 65534,
+                "length": 6
+              }
+            ],
+            "actualHead": [
+              {
+                "offset": 65534,
+                "length": 6
+              }
+            ],
+            "pass": true
+          },
+          {
+            "name": "boundary-NEEDL-65536--1",
+            "qUnits": 6,
+            "textUnits": 65544,
+            "expectedCount": 1,
+            "actualCount": 1,
+            "truncated": false,
+            "retained": 1,
+            "expectedHead": [
+              {
+                "offset": 65535,
+                "length": 6
+              }
+            ],
+            "actualHead": [
+              {
+                "offset": 65535,
+                "length": 6
+              }
+            ],
+            "pass": true
+          },
+          {
+            "name": "boundary-NEEDL-65536-0",
+            "qUnits": 6,
+            "textUnits": 65545,
+            "expectedCount": 1,
+            "actualCount": 1,
+            "truncated": false,
+            "retained": 1,
+            "expectedHead": [
+              {
+                "offset": 65536,
+                "length": 6
+              }
+            ],
+            "actualHead": [
+              {
+                "offset": 65536,
+                "length": 6
+              }
+            ],
+            "pass": true
+          },
+          {
+            "name": "boundary-NEEDL-65536-1",
+            "qUnits": 6,
+            "textUnits": 65546,
+            "expectedCount": 1,
+            "actualCount": 1,
+            "truncated": false,
+            "retained": 1,
+            "expectedHead": [
+              {
+                "offset": 65537,
+                "length": 6
+              }
+            ],
+            "actualHead": [
+              {
+                "offset": 65537,
+                "length": 6
+              }
+            ],
+            "pass": true
+          },
+          {
+            "name": "boundary-NEEDL-131072--6",
+            "qUnits": 6,
+            "textUnits": 131075,
+            "expectedCount": 1,
+            "actualCount": 1,
+            "truncated": false,
+            "retained": 1,
+            "expectedHead": [
+              {
+                "offset": 131066,
+                "length": 6
+              }
+            ],
+            "actualHead": [
+              {
+                "offset": 131066,
+                "length": 6
+              }
+            ],
+            "pass": true
+          },
+          {
+            "name": "boundary-NEEDL-131072--2",
+            "qUnits": 6,
+            "textUnits": 131079,
+            "expectedCount": 1,
+            "actualCount": 1,
+            "truncated": false,
+            "retained": 1,
+            "expectedHead": [
+              {
+                "offset": 131070,
+                "length": 6
+              }
+            ],
+            "actualHead": [
+              {
+                "offset": 131070,
+                "length": 6
+              }
+            ],
+            "pass": true
+          },
+          {
+            "name": "boundary-NEEDL-131072--1",
+            "qUnits": 6,
+            "textUnits": 131080,
+            "expectedCount": 1,
+            "actualCount": 1,
+            "truncated": false,
+            "retained": 1,
+            "expectedHead": [
+              {
+                "offset": 131071,
+                "length": 6
+              }
+            ],
+            "actualHead": [
+              {
+                "offset": 131071,
+                "length": 6
+              }
+            ],
+            "pass": true
+          },
+          {
+            "name": "boundary-NEEDL-131072-0",
+            "qUnits": 6,
+            "textUnits": 131081,
+            "expectedCount": 1,
+            "actualCount": 1,
+            "truncated": false,
+            "retained": 1,
+            "expectedHead": [
+              {
+                "offset": 131072,
+                "length": 6
+              }
+            ],
+            "actualHead": [
+              {
+                "offset": 131072,
+                "length": 6
+              }
+            ],
+            "pass": true
+          },
+          {
+            "name": "boundary-NEEDL-131072-1",
+            "qUnits": 6,
+            "textUnits": 131082,
+            "expectedCount": 1,
+            "actualCount": 1,
+            "truncated": false,
+            "retained": 1,
+            "expectedHead": [
+              {
+                "offset": 131073,
+                "length": 6
+              }
+            ],
+            "actualHead": [
+              {
+                "offset": 131073,
+                "length": 6
+              }
+            ],
+            "pass": true
+          },
+          {
+            "name": "boundary-😀Z-65536--3",
+            "qUnits": 3,
+            "textUnits": 65539,
+            "expectedCount": 1,
+            "actualCount": 1,
+            "truncated": false,
+            "retained": 1,
+            "expectedHead": [
+              {
+                "offset": 65533,
+                "length": 3
+              }
+            ],
+            "actualHead": [
+              {
+                "offset": 65533,
+                "length": 3
+              }
+            ],
+            "pass": true
+          },
+          {
+            "name": "boundary-😀Z-65536--2",
+            "qUnits": 3,
+            "textUnits": 65540,
+            "expectedCount": 1,
+            "actualCount": 1,
+            "truncated": false,
+            "retained": 1,
+            "expectedHead": [
+              {
+                "offset": 65534,
+                "length": 3
+              }
+            ],
+            "actualHead": [
+              {
+                "offset": 65534,
+                "length": 3
+              }
+            ],
+            "pass": true
+          },
+          {
+            "name": "boundary-😀Z-65536--1",
+            "qUnits": 3,
+            "textUnits": 65541,
+            "expectedCount": 1,
+            "actualCount": 1,
+            "truncated": false,
+            "retained": 1,
+            "expectedHead": [
+              {
+                "offset": 65535,
+                "length": 3
+              }
+            ],
+            "actualHead": [
+              {
+                "offset": 65535,
+                "length": 3
+              }
+            ],
+            "pass": true
+          },
+          {
+            "name": "boundary-😀Z-65536-0",
+            "qUnits": 3,
+            "textUnits": 65542,
+            "expectedCount": 1,
+            "actualCount": 1,
+            "truncated": false,
+            "retained": 1,
+            "expectedHead": [
+              {
+                "offset": 65536,
+                "length": 3
+              }
+            ],
+            "actualHead": [
+              {
+                "offset": 65536,
+                "length": 3
+              }
+            ],
+            "pass": true
+          },
+          {
+            "name": "boundary-😀Z-65536-1",
+            "qUnits": 3,
+            "textUnits": 65543,
+            "expectedCount": 1,
+            "actualCount": 1,
+            "truncated": false,
+            "retained": 1,
+            "expectedHead": [
+              {
+                "offset": 65537,
+                "length": 3
+              }
+            ],
+            "actualHead": [
+              {
+                "offset": 65537,
+                "length": 3
+              }
+            ],
+            "pass": true
+          },
+          {
+            "name": "boundary-😀Z-131072--3",
+            "qUnits": 3,
+            "textUnits": 131075,
+            "expectedCount": 1,
+            "actualCount": 1,
+            "truncated": false,
+            "retained": 1,
+            "expectedHead": [
+              {
+                "offset": 131069,
+                "length": 3
+              }
+            ],
+            "actualHead": [
+              {
+                "offset": 131069,
+                "length": 3
+              }
+            ],
+            "pass": true
+          },
+          {
+            "name": "boundary-😀Z-131072--2",
+            "qUnits": 3,
+            "textUnits": 131076,
+            "expectedCount": 1,
+            "actualCount": 1,
+            "truncated": false,
+            "retained": 1,
+            "expectedHead": [
+              {
+                "offset": 131070,
+                "length": 3
+              }
+            ],
+            "actualHead": [
+              {
+                "offset": 131070,
+                "length": 3
+              }
+            ],
+            "pass": true
+          },
+          {
+            "name": "boundary-😀Z-131072--1",
+            "qUnits": 3,
+            "textUnits": 131077,
+            "expectedCount": 1,
+            "actualCount": 1,
+            "truncated": false,
+            "retained": 1,
+            "expectedHead": [
+              {
+                "offset": 131071,
+                "length": 3
+              }
+            ],
+            "actualHead": [
+              {
+                "offset": 131071,
+                "length": 3
+              }
+            ],
+            "pass": true
+          },
+          {
+            "name": "boundary-😀Z-131072-0",
+            "qUnits": 3,
+            "textUnits": 131078,
+            "expectedCount": 1,
+            "actualCount": 1,
+            "truncated": false,
+            "retained": 1,
+            "expectedHead": [
+              {
+                "offset": 131072,
+                "length": 3
+              }
+            ],
+            "actualHead": [
+              {
+                "offset": 131072,
+                "length": 3
+              }
+            ],
+            "pass": true
+          },
+          {
+            "name": "boundary-😀Z-131072-1",
+            "qUnits": 3,
+            "textUnits": 131079,
+            "expectedCount": 1,
+            "actualCount": 1,
+            "truncated": false,
+            "retained": 1,
+            "expectedHead": [
+              {
+                "offset": 131073,
+                "length": 3
+              }
+            ],
+            "actualHead": [
+              {
+                "offset": 131073,
+                "length": 3
+              }
+            ],
+            "pass": true
+          },
+          {
+            "name": "boundary-中文词-65536--3",
+            "qUnits": 3,
+            "textUnits": 65539,
+            "expectedCount": 1,
+            "actualCount": 1,
+            "truncated": false,
+            "retained": 1,
+            "expectedHead": [
+              {
+                "offset": 65533,
+                "length": 3
+              }
+            ],
+            "actualHead": [
+              {
+                "offset": 65533,
+                "length": 3
+              }
+            ],
+            "pass": true
+          },
+          {
+            "name": "boundary-中文词-65536--2",
+            "qUnits": 3,
+            "textUnits": 65540,
+            "expectedCount": 1,
+            "actualCount": 1,
+            "truncated": false,
+            "retained": 1,
+            "expectedHead": [
+              {
+                "offset": 65534,
+                "length": 3
+              }
+            ],
+            "actualHead": [
+              {
+                "offset": 65534,
+                "length": 3
+              }
+            ],
+            "pass": true
+          },
+          {
+            "name": "boundary-中文词-65536--1",
+            "qUnits": 3,
+            "textUnits": 65541,
+            "expectedCount": 1,
+            "actualCount": 1,
+            "truncated": false,
+            "retained": 1,
+            "expectedHead": [
+              {
+                "offset": 65535,
+                "length": 3
+              }
+            ],
+            "actualHead": [
+              {
+                "offset": 65535,
+                "length": 3
+              }
+            ],
+            "pass": true
+          },
+          {
+            "name": "boundary-中文词-65536-0",
+            "qUnits": 3,
+            "textUnits": 65542,
+            "expectedCount": 1,
+            "actualCount": 1,
+            "truncated": false,
+            "retained": 1,
+            "expectedHead": [
+              {
+                "offset": 65536,
+                "length": 3
+              }
+            ],
+            "actualHead": [
+              {
+                "offset": 65536,
+                "length": 3
+              }
+            ],
+            "pass": true
+          },
+          {
+            "name": "boundary-中文词-65536-1",
+            "qUnits": 3,
+            "textUnits": 65543,
+            "expectedCount": 1,
+            "actualCount": 1,
+            "truncated": false,
+            "retained": 1,
+            "expectedHead": [
+              {
+                "offset": 65537,
+                "length": 3
+              }
+            ],
+            "actualHead": [
+              {
+                "offset": 65537,
+                "length": 3
+              }
+            ],
+            "pass": true
+          },
+          {
+            "name": "boundary-中文词-131072--3",
+            "qUnits": 3,
+            "textUnits": 131075,
+            "expectedCount": 1,
+            "actualCount": 1,
+            "truncated": false,
+            "retained": 1,
+            "expectedHead": [
+              {
+                "offset": 131069,
+                "length": 3
+              }
+            ],
+            "actualHead": [
+              {
+                "offset": 131069,
+                "length": 3
+              }
+            ],
+            "pass": true
+          },
+          {
+            "name": "boundary-中文词-131072--2",
+            "qUnits": 3,
+            "textUnits": 131076,
+            "expectedCount": 1,
+            "actualCount": 1,
+            "truncated": false,
+            "retained": 1,
+            "expectedHead": [
+              {
+                "offset": 131070,
+                "length": 3
+              }
+            ],
+            "actualHead": [
+              {
+                "offset": 131070,
+                "length": 3
+              }
+            ],
+            "pass": true
+          },
+          {
+            "name": "boundary-中文词-131072--1",
+            "qUnits": 3,
+            "textUnits": 131077,
+            "expectedCount": 1,
+            "actualCount": 1,
+            "truncated": false,
+            "retained": 1,
+            "expectedHead": [
+              {
+                "offset": 131071,
+                "length": 3
+              }
+            ],
+            "actualHead": [
+              {
+                "offset": 131071,
+                "length": 3
+              }
+            ],
+            "pass": true
+          },
+          {
+            "name": "boundary-中文词-131072-0",
+            "qUnits": 3,
+            "textUnits": 131078,
+            "expectedCount": 1,
+            "actualCount": 1,
+            "truncated": false,
+            "retained": 1,
+            "expectedHead": [
+              {
+                "offset": 131072,
+                "length": 3
+              }
+            ],
+            "actualHead": [
+              {
+                "offset": 131072,
+                "length": 3
+              }
+            ],
+            "pass": true
+          },
+          {
+            "name": "boundary-中文词-131072-1",
+            "qUnits": 3,
+            "textUnits": 131079,
+            "expectedCount": 1,
+            "actualCount": 1,
+            "truncated": false,
+            "retained": 1,
+            "expectedHead": [
+              {
+                "offset": 131073,
+                "length": 3
+              }
+            ],
+            "actualHead": [
+              {
+                "offset": 131073,
+                "length": 3
+              }
+            ],
+            "pass": true
+          },
+          {
+            "name": "boundary-aaaaa-65536--4096",
+            "qUnits": 4096,
+            "textUnits": 65539,
+            "expectedCount": 1,
+            "actualCount": 1,
+            "truncated": false,
+            "retained": 1,
+            "expectedHead": [
+              {
+                "offset": 61440,
+                "length": 4096
+              }
+            ],
+            "actualHead": [
+              {
+                "offset": 61440,
+                "length": 4096
+              }
+            ],
+            "pass": true
+          },
+          {
+            "name": "boundary-aaaaa-65536--2",
+            "qUnits": 4096,
+            "textUnits": 69633,
+            "expectedCount": 1,
+            "actualCount": 1,
+            "truncated": false,
+            "retained": 1,
+            "expectedHead": [
+              {
+                "offset": 65534,
+                "length": 4096
+              }
+            ],
+            "actualHead": [
+              {
+                "offset": 65534,
+                "length": 4096
+              }
+            ],
+            "pass": true
+          },
+          {
+            "name": "boundary-aaaaa-65536--1",
+            "qUnits": 4096,
+            "textUnits": 69634,
+            "expectedCount": 1,
+            "actualCount": 1,
+            "truncated": false,
+            "retained": 1,
+            "expectedHead": [
+              {
+                "offset": 65535,
+                "length": 4096
+              }
+            ],
+            "actualHead": [
+              {
+                "offset": 65535,
+                "length": 4096
+              }
+            ],
+            "pass": true
+          },
+          {
+            "name": "boundary-aaaaa-65536-0",
+            "qUnits": 4096,
+            "textUnits": 69635,
+            "expectedCount": 1,
+            "actualCount": 1,
+            "truncated": false,
+            "retained": 1,
+            "expectedHead": [
+              {
+                "offset": 65536,
+                "length": 4096
+              }
+            ],
+            "actualHead": [
+              {
+                "offset": 65536,
+                "length": 4096
+              }
+            ],
+            "pass": true
+          },
+          {
+            "name": "boundary-aaaaa-65536-1",
+            "qUnits": 4096,
+            "textUnits": 69636,
+            "expectedCount": 1,
+            "actualCount": 1,
+            "truncated": false,
+            "retained": 1,
+            "expectedHead": [
+              {
+                "offset": 65537,
+                "length": 4096
+              }
+            ],
+            "actualHead": [
+              {
+                "offset": 65537,
+                "length": 4096
+              }
+            ],
+            "pass": true
+          },
+          {
+            "name": "boundary-aaaaa-131072--4096",
+            "qUnits": 4096,
+            "textUnits": 131075,
+            "expectedCount": 1,
+            "actualCount": 1,
+            "truncated": false,
+            "retained": 1,
+            "expectedHead": [
+              {
+                "offset": 126976,
+                "length": 4096
+              }
+            ],
+            "actualHead": [
+              {
+                "offset": 126976,
+                "length": 4096
+              }
+            ],
+            "pass": true
+          },
+          {
+            "name": "boundary-aaaaa-131072--2",
+            "qUnits": 4096,
+            "textUnits": 135169,
+            "expectedCount": 1,
+            "actualCount": 1,
+            "truncated": false,
+            "retained": 1,
+            "expectedHead": [
+              {
+                "offset": 131070,
+                "length": 4096
+              }
+            ],
+            "actualHead": [
+              {
+                "offset": 131070,
+                "length": 4096
+              }
+            ],
+            "pass": true
+          },
+          {
+            "name": "boundary-aaaaa-131072--1",
+            "qUnits": 4096,
+            "textUnits": 135170,
+            "expectedCount": 1,
+            "actualCount": 1,
+            "truncated": false,
+            "retained": 1,
+            "expectedHead": [
+              {
+                "offset": 131071,
+                "length": 4096
+              }
+            ],
+            "actualHead": [
+              {
+                "offset": 131071,
+                "length": 4096
+              }
+            ],
+            "pass": true
+          },
+          {
+            "name": "boundary-aaaaa-131072-0",
+            "qUnits": 4096,
+            "textUnits": 135171,
+            "expectedCount": 1,
+            "actualCount": 1,
+            "truncated": false,
+            "retained": 1,
+            "expectedHead": [
+              {
+                "offset": 131072,
+                "length": 4096
+              }
+            ],
+            "actualHead": [
+              {
+                "offset": 131072,
+                "length": 4096
+              }
+            ],
+            "pass": true
+          },
+          {
+            "name": "boundary-aaaaa-131072-1",
+            "qUnits": 4096,
+            "textUnits": 135172,
+            "expectedCount": 1,
+            "actualCount": 1,
+            "truncated": false,
+            "retained": 1,
+            "expectedHead": [
+              {
+                "offset": 131073,
+                "length": 4096
+              }
+            ],
+            "actualHead": [
+              {
+                "offset": 131073,
+                "length": 4096
+              }
+            ],
+            "pass": true
+          },
+          {
+            "name": "boundary-left -65536--10",
+            "qUnits": 10,
+            "textUnits": 135538,
+            "expectedCount": 1,
+            "actualCount": 1,
+            "truncated": false,
+            "retained": 1,
+            "expectedHead": [
+              {
+                "offset": 65526,
+                "length": 70009
+              }
+            ],
+            "actualHead": [
+              {
+                "offset": 65526,
+                "length": 70009
+              }
+            ],
+            "pass": true
+          },
+          {
+            "name": "boundary-left -65536--2",
+            "qUnits": 10,
+            "textUnits": 135546,
+            "expectedCount": 1,
+            "actualCount": 1,
+            "truncated": false,
+            "retained": 1,
+            "expectedHead": [
+              {
+                "offset": 65534,
+                "length": 70009
+              }
+            ],
+            "actualHead": [
+              {
+                "offset": 65534,
+                "length": 70009
+              }
+            ],
+            "pass": true
+          },
+          {
+            "name": "boundary-left -65536--1",
+            "qUnits": 10,
+            "textUnits": 135547,
+            "expectedCount": 1,
+            "actualCount": 1,
+            "truncated": false,
+            "retained": 1,
+            "expectedHead": [
+              {
+                "offset": 65535,
+                "length": 70009
+              }
+            ],
+            "actualHead": [
+              {
+                "offset": 65535,
+                "length": 70009
+              }
+            ],
+            "pass": true
+          },
+          {
+            "name": "boundary-left -65536-0",
+            "qUnits": 10,
+            "textUnits": 135548,
+            "expectedCount": 1,
+            "actualCount": 1,
+            "truncated": false,
+            "retained": 1,
+            "expectedHead": [
+              {
+                "offset": 65536,
+                "length": 70009
+              }
+            ],
+            "actualHead": [
+              {
+                "offset": 65536,
+                "length": 70009
+              }
+            ],
+            "pass": true
+          },
+          {
+            "name": "boundary-left -65536-1",
+            "qUnits": 10,
+            "textUnits": 135549,
+            "expectedCount": 1,
+            "actualCount": 1,
+            "truncated": false,
+            "retained": 1,
+            "expectedHead": [
+              {
+                "offset": 65537,
+                "length": 70009
+              }
+            ],
+            "actualHead": [
+              {
+                "offset": 65537,
+                "length": 70009
+              }
+            ],
+            "pass": true
+          },
+          {
+            "name": "boundary-left -131072--10",
+            "qUnits": 10,
+            "textUnits": 201074,
+            "expectedCount": 1,
+            "actualCount": 1,
+            "truncated": false,
+            "retained": 1,
+            "expectedHead": [
+              {
+                "offset": 131062,
+                "length": 70009
+              }
+            ],
+            "actualHead": [
+              {
+                "offset": 131062,
+                "length": 70009
+              }
+            ],
+            "pass": true
+          },
+          {
+            "name": "boundary-left -131072--2",
+            "qUnits": 10,
+            "textUnits": 201082,
+            "expectedCount": 1,
+            "actualCount": 1,
+            "truncated": false,
+            "retained": 1,
+            "expectedHead": [
+              {
+                "offset": 131070,
+                "length": 70009
+              }
+            ],
+            "actualHead": [
+              {
+                "offset": 131070,
+                "length": 70009
+              }
+            ],
+            "pass": true
+          },
+          {
+            "name": "boundary-left -131072--1",
+            "qUnits": 10,
+            "textUnits": 201083,
+            "expectedCount": 1,
+            "actualCount": 1,
+            "truncated": false,
+            "retained": 1,
+            "expectedHead": [
+              {
+                "offset": 131071,
+                "length": 70009
+              }
+            ],
+            "actualHead": [
+              {
+                "offset": 131071,
+                "length": 70009
+              }
+            ],
+            "pass": true
+          },
+          {
+            "name": "boundary-left -131072-0",
+            "qUnits": 10,
+            "textUnits": 201084,
+            "expectedCount": 1,
+            "actualCount": 1,
+            "truncated": false,
+            "retained": 1,
+            "expectedHead": [
+              {
+                "offset": 131072,
+                "length": 70009
+              }
+            ],
+            "actualHead": [
+              {
+                "offset": 131072,
+                "length": 70009
+              }
+            ],
+            "pass": true
+          },
+          {
+            "name": "boundary-left -131072-1",
+            "qUnits": 10,
+            "textUnits": 201085,
+            "expectedCount": 1,
+            "actualCount": 1,
+            "truncated": false,
+            "retained": 1,
+            "expectedHead": [
+              {
+                "offset": 131073,
+                "length": 70009
+              }
+            ],
+            "actualHead": [
+              {
+                "offset": 131073,
+                "length": 70009
+              }
+            ],
+            "pass": true
+          },
+          {
+            "name": "aaa-nonoverlap",
+            "qUnits": 3,
+            "textUnits": 131611,
+            "expectedCount": 43870,
+            "actualCount": 43870,
+            "truncated": true,
+            "retained": 1000,
+            "expectedHead": [
+              {
+                "offset": 0,
+                "length": 3
+              },
+              {
+                "offset": 3,
+                "length": 3
+              },
+              {
+                "offset": 6,
+                "length": 3
+              }
+            ],
+            "actualHead": [
+              {
+                "offset": 0,
+                "length": 3
+              },
+              {
+                "offset": 3,
+                "length": 3
+              },
+              {
+                "offset": 6,
+                "length": 3
+              }
+            ],
+            "pass": true
+          },
+          {
+            "name": "overlapping-first-failed",
+            "qUnits": 7,
+            "textUnits": 65543,
+            "expectedCount": 1,
+            "actualCount": 1,
+            "truncated": false,
+            "retained": 1,
+            "expectedHead": [
+              {
+                "offset": 65536,
+                "length": 7
+              }
+            ],
+            "actualHead": [
+              {
+                "offset": 65536,
+                "length": 7
+              }
+            ],
+            "pass": true
+          },
+          {
+            "name": "emoji-UTF16-case",
+            "qUnits": 6,
+            "textUnits": 65544,
+            "expectedCount": 2,
+            "actualCount": 2,
+            "truncated": false,
+            "retained": 2,
+            "expectedHead": [
+              {
+                "offset": 6,
+                "length": 6
+              },
+              {
+                "offset": 65538,
+                "length": 6
+              }
+            ],
+            "actualHead": [
+              {
+                "offset": 6,
+                "length": 6
+              },
+              {
+                "offset": 65538,
+                "length": 6
+              }
+            ],
+            "pass": true
+          },
+          {
+            "name": "mixed-whitespace",
+            "qUnits": 14,
+            "textUnits": 205550,
+            "expectedCount": 1,
+            "actualCount": 1,
+            "truncated": false,
+            "retained": 1,
+            "expectedHead": [
+              {
+                "offset": 65533,
+                "length": 140017
+              }
+            ],
+            "actualHead": [
+              {
+                "offset": 65533,
+                "length": 140017
+              }
+            ],
+            "pass": true
+          },
+          {
+            "name": "count-1000",
+            "qUnits": 6,
+            "textUnits": 65549,
+            "expectedCount": 1000,
+            "actualCount": 1000,
+            "truncated": false,
+            "retained": 1000,
+            "expectedHead": [
+              {
+                "offset": 0,
+                "length": 6
+              },
+              {
+                "offset": 7,
+                "length": 6
+              },
+              {
+                "offset": 14,
+                "length": 6
+              }
+            ],
+            "actualHead": [
+              {
+                "offset": 0,
+                "length": 6
+              },
+              {
+                "offset": 7,
+                "length": 6
+              },
+              {
+                "offset": 14,
+                "length": 6
+              }
+            ],
+            "pass": true
+          },
+          {
+            "name": "count-1001",
+            "qUnits": 6,
+            "textUnits": 65549,
+            "expectedCount": 1001,
+            "actualCount": 1001,
+            "truncated": true,
+            "retained": 1000,
+            "expectedHead": [
+              {
+                "offset": 0,
+                "length": 6
+              },
+              {
+                "offset": 7,
+                "length": 6
+              },
+              {
+                "offset": 14,
+                "length": 6
+              }
+            ],
+            "actualHead": [
+              {
+                "offset": 0,
+                "length": 6
+              },
+              {
+                "offset": 7,
+                "length": 6
+              },
+              {
+                "offset": 14,
+                "length": 6
+              }
+            ],
+            "pass": true
+          },
+          {
+            "name": "seeded-0",
+            "qUnits": 3,
+            "textUnits": 65645,
+            "expectedCount": 0,
+            "actualCount": 0,
+            "truncated": false,
+            "retained": 0,
+            "expectedHead": [],
+            "actualHead": [],
+            "pass": true
+          },
+          {
+            "name": "seeded-1",
+            "qUnits": 2,
+            "textUnits": 65625,
+            "expectedCount": 11,
+            "actualCount": 11,
+            "truncated": false,
+            "retained": 11,
+            "expectedHead": [
+              {
+                "offset": 65510,
+                "length": 2
+              },
+              {
+                "offset": 65512,
+                "length": 2
+              },
+              {
+                "offset": 65514,
+                "length": 2
+              }
+            ],
+            "actualHead": [
+              {
+                "offset": 65510,
+                "length": 2
+              },
+              {
+                "offset": 65512,
+                "length": 2
+              },
+              {
+                "offset": 65514,
+                "length": 2
+              }
+            ],
+            "pass": true
+          },
+          {
+            "name": "seeded-2",
+            "qUnits": 4,
+            "textUnits": 65630,
+            "expectedCount": 2,
+            "actualCount": 2,
+            "truncated": false,
+            "retained": 2,
+            "expectedHead": [
+              {
+                "offset": 65532,
+                "length": 7
+              },
+              {
+                "offset": 65552,
+                "length": 4
+              }
+            ],
+            "actualHead": [
+              {
+                "offset": 65532,
+                "length": 7
+              },
+              {
+                "offset": 65552,
+                "length": 4
+              }
+            ],
+            "pass": true
+          },
+          {
+            "name": "seeded-3",
+            "qUnits": 6,
+            "textUnits": 65623,
+            "expectedCount": 7,
+            "actualCount": 7,
+            "truncated": false,
+            "retained": 7,
+            "expectedHead": [
+              {
+                "offset": 65516,
+                "length": 6
+              },
+              {
+                "offset": 65544,
+                "length": 6
+              },
+              {
+                "offset": 65562,
+                "length": 6
+              }
+            ],
+            "actualHead": [
+              {
+                "offset": 65516,
+                "length": 6
+              },
+              {
+                "offset": 65544,
+                "length": 6
+              },
+              {
+                "offset": 65562,
+                "length": 6
+              }
+            ],
+            "pass": true
+          },
+          {
+            "name": "seeded-4",
+            "qUnits": 1,
+            "textUnits": 65633,
+            "expectedCount": 6,
+            "actualCount": 6,
+            "truncated": false,
+            "retained": 6,
+            "expectedHead": [
+              {
+                "offset": 65536,
+                "length": 1
+              },
+              {
+                "offset": 65542,
+                "length": 1
+              },
+              {
+                "offset": 65556,
+                "length": 1
+              }
+            ],
+            "actualHead": [
+              {
+                "offset": 65536,
+                "length": 1
+              },
+              {
+                "offset": 65542,
+                "length": 1
+              },
+              {
+                "offset": 65556,
+                "length": 1
+              }
+            ],
+            "pass": true
+          },
+          {
+            "name": "seeded-5",
+            "qUnits": 3,
+            "textUnits": 65641,
+            "expectedCount": 0,
+            "actualCount": 0,
+            "truncated": false,
+            "retained": 0,
+            "expectedHead": [],
+            "actualHead": [],
+            "pass": true
+          },
+          {
+            "name": "seeded-6",
+            "qUnits": 3,
+            "textUnits": 65644,
+            "expectedCount": 3,
+            "actualCount": 3,
+            "truncated": false,
+            "retained": 3,
+            "expectedHead": [
+              {
+                "offset": 65533,
+                "length": 3
+              },
+              {
+                "offset": 65563,
+                "length": 4
+              },
+              {
+                "offset": 65577,
+                "length": 4
+              }
+            ],
+            "actualHead": [
+              {
+                "offset": 65533,
+                "length": 3
+              },
+              {
+                "offset": 65563,
+                "length": 4
+              },
+              {
+                "offset": 65577,
+                "length": 4
+              }
+            ],
+            "pass": true
+          },
+          {
+            "name": "seeded-7",
+            "qUnits": 2,
+            "textUnits": 65640,
+            "expectedCount": 7,
+            "actualCount": 7,
+            "truncated": false,
+            "retained": 7,
+            "expectedHead": [
+              {
+                "offset": 65512,
+                "length": 2
+              },
+              {
+                "offset": 65516,
+                "length": 2
+              },
+              {
+                "offset": 65553,
+                "length": 2
+              }
+            ],
+            "actualHead": [
+              {
+                "offset": 65512,
+                "length": 2
+              },
+              {
+                "offset": 65516,
+                "length": 2
+              },
+              {
+                "offset": 65553,
+                "length": 2
+              }
+            ],
+            "pass": true
+          },
+          {
+            "name": "seeded-8",
+            "qUnits": 4,
+            "textUnits": 65638,
+            "expectedCount": 1,
+            "actualCount": 1,
+            "truncated": false,
+            "retained": 1,
+            "expectedHead": [
+              {
+                "offset": 65580,
+                "length": 6
+              }
+            ],
+            "actualHead": [
+              {
+                "offset": 65580,
+                "length": 6
+              }
+            ],
+            "pass": true
+          },
+          {
+            "name": "seeded-9",
+            "qUnits": 6,
+            "textUnits": 65631,
+            "expectedCount": 7,
+            "actualCount": 7,
+            "truncated": false,
+            "retained": 7,
+            "expectedHead": [
+              {
+                "offset": 65538,
+                "length": 6
+              },
+              {
+                "offset": 65548,
+                "length": 6
+              },
+              {
+                "offset": 65563,
+                "length": 6
+              }
+            ],
+            "actualHead": [
+              {
+                "offset": 65538,
+                "length": 6
+              },
+              {
+                "offset": 65548,
+                "length": 6
+              },
+              {
+                "offset": 65563,
+                "length": 6
+              }
+            ],
+            "pass": true
+          },
+          {
+            "name": "seeded-10",
+            "qUnits": 1,
+            "textUnits": 65617,
+            "expectedCount": 10,
+            "actualCount": 10,
+            "truncated": false,
+            "retained": 10,
+            "expectedHead": [
+              {
+                "offset": 65513,
+                "length": 1
+              },
+              {
+                "offset": 65523,
+                "length": 1
+              },
+              {
+                "offset": 65526,
+                "length": 1
+              }
+            ],
+            "actualHead": [
+              {
+                "offset": 65513,
+                "length": 1
+              },
+              {
+                "offset": 65523,
+                "length": 1
+              },
+              {
+                "offset": 65526,
+                "length": 1
+              }
+            ],
+            "pass": true
+          },
+          {
+            "name": "seeded-11",
+            "qUnits": 3,
+            "textUnits": 65636,
+            "expectedCount": 1,
+            "actualCount": 1,
+            "truncated": false,
+            "retained": 1,
+            "expectedHead": [
+              {
+                "offset": 65528,
+                "length": 3
+              }
+            ],
+            "actualHead": [
+              {
+                "offset": 65528,
+                "length": 3
+              }
+            ],
+            "pass": true
+          },
+          {
+            "name": "seeded-12",
+            "qUnits": 3,
+            "textUnits": 65612,
+            "expectedCount": 4,
+            "actualCount": 4,
+            "truncated": false,
+            "retained": 4,
+            "expectedHead": [
+              {
+                "offset": 65536,
+                "length": 3
+              },
+              {
+                "offset": 65543,
+                "length": 4
+              },
+              {
+                "offset": 65577,
+                "length": 3
+              }
+            ],
+            "actualHead": [
+              {
+                "offset": 65536,
+                "length": 3
+              },
+              {
+                "offset": 65543,
+                "length": 4
+              },
+              {
+                "offset": 65577,
+                "length": 3
+              }
+            ],
+            "pass": true
+          },
+          {
+            "name": "seeded-13",
+            "qUnits": 2,
+            "textUnits": 65638,
+            "expectedCount": 11,
+            "actualCount": 11,
+            "truncated": false,
+            "retained": 11,
+            "expectedHead": [
+              {
+                "offset": 65512,
+                "length": 2
+              },
+              {
+                "offset": 65514,
+                "length": 2
+              },
+              {
+                "offset": 65530,
+                "length": 2
+              }
+            ],
+            "actualHead": [
+              {
+                "offset": 65512,
+                "length": 2
+              },
+              {
+                "offset": 65514,
+                "length": 2
+              },
+              {
+                "offset": 65530,
+                "length": 2
+              }
+            ],
+            "pass": true
+          },
+          {
+            "name": "seeded-14",
+            "qUnits": 4,
+            "textUnits": 65644,
+            "expectedCount": 1,
+            "actualCount": 1,
+            "truncated": false,
+            "retained": 1,
+            "expectedHead": [
+              {
+                "offset": 65525,
+                "length": 4
+              }
+            ],
+            "actualHead": [
+              {
+                "offset": 65525,
+                "length": 4
+              }
+            ],
+            "pass": true
+          },
+          {
+            "name": "seeded-15",
+            "qUnits": 6,
+            "textUnits": 65613,
+            "expectedCount": 5,
+            "actualCount": 5,
+            "truncated": false,
+            "retained": 5,
+            "expectedHead": [
+              {
+                "offset": 65516,
+                "length": 6
+              },
+              {
+                "offset": 65530,
+                "length": 6
+              },
+              {
+                "offset": 65542,
+                "length": 6
+              }
+            ],
+            "actualHead": [
+              {
+                "offset": 65516,
+                "length": 6
+              },
+              {
+                "offset": 65530,
+                "length": 6
+              },
+              {
+                "offset": 65542,
+                "length": 6
+              }
+            ],
+            "pass": true
+          },
+          {
+            "name": "seeded-16",
+            "qUnits": 1,
+            "textUnits": 65630,
+            "expectedCount": 10,
+            "actualCount": 10,
+            "truncated": false,
+            "retained": 10,
+            "expectedHead": [
+              {
+                "offset": 65522,
+                "length": 1
+              },
+              {
+                "offset": 65534,
+                "length": 1
+              },
+              {
+                "offset": 65579,
+                "length": 1
+              }
+            ],
+            "actualHead": [
+              {
+                "offset": 65522,
+                "length": 1
+              },
+              {
+                "offset": 65534,
+                "length": 1
+              },
+              {
+                "offset": 65579,
+                "length": 1
+              }
+            ],
+            "pass": true
+          },
+          {
+            "name": "seeded-17",
+            "qUnits": 3,
+            "textUnits": 65599,
+            "expectedCount": 2,
+            "actualCount": 2,
+            "truncated": false,
+            "retained": 2,
+            "expectedHead": [
+              {
+                "offset": 65532,
+                "length": 3
+              },
+              {
+                "offset": 65583,
+                "length": 3
+              }
+            ],
+            "actualHead": [
+              {
+                "offset": 65532,
+                "length": 3
+              },
+              {
+                "offset": 65583,
+                "length": 3
+              }
+            ],
+            "pass": true
+          },
+          {
+            "name": "seeded-18",
+            "qUnits": 3,
+            "textUnits": 65619,
+            "expectedCount": 3,
+            "actualCount": 3,
+            "truncated": false,
+            "retained": 3,
+            "expectedHead": [
+              {
+                "offset": 65519,
+                "length": 4
+              },
+              {
+                "offset": 65555,
+                "length": 5
+              },
+              {
+                "offset": 65560,
+                "length": 3
+              }
+            ],
+            "actualHead": [
+              {
+                "offset": 65519,
+                "length": 4
+              },
+              {
+                "offset": 65555,
+                "length": 5
+              },
+              {
+                "offset": 65560,
+                "length": 3
+              }
+            ],
+            "pass": true
+          },
+          {
+            "name": "seeded-19",
+            "qUnits": 2,
+            "textUnits": 65650,
+            "expectedCount": 4,
+            "actualCount": 4,
+            "truncated": false,
+            "retained": 4,
+            "expectedHead": [
+              {
+                "offset": 65566,
+                "length": 2
+              },
+              {
+                "offset": 65601,
+                "length": 2
+              },
+              {
+                "offset": 65607,
+                "length": 2
+              }
+            ],
+            "actualHead": [
+              {
+                "offset": 65566,
+                "length": 2
+              },
+              {
+                "offset": 65601,
+                "length": 2
+              },
+              {
+                "offset": 65607,
+                "length": 2
+              }
+            ],
+            "pass": true
+          },
+          {
+            "name": "seeded-20",
+            "qUnits": 4,
+            "textUnits": 65635,
+            "expectedCount": 0,
+            "actualCount": 0,
+            "truncated": false,
+            "retained": 0,
+            "expectedHead": [],
+            "actualHead": [],
+            "pass": true
+          },
+          {
+            "name": "seeded-21",
+            "qUnits": 6,
+            "textUnits": 65654,
+            "expectedCount": 12,
+            "actualCount": 12,
+            "truncated": false,
+            "retained": 12,
+            "expectedHead": [
+              {
+                "offset": 65515,
+                "length": 6
+              },
+              {
+                "offset": 65531,
+                "length": 6
+              },
+              {
+                "offset": 65563,
+                "length": 6
+              }
+            ],
+            "actualHead": [
+              {
+                "offset": 65515,
+                "length": 6
+              },
+              {
+                "offset": 65531,
+                "length": 6
+              },
+              {
+                "offset": 65563,
+                "length": 6
+              }
+            ],
+            "pass": true
+          },
+          {
+            "name": "seeded-22",
+            "qUnits": 1,
+            "textUnits": 65659,
+            "expectedCount": 5,
+            "actualCount": 5,
+            "truncated": false,
+            "retained": 5,
+            "expectedHead": [
+              {
+                "offset": 65516,
+                "length": 1
+              },
+              {
+                "offset": 65521,
+                "length": 1
+              },
+              {
+                "offset": 65524,
+                "length": 1
+              }
+            ],
+            "actualHead": [
+              {
+                "offset": 65516,
+                "length": 1
+              },
+              {
+                "offset": 65521,
+                "length": 1
+              },
+              {
+                "offset": 65524,
+                "length": 1
+              }
+            ],
+            "pass": true
+          },
+          {
+            "name": "seeded-23",
+            "qUnits": 3,
+            "textUnits": 65638,
+            "expectedCount": 4,
+            "actualCount": 4,
+            "truncated": false,
+            "retained": 4,
+            "expectedHead": [
+              {
+                "offset": 65535,
+                "length": 3
+              },
+              {
+                "offset": 65608,
+                "length": 3
+              },
+              {
+                "offset": 65611,
+                "length": 3
+              }
+            ],
+            "actualHead": [
+              {
+                "offset": 65535,
+                "length": 3
+              },
+              {
+                "offset": 65608,
+                "length": 3
+              },
+              {
+                "offset": 65611,
+                "length": 3
+              }
+            ],
+            "pass": true
+          },
+          {
+            "name": "seeded-24",
+            "qUnits": 3,
+            "textUnits": 65638,
+            "expectedCount": 4,
+            "actualCount": 4,
+            "truncated": false,
+            "retained": 4,
+            "expectedHead": [
+              {
+                "offset": 65516,
+                "length": 3
+              },
+              {
+                "offset": 65590,
+                "length": 3
+              },
+              {
+                "offset": 65601,
+                "length": 3
+              }
+            ],
+            "actualHead": [
+              {
+                "offset": 65516,
+                "length": 3
+              },
+              {
+                "offset": 65590,
+                "length": 3
+              },
+              {
+                "offset": 65601,
+                "length": 3
+              }
+            ],
+            "pass": true
+          },
+          {
+            "name": "seeded-25",
+            "qUnits": 2,
+            "textUnits": 65626,
+            "expectedCount": 7,
+            "actualCount": 7,
+            "truncated": false,
+            "retained": 7,
+            "expectedHead": [
+              {
+                "offset": 65530,
+                "length": 2
+              },
+              {
+                "offset": 65552,
+                "length": 2
+              },
+              {
+                "offset": 65583,
+                "length": 2
+              }
+            ],
+            "actualHead": [
+              {
+                "offset": 65530,
+                "length": 2
+              },
+              {
+                "offset": 65552,
+                "length": 2
+              },
+              {
+                "offset": 65583,
+                "length": 2
+              }
+            ],
+            "pass": true
+          },
+          {
+            "name": "seeded-26",
+            "qUnits": 4,
+            "textUnits": 65626,
+            "expectedCount": 1,
+            "actualCount": 1,
+            "truncated": false,
+            "retained": 1,
+            "expectedHead": [
+              {
+                "offset": 65521,
+                "length": 6
+              }
+            ],
+            "actualHead": [
+              {
+                "offset": 65521,
+                "length": 6
+              }
+            ],
+            "pass": true
+          },
+          {
+            "name": "seeded-27",
+            "qUnits": 6,
+            "textUnits": 65637,
+            "expectedCount": 8,
+            "actualCount": 8,
+            "truncated": false,
+            "retained": 8,
+            "expectedHead": [
+              {
+                "offset": 65515,
+                "length": 6
+              },
+              {
+                "offset": 65521,
+                "length": 6
+              },
+              {
+                "offset": 65533,
+                "length": 6
+              }
+            ],
+            "actualHead": [
+              {
+                "offset": 65515,
+                "length": 6
+              },
+              {
+                "offset": 65521,
+                "length": 6
+              },
+              {
+                "offset": 65533,
+                "length": 6
+              }
+            ],
+            "pass": true
+          },
+          {
+            "name": "seeded-28",
+            "qUnits": 1,
+            "textUnits": 65611,
+            "expectedCount": 6,
+            "actualCount": 6,
+            "truncated": false,
+            "retained": 6,
+            "expectedHead": [
+              {
+                "offset": 65530,
+                "length": 1
+              },
+              {
+                "offset": 65558,
+                "length": 1
+              },
+              {
+                "offset": 65559,
+                "length": 1
+              }
+            ],
+            "actualHead": [
+              {
+                "offset": 65530,
+                "length": 1
+              },
+              {
+                "offset": 65558,
+                "length": 1
+              },
+              {
+                "offset": 65559,
+                "length": 1
+              }
+            ],
+            "pass": true
+          },
+          {
+            "name": "seeded-29",
+            "qUnits": 3,
+            "textUnits": 65639,
+            "expectedCount": 4,
+            "actualCount": 4,
+            "truncated": false,
+            "retained": 4,
+            "expectedHead": [
+              {
+                "offset": 65510,
+                "length": 3
+              },
+              {
+                "offset": 65575,
+                "length": 3
+              },
+              {
+                "offset": 65619,
+                "length": 3
+              }
+            ],
+            "actualHead": [
+              {
+                "offset": 65510,
+                "length": 3
+              },
+              {
+                "offset": 65575,
+                "length": 3
+              },
+              {
+                "offset": 65619,
+                "length": 3
+              }
+            ],
+            "pass": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "Z-LENGTH-MODULE",
+      "verdict": "PASS",
+      "title": "4096 boundary uses trimmed UTF16 units with no reads for rejection",
+      "detail": [
+        {
+          "rawUnits": 4096,
+          "trimmedUnits": 4096,
+          "reads": 1,
+          "total": 1,
+          "error": null,
+          "scanned": 1
+        },
+        {
+          "rawUnits": 4096,
+          "trimmedUnits": 4096,
+          "reads": 1,
+          "total": 1,
+          "error": null,
+          "scanned": 1
+        },
+        {
+          "rawUnits": 4097,
+          "trimmedUnits": 4097,
+          "reads": 0,
+          "total": 0,
+          "error": "QUERY_TOO_LONG",
+          "scanned": 0
+        },
+        {
+          "rawUnits": 4097,
+          "trimmedUnits": 4097,
+          "reads": 0,
+          "total": 0,
+          "error": "QUERY_TOO_LONG",
+          "scanned": 0
+        },
+        {
+          "rawUnits": 4100,
+          "trimmedUnits": 4096,
+          "reads": 1,
+          "total": 1,
+          "error": null,
+          "scanned": 1
+        }
+      ]
+    },
+    {
+      "id": "Z-HOT-CANCEL",
+      "verdict": "PASS",
+      "title": "Hot timer cancellation and immediate fresh query complete",
+      "detail": [
+        {
+          "name": "zero-first",
+          "units": 8388608,
+          "cancelTimerMs": 3.536599999999453,
+          "originalReturnMs": 3.717800000005809,
+          "freshCompleteMs": 1961.1019000000015,
+          "error": "搜索已取消",
+          "freshCompleted": true
+        },
+        {
+          "name": "one-at-end",
+          "units": 8388608,
+          "cancelTimerMs": 3.4682000000029802,
+          "originalReturnMs": 4.14100000000326,
+          "freshCompleteMs": 1919.9305999999997,
+          "error": "搜索已取消",
+          "freshCompleted": true
+        },
+        {
+          "name": "long-space",
+          "units": 8388601,
+          "cancelTimerMs": 120.65869999999995,
+          "originalReturnMs": 122.27730000000156,
+          "freshCompleteMs": 2037.090400000001,
+          "error": "搜索已取消",
+          "freshCompleted": true
+        },
+        {
+          "name": "dense",
+          "units": 2097152,
+          "cancelTimerMs": 0.6232000000018161,
+          "originalReturnMs": 15.10450000000128,
+          "freshCompleteMs": 516.3939000000028,
+          "error": "搜索已取消",
+          "freshCompleted": true
+        }
+      ]
+    },
+    {
+      "id": "Z-SCHEDULE-OBS",
+      "verdict": "OBSERVATION",
+      "title": "First-token full-remainder exec and one long whitespace candidate are synchronous work",
+      "detail": {
+        "samples": [
+          {
+            "name": "zero-first",
+            "units": 8388608,
+            "cancelTimerMs": 3.536599999999453,
+            "originalReturnMs": 3.717800000005809,
+            "freshCompleteMs": 1961.1019000000015,
+            "error": "搜索已取消",
+            "freshCompleted": true
+          },
+          {
+            "name": "one-at-end",
+            "units": 8388608,
+            "cancelTimerMs": 3.4682000000029802,
+            "originalReturnMs": 4.14100000000326,
+            "freshCompleteMs": 1919.9305999999997,
+            "error": "搜索已取消",
+            "freshCompleted": true
+          },
+          {
+            "name": "long-space",
+            "units": 8388601,
+            "cancelTimerMs": 120.65869999999995,
+            "originalReturnMs": 122.27730000000156,
+            "freshCompleteMs": 2037.090400000001,
+            "error": "搜索已取消",
+            "freshCompleted": true
+          },
+          {
+            "name": "dense",
+            "units": 2097152,
+            "cancelTimerMs": 0.6232000000018161,
+            "originalReturnMs": 15.10450000000128,
+            "freshCompleteMs": 516.3939000000028,
+            "error": "搜索已取消",
+            "freshCompleted": true
+          }
+        ],
+        "note": "Timing is Node/jsdom module evidence. search.js firstRe.exec(text) is not restricted to windowEnd and whitespace loop has no yield. No severe browser freeze inferred."
+      }
+    },
+    {
+      "id": "Z-VIS-display-parent-cannot-recover",
+      "verdict": "PASS",
+      "title": "Cleaned display CSS cascade and searchable model agree",
+      "detail": {
+        "cold": "\nAB\n",
+        "model": "\nAB\n",
+        "visible": "AB",
+        "expected": "AB",
+        "css": [
+          {
+            "tag": "span",
+            "style": "display:none",
+            "cssom": "",
+            "computed": "visible"
+          },
+          {
+            "tag": "span",
+            "style": "visibility:visible",
+            "cssom": "visible",
+            "computed": "visible"
+          }
+        ],
+        "prepared": "<p>A<span style=\"display:none\">HIDDEN<span style=\"visibility:visible\">RECOVER</span></span>B</p>",
+        "note": "Independent CSSOM property cascade for retained inline declarations/presentation; not pixel rendering. use skipped per declared boundary."
+      }
+    },
+    {
+      "id": "Z-VIS-visibility-child-recovers",
+      "verdict": "PASS",
+      "title": "Cleaned display CSS cascade and searchable model agree",
+      "detail": {
+        "cold": "\nAOVERRIDEB\n",
+        "model": "\nAOVERRIDEB\n",
+        "visible": "AOVERRIDEB",
+        "expected": "AOVERRIDEB",
+        "css": [
+          {
+            "tag": "span",
+            "style": "visibility:hidden",
+            "cssom": "hidden",
+            "computed": "hidden"
+          },
+          {
+            "tag": "span",
+            "style": "visibility:visible",
+            "cssom": "visible",
+            "computed": "visible"
+          }
+        ],
+        "prepared": "<p>A<span style=\"visibility:hidden\">HIDDEN<span style=\"visibility:visible\">OVERRIDE</span>HIDDEN</span>B</p>",
+        "note": "Independent CSSOM property cascade for retained inline declarations/presentation; not pixel rendering. use skipped per declared boundary."
+      }
+    },
+    {
+      "id": "Z-VIS-svg-style-overrides-presentation-visible",
+      "verdict": "PASS",
+      "title": "Cleaned display CSS cascade and searchable model agree",
+      "detail": {
+        "cold": "VISIBLE",
+        "model": "VISIBLE",
+        "visible": "VISIBLE",
+        "expected": "VISIBLE",
+        "css": [
+          {
+            "tag": "text",
+            "style": "visibility:visible",
+            "cssom": "visible",
+            "computed": "visible"
+          }
+        ],
+        "prepared": "<svg><text visibility=\"hidden\" style=\"visibility:visible\">VISIBLE</text></svg>",
+        "note": "Independent CSSOM property cascade for retained inline declarations/presentation; not pixel rendering. use skipped per declared boundary."
+      }
+    },
+    {
+      "id": "Z-VIS-svg-style-overrides-presentation-hidden",
+      "verdict": "PASS",
+      "title": "Cleaned display CSS cascade and searchable model agree",
+      "detail": {
+        "cold": "VISIBLE",
+        "model": "VISIBLE",
+        "visible": "VISIBLE",
+        "expected": "VISIBLE",
+        "css": [
+          {
+            "tag": "text",
+            "style": "visibility:hidden",
+            "cssom": "hidden",
+            "computed": "hidden"
+          }
+        ],
+        "prepared": "<svg><text visibility=\"visible\" style=\"visibility:hidden\">HIDDEN</text><text>VISIBLE</text></svg>",
+        "note": "Independent CSSOM property cascade for retained inline declarations/presentation; not pixel rendering. use skipped per declared boundary."
+      }
+    },
+    {
+      "id": "Z-VIS-hidden-br-aria",
+      "verdict": "PASS",
+      "title": "Cleaned display CSS cascade and searchable model agree",
+      "detail": {
+        "cold": "\nAVISUALB\n",
+        "model": "\nAVISUALB\n",
+        "visible": "AVISUALB",
+        "expected": "AVISUALB",
+        "css": [
+          {
+            "tag": "br",
+            "style": "display:none",
+            "cssom": "",
+            "computed": "visible"
+          }
+        ],
+        "prepared": "<p>A<br hidden=\"\"><br style=\"display:none\"><span aria-hidden=\"true\">VISUAL</span>B</p>",
+        "note": "Independent CSSOM property cascade for retained inline declarations/presentation; not pixel rendering. use skipped per declared boundary."
+      }
+    },
+    {
+      "id": "Z-VIS-templates-and-use",
+      "verdict": "PASS",
+      "title": "Cleaned display CSS cascade and searchable model agree",
+      "detail": {
+        "cold": "DIRECT",
+        "model": "DIRECT",
+        "visible": "DIRECT",
+        "expected": "DIRECT",
+        "css": [],
+        "prepared": "<svg><defs><text id=\"x\">DEFS</text></defs><symbol id=\"s\"><text>SYMBOL</text></symbol><desc>DESC</desc><use href=\"#x\"></use><text>DIRECT</text></svg>",
+        "note": "Independent CSSOM property cascade for retained inline declarations/presentation; not pixel rendering. use skipped per declared boundary."
+      }
+    },
+    {
+      "id": "Z-VIS-duplicate-hidden-visible",
+      "verdict": "PASS",
+      "title": "Cleaned display CSS cascade and searchable model agree",
+      "detail": {
+        "cold": "\nSTART TARGET END\n",
+        "model": "\nSTART TARGET END\n",
+        "visible": "START TARGET END",
+        "expected": "START TARGET END",
+        "css": [
+          {
+            "tag": "span",
+            "style": "visibility:hidden;visibility:visible",
+            "cssom": "visible",
+            "computed": "visible"
+          }
+        ],
+        "prepared": "<p>START <span style=\"visibility:hidden;visibility:visible\">TARGET</span> END</p>",
+        "note": "Independent CSSOM property cascade for retained inline declarations/presentation; not pixel rendering. use skipped per declared boundary."
+      }
+    },
+    {
+      "id": "Z-VIS-duplicate-visible-hidden",
+      "verdict": "PASS",
+      "title": "Cleaned display CSS cascade and searchable model agree",
+      "detail": {
+        "cold": "\nSTART  END\n",
+        "model": "\nSTART  END\n",
+        "visible": "START  END",
+        "expected": "START  END",
+        "css": [
+          {
+            "tag": "span",
+            "style": "visibility:visible;visibility:hidden",
+            "cssom": "hidden",
+            "computed": "hidden"
+          }
+        ],
+        "prepared": "<p>START <span style=\"visibility:visible;visibility:hidden\">HIDDEN</span> END</p>",
+        "note": "Independent CSSOM property cascade for retained inline declarations/presentation; not pixel rendering. use skipped per declared boundary."
+      }
+    },
+    {
+      "id": "Z-VIS-svg-duplicate-hidden-visible",
+      "verdict": "PASS",
+      "title": "Cleaned display CSS cascade and searchable model agree",
+      "detail": {
+        "cold": "TARGET",
+        "model": "TARGET",
+        "visible": "TARGET",
+        "expected": "TARGET",
+        "css": [
+          {
+            "tag": "text",
+            "style": "visibility:hidden;visibility:visible",
+            "cssom": "visible",
+            "computed": "visible"
+          }
+        ],
+        "prepared": "<svg><text style=\"visibility:hidden;visibility:visible\">TARGET</text></svg>",
+        "note": "Independent CSSOM property cascade for retained inline declarations/presentation; not pixel rendering. use skipped per declared boundary."
+      }
+    },
+    {
+      "id": "Z-VIS-svg-duplicate-visible-hidden",
+      "verdict": "PASS",
+      "title": "Cleaned display CSS cascade and searchable model agree",
+      "detail": {
+        "cold": "TARGET",
+        "model": "TARGET",
+        "visible": "TARGET",
+        "expected": "TARGET",
+        "css": [
+          {
+            "tag": "text",
+            "style": "visibility:visible;visibility:hidden",
+            "cssom": "hidden",
+            "computed": "hidden"
+          }
+        ],
+        "prepared": "<svg><text style=\"visibility:visible;visibility:hidden\">HIDDEN</text><text>TARGET</text></svg>",
+        "note": "Independent CSSOM property cascade for retained inline declarations/presentation; not pixel rendering. use skipped per declared boundary."
+      }
+    },
+    {
+      "id": "Z-VIS-important-first-stripped",
+      "verdict": "PASS",
+      "title": "Cleaned display CSS cascade and searchable model agree",
+      "detail": {
+        "cold": "\nSTART TARGET END\n",
+        "model": "\nSTART TARGET END\n",
+        "visible": "START TARGET END",
+        "expected": "START TARGET END",
+        "css": [
+          {
+            "tag": "span",
+            "style": "visibility:hidden;visibility:visible",
+            "cssom": "visible",
+            "computed": "visible"
+          }
+        ],
+        "prepared": "<p>START <span style=\"visibility:hidden;visibility:visible\">TARGET</span> END</p>",
+        "note": "Independent CSSOM property cascade for retained inline declarations/presentation; not pixel rendering. use skipped per declared boundary."
+      }
+    },
+    {
+      "id": "Z-RANGE-VISIBLE",
+      "verdict": "PASS",
+      "title": "Highlight/clear preserves model and CSS-visible text including hidden interior",
+      "detail": [
+        {
+          "name": "display-internal",
+          "q": "AB",
+          "total": 1,
+          "offset": 1,
+          "length": 2,
+          "rangeText": "AHIDDENB",
+          "marks": [
+            {
+              "text": "A",
+              "parent": "<p><mark class=\"lyra-search-mark\" style=\"background: rgba(102, 204, 255, 0.38); color: inherit;\">A</mark><span style=\"display:none\"><mark class=\"lyra-search-mark\" style=\"background: rgba(102, 204, 255, 0.38); color: inherit;\">HIDDEN</mark></span><mark class=\"lyra-search-mark\" style=\"background: rgba(102, 204, 255, 0.38); color: inherit;\">B</mark></p>",
+              "visibleText": "AB"
+            },
+            {
+              "text": "HIDDEN",
+              "parent": "<span style=\"display:none\"><mark class=\"lyra-search-mark\" style=\"background: rgba(102, 204, 255, 0.38); color: inherit;\">HIDDEN</mark></span>",
+              "visibleText": ""
+            },
+            {
+              "text": "B",
+              "parent": "<p><mark class=\"lyra-search-mark\" style=\"background: rgba(102, 204, 255, 0.38); color: inherit;\">A</mark><span style=\"display:none\"><mark class=\"lyra-search-mark\" style=\"background: rgba(102, 204, 255, 0.38); color: inherit;\">HIDDEN</mark></span><mark class=\"lyra-search-mark\" style=\"background: rgba(102, 204, 255, 0.38); color: inherit;\">B</mark></p>",
+              "visibleText": "AB"
+            }
+          ],
+          "before": "\nAB\n",
+          "markedModel": "\nAB\n",
+          "cleared": "\nAB\n",
+          "visibleMarked": "AB",
+          "containsHidden": true
+        },
+        {
+          "name": "visibility-internal",
+          "q": "AB",
+          "total": 1,
+          "offset": 1,
+          "length": 2,
+          "rangeText": "AHIDDENB",
+          "marks": [
+            {
+              "text": "A",
+              "parent": "<p><mark class=\"lyra-search-mark\" style=\"background: rgba(102, 204, 255, 0.38); color: inherit;\">A</mark><span style=\"visibility:hidden\"><mark class=\"lyra-search-mark\" style=\"background: rgba(102, 204, 255, 0.38); color: inherit;\">HIDDEN</mark></span><mark class=\"lyra-search-mark\" style=\"background: rgba(102, 204, 255, 0.38); color: inherit;\">B</mark></p>",
+              "visibleText": "AB"
+            },
+            {
+              "text": "HIDDEN",
+              "parent": "<span style=\"visibility:hidden\"><mark class=\"lyra-search-mark\" style=\"background: rgba(102, 204, 255, 0.38); color: inherit;\">HIDDEN</mark></span>",
+              "visibleText": ""
+            },
+            {
+              "text": "B",
+              "parent": "<p><mark class=\"lyra-search-mark\" style=\"background: rgba(102, 204, 255, 0.38); color: inherit;\">A</mark><span style=\"visibility:hidden\"><mark class=\"lyra-search-mark\" style=\"background: rgba(102, 204, 255, 0.38); color: inherit;\">HIDDEN</mark></span><mark class=\"lyra-search-mark\" style=\"background: rgba(102, 204, 255, 0.38); color: inherit;\">B</mark></p>",
+              "visibleText": "AB"
+            }
+          ],
+          "before": "\nAB\n",
+          "markedModel": "\nAB\n",
+          "cleared": "\nAB\n",
+          "visibleMarked": "AB",
+          "containsHidden": true
+        },
+        {
+          "name": "svg-internal",
+          "q": "AB",
+          "total": 1,
+          "offset": 0,
+          "length": 2,
+          "rangeText": "AHIDDENB",
+          "marks": [],
+          "before": "AB",
+          "markedModel": "AB",
+          "cleared": "AB",
+          "visibleMarked": "AB",
+          "containsHidden": true
+        },
+        {
+          "name": "hidden-before-target",
+          "q": "TARGET",
+          "total": 1,
+          "offset": 1,
+          "length": 6,
+          "rangeText": "TARGET",
+          "marks": [
+            {
+              "text": "TARGET",
+              "parent": "<p><span style=\"display:none\">HIDDEN</span><mark class=\"lyra-search-mark\" style=\"background: rgba(102, 204, 255, 0.38); color: inherit;\">TARGET</mark><span hidden=\"\">AFTER</span></p>",
+              "visibleText": "TARGET"
+            }
+          ],
+          "before": "\nTARGET\n",
+          "markedModel": "\nTARGET\n",
+          "cleared": "\nTARGET\n",
+          "visibleMarked": "TARGET",
+          "containsHidden": false
+        }
+      ]
+    },
+    {
+      "id": "Z-RANGE-STRING",
+      "verdict": "OBSERVATION",
+      "title": "Interior hidden DOM remains inside one Range and gets hidden mark wrappers",
+      "detail": {
+        "cases": [
+          {
+            "name": "display-internal",
+            "q": "AB",
+            "rangeText": "AHIDDENB",
+            "containsHidden": true,
+            "marks": [
+              {
+                "text": "A",
+                "parent": "<p><mark class=\"lyra-search-mark\" style=\"background: rgba(102, 204, 255, 0.38); color: inherit;\">A</mark><span style=\"display:none\"><mark class=\"lyra-search-mark\" style=\"background: rgba(102, 204, 255, 0.38); color: inherit;\">HIDDEN</mark></span><mark class=\"lyra-search-mark\" style=\"background: rgba(102, 204, 255, 0.38); color: inherit;\">B</mark></p>",
+                "visibleText": "AB"
+              },
+              {
+                "text": "HIDDEN",
+                "parent": "<span style=\"display:none\"><mark class=\"lyra-search-mark\" style=\"background: rgba(102, 204, 255, 0.38); color: inherit;\">HIDDEN</mark></span>",
+                "visibleText": ""
+              },
+              {
+                "text": "B",
+                "parent": "<p><mark class=\"lyra-search-mark\" style=\"background: rgba(102, 204, 255, 0.38); color: inherit;\">A</mark><span style=\"display:none\"><mark class=\"lyra-search-mark\" style=\"background: rgba(102, 204, 255, 0.38); color: inherit;\">HIDDEN</mark></span><mark class=\"lyra-search-mark\" style=\"background: rgba(102, 204, 255, 0.38); color: inherit;\">B</mark></p>",
+                "visibleText": "AB"
+              }
+            ]
+          },
+          {
+            "name": "visibility-internal",
+            "q": "AB",
+            "rangeText": "AHIDDENB",
+            "containsHidden": true,
+            "marks": [
+              {
+                "text": "A",
+                "parent": "<p><mark class=\"lyra-search-mark\" style=\"background: rgba(102, 204, 255, 0.38); color: inherit;\">A</mark><span style=\"visibility:hidden\"><mark class=\"lyra-search-mark\" style=\"background: rgba(102, 204, 255, 0.38); color: inherit;\">HIDDEN</mark></span><mark class=\"lyra-search-mark\" style=\"background: rgba(102, 204, 255, 0.38); color: inherit;\">B</mark></p>",
+                "visibleText": "AB"
+              },
+              {
+                "text": "HIDDEN",
+                "parent": "<span style=\"visibility:hidden\"><mark class=\"lyra-search-mark\" style=\"background: rgba(102, 204, 255, 0.38); color: inherit;\">HIDDEN</mark></span>",
+                "visibleText": ""
+              },
+              {
+                "text": "B",
+                "parent": "<p><mark class=\"lyra-search-mark\" style=\"background: rgba(102, 204, 255, 0.38); color: inherit;\">A</mark><span style=\"visibility:hidden\"><mark class=\"lyra-search-mark\" style=\"background: rgba(102, 204, 255, 0.38); color: inherit;\">HIDDEN</mark></span><mark class=\"lyra-search-mark\" style=\"background: rgba(102, 204, 255, 0.38); color: inherit;\">B</mark></p>",
+                "visibleText": "AB"
+              }
+            ]
+          },
+          {
+            "name": "svg-internal",
+            "q": "AB",
+            "rangeText": "AHIDDENB",
+            "containsHidden": true,
+            "marks": []
+          },
+          {
+            "name": "hidden-before-target",
+            "q": "TARGET",
+            "rangeText": "TARGET",
+            "containsHidden": false,
+            "marks": [
+              {
+                "text": "TARGET",
+                "parent": "<p><span style=\"display:none\">HIDDEN</span><mark class=\"lyra-search-mark\" style=\"background: rgba(102, 204, 255, 0.38); color: inherit;\">TARGET</mark><span hidden=\"\">AFTER</span></p>",
+                "visibleText": "TARGET"
+              }
+            ]
+          }
+        ],
+        "note": "Boundary fix works when hidden node is outside the requested range. Interior HIDDEN is included by continuous DOM Range; hidden parent prevents painted highlight. Does not prove visible HIDDEN or count error. Literal report claim that hidden is never included in Range is too broad."
+      }
+    }
+  ]
+}

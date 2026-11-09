@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>璃鸢镜 · EPUB 阅读器</title>
+<link rel="stylesheet" href="reader.css"/>
+</head>
+<body>
+<div id="app">
+  <header id="toolbar">
+    <button id="sidebarBtn" class="icon" title="目录 / 书签" aria-label="目录 / 书签">☰</button>
+    <div id="bookTitle">璃鸢镜 · EPUB 阅读器</div>
+    <button id="openBtn" class="primary">打开 EPUB</button>
+    <button id="findBtn" title="全文查找 (Ctrl+F)">查找</button>
+    <button id="addBookmarkBtn" title="加书签">加书签</button>
+    <button id="chapterPrev" title="上一章">上一章</button>
+    <button id="pagePrev" title="上一页">上一页</button>
+    <span id="pageBox"><input id="pageInput" value="1" aria-label="页码"/> <span id="pageTotal">/ 0</span></span>
+    <button id="pageNext" title="下一页">下一页</button>
+    <button id="chapterNext" title="下一章">下一章</button>
+    <button id="settingsBtn" class="icon" title="阅读设置">⚙</button>
+    <input id="file" type="file" accept=".epub,application/epub+zip"/>
+  </header>
+
+  <div id="body">
+    <aside id="sidebar">
+      <div class="side-tabs">
+        <button data-tab="toc" class="active">目录</button>
+        <button data-tab="bookmarks">书签</button>
+      </div>
+      <div class="side-scroll">
+        <div id="tocList"></div>
+        <div id="bookmarkList" class="hidden"></div>
+        <div id="sideEmpty" class="side-empty"></div>
+      </div>
+    </aside>
+
+    <main id="main">
+      <div id="empty">
+        <div class="icon">📖</div>
+        <h2>打开一本 EPUB 开始阅读</h2>
+        <p>点击按钮选择文件，或把 EPUB 直接拖进这个窗口。<br/>支持目录、书签、全文查找、阅读进度恢复。</p>
+        <button id="emptyOpenBtn" class="primary">选择 EPUB 文件</button>
+      </div>
+
+      <div id="pageFrame" hidden>
+        <iframe id="chapterFrame" sandbox="allow-same-origin" scrolling="no" title="正文"></iframe>
+        <div id="loadingOverlay" class="show">
+          <div class="spinner"></div>
+          <div id="loadingText">正在打开…</div>
+        </div>
+        <div id="errorBox">
+          <div id="errorText"></div>
+          <button id="errorRetry" class="primary">重试</button>
+        </div>
+      </div>
+
+      <section id="searchPanel" aria-label="全文查找">
+        <div class="panel-head"><h3>全文查找</h3><button id="searchClose" class="icon" title="关闭">×</button></div>
+        <input id="searchInput" type="text" placeholder="输入要查找的文字，按回车" autocomplete="off"/>
+        <div id="searchInfo">Ctrl+F 打开，Esc 关闭</div>
+        <div id="searchResults"></div>
+      </section>
+
+      <section id="settingsPanel" aria-label="阅读设置">
+        <div class="panel-head"><h3>阅读设置</h3><button id="settingsClose" class="icon" title="关闭">×</button></div>
+        <div class="settings-body">
+          <label class="setting-row"><span>字号</span><input id="fontRange" type="range" min="16" max="36" step="1" value="22"/><span id="fontValue">22</span></label>
+          <label class="setting-row"><span>行距</span><input id="lineRange" type="range" min="1.4" max="2.4" step="0.05" value="1.95"/><span id="lineValue">1.95</span></label>
+          <label class="setting-row"><span>正文宽度</span><input id="widthRange" type="range" min="480" max="1100" step="20" value="860"/><span id="widthValue">860</span></label>
+          <div class="settings-group">
+            <h4>主题</h4>
+            <div class="swatches">
+              <button data-theme="dark" data-bg="#121212" data-fg="#E6E6E6">暗色</button>
+              <button data-theme="sepia" data-bg="#F5F0E6" data-fg="#2B2620">米黄</button>
+              <button data-theme="green" data-bg="#E9F0E6" data-fg="#28402A">护眼绿</button>
+              <button data-theme="paper" data-bg="#FFFFFF" data-fg="#1A1A1A">白纸</button>
+              <button data-theme="nightblue" data-bg="#0A0F1C" data-fg="#B8D4FF">夜蓝</button>
+            </div>
+            <label class="setting-row"><span>背景色</span><input id="bgColor" type="color" value="#121212"/></label>
+            <label class="setting-row"><span>文字色</span><input id="fgColor" type="color" value="#E6E6E6"/></label>
+          </div>
+          <div class="settings-group">
+            <h4>阅读行为</h4>
+            <label class="setting-row"><span>允许选择文字</span><input id="selectToggle" type="checkbox"/></label>
+            <label class="setting-row"><span>减少动画</span><input id="motionToggle" type="checkbox"/></label>
+            <label class="setting-row"><span>显示侧栏</span><input id="sidebarToggle" type="checkbox" checked/></label>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer id="statusbar">
+    <span id="statusText">准备就绪</span>
+    <span id="saveStateText"></span>
+    <span id="progressText"></span>
+  </footer>
+</div>
+
+<script src="lib/jszip.min.js"></script>
+<script src="epub-book.js?v=0.6.1"></script>
+<script src="paginator.js?v=0.6.3"></script>
+<script src="reader-state.js?v=0.6.0"></script>
+<script src="search.js?v=0.6.2"></script>
+<script src="reader.js?v=0.7.3"></script>
+</body>
+</html>

@@ -1,0 +1,595 @@
+{
+  "generatedAt": "2026-10-27T18:45:25.158Z",
+  "candidate": "D:/Temp/Lyra-Extension-Epub",
+  "identity": {
+    "expectedCommit": "R5",
+    "expectedPackageSha256": "r5-candidate",
+    "hashes": {
+      "epub-book.js": "62453a86f64fc9e883af379440c8306a8e218fa55456de490671873044c2cdc2",
+      "search.js": "470c4fe4bb68f299b1aa367cffd1f3b5e616af2dad25e7b1cc1d10f25bea702a",
+      "paginator.js": "36856bd26e5053c8f809baa1ec65b9b570c03f3df45363ceb49dd14e2e646043",
+      "reader.js": "011aa11f43ad5e2f8327e3d8376881f10083061c78323a64d0b4c272f85ab56f"
+    }
+  },
+  "runtime": {
+    "node": "v24.18.0",
+    "jsdom": "29.1.1"
+  },
+  "evidenceKind": "Frozen original JavaScript loaded unmodified; jsdom DOM/Range and real JSZip. Controlled async dependencies and geometry doubles disclosed per case. Not browser visibility, SVG painting or native desktop evidence.",
+  "results": [
+    {
+      "id": "X01",
+      "verdict": "PASS",
+      "title": "True chunk-boundary matches must not disappear",
+      "detail": [
+        {
+          "offset": 65533,
+          "edge": 65816,
+          "expected": [
+            {
+              "offset": 65533,
+              "length": 6
+            }
+          ],
+          "actual": [
+            {
+              "offset": 65533,
+              "length": 6
+            }
+          ],
+          "total": 1,
+          "truncated": false
+        },
+        {
+          "offset": 65810,
+          "edge": 65816,
+          "expected": [
+            {
+              "offset": 65810,
+              "length": 6
+            }
+          ],
+          "actual": [
+            {
+              "offset": 65810,
+              "length": 6
+            }
+          ],
+          "total": 1,
+          "truncated": false
+        },
+        {
+          "offset": 65811,
+          "edge": 65816,
+          "expected": [
+            {
+              "offset": 65811,
+              "length": 6
+            }
+          ],
+          "actual": [
+            {
+              "offset": 65811,
+              "length": 6
+            }
+          ],
+          "total": 1,
+          "truncated": false
+        },
+        {
+          "offset": 65815,
+          "edge": 65816,
+          "expected": [
+            {
+              "offset": 65815,
+              "length": 6
+            }
+          ],
+          "actual": [
+            {
+              "offset": 65815,
+              "length": 6
+            }
+          ],
+          "total": 1,
+          "truncated": false
+        },
+        {
+          "offset": 65816,
+          "edge": 65816,
+          "expected": [
+            {
+              "offset": 65816,
+              "length": 6
+            }
+          ],
+          "actual": [
+            {
+              "offset": 65816,
+              "length": 6
+            }
+          ],
+          "total": 1,
+          "truncated": false
+        },
+        {
+          "offset": 131630,
+          "edge": 65816,
+          "expected": [
+            {
+              "offset": 131630,
+              "length": 6
+            }
+          ],
+          "actual": [
+            {
+              "offset": 131630,
+              "length": 6
+            }
+          ],
+          "total": 1,
+          "truncated": false
+        }
+      ]
+    },
+    {
+      "id": "X02",
+      "verdict": "PASS",
+      "title": "Emoji, whitespace and repeated count at chunk boundaries",
+      "detail": [
+        {
+          "name": "emoji split surrogate",
+          "queryUnits": 3,
+          "textUnits": 65810,
+          "expectedTotal": 1,
+          "actualTotal": 1,
+          "expectedHead": [
+            {
+              "offset": 65803,
+              "length": 3
+            }
+          ],
+          "actualHead": [
+            {
+              "offset": 65803,
+              "length": 3
+            }
+          ],
+          "expectedTail": [
+            {
+              "offset": 65803,
+              "length": 3
+            }
+          ],
+          "truncated": false,
+          "pass": true
+        },
+        {
+          "name": "whitespace span exceeds nominal overlap",
+          "queryUnits": 10,
+          "textUnits": 67009,
+          "expectedTotal": 1,
+          "actualTotal": 1,
+          "expectedHead": [
+            {
+              "offset": 65000,
+              "length": 2009
+            }
+          ],
+          "actualHead": [
+            {
+              "offset": 65000,
+              "length": 2009
+            }
+          ],
+          "expectedTail": [
+            {
+              "offset": 65000,
+              "length": 2009
+            }
+          ],
+          "truncated": false,
+          "pass": true
+        },
+        {
+          "name": "cross-window repetition count",
+          "queryUnits": 3,
+          "textUnits": 131611,
+          "expectedTotal": 43870,
+          "actualTotal": 43870,
+          "expectedHead": [
+            {
+              "offset": 0,
+              "length": 3
+            },
+            {
+              "offset": 3,
+              "length": 3
+            },
+            {
+              "offset": 6,
+              "length": 3
+            }
+          ],
+          "actualHead": [
+            {
+              "offset": 0,
+              "length": 3
+            },
+            {
+              "offset": 3,
+              "length": 3
+            },
+            {
+              "offset": 6,
+              "length": 3
+            }
+          ],
+          "expectedTail": [
+            {
+              "offset": 131601,
+              "length": 3
+            },
+            {
+              "offset": 131604,
+              "length": 3
+            },
+            {
+              "offset": 131607,
+              "length": 3
+            }
+          ],
+          "truncated": true,
+          "pass": true
+        }
+      ]
+    },
+    {
+      "id": "X11",
+      "verdict": "OBSERVATION",
+      "title": "Query longer than chunk meets engine regexp-size limit",
+      "detail": {
+        "name": "query exceeds complete 64KiB+8192 window",
+        "queryUnits": 74001,
+        "textUnits": 74001,
+        "expectedTotal": 1,
+        "actualTotal": 0,
+        "expectedHead": [
+          {
+            "offset": 0,
+            "length": 74001
+          }
+        ],
+        "actualHead": [],
+        "expectedTail": [
+          {
+            "offset": 0,
+            "length": 74001
+          }
+        ],
+        "truncated": true,
+        "pass": false,
+        "note": "74001 UTF16 literal query rejects with native Regular expression too large. This is a query-length boundary, not proof of chunk-only loss; UI behavior untested here."
+      }
+    },
+    {
+      "id": "X03",
+      "verdict": "PASS",
+      "title": "Nonoverlap and case-insensitive UTF16 offsets retain original regexp semantics",
+      "detail": [
+        {
+          "name": "expected nonoverlapping within one window",
+          "queryUnits": 3,
+          "textUnits": 9,
+          "expectedTotal": 2,
+          "actualTotal": 2,
+          "expectedHead": [
+            {
+              "offset": 0,
+              "length": 3
+            },
+            {
+              "offset": 6,
+              "length": 3
+            }
+          ],
+          "actualHead": [
+            {
+              "offset": 0,
+              "length": 3
+            },
+            {
+              "offset": 6,
+              "length": 3
+            }
+          ],
+          "expectedTail": [
+            {
+              "offset": 0,
+              "length": 3
+            },
+            {
+              "offset": 6,
+              "length": 3
+            }
+          ],
+          "truncated": false,
+          "pass": true
+        },
+        {
+          "name": "ordinary case fold offsets",
+          "queryUnits": 6,
+          "textUnits": 23,
+          "expectedTotal": 2,
+          "actualTotal": 2,
+          "expectedHead": [
+            {
+              "offset": 3,
+              "length": 6
+            },
+            {
+              "offset": 17,
+              "length": 6
+            }
+          ],
+          "actualHead": [
+            {
+              "offset": 3,
+              "length": 6
+            },
+            {
+              "offset": 17,
+              "length": 6
+            }
+          ],
+          "expectedTail": [
+            {
+              "offset": 3,
+              "length": 6
+            },
+            {
+              "offset": 17,
+              "length": 6
+            }
+          ],
+          "truncated": false,
+          "pass": true
+        },
+        {
+          "name": "simple ECMAScript fold sigma",
+          "queryUnits": 1,
+          "textUnits": 5,
+          "expectedTotal": 3,
+          "actualTotal": 3,
+          "expectedHead": [
+            {
+              "offset": 0,
+              "length": 1
+            },
+            {
+              "offset": 2,
+              "length": 1
+            },
+            {
+              "offset": 4,
+              "length": 1
+            }
+          ],
+          "actualHead": [
+            {
+              "offset": 0,
+              "length": 1
+            },
+            {
+              "offset": 2,
+              "length": 1
+            },
+            {
+              "offset": 4,
+              "length": 1
+            }
+          ],
+          "expectedTail": [
+            {
+              "offset": 0,
+              "length": 1
+            },
+            {
+              "offset": 2,
+              "length": 1
+            },
+            {
+              "offset": 4,
+              "length": 1
+            }
+          ],
+          "truncated": false,
+          "pass": true
+        }
+      ]
+    },
+    {
+      "id": "X04",
+      "verdict": "PASS",
+      "title": "Boundary loss must not make 1001 look like exactly 1000",
+      "detail": {
+        "expected": 1001,
+        "total": 1001,
+        "retained": 1000,
+        "truncated": true,
+        "last": [
+          {
+            "offset": 6986,
+            "length": 6
+          },
+          {
+            "offset": 65813,
+            "length": 6
+          }
+        ]
+      }
+    },
+    {
+      "id": "X05",
+      "verdict": "PASS",
+      "title": "Real ZIP parser crossing actual scan boundary",
+      "detail": {
+        "edge": 65816,
+        "expectedOffset": 65813,
+        "total": 1,
+        "scanned": 1,
+        "truncated": false
+      }
+    },
+    {
+      "id": "X06",
+      "verdict": "PASS",
+      "title": "Search and display share text after publisher style removal",
+      "detail": [
+        {
+          "name": "HTML inline display",
+          "cold": "\nSTART  TARGET\n",
+          "display": "\nSTART  TARGET\n",
+          "prepared": "<p>START <span style=\"display:none\">HIDDEN</span> TARGET</p>",
+          "equal": true,
+          "searchOffset": 8,
+          "range": "TARGET"
+        },
+        {
+          "name": "hidden br inline",
+          "cold": "\nAB\n",
+          "display": "\nAB\n",
+          "prepared": "<p>A<br style=\"display:none\">B</p>",
+          "equal": true,
+          "range": null
+        },
+        {
+          "name": "SVG inline visibility",
+          "cold": "TARGET",
+          "display": "TARGET",
+          "prepared": "<svg><text style=\"visibility:hidden\">HIDDEN</text><text>TARGET</text></svg>",
+          "equal": true,
+          "searchOffset": 0,
+          "range": "TARGET"
+        }
+      ]
+    },
+    {
+      "id": "X07",
+      "verdict": "OBSERVATION",
+      "title": "SVG use and child visibility override policy boundary",
+      "detail": {
+        "plain": "OVERRIDE_VISIBLEARIA_VISIBLEDIRECT_VISIBLE",
+        "preparedHtml": "<svg><defs><text id=\"t\">USE_TEMPLATE</text></defs><symbol id=\"s\"><text>SYMBOL_TEMPLATE</text></symbol><use href=\"#t\"></use><g visibility=\"hidden\"><text visibility=\"visible\">OVERRIDE_VISIBLE</text></g><text aria-hidden=\"true\">ARIA_VISIBLE</text><text>DIRECT_VISIBLE</text></svg>",
+        "titleExcluded": true,
+        "symbolExcluded": true,
+        "useTemplateExcluded": true,
+        "visibleOverrideExcluded": false,
+        "ariaRetained": true,
+        "note": "use is explicitly unsupported; child visibility=visible overriding inherited hidden needs real Edge geometry. Do not equate these boundaries."
+      }
+    },
+    {
+      "id": "X08",
+      "verdict": "PASS",
+      "title": "Failed next prepare must keep previously displayed shared image",
+      "detail": {
+        "failure": "controlled title failure after shared image",
+        "oldOwner": 1,
+        "currentTask": 2,
+        "url": "blob:audit-1",
+        "revokedCurrent": false,
+        "resources": [
+          "OPS/shared.png"
+        ],
+        "taskOwners": [
+          1
+        ]
+      }
+    },
+    {
+      "id": "X09",
+      "verdict": "PASS",
+      "title": "Exact font MIME and encoded actual ZIP targets, mixed non-font rejection",
+      "detail": [
+        {
+          "name": "encoded literal percent exists",
+          "uri": "OPS/f%2520.otf",
+          "href": "f%2520.otf",
+          "zip": "OPS/f%20.otf",
+          "mime": "font/otf",
+          "expected": true,
+          "opened": true,
+          "fontFlag": true
+        },
+        {
+          "name": "encoded space exists",
+          "uri": "OPS/f%20.otf",
+          "href": "f%20.otf",
+          "zip": "OPS/f .otf",
+          "mime": "font/otf",
+          "expected": true,
+          "opened": true,
+          "fontFlag": true
+        },
+        {
+          "name": "mime case with parameter",
+          "uri": "OPS/f.otf",
+          "href": "f.otf",
+          "zip": "OPS/f.otf",
+          "mime": "FONT/OTF; test=1",
+          "expected": true,
+          "opened": true,
+          "fontFlag": true
+        },
+        {
+          "name": "mixed font and XHTML",
+          "uri": "OPS/f.otf",
+          "href": "f.otf",
+          "zip": "OPS/f.otf",
+          "mime": "font/otf",
+          "extra": "OPS/c0.xhtml",
+          "expected": false,
+          "opened": false,
+          "error": {
+            "code": "ENCRYPTED_NON_FONT",
+            "message": "加密目标不是明确支持的字体 MIME：OPS/c0.xhtml (application/xhtml+xml)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "X10",
+      "verdict": "OBSERVATION",
+      "title": "Encryption URI fallback reinterprets root-invalid relative path",
+      "detail": {
+        "cases": [
+          {
+            "name": "root traversal target",
+            "uri": "../OPS/f.otf",
+            "href": "f.otf",
+            "zip": "OPS/f.otf",
+            "mime": "font/otf",
+            "expected": false,
+            "opened": true,
+            "fontFlag": true
+          },
+          {
+            "name": "encoded slash target",
+            "uri": "OPS%2Ff.otf",
+            "href": "f.otf",
+            "zip": "OPS/f.otf",
+            "mime": "font/otf",
+            "expected": false,
+            "opened": false,
+            "error": {
+              "code": "UNKNOWN_ENCRYPTED_TARGET",
+              "message": "加密 CipherReference 路径非法：OPS%2Ff.otf"
+            }
+          }
+        ],
+        "note": "../OPS/f.otf fails root normalization, then OPF-directory fallback succeeds; encoded slash rejected. Same broader path-policy family as inherited E03. No filesystem escape or decryption inferred; root-only strictness needs explicit acceptance policy."
+      }
+    }
+  ]
+}

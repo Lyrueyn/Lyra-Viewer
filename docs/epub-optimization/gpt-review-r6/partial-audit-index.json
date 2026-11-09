@@ -1,0 +1,513 @@
+{
+  "host-audit\\runs\\boundary\\results.json": {
+    "count": 5,
+    "verdicts": {
+      "PASS": 4,
+      "FAIL": 1
+    },
+    "nonpass": [
+      {
+        "id": "B02-TWO-PROCESS-SMALL-ORDER-COLLISION",
+        "v": "FAIL",
+        "note": ""
+      }
+    ]
+  },
+  "host-audit\\runs\\capacity-ack\\results.json": {
+    "count": 1,
+    "verdicts": {
+      "PASS": 1
+    },
+    "nonpass": []
+  },
+  "host-audit\\runs\\capacity-burst\\results.json": {
+    "count": 1,
+    "verdicts": {
+      "PASS": 1
+    },
+    "nonpass": []
+  },
+  "host-audit\\runs\\close-boundary\\results.json": {
+    "count": 3,
+    "verdicts": {
+      "PASS": 2,
+      "FAIL": 1
+    },
+    "nonpass": [
+      {
+        "id": "L02-PREF-GRANT-STARVES-POSITION-DEADLINE",
+        "v": "FAIL",
+        "note": ""
+      }
+    ]
+  },
+  "host-audit\\runs\\completion-mixed\\results.json": {
+    "count": 1,
+    "verdicts": {
+      "PASS": 1
+    },
+    "nonpass": []
+  },
+  "host-audit\\runs\\extended\\results.json": {
+    "count": 11,
+    "verdicts": {
+      "FAIL": 1,
+      "PASS": 10
+    },
+    "nonpass": [
+      {
+        "id": "E01-RETRY-ORIGINAL-IDENTITY",
+        "v": "FAIL",
+        "note": ""
+      }
+    ]
+  },
+  "host-audit\\runs\\main\\results.json": {
+    "count": 25,
+    "verdicts": {
+      "PASS": 25
+    },
+    "nonpass": []
+  },
+  "host-audit\\runs\\protocol-boundary\\results.json": {
+    "count": 3,
+    "verdicts": {
+      "PASS": 3
+    },
+    "nonpass": []
+  },
+  "host-audit\\runs\\regression\\results.json": {
+    "count": 5,
+    "verdicts": {
+      "PASS": 5
+    },
+    "nonpass": []
+  },
+  "host-audit\\runs\\supplement\\results.json": {
+    "count": 6,
+    "verdicts": {
+      "PASS": 6
+    },
+    "nonpass": []
+  },
+  "model-audit\\boundary-results.json": {
+    "count": 4,
+    "verdicts": {
+      "OBSERVATION": 2,
+      "PASS": 2
+    },
+    "nonpass": []
+  },
+  "model-audit\\model-results.json": {
+    "count": 22,
+    "verdicts": {
+      "PASS": 21,
+      "OBSERVATION": 1
+    },
+    "nonpass": []
+  },
+  "model-audit\\r4-anchor-cancel-results.json": {
+    "count": 4,
+    "verdicts": {
+      "PASS": 3,
+      "OBSERVATION": 1
+    },
+    "nonpass": []
+  },
+  "model-audit\\r4-boundary-results.json": {
+    "count": 11,
+    "verdicts": {
+      "PASS": 8,
+      "OBSERVATION": 3
+    },
+    "nonpass": []
+  },
+  "model-audit\\r4-reader-stage-results.json": {
+    "count": 16,
+    "verdicts": {
+      "PASS": 12,
+      "FAIL": 4
+    },
+    "nonpass": [
+      {
+        "id": "N-resources-input",
+        "v": "FAIL",
+        "note": ""
+      },
+      {
+        "id": "N-resources-search-close",
+        "v": "FAIL",
+        "note": ""
+      },
+      {
+        "id": "N-resources-open-intent",
+        "v": "FAIL",
+        "note": ""
+      },
+      {
+        "id": "N-resources-host-finalize",
+        "v": "FAIL",
+        "note": ""
+      }
+    ]
+  },
+  "model-audit\\r5-late-cancel-adapted-results.json": {
+    "count": 3,
+    "verdicts": {
+      "FAIL": 1,
+      "PASS": 2
+    },
+    "nonpass": [
+      {
+        "id": "Z-LATE-search-close",
+        "v": "FAIL",
+        "note": ""
+      }
+    ]
+  },
+  "model-audit\\r5-late-cancel-results.json": {
+    "count": 0,
+    "verdicts": {},
+    "nonpass": []
+  },
+  "model-audit\\r5-reader-consistency-results.json": {
+    "count": 27,
+    "verdicts": {
+      "FAIL": 10,
+      "PASS": 17
+    },
+    "nonpass": [
+      {
+        "id": "Y-prepare-input",
+        "v": "FAIL",
+        "note": ""
+      },
+      {
+        "id": "YT-prepare-input",
+        "v": "FAIL",
+        "note": ""
+      },
+      {
+        "id": "Y-prepare-search-close",
+        "v": "FAIL",
+        "note": ""
+      },
+      {
+        "id": "YT-prepare-search-close",
+        "v": "FAIL",
+        "note": ""
+      },
+      {
+        "id": "Y-prepare-open-intent",
+        "v": "FAIL",
+        "note": ""
+      },
+      {
+        "id": "YT-prepare-open-intent",
+        "v": "FAIL",
+        "note": ""
+      },
+      {
+        "id": "Y-prepare-finalize",
+        "v": "FAIL",
+        "note": ""
+      },
+      {
+        "id": "Y-resources-finalize",
+        "v": "FAIL",
+        "note": ""
+      },
+      {
+        "id": "YFAIL-resource-wait",
+        "v": "FAIL",
+        "note": ""
+      },
+      {
+        "id": "YFAIL-after-layout",
+        "v": "FAIL",
+        "note": ""
+      }
+    ]
+  },
+  "model-audit\\r5-resource-trend-results.json": {
+    "count": 5,
+    "verdicts": {
+      "PASS": 5
+    },
+    "nonpass": []
+  },
+  "model-audit\\r5-search-visibility-results.json": {
+    "count": 17,
+    "verdicts": {
+      "PASS": 14,
+      "OBSERVATION": 2,
+      "FAIL": 1
+    },
+    "nonpass": [
+      {
+        "id": "Z-VIS-important-first-stripped",
+        "v": "FAIL",
+        "note": ""
+      }
+    ]
+  },
+  "model-audit\\r6-interleaving-results.json": {
+    "count": 55,
+    "verdicts": {
+      "FAIL": 44,
+      "PASS": 8,
+      "PROBE_ERROR": 3
+    },
+    "nonpass": [
+      {
+        "id": "R6-CANCEL-prepare-input",
+        "v": "FAIL",
+        "note": ""
+      },
+      {
+        "id": "R6-CANCEL-prepare-input-TURN",
+        "v": "FAIL",
+        "note": ""
+      },
+      {
+        "id": "R6-CANCEL-prepare-close",
+        "v": "FAIL",
+        "note": ""
+      },
+      {
+        "id": "R6-CANCEL-prepare-close-TURN",
+        "v": "FAIL",
+        "note": ""
+      },
+      {
+        "id": "R6-CANCEL-prepare-nav",
+        "v": "FAIL",
+        "note": ""
+      },
+      {
+        "id": "R6-CANCEL-prepare-nav-TURN",
+        "v": "FAIL",
+        "note": ""
+      },
+      {
+        "id": "R6-CANCEL-prepare-open",
+        "v": "FAIL",
+        "note": ""
+      },
+      {
+        "id": "R6-CANCEL-prepare-open-TURN",
+        "v": "FAIL",
+        "note": ""
+      },
+      {
+        "id": "R6-CANCEL-iframe-input",
+        "v": "FAIL",
+        "note": ""
+      },
+      {
+        "id": "R6-CANCEL-iframe-close",
+        "v": "FAIL",
+        "note": ""
+      },
+      {
+        "id": "R6-CANCEL-iframe-nav",
+        "v": "FAIL",
+        "note": ""
+      },
+      {
+        "id": "R6-CANCEL-iframe-nav-TURN",
+        "v": "FAIL",
+        "note": ""
+      },
+      {
+        "id": "R6-CANCEL-iframe-open",
+        "v": "FAIL",
+        "note": ""
+      },
+      {
+        "id": "R6-CANCEL-iframe-open-TURN",
+        "v": "FAIL",
+        "note": ""
+      },
+      {
+        "id": "R6-CANCEL-iframe-finalize",
+        "v": "FAIL",
+        "note": ""
+      },
+      {
+        "id": "R6-CANCEL-fonts-input",
+        "v": "FAIL",
+        "note": ""
+      },
+      {
+        "id": "R6-CANCEL-fonts-close",
+        "v": "FAIL",
+        "note": ""
+      },
+      {
+        "id": "R6-CANCEL-fonts-nav-PROBE",
+        "v": "PROBE_ERROR",
+        "note": ""
+      },
+      {
+        "id": "R6-CANCEL-fonts-open-PROBE",
+        "v": "PROBE_ERROR",
+        "note": ""
+      },
+      {
+        "id": "R6-CANCEL-fonts-finalize",
+        "v": "FAIL",
+        "note": ""
+      },
+      {
+        "id": "R6-CANCEL-resources-input",
+        "v": "FAIL",
+        "note": ""
+      },
+      {
+        "id": "R6-CANCEL-resources-close",
+        "v": "FAIL",
+        "note": ""
+      },
+      {
+        "id": "R6-CANCEL-resources-nav",
+        "v": "FAIL",
+        "note": ""
+      },
+      {
+        "id": "R6-CANCEL-resources-nav-TURN",
+        "v": "FAIL",
+        "note": ""
+      },
+      {
+        "id": "R6-CANCEL-resources-open",
+        "v": "FAIL",
+        "note": ""
+      },
+      {
+        "id": "R6-CANCEL-resources-open-TURN",
+        "v": "FAIL",
+        "note": ""
+      },
+      {
+        "id": "R6-CANCEL-resources-finalize",
+        "v": "FAIL",
+        "note": ""
+      },
+      {
+        "id": "R6-RESTORE-before-submit-nav",
+        "v": "FAIL",
+        "note": ""
+      },
+      {
+        "id": "R6-RESTORE-before-submit-nav-TURN",
+        "v": "FAIL",
+        "note": ""
+      },
+      {
+        "id": "R6-RESTORE-before-submit-open",
+        "v": "FAIL",
+        "note": ""
+      },
+      {
+        "id": "R6-RESTORE-before-submit-open-TURN",
+        "v": "FAIL",
+        "note": ""
+      },
+      {
+        "id": "R6-RESTORE-before-submit-finalize",
+        "v": "FAIL",
+        "note": ""
+      },
+      {
+        "id": "R6-RESTORE-resources-nav",
+        "v": "FAIL",
+        "note": ""
+      },
+      {
+        "id": "R6-RESTORE-resources-nav-TURN",
+        "v": "FAIL",
+        "note": ""
+      },
+      {
+        "id": "R6-RESTORE-resources-open-PROBE",
+        "v": "PROBE_ERROR",
+        "note": ""
+      },
+      {
+        "id": "R6-RESTORE-resources-finalize",
+        "v": "FAIL",
+        "note": ""
+      },
+      {
+        "id": "R6-FAULT-prepare",
+        "v": "FAIL",
+        "note": ""
+      },
+      {
+        "id": "R6-FAULT-prepare-TURN",
+        "v": "FAIL",
+        "note": ""
+      },
+      {
+        "id": "R6-FAULT-resources",
+        "v": "FAIL",
+        "note": ""
+      },
+      {
+        "id": "R6-FAULT-resources-TURN",
+        "v": "FAIL",
+        "note": ""
+      },
+      {
+        "id": "R6-FAULT-layout",
+        "v": "FAIL",
+        "note": ""
+      },
+      {
+        "id": "R6-FAULT-layout-TURN",
+        "v": "FAIL",
+        "note": ""
+      },
+      {
+        "id": "R6-FAULT-highlight",
+        "v": "FAIL",
+        "note": ""
+      },
+      {
+        "id": "R6-FAULT-highlight-TURN",
+        "v": "FAIL",
+        "note": ""
+      },
+      {
+        "id": "R6-RESTORE-THROWS",
+        "v": "FAIL",
+        "note": ""
+      },
+      {
+        "id": "R6-SYNC-layout",
+        "v": "FAIL",
+        "note": ""
+      },
+      {
+        "id": "R6-SYNC-highlight",
+        "v": "FAIL",
+        "note": ""
+      }
+    ]
+  },
+  "model-audit\\reader-flow-adapted-results.json": {
+    "count": 8,
+    "verdicts": {
+      "PASS": 8
+    },
+    "nonpass": []
+  },
+  "model-audit\\reader-flow-results.json": {
+    "count": 4,
+    "verdicts": {
+      "PASS": 4
+    },
+    "nonpass": []
+  }
+}

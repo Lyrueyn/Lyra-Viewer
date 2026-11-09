@@ -1,0 +1,248 @@
+{
+  "commit": "99bd102f4c9b4c1a92668d04e2e12260e523ad94",
+  "branch": "r6",
+  "clean": true,
+  "archive_sha256": "f2b2741a166749e7108e010151a46246ac2df40bf1f0861050e8e12d612c535c",
+  "files": [
+    {
+      "path": "extension.json",
+      "sha256": "6b03796dcb2c7a5f72b2baf744b9c7c41fa601b748da3896880c91ccf0037949",
+      "matches_source": true,
+      "matches_runtime": true
+    },
+    {
+      "path": "index.html",
+      "sha256": "f6b244c642b1842652b4ed733116a26a3e92b1b0271bf7c1b444a1c8af3b411d",
+      "matches_source": true,
+      "matches_runtime": true
+    },
+    {
+      "path": "reader.css",
+      "sha256": "d41553524e1dbed4c895cceb7e66e9b08ae35905b69545ff4637cedeac4a148b",
+      "matches_source": true,
+      "matches_runtime": true
+    },
+    {
+      "path": "reader.js",
+      "sha256": "5a81d526b8126b590738bc50652db829d701fdb9e3319240766fb3d07c2fc837",
+      "matches_source": true,
+      "matches_runtime": true
+    },
+    {
+      "path": "epub-book.js",
+      "sha256": "e65e976116da95a29689c5b81c358c1465957787bc81c796d5dc10eccf023417",
+      "matches_source": true,
+      "matches_runtime": true
+    },
+    {
+      "path": "paginator.js",
+      "sha256": "5dbbbe764bc616d5fa3829953dbf204786c4c65cc4191db782e63352d6800750",
+      "matches_source": true,
+      "matches_runtime": true
+    },
+    {
+      "path": "reader-state.js",
+      "sha256": "b78c409f52319cfcc0605002a0cb680a176e95ca579dc135261935ce56147a78",
+      "matches_source": true,
+      "matches_runtime": true
+    },
+    {
+      "path": "search.js",
+      "sha256": "470c4fe4bb68f299b1aa367cffd1f3b5e616af2dad25e7b1cc1d10f25bea702a",
+      "matches_source": true,
+      "matches_runtime": true
+    },
+    {
+      "path": "README.md",
+      "sha256": "ebf3fd969d9d2403072e3d8f6a20a9bbdc2fbb7dcdf2a75dad63eb3d372a9b69",
+      "matches_source": true,
+      "matches_runtime": true
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "230184f60bae2feaf244f10a8bac053c8ff33a183bcc365b4d8b876d2b7f4809",
+      "matches_source": true,
+      "matches_runtime": true
+    },
+    {
+      "path": "lib/jszip.min.js",
+      "sha256": "acc7e41455a80765b5fd9c7ee1b8078a6d160bbbca455aeae854de65c947d59e",
+      "matches_source": true,
+      "matches_runtime": true
+    }
+  ],
+  "host_files": [
+    {
+      "name": "ExtensionHostWindow.xaml",
+      "sha256": "283e3e4f682d1ca20563843e19eedd71f3829b29cb8bd69cdf1a64a42876ff88",
+      "provenance": "live source frozen; submitted manifest has no host source hashes/build mapping"
+    },
+    {
+      "name": "ExtensionHostWindow.xaml.cs",
+      "sha256": "e6e853153add0b6d7f59b9076f74cd1339cd9b64e2e09abc6f0dcad9204a6b33",
+      "provenance": "live source frozen; submitted manifest has no host source hashes/build mapping"
+    },
+    {
+      "name": "ReaderProtocol.cs",
+      "sha256": "079123e5d176d9db960f8eb4b4106a34295a4de3b416b75dc8458f0e8bbea913",
+      "provenance": "live source frozen; submitted manifest has no host source hashes/build mapping"
+    },
+    {
+      "name": "ReaderStateStore.cs",
+      "sha256": "fc4dc7ade8b38075db7bbd7aa62abedf4ba3fc15819d6c014a0acd90d4bc02a3",
+      "provenance": "live source frozen; submitted manifest has no host source hashes/build mapping"
+    }
+  ],
+  "binaries": [
+    {
+      "path": "D:\\Temp\\lyra_epub_host_r6\\WinUIGui.dll",
+      "sha256": "3f30ccc9915993f058dad62879f1619ac1ebd5b735ce1741d09faee86b28719c"
+    },
+    {
+      "path": "D:\\Temp\\lyra_epub_host_r6\\WinUIGui.exe",
+      "sha256": "d0f1bb58b07d0b6aeaeb463c841914d9594d0a803e3831fc272a6a5ffed3b335"
+    },
+    {
+      "path": "D:\\Temp\\lyra_r6_candidate\\WinUIGui.dll",
+      "sha256": "3f30ccc9915993f058dad62879f1619ac1ebd5b735ce1741d09faee86b28719c"
+    },
+    {
+      "path": "D:\\Temp\\lyra_r6_candidate\\WinUIGui.exe",
+      "sha256": "d0f1bb58b07d0b6aeaeb463c841914d9594d0a803e3831fc272a6a5ffed3b335"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "a23\\results.json",
+      "sha256": "57260847a00c40596b77f6bae483e849a32221b4de16b9b893c130535e0388f7"
+    },
+    {
+      "path": "audits\\prior-boundary-results.json",
+      "sha256": "536f0a954adcc7a2c12f6bae30a6110b4b5532a13636e176127e5c24ae6932f7"
+    },
+    {
+      "path": "audits\\prior-stage-results.json",
+      "sha256": "7ae06e22b24cc041a6e32e81fd5780a2257f38281243c4112f71bc18f97c6424"
+    },
+    {
+      "path": "DeepSeek实施回报-R6.md",
+      "sha256": "ef7c834f1d247e67314e1bb883bd331f005260eff3d2d779b53c239727ba45a5"
+    },
+    {
+      "path": "host-audit\\r6-host-results.json",
+      "sha256": "2ae1291d267c1ac82c0f4e100ccc05fd361e1037a99ca326bd7787f5c001128b"
+    },
+    {
+      "path": "local-format\\unknown-version-results.json",
+      "sha256": "6bd428367d8c5bb54abdcfe6e5248d7e013c14c11bacf8ee4da0ef9581374149"
+    },
+    {
+      "path": "new-stage\\boundary.epub",
+      "sha256": "2a8de38ad55edafa79c4937fcc6364117b526ed06626940680cbb4727bc0086e"
+    },
+    {
+      "path": "new-stage\\css-visibility-order.png",
+      "sha256": "335ed6517ba16a3ccd1e6c563b6972a7941a90cd0d601c20d8e1545969cf43a6"
+    },
+    {
+      "path": "new-stage\\cssorder.epub",
+      "sha256": "ff9cc16a987a43488056c5d31427f219575aa8de5c81515192bee37e7a2726de"
+    },
+    {
+      "path": "new-stage\\normal.epub",
+      "sha256": "d4a9717fc51bcaf0adb237e39ca4e48803d99061ae7b4cd86d0f8921d6fe2e04"
+    },
+    {
+      "path": "new-stage\\resource-cancel-close.png",
+      "sha256": "73400439f7e5c6238f66a127741fb6104e04ecb43ac3c72a142356a42fc8bddb"
+    },
+    {
+      "path": "new-stage\\resource-cancel-input.png",
+      "sha256": "c0cb03ac704526f0987d224e12f044eb6e006f541c62afe7b876bc5ff2b1fb93"
+    },
+    {
+      "path": "new-stage\\results.json",
+      "sha256": "64b4e6b5132ab9d9941c34b8627fe4a252ea97f87a9127950000064e3665cd55"
+    },
+    {
+      "path": "new-stage\\search.epub",
+      "sha256": "18ce372a484a6a72c3e5b5a323d17f194762dee1791f92ad39b959e34348a65f"
+    },
+    {
+      "path": "new-stage\\svg-after-highlight.png",
+      "sha256": "e90697c034e00d74ef7918c5e43318f278a97a2973bd05adebf9f9c37e367557"
+    },
+    {
+      "path": "new-stage\\svg-before.png",
+      "sha256": "0d61037ea884413cd175100f021a43147d705498e897663f9f26ba180e931964"
+    },
+    {
+      "path": "new-stage\\svgpaint.epub",
+      "sha256": "ce5e2753127b1d0d7aff0a6491450520feb73a77f2260e500f8e28f6fe1d340e"
+    },
+    {
+      "path": "package-smoke.png",
+      "sha256": "5259337ee05f2f4d4a5085f3c0aa50772cb1b7b1b9fe8c563c4dbf56b9e527ee"
+    },
+    {
+      "path": "r6-manifest.json",
+      "sha256": "0560435393d8b2449d1effc191bb95e9438ec5a1971cf7d0f386a64c618ea988"
+    },
+    {
+      "path": "SHA256SUMS",
+      "sha256": "1e8d60eaf12661f3de45de46f059d3f573701317b2fa9ac1d317dfa69408a3a6"
+    },
+    {
+      "path": "tools\\a23-stress-r6.cjs",
+      "sha256": "c26f7bd53acf8a35ce7608821842ea2108926690bb15c3fa601b146c54e44eb5"
+    },
+    {
+      "path": "tools\\local-format-r6.cjs",
+      "sha256": "034efe44a908bd91d3525b4d38b15eaf12b0cd05a114d740cdf91abf05197909"
+    },
+    {
+      "path": "tools\\review-new-stages.cjs",
+      "sha256": "98d25384a5c1adcf95380dfe9ec47cede7b67561e4562a4dfc42cd47c24d804f"
+    },
+    {
+      "path": "v2-interop\\01-3s.png",
+      "sha256": "180f01a58762fa5ef5f8353423f69756d94dc856a6314e7ab4ea313ceb409e12"
+    },
+    {
+      "path": "v2-interop\\02-9s.png",
+      "sha256": "180f01a58762fa5ef5f8353423f69756d94dc856a6314e7ab4ea313ceb409e12"
+    },
+    {
+      "path": "v2-interop\\03-12s.png",
+      "sha256": "180f01a58762fa5ef5f8353423f69756d94dc856a6314e7ab4ea313ceb409e12"
+    },
+    {
+      "path": "v2-interop\\04-after-right.png",
+      "sha256": "9cb098e25b12f361341e52372d7b4eab3aacffbb738889061e9f829935cedeee"
+    },
+    {
+      "path": "v2-interop\\05-finalhost-local.png",
+      "sha256": "c64c63f08cc1e2f7a7b7c9e45c967cc0fdfe7552b2636f3baff64fe7231f7c8c"
+    },
+    {
+      "path": "v2-interop\\finalhost-identity.json",
+      "sha256": "029c60f4debe665d2de1ea011f5c369c90ea07cf027228ac4052f262ce9be491"
+    },
+    {
+      "path": "v2-interop\\finalhost.log",
+      "sha256": "5bd6ba67ccf834c011996ca3dc8ad3b3fc5cf1c18ec944b93aa2e910dcd94ffe"
+    },
+    {
+      "path": "v2-interop\\identity.json",
+      "sha256": "4e5df018e753eb534604d79c6187064fe8944960bdf48f8cd1bc8bac99a18973"
+    },
+    {
+      "path": "v2-interop\\v2interop.log",
+      "sha256": "2c3df259e3f5dc1b697380eeabb929436e686529c95c6a2424f4d88dd9c86bad"
+    },
+    {
+      "path": "状态设计-R6.md",
+      "sha256": "c26d1f595bd7d70dbfa9512fa55e276744176379552ddf2b791e40b10f57e51e"
+    }
+  ]
+}

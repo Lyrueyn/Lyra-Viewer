@@ -1,0 +1,94 @@
+{
+  "archive_sha256": "48a4c79058eb1822cb962741650cd404ed58472cb45e3b4c27098fde2321d90e",
+  "files": [
+    {
+      "path": "extension.json",
+      "sha256": "8721008f0203596203c7bbee8f1dd79952c905480f41f793be21c38f79d450d2",
+      "matches_source": true
+    },
+    {
+      "path": "index.html",
+      "sha256": "2b3efeaafceba9ee94ae091f44f7355bbecf115d5afa6fa1083bd3f7c5aaf633",
+      "matches_source": true
+    },
+    {
+      "path": "reader.css",
+      "sha256": "16d56d1b2b88e11d9ee372d0e4c9ab65992afd42fdc699d6bc8ce524c522f4cf",
+      "matches_source": true
+    },
+    {
+      "path": "reader.js",
+      "sha256": "ab44f5d29a5b587572020597cac6b9958eea7c04a76e0459fe5e6233016f380e",
+      "matches_source": true
+    },
+    {
+      "path": "epub-book.js",
+      "sha256": "0d08c56e929f3a35508667b5c333a083c41b872e0f382e9f2d62ea5c6fe85a2c",
+      "matches_source": true
+    },
+    {
+      "path": "paginator.js",
+      "sha256": "ed53ee3369ed0f79fce37305835cfca8df272a7916498936a6c45a4c5cf85166",
+      "matches_source": true
+    },
+    {
+      "path": "reader-state.js",
+      "sha256": "76d12ce409a5c11fa943921fd4abad0e7940734d698eeaff1f508c4d29839233",
+      "matches_source": true
+    },
+    {
+      "path": "search.js",
+      "sha256": "025add0921f2f27dd9fb3bae6d364aac31ec513015016bdebb0a8ad693c7ccb5",
+      "matches_source": true
+    },
+    {
+      "path": "lib/jszip.min.js",
+      "sha256": "acc7e41455a80765b5fd9c7ee1b8078a6d160bbbca455aeae854de65c947d59e",
+      "matches_source": true
+    },
+    {
+      "path": "lib/lib/jszip.min.js",
+      "sha256": "acc7e41455a80765b5fd9c7ee1b8078a6d160bbbca455aeae854de65c947d59e",
+      "matches_source": false
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "230184f60bae2feaf244f10a8bac053c8ff33a183bcc365b4d8b876d2b7f4809",
+      "matches_source": true
+    },
+    {
+      "path": "README.md",
+      "sha256": "ebf3fd969d9d2403072e3d8f6a20a9bbdc2fbb7dcdf2a75dad63eb3d372a9b69",
+      "matches_source": true
+    }
+  ],
+  "archive_extra_duplicate_files": [
+    {
+      "path": "lib/lib/jszip.min.js",
+      "sha256": "acc7e41455a80765b5fd9c7ee1b8078a6d160bbbca455aeae854de65c947d59e",
+      "matches_source": false
+    }
+  ],
+  "host_files": [
+    {
+      "name": "ExtensionHostWindow.xaml",
+      "sha256": "283e3e4f682d1ca20563843e19eedd71f3829b29cb8bd69cdf1a64a42876ff88",
+      "matches_report": true
+    },
+    {
+      "name": "ExtensionHostWindow.xaml.cs",
+      "sha256": "49bf89ace0f30bf2bc1c03d1d857860be09544a56be25a6015dbdc8a9f13fe64",
+      "matches_report": true
+    },
+    {
+      "name": "ReaderProtocol.cs",
+      "sha256": "50d707fe82ea43bc59c5cc10668fb7a4ff7bf8f7dfd57c27b00e1c6025caa6f7",
+      "matches_report": true
+    },
+    {
+      "name": "ReaderStateStore.cs",
+      "sha256": "947cfd278bd5f1d95da0830eaf98be979c14db148192e22c2458d286b0b7ccfc",
+      "matches_report": true
+    }
+  ]
+}

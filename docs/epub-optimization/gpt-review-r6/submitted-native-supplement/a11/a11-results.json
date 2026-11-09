@@ -1,0 +1,42 @@
+{
+  "evidenceKind": "Real Edge; explicit image.complete gate in reader iframe; no fake host; no business code change",
+  "t0": 1793186000141,
+  "readyAt": 1793186002950,
+  "totalMs": 4415,
+  "before": {
+    "ready": true,
+    "busy": false,
+    "page": 0,
+    "count": 18,
+    "nodes": 123,
+    "imgComplete": false,
+    "imgW": 1,
+    "stable": 11,
+    "gate": {
+      "ready": false,
+      "releasedAt": 0,
+      "installed": 1
+    }
+  },
+  "after": {
+    "ready": true,
+    "busy": false,
+    "page": 0,
+    "count": 18,
+    "nodes": 123,
+    "imgComplete": true,
+    "imgW": 1,
+    "stable": 11,
+    "scroll": 0
+  },
+  "rest": {
+    "ready": true,
+    "busy": false,
+    "page": 0,
+    "count": 18,
+    "nodes": 123,
+    "imgComplete": true,
+    "imgW": 1
+  },
+  "defect": false
+}

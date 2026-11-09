@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "revision": 2,
+  "positionRevision": 1,
+  "metadataRevision": 1,
+  "interaction": 1,
+  "interactionOwner": "ef7d81f3cff94e4891af95e47f386439",
+  "position": {
+    "spineHref": "a.xhtml",
+    "spineIndex": 0,
+    "locator": {
+      "textOffset": 10,
+      "quote": "synthetic",
+      "chapterFraction": 0.1
+    },
+    "chapterFraction": 0.1,
+    "savedAt": "2023-11-14T22:13:20.300Z"
+  },
+  "positionToken": 1,
+  "positionSequence": 1700000000300000,
+  "bookmarks": [
+    {
+      "id": "bm-loyw3v28-hcltty",
+      "_key": "a.xhtml|t10",
+      "spineHref": "a.xhtml",
+      "spineIndex": 0,
+      "chapterTitle": "Fixture",
+      "title": "Fixture",
+      "summary": "synthetic",
+      "locator": {
+        "textOffset": 10,
+        "quote": "synthetic",
+        "chapterFraction": 0.1
+      },
+      "createdAt": "2023-11-14T22:13:20.000Z"
+    }
+  ],
+  "bookmarksRevision": 1,
+  "positionSession": "ef7d81f3cff94e4891af95e47f386439",
+  "positionSavedAt": "2026-10-28T11:20:31.7733370Z"
+}

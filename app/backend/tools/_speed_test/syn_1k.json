@@ -1,0 +1,122 @@
+{
+  "file": "D:\\DSH\\local-media-player\\backend\\tools\\_speed_test\\syn_1k.f32",
+  "bytes": 768000,
+  "rate": 48000,
+  "channels": 2,
+  "total_scalars": 192000,
+  "frames": 96000,
+  "frames_per_channel": 96000,
+  "tail_extra_scalars": 0,
+  "duration_s": 2.0,
+  "peak": 0.5,
+  "peak_dbfs": -6.02,
+  "peak_per_channel_dbfs": [
+    -6.02,
+    -6.02
+  ],
+  "rms": 0.342783,
+  "rms_dbfs": -9.3,
+  "rms_per_channel_dbfs": [
+    -9.3,
+    -9.3
+  ],
+  "max_jump": 0.065263,
+  "max_jump_at_s": 0.0,
+  "max_jump_channel": 0,
+  "silence_threshold_dbfs": -80.0,
+  "silence_min_ms": 5.0,
+  "silence_count": 1,
+  "silence_total_ms": 120.02,
+  "silence_total_pct": 9.917,
+  "silence_segments": [
+    {
+      "start_s": 0.8,
+      "end_s": 0.92,
+      "ms": 120.02
+    }
+  ],
+  "silence_segments_truncated": 0,
+  "spectrum": {
+    "fft1024": {
+      "available": true,
+      "dominant_hz": 994.63,
+      "peaks_hz": [
+        994.63
+      ],
+      "bands": [
+        {
+          "band": "0-100Hz",
+          "pct": 0.03
+        },
+        {
+          "band": "100-300Hz",
+          "pct": 0.0
+        },
+        {
+          "band": "300-1000Hz",
+          "pct": 62.41
+        },
+        {
+          "band": "1000-3000Hz",
+          "pct": 37.55
+        },
+        {
+          "band": "3000-6000Hz",
+          "pct": 0.0
+        },
+        {
+          "band": "6000-12000Hz",
+          "pct": 0.0
+        },
+        {
+          "band": "12000-24000Hz",
+          "pct": 0.0
+        }
+      ]
+    },
+    "fft4096": {
+      "available": true,
+      "dominant_hz": 998.66,
+      "peaks_hz": [
+        998.66
+      ],
+      "bands": [
+        {
+          "band": "0-100Hz",
+          "pct": 0.0
+        },
+        {
+          "band": "100-300Hz",
+          "pct": 0.0
+        },
+        {
+          "band": "300-1000Hz",
+          "pct": 62.36
+        },
+        {
+          "band": "1000-3000Hz",
+          "pct": 37.63
+        },
+        {
+          "band": "3000-6000Hz",
+          "pct": 0.0
+        },
+        {
+          "band": "6000-12000Hz",
+          "pct": 0.0
+        },
+        {
+          "band": "12000-24000Hz",
+          "pct": 0.0
+        }
+      ]
+    }
+  },
+  "loudest_window": {
+    "window_start_s": 1.0,
+    "window_rms_dbfs": -9.03,
+    "fft1024_hz": 994.62,
+    "fft4096_hz": 998.65
+  },
+  "label": "1.0x"
+}

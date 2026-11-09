@@ -1,0 +1,16 @@
+'use strict';
+const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto');
+const scope=__dirname,sha=f=>crypto.createHash('sha256').update(fs.readFileSync(f)).digest('hex');
+const before=JSON.parse(fs.readFileSync(path.join(scope,'frozen-before.json'),'utf8'));
+const files=before.files.map(x=>({file:x.file,before:x.sha256,after:sha(x.file),size:fs.statSync(x.file).size}));
+const changed=files.filter(x=>x.before!==x.after);
+fs.writeFileSync(path.join(scope,'frozen-after.json'),JSON.stringify({checkedAt:new Date().toISOString(),count:files.length,unchanged:changed.length===0,changed,files},null,2));
+const inputs=['model-results.json','reader-flow-results.json','boundary-results.json','r4-boundary-results.json','r4-reader-stage-results.json','r4-anchor-cancel-results.json'];
+const sets=inputs.map(file=>{const d=JSON.parse(fs.readFileSync(path.join(scope,file),'utf8'));return{file,count:d.results.length,counts:d.results.reduce((a,r)=>(a[r.verdict]=(a[r.verdict]||0)+1,a),{}),harnessError:d.harnessError||null,results:d.results.map(r=>({id:r.id,verdict:r.verdict,title:r.title})),identity:d.identity};});
+const current=sets[0].identity.hashes,submitted=JSON.parse(fs.readFileSync(path.resolve(scope,'../submitted-evidence/model/model-results.json'),'utf8')).identity;
+const summary={checkedAt:new Date().toISOString(),scope,candidate:path.resolve(scope,'../candidate'),expectedCommit:'04f6ccb80546d6d04fe3c21f4a08775d83bfc0c6',expectedPackageSha256:'b128b9dfbe9d7a1085cc3505f9b3edc645847cfa24da33958eb26edd685f184b',frozenInputCount:files.length,frozenUnchanged:changed.length===0,sets,counts:sets.reduce((a,s)=>{for(const [k,v]of Object.entries(s.counts))a[k]=(a[k]||0)+v;return a;},{}),submittedActualHashesMatch:JSON.stringify(current)===JSON.stringify(submitted.hashes),submittedHeaderCommit:submitted.expectedCommit,submittedHeaderPackage:submitted.expectedPackageSha256,notes:['Only six named current result sets count toward totals. Earlier harness errors and provisional classifications retained separately, excluded.','All FAIL results were completed assertions, not tool/probe failures. Tool displays exit1 for script process.exitCode=2.','No browser/desktop, installation, deployment or production mutation performed by this audit.']};
+fs.writeFileSync(path.join(scope,'audit-summary.json'),JSON.stringify(summary,null,2));
+const deliverables=fs.readdirSync(scope).filter(f=>/\.(cjs|json|md)$/.test(f)&&f!=='deliverables-sha256.json').map(f=>({file:f,size:fs.statSync(path.join(scope,f)).size,sha256:sha(path.join(scope,f))}));
+fs.writeFileSync(path.join(scope,'deliverables-sha256.json'),JSON.stringify({generatedAt:new Date().toISOString(),files:deliverables},null,2));
+console.log(JSON.stringify({counts:summary.counts,total:sets.reduce((a,x)=>a+x.count,0),frozenCount:files.length,frozenUnchanged:changed.length===0,submittedActualHashesMatch:summary.submittedActualHashesMatch,harnessErrors:sets.filter(x=>x.harnessError)},null,2));
+if(changed.length||sets.some(x=>x.harnessError))process.exitCode=1;

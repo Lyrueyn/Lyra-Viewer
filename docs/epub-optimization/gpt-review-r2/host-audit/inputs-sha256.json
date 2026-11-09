@@ -1,0 +1,26 @@
+﻿[
+    {
+        "Path":  "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r2\\host-snapshot\\ExtensionHostWindow.xaml",
+        "Hash":  "283E3E4F682D1CA20563843E19EEDD71F3829B29CB8BD69CDF1A64A42876FF88"
+    },
+    {
+        "Path":  "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r2\\host-snapshot\\ExtensionHostWindow.xaml.cs",
+        "Hash":  "99F0B5CD601506B890F784878355C3D8F347C7156932B22639429B6A564476F8"
+    },
+    {
+        "Path":  "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r2\\host-snapshot\\ReaderProtocol.cs",
+        "Hash":  "9452E71377331457EC61F03D3BA019F660DFE42FA9C1D0BA627E1071E19DFABC"
+    },
+    {
+        "Path":  "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r2\\host-snapshot\\ReaderStateStore.cs",
+        "Hash":  "4587EF55056990CDDFF456EE726A4D5F50E7C9F97B616677D634677BD323B1B3"
+    },
+    {
+        "Path":  "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r2\\candidate\\reader-state.js",
+        "Hash":  "95455B42A672E3E0B8609C24318D5E96CB24ACA46E33813D71F41AE7433BD559"
+    },
+    {
+        "Path":  "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r2\\candidate\\reader.js",
+        "Hash":  "F8DE0735596A77D5F79E962C11FEFF10D1C52505EEA141C1147ADA1E5DCAA482"
+    }
+]

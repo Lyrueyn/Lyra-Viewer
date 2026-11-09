@@ -1,0 +1,458 @@
+{
+  "archive_sha256": "60cc97bf2721bb0239122275b307833d871548c985a56068e649f3d3a1517b80",
+  "files": [
+    {
+      "path": "extension.json",
+      "sha256": "564a8d33896d9d17aadf4066ec40c56a681889aceb4067b34ee0198bea43cca1",
+      "matches_source": true,
+      "matches_runtime": true
+    },
+    {
+      "path": "index.html",
+      "sha256": "f6b244c642b1842652b4ed733116a26a3e92b1b0271bf7c1b444a1c8af3b411d",
+      "matches_source": true,
+      "matches_runtime": true
+    },
+    {
+      "path": "reader.css",
+      "sha256": "d41553524e1dbed4c895cceb7e66e9b08ae35905b69545ff4637cedeac4a148b",
+      "matches_source": true,
+      "matches_runtime": true
+    },
+    {
+      "path": "reader.js",
+      "sha256": "28790e1fb4cd5e04302c26217d80b293d8bdedfc3cd4e1551c9a02c0d93f61fb",
+      "matches_source": true,
+      "matches_runtime": true
+    },
+    {
+      "path": "epub-book.js",
+      "sha256": "62453a86f64fc9e883af379440c8306a8e218fa55456de490671873044c2cdc2",
+      "matches_source": true,
+      "matches_runtime": true
+    },
+    {
+      "path": "paginator.js",
+      "sha256": "15408a60cf6e65f83d2a3b479a878da888be964d7639ffafd468067c81a2a248",
+      "matches_source": true,
+      "matches_runtime": true
+    },
+    {
+      "path": "reader-state.js",
+      "sha256": "fd9e7cad46398d393966358d0813668975d8f93bf915a573e06536c747175e8d",
+      "matches_source": true,
+      "matches_runtime": true
+    },
+    {
+      "path": "search.js",
+      "sha256": "470c4fe4bb68f299b1aa367cffd1f3b5e616af2dad25e7b1cc1d10f25bea702a",
+      "matches_source": true,
+      "matches_runtime": true
+    },
+    {
+      "path": "lib/jszip.min.js",
+      "sha256": "acc7e41455a80765b5fd9c7ee1b8078a6d160bbbca455aeae854de65c947d59e",
+      "matches_source": true,
+      "matches_runtime": true
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "230184f60bae2feaf244f10a8bac053c8ff33a183bcc365b4d8b876d2b7f4809",
+      "matches_source": true,
+      "matches_runtime": true
+    },
+    {
+      "path": "README.md",
+      "sha256": "ebf3fd969d9d2403072e3d8f6a20a9bbdc2fbb7dcdf2a75dad63eb3d372a9b69",
+      "matches_source": true,
+      "matches_runtime": true
+    }
+  ],
+  "host_files": [
+    {
+      "name": "ExtensionHostWindow.xaml",
+      "sha256": "283e3e4f682d1ca20563843e19eedd71f3829b29cb8bd69cdf1a64a42876ff88"
+    },
+    {
+      "name": "ExtensionHostWindow.xaml.cs",
+      "sha256": "cb8bfbbd0c3b9bf11770dd1d10ff1065b919ff5b03d72de93c1e2f3f1f1d0952"
+    },
+    {
+      "name": "ReaderProtocol.cs",
+      "sha256": "079123e5d176d9db960f8eb4b4106a34295a4de3b416b75dc8458f0e8bbea913"
+    },
+    {
+      "name": "ReaderStateStore.cs",
+      "sha256": "58d7f17400a3a6917fe8c4c120e2d9ef8c58ba8b7d0df62eff8dddc59bd21c0a"
+    }
+  ],
+  "binaries": [
+    {
+      "path": "D:\\Temp\\lyra_epub_host_r5\\WinUIGui.dll",
+      "sha256": "202954e5930fcdc7a50bd96975b84a12cbf7aa4375ac7334832d28a45f5f9480"
+    },
+    {
+      "path": "D:\\Temp\\lyra_epub_host_r5\\WinUIGui.exe",
+      "sha256": "d0f1bb58b07d0b6aeaeb463c841914d9594d0a803e3831fc272a6a5ffed3b335"
+    },
+    {
+      "path": "D:\\Temp\\lyra_epub_r5_candidate\\WinUIGui.dll",
+      "sha256": "202954e5930fcdc7a50bd96975b84a12cbf7aa4375ac7334832d28a45f5f9480"
+    },
+    {
+      "path": "D:\\Temp\\lyra_epub_r5_candidate\\WinUIGui.exe",
+      "sha256": "d0f1bb58b07d0b6aeaeb463c841914d9594d0a803e3831fc272a6a5ffed3b335"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "package-smoke.png",
+      "sha256": "5259337ee05f2f4d4a5085f3c0aa50772cb1b7b1b9fe8c563c4dbf56b9e527ee"
+    },
+    {
+      "path": "r5-manifest.json",
+      "sha256": "c9022e15b85c7edf85ff44d1bd63ffaf2a4dffd79d7205c059ec3225ec6f74fc"
+    },
+    {
+      "path": "SHA256SUMS",
+      "sha256": "bbd2060ff760c9e7b78bb4aab0151a1f54a9310f85321d3ca9dcd9f2911afc88"
+    },
+    {
+      "path": "状态设计-R5.md",
+      "sha256": "79338fe5473a0abf851842428ba534a4dd60bc792649ec14ced8c1b8fa5db3f0"
+    },
+    {
+      "path": "audits\\boundary-results.json",
+      "sha256": "536f0a954adcc7a2c12f6bae30a6110b4b5532a13636e176127e5c24ae6932f7"
+    },
+    {
+      "path": "audits\\reader-stage-results.json",
+      "sha256": "7ae06e22b24cc041a6e32e81fd5780a2257f38281243c4112f71bc18f97c6424"
+    },
+    {
+      "path": "client-close\\results.json",
+      "sha256": "33ccdfec1962dd0e765934df66008c5ffb6acc99f476b28b5233527c1063d47d"
+    },
+    {
+      "path": "compat\\r5-finalhost-c12-withbook-identity.json",
+      "sha256": "278b57a968c7d9b5fbce16b9814c94cd1824e3ea992ea16caeaedf21d0177825"
+    },
+    {
+      "path": "compat\\r5-finalhost-c12-withbook.log",
+      "sha256": "bc6db842a547e9e3178e611506a782a20a278d81bcceed7191a816bda12a3b39"
+    },
+    {
+      "path": "compat\\r5-finalhost-c12-withbook.png",
+      "sha256": "2818ed609e5cccc3d9ff2115b9a5a906be70944d6e934eee9eeed8cd44e9af82"
+    },
+    {
+      "path": "compat\\r5-host-pdf030-identity.json",
+      "sha256": "ef837c47090c351b814973812d0576bc1cf63325d6dabd0315eec1cca3ddfb56"
+    },
+    {
+      "path": "compat\\r5-host-pdf030.png",
+      "sha256": "37a56d798a02f784e438841d58497dca8c5bea456c9f43c36c5fcd66680f43d8"
+    },
+    {
+      "path": "compat\\r5-host-r3client-identity.json",
+      "sha256": "75c8d06c56087fd58b4ed04e2bec98e038111ad4942d2d6c6f2228d379ef9e16"
+    },
+    {
+      "path": "compat\\r5-host-r3client-withbook.png",
+      "sha256": "4fee987cedd031e813c12f95dccb86ae567d06c76efa30ed1adc634511db4a65"
+    },
+    {
+      "path": "compat\\r5-host-r3client.log",
+      "sha256": "33b1956e4c6037444105e78630e47a48c70e4cf44276cead1ec6973b7b57776d"
+    },
+    {
+      "path": "compat\\r5-oldhost-b978-r5zip090-identity.json",
+      "sha256": "057216244a019a3eecbfa2fdb512a5d954e61e77fa34facb363067127c3ef9ae"
+    },
+    {
+      "path": "compat\\r5-oldhost-b978-r5zip090-open.png",
+      "sha256": "258b62b6178e6fa78df0547e8da2e37806c4e5fa13d55004a0666e50f28f41a5"
+    },
+    {
+      "path": "host-audit\\r5-host-results.json",
+      "sha256": "66142279102f3d5f4ca57b1a75fd0602d5aebfea9423c2755b2d4f49b9aa54a7"
+    },
+    {
+      "path": "image-ack\\fresh.epub",
+      "sha256": "1e257c6b14802bc376921a7cca19151cda4adf46a902301e4782931217bca6cc"
+    },
+    {
+      "path": "image-ack\\hidden.epub",
+      "sha256": "768c0410590182de9da4105f890fdb28ca501c5a3091a48342eca952622e47a1"
+    },
+    {
+      "path": "image-ack\\image.epub",
+      "sha256": "69fbb8baf31134035f6817510beb5ae69b664cd031bdd26c241005e010824c40"
+    },
+    {
+      "path": "image-ack\\newimg.epub",
+      "sha256": "f05d0f04dee308c161560fe12ee5ca1ab2bf602c76e9c8e0ef5002b6361ed613"
+    },
+    {
+      "path": "image-ack\\normal.epub",
+      "sha256": "c348e892717c7f8ca321533f85302ccdd73278890b289039361750705c5eb252"
+    },
+    {
+      "path": "image-ack\\oldimg.epub",
+      "sha256": "8a32d1bf003f3b9b7f7fb33d678fee71ffc02695892ccaaa975f6269a154b9d5"
+    },
+    {
+      "path": "image-ack\\results.json",
+      "sha256": "addc655c615f466e5dd150e729a57fa8cba138c1866d7b5f935517dd699b8fa6"
+    },
+    {
+      "path": "image-ack\\search.epub",
+      "sha256": "8a719d94dca12683fb5f15303d827abb02f2f84ce412c276bfc03ab41f50fd4c"
+    },
+    {
+      "path": "image-ack\\stale-search-click.png",
+      "sha256": "eb05ffee8c1f70dc828dcfde6beb0d1c605a5f7efcf14a7b7b4f63381aba1bd7"
+    },
+    {
+      "path": "model\\audit-common.cjs",
+      "sha256": "dce345eb6e00f1a0e99d1c7ddf924dab3af99439c2a8ceff0217cfe935bc26c0"
+    },
+    {
+      "path": "model\\audit-models.cjs",
+      "sha256": "e7ab0771b38de81d8018e2e64fc4be907e84db0cfaf0b09a37fce22e7d769add"
+    },
+    {
+      "path": "model\\audit-reader-flow.cjs",
+      "sha256": "c92c11714d16877577feb60fa49941ddb02f41fbf3208c24801f3f5f770782b7"
+    },
+    {
+      "path": "model\\model-results.json",
+      "sha256": "c9ce4948ae7d654ec8a9a8ac1fe503170afe6e69f26e4ebb171acdbbeeb55b4e"
+    },
+    {
+      "path": "model\\reader-flow-results.json",
+      "sha256": "b5e4982e1f3fb5fff4109e19eb1b6c8212522692be1bd8b9eff26738d31290e6"
+    },
+    {
+      "path": "native\\A-after.png",
+      "sha256": "6f0c7e4044414db12b257013f14d70e6980226c79e01577cde7c4628ad78a66a"
+    },
+    {
+      "path": "native\\A-before.png",
+      "sha256": "4c6de5398abd26ee24619a1b12ec9fa67f077d100f2d67831b1a7bd792e6ae1e"
+    },
+    {
+      "path": "native\\native-fast-A18-B32-A22-raw.log",
+      "sha256": "a38d1279a932231a41c03a86b239f23c4a059f6c0938dc8b04e9d8dc5ea386a7"
+    },
+    {
+      "path": "native\\native-fast-two-window-identity.json",
+      "sha256": "d531a9cf170cd2d2c69ac31206065a1d3b399b377fd92c514eb1a5e35d5caded"
+    },
+    {
+      "path": "native\\r5-fast-A-after.png",
+      "sha256": "6419f5d168604dd98f18af3a34f97274bf76b4ee145474a29fac56209b94caf5"
+    },
+    {
+      "path": "native\\r5-fast-A-settings-before.png",
+      "sha256": "0a1fdeb28cc132c9ff66c6c127022a991cbd3b00877f340698a224de74626fcd"
+    },
+    {
+      "path": "native\\r5-fast-settings-before.png",
+      "sha256": "7d6919f1630522dc19b923a7b227f764d0e24a479c1818010039d239868c679c"
+    },
+    {
+      "path": "native\\r5-native-current-prefs.json",
+      "sha256": "9d7f0755f080dd9455abb99fe202d500d6f1916f467e1bbcb2427f504f489bef"
+    },
+    {
+      "path": "native\\r5-native-pending-close-identity.json",
+      "sha256": "38bac93ca05fb5fa9216ce6b7c01d9a3e4574550a7d62293cd561889ebbaafd4"
+    },
+    {
+      "path": "native\\r5-native-pending-close.log",
+      "sha256": "f0a3eb46a78ba6fa17415f8ec37cb2bfe62d22ab86a0f36993b91181092aa112"
+    },
+    {
+      "path": "native\\r5-native-pending-prefs.json",
+      "sha256": "9d7f0755f080dd9455abb99fe202d500d6f1916f467e1bbcb2427f504f489bef"
+    },
+    {
+      "path": "new-boundary\\boundary.epub",
+      "sha256": "2d692ad44a1bc5cdd97f74cf078a8d112af3b1d4c02df2e202f36a8d1f724e96"
+    },
+    {
+      "path": "new-boundary\\normal.epub",
+      "sha256": "6d2e2e75c6125801df203bfcf931193e825ea68ed73cfb586dbbbb680347a485"
+    },
+    {
+      "path": "new-boundary\\results.json",
+      "sha256": "0fac82a5479a39721284f5dcb08f68d0c8f07faef1e2ce285264014ddf18bdbe"
+    },
+    {
+      "path": "new-boundary\\search-boundary.png",
+      "sha256": "2dc19143b3af9a6132b3f46fb75fb25bb1d30e9e5befc9b9cf631d1a7c0444ce"
+    },
+    {
+      "path": "new-boundary\\search.epub",
+      "sha256": "ddec64931b7146bb4072ebece28853e5aeb199757b0b99ab047eedd80ee9bafa"
+    },
+    {
+      "path": "new-boundary\\stale-search-document.png",
+      "sha256": "21914fbf49f92256d9e189903c0235ca077546c8e82a458892136a3c5155f7b3"
+    },
+    {
+      "path": "new-boundary-v2\\boundary.epub",
+      "sha256": "3c334f022627b192526bdec56d28f1d26e7effcdd6c8be861500e8ac7c24365f"
+    },
+    {
+      "path": "new-boundary-v2\\hiddenflow.epub",
+      "sha256": "648a6475f75623243ab945a7447f7c96d45b42685f8011415d49333e34a426c2"
+    },
+    {
+      "path": "new-boundary-v2\\hiddenflow.png",
+      "sha256": "ac1877e0474987c768c9f3869b369588f125158b646226b365d534699b6259a0"
+    },
+    {
+      "path": "new-boundary-v2\\normal.epub",
+      "sha256": "a25aa97d93d9fd76497b3bb3cdfd5883e897f16950d645238dcf92bf46fd7f07"
+    },
+    {
+      "path": "new-boundary-v2\\results.json",
+      "sha256": "abb923b8aef574c686ebb640585432af7e366503e015b47d69e245e70b7caa11"
+    },
+    {
+      "path": "new-boundary-v2\\search.epub",
+      "sha256": "02edf0f125b2c3ed7ce32d07c84aafda728d0845645d6623e4e26b229515d1a1"
+    },
+    {
+      "path": "new-boundary-v2\\shared.epub",
+      "sha256": "ea32b62812feacb3b6e6196a234cdd169fb9e9bad40f5231c5ec95cfd58a02e0"
+    },
+    {
+      "path": "new-boundary-v2\\svgflow.epub",
+      "sha256": "433b1a05f73a5a8b30f457225ca389a20e380995e16e8242fb291236dfd444de"
+    },
+    {
+      "path": "new-boundary-v2\\svgflow.png",
+      "sha256": "967d5e3bf69614e17503717783341c57052e44026e1066953d94df4bc5288b85"
+    },
+    {
+      "path": "races-v2\\fresh.epub",
+      "sha256": "a74a48561157628162d139e2b60dc7d498d71813e1b61b7dfaaa1e3f99c8609d"
+    },
+    {
+      "path": "races-v2\\hidden.epub",
+      "sha256": "dc1f7a0ff40ce5eb91ce8d27c6464038ebedbb750622e4cd1c8319f122ab3958"
+    },
+    {
+      "path": "races-v2\\image.epub",
+      "sha256": "9fb0e3f6bb049389967e4fa5692f304a2a438d5ed5d4fa674b58e292969d05ca"
+    },
+    {
+      "path": "races-v2\\newimg.epub",
+      "sha256": "d6cd19f73eaa81121fb67d9b0303af0539b7e76cd0cb64c9f4f94fbf42bb1903"
+    },
+    {
+      "path": "races-v2\\normal.epub",
+      "sha256": "9fe9823112c349e01a917fe937387c79afe757616880a632acf3deb668932341"
+    },
+    {
+      "path": "races-v2\\oldimg.epub",
+      "sha256": "6557b656cba2e43166dcc65dd7769e273b3e619f844889729d835060fd2368db"
+    },
+    {
+      "path": "races-v2\\results.json",
+      "sha256": "a4e103c5526cb4612c9a9c412940a0584063ce89293e67819fb5d8d9169d1c2c"
+    },
+    {
+      "path": "races-v2\\search.epub",
+      "sha256": "667a76c3fe6a3905394ab97e0d1b0f2f6967ae79343be149288549f3cb8d87af"
+    },
+    {
+      "path": "realbooks\\r4-real-books-results.json",
+      "sha256": "2d773d75b33d66f049b929692f540441d9181662343d64b5f8f77e925ff5d221"
+    },
+    {
+      "path": "svg-visibility\\boundary.epub",
+      "sha256": "a2eedbab2637b7c7c4a2fc2b5a63eaf45ca4301c993c118a5bef37cec4e1876c"
+    },
+    {
+      "path": "svg-visibility\\normal.epub",
+      "sha256": "c7268c670c0e7ba0955463d44849f761932c67fdd47cbeed6d2f499f5b701229"
+    },
+    {
+      "path": "svg-visibility\\results.json",
+      "sha256": "41df1c0a8ac262bc566415028513a887e8b8b9bef9ea69a820842fb8ef9a70b8"
+    },
+    {
+      "path": "svg-visibility\\search.epub",
+      "sha256": "73c8be41259b778aaedc51fd5025ac55966561ecae20dc6d75cf0673d13316d5"
+    },
+    {
+      "path": "svg-visibility\\svg.epub",
+      "sha256": "6119a1cbd5af27f9043402e7434115b671eed31853f7abd2c620c6e779987347"
+    },
+    {
+      "path": "svg-visibility\\visible-child.png",
+      "sha256": "fdc2e0187087cfd3d31fe2ad016cf351ffad710f40a07bd7ecbdeb7efedaf49d"
+    },
+    {
+      "path": "tools\\audit-common.cjs",
+      "sha256": "dbc965fdc29d9cc0d038bfb63e029fed6ea4a8584c280ee26449c13a27a1c83c"
+    },
+    {
+      "path": "tools\\audit-r4-anchor-cancel.cjs",
+      "sha256": "4495d364c22d85a15883eb477cdee907005918aa5f6d6dc020a0c311bd214929"
+    },
+    {
+      "path": "tools\\audit-r4-boundaries.cjs",
+      "sha256": "07b2a9a92aa3e558f6b504eca72d376cb88f807ea31032a4289eef8fe20ac363"
+    },
+    {
+      "path": "tools\\audit-r4-reader-stages.cjs",
+      "sha256": "6bcaded9786ae00f6d47a2132d3bd4e101f83b3690479790fef2e404666937bd"
+    },
+    {
+      "path": "tools\\r4-boundary-results.json",
+      "sha256": "536f0a954adcc7a2c12f6bae30a6110b4b5532a13636e176127e5c24ae6932f7"
+    },
+    {
+      "path": "tools\\r4-reader-stage-results.json",
+      "sha256": "7ae06e22b24cc041a6e32e81fd5780a2257f38281243c4112f71bc18f97c6424"
+    },
+    {
+      "path": "tools\\r4-realbooks.cjs",
+      "sha256": "a335a4c7231a8bea8971b937f5cd1d0981d4a263d43efd92317ddbab5a462fa0"
+    },
+    {
+      "path": "tools\\review-client-r5.cjs",
+      "sha256": "8cbaba914453ed0677fc1602786483a6b8ba3dce68b5b7d9ba08b042e7c0034c"
+    },
+    {
+      "path": "tools\\review-image-ack.cjs",
+      "sha256": "8a0a839fc3c0f7aa259c79cbd3bd50a5969956e91f635f9cd516bce862f6e581"
+    },
+    {
+      "path": "tools\\review-new-boundaries-v2.cjs",
+      "sha256": "ef06806c962c0ed5f9e3f0102088ff3112886e46b7e82d2af3693680d2a62164"
+    },
+    {
+      "path": "tools\\review-new-boundaries.cjs",
+      "sha256": "cfb0f13418ffe5b7a23af8b0868cfe403d25012183be29b7ddcf5ad1efa09834"
+    },
+    {
+      "path": "tools\\review-races-v2.cjs",
+      "sha256": "9f391aa2c6a208718f97f9ed0599fe4ed6101c9410ffd735182a930235538514"
+    },
+    {
+      "path": "tools\\review-svg-visibility.cjs",
+      "sha256": "2bba003a8daf40bc939cbd5403ef7b3311019c4ed86f22ee4128217e53ac1c85"
+    }
+  ],
+  "checksum_receipt_discrepancy": {
+    "claimed": "BBD2060FF760C9E7B78BB4BAA0151A1F54A9310F85321D3CA9DCD9F2911AFC88",
+    "actual": "bbd2060ff760c9e7b78bb4aab0151a1f54a9310f85321d3ca9dcd9f2911afc88",
+    "note": "Claimed and actual differ at BAA/AAB; freeze actual file and verify every listed entry."
+  }
+}

@@ -1,0 +1,10 @@
+﻿{
+    "capturedAt":  "2026-10-28T19:18:22.9233021+08:00",
+    "pid":  30780,
+    "hostDll":  "57CC576547C1FE8BC51780C722E6F39B7F00838A6CF75B19AAAC539DA2AAF3CD",
+    "hostExe":  "D0F1BB58B07D0B6AEAEB463C841914D9594D0A803E3831FC272A6A5FFED3B335",
+    "extVersion":  "0.10.0",
+    "reader":  "5A81D526B8126B590738BC50652DB829D701FDB9E3319240766FB3D07C2FC837",
+    "webview":  "--webview-exe-version=1.1.12+b978661b8a9ec7a9c9fee87d5d323ea1db2bc5ae",
+    "dataRoot":  "D:\\Temp\\lyra_r6_supp_oldhost\\data"
+}

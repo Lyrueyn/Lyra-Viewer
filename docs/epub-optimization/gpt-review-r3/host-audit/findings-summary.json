@@ -1,0 +1,38 @@
+{
+  "verdict": "FAIL",
+  "evidenceRun": "runs/r3-release-report",
+  "candidateCommit": "ba6f763f9579a808ddc201b82b5867412265c104",
+  "candidateArchiveSha256": "847d8047702e8de6a8dec8b7ae9e3fb60693686400b71aa65c2b134a7270636c",
+  "evidenceKind": "Original frozen C# Compile Link + headless event doubles + actual isolated Windows files; original frozen JS executed in Node VM with synthetic DOM/geometry/time/WebView/localStorage. Raw JS input and debounce requests roundtrip through original C#; not native browser/desktop.",
+  "counts": { "host": { "assertions": 18, "pass": 15, "fail": 3, "probeError": 0 }, "client": { "assertions": 21, "pass": 9, "fail": 12, "probeError": 0 } },
+  "fixtures": {
+    "unmodifiedHostFieldCounter": ["J01"],
+    "safeCounterSeed100000": ["J02", "J03", "J04", "J05", "J06", "J07", "J08", "J13", "J18"],
+    "safeCounterReason": "Isolate other contracts from independently proven default long-to-JS-number precision loss. Original grant/save methods and frozen files unchanged.",
+    "serialQueueBoundary": "J04 keeps two headless hosts in accepted active epochs; no claim of native focus reachability or natural latency frequency.",
+    "aclFault": "H16 temporarily denies CreateFiles on this run's isolated books directory; original ACL restored in finally and subsequent writes pass."
+  },
+  "findings": [
+    { "id": "HA3-01", "priority": "P1", "requirements": ["R3-01", "A19"], "title": "默认宿主fieldVersion超JS安全整数，普通input偏好提交PREFERENCE_STALE", "evidence": ["J01"], "lines": ["host-snapshot/ReaderStateStore.cs:31,244,361", "candidate/reader-state.js:271", "host-snapshot/ExtensionHostWindow.xaml.cs:481"] },
+    { "id": "HA3-02", "priority": "P1", "requirements": ["R3-01", "R3-02", "A08", "A19"], "title": "偏好版本申请推进位置token，导致同窗口待保存位置失效", "evidence": ["H15", "J07-PREFERENCE-TOKEN-CONFLICT"], "lines": ["candidate/reader-state.js:270", "host-snapshot/ExtensionHostWindow.xaml.cs:389", "host-snapshot/ReaderStateStore.cs:252"] },
+    { "id": "HA3-03", "priority": "P1", "requirements": ["R3-03", "A08", "A24"], "title": "finalize失败也ok:true；已有flush结束后尚有新pending即ack并关闭", "evidence": ["J05", "J06"], "lines": ["candidate/reader.js:236,277,1302,1303"] },
+    { "id": "HA3-04", "priority": "P1", "requirements": ["R3-04", "A20"], "title": "旧失败本地快照重开时自动重试，将较新offset900覆盖为旧100", "evidence": ["J09"], "lines": ["candidate/reader.js:328,1063", "candidate/reader-state.js:255"], "boundary": "Newer stored state is an explicit fixture precondition; original open/retry code executes. Not a native occurrence-rate assertion." },
+    { "id": "HA3-05", "priority": "P1/P2", "requirements": ["R3-04", "A20"], "title": "A书损坏标志残留在client，B书正常load却不能保存位置/书签", "evidence": ["J14"], "lines": ["candidate/reader-state.js:57,232,255,308"] },
+    { "id": "HA3-06", "priority": "P2", "requirements": ["R3-02", "A21"], "title": "R3/R2开发候选契约不兼容却同version1/capabilities，双方hello成功后保存失败", "evidence": ["J12", "J15"], "lines": ["host-snapshot/ReaderProtocol.cs:14,26", "candidate/reader-state.js:9,132,271"], "boundary": "R2 is a development candidate, not original EPUB0.5.26/host1.1.12. Original compatibility/PDF matrix remains required and unverified here." },
+    { "id": "HA3-07", "priority": "P2-boundary", "requirements": ["R3-01"], "title": "grant不绑定字段/操作；队列迟发旧操作可以取得更新版本", "evidence": ["H13-GRANT-FIELD-BINDING", "J04"], "lines": ["host-snapshot/ReaderStateStore.cs:29,359", "candidate/reader-state.js:269"], "boundary": "Controlled unchanged active epochs and delayed first grant response. Native deactivation/reactivation protection separately passes H02. No attack or natural occurrence-rate claim." },
+    { "id": "HA3-08", "priority": "P2", "requirements": ["R3-01", "R3-04"], "title": "偏好已落盘但丢ack后同值重试不幂等；无书input获取空bookId版本永久未保存", "evidence": ["J18", "J13"], "lines": ["host-snapshot/ReaderStateStore.cs:367", "candidate/reader.js:191,247"] },
+    { "id": "HA3-09", "priority": "P2", "requirements": ["R3-03"], "title": "host.finalized省略session但requestId正确仍被接受", "evidence": ["H06"], "lines": ["host-snapshot/ExtensionHostWindow.xaml.cs:287"] },
+    { "id": "HA3-10", "priority": "P2", "requirements": ["R3-07", "A18"], "title": "纯空白bookmark ID本地接受、宿主拒绝", "evidence": ["J10-BOOKMARK-ID-PARITY", "H17"], "lines": ["candidate/reader-state.js:17", "host-snapshot/ReaderStateStore.cs:443"] }
+  ],
+  "reportCorrections": [
+    "Submitted report L68 close-only save statement contradicts original debounce code and actual J07 request; earlier submitted native log also saves before Closing.",
+    "Submitted A08 idle-rAF is not original close/restart restoration; A19 single close is not original double-window ordering; A23 module ownership is not original 200 chapter/10 book memory pressure.",
+    "Final submitted native ack log revision0 covers no-modification close; earlier save ack precedes Closing by about660ms. Neither proves pending preference flush completeness."
+  ],
+  "readOnlyFrozenInputs": true,
+  "productModified": false,
+  "deployed": false,
+  "published": false,
+  "dependenciesInstalled": false,
+  "browserOrDesktopOperated": false
+}

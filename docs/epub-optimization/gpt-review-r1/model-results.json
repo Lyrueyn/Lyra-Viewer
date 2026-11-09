@@ -1,0 +1,71 @@
+{
+  "evidenceKind": "Original JavaScript modules in Node with controlled async dependencies",
+  "results": [
+    {
+      "id": "M01_RESOURCE_AFTER_DESTROY",
+      "destroyed": true,
+      "resourceCount": 1,
+      "created": [
+        "blob:test-1"
+      ],
+      "revoked": [],
+      "defect": true
+    },
+    {
+      "id": "M02_DUPLICATE_RESOURCE",
+      "urls": [
+        "blob:test-1",
+        "blob:test-2"
+      ],
+      "created": [
+        "blob:test-1",
+        "blob:test-2"
+      ],
+      "revoked": [
+        "blob:test-2"
+      ],
+      "defect": true
+    },
+    {
+      "id": "M03_SEARCH_1001",
+      "actualMatches": 1001,
+      "total": 1000,
+      "truncated": false,
+      "defect": true
+    },
+    {
+      "id": "M04_SEARCH_CACHE_SKIPS_BOOK",
+      "total": 0,
+      "truncated": true,
+      "indexedChars": 0,
+      "defect": true
+    },
+    {
+      "id": "M05_HOT_SEARCH_CANCEL",
+      "total": 1,
+      "defect": true
+    },
+    {
+      "id": "M06_CANCEL_RESTART",
+      "statuses": [
+        "rejected",
+        "rejected"
+      ],
+      "reasons": [
+        "搜索已取消",
+        "搜索已取消"
+      ],
+      "defect": true
+    },
+    {
+      "id": "M07_ENCODED_TRAVERSAL",
+      "reference": {
+        "kind": "resource",
+        "path": "../out.png",
+        "fragment": "",
+        "query": ""
+      },
+      "defect": true
+    }
+  ]
+}

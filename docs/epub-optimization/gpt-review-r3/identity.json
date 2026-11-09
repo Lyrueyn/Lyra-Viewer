@@ -1,0 +1,88 @@
+{
+  "archive_sha256": "847d8047702e8de6a8dec8b7ae9e3fb60693686400b71aa65c2b134a7270636c",
+  "files": [
+    {
+      "path": "extension.json",
+      "sha256": "78934c254d978a997d3cf26d41c7885616786c4b1363a9fbbdce36c020f80eaf",
+      "matches_source": true
+    },
+    {
+      "path": "index.html",
+      "sha256": "f6b244c642b1842652b4ed733116a26a3e92b1b0271bf7c1b444a1c8af3b411d",
+      "matches_source": true
+    },
+    {
+      "path": "reader.css",
+      "sha256": "d41553524e1dbed4c895cceb7e66e9b08ae35905b69545ff4637cedeac4a148b",
+      "matches_source": true
+    },
+    {
+      "path": "reader.js",
+      "sha256": "34595090c9b84dbd3045dcbca090fbea7b980e8702bb6428116124662aa3085e",
+      "matches_source": true
+    },
+    {
+      "path": "epub-book.js",
+      "sha256": "66001a6b165fa42be59b1d64a6a5ccbbf020098bdb3482951e079b753a0538a0",
+      "matches_source": true
+    },
+    {
+      "path": "paginator.js",
+      "sha256": "e40dbb93b5923b8017642e6827a5d04d5b6208c0f484744606507bd1eeb5c778",
+      "matches_source": true
+    },
+    {
+      "path": "reader-state.js",
+      "sha256": "386a563cac9023f447af5f078c0ea0737e40de50c5bcb96391cd9adab5893f4d",
+      "matches_source": true
+    },
+    {
+      "path": "search.js",
+      "sha256": "36eb37a9ead2eca1b1b1b3b92945f051c99d59062bf9934bfd77022d6e37ae71",
+      "matches_source": true
+    },
+    {
+      "path": "lib/jszip.min.js",
+      "sha256": "acc7e41455a80765b5fd9c7ee1b8078a6d160bbbca455aeae854de65c947d59e",
+      "matches_source": true
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "230184f60bae2feaf244f10a8bac053c8ff33a183bcc365b4d8b876d2b7f4809",
+      "matches_source": true
+    },
+    {
+      "path": "README.md",
+      "sha256": "ebf3fd969d9d2403072e3d8f6a20a9bbdc2fbb7dcdf2a75dad63eb3d372a9b69",
+      "matches_source": true
+    }
+  ],
+  "host_files": [
+    {
+      "name": "ExtensionHostWindow.xaml",
+      "sha256": "283e3e4f682d1ca20563843e19eedd71f3829b29cb8bd69cdf1a64a42876ff88"
+    },
+    {
+      "name": "ExtensionHostWindow.xaml.cs",
+      "sha256": "f21fc3c9ff5c1abdf4085648ca4c397d5609f70e8ccc0c69fd57f4c6d7e59b30"
+    },
+    {
+      "name": "ReaderProtocol.cs",
+      "sha256": "9452e71377331457ec61f03d3ba019f660dfe42fa9c1d0ba627e1071e19dfabc"
+    },
+    {
+      "name": "ReaderStateStore.cs",
+      "sha256": "985b7a38e974af39606f99a7874b46e97e040672c75ad2c50ae5596db7c5cee2"
+    }
+  ],
+  "binaries": [
+    {
+      "path": "D:\\Temp\\lyra_epub_host_r3\\WinUIGui.dll",
+      "sha256": "8067990ebbaf126239b1f3b8cc936d36cb3b1f47dc317d541fdf4ce9c4a9905e"
+    },
+    {
+      "path": "D:\\Temp\\lyra_epub_r3_candidate\\WinUIGui.dll",
+      "sha256": "8067990ebbaf126239b1f3b8cc936d36cb3b1f47dc317d541fdf4ce9c4a9905e"
+    }
+  ]
+}

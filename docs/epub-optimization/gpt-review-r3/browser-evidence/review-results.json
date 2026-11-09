@@ -1,0 +1,170 @@
+{
+  "results": [
+    {
+      "id": "R01_SETTINGS_BUTTON",
+      "expected": "panel open",
+      "actualOpen": true,
+      "defect": false
+    },
+    {
+      "id": "R02_FONT_BEFORE_LAYOUT",
+      "before": {
+        "book": "NORMAL",
+        "spine": 0,
+        "page": 0,
+        "pages": 37,
+        "font": "36px",
+        "scroll": 0,
+        "scrollWidth": 32274,
+        "width": 810,
+        "heading": "NORMAL-CH-0"
+      },
+      "after": {
+        "book": "NORMAL",
+        "spine": 1,
+        "page": 0,
+        "pages": 37,
+        "font": "36px",
+        "scroll": 0,
+        "scrollWidth": 32274,
+        "width": 810,
+        "heading": "NORMAL-CH-1"
+      },
+      "actualNeededPages": 37,
+      "defect": false
+    },
+    {
+      "id": "R03_FONT_REOPEN_ANCHOR",
+      "probeError": "page.evaluate: TypeError: a.textNodePath is not iterable\n    at eval (eval at evaluate (:303:30), <anonymous>:1:68)\n    at UtilityScript.evaluate (<anonymous>:305:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)"
+    },
+    {
+      "id": "R04_STALE_SECTION_RESETS_NEW_PAGE",
+      "before": {
+        "book": "NORMAL",
+        "spine": 2,
+        "page": 5,
+        "pages": 16,
+        "font": "22px",
+        "scroll": 4370,
+        "scrollWidth": 13920,
+        "width": 810,
+        "heading": "NORMAL-CH-2"
+      },
+      "after": {
+        "book": "NORMAL",
+        "spine": 2,
+        "page": 5,
+        "pages": 16,
+        "font": "22px",
+        "scroll": 4370,
+        "scrollWidth": 13920,
+        "width": 810,
+        "heading": "NORMAL-CH-2"
+      },
+      "defect": false,
+      "delay": "old section resource wait 1400 ms; newer section committed and user went to page 6"
+    },
+    {
+      "id": "R05_SEARCH_REPEAT_AND_INLINE",
+      "second": {
+        "page": 16,
+        "targetLeft": 0,
+        "targetRight": 810,
+        "width": 810,
+        "targetVisible": true,
+        "highlight": [
+          "共同关键词"
+        ]
+      },
+      "cross": {
+        "page": 16,
+        "targetVisible": true,
+        "highlights": 3,
+        "status": "查找结果：甲乙丙，已定位：甲"
+      },
+      "defect": false
+    },
+    {
+      "id": "R06_OLD_SEARCH_AFTER_REPLACE",
+      "book": "OTHER",
+      "results": [],
+      "chapters": 1,
+      "defect": false
+    },
+    {
+      "id": "R07_LOCAL_BOOKMARK_PAGE",
+      "stored": 51,
+      "shown": 51,
+      "unique": 51,
+      "containsLast": true,
+      "defect": false
+    },
+    {
+      "id": "R08_PERCENT_FILENAME",
+      "ready": true,
+      "error": "",
+      "defect": false
+    },
+    {
+      "id": "R09_PREFS_FULL_SNAPSHOT",
+      "changedOnly": "fontSize",
+      "sent": [
+        {
+          "fontSize": 30
+        },
+        {
+          "fontSize": 30
+        }
+      ],
+      "defect": false
+    },
+    {
+      "id": "R10_IMMEDIATE_BOOK_REPLACE_PROGRESS",
+      "saved": {
+        "revision": 1,
+        "position": {
+          "spineHref": "OPS/c0.xhtml",
+          "spineIndex": 0,
+          "locator": {
+            "elementPath": null,
+            "textOffset": 3366,
+            "quote": "s its own marker 40. 段落 41，这是用于定位回归的文字。阅读器应保留当前正文位置，保持正确的页数和字号。",
+            "prefix": "s its own marker 40. 段落 41，这是用于",
+            "suffix": "定位回归的文字。阅读器应保留当前正文位置，保持正确的页数和字号。",
+            "elementId": "p41",
+            "chapterFraction": 0.4,
+            "pageIndex": 6
+          },
+          "chapterFraction": 0.4,
+          "savedAt": "2026-10-27T16:22:28.961Z"
+        },
+        "updatedAt": "2026-10-27T16:22:28.961Z"
+      },
+      "restored": {
+        "book": "NORMAL",
+        "spine": 0,
+        "page": 6,
+        "pages": 16,
+        "font": "22px",
+        "scroll": 5244,
+        "scrollWidth": 13920,
+        "width": 810,
+        "heading": "NORMAL-CH-0"
+      },
+      "defect": false
+    },
+    {
+      "id": "R11_BOOKMARK_LIST_LATE_RESPONSE",
+      "book": "NORMAL",
+      "bookmarks": [],
+      "defect": false
+    },
+    {
+      "id": "R12_STORAGE_FAILURE_FALSE_SUCCESS",
+      "status": "位置未保存，会在原书重试",
+      "saved": null,
+      "defect": false
+    }
+  ],
+  "errors": []
+}

@@ -1,0 +1,2009 @@
+{
+  "generatedAt": "2026-10-28T19:08:01.508776+08:00",
+  "report": {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\r6-evidence\\DeepSeek实施回报-R6.md",
+    "sha256": "ef7c834f1d247e67314e1bb883bd331f005260eff3d2d779b53c239727ba45a5"
+  },
+  "commit": "99bd102f4c9b4c1a92668d04e2e12260e523ad94",
+  "branch": "r6",
+  "worktreeClean": true,
+  "package": {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\candidates-r6\\lyra-ext-epub-0.10.0-candidate.zip",
+    "sha256": "f2b2741a166749e7108e010151a46246ac2df40bf1f0861050e8e12d612c535c",
+    "bytes": 98840,
+    "version": "0.10.0"
+  },
+  "host": {
+    "dll": "3f30ccc9915993f058dad62879f1619ac1ebd5b735ce1741d09faee86b28719c",
+    "exe": "d0f1bb58b07d0b6aeaeb463c841914d9594d0a803e3831fc272a6a5ffed3b335",
+    "buildDll": "3f30ccc9915993f058dad62879f1619ac1ebd5b735ce1741d09faee86b28719c"
+  },
+  "runtime": {
+    "dir": "D:\\Temp\\lyra_r6_candidate",
+    "dataRoot": "D:\\Temp\\lyra_r6_candidate\\data"
+  },
+  "modules": {
+    "reader.js": "5a81d526b8126b590738bc50652db829d701fdb9e3319240766fb3d07c2fc837",
+    "reader-state.js": "b78c409f52319cfcc0605002a0cb680a176e95ca579dc135261935ce56147a78",
+    "paginator.js": "5dbbbe764bc616d5fa3829953dbf204786c4c65cc4191db782e63352d6800750",
+    "search.js": "470c4fe4bb68f299b1aa367cffd1f3b5e616af2dad25e7b1cc1d10f25bea702a",
+    "epub-book.js": "e65e976116da95a29689c5b81c358c1465957787bc81c796d5dc10eccf023417",
+    "extension.json": "6b03796dcb2c7a5f72b2baf744b9c7c41fa601b748da3896880c91ccf0037949",
+    "index.html": "f6b244c642b1842652b4ed733116a26a3e92b1b0271bf7c1b444a1c8af3b411d"
+  },
+  "tests": {
+    "newStage": {
+      "evidenceKind": "Real Edge R5, original modules; explicit resource/File/RAF gates; local-only bridge and actual isolated localStorage",
+      "results": [
+        {
+          "id": "E01_RESOURCE_CANCEL_INPUT",
+          "before": {
+            "ready": true,
+            "busy": false,
+            "modified": true,
+            "spine": 0,
+            "preparedIndex": 0,
+            "owner": 1,
+            "paginatorReady": true,
+            "paginatorSpine": 0,
+            "page": 5,
+            "count": 15,
+            "text": "START DOCUMENT\n\nSTART paragraph 0: independent visible reading and position preservation. 这是用于验证实际正文",
+            "stable": {
+              "spineHref": "OPS/c0.xhtml",
+              "spineIndex": 0,
+              "locator": {
+                "elementPath": null,
+                "textOffset": 2506,
+                "quote": "这是用于验证实际正文的长段落。 START paragraph 27: independent visible reading",
+                "prefix": "这是用于验证实际正文的长段落。 START paragraph",
+                "suffix": "27: independent visible reading",
+                "elementId": "",
+                "chapterFraction": 0.2857142857142857,
+                "pageIndex": 4
+              },
+              "chapterFraction": 0.2857142857142857,
+              "savedAt": "2026-10-28T10:53:12.209Z"
+            },
+            "saved": {
+              "revision": 2,
+              "position": {
+                "spineHref": "OPS/c0.xhtml",
+                "spineIndex": 0,
+                "locator": {
+                  "elementPath": null,
+                  "textOffset": 2506,
+                  "quote": "这是用于验证实际正文的长段落。 START paragraph 27: independent visible reading",
+                  "prefix": "这是用于验证实际正文的长段落。 START paragraph",
+                  "suffix": "27: independent visible reading",
+                  "elementId": "",
+                  "chapterFraction": 0.2857142857142857,
+                  "pageIndex": 4
+                },
+                "chapterFraction": 0.2857142857142857,
+                "savedAt": "2026-10-28T10:53:12.118Z"
+              },
+              "positionSequence": 1793184792118001,
+              "positionOperationId": "pos-op-b8b95636-90fb-479d-96e1-bbc22fc42ea3",
+              "positionRevision": 2,
+              "updatedAt": "2026-10-28T10:53:12.209Z"
+            },
+            "finalizing": false
+          },
+          "during": {
+            "ready": false,
+            "busy": true,
+            "modified": true,
+            "spine": 0,
+            "preparedIndex": 0,
+            "owner": 1,
+            "paginatorReady": false,
+            "paginatorSpine": 1,
+            "page": 0,
+            "count": 1,
+            "text": "OLDQUERY target\n\nTARGET paragraph 0: independent visible reading and position preservation. 这是用于验证实际",
+            "stable": {
+              "spineHref": "OPS/c0.xhtml",
+              "spineIndex": 0,
+              "locator": {
+                "elementPath": null,
+                "textOffset": 2506,
+                "quote": "这是用于验证实际正文的长段落。 START paragraph 27: independent visible reading",
+                "prefix": "这是用于验证实际正文的长段落。 START paragraph",
+                "suffix": "27: independent visible reading",
+                "elementId": "",
+                "chapterFraction": 0.2857142857142857,
+                "pageIndex": 4
+              },
+              "chapterFraction": 0.2857142857142857,
+              "savedAt": "2026-10-28T10:53:12.209Z"
+            },
+            "saved": {
+              "revision": 2,
+              "position": {
+                "spineHref": "OPS/c0.xhtml",
+                "spineIndex": 0,
+                "locator": {
+                  "elementPath": null,
+                  "textOffset": 2506,
+                  "quote": "这是用于验证实际正文的长段落。 START paragraph 27: independent visible reading",
+                  "prefix": "这是用于验证实际正文的长段落。 START paragraph",
+                  "suffix": "27: independent visible reading",
+                  "elementId": "",
+                  "chapterFraction": 0.2857142857142857,
+                  "pageIndex": 4
+                },
+                "chapterFraction": 0.2857142857142857,
+                "savedAt": "2026-10-28T10:53:12.118Z"
+              },
+              "positionSequence": 1793184792118001,
+              "positionOperationId": "pos-op-b8b95636-90fb-479d-96e1-bbc22fc42ea3",
+              "positionRevision": 2,
+              "updatedAt": "2026-10-28T10:53:12.209Z"
+            },
+            "finalizing": false
+          },
+          "cancelled": {
+            "ready": true,
+            "busy": false,
+            "modified": true,
+            "spine": 0,
+            "preparedIndex": 0,
+            "owner": 1,
+            "paginatorReady": true,
+            "paginatorSpine": 0,
+            "page": 0,
+            "count": 15,
+            "text": "START DOCUMENT\n\nSTART paragraph 0: independent visible reading and position preservation. 这是用于验证实际正文",
+            "stable": {
+              "spineHref": "OPS/c0.xhtml",
+              "spineIndex": 0,
+              "locator": {
+                "elementPath": null,
+                "textOffset": 2506,
+                "quote": "这是用于验证实际正文的长段落。 START paragraph 27: independent visible reading",
+                "prefix": "这是用于验证实际正文的长段落。 START paragraph",
+                "suffix": "27: independent visible reading",
+                "elementId": "",
+                "chapterFraction": 0.2857142857142857,
+                "pageIndex": 4
+              },
+              "chapterFraction": 0.2857142857142857,
+              "savedAt": "2026-10-28T10:53:12.209Z"
+            },
+            "saved": {
+              "revision": 2,
+              "position": {
+                "spineHref": "OPS/c0.xhtml",
+                "spineIndex": 0,
+                "locator": {
+                  "elementPath": null,
+                  "textOffset": 2506,
+                  "quote": "这是用于验证实际正文的长段落。 START paragraph 27: independent visible reading",
+                  "prefix": "这是用于验证实际正文的长段落。 START paragraph",
+                  "suffix": "27: independent visible reading",
+                  "elementId": "",
+                  "chapterFraction": 0.2857142857142857,
+                  "pageIndex": 4
+                },
+                "chapterFraction": 0.2857142857142857,
+                "savedAt": "2026-10-28T10:53:12.118Z"
+              },
+              "positionSequence": 1793184792118001,
+              "positionOperationId": "pos-op-b8b95636-90fb-479d-96e1-bbc22fc42ea3",
+              "positionRevision": 2,
+              "updatedAt": "2026-10-28T10:53:12.209Z"
+            },
+            "finalizing": false
+          },
+          "afterNext": {
+            "ready": true,
+            "busy": false,
+            "modified": false,
+            "spine": 0,
+            "preparedIndex": 0,
+            "owner": 1,
+            "paginatorReady": true,
+            "paginatorSpine": 0,
+            "page": 1,
+            "count": 15,
+            "text": "START DOCUMENT\n\nSTART paragraph 0: independent visible reading and position preservation. 这是用于验证实际正文",
+            "stable": {
+              "spineHref": "OPS/c0.xhtml",
+              "spineIndex": 0,
+              "locator": {
+                "elementPath": null,
+                "textOffset": 578,
+                "quote": "这是用于验证实际正文的长段落。 START paragraph 6: independent visible reading",
+                "prefix": "这是用于验证实际正文的长段落。 START paragraph",
+                "suffix": "6: independent visible reading",
+                "elementId": "",
+                "chapterFraction": 0.07142857142857142,
+                "pageIndex": 1
+              },
+              "chapterFraction": 0.07142857142857142,
+              "savedAt": "2026-10-28T10:53:12.904Z"
+            },
+            "saved": {
+              "revision": 3,
+              "position": {
+                "spineHref": "OPS/c0.xhtml",
+                "spineIndex": 0,
+                "locator": {
+                  "elementPath": null,
+                  "textOffset": 578,
+                  "quote": "这是用于验证实际正文的长段落。 START paragraph 6: independent visible reading",
+                  "prefix": "这是用于验证实际正文的长段落。 START paragraph",
+                  "suffix": "6: independent visible reading",
+                  "elementId": "",
+                  "chapterFraction": 0.07142857142857142,
+                  "pageIndex": 1
+                },
+                "chapterFraction": 0.07142857142857142,
+                "savedAt": "2026-10-28T10:53:12.904Z"
+              },
+              "positionSequence": 1793184792904000,
+              "positionOperationId": "pos-op-bc743bc1-05e1-4a2d-98e2-b966a4f24e64",
+              "positionRevision": 3,
+              "updatedAt": "2026-10-28T10:53:12.904Z"
+            },
+            "finalizing": false
+          },
+          "defect": false,
+          "note": "Original Edge reader/paginator. Only resource-wait completion gated. Cancellation is real UI input/close; next uses real pageNext and localStorage. Full document/position coherence, not only lack of goToPage/highlight."
+        },
+        {
+          "id": "E01_RESOURCE_CANCEL_CLOSE",
+          "before": {
+            "ready": true,
+            "busy": false,
+            "modified": true,
+            "spine": 0,
+            "preparedIndex": 0,
+            "owner": 1,
+            "paginatorReady": true,
+            "paginatorSpine": 0,
+            "page": 5,
+            "count": 15,
+            "text": "START DOCUMENT\n\nSTART paragraph 0: independent visible reading and position preservation. 这是用于验证实际正文",
+            "stable": {
+              "spineHref": "OPS/c0.xhtml",
+              "spineIndex": 0,
+              "locator": {
+                "elementPath": null,
+                "textOffset": 2506,
+                "quote": "这是用于验证实际正文的长段落。 START paragraph 27: independent visible reading",
+                "prefix": "这是用于验证实际正文的长段落。 START paragraph",
+                "suffix": "27: independent visible reading",
+                "elementId": "",
+                "chapterFraction": 0.2857142857142857,
+                "pageIndex": 4
+              },
+              "chapterFraction": 0.2857142857142857,
+              "savedAt": "2026-10-28T10:53:13.894Z"
+            },
+            "saved": {
+              "revision": 2,
+              "position": {
+                "spineHref": "OPS/c0.xhtml",
+                "spineIndex": 0,
+                "locator": {
+                  "elementPath": null,
+                  "textOffset": 2506,
+                  "quote": "这是用于验证实际正文的长段落。 START paragraph 27: independent visible reading",
+                  "prefix": "这是用于验证实际正文的长段落。 START paragraph",
+                  "suffix": "27: independent visible reading",
+                  "elementId": "",
+                  "chapterFraction": 0.2857142857142857,
+                  "pageIndex": 4
+                },
+                "chapterFraction": 0.2857142857142857,
+                "savedAt": "2026-10-28T10:53:13.813Z"
+              },
+              "positionSequence": 1793184793813001,
+              "positionOperationId": "pos-op-d878154c-7a0c-4ef4-a342-dc1e90f4927e",
+              "positionRevision": 2,
+              "updatedAt": "2026-10-28T10:53:13.894Z"
+            },
+            "finalizing": false
+          },
+          "during": {
+            "ready": false,
+            "busy": true,
+            "modified": true,
+            "spine": 0,
+            "preparedIndex": 0,
+            "owner": 1,
+            "paginatorReady": false,
+            "paginatorSpine": 1,
+            "page": 0,
+            "count": 1,
+            "text": "OLDQUERY target\n\nTARGET paragraph 0: independent visible reading and position preservation. 这是用于验证实际",
+            "stable": {
+              "spineHref": "OPS/c0.xhtml",
+              "spineIndex": 0,
+              "locator": {
+                "elementPath": null,
+                "textOffset": 2506,
+                "quote": "这是用于验证实际正文的长段落。 START paragraph 27: independent visible reading",
+                "prefix": "这是用于验证实际正文的长段落。 START paragraph",
+                "suffix": "27: independent visible reading",
+                "elementId": "",
+                "chapterFraction": 0.2857142857142857,
+                "pageIndex": 4
+              },
+              "chapterFraction": 0.2857142857142857,
+              "savedAt": "2026-10-28T10:53:13.894Z"
+            },
+            "saved": {
+              "revision": 2,
+              "position": {
+                "spineHref": "OPS/c0.xhtml",
+                "spineIndex": 0,
+                "locator": {
+                  "elementPath": null,
+                  "textOffset": 2506,
+                  "quote": "这是用于验证实际正文的长段落。 START paragraph 27: independent visible reading",
+                  "prefix": "这是用于验证实际正文的长段落。 START paragraph",
+                  "suffix": "27: independent visible reading",
+                  "elementId": "",
+                  "chapterFraction": 0.2857142857142857,
+                  "pageIndex": 4
+                },
+                "chapterFraction": 0.2857142857142857,
+                "savedAt": "2026-10-28T10:53:13.813Z"
+              },
+              "positionSequence": 1793184793813001,
+              "positionOperationId": "pos-op-d878154c-7a0c-4ef4-a342-dc1e90f4927e",
+              "positionRevision": 2,
+              "updatedAt": "2026-10-28T10:53:13.894Z"
+            },
+            "finalizing": false
+          },
+          "cancelled": {
+            "ready": true,
+            "busy": false,
+            "modified": true,
+            "spine": 0,
+            "preparedIndex": 0,
+            "owner": 1,
+            "paginatorReady": true,
+            "paginatorSpine": 0,
+            "page": 0,
+            "count": 15,
+            "text": "START DOCUMENT\n\nSTART paragraph 0: independent visible reading and position preservation. 这是用于验证实际正文",
+            "stable": {
+              "spineHref": "OPS/c0.xhtml",
+              "spineIndex": 0,
+              "locator": {
+                "elementPath": null,
+                "textOffset": 2506,
+                "quote": "这是用于验证实际正文的长段落。 START paragraph 27: independent visible reading",
+                "prefix": "这是用于验证实际正文的长段落。 START paragraph",
+                "suffix": "27: independent visible reading",
+                "elementId": "",
+                "chapterFraction": 0.2857142857142857,
+                "pageIndex": 4
+              },
+              "chapterFraction": 0.2857142857142857,
+              "savedAt": "2026-10-28T10:53:13.894Z"
+            },
+            "saved": {
+              "revision": 2,
+              "position": {
+                "spineHref": "OPS/c0.xhtml",
+                "spineIndex": 0,
+                "locator": {
+                  "elementPath": null,
+                  "textOffset": 2506,
+                  "quote": "这是用于验证实际正文的长段落。 START paragraph 27: independent visible reading",
+                  "prefix": "这是用于验证实际正文的长段落。 START paragraph",
+                  "suffix": "27: independent visible reading",
+                  "elementId": "",
+                  "chapterFraction": 0.2857142857142857,
+                  "pageIndex": 4
+                },
+                "chapterFraction": 0.2857142857142857,
+                "savedAt": "2026-10-28T10:53:13.813Z"
+              },
+              "positionSequence": 1793184793813001,
+              "positionOperationId": "pos-op-d878154c-7a0c-4ef4-a342-dc1e90f4927e",
+              "positionRevision": 2,
+              "updatedAt": "2026-10-28T10:53:13.894Z"
+            },
+            "finalizing": false
+          },
+          "afterNext": {
+            "ready": true,
+            "busy": false,
+            "modified": false,
+            "spine": 0,
+            "preparedIndex": 0,
+            "owner": 1,
+            "paginatorReady": true,
+            "paginatorSpine": 0,
+            "page": 1,
+            "count": 15,
+            "text": "START DOCUMENT\n\nSTART paragraph 0: independent visible reading and position preservation. 这是用于验证实际正文",
+            "stable": {
+              "spineHref": "OPS/c0.xhtml",
+              "spineIndex": 0,
+              "locator": {
+                "elementPath": null,
+                "textOffset": 578,
+                "quote": "这是用于验证实际正文的长段落。 START paragraph 6: independent visible reading",
+                "prefix": "这是用于验证实际正文的长段落。 START paragraph",
+                "suffix": "6: independent visible reading",
+                "elementId": "",
+                "chapterFraction": 0.07142857142857142,
+                "pageIndex": 1
+              },
+              "chapterFraction": 0.07142857142857142,
+              "savedAt": "2026-10-28T10:53:14.690Z"
+            },
+            "saved": {
+              "revision": 4,
+              "position": {
+                "spineHref": "OPS/c0.xhtml",
+                "spineIndex": 0,
+                "locator": {
+                  "elementPath": null,
+                  "textOffset": 578,
+                  "quote": "这是用于验证实际正文的长段落。 START paragraph 6: independent visible reading",
+                  "prefix": "这是用于验证实际正文的长段落。 START paragraph",
+                  "suffix": "6: independent visible reading",
+                  "elementId": "",
+                  "chapterFraction": 0.07142857142857142,
+                  "pageIndex": 1
+                },
+                "chapterFraction": 0.07142857142857142,
+                "savedAt": "2026-10-28T10:53:14.690Z"
+              },
+              "positionSequence": 1793184794690000,
+              "positionOperationId": "pos-op-b97e18c5-8785-4352-a0c3-80d53aee812e",
+              "positionRevision": 4,
+              "updatedAt": "2026-10-28T10:53:14.690Z"
+            },
+            "finalizing": false
+          },
+          "defect": false,
+          "note": "Original Edge reader/paginator. Only resource-wait completion gated. Cancellation is real UI input/close; next uses real pageNext and localStorage. Full document/position coherence, not only lack of goToPage/highlight."
+        },
+        {
+          "id": "E02_FINALIZE_AFTER_DOCUMENT_BEFORE_LAYOUT",
+          "before": {
+            "ready": true,
+            "busy": false,
+            "modified": true,
+            "spine": 0,
+            "preparedIndex": 0,
+            "owner": 1,
+            "paginatorReady": true,
+            "paginatorSpine": 0,
+            "page": 5,
+            "count": 15,
+            "text": "START DOCUMENT\n\nSTART paragraph 0: independent visible reading and position preservation. 这是用于验证实际正文",
+            "stable": {
+              "spineHref": "OPS/c0.xhtml",
+              "spineIndex": 0,
+              "locator": {
+                "elementPath": null,
+                "textOffset": 2506,
+                "quote": "这是用于验证实际正文的长段落。 START paragraph 27: independent visible reading",
+                "prefix": "这是用于验证实际正文的长段落。 START paragraph",
+                "suffix": "27: independent visible reading",
+                "elementId": "",
+                "chapterFraction": 0.2857142857142857,
+                "pageIndex": 4
+              },
+              "chapterFraction": 0.2857142857142857,
+              "savedAt": "2026-10-28T10:53:15.751Z"
+            },
+            "saved": {
+              "revision": 2,
+              "position": {
+                "spineHref": "OPS/c0.xhtml",
+                "spineIndex": 0,
+                "locator": {
+                  "elementPath": null,
+                  "textOffset": 2506,
+                  "quote": "这是用于验证实际正文的长段落。 START paragraph 27: independent visible reading",
+                  "prefix": "这是用于验证实际正文的长段落。 START paragraph",
+                  "suffix": "27: independent visible reading",
+                  "elementId": "",
+                  "chapterFraction": 0.2857142857142857,
+                  "pageIndex": 4
+                },
+                "chapterFraction": 0.2857142857142857,
+                "savedAt": "2026-10-28T10:53:15.661Z"
+              },
+              "positionSequence": 1793184795661001,
+              "positionOperationId": "pos-op-6d0878b8-84ee-4155-bbcf-5a06abe30718",
+              "positionRevision": 2,
+              "updatedAt": "2026-10-28T10:53:15.751Z"
+            },
+            "finalizing": false
+          },
+          "during": {
+            "ready": false,
+            "busy": true,
+            "modified": true,
+            "spine": 0,
+            "preparedIndex": 0,
+            "owner": 1,
+            "paginatorReady": false,
+            "paginatorSpine": 1,
+            "page": 0,
+            "count": 1,
+            "text": "OLDQUERY target\n\nTARGET paragraph 0: independent visible reading and position preservation. 这是用于验证实际",
+            "stable": {
+              "spineHref": "OPS/c0.xhtml",
+              "spineIndex": 0,
+              "locator": {
+                "elementPath": null,
+                "textOffset": 2506,
+                "quote": "这是用于验证实际正文的长段落。 START paragraph 27: independent visible reading",
+                "prefix": "这是用于验证实际正文的长段落。 START paragraph",
+                "suffix": "27: independent visible reading",
+                "elementId": "",
+                "chapterFraction": 0.2857142857142857,
+                "pageIndex": 4
+              },
+              "chapterFraction": 0.2857142857142857,
+              "savedAt": "2026-10-28T10:53:15.751Z"
+            },
+            "saved": {
+              "revision": 2,
+              "position": {
+                "spineHref": "OPS/c0.xhtml",
+                "spineIndex": 0,
+                "locator": {
+                  "elementPath": null,
+                  "textOffset": 2506,
+                  "quote": "这是用于验证实际正文的长段落。 START paragraph 27: independent visible reading",
+                  "prefix": "这是用于验证实际正文的长段落。 START paragraph",
+                  "suffix": "27: independent visible reading",
+                  "elementId": "",
+                  "chapterFraction": 0.2857142857142857,
+                  "pageIndex": 4
+                },
+                "chapterFraction": 0.2857142857142857,
+                "savedAt": "2026-10-28T10:53:15.661Z"
+              },
+              "positionSequence": 1793184795661001,
+              "positionOperationId": "pos-op-6d0878b8-84ee-4155-bbcf-5a06abe30718",
+              "positionRevision": 2,
+              "updatedAt": "2026-10-28T10:53:15.751Z"
+            },
+            "finalizing": false
+          },
+          "ack": {
+            "type": "host.finalized",
+            "requestId": "close-after-document",
+            "sessionId": "local-mvrzxf5d",
+            "ok": true,
+            "revision": 3,
+            "closeDiagnostics": []
+          },
+          "closed": {
+            "ready": false,
+            "busy": true,
+            "modified": false,
+            "spine": 0,
+            "preparedIndex": 0,
+            "owner": 1,
+            "paginatorReady": false,
+            "paginatorSpine": 1,
+            "page": 0,
+            "count": 1,
+            "text": "OLDQUERY target\n\nTARGET paragraph 0: independent visible reading and position preservation. 这是用于验证实际",
+            "stable": {
+              "spineHref": "OPS/c0.xhtml",
+              "spineIndex": 0,
+              "locator": {
+                "elementPath": null,
+                "textOffset": 2506,
+                "quote": "这是用于验证实际正文的长段落。 START paragraph 27: independent visible reading",
+                "prefix": "这是用于验证实际正文的长段落。 START paragraph",
+                "suffix": "27: independent visible reading",
+                "elementId": "",
+                "chapterFraction": 0.2857142857142857,
+                "pageIndex": 4
+              },
+              "chapterFraction": 0.2857142857142857,
+              "savedAt": "2026-10-28T10:53:15.751Z"
+            },
+            "saved": {
+              "revision": 3,
+              "position": {
+                "spineHref": "OPS/c0.xhtml",
+                "spineIndex": 0,
+                "locator": {
+                  "elementPath": null,
+                  "textOffset": 2506,
+                  "quote": "这是用于验证实际正文的长段落。 START paragraph 27: independent visible reading",
+                  "prefix": "这是用于验证实际正文的长段落。 START paragraph",
+                  "suffix": "27: independent visible reading",
+                  "elementId": "",
+                  "chapterFraction": 0.2857142857142857,
+                  "pageIndex": 4
+                },
+                "chapterFraction": 0.2857142857142857,
+                "savedAt": "2026-10-28T10:53:15.751Z"
+              },
+              "positionSequence": 1793184795815000,
+              "positionOperationId": "pos-op-510544e1-c987-4b83-8211-ec8b3656185c",
+              "positionRevision": 3,
+              "updatedAt": "2026-10-28T10:53:15.815Z"
+            },
+            "finalizing": true
+          },
+          "late": {
+            "ready": false,
+            "busy": false,
+            "modified": false,
+            "spine": 0,
+            "preparedIndex": 0,
+            "owner": 1,
+            "paginatorReady": false,
+            "paginatorSpine": -1,
+            "page": 0,
+            "count": 1,
+            "stable": {
+              "spineHref": "OPS/c0.xhtml",
+              "spineIndex": 0,
+              "locator": {
+                "elementPath": null,
+                "textOffset": 2506,
+                "quote": "这是用于验证实际正文的长段落。 START paragraph 27: independent visible reading",
+                "prefix": "这是用于验证实际正文的长段落。 START paragraph",
+                "suffix": "27: independent visible reading",
+                "elementId": "",
+                "chapterFraction": 0.2857142857142857,
+                "pageIndex": 4
+              },
+              "chapterFraction": 0.2857142857142857,
+              "savedAt": "2026-10-28T10:53:15.751Z"
+            },
+            "saved": {
+              "revision": 3,
+              "position": {
+                "spineHref": "OPS/c0.xhtml",
+                "spineIndex": 0,
+                "locator": {
+                  "elementPath": null,
+                  "textOffset": 2506,
+                  "quote": "这是用于验证实际正文的长段落。 START paragraph 27: independent visible reading",
+                  "prefix": "这是用于验证实际正文的长段落。 START paragraph",
+                  "suffix": "27: independent visible reading",
+                  "elementId": "",
+                  "chapterFraction": 0.2857142857142857,
+                  "pageIndex": 4
+                },
+                "chapterFraction": 0.2857142857142857,
+                "savedAt": "2026-10-28T10:53:15.751Z"
+              },
+              "positionSequence": 1793184795815000,
+              "positionOperationId": "pos-op-510544e1-c987-4b83-8211-ec8b3656185c",
+              "positionRevision": 3,
+              "updatedAt": "2026-10-28T10:53:15.815Z"
+            },
+            "finalizing": true
+          },
+          "defect": false,
+          "note": "Real Edge and actual isolated localStorage. Local-only protocol bridge delivers host.finalize, not original C# or native closure. A valid old chapter position is pending when the target document has committed but resources/layout have not."
+        },
+        {
+          "id": "E03_SVG_HIGHLIGHT_DISAPPEARS",
+          "before": {
+            "visible": "VISIBLE TARGET",
+            "raw": "VISIBLE TARGET",
+            "length": 210.84375,
+            "bbox": {
+              "width": 211.84375,
+              "height": 35
+            },
+            "mark": null
+          },
+          "after": {
+            "visible": "VISIBLE TARGET",
+            "raw": "VISIBLE TARGET",
+            "length": 210.859375,
+            "bbox": {
+              "width": 211.859375,
+              "height": 35
+            },
+            "mark": null
+          },
+          "defect": false,
+          "note": "No fault or timing injection. Valid visible inline SVG text, real UI search click. Check browser text geometry/paint, not just the wrapped DOM textContent."
+        },
+        {
+          "id": "E04_QUERY_LIMIT_MESSAGE",
+          "actual": {
+            "length": 4097,
+            "info": "查找词超过 4096 个 UTF-16 单位，请缩短后重新查找；当前输入未被发送扫描。",
+            "status": "查找词过长，已停止查找；请缩短后重试",
+            "buttons": 0
+          },
+          "defect": false,
+          "note": "Actual 4097-character pasted query; verify new explicit input limit is visible to user."
+        },
+        {
+          "id": "E05_CSS_VISIBILITY_DECLARATION_ORDER",
+          "before": {
+            "plain": "\nTARGET\n",
+            "visible": "TARGET",
+            "targetVisibility": "visible",
+            "hiddenVisibility": "hidden"
+          },
+          "target": {
+            "count": 1,
+            "status": "找到 1 处 · 已扫描 1/1 章 · 缓存 8 字符"
+          },
+          "hidden": {
+            "count": 0,
+            "status": "没有找到匹配内容 · 已扫描 1/1 章"
+          },
+          "defect": false,
+          "note": "No fault injection. Actual CSS duplicate declarations follow last valid declaration; model must match displayed content."
+        },
+        {
+          "id": "E06_ANIMATION_FINALIZE",
+          "during": {
+            "target": 1,
+            "scroll": 0,
+            "raf": 1000001,
+            "modified": true
+          },
+          "ack": {
+            "type": "host.finalized",
+            "requestId": "animation-close",
+            "sessionId": "local-mvrzxh30",
+            "ok": true,
+            "revision": 1,
+            "closeDiagnostics": []
+          },
+          "after": {
+            "ready": true,
+            "busy": false,
+            "modified": false,
+            "spine": 0,
+            "preparedIndex": 0,
+            "owner": 1,
+            "paginatorReady": true,
+            "paginatorSpine": 0,
+            "page": 1,
+            "count": 15,
+            "text": "NORMAL paragraph 0: independent visible reading and position preservation. 这是用于验证实际正文的长段落。\n\nNORMAL p",
+            "stable": {
+              "spineHref": "OPS/c0.xhtml",
+              "spineIndex": 0,
+              "locator": {
+                "elementPath": null,
+                "textOffset": 659,
+                "quote": "这是用于验证实际正文的长段落。 NORMAL paragraph 7: independent visible readin",
+                "prefix": "这是用于验证实际正文的长段落。 NORMAL paragra",
+                "suffix": "ph 7: independent visible readin",
+                "elementId": "",
+                "chapterFraction": 0.07142857142857142,
+                "pageIndex": 1
+              },
+              "chapterFraction": 0.07142857142857142,
+              "savedAt": "2026-10-28T10:53:17.751Z"
+            },
+            "saved": {
+              "revision": 1,
+              "position": {
+                "spineHref": "OPS/c0.xhtml",
+                "spineIndex": 0,
+                "locator": {
+                  "elementPath": null,
+                  "textOffset": 659,
+                  "quote": "这是用于验证实际正文的长段落。 NORMAL paragraph 7: independent visible readin",
+                  "prefix": "这是用于验证实际正文的长段落。 NORMAL paragra",
+                  "suffix": "ph 7: independent visible readin",
+                  "elementId": "",
+                  "chapterFraction": 0.07142857142857142,
+                  "pageIndex": 1
+                },
+                "chapterFraction": 0.07142857142857142,
+                "savedAt": "2026-10-28T10:53:17.751Z"
+              },
+              "positionSequence": 1793184797751000,
+              "positionOperationId": "pos-op-2d98913e-1857-42bd-9719-02e7502b1975",
+              "positionRevision": 1,
+              "updatedAt": "2026-10-28T10:53:17.751Z"
+            },
+            "finalizing": true
+          },
+          "reopened": {
+            "ready": true,
+            "busy": false,
+            "modified": false,
+            "spine": 0,
+            "preparedIndex": 0,
+            "owner": 1,
+            "paginatorReady": true,
+            "paginatorSpine": 0,
+            "page": 1,
+            "count": 15,
+            "text": "NORMAL paragraph 0: independent visible reading and position preservation. 这是用于验证实际正文的长段落。\n\nNORMAL p",
+            "stable": {
+              "spineHref": "OPS/c0.xhtml",
+              "spineIndex": 0,
+              "locator": {
+                "elementPath": null,
+                "textOffset": 659,
+                "quote": "这是用于验证实际正文的长段落。 NORMAL paragraph 7: independent visible readin",
+                "prefix": "这是用于验证实际正文的长段落。 NORMAL paragra",
+                "suffix": "ph 7: independent visible readin",
+                "elementId": "",
+                "chapterFraction": 0.07142857142857142,
+                "pageIndex": 1
+              },
+              "chapterFraction": 0.07142857142857142,
+              "savedAt": "2026-10-28T10:53:17.791Z"
+            },
+            "saved": {
+              "revision": 1,
+              "position": {
+                "spineHref": "OPS/c0.xhtml",
+                "spineIndex": 0,
+                "locator": {
+                  "elementPath": null,
+                  "textOffset": 659,
+                  "quote": "这是用于验证实际正文的长段落。 NORMAL paragraph 7: independent visible readin",
+                  "prefix": "这是用于验证实际正文的长段落。 NORMAL paragra",
+                  "suffix": "ph 7: independent visible readin",
+                  "elementId": "",
+                  "chapterFraction": 0.07142857142857142,
+                  "pageIndex": 1
+                },
+                "chapterFraction": 0.07142857142857142,
+                "savedAt": "2026-10-28T10:53:17.751Z"
+              },
+              "positionSequence": 1793184797751000,
+              "positionOperationId": "pos-op-2d98913e-1857-42bd-9719-02e7502b1975",
+              "positionRevision": 1,
+              "updatedAt": "2026-10-28T10:53:17.751Z"
+            },
+            "finalizing": false
+          },
+          "defect": false,
+          "note": "Original UI next, real Edge geometry/storage/reload. Explicit controllable rAF clock holds animation before first tick; finalize message is local-only bridge. pagehide is settle-order control, not native close."
+        },
+        {
+          "id": "E06_ANIMATION_PAGEHIDE",
+          "during": {
+            "target": 1,
+            "scroll": 0,
+            "raf": 1000001,
+            "modified": true
+          },
+          "ack": null,
+          "after": {
+            "ready": true,
+            "busy": false,
+            "modified": false,
+            "spine": 0,
+            "preparedIndex": 0,
+            "owner": 1,
+            "paginatorReady": true,
+            "paginatorSpine": 0,
+            "page": 1,
+            "count": 15,
+            "text": "NORMAL paragraph 0: independent visible reading and position preservation. 这是用于验证实际正文的长段落。\n\nNORMAL p",
+            "stable": {
+              "spineHref": "OPS/c0.xhtml",
+              "spineIndex": 0,
+              "locator": {
+                "elementPath": null,
+                "textOffset": 659,
+                "quote": "这是用于验证实际正文的长段落。 NORMAL paragraph 7: independent visible readin",
+                "prefix": "这是用于验证实际正文的长段落。 NORMAL paragra",
+                "suffix": "ph 7: independent visible readin",
+                "elementId": "",
+                "chapterFraction": 0.07142857142857142,
+                "pageIndex": 1
+              },
+              "chapterFraction": 0.07142857142857142,
+              "savedAt": "2026-10-28T10:53:18.032Z"
+            },
+            "saved": {
+              "revision": 1,
+              "position": {
+                "spineHref": "OPS/c0.xhtml",
+                "spineIndex": 0,
+                "locator": {
+                  "elementPath": null,
+                  "textOffset": 659,
+                  "quote": "这是用于验证实际正文的长段落。 NORMAL paragraph 7: independent visible readin",
+                  "prefix": "这是用于验证实际正文的长段落。 NORMAL paragra",
+                  "suffix": "ph 7: independent visible readin",
+                  "elementId": "",
+                  "chapterFraction": 0.07142857142857142,
+                  "pageIndex": 1
+                },
+                "chapterFraction": 0.07142857142857142,
+                "savedAt": "2026-10-28T10:53:18.032Z"
+              },
+              "positionSequence": 1793184798032000,
+              "positionOperationId": "pos-op-a58ba75e-5cc6-479d-8be8-ef897db2fb91",
+              "positionRevision": 1,
+              "updatedAt": "2026-10-28T10:53:18.032Z"
+            },
+            "finalizing": false
+          },
+          "reopened": {
+            "ready": true,
+            "busy": false,
+            "modified": false,
+            "spine": 0,
+            "preparedIndex": 0,
+            "owner": 1,
+            "paginatorReady": true,
+            "paginatorSpine": 0,
+            "page": 1,
+            "count": 15,
+            "text": "NORMAL paragraph 0: independent visible reading and position preservation. 这是用于验证实际正文的长段落。\n\nNORMAL p",
+            "stable": {
+              "spineHref": "OPS/c0.xhtml",
+              "spineIndex": 0,
+              "locator": {
+                "elementPath": null,
+                "textOffset": 659,
+                "quote": "这是用于验证实际正文的长段落。 NORMAL paragraph 7: independent visible readin",
+                "prefix": "这是用于验证实际正文的长段落。 NORMAL paragra",
+                "suffix": "ph 7: independent visible readin",
+                "elementId": "",
+                "chapterFraction": 0.07142857142857142,
+                "pageIndex": 1
+              },
+              "chapterFraction": 0.07142857142857142,
+              "savedAt": "2026-10-28T10:53:18.278Z"
+            },
+            "saved": {
+              "revision": 1,
+              "position": {
+                "spineHref": "OPS/c0.xhtml",
+                "spineIndex": 0,
+                "locator": {
+                  "elementPath": null,
+                  "textOffset": 659,
+                  "quote": "这是用于验证实际正文的长段落。 NORMAL paragraph 7: independent visible readin",
+                  "prefix": "这是用于验证实际正文的长段落。 NORMAL paragra",
+                  "suffix": "ph 7: independent visible readin",
+                  "elementId": "",
+                  "chapterFraction": 0.07142857142857142,
+                  "pageIndex": 1
+                },
+                "chapterFraction": 0.07142857142857142,
+                "savedAt": "2026-10-28T10:53:18.032Z"
+              },
+              "positionSequence": 1793184798032000,
+              "positionOperationId": "pos-op-a58ba75e-5cc6-479d-8be8-ef897db2fb91",
+              "positionRevision": 1,
+              "updatedAt": "2026-10-28T10:53:18.032Z"
+            },
+            "finalizing": false
+          },
+          "defect": false,
+          "note": "Original UI next, real Edge geometry/storage/reload. Explicit controllable rAF clock holds animation before first tick; finalize message is local-only bridge. pagehide is settle-order control, not native close."
+        },
+        {
+          "id": "E07_FILE_BYTES_COMPLETE_AFTER_FINALIZE",
+          "ack": {
+            "type": "host.finalized",
+            "requestId": "file-after-close",
+            "sessionId": "local-mvrzxhq3",
+            "ok": true,
+            "revision": 0,
+            "closeDiagnostics": []
+          },
+          "atAck": {
+            "ready": true,
+            "busy": false,
+            "modified": false,
+            "spine": 0,
+            "preparedIndex": 0,
+            "owner": 1,
+            "paginatorReady": true,
+            "paginatorSpine": 0,
+            "page": 0,
+            "count": 15,
+            "text": "START DOCUMENT\n\nSTART paragraph 0: independent visible reading and position preservation. 这是用于验证实际正文",
+            "stable": {
+              "spineHref": "OPS/c0.xhtml",
+              "spineIndex": 0,
+              "locator": {
+                "elementPath": null,
+                "textOffset": 14,
+                "quote": "START DOCUMENT START paragraph 0: independen",
+                "prefix": "START DOCUMEN",
+                "suffix": "T START paragraph 0: independen",
+                "elementId": "",
+                "chapterFraction": 0,
+                "pageIndex": 0
+              },
+              "chapterFraction": 0,
+              "savedAt": "2026-10-28T10:53:18.518Z"
+            },
+            "saved": null,
+            "finalizing": true
+          },
+          "late": {
+            "ready": true,
+            "busy": false,
+            "modified": false,
+            "spine": 0,
+            "preparedIndex": 0,
+            "owner": 1,
+            "paginatorReady": true,
+            "paginatorSpine": 0,
+            "page": 0,
+            "count": 15,
+            "text": "START DOCUMENT\n\nSTART paragraph 0: independent visible reading and position preservation. 这是用于验证实际正文",
+            "stable": {
+              "spineHref": "OPS/c0.xhtml",
+              "spineIndex": 0,
+              "locator": {
+                "elementPath": null,
+                "textOffset": 14,
+                "quote": "START DOCUMENT START paragraph 0: independen",
+                "prefix": "START DOCUMEN",
+                "suffix": "T START paragraph 0: independen",
+                "elementId": "",
+                "chapterFraction": 0,
+                "pageIndex": 0
+              },
+              "chapterFraction": 0,
+              "savedAt": "2026-10-28T10:53:18.518Z"
+            },
+            "saved": null,
+            "finalizing": true
+          },
+          "error": "",
+          "defect": false,
+          "note": "File bytes held after genuine file input; original code, local bridge keeps page alive to inspect post-ack work. Does not claim native window continues after actual disposal."
+        }
+      ]
+    },
+    "hostAudit": {
+      "generatedAt": "2026-10-27T20:44:13.1668374Z",
+      "baseDirectory": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\r6-host-audit\\bin\\Debug\\net10.0\\",
+      "evidenceKind": "original C# host source with headless WinUI/WebView2 event doubles; not native WinUI/WebView2",
+      "results": [
+        {
+          "id": "R5-PREF-FIELD-SUPERSEDED",
+          "pass": true,
+          "details": {
+            "g18": {
+              "protocol": "lyra-reader",
+              "version": 3,
+              "type": "response",
+              "requestId": "dc82207ef46941ea84cedda752544363",
+              "sessionId": "503f567330ad441fb3e0527fdf1903ea",
+              "ok": true,
+              "result": {
+                "grant": "pg-c6470839e00343979c8b42a58f4426dd",
+                "fields": [
+                  "fontSize"
+                ]
+              }
+            },
+            "s18": {
+              "protocol": "lyra-reader",
+              "version": 3,
+              "type": "response",
+              "requestId": "c17e29815da44440b5b7c8d85e5154ad",
+              "sessionId": "503f567330ad441fb3e0527fdf1903ea",
+              "ok": true,
+              "result": {
+                "revision": 1,
+                "applied": [
+                  "fontSize"
+                ],
+                "idempotent": [],
+                "superseded": []
+              }
+            },
+            "g32": {
+              "protocol": "lyra-reader",
+              "version": 3,
+              "type": "response",
+              "requestId": "522941671af141fcb70a3c67f8027096",
+              "sessionId": "503f567330ad441fb3e0527fdf1903ea",
+              "ok": true,
+              "result": {
+                "grant": "pg-242128de618f49a2ae6ab44007e68798",
+                "fields": [
+                  "fontSize"
+                ]
+              }
+            },
+            "s32": {
+              "protocol": "lyra-reader",
+              "version": 3,
+              "type": "response",
+              "requestId": "d2beb194696543438445aa39a43bdeea",
+              "sessionId": "503f567330ad441fb3e0527fdf1903ea",
+              "ok": true,
+              "result": {
+                "revision": 2,
+                "applied": [
+                  "fontSize"
+                ],
+                "idempotent": [],
+                "superseded": []
+              }
+            },
+            "gl": {
+              "protocol": "lyra-reader",
+              "version": 3,
+              "type": "response",
+              "requestId": "c986291558f0474d936922c87fdffcaf",
+              "sessionId": "503f567330ad441fb3e0527fdf1903ea",
+              "ok": true,
+              "result": {
+                "grant": "pg-cefcf919d4f34f55b7eb983097879f1b",
+                "fields": [
+                  "lineHeight"
+                ]
+              }
+            },
+            "mixed": {
+              "protocol": "lyra-reader",
+              "version": 3,
+              "type": "response",
+              "requestId": "27d1eeb8899041d28ae8780a286e82eb",
+              "sessionId": "503f567330ad441fb3e0527fdf1903ea",
+              "ok": true,
+              "result": {
+                "revision": 3,
+                "applied": [
+                  "lineHeight"
+                ],
+                "idempotent": [],
+                "superseded": [
+                  "fontSize"
+                ]
+              }
+            },
+            "disk": {
+              "version": 1,
+              "revision": 3,
+              "preferences": {
+                "fontSize": 32,
+                "lineHeight": 2.2
+              },
+              "fieldSequences": {},
+              "preferenceOrders": {
+                "fontSize": 2,
+                "lineHeight": 3
+              },
+              "updatedAt": "2026-10-27T20:36:34.5995344Z"
+            }
+          }
+        },
+        {
+          "id": "R5-PREF-COMPLETION-CAPACITY",
+          "pass": true,
+          "details": {
+            "gf": {
+              "protocol": "lyra-reader",
+              "version": 3,
+              "type": "response",
+              "requestId": "83b4695d4cf2466f9a45930f826c1a75",
+              "sessionId": "0ee2fec0000d49c9af8f3b17a5e0691d",
+              "ok": true,
+              "result": {
+                "grant": "pg-e9ce5721a83843b4b0d7ba1381643217",
+                "fields": [
+                  "fontSize"
+                ]
+              }
+            },
+            "sf": {
+              "protocol": "lyra-reader",
+              "version": 3,
+              "type": "response",
+              "requestId": "9237459687fe48f2acc25735ba20d63b",
+              "sessionId": "0ee2fec0000d49c9af8f3b17a5e0691d",
+              "ok": true,
+              "result": {
+                "revision": 4,
+                "applied": [
+                  "fontSize"
+                ],
+                "idempotent": [],
+                "superseded": []
+              }
+            },
+            "gline": {
+              "protocol": "lyra-reader",
+              "version": 3,
+              "type": "response",
+              "requestId": "72783065882147dab06efe9e00d17629",
+              "sessionId": "0ee2fec0000d49c9af8f3b17a5e0691d",
+              "ok": true,
+              "result": {
+                "grant": "pg-0c130da7813448f6bca7433f327e1d8c",
+                "fields": [
+                  "lineHeight"
+                ]
+              }
+            },
+            "sline": {
+              "protocol": "lyra-reader",
+              "version": 3,
+              "type": "response",
+              "requestId": "2ec6e56966af4fb496b1ef217b02bf03",
+              "sessionId": "0ee2fec0000d49c9af8f3b17a5e0691d",
+              "ok": true,
+              "result": {
+                "revision": 5,
+                "applied": [
+                  "lineHeight"
+                ],
+                "idempotent": [],
+                "superseded": []
+              }
+            },
+            "retry": {
+              "protocol": "lyra-reader",
+              "version": 3,
+              "type": "response",
+              "requestId": "7450a5043dac4f9097818156e8288ad1",
+              "sessionId": "0ee2fec0000d49c9af8f3b17a5e0691d",
+              "ok": true,
+              "result": {
+                "revision": 5,
+                "applied": [
+                  "fontSize"
+                ],
+                "idempotent": [
+                  "fontSize"
+                ],
+                "superseded": []
+              }
+            },
+            "capDisk": {
+              "version": 1,
+              "revision": 5,
+              "preferences": {
+                "fontSize": 28,
+                "lineHeight": 2.1
+              },
+              "fieldSequences": {},
+              "preferenceOrders": {
+                "fontSize": 4099,
+                "lineHeight": 4100
+              },
+              "updatedAt": "2026-10-27T20:36:35.2251820Z"
+            }
+          }
+        },
+        {
+          "id": "R5-PREF-SCOPE",
+          "pass": true,
+          "details": {
+            "badScope": {
+              "protocol": "lyra-reader",
+              "version": 3,
+              "type": "response",
+              "requestId": "e1f50a439782421980843bf6d9bbe38b",
+              "sessionId": "e096ed3905dc4c818478b0f9cdd00ce4",
+              "ok": false,
+              "error": {
+                "code": "UNSUPPORTED_SCOPE",
+                "message": "只支持 global 偏好作用域"
+              }
+            },
+            "beforeHash": "tDByeRk2VVhxI6KlQE573uT15r3nIRz5nwe7T1drbn0=",
+            "afterHash": "tDByeRk2VVhxI6KlQE573uT15r3nIRz5nwe7T1drbn0="
+          }
+        },
+        {
+          "id": "R5-POS-REVISION-SEPARATION",
+          "pass": true,
+          "details": {
+            "pre": {
+              "protocol": "lyra-reader",
+              "version": 3,
+              "type": "response",
+              "requestId": "5a584daefa764977ab5e5750e86cbe82",
+              "sessionId": "50fcf8ee837f41e78f08c0b8cf7af1ef",
+              "ok": true,
+              "result": {
+                "revision": 0,
+                "positionRevision": 0,
+                "metadataRevision": 0,
+                "position": null,
+                "positionToken": 0,
+                "bookmarksRevision": 0,
+                "bookmarkCount": 0,
+                "interactionToken": 0,
+                "preferences": {
+                  "fontSize": 28,
+                  "lineHeight": 2.1
+                }
+              }
+            },
+            "inter": {
+              "protocol": "lyra-reader",
+              "version": 3,
+              "type": "response",
+              "requestId": "eecea2053ec5450a89a63816ed76be12",
+              "sessionId": "50fcf8ee837f41e78f08c0b8cf7af1ef",
+              "ok": true,
+              "result": {
+                "interactionToken": 1
+              }
+            },
+            "afterInteract": {
+              "protocol": "lyra-reader",
+              "version": 3,
+              "type": "response",
+              "requestId": "580530445b1e4700b02a14639b805073",
+              "sessionId": "50fcf8ee837f41e78f08c0b8cf7af1ef",
+              "ok": true,
+              "result": {
+                "revision": 0,
+                "positionRevision": 0,
+                "metadataRevision": 0,
+                "position": null,
+                "positionToken": 0,
+                "bookmarksRevision": 0,
+                "bookmarkCount": 0,
+                "interactionToken": 1,
+                "preferences": {
+                  "fontSize": 28,
+                  "lineHeight": 2.1
+                }
+              }
+            },
+            "posSave": {
+              "protocol": "lyra-reader",
+              "version": 3,
+              "type": "response",
+              "requestId": "292ce4c0d25a4bad8006ba9b96a9f2d7",
+              "sessionId": "50fcf8ee837f41e78f08c0b8cf7af1ef",
+              "ok": true,
+              "result": {
+                "revision": 1,
+                "positionRevision": 1,
+                "positionToken": 1
+              }
+            },
+            "afterPos": {
+              "protocol": "lyra-reader",
+              "version": 3,
+              "type": "response",
+              "requestId": "eb71effc115c47868e47f14fa32f99f9",
+              "sessionId": "50fcf8ee837f41e78f08c0b8cf7af1ef",
+              "ok": true,
+              "result": {
+                "revision": 1,
+                "positionRevision": 1,
+                "metadataRevision": 0,
+                "position": {
+                  "locator": {
+                    "textOffset": 100
+                  }
+                },
+                "positionToken": 1,
+                "bookmarksRevision": 0,
+                "bookmarkCount": 0,
+                "interactionToken": 1,
+                "preferences": {
+                  "fontSize": 28,
+                  "lineHeight": 2.1
+                }
+              }
+            },
+            "bm": {
+              "protocol": "lyra-reader",
+              "version": 3,
+              "type": "response",
+              "requestId": "cba47cc35cf94ea6bed5e65ed15cd712",
+              "sessionId": "50fcf8ee837f41e78f08c0b8cf7af1ef",
+              "ok": true,
+              "result": {
+                "revision": 1,
+                "metadataRevision": 1,
+                "bookmark": {
+                  "id": "bm-1",
+                  "summary": "s",
+                  "locator": {
+                    "textOffset": 100
+                  }
+                }
+              }
+            },
+            "afterBm": {
+              "protocol": "lyra-reader",
+              "version": 3,
+              "type": "response",
+              "requestId": "de0ea4f12d7348f786e5e4984363ac43",
+              "sessionId": "50fcf8ee837f41e78f08c0b8cf7af1ef",
+              "ok": true,
+              "result": {
+                "revision": 2,
+                "positionRevision": 1,
+                "metadataRevision": 1,
+                "position": {
+                  "locator": {
+                    "textOffset": 100
+                  }
+                },
+                "positionToken": 1,
+                "bookmarksRevision": 1,
+                "bookmarkCount": 1,
+                "interactionToken": 1,
+                "preferences": {
+                  "fontSize": 28,
+                  "lineHeight": 2.1
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": "R5-POS-S03-FAILED-WRITE",
+          "pass": true,
+          "details": {
+            "loadS03": {
+              "protocol": "lyra-reader",
+              "version": 3,
+              "type": "response",
+              "requestId": "c8479dcffb5d438bb3e90925f96ed16e",
+              "sessionId": "08676f9927f8440c91c3cf3efbebd2f8",
+              "ok": true,
+              "result": {
+                "revision": 0,
+                "positionRevision": 0,
+                "metadataRevision": 0,
+                "position": null,
+                "positionToken": 0,
+                "bookmarksRevision": 0,
+                "bookmarkCount": 0,
+                "interactionToken": 0,
+                "preferences": {
+                  "fontSize": 28,
+                  "lineHeight": 2.1
+                }
+              }
+            },
+            "tokS03": 1,
+            "failedPos": {
+              "protocol": "lyra-reader",
+              "version": 3,
+              "type": "response",
+              "requestId": "d953da7a41674815a19d3740aac41137",
+              "sessionId": "08676f9927f8440c91c3cf3efbebd2f8",
+              "ok": false,
+              "error": {
+                "code": "WRITE_FAILED",
+                "message": "状态写入失败：Access to the path is denied."
+              }
+            },
+            "reloadS03": {
+              "protocol": "lyra-reader",
+              "version": 3,
+              "type": "response",
+              "requestId": "7f28fba7c5fa465db2f75ffa56319617",
+              "sessionId": "08676f9927f8440c91c3cf3efbebd2f8",
+              "ok": true,
+              "result": {
+                "revision": 0,
+                "positionRevision": 0,
+                "metadataRevision": 0,
+                "position": null,
+                "positionToken": 0,
+                "bookmarksRevision": 0,
+                "bookmarkCount": 0,
+                "interactionToken": 1,
+                "preferences": {
+                  "fontSize": 28,
+                  "lineHeight": 2.1
+                }
+              }
+            },
+            "stateS03": {
+              "version": 1,
+              "revision": 0,
+              "positionRevision": 0,
+              "metadataRevision": 0,
+              "interaction": 1,
+              "interactionOwner": "08676f9927f8440c91c3cf3efbebd2f8",
+              "position": null,
+              "positionToken": 0,
+              "positionSequence": 0,
+              "bookmarks": [],
+              "bookmarksRevision": 0
+            }
+          }
+        },
+        {
+          "id": "R6-K01-COMPLETION-SUPERSEDED",
+          "pass": true,
+          "details": {
+            "ta": "pg-f947b0ef5f154012a1b4a481044611a9",
+            "tb": "pg-90d69d67393e40d8b1493a254a12014b",
+            "sa": {
+              "protocol": "lyra-reader",
+              "version": 3,
+              "type": "response",
+              "requestId": "bd206b3b40104997aea55d09d022cdee",
+              "sessionId": "bf1cb2bdc9744a478f4c0e4693f5bed3",
+              "ok": true,
+              "result": {
+                "revision": 6,
+                "applied": [
+                  "fg"
+                ],
+                "idempotent": [],
+                "superseded": [
+                  "theme",
+                  "bg"
+                ]
+              }
+            },
+            "sb": {
+              "protocol": "lyra-reader",
+              "version": 3,
+              "type": "response",
+              "requestId": "119e859d79de4188a1137142293be616",
+              "sessionId": "bf1cb2bdc9744a478f4c0e4693f5bed3",
+              "ok": true,
+              "result": {
+                "revision": 7,
+                "applied": [
+                  "theme",
+                  "bg"
+                ],
+                "idempotent": [],
+                "superseded": []
+              }
+            },
+            "kretry2": {
+              "protocol": "lyra-reader",
+              "version": 3,
+              "type": "response",
+              "requestId": "da55fe63d9ce4115875759f9daf1039d",
+              "sessionId": "bf1cb2bdc9744a478f4c0e4693f5bed3",
+              "ok": true,
+              "result": {
+                "revision": 7,
+                "applied": [
+                  "fg"
+                ],
+                "idempotent": [
+                  "fg"
+                ],
+                "superseded": [
+                  "theme",
+                  "bg"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "id": "R6-C02-PRESSURE-LAST-INTENT",
+          "pass": true,
+          "details": {
+            "every": true,
+            "sp": {
+              "protocol": "lyra-reader",
+              "version": 3,
+              "type": "response",
+              "requestId": "575958210ebe44ad8c72ad062e70c6eb",
+              "sessionId": "6e51980597684fe7806c6a8e81c831d2",
+              "ok": true,
+              "result": {
+                "revision": 8,
+                "applied": [
+                  "lineHeight"
+                ],
+                "idempotent": [],
+                "superseded": []
+              }
+            },
+            "kdisk": true,
+            "last": "pg-9f17ac133dcc4f008b5c919883d85d7c"
+          }
+        },
+        {
+          "id": "R5-CLOSE-ASSOC-EARLY",
+          "pass": true,
+          "details": {
+            "reqId": "d6ebd6cd42444198bc0e1d3823ea96d3",
+            "missing": true,
+            "exact": true,
+            "earlyOk": true
+          }
+        }
+      ]
+    },
+    "localFormat": {
+      "bookmarkUnknown": {
+        "warn": true,
+        "addCode": "LOCAL_CORRUPT",
+        "rawUnchanged": true
+      },
+      "bookmarkRecover": {
+        "items": 1,
+        "after": 2,
+        "version": 1,
+        "futureData": "retain"
+      },
+      "positionUnknown": {
+        "warn": true,
+        "saveCode": "LOCAL_CORRUPT",
+        "rawUnchanged": true
+      },
+      "prefsUnknown": {
+        "warn": true,
+        "saveCode": "LOCAL_CORRUPT",
+        "rawUnchanged": true
+      }
+    },
+    "a23": {
+      "evidenceKind": "Real Edge browser renderer + generated EPUBs; CDP Performance JS heap; not native WinUI process memory",
+      "book200": [
+        {
+          "label": "start",
+          "spine": 0,
+          "ready": true,
+          "busy": false,
+          "book": "sha256:84469c53989a8ac76325d0108085921b6064f0da946e9f89839f25a4d8cbf9b1",
+          "uiNodes": 308,
+          "iframeNodes": 2,
+          "iframeCount": 1,
+          "resourceCount": 1,
+          "taskSets": 1,
+          "pending": 0,
+          "blobUrls": [
+            "blob:http://127.0.0.1:57756/2818c853-aa53-407c-8aa7-f183edceb503"
+          ],
+          "metrics": {
+            "JSHeapUsedSize": 3649868,
+            "LayoutCount": 12,
+            "TaskDuration": 0.12363
+          }
+        },
+        {
+          "label": "after-50",
+          "spine": 50,
+          "ready": true,
+          "busy": false,
+          "book": "sha256:84469c53989a8ac76325d0108085921b6064f0da946e9f89839f25a4d8cbf9b1",
+          "uiNodes": 308,
+          "iframeNodes": 2,
+          "iframeCount": 1,
+          "resourceCount": 1,
+          "taskSets": 1,
+          "pending": 0,
+          "blobUrls": [
+            "blob:http://127.0.0.1:57756/2818c853-aa53-407c-8aa7-f183edceb503"
+          ],
+          "metrics": {
+            "JSHeapUsedSize": 24136680,
+            "LayoutCount": 412,
+            "TaskDuration": 0.430248
+          }
+        },
+        {
+          "label": "after-100",
+          "spine": 100,
+          "ready": true,
+          "busy": false,
+          "book": "sha256:84469c53989a8ac76325d0108085921b6064f0da946e9f89839f25a4d8cbf9b1",
+          "uiNodes": 308,
+          "iframeNodes": 2,
+          "iframeCount": 1,
+          "resourceCount": 1,
+          "taskSets": 1,
+          "pending": 0,
+          "blobUrls": [
+            "blob:http://127.0.0.1:57756/2818c853-aa53-407c-8aa7-f183edceb503"
+          ],
+          "metrics": {
+            "JSHeapUsedSize": 9801292,
+            "LayoutCount": 812,
+            "TaskDuration": 0.730016
+          }
+        },
+        {
+          "label": "after-150",
+          "spine": 150,
+          "ready": true,
+          "busy": false,
+          "book": "sha256:84469c53989a8ac76325d0108085921b6064f0da946e9f89839f25a4d8cbf9b1",
+          "uiNodes": 308,
+          "iframeNodes": 2,
+          "iframeCount": 1,
+          "resourceCount": 1,
+          "taskSets": 1,
+          "pending": 0,
+          "blobUrls": [
+            "blob:http://127.0.0.1:57756/2818c853-aa53-407c-8aa7-f183edceb503"
+          ],
+          "metrics": {
+            "JSHeapUsedSize": 3407160,
+            "LayoutCount": 1212,
+            "TaskDuration": 1.025835
+          }
+        },
+        {
+          "label": "after-200",
+          "spine": 200,
+          "ready": true,
+          "busy": false,
+          "book": "sha256:84469c53989a8ac76325d0108085921b6064f0da946e9f89839f25a4d8cbf9b1",
+          "uiNodes": 308,
+          "iframeNodes": 2,
+          "iframeCount": 1,
+          "resourceCount": 1,
+          "taskSets": 1,
+          "pending": 0,
+          "blobUrls": [
+            "blob:http://127.0.0.1:57756/2818c853-aa53-407c-8aa7-f183edceb503"
+          ],
+          "metrics": {
+            "JSHeapUsedSize": 8661840,
+            "LayoutCount": 1612,
+            "TaskDuration": 1.313159
+          }
+        }
+      ],
+      "switches": [
+        {
+          "label": "book-0",
+          "spine": 0,
+          "ready": true,
+          "busy": false,
+          "book": "sha256:8f7f4d0b17428b5958c63bfcc22a6077c9f4e88fc143230c16d08a581c15a319",
+          "uiNodes": 110,
+          "iframeNodes": 1,
+          "iframeCount": 1,
+          "resourceCount": 0,
+          "taskSets": 1,
+          "pending": 0,
+          "blobUrls": [],
+          "metrics": {
+            "JSHeapUsedSize": 9566420,
+            "LayoutCount": 1622,
+            "TaskDuration": 1.360126
+          }
+        },
+        {
+          "label": "book-1",
+          "spine": 0,
+          "ready": true,
+          "busy": false,
+          "book": "sha256:bf0da276563120f0ef8fc72dd9ebb003696f665969a90a8ce75cbecc5b76b954",
+          "uiNodes": 110,
+          "iframeNodes": 1,
+          "iframeCount": 1,
+          "resourceCount": 0,
+          "taskSets": 1,
+          "pending": 0,
+          "blobUrls": [],
+          "metrics": {
+            "JSHeapUsedSize": 10256136,
+            "LayoutCount": 1632,
+            "TaskDuration": 1.368496
+          }
+        },
+        {
+          "label": "book-2",
+          "spine": 0,
+          "ready": true,
+          "busy": false,
+          "book": "sha256:ff4b3dcf50fa2c207310a3b237f25e2e4d8be984827efce137a2b1e3ec5c251f",
+          "uiNodes": 110,
+          "iframeNodes": 1,
+          "iframeCount": 1,
+          "resourceCount": 0,
+          "taskSets": 1,
+          "pending": 0,
+          "blobUrls": [],
+          "metrics": {
+            "JSHeapUsedSize": 3745688,
+            "LayoutCount": 1642,
+            "TaskDuration": 1.37937
+          }
+        },
+        {
+          "label": "book-3",
+          "spine": 0,
+          "ready": true,
+          "busy": false,
+          "book": "sha256:12bb5908a413f8a7021479a8502b8384488ae6dae1f08c42bec250f4fc5e8d18",
+          "uiNodes": 110,
+          "iframeNodes": 1,
+          "iframeCount": 1,
+          "resourceCount": 0,
+          "taskSets": 1,
+          "pending": 0,
+          "blobUrls": [],
+          "metrics": {
+            "JSHeapUsedSize": 4474032,
+            "LayoutCount": 1652,
+            "TaskDuration": 1.38728
+          }
+        },
+        {
+          "label": "book-4",
+          "spine": 0,
+          "ready": true,
+          "busy": false,
+          "book": "sha256:24322d6f794d0f8b20c87514eedd00916594616d2db8c69ad66c7aab1aa85ad1",
+          "uiNodes": 110,
+          "iframeNodes": 1,
+          "iframeCount": 1,
+          "resourceCount": 0,
+          "taskSets": 1,
+          "pending": 0,
+          "blobUrls": [],
+          "metrics": {
+            "JSHeapUsedSize": 5159852,
+            "LayoutCount": 1662,
+            "TaskDuration": 1.39534
+          }
+        },
+        {
+          "label": "book-5",
+          "spine": 0,
+          "ready": true,
+          "busy": false,
+          "book": "sha256:a0ea00e98ffadc45932d58de1e9c6ed3a4589c6a22d9a11bced84ed82bab23bb",
+          "uiNodes": 110,
+          "iframeNodes": 1,
+          "iframeCount": 1,
+          "resourceCount": 0,
+          "taskSets": 1,
+          "pending": 0,
+          "blobUrls": [],
+          "metrics": {
+            "JSHeapUsedSize": 5828288,
+            "LayoutCount": 1672,
+            "TaskDuration": 1.404867
+          }
+        },
+        {
+          "label": "book-6",
+          "spine": 0,
+          "ready": true,
+          "busy": false,
+          "book": "sha256:52c4da66a293b42b51599aacaea9bb81f2adf82bc6a7959873b18d31d3eb0ded",
+          "uiNodes": 110,
+          "iframeNodes": 1,
+          "iframeCount": 1,
+          "resourceCount": 0,
+          "taskSets": 1,
+          "pending": 0,
+          "blobUrls": [],
+          "metrics": {
+            "JSHeapUsedSize": 5582676,
+            "LayoutCount": 1682,
+            "TaskDuration": 1.413175
+          }
+        },
+        {
+          "label": "book-7",
+          "spine": 0,
+          "ready": true,
+          "busy": false,
+          "book": "sha256:3f98049b803a902ae00530b021251546623e050ea4109749db10242bbf3c2188",
+          "uiNodes": 110,
+          "iframeNodes": 1,
+          "iframeCount": 1,
+          "resourceCount": 0,
+          "taskSets": 1,
+          "pending": 0,
+          "blobUrls": [],
+          "metrics": {
+            "JSHeapUsedSize": 6319076,
+            "LayoutCount": 1692,
+            "TaskDuration": 1.421518
+          }
+        },
+        {
+          "label": "book-8",
+          "spine": 0,
+          "ready": true,
+          "busy": false,
+          "book": "sha256:dc62845e651cd084908296315a3d95767845263a1054e0f443ae46a04f22e293",
+          "uiNodes": 110,
+          "iframeNodes": 1,
+          "iframeCount": 1,
+          "resourceCount": 0,
+          "taskSets": 1,
+          "pending": 0,
+          "blobUrls": [],
+          "metrics": {
+            "JSHeapUsedSize": 7001944,
+            "LayoutCount": 1702,
+            "TaskDuration": 1.429652
+          }
+        },
+        {
+          "label": "book-9",
+          "spine": 0,
+          "ready": true,
+          "busy": false,
+          "book": "sha256:2adda1939a0c0864ced634ce555abc7f768c75ed0a3c93ece3c3501c507ccbd9",
+          "uiNodes": 110,
+          "iframeNodes": 1,
+          "iframeCount": 1,
+          "resourceCount": 0,
+          "taskSets": 1,
+          "pending": 0,
+          "blobUrls": [],
+          "metrics": {
+            "JSHeapUsedSize": 7051936,
+            "LayoutCount": 1712,
+            "TaskDuration": 1.437727
+          }
+        }
+      ],
+      "rest": [
+        {
+          "label": "static-1s",
+          "spine": 200,
+          "ready": true,
+          "busy": false,
+          "book": "sha256:84469c53989a8ac76325d0108085921b6064f0da946e9f89839f25a4d8cbf9b1",
+          "uiNodes": 308,
+          "iframeNodes": 2,
+          "iframeCount": 1,
+          "resourceCount": 1,
+          "taskSets": 1,
+          "pending": 0,
+          "blobUrls": [
+            "blob:http://127.0.0.1:57756/2818c853-aa53-407c-8aa7-f183edceb503"
+          ],
+          "metrics": {
+            "JSHeapUsedSize": 8687344,
+            "LayoutCount": 1612,
+            "TaskDuration": 1.343303
+          }
+        },
+        {
+          "label": "after-switches-static",
+          "spine": 0,
+          "ready": true,
+          "busy": false,
+          "book": "sha256:2adda1939a0c0864ced634ce555abc7f768c75ed0a3c93ece3c3501c507ccbd9",
+          "uiNodes": 110,
+          "iframeNodes": 1,
+          "iframeCount": 1,
+          "resourceCount": 0,
+          "taskSets": 1,
+          "pending": 0,
+          "blobUrls": [],
+          "metrics": {
+            "JSHeapUsedSize": 7072036,
+            "LayoutCount": 1712,
+            "TaskDuration": 1.440092
+          }
+        }
+      ],
+      "successCount": 200,
+      "expectedSuccess": 200,
+      "book200ElapsedMs": 2378
+    }
+  },
+  "notComplete": [
+    "A/B failed-save close ledger original JS->C# not closed",
+    "R6-04 operation package trace not run",
+    "A11 late-resource target stage untested",
+    "A23 native process RSS/GC trend not measured",
+    "A21 c12/R3/old-host matrix not rerun",
+    "A01-A19 remaining subitems not fully rerun"
+  ]
+}

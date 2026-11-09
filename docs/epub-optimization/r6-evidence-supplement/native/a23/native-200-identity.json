@@ -1,0 +1,60 @@
+﻿{
+    "capturedAt":  "2026-10-28T19:16:10.7958728+08:00",
+    "pid":  30868,
+    "requested":  200,
+    "distinctSuccess":  0,
+    "lastSpine":  -1,
+    "samples":  [
+                    {
+                        "t":  "2026-10-28T19:15:23.6198966+08:00",
+                        "guiWS":  180056064,
+                        "guiHandles":  1376,
+                        "wvCount":  19,
+                        "wvWS":  815837184,
+                        "wvHandles":  9748
+                    },
+                    {
+                        "t":  "2026-10-28T19:15:34.8371467+08:00",
+                        "guiWS":  178376704,
+                        "guiHandles":  1386,
+                        "wvCount":  19,
+                        "wvWS":  868708352,
+                        "wvHandles":  10065
+                    },
+                    {
+                        "t":  "2026-10-28T19:15:46.0536114+08:00",
+                        "guiWS":  179646464,
+                        "guiHandles":  1395,
+                        "wvCount":  19,
+                        "wvWS":  916832256,
+                        "wvHandles":  9880
+                    },
+                    {
+                        "t":  "2026-10-28T19:15:57.3328148+08:00",
+                        "guiWS":  176082944,
+                        "guiHandles":  1395,
+                        "wvCount":  19,
+                        "wvWS":  900202496,
+                        "wvHandles":  9890
+                    },
+                    {
+                        "t":  "2026-10-28T19:16:08.6254434+08:00",
+                        "guiWS":  176877568,
+                        "guiHandles":  1388,
+                        "wvCount":  19,
+                        "wvWS":  898584576,
+                        "wvHandles":  9926
+                    },
+                    {
+                        "t":  "2026-10-28T19:16:10.6607978+08:00",
+                        "guiWS":  180097024,
+                        "guiHandles":  1388,
+                        "wvCount":  19,
+                        "wvWS":  897904640,
+                        "wvHandles":  9920
+                    }
+                ],
+    "hostDll":  "3F30CCC9915993F058DAD62879F1619AC1EBD5B735CE1741D09FAEE86B28719C",
+    "reader":  "5A81D526B8126B590738BC50652DB829D701FDB9E3319240766FB3D07C2FC837",
+    "dataRoot":  "D:\\Temp\\lyra_r6_supplement\\data"
+}

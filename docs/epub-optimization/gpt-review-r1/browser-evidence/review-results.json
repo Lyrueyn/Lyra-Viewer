@@ -1,0 +1,188 @@
+{
+  "results": [
+    {
+      "id": "R01_SETTINGS_BUTTON",
+      "expected": "panel open",
+      "actualOpen": false,
+      "defect": true
+    },
+    {
+      "id": "R02_FONT_BEFORE_LAYOUT",
+      "before": {
+        "book": "NORMAL",
+        "spine": 0,
+        "page": 0,
+        "pages": 37,
+        "font": "36px",
+        "scroll": 0,
+        "scrollWidth": 32274,
+        "width": 810,
+        "heading": "NORMAL-CH-0"
+      },
+      "after": {
+        "book": "NORMAL",
+        "spine": 1,
+        "page": 0,
+        "pages": 16,
+        "font": "36px",
+        "scroll": 0,
+        "scrollWidth": 32274,
+        "width": 810,
+        "heading": "NORMAL-CH-1"
+      },
+      "actualNeededPages": 37,
+      "defect": true
+    },
+    {
+      "id": "R03_FONT_REOPEN_ANCHOR",
+      "before": {
+        "book": "NORMAL",
+        "spine": 0,
+        "page": 7,
+        "pages": 37,
+        "font": "36px",
+        "scroll": 6118,
+        "scrollWidth": 32274,
+        "width": 810,
+        "heading": "NORMAL-CH-0"
+      },
+      "after": {
+        "book": "NORMAL",
+        "spine": 0,
+        "page": 3,
+        "pages": 16,
+        "font": "36px",
+        "scroll": 2622,
+        "scrollWidth": 32274,
+        "width": 810,
+        "heading": "NORMAL-CH-0"
+      },
+      "originalAnchorRect": {
+        "left": 3728.875,
+        "right": 3764.875,
+        "width": 810,
+        "visible": false
+      },
+      "defect": true
+    },
+    {
+      "id": "R04_STALE_SECTION_RESETS_NEW_PAGE",
+      "before": {
+        "book": "NORMAL",
+        "spine": 2,
+        "page": 5,
+        "pages": 16,
+        "font": "22px",
+        "scroll": 4370,
+        "scrollWidth": 13920,
+        "width": 810,
+        "heading": "NORMAL-CH-2"
+      },
+      "after": {
+        "book": "NORMAL",
+        "spine": 2,
+        "page": 0,
+        "pages": 16,
+        "font": "22px",
+        "scroll": 0,
+        "scrollWidth": 13920,
+        "width": 810,
+        "heading": "NORMAL-CH-2"
+      },
+      "defect": true,
+      "delay": "old section resource wait 1400 ms; newer section committed and user went to page 6"
+    },
+    {
+      "id": "R05_SEARCH_REPEAT_AND_INLINE",
+      "second": {
+        "page": 0,
+        "targetLeft": 13984,
+        "targetRight": 14794,
+        "width": 810,
+        "targetVisible": false,
+        "highlight": [
+          "MNOPQRSTUVWXYZ0123456789共同关键词ABCDEFGHIJKLMNOPQRSTUVWX"
+        ]
+      },
+      "cross": {
+        "page": 0,
+        "targetVisible": false,
+        "highlights": 0,
+        "status": "查找结果：BCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 甲乙丙"
+      },
+      "defect": true
+    },
+    {
+      "id": "R06_OLD_SEARCH_AFTER_REPLACE",
+      "book": "OTHER",
+      "results": [
+        "CH-0确的页数和字号。 Each paragraph has its own marker 77. 段落 78，这是用于定位回归的文字。阅读器应保留当前正文位置，保持正确的页数和字号。 Eac"
+      ],
+      "chapters": 1,
+      "defect": false
+    },
+    {
+      "id": "R07_LOCAL_BOOKMARK_PAGE",
+      "stored": 51,
+      "shown": 600,
+      "unique": 50,
+      "containsLast": false,
+      "defect": true
+    },
+    {
+      "id": "R08_PERCENT_FILENAME",
+      "ready": false,
+      "error": "阅读器初始化失败：URI malformed",
+      "defect": true
+    },
+    {
+      "id": "R09_PREFS_FULL_SNAPSHOT",
+      "changedOnly": "fontSize",
+      "sent": [
+        {
+          "fontSize": 30,
+          "lineHeight": 1.95,
+          "contentWidth": 860,
+          "theme": "dark",
+          "bg": "#121212",
+          "fg": "#E6E6E6",
+          "selectable": false,
+          "reduceMotion": false,
+          "sidebar": true
+        }
+      ],
+      "defect": true
+    },
+    {
+      "id": "R10_IMMEDIATE_BOOK_REPLACE_PROGRESS",
+      "saved": null,
+      "restored": {
+        "book": "NORMAL",
+        "spine": 0,
+        "page": 0,
+        "pages": 16,
+        "font": "22px",
+        "scroll": 0,
+        "scrollWidth": 13920,
+        "width": 810,
+        "heading": "NORMAL-CH-0"
+      },
+      "defect": true
+    },
+    {
+      "id": "R11_BOOKMARK_LIST_LATE_RESPONSE",
+      "book": "NORMAL",
+      "bookmarks": [
+        "STALE-OTHER"
+      ],
+      "defect": true
+    },
+    {
+      "id": "R12_STORAGE_FAILURE_FALSE_SUCCESS",
+      "status": "✓ 已保存阅读位置",
+      "saved": null,
+      "defect": true
+    }
+  ],
+  "errors": []
+}

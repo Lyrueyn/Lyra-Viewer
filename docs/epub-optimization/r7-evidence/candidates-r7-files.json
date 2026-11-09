@@ -1,0 +1,62 @@
+{
+  "zip": "candidates-r7/lyra-ext-epub-0.10.0-candidate.zip",
+  "bytes": 101736,
+  "sha256": "459766C816A42E9539EE555212F085525DDE8645F93CB5772B5AA0DA1650BCAA",
+  "members": [
+    {
+      "path": "index.html",
+      "bytes": 5367,
+      "sha256": "F6B244C642B1842652B4ED733116A26A3E92B1B0271BF7C1B444A1C8AF3B411D"
+    },
+    {
+      "path": "README.md",
+      "bytes": 1802,
+      "sha256": "EBF3FD969D9D2403072E3D8F6A20A9BBDC2FBB7DCDF2A75DAD63EB3D372A9B69"
+    },
+    {
+      "path": "LICENSE",
+      "bytes": 35823,
+      "sha256": "230184F60BAE2FEAF244F10A8BAC053C8FF33A183BCC365B4D8B876D2B7F4809"
+    },
+    {
+      "path": "extension.json",
+      "bytes": 299,
+      "sha256": "6B03796DCB2C7A5F72B2BAF744B9C7C41FA601B748DA3896880C91CCF0037949"
+    },
+    {
+      "path": "reader.js",
+      "bytes": 88787,
+      "sha256": "679EA5D2F5593C8DAE613D39A70D6D806A3D78CEEA1152080EF951159E33710D"
+    },
+    {
+      "path": "reader.css",
+      "bytes": 8764,
+      "sha256": "D41553524E1DBED4C895CCEB7E66E9B08AE35905B69545FF4637CEDEAC4A148B"
+    },
+    {
+      "path": "epub-book.js",
+      "bytes": 39611,
+      "sha256": "FDC8B91706BDCFF5E0C7BDBFBD4EDF7D223085BFC98CCF21E7341BEAE4D61F89"
+    },
+    {
+      "path": "paginator.js",
+      "bytes": 39143,
+      "sha256": "6DB2BAD08F16D65203309D41FA44C040E29BC10B347F5FACE487E01E46F25D18"
+    },
+    {
+      "path": "reader-state.js",
+      "bytes": 27031,
+      "sha256": "B78C409F52319CFCC0605002A0CB680A176E95CA579DC135261935CE56147A78"
+    },
+    {
+      "path": "search.js",
+      "bytes": 8757,
+      "sha256": "470C4FE4BB68F299B1AA367CFFD1F3B5E616AF2DAD25E7B1CC1D10F25BEA702A"
+    },
+    {
+      "path": "lib/jszip.min.js",
+      "bytes": 97630,
+      "sha256": "ACC7E41455A80765B5FD9C7EE1B8078A6D160BBBCA455AEAE854DE65C947D59E"
+    }
+  ]
+}

@@ -1,0 +1,178 @@
+{
+  "evidenceKind": "Original old/new JS and frozen R5 C#; raw protocol and isolated true files",
+  "results": [
+    {
+      "id": "P01-R4-V2-CLIENT-ON-R5",
+      "pass": true,
+      "expected": "specified behavior",
+      "actual": {
+        "hello": false,
+        "mode": "local",
+        "sent": [
+          {
+            "protocol": "lyra-reader",
+            "version": 2,
+            "type": "hello",
+            "requestId": "hello-7cff71c6-c110-4d97-952b-849f7b7170d5",
+            "sessionId": "4c93ca06fd1841d69e32752600920752"
+          },
+          {
+            "protocol": "lyra-reader",
+            "version": 2,
+            "type": "book.begin",
+            "sessionId": "4c93ca06fd1841d69e32752600920752",
+            "loadId": "old-v2-book",
+            "name": "V2.epub",
+            "size": 2
+          },
+          {
+            "protocol": "lyra-reader",
+            "version": 2,
+            "type": "book.ready",
+            "sessionId": "4c93ca06fd1841d69e32752600920752",
+            "loadId": "old-v2-book"
+          }
+        ],
+        "host": {
+          "session": "4c93ca06fd1841d69e32752600920752",
+          "source": "https://lyra-extension-3ae7a152.local/index.html?sessionId=4c93ca06fd1841d69e32752600920752&loadId=b450666136dc43ea98500abb1e2dd723",
+          "activationEpoch": 1,
+          "navEpoch": 1,
+          "ClosedCount": 0,
+          "pending": false,
+          "closeRequest": "",
+          "closeTimer": false,
+          "ready": false,
+          "ensureCalls": 1
+        },
+        "responses": [],
+        "boundary": "Real frozen R4 ReaderStateClient version2; new original host silently ignores v2 lifecycle; no actual book native overlay exercised"
+      }
+    },
+    {
+      "id": "P02-POSITION-OPERATION-ID-CONTRACT",
+      "pass": true,
+      "expected": "specified behavior",
+      "actual": {
+        "s": {
+          "protocol": "lyra-reader",
+          "version": 3,
+          "type": "response",
+          "requestId": "protocol-2",
+          "sessionId": "fd74bcb4a2e5417886b23da4723595d2",
+          "ok": true,
+          "result": {
+            "revision": 1,
+            "positionRevision": 1,
+            "positionToken": 1
+          }
+        },
+        "altered": {
+          "protocol": "lyra-reader",
+          "version": 3,
+          "type": "response",
+          "requestId": "protocol-3",
+          "sessionId": "fd74bcb4a2e5417886b23da4723595d2",
+          "ok": true,
+          "result": {
+            "revision": 1,
+            "positionRevision": 1,
+            "positionToken": 1,
+            "idempotent": true
+          }
+        },
+        "load": {
+          "protocol": "lyra-reader",
+          "version": 3,
+          "type": "response",
+          "requestId": "protocol-4",
+          "sessionId": "fd74bcb4a2e5417886b23da4723595d2",
+          "ok": true,
+          "result": {
+            "revision": 1,
+            "positionRevision": 1,
+            "metadataRevision": 0,
+            "position": {
+              "spineIndex": 0,
+              "locator": {
+                "textOffset": 100
+              }
+            },
+            "positionToken": 1,
+            "bookmarksRevision": 0,
+            "bookmarkCount": 0,
+            "interactionToken": 1,
+            "preferences": {}
+          }
+        },
+        "file": {
+          "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\protocol-boundary\\bin\\data\\reader\\epub\\books\\7eb58d22e7676cdc07ad6a733ada580927a8682bcd28a8e43ca4c84c5907ebaf.json",
+          "raw": "{\r\n  \"version\": 1,\r\n  \"revision\": 1,\r\n  \"positionRevision\": 1,\r\n  \"metadataRevision\": 0,\r\n  \"interaction\": 1,\r\n  \"interactionOwner\": \"fd74bcb4a2e5417886b23da4723595d2\",\r\n  \"position\": {\r\n    \"spineIndex\": 0,\r\n    \"locator\": {\r\n      \"textOffset\": 100\r\n    }\r\n  },\r\n  \"positionToken\": 1,\r\n  \"positionSequence\": 1,\r\n  \"bookmarks\": [],\r\n  \"bookmarksRevision\": 0,\r\n  \"positionSession\": \"fd74bcb4a2e5417886b23da4723595d2\",\r\n  \"positionSavedAt\": \"2026-10-27T19:43:32.8365867Z\"\r\n}"
+        },
+        "boundary": "OBS contract: host ignores operationId; idempotency identity is session/token/sequence/value, and load omits positionSequence/positionOperationId; no claim this alone defeats token checks"
+      }
+    },
+    {
+      "id": "P03-SCOPE-EXACT-GLOBAL-ONLY",
+      "pass": true,
+      "expected": "specified behavior",
+      "actual": {
+        "rows": [
+          {
+            "scope": "book:foreign",
+            "response": {
+              "protocol": "lyra-reader",
+              "version": 3,
+              "type": "response",
+              "requestId": "protocol-6",
+              "sessionId": "fd74bcb4a2e5417886b23da4723595d2",
+              "ok": false,
+              "error": {
+                "code": "UNSUPPORTED_SCOPE",
+                "message": "只支持 global 偏好作用域"
+              }
+            }
+          },
+          {
+            "scope": "",
+            "response": {
+              "protocol": "lyra-reader",
+              "version": 3,
+              "type": "response",
+              "requestId": "protocol-7",
+              "sessionId": "fd74bcb4a2e5417886b23da4723595d2",
+              "ok": false,
+              "error": {
+                "code": "UNSUPPORTED_SCOPE",
+                "message": "只支持 global 偏好作用域"
+              }
+            }
+          },
+          {
+            "scope": null,
+            "response": {
+              "protocol": "lyra-reader",
+              "version": 3,
+              "type": "response",
+              "requestId": "protocol-8",
+              "sessionId": "fd74bcb4a2e5417886b23da4723595d2",
+              "ok": false,
+              "error": {
+                "code": "UNSUPPORTED_SCOPE",
+                "message": "只支持 global 偏好作用域"
+              }
+            }
+          }
+        ],
+        "before": {
+          "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\protocol-boundary\\bin\\data\\reader\\epub\\preferences.json",
+          "raw": null
+        },
+        "after": {
+          "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\protocol-boundary\\bin\\data\\reader\\epub\\preferences.json",
+          "raw": null
+        }
+      }
+    }
+  ]
+}

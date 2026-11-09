@@ -1,0 +1,1516 @@
+[
+  {
+    "direction": "JS->C#",
+    "name": "cross-recovered",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"app.ready\",\"sessionId\":\"e27d690bcfb043039267ae57a254366d\"}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "cross-recovered",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"hello\",\"requestId\":\"hello-bd908563-71a4-4e2b-9de1-3604a2b1966a\",\"sessionId\":\"e27d690bcfb043039267ae57a254366d\"}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "cross-recovered",
+    "time": 1700000000000,
+    "raw": "{\"type\":\"host.state\",\"sessionId\":\"e27d690bcfb043039267ae57a254366d\",\"activationEpoch\":1,\"navEpoch\":1}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "cross-recovered",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"hello-bd908563-71a4-4e2b-9de1-3604a2b1966a\",\"sessionId\":\"e27d690bcfb043039267ae57a254366d\",\"ok\":true,\"result\":{\"protocolVersion\":3,\"appVersion\":\"1.0.0.0\",\"activationEpoch\":1,\"navEpoch\":1,\"capabilities\":{\"persistentState\":true,\"preferences\":true,\"bookmarks\":true,\"bookIdentity\":\"sha256\",\"atomicWrites\":true,\"interactionTokens\":true,\"preferenceGrants\":true,\"positionOperations\":true,\"finalizeAck\":true,\"fieldResults\":true,\"positionSubmitRevision\":true,\"frozenFinalize\":true,\"protocolVersion\":3,\"bookmarkPageSize\":50}}}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "cross-recovered",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"app.ready\",\"sessionId\":\"e27d690bcfb043039267ae57a254366d\"}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "cross-recovered",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"book.begin\",\"sessionId\":\"e27d690bcfb043039267ae57a254366d\",\"loadId\":\"load-loyw3v28-s3nj\",\"name\":\"A.epub\",\"size\":2}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "cross-recovered",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"state.load\",\"requestId\":\"req-9ffcda86-73a4-4bf2-b2ca-39cee3e8e0fb\",\"sessionId\":\"e27d690bcfb043039267ae57a254366d\",\"bookId\":\"sha256:0ad3e8e2a90ff89566cacebc2f1598b42bb038c6a82a4e8b4789fc2a669a1ec2\"}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "cross-recovered",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"req-9ffcda86-73a4-4bf2-b2ca-39cee3e8e0fb\",\"sessionId\":\"e27d690bcfb043039267ae57a254366d\",\"ok\":true,\"result\":{\"revision\":0,\"positionRevision\":0,\"metadataRevision\":0,\"position\":null,\"positionToken\":0,\"bookmarksRevision\":0,\"bookmarkCount\":0,\"interactionToken\":0,\"preferences\":{}}}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "cross-recovered",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"bookmark.list\",\"requestId\":\"req-05c6d2da-252a-4f48-9e36-c189a94bca42\",\"sessionId\":\"e27d690bcfb043039267ae57a254366d\",\"bookId\":\"sha256:0ad3e8e2a90ff89566cacebc2f1598b42bb038c6a82a4e8b4789fc2a669a1ec2\",\"cursor\":null,\"limit\":50}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "cross-recovered",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"req-05c6d2da-252a-4f48-9e36-c189a94bca42\",\"sessionId\":\"e27d690bcfb043039267ae57a254366d\",\"ok\":true,\"result\":{\"bookmarks\":[],\"nextCursor\":null,\"revision\":0,\"total\":0}}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "cross-recovered",
+    "time": 1700000000020,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"book.begin\",\"sessionId\":\"e27d690bcfb043039267ae57a254366d\",\"loadId\":\"load-loyw3v28-s3nj\",\"name\":\"A.epub\",\"size\":2}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "cross-recovered",
+    "time": 1700000000020,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"book.ready\",\"sessionId\":\"e27d690bcfb043039267ae57a254366d\",\"loadId\":\"load-loyw3v28-s3nj\"}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "cross-recovered",
+    "time": 1700000000020,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"state.interact\",\"requestId\":\"req-688cbf6b-7043-42f7-898a-613448d8a9a0\",\"sessionId\":\"e27d690bcfb043039267ae57a254366d\",\"bookId\":\"sha256:0ad3e8e2a90ff89566cacebc2f1598b42bb038c6a82a4e8b4789fc2a669a1ec2\",\"activationEpoch\":1,\"navEpoch\":1}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "cross-recovered",
+    "time": 1700000000020,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"req-688cbf6b-7043-42f7-898a-613448d8a9a0\",\"sessionId\":\"e27d690bcfb043039267ae57a254366d\",\"ok\":true,\"result\":{\"interactionToken\":1}}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "cross-recovered",
+    "time": 1700000000420,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"state.savePosition\",\"requestId\":\"req-afa3ffe7-55b6-4ff4-8b65-2cbb23501f90\",\"sessionId\":\"e27d690bcfb043039267ae57a254366d\",\"bookId\":\"sha256:0ad3e8e2a90ff89566cacebc2f1598b42bb038c6a82a4e8b4789fc2a669a1ec2\",\"position\":{\"spineHref\":\"a.xhtml\",\"spineIndex\":0,\"locator\":{\"textOffset\":100,\"chapterFraction\":0.05263157894736842},\"chapterFraction\":0.05263157894736842,\"savedAt\":\"2023-11-14T22:13:20.020Z\"},\"interactionToken\":1,\"sequence\":1700000000020000,\"operationId\":\"pos-op-754de32f-9bd3-4539-b7bd-3392542b809b\"}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "cross-recovered",
+    "time": 1700000000420,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"req-afa3ffe7-55b6-4ff4-8b65-2cbb23501f90\",\"sessionId\":\"e27d690bcfb043039267ae57a254366d\",\"ok\":false,\"error\":{\"code\":\"WRITE_FAILED\",\"message\":\"\\u72B6\\u6001\\u5199\\u5165\\u5931\\u8D25\\uFF1AAccess to the path is denied.\"}}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "cross-recovered",
+    "time": 1700000000420,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"book.begin\",\"sessionId\":\"e27d690bcfb043039267ae57a254366d\",\"loadId\":\"load-loyw3vdw-z8rn\",\"name\":\"B.epub\",\"size\":2}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "cross-recovered",
+    "time": 1700000000420,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"state.savePosition\",\"requestId\":\"req-1bcb4134-21d0-4fc7-a078-24a1509f6adf\",\"sessionId\":\"e27d690bcfb043039267ae57a254366d\",\"bookId\":\"sha256:0ad3e8e2a90ff89566cacebc2f1598b42bb038c6a82a4e8b4789fc2a669a1ec2\",\"position\":{\"spineHref\":\"a.xhtml\",\"spineIndex\":0,\"locator\":{\"textOffset\":100,\"chapterFraction\":0.05263157894736842},\"chapterFraction\":0.05263157894736842,\"savedAt\":\"2023-11-14T22:13:20.020Z\"},\"interactionToken\":1,\"sequence\":1700000000020000,\"operationId\":\"pos-op-754de32f-9bd3-4539-b7bd-3392542b809b\"}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "cross-recovered",
+    "time": 1700000000420,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"req-1bcb4134-21d0-4fc7-a078-24a1509f6adf\",\"sessionId\":\"e27d690bcfb043039267ae57a254366d\",\"ok\":false,\"error\":{\"code\":\"WRITE_FAILED\",\"message\":\"\\u72B6\\u6001\\u5199\\u5165\\u5931\\u8D25\\uFF1AAccess to the path is denied.\"}}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "cross-recovered",
+    "time": 1700000000420,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"state.load\",\"requestId\":\"req-b96c1b89-4b1c-47d6-bd8c-ebe03f84dfb3\",\"sessionId\":\"e27d690bcfb043039267ae57a254366d\",\"bookId\":\"sha256:d6586cd83772a5c5316fee57bc4c3d57a49488d7e1310d79e7743eda36317e32\"}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "cross-recovered",
+    "time": 1700000000420,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"req-b96c1b89-4b1c-47d6-bd8c-ebe03f84dfb3\",\"sessionId\":\"e27d690bcfb043039267ae57a254366d\",\"ok\":true,\"result\":{\"revision\":0,\"positionRevision\":0,\"metadataRevision\":0,\"position\":null,\"positionToken\":0,\"bookmarksRevision\":0,\"bookmarkCount\":0,\"interactionToken\":0,\"preferences\":{}}}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "cross-recovered",
+    "time": 1700000000420,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"bookmark.list\",\"requestId\":\"req-544370ce-a135-43a1-b2c7-6a7405da385c\",\"sessionId\":\"e27d690bcfb043039267ae57a254366d\",\"bookId\":\"sha256:d6586cd83772a5c5316fee57bc4c3d57a49488d7e1310d79e7743eda36317e32\",\"cursor\":null,\"limit\":50}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "cross-recovered",
+    "time": 1700000000420,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"req-544370ce-a135-43a1-b2c7-6a7405da385c\",\"sessionId\":\"e27d690bcfb043039267ae57a254366d\",\"ok\":true,\"result\":{\"bookmarks\":[],\"nextCursor\":null,\"revision\":0,\"total\":0}}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "cross-recovered",
+    "time": 1700000000440,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"book.begin\",\"sessionId\":\"e27d690bcfb043039267ae57a254366d\",\"loadId\":\"load-loyw3vdw-z8rn\",\"name\":\"B.epub\",\"size\":2}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "cross-recovered",
+    "time": 1700000000440,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"book.ready\",\"sessionId\":\"e27d690bcfb043039267ae57a254366d\",\"loadId\":\"load-loyw3vdw-z8rn\"}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "cross-recovered",
+    "time": 1700000000440,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"state.interact\",\"requestId\":\"req-3ee23046-5962-4ef7-b949-c1f1b1b39d2e\",\"sessionId\":\"e27d690bcfb043039267ae57a254366d\",\"bookId\":\"sha256:d6586cd83772a5c5316fee57bc4c3d57a49488d7e1310d79e7743eda36317e32\",\"activationEpoch\":1,\"navEpoch\":1}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "cross-recovered",
+    "time": 1700000000440,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"req-3ee23046-5962-4ef7-b949-c1f1b1b39d2e\",\"sessionId\":\"e27d690bcfb043039267ae57a254366d\",\"ok\":true,\"result\":{\"interactionToken\":1}}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "cross-recovered",
+    "time": 1700000000840,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"state.savePosition\",\"requestId\":\"req-231fa8c8-ed2b-4d05-9800-5395fb87972a\",\"sessionId\":\"e27d690bcfb043039267ae57a254366d\",\"bookId\":\"sha256:d6586cd83772a5c5316fee57bc4c3d57a49488d7e1310d79e7743eda36317e32\",\"position\":{\"spineHref\":\"a.xhtml\",\"spineIndex\":0,\"locator\":{\"textOffset\":100,\"chapterFraction\":0.05263157894736842},\"chapterFraction\":0.05263157894736842,\"savedAt\":\"2023-11-14T22:13:20.440Z\"},\"interactionToken\":1,\"sequence\":1700000000440000,\"operationId\":\"pos-op-0ca50976-0b0c-4f99-aa2e-4cd353882610\"}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "cross-recovered",
+    "time": 1700000000840,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"req-231fa8c8-ed2b-4d05-9800-5395fb87972a\",\"sessionId\":\"e27d690bcfb043039267ae57a254366d\",\"ok\":true,\"result\":{\"revision\":1,\"positionRevision\":1,\"positionToken\":1}}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "cross-recovered",
+    "time": 1700000000840,
+    "raw": "{\"type\":\"host.finalized\",\"requestId\":\"9a432a3b5ec5451088fd64f8862a5079\",\"sessionId\":\"e27d690bcfb043039267ae57a254366d\",\"ok\":false,\"revision\":1,\"closeDiagnostics\":[{\"bookId\":\"sha256:0ad3e8e2a90ff89566cacebc2f1598b42bb038c6a82a4e8b4789fc2a669a1ec2\",\"opVersion\":1,\"sequence\":1700000000020000,\"code\":\"WRITE_FAILED\"}]}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "cross-newer-interaction",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"app.ready\",\"sessionId\":\"dfb6aa3a5bcc4ee78faab53953aa7871\"}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "cross-newer-interaction",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"hello\",\"requestId\":\"hello-a6bd5ed2-99fc-485b-b1ab-db89f398f708\",\"sessionId\":\"dfb6aa3a5bcc4ee78faab53953aa7871\"}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "cross-newer-interaction",
+    "time": 1700000000000,
+    "raw": "{\"type\":\"host.state\",\"sessionId\":\"dfb6aa3a5bcc4ee78faab53953aa7871\",\"activationEpoch\":1,\"navEpoch\":1}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "cross-newer-interaction",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"hello-a6bd5ed2-99fc-485b-b1ab-db89f398f708\",\"sessionId\":\"dfb6aa3a5bcc4ee78faab53953aa7871\",\"ok\":true,\"result\":{\"protocolVersion\":3,\"appVersion\":\"1.0.0.0\",\"activationEpoch\":1,\"navEpoch\":1,\"capabilities\":{\"persistentState\":true,\"preferences\":true,\"bookmarks\":true,\"bookIdentity\":\"sha256\",\"atomicWrites\":true,\"interactionTokens\":true,\"preferenceGrants\":true,\"positionOperations\":true,\"finalizeAck\":true,\"fieldResults\":true,\"positionSubmitRevision\":true,\"frozenFinalize\":true,\"protocolVersion\":3,\"bookmarkPageSize\":50}}}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "cross-newer-interaction",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"app.ready\",\"sessionId\":\"dfb6aa3a5bcc4ee78faab53953aa7871\"}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "cross-newer-interaction",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"book.begin\",\"sessionId\":\"dfb6aa3a5bcc4ee78faab53953aa7871\",\"loadId\":\"load-loyw3v28-rgfl\",\"name\":\"A.epub\",\"size\":2}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "cross-newer-interaction",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"state.load\",\"requestId\":\"req-cd303ece-9a24-400c-a984-2a204b65e767\",\"sessionId\":\"dfb6aa3a5bcc4ee78faab53953aa7871\",\"bookId\":\"sha256:5a19fa55fb2500a725a69f8f5c04c4ed72028eed893186e028b9f1b7470ad79b\"}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "cross-newer-interaction",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"req-cd303ece-9a24-400c-a984-2a204b65e767\",\"sessionId\":\"dfb6aa3a5bcc4ee78faab53953aa7871\",\"ok\":true,\"result\":{\"revision\":0,\"positionRevision\":0,\"metadataRevision\":0,\"position\":null,\"positionToken\":0,\"bookmarksRevision\":0,\"bookmarkCount\":0,\"interactionToken\":0,\"preferences\":{}}}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "cross-newer-interaction",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"bookmark.list\",\"requestId\":\"req-84086e6c-d8ea-4b54-a768-9333a55016de\",\"sessionId\":\"dfb6aa3a5bcc4ee78faab53953aa7871\",\"bookId\":\"sha256:5a19fa55fb2500a725a69f8f5c04c4ed72028eed893186e028b9f1b7470ad79b\",\"cursor\":null,\"limit\":50}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "cross-newer-interaction",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"req-84086e6c-d8ea-4b54-a768-9333a55016de\",\"sessionId\":\"dfb6aa3a5bcc4ee78faab53953aa7871\",\"ok\":true,\"result\":{\"bookmarks\":[],\"nextCursor\":null,\"revision\":0,\"total\":0}}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "cross-newer-interaction",
+    "time": 1700000000020,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"book.begin\",\"sessionId\":\"dfb6aa3a5bcc4ee78faab53953aa7871\",\"loadId\":\"load-loyw3v28-rgfl\",\"name\":\"A.epub\",\"size\":2}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "cross-newer-interaction",
+    "time": 1700000000020,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"book.ready\",\"sessionId\":\"dfb6aa3a5bcc4ee78faab53953aa7871\",\"loadId\":\"load-loyw3v28-rgfl\"}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "cross-newer-interaction",
+    "time": 1700000000020,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"state.interact\",\"requestId\":\"req-64066fbf-7db3-4471-8c3b-275a15840a6e\",\"sessionId\":\"dfb6aa3a5bcc4ee78faab53953aa7871\",\"bookId\":\"sha256:5a19fa55fb2500a725a69f8f5c04c4ed72028eed893186e028b9f1b7470ad79b\",\"activationEpoch\":1,\"navEpoch\":1}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "cross-newer-interaction",
+    "time": 1700000000020,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"req-64066fbf-7db3-4471-8c3b-275a15840a6e\",\"sessionId\":\"dfb6aa3a5bcc4ee78faab53953aa7871\",\"ok\":true,\"result\":{\"interactionToken\":1}}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "cross-newer-interaction",
+    "time": 1700000000420,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"state.savePosition\",\"requestId\":\"req-95198430-a24d-4ba6-b87d-ee5917271576\",\"sessionId\":\"dfb6aa3a5bcc4ee78faab53953aa7871\",\"bookId\":\"sha256:5a19fa55fb2500a725a69f8f5c04c4ed72028eed893186e028b9f1b7470ad79b\",\"position\":{\"spineHref\":\"a.xhtml\",\"spineIndex\":0,\"locator\":{\"textOffset\":100,\"chapterFraction\":0.05263157894736842},\"chapterFraction\":0.05263157894736842,\"savedAt\":\"2023-11-14T22:13:20.020Z\"},\"interactionToken\":1,\"sequence\":1700000000020000,\"operationId\":\"pos-op-e95ba8f7-b58c-44d7-bea3-d79336616ae4\"}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "cross-newer-interaction",
+    "time": 1700000000420,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"req-95198430-a24d-4ba6-b87d-ee5917271576\",\"sessionId\":\"dfb6aa3a5bcc4ee78faab53953aa7871\",\"ok\":false,\"error\":{\"code\":\"WRITE_FAILED\",\"message\":\"\\u72B6\\u6001\\u5199\\u5165\\u5931\\u8D25\\uFF1AAccess to the path is denied.\"}}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "cross-newer-interaction",
+    "time": 1700000000420,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"book.begin\",\"sessionId\":\"dfb6aa3a5bcc4ee78faab53953aa7871\",\"loadId\":\"load-loyw3vdw-51mh\",\"name\":\"B.epub\",\"size\":2}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "cross-newer-interaction",
+    "time": 1700000000420,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"state.savePosition\",\"requestId\":\"req-f0568cb0-72e8-435b-af92-0542a42ea1c0\",\"sessionId\":\"dfb6aa3a5bcc4ee78faab53953aa7871\",\"bookId\":\"sha256:5a19fa55fb2500a725a69f8f5c04c4ed72028eed893186e028b9f1b7470ad79b\",\"position\":{\"spineHref\":\"a.xhtml\",\"spineIndex\":0,\"locator\":{\"textOffset\":100,\"chapterFraction\":0.05263157894736842},\"chapterFraction\":0.05263157894736842,\"savedAt\":\"2023-11-14T22:13:20.020Z\"},\"interactionToken\":1,\"sequence\":1700000000020000,\"operationId\":\"pos-op-e95ba8f7-b58c-44d7-bea3-d79336616ae4\"}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "cross-newer-interaction",
+    "time": 1700000000420,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"req-f0568cb0-72e8-435b-af92-0542a42ea1c0\",\"sessionId\":\"dfb6aa3a5bcc4ee78faab53953aa7871\",\"ok\":false,\"error\":{\"code\":\"WRITE_FAILED\",\"message\":\"\\u72B6\\u6001\\u5199\\u5165\\u5931\\u8D25\\uFF1AAccess to the path is denied.\"}}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "cross-newer-interaction",
+    "time": 1700000000420,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"state.load\",\"requestId\":\"req-c4e7462e-b4e8-45a9-b180-243c84834c18\",\"sessionId\":\"dfb6aa3a5bcc4ee78faab53953aa7871\",\"bookId\":\"sha256:530c973cfd47b092a45aaa61ade64d2ca848be6a691d807b21d9a805aee8408a\"}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "cross-newer-interaction",
+    "time": 1700000000420,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"req-c4e7462e-b4e8-45a9-b180-243c84834c18\",\"sessionId\":\"dfb6aa3a5bcc4ee78faab53953aa7871\",\"ok\":true,\"result\":{\"revision\":0,\"positionRevision\":0,\"metadataRevision\":0,\"position\":null,\"positionToken\":0,\"bookmarksRevision\":0,\"bookmarkCount\":0,\"interactionToken\":0,\"preferences\":{}}}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "cross-newer-interaction",
+    "time": 1700000000420,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"bookmark.list\",\"requestId\":\"req-130aea88-d0c8-46f3-b850-511c5037ede2\",\"sessionId\":\"dfb6aa3a5bcc4ee78faab53953aa7871\",\"bookId\":\"sha256:530c973cfd47b092a45aaa61ade64d2ca848be6a691d807b21d9a805aee8408a\",\"cursor\":null,\"limit\":50}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "cross-newer-interaction",
+    "time": 1700000000420,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"req-130aea88-d0c8-46f3-b850-511c5037ede2\",\"sessionId\":\"dfb6aa3a5bcc4ee78faab53953aa7871\",\"ok\":true,\"result\":{\"bookmarks\":[],\"nextCursor\":null,\"revision\":0,\"total\":0}}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "cross-newer-interaction",
+    "time": 1700000000440,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"book.begin\",\"sessionId\":\"dfb6aa3a5bcc4ee78faab53953aa7871\",\"loadId\":\"load-loyw3vdw-51mh\",\"name\":\"B.epub\",\"size\":2}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "cross-newer-interaction",
+    "time": 1700000000440,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"book.ready\",\"sessionId\":\"dfb6aa3a5bcc4ee78faab53953aa7871\",\"loadId\":\"load-loyw3vdw-51mh\"}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "cross-newer-interaction",
+    "time": 1700000000440,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"state.interact\",\"requestId\":\"req-2db66b88-bc26-4cff-b5ae-3890521d9a24\",\"sessionId\":\"dfb6aa3a5bcc4ee78faab53953aa7871\",\"bookId\":\"sha256:530c973cfd47b092a45aaa61ade64d2ca848be6a691d807b21d9a805aee8408a\",\"activationEpoch\":1,\"navEpoch\":1}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "cross-newer-interaction",
+    "time": 1700000000440,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"req-2db66b88-bc26-4cff-b5ae-3890521d9a24\",\"sessionId\":\"dfb6aa3a5bcc4ee78faab53953aa7871\",\"ok\":true,\"result\":{\"interactionToken\":1}}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "cross-newer-interaction",
+    "time": 1700000000840,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"state.savePosition\",\"requestId\":\"req-f4e74a01-5bcd-46b4-9745-ba42eeba4061\",\"sessionId\":\"dfb6aa3a5bcc4ee78faab53953aa7871\",\"bookId\":\"sha256:530c973cfd47b092a45aaa61ade64d2ca848be6a691d807b21d9a805aee8408a\",\"position\":{\"spineHref\":\"a.xhtml\",\"spineIndex\":0,\"locator\":{\"textOffset\":100,\"chapterFraction\":0.05263157894736842},\"chapterFraction\":0.05263157894736842,\"savedAt\":\"2023-11-14T22:13:20.440Z\"},\"interactionToken\":1,\"sequence\":1700000000440000,\"operationId\":\"pos-op-9e491548-f6c2-47f8-83b2-a9464c2c9094\"}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "cross-newer-interaction",
+    "time": 1700000000840,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"req-f4e74a01-5bcd-46b4-9745-ba42eeba4061\",\"sessionId\":\"dfb6aa3a5bcc4ee78faab53953aa7871\",\"ok\":true,\"result\":{\"revision\":1,\"positionRevision\":1,\"positionToken\":1}}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "cross-other-newer-interaction",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"app.ready\",\"sessionId\":\"c462f5077d984cefb6f7921c633df1b9\"}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "cross-other-newer-interaction",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"hello\",\"requestId\":\"hello-fddfd9f1-8509-470a-a29e-45e304ba48eb\",\"sessionId\":\"c462f5077d984cefb6f7921c633df1b9\"}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "cross-other-newer-interaction",
+    "time": 1700000000000,
+    "raw": "{\"type\":\"host.state\",\"sessionId\":\"c462f5077d984cefb6f7921c633df1b9\",\"activationEpoch\":1,\"navEpoch\":1}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "cross-other-newer-interaction",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"hello-fddfd9f1-8509-470a-a29e-45e304ba48eb\",\"sessionId\":\"c462f5077d984cefb6f7921c633df1b9\",\"ok\":true,\"result\":{\"protocolVersion\":3,\"appVersion\":\"1.0.0.0\",\"activationEpoch\":1,\"navEpoch\":1,\"capabilities\":{\"persistentState\":true,\"preferences\":true,\"bookmarks\":true,\"bookIdentity\":\"sha256\",\"atomicWrites\":true,\"interactionTokens\":true,\"preferenceGrants\":true,\"positionOperations\":true,\"finalizeAck\":true,\"fieldResults\":true,\"positionSubmitRevision\":true,\"frozenFinalize\":true,\"protocolVersion\":3,\"bookmarkPageSize\":50}}}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "cross-other-newer-interaction",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"app.ready\",\"sessionId\":\"c462f5077d984cefb6f7921c633df1b9\"}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "cross-other-newer-interaction",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"state.interact\",\"requestId\":\"req-5f4c80fe-cb15-4353-a395-9805c7442dd2\",\"sessionId\":\"c462f5077d984cefb6f7921c633df1b9\",\"bookId\":\"sha256:5a19fa55fb2500a725a69f8f5c04c4ed72028eed893186e028b9f1b7470ad79b\",\"activationEpoch\":1,\"navEpoch\":1}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "cross-other-newer-interaction",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"req-5f4c80fe-cb15-4353-a395-9805c7442dd2\",\"sessionId\":\"c462f5077d984cefb6f7921c633df1b9\",\"ok\":true,\"result\":{\"interactionToken\":2}}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "cross-newer-interaction",
+    "time": 1700000000840,
+    "raw": "{\"type\":\"host.finalized\",\"requestId\":\"bebe72c2daee477da74dbbf99d395d75\",\"sessionId\":\"dfb6aa3a5bcc4ee78faab53953aa7871\",\"ok\":false,\"revision\":1,\"closeDiagnostics\":[{\"bookId\":\"sha256:5a19fa55fb2500a725a69f8f5c04c4ed72028eed893186e028b9f1b7470ad79b\",\"opVersion\":1,\"sequence\":1700000000020000,\"code\":\"WRITE_FAILED\"}]}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "cross-newer-position",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"app.ready\",\"sessionId\":\"e2a7d7e90e8942259d88dbdd3bd2f891\"}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "cross-newer-position",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"hello\",\"requestId\":\"hello-e484cb58-783b-4e6e-82e2-b6ea438f5a29\",\"sessionId\":\"e2a7d7e90e8942259d88dbdd3bd2f891\"}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "cross-newer-position",
+    "time": 1700000000000,
+    "raw": "{\"type\":\"host.state\",\"sessionId\":\"e2a7d7e90e8942259d88dbdd3bd2f891\",\"activationEpoch\":1,\"navEpoch\":1}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "cross-newer-position",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"hello-e484cb58-783b-4e6e-82e2-b6ea438f5a29\",\"sessionId\":\"e2a7d7e90e8942259d88dbdd3bd2f891\",\"ok\":true,\"result\":{\"protocolVersion\":3,\"appVersion\":\"1.0.0.0\",\"activationEpoch\":1,\"navEpoch\":1,\"capabilities\":{\"persistentState\":true,\"preferences\":true,\"bookmarks\":true,\"bookIdentity\":\"sha256\",\"atomicWrites\":true,\"interactionTokens\":true,\"preferenceGrants\":true,\"positionOperations\":true,\"finalizeAck\":true,\"fieldResults\":true,\"positionSubmitRevision\":true,\"frozenFinalize\":true,\"protocolVersion\":3,\"bookmarkPageSize\":50}}}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "cross-newer-position",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"app.ready\",\"sessionId\":\"e2a7d7e90e8942259d88dbdd3bd2f891\"}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "cross-newer-position",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"book.begin\",\"sessionId\":\"e2a7d7e90e8942259d88dbdd3bd2f891\",\"loadId\":\"load-loyw3v28-z4fk\",\"name\":\"A.epub\",\"size\":2}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "cross-newer-position",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"state.load\",\"requestId\":\"req-17a5055d-9d0b-48e5-88f3-50ebd9a34176\",\"sessionId\":\"e2a7d7e90e8942259d88dbdd3bd2f891\",\"bookId\":\"sha256:70d700d15322e7c085b9f3a129df951c71d65aaf769abb565dd880d93b54918e\"}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "cross-newer-position",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"req-17a5055d-9d0b-48e5-88f3-50ebd9a34176\",\"sessionId\":\"e2a7d7e90e8942259d88dbdd3bd2f891\",\"ok\":true,\"result\":{\"revision\":0,\"positionRevision\":0,\"metadataRevision\":0,\"position\":null,\"positionToken\":0,\"bookmarksRevision\":0,\"bookmarkCount\":0,\"interactionToken\":0,\"preferences\":{}}}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "cross-newer-position",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"bookmark.list\",\"requestId\":\"req-bee3c139-1a60-4c48-a976-1ccd76594e94\",\"sessionId\":\"e2a7d7e90e8942259d88dbdd3bd2f891\",\"bookId\":\"sha256:70d700d15322e7c085b9f3a129df951c71d65aaf769abb565dd880d93b54918e\",\"cursor\":null,\"limit\":50}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "cross-newer-position",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"req-bee3c139-1a60-4c48-a976-1ccd76594e94\",\"sessionId\":\"e2a7d7e90e8942259d88dbdd3bd2f891\",\"ok\":true,\"result\":{\"bookmarks\":[],\"nextCursor\":null,\"revision\":0,\"total\":0}}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "cross-newer-position",
+    "time": 1700000000020,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"book.begin\",\"sessionId\":\"e2a7d7e90e8942259d88dbdd3bd2f891\",\"loadId\":\"load-loyw3v28-z4fk\",\"name\":\"A.epub\",\"size\":2}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "cross-newer-position",
+    "time": 1700000000020,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"book.ready\",\"sessionId\":\"e2a7d7e90e8942259d88dbdd3bd2f891\",\"loadId\":\"load-loyw3v28-z4fk\"}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "cross-newer-position",
+    "time": 1700000000020,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"state.interact\",\"requestId\":\"req-9f80f98f-5001-4bb0-85c1-dcf62e100fb3\",\"sessionId\":\"e2a7d7e90e8942259d88dbdd3bd2f891\",\"bookId\":\"sha256:70d700d15322e7c085b9f3a129df951c71d65aaf769abb565dd880d93b54918e\",\"activationEpoch\":1,\"navEpoch\":1}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "cross-newer-position",
+    "time": 1700000000020,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"req-9f80f98f-5001-4bb0-85c1-dcf62e100fb3\",\"sessionId\":\"e2a7d7e90e8942259d88dbdd3bd2f891\",\"ok\":true,\"result\":{\"interactionToken\":1}}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "cross-newer-position",
+    "time": 1700000000420,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"state.savePosition\",\"requestId\":\"req-3af4439e-5990-4154-8918-10c3fbaa1939\",\"sessionId\":\"e2a7d7e90e8942259d88dbdd3bd2f891\",\"bookId\":\"sha256:70d700d15322e7c085b9f3a129df951c71d65aaf769abb565dd880d93b54918e\",\"position\":{\"spineHref\":\"a.xhtml\",\"spineIndex\":0,\"locator\":{\"textOffset\":100,\"chapterFraction\":0.05263157894736842},\"chapterFraction\":0.05263157894736842,\"savedAt\":\"2023-11-14T22:13:20.020Z\"},\"interactionToken\":1,\"sequence\":1700000000020000,\"operationId\":\"pos-op-b9cfbf91-894d-469d-82dc-953faba8ba49\"}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "cross-newer-position",
+    "time": 1700000000420,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"req-3af4439e-5990-4154-8918-10c3fbaa1939\",\"sessionId\":\"e2a7d7e90e8942259d88dbdd3bd2f891\",\"ok\":false,\"error\":{\"code\":\"WRITE_FAILED\",\"message\":\"\\u72B6\\u6001\\u5199\\u5165\\u5931\\u8D25\\uFF1AAccess to the path is denied.\"}}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "cross-newer-position",
+    "time": 1700000000420,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"book.begin\",\"sessionId\":\"e2a7d7e90e8942259d88dbdd3bd2f891\",\"loadId\":\"load-loyw3vdw-905l\",\"name\":\"B.epub\",\"size\":2}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "cross-newer-position",
+    "time": 1700000000420,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"state.savePosition\",\"requestId\":\"req-b96deb91-0ef8-46b0-843e-4d7b8fa54b77\",\"sessionId\":\"e2a7d7e90e8942259d88dbdd3bd2f891\",\"bookId\":\"sha256:70d700d15322e7c085b9f3a129df951c71d65aaf769abb565dd880d93b54918e\",\"position\":{\"spineHref\":\"a.xhtml\",\"spineIndex\":0,\"locator\":{\"textOffset\":100,\"chapterFraction\":0.05263157894736842},\"chapterFraction\":0.05263157894736842,\"savedAt\":\"2023-11-14T22:13:20.020Z\"},\"interactionToken\":1,\"sequence\":1700000000020000,\"operationId\":\"pos-op-b9cfbf91-894d-469d-82dc-953faba8ba49\"}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "cross-newer-position",
+    "time": 1700000000420,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"req-b96deb91-0ef8-46b0-843e-4d7b8fa54b77\",\"sessionId\":\"e2a7d7e90e8942259d88dbdd3bd2f891\",\"ok\":false,\"error\":{\"code\":\"WRITE_FAILED\",\"message\":\"\\u72B6\\u6001\\u5199\\u5165\\u5931\\u8D25\\uFF1AAccess to the path is denied.\"}}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "cross-newer-position",
+    "time": 1700000000420,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"state.load\",\"requestId\":\"req-78b2f3c6-31f9-4480-9247-72eda240d371\",\"sessionId\":\"e2a7d7e90e8942259d88dbdd3bd2f891\",\"bookId\":\"sha256:f21739899e891ba063ebd95f34e51600ca9fe1245ee3b50384b2b542ce816178\"}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "cross-newer-position",
+    "time": 1700000000420,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"req-78b2f3c6-31f9-4480-9247-72eda240d371\",\"sessionId\":\"e2a7d7e90e8942259d88dbdd3bd2f891\",\"ok\":true,\"result\":{\"revision\":0,\"positionRevision\":0,\"metadataRevision\":0,\"position\":null,\"positionToken\":0,\"bookmarksRevision\":0,\"bookmarkCount\":0,\"interactionToken\":0,\"preferences\":{}}}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "cross-newer-position",
+    "time": 1700000000420,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"bookmark.list\",\"requestId\":\"req-72392bde-04c0-4fe8-96ab-cb78714577dd\",\"sessionId\":\"e2a7d7e90e8942259d88dbdd3bd2f891\",\"bookId\":\"sha256:f21739899e891ba063ebd95f34e51600ca9fe1245ee3b50384b2b542ce816178\",\"cursor\":null,\"limit\":50}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "cross-newer-position",
+    "time": 1700000000420,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"req-72392bde-04c0-4fe8-96ab-cb78714577dd\",\"sessionId\":\"e2a7d7e90e8942259d88dbdd3bd2f891\",\"ok\":true,\"result\":{\"bookmarks\":[],\"nextCursor\":null,\"revision\":0,\"total\":0}}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "cross-newer-position",
+    "time": 1700000000440,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"book.begin\",\"sessionId\":\"e2a7d7e90e8942259d88dbdd3bd2f891\",\"loadId\":\"load-loyw3vdw-905l\",\"name\":\"B.epub\",\"size\":2}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "cross-newer-position",
+    "time": 1700000000440,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"book.ready\",\"sessionId\":\"e2a7d7e90e8942259d88dbdd3bd2f891\",\"loadId\":\"load-loyw3vdw-905l\"}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "cross-newer-position",
+    "time": 1700000000440,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"state.interact\",\"requestId\":\"req-7ccd4d68-bf23-488a-9dc5-a39c61d37216\",\"sessionId\":\"e2a7d7e90e8942259d88dbdd3bd2f891\",\"bookId\":\"sha256:f21739899e891ba063ebd95f34e51600ca9fe1245ee3b50384b2b542ce816178\",\"activationEpoch\":1,\"navEpoch\":1}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "cross-newer-position",
+    "time": 1700000000440,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"req-7ccd4d68-bf23-488a-9dc5-a39c61d37216\",\"sessionId\":\"e2a7d7e90e8942259d88dbdd3bd2f891\",\"ok\":true,\"result\":{\"interactionToken\":1}}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "cross-newer-position",
+    "time": 1700000000840,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"state.savePosition\",\"requestId\":\"req-35138401-f216-43eb-801e-cb51b70da619\",\"sessionId\":\"e2a7d7e90e8942259d88dbdd3bd2f891\",\"bookId\":\"sha256:f21739899e891ba063ebd95f34e51600ca9fe1245ee3b50384b2b542ce816178\",\"position\":{\"spineHref\":\"a.xhtml\",\"spineIndex\":0,\"locator\":{\"textOffset\":100,\"chapterFraction\":0.05263157894736842},\"chapterFraction\":0.05263157894736842,\"savedAt\":\"2023-11-14T22:13:20.440Z\"},\"interactionToken\":1,\"sequence\":1700000000440000,\"operationId\":\"pos-op-69563a3b-41d2-4c4f-b2be-ca61f8e0bbad\"}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "cross-newer-position",
+    "time": 1700000000840,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"req-35138401-f216-43eb-801e-cb51b70da619\",\"sessionId\":\"e2a7d7e90e8942259d88dbdd3bd2f891\",\"ok\":true,\"result\":{\"revision\":1,\"positionRevision\":1,\"positionToken\":1}}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "cross-other-newer-position",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"app.ready\",\"sessionId\":\"d7faaddb92524c22b82cfbc0e4cdad83\"}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "cross-other-newer-position",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"hello\",\"requestId\":\"hello-88871a22-ed81-479e-80fd-f9dfe90aaf60\",\"sessionId\":\"d7faaddb92524c22b82cfbc0e4cdad83\"}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "cross-other-newer-position",
+    "time": 1700000000000,
+    "raw": "{\"type\":\"host.state\",\"sessionId\":\"d7faaddb92524c22b82cfbc0e4cdad83\",\"activationEpoch\":1,\"navEpoch\":1}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "cross-other-newer-position",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"hello-88871a22-ed81-479e-80fd-f9dfe90aaf60\",\"sessionId\":\"d7faaddb92524c22b82cfbc0e4cdad83\",\"ok\":true,\"result\":{\"protocolVersion\":3,\"appVersion\":\"1.0.0.0\",\"activationEpoch\":1,\"navEpoch\":1,\"capabilities\":{\"persistentState\":true,\"preferences\":true,\"bookmarks\":true,\"bookIdentity\":\"sha256\",\"atomicWrites\":true,\"interactionTokens\":true,\"preferenceGrants\":true,\"positionOperations\":true,\"finalizeAck\":true,\"fieldResults\":true,\"positionSubmitRevision\":true,\"frozenFinalize\":true,\"protocolVersion\":3,\"bookmarkPageSize\":50}}}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "cross-other-newer-position",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"app.ready\",\"sessionId\":\"d7faaddb92524c22b82cfbc0e4cdad83\"}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "cross-other-newer-position",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"state.interact\",\"requestId\":\"req-57f9f80d-ec73-4403-8ce8-60777af3c8e7\",\"sessionId\":\"d7faaddb92524c22b82cfbc0e4cdad83\",\"bookId\":\"sha256:70d700d15322e7c085b9f3a129df951c71d65aaf769abb565dd880d93b54918e\",\"activationEpoch\":1,\"navEpoch\":1}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "cross-other-newer-position",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"req-57f9f80d-ec73-4403-8ce8-60777af3c8e7\",\"sessionId\":\"d7faaddb92524c22b82cfbc0e4cdad83\",\"ok\":true,\"result\":{\"interactionToken\":2}}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "cross-other-newer-position",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"state.savePosition\",\"requestId\":\"req-fc703c11-0c0c-4850-9458-ec63d72abb21\",\"sessionId\":\"d7faaddb92524c22b82cfbc0e4cdad83\",\"bookId\":\"sha256:70d700d15322e7c085b9f3a129df951c71d65aaf769abb565dd880d93b54918e\",\"interactionToken\":2,\"sequence\":10,\"position\":{\"spineIndex\":0,\"spineHref\":\"a.xhtml\",\"locator\":{\"textOffset\":900}}}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "cross-other-newer-position",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"req-fc703c11-0c0c-4850-9458-ec63d72abb21\",\"sessionId\":\"d7faaddb92524c22b82cfbc0e4cdad83\",\"ok\":true,\"result\":{\"revision\":1,\"positionRevision\":1,\"positionToken\":2}}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "cross-newer-position",
+    "time": 1700000000840,
+    "raw": "{\"type\":\"host.finalized\",\"requestId\":\"d71b0f735a5246159583e4336a2f6bcb\",\"sessionId\":\"e2a7d7e90e8942259d88dbdd3bd2f891\",\"ok\":false,\"revision\":1,\"closeDiagnostics\":[{\"bookId\":\"sha256:70d700d15322e7c085b9f3a129df951c71d65aaf769abb565dd880d93b54918e\",\"opVersion\":1,\"sequence\":1700000000020000,\"code\":\"WRITE_FAILED\"}]}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "timeoutIdentity",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"app.ready\",\"sessionId\":\"c2dc88156a044e4d82595ace725add04\"}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "timeoutIdentity",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"hello\",\"requestId\":\"hello-f49b8fa8-3574-400d-8200-879f4e819407\",\"sessionId\":\"c2dc88156a044e4d82595ace725add04\"}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "timeoutIdentity",
+    "time": 1700000000000,
+    "raw": "{\"type\":\"host.state\",\"sessionId\":\"c2dc88156a044e4d82595ace725add04\",\"activationEpoch\":1,\"navEpoch\":1}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "timeoutIdentity",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"hello-f49b8fa8-3574-400d-8200-879f4e819407\",\"sessionId\":\"c2dc88156a044e4d82595ace725add04\",\"ok\":true,\"result\":{\"protocolVersion\":3,\"appVersion\":\"1.0.0.0\",\"activationEpoch\":1,\"navEpoch\":1,\"capabilities\":{\"persistentState\":true,\"preferences\":true,\"bookmarks\":true,\"bookIdentity\":\"sha256\",\"atomicWrites\":true,\"interactionTokens\":true,\"preferenceGrants\":true,\"positionOperations\":true,\"finalizeAck\":true,\"fieldResults\":true,\"positionSubmitRevision\":true,\"frozenFinalize\":true,\"protocolVersion\":3,\"bookmarkPageSize\":50}}}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "timeoutIdentity",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"app.ready\",\"sessionId\":\"c2dc88156a044e4d82595ace725add04\"}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "timeoutIdentity",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"state.interact\",\"requestId\":\"req-2b0ddf50-e922-42c8-b112-7053e900bf33\",\"sessionId\":\"c2dc88156a044e4d82595ace725add04\",\"bookId\":\"sha256:fdd6ed91cc141a2f30faaa8e6b135b2a89b4953311d8e67e9a65027f2bb193b0\",\"activationEpoch\":1,\"navEpoch\":1}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "timeoutIdentity",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"req-2b0ddf50-e922-42c8-b112-7053e900bf33\",\"sessionId\":\"c2dc88156a044e4d82595ace725add04\",\"ok\":true,\"result\":{\"interactionToken\":1}}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "timeoutIdentity",
+    "time": 1700000000400,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"state.savePosition\",\"requestId\":\"req-4af285a0-4f0d-43f4-a8ec-5a5dab2eeab5\",\"sessionId\":\"c2dc88156a044e4d82595ace725add04\",\"bookId\":\"sha256:fdd6ed91cc141a2f30faaa8e6b135b2a89b4953311d8e67e9a65027f2bb193b0\",\"position\":{\"spineHref\":\"a.xhtml\",\"spineIndex\":0,\"locator\":{\"textOffset\":100,\"quote\":\"synthetic\",\"chapterFraction\":0.05263157894736842},\"chapterFraction\":0.05263157894736842,\"savedAt\":\"2023-11-14T22:13:20.000Z\"},\"interactionToken\":1,\"sequence\":1700000000000000,\"operationId\":\"pos-op-90c120ff-13d2-4248-8aa9-b3b1e66f50c0\"}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "timeoutIdentity",
+    "time": 1700000000400,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"req-4af285a0-4f0d-43f4-a8ec-5a5dab2eeab5\",\"sessionId\":\"c2dc88156a044e4d82595ace725add04\",\"ok\":true,\"result\":{\"revision\":1,\"positionRevision\":1,\"positionToken\":1}}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "timeoutIdentity",
+    "time": 1700000003400,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"state.savePosition\",\"requestId\":\"req-c8100b7c-d886-42c2-8f86-ef0fd58e9622\",\"sessionId\":\"c2dc88156a044e4d82595ace725add04\",\"bookId\":\"sha256:fdd6ed91cc141a2f30faaa8e6b135b2a89b4953311d8e67e9a65027f2bb193b0\",\"position\":{\"spineHref\":\"a.xhtml\",\"spineIndex\":0,\"locator\":{\"textOffset\":100,\"quote\":\"synthetic\",\"chapterFraction\":0.05263157894736842},\"chapterFraction\":0.05263157894736842,\"savedAt\":\"2023-11-14T22:13:20.000Z\"},\"interactionToken\":1,\"sequence\":1700000000000000,\"operationId\":\"pos-op-90c120ff-13d2-4248-8aa9-b3b1e66f50c0\"}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "timeoutIdentity",
+    "time": 1700000003400,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"req-c8100b7c-d886-42c2-8f86-ef0fd58e9622\",\"sessionId\":\"c2dc88156a044e4d82595ace725add04\",\"ok\":true,\"result\":{\"revision\":1,\"positionRevision\":1,\"positionToken\":1,\"idempotent\":true}}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "timeoutIdentity",
+    "time": 1700000003400,
+    "raw": "{\"type\":\"host.finalized\",\"requestId\":\"a0441e6d782746eda276553f68b58e3e\",\"sessionId\":\"c2dc88156a044e4d82595ace725add04\",\"ok\":true,\"revision\":1,\"closeDiagnostics\":[]}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "bytesIdentity",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"app.ready\",\"sessionId\":\"1f19e918adca471db0806bd27e086691\"}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "bytesIdentity",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"hello\",\"requestId\":\"hello-2587410d-5fbb-4a1e-9cb5-e843f8358eef\",\"sessionId\":\"1f19e918adca471db0806bd27e086691\"}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "bytesIdentity",
+    "time": 1700000000000,
+    "raw": "{\"type\":\"host.state\",\"sessionId\":\"1f19e918adca471db0806bd27e086691\",\"activationEpoch\":1,\"navEpoch\":1}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "bytesIdentity",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"hello-2587410d-5fbb-4a1e-9cb5-e843f8358eef\",\"sessionId\":\"1f19e918adca471db0806bd27e086691\",\"ok\":true,\"result\":{\"protocolVersion\":3,\"appVersion\":\"1.0.0.0\",\"activationEpoch\":1,\"navEpoch\":1,\"capabilities\":{\"persistentState\":true,\"preferences\":true,\"bookmarks\":true,\"bookIdentity\":\"sha256\",\"atomicWrites\":true,\"interactionTokens\":true,\"preferenceGrants\":true,\"positionOperations\":true,\"finalizeAck\":true,\"fieldResults\":true,\"positionSubmitRevision\":true,\"frozenFinalize\":true,\"protocolVersion\":3,\"bookmarkPageSize\":50}}}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "bytesIdentity",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"app.ready\",\"sessionId\":\"1f19e918adca471db0806bd27e086691\"}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "bytesIdentity",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"book.begin\",\"sessionId\":\"1f19e918adca471db0806bd27e086691\",\"loadId\":\"load-loyw3v28-gou4\",\"name\":\"A.epub\",\"size\":2}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "bytesIdentity",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"state.load\",\"requestId\":\"req-a989e953-c8e6-4a09-80ab-fdc3d53bfa87\",\"sessionId\":\"1f19e918adca471db0806bd27e086691\",\"bookId\":\"sha256:85e6172d11cae687da03f4af6d33f5a56d474280856b53aeb5d852c3bde3ce36\"}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "bytesIdentity",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"req-a989e953-c8e6-4a09-80ab-fdc3d53bfa87\",\"sessionId\":\"1f19e918adca471db0806bd27e086691\",\"ok\":true,\"result\":{\"revision\":0,\"positionRevision\":0,\"metadataRevision\":0,\"position\":null,\"positionToken\":0,\"bookmarksRevision\":0,\"bookmarkCount\":0,\"interactionToken\":0,\"preferences\":{}}}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "bytesIdentity",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"bookmark.list\",\"requestId\":\"req-f865267f-6a54-4d1c-b5e2-41e070a03fe1\",\"sessionId\":\"1f19e918adca471db0806bd27e086691\",\"bookId\":\"sha256:85e6172d11cae687da03f4af6d33f5a56d474280856b53aeb5d852c3bde3ce36\",\"cursor\":null,\"limit\":50}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "bytesIdentity",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"req-f865267f-6a54-4d1c-b5e2-41e070a03fe1\",\"sessionId\":\"1f19e918adca471db0806bd27e086691\",\"ok\":true,\"result\":{\"bookmarks\":[],\"nextCursor\":null,\"revision\":0,\"total\":0}}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "bytesIdentity",
+    "time": 1700000000020,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"book.begin\",\"sessionId\":\"1f19e918adca471db0806bd27e086691\",\"loadId\":\"load-loyw3v28-gou4\",\"name\":\"A.epub\",\"size\":2}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "bytesIdentity",
+    "time": 1700000000020,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"book.ready\",\"sessionId\":\"1f19e918adca471db0806bd27e086691\",\"loadId\":\"load-loyw3v28-gou4\"}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "bytesIdentity",
+    "time": 1700000000020,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"state.interact\",\"requestId\":\"req-26447fdb-4d1a-4d00-899e-829bda0b853d\",\"sessionId\":\"1f19e918adca471db0806bd27e086691\",\"bookId\":\"sha256:85e6172d11cae687da03f4af6d33f5a56d474280856b53aeb5d852c3bde3ce36\",\"activationEpoch\":1,\"navEpoch\":1}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "bytesIdentity",
+    "time": 1700000000020,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"req-26447fdb-4d1a-4d00-899e-829bda0b853d\",\"sessionId\":\"1f19e918adca471db0806bd27e086691\",\"ok\":true,\"result\":{\"interactionToken\":1}}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "bytesIdentity",
+    "time": 1700000000020,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"state.savePosition\",\"requestId\":\"req-92e65105-b0ab-4d34-81ff-904786ed0cfe\",\"sessionId\":\"1f19e918adca471db0806bd27e086691\",\"bookId\":\"sha256:85e6172d11cae687da03f4af6d33f5a56d474280856b53aeb5d852c3bde3ce36\",\"position\":{\"spineHref\":\"a.xhtml\",\"spineIndex\":0,\"locator\":{\"textOffset\":100,\"chapterFraction\":0.05263157894736842},\"chapterFraction\":0.05263157894736842,\"savedAt\":\"2023-11-14T22:13:20.020Z\"},\"interactionToken\":1,\"sequence\":1700000000020001,\"operationId\":\"pos-op-259749c8-805d-4f0a-b808-4800bfb34935\"}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "bytesIdentity",
+    "time": 1700000000020,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"req-92e65105-b0ab-4d34-81ff-904786ed0cfe\",\"sessionId\":\"1f19e918adca471db0806bd27e086691\",\"ok\":true,\"result\":{\"revision\":1,\"positionRevision\":1,\"positionToken\":1}}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "bytesIdentity",
+    "time": 1700000000020,
+    "raw": "{\"type\":\"host.finalized\",\"requestId\":\"be9e37f236084f7d9f95d12aa79f1a3d\",\"sessionId\":\"1f19e918adca471db0806bd27e086691\",\"ok\":true,\"revision\":1,\"closeDiagnostics\":[]}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "lateToken",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"app.ready\",\"sessionId\":\"3d2331bda80d45fa80642b1eb2ea2ec4\"}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "lateToken",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"hello\",\"requestId\":\"hello-3188dc23-6737-4177-bcc5-0b42ef927f30\",\"sessionId\":\"3d2331bda80d45fa80642b1eb2ea2ec4\"}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "lateToken",
+    "time": 1700000000000,
+    "raw": "{\"type\":\"host.state\",\"sessionId\":\"3d2331bda80d45fa80642b1eb2ea2ec4\",\"activationEpoch\":1,\"navEpoch\":1}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "lateToken",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"hello-3188dc23-6737-4177-bcc5-0b42ef927f30\",\"sessionId\":\"3d2331bda80d45fa80642b1eb2ea2ec4\",\"ok\":true,\"result\":{\"protocolVersion\":3,\"appVersion\":\"1.0.0.0\",\"activationEpoch\":1,\"navEpoch\":1,\"capabilities\":{\"persistentState\":true,\"preferences\":true,\"bookmarks\":true,\"bookIdentity\":\"sha256\",\"atomicWrites\":true,\"interactionTokens\":true,\"preferenceGrants\":true,\"positionOperations\":true,\"finalizeAck\":true,\"fieldResults\":true,\"positionSubmitRevision\":true,\"frozenFinalize\":true,\"protocolVersion\":3,\"bookmarkPageSize\":50}}}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "lateToken",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"app.ready\",\"sessionId\":\"3d2331bda80d45fa80642b1eb2ea2ec4\"}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "lateToken",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"state.interact\",\"requestId\":\"req-3346fb07-cf0f-4b72-9f63-35a2af15d65c\",\"sessionId\":\"3d2331bda80d45fa80642b1eb2ea2ec4\",\"bookId\":\"sha256:04eb4eca6654fbdba22d7de70fded3253f6b8b81bca2e7776977c4071ed51e1c\",\"activationEpoch\":1,\"navEpoch\":1}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "lateToken",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"req-3346fb07-cf0f-4b72-9f63-35a2af15d65c\",\"sessionId\":\"3d2331bda80d45fa80642b1eb2ea2ec4\",\"ok\":true,\"result\":{\"interactionToken\":1}}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "lateToken",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"state.savePosition\",\"requestId\":\"req-c46d19b5-1c0c-4675-8b9b-07aa971ee7e0\",\"sessionId\":\"3d2331bda80d45fa80642b1eb2ea2ec4\",\"bookId\":\"sha256:04eb4eca6654fbdba22d7de70fded3253f6b8b81bca2e7776977c4071ed51e1c\",\"position\":{\"spineHref\":\"a.xhtml\",\"spineIndex\":0,\"locator\":{\"textOffset\":100,\"quote\":\"synthetic\",\"chapterFraction\":0.05263157894736842},\"chapterFraction\":0.05263157894736842,\"savedAt\":\"2023-11-14T22:13:20.000Z\"},\"interactionToken\":1,\"sequence\":1700000000000000,\"operationId\":\"pos-op-dcd0fb3a-8811-44c3-9250-a7b95268b009\"}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "lateToken",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"req-c46d19b5-1c0c-4675-8b9b-07aa971ee7e0\",\"sessionId\":\"3d2331bda80d45fa80642b1eb2ea2ec4\",\"ok\":true,\"result\":{\"revision\":1,\"positionRevision\":1,\"positionToken\":1}}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "lateToken",
+    "time": 1700000000000,
+    "raw": "{\"type\":\"host.finalized\",\"requestId\":\"79ad4c2f2cc144bf8019577698f7c22e\",\"sessionId\":\"3d2331bda80d45fa80642b1eb2ea2ec4\",\"ok\":true,\"revision\":1,\"closeDiagnostics\":[]}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "prefAckBudget",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"app.ready\",\"sessionId\":\"c1aa73bf4c8f4c06abb150cb5c3a286a\"}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "prefAckBudget",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"hello\",\"requestId\":\"hello-b7fc8fb0-c97c-4691-af54-c496419f987c\",\"sessionId\":\"c1aa73bf4c8f4c06abb150cb5c3a286a\"}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "prefAckBudget",
+    "time": 1700000000000,
+    "raw": "{\"type\":\"host.state\",\"sessionId\":\"c1aa73bf4c8f4c06abb150cb5c3a286a\",\"activationEpoch\":1,\"navEpoch\":1}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "prefAckBudget",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"hello-b7fc8fb0-c97c-4691-af54-c496419f987c\",\"sessionId\":\"c1aa73bf4c8f4c06abb150cb5c3a286a\",\"ok\":true,\"result\":{\"protocolVersion\":3,\"appVersion\":\"1.0.0.0\",\"activationEpoch\":1,\"navEpoch\":1,\"capabilities\":{\"persistentState\":true,\"preferences\":true,\"bookmarks\":true,\"bookIdentity\":\"sha256\",\"atomicWrites\":true,\"interactionTokens\":true,\"preferenceGrants\":true,\"positionOperations\":true,\"finalizeAck\":true,\"fieldResults\":true,\"positionSubmitRevision\":true,\"frozenFinalize\":true,\"protocolVersion\":3,\"bookmarkPageSize\":50}}}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "prefAckBudget",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"app.ready\",\"sessionId\":\"c1aa73bf4c8f4c06abb150cb5c3a286a\"}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "prefAckBudget",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"state.interact\",\"requestId\":\"req-c2ac001d-58ce-47bc-a630-b6eda43181b6\",\"sessionId\":\"c1aa73bf4c8f4c06abb150cb5c3a286a\",\"bookId\":\"sha256:0d05a677b530913b8fa52e21e5eebb71e8cbc77b185c0d60ff6fecdba9819917\",\"activationEpoch\":1,\"navEpoch\":1}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "prefAckBudget",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"state.grantPreferences\",\"requestId\":\"req-0f4de246-56d1-45b5-8e10-af14732c782a\",\"sessionId\":\"c1aa73bf4c8f4c06abb150cb5c3a286a\",\"scope\":\"global\",\"fields\":[\"fontSize\"],\"operationId\":\"pref-op-cc4ed01f-b8a9-4fcf-b1a6-342713194e81\",\"activationEpoch\":1,\"navEpoch\":1}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "prefAckBudget",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"req-c2ac001d-58ce-47bc-a630-b6eda43181b6\",\"sessionId\":\"c1aa73bf4c8f4c06abb150cb5c3a286a\",\"ok\":true,\"result\":{\"interactionToken\":1}}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "prefAckBudget",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"req-0f4de246-56d1-45b5-8e10-af14732c782a\",\"sessionId\":\"c1aa73bf4c8f4c06abb150cb5c3a286a\",\"ok\":true,\"result\":{\"grant\":\"pg-477dcbee41f9436f9a391f337fee1183\",\"fields\":[\"fontSize\"]}}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "prefAckBudget",
+    "time": 1700000000300,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"state.savePosition\",\"requestId\":\"req-ef825dec-6d00-4dbe-a29b-b38d4fc19efe\",\"sessionId\":\"c1aa73bf4c8f4c06abb150cb5c3a286a\",\"bookId\":\"sha256:0d05a677b530913b8fa52e21e5eebb71e8cbc77b185c0d60ff6fecdba9819917\",\"position\":{\"spineHref\":\"a.xhtml\",\"spineIndex\":0,\"locator\":{\"textOffset\":100,\"quote\":\"synthetic\",\"chapterFraction\":0.05263157894736842},\"chapterFraction\":0.05263157894736842,\"savedAt\":\"2023-11-14T22:13:20.000Z\"},\"interactionToken\":1,\"sequence\":1700000000000000,\"operationId\":\"pos-op-a91b75fb-b10d-4bae-8eae-1edbb23c61a6\"}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "prefAckBudget",
+    "time": 1700000000300,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"req-ef825dec-6d00-4dbe-a29b-b38d4fc19efe\",\"sessionId\":\"c1aa73bf4c8f4c06abb150cb5c3a286a\",\"ok\":true,\"result\":{\"revision\":1,\"positionRevision\":1,\"positionToken\":1}}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "prefAckBudget",
+    "time": 1700000000300,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"state.savePreferences\",\"requestId\":\"req-d18703ee-975e-45f4-93b1-3b52e92e5a8f\",\"sessionId\":\"c1aa73bf4c8f4c06abb150cb5c3a286a\",\"scope\":\"global\",\"preferences\":{\"fontSize\":28},\"grants\":{\"fontSize\":\"pg-477dcbee41f9436f9a391f337fee1183\"}}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "prefAckBudget",
+    "time": 1700000000300,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"req-d18703ee-975e-45f4-93b1-3b52e92e5a8f\",\"sessionId\":\"c1aa73bf4c8f4c06abb150cb5c3a286a\",\"ok\":true,\"result\":{\"revision\":1,\"applied\":[\"fontSize\"],\"idempotent\":[],\"superseded\":[]}}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "unsavedA",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"app.ready\",\"sessionId\":\"0e107270d4634ef194e42e14631e879a\"}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "unsavedA",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"hello\",\"requestId\":\"hello-9579b431-c242-4fcd-9973-181784aaae18\",\"sessionId\":\"0e107270d4634ef194e42e14631e879a\"}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "unsavedA",
+    "time": 1700000000000,
+    "raw": "{\"type\":\"host.state\",\"sessionId\":\"0e107270d4634ef194e42e14631e879a\",\"activationEpoch\":1,\"navEpoch\":1}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "unsavedA",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"hello-9579b431-c242-4fcd-9973-181784aaae18\",\"sessionId\":\"0e107270d4634ef194e42e14631e879a\",\"ok\":true,\"result\":{\"protocolVersion\":3,\"appVersion\":\"1.0.0.0\",\"activationEpoch\":1,\"navEpoch\":1,\"capabilities\":{\"persistentState\":true,\"preferences\":true,\"bookmarks\":true,\"bookIdentity\":\"sha256\",\"atomicWrites\":true,\"interactionTokens\":true,\"preferenceGrants\":true,\"positionOperations\":true,\"finalizeAck\":true,\"fieldResults\":true,\"positionSubmitRevision\":true,\"frozenFinalize\":true,\"protocolVersion\":3,\"bookmarkPageSize\":50}}}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "unsavedA",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"app.ready\",\"sessionId\":\"0e107270d4634ef194e42e14631e879a\"}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "unsavedB",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"app.ready\",\"sessionId\":\"2a8fefe1558e4c5eb594e1eb6061d170\"}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "unsavedB",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"hello\",\"requestId\":\"hello-9f948fd9-3c60-4a67-a985-5daf9cb27393\",\"sessionId\":\"2a8fefe1558e4c5eb594e1eb6061d170\"}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "unsavedB",
+    "time": 1700000000000,
+    "raw": "{\"type\":\"host.state\",\"sessionId\":\"2a8fefe1558e4c5eb594e1eb6061d170\",\"activationEpoch\":1,\"navEpoch\":1}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "unsavedB",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"hello-9f948fd9-3c60-4a67-a985-5daf9cb27393\",\"sessionId\":\"2a8fefe1558e4c5eb594e1eb6061d170\",\"ok\":true,\"result\":{\"protocolVersion\":3,\"appVersion\":\"1.0.0.0\",\"activationEpoch\":1,\"navEpoch\":1,\"capabilities\":{\"persistentState\":true,\"preferences\":true,\"bookmarks\":true,\"bookIdentity\":\"sha256\",\"atomicWrites\":true,\"interactionTokens\":true,\"preferenceGrants\":true,\"positionOperations\":true,\"finalizeAck\":true,\"fieldResults\":true,\"positionSubmitRevision\":true,\"frozenFinalize\":true,\"protocolVersion\":3,\"bookmarkPageSize\":50}}}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "unsavedB",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"app.ready\",\"sessionId\":\"2a8fefe1558e4c5eb594e1eb6061d170\"}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "unsavedA",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"state.grantPreferences\",\"requestId\":\"req-5e884b1a-76da-4c5a-87a7-5cb5dff6ddd7\",\"sessionId\":\"0e107270d4634ef194e42e14631e879a\",\"scope\":\"global\",\"fields\":[\"fontSize\"],\"operationId\":\"pref-op-b4697747-89cd-4b6e-9e67-c28863c0c270\",\"activationEpoch\":1,\"navEpoch\":1}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "unsavedA",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"req-5e884b1a-76da-4c5a-87a7-5cb5dff6ddd7\",\"sessionId\":\"0e107270d4634ef194e42e14631e879a\",\"ok\":true,\"result\":{\"grant\":\"pg-c9a757ff8ca7486e927fe39cdec6c8b2\",\"fields\":[\"fontSize\"]}}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "unsavedA",
+    "time": 1700000000300,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"state.savePreferences\",\"requestId\":\"req-46ea6947-ef54-4e36-a9ed-e5539f1accb3\",\"sessionId\":\"0e107270d4634ef194e42e14631e879a\",\"scope\":\"global\",\"preferences\":{\"fontSize\":26},\"grants\":{\"fontSize\":\"pg-c9a757ff8ca7486e927fe39cdec6c8b2\"}}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "unsavedA",
+    "time": 1700000000300,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"req-46ea6947-ef54-4e36-a9ed-e5539f1accb3\",\"sessionId\":\"0e107270d4634ef194e42e14631e879a\",\"ok\":true,\"result\":{\"revision\":2,\"applied\":[\"fontSize\"],\"idempotent\":[],\"superseded\":[]}}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "unsavedA",
+    "time": 1700000000300,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"state.grantPreferences\",\"requestId\":\"req-e8f415d0-87f2-479c-90a3-a8900082293e\",\"sessionId\":\"0e107270d4634ef194e42e14631e879a\",\"scope\":\"global\",\"fields\":[\"fontSize\"],\"operationId\":\"pref-op-ef48c278-008f-4e8f-8eba-064d3ac4a7f8\",\"activationEpoch\":1,\"navEpoch\":1}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "unsavedA",
+    "time": 1700000000300,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"req-e8f415d0-87f2-479c-90a3-a8900082293e\",\"sessionId\":\"0e107270d4634ef194e42e14631e879a\",\"ok\":true,\"result\":{\"grant\":\"pg-8a8f9c9445424c57ad0128dc940737b3\",\"fields\":[\"fontSize\"]}}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "unsavedB",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"state.grantPreferences\",\"requestId\":\"req-94421aaa-7fbc-451d-9bf1-d80885abddf7\",\"sessionId\":\"2a8fefe1558e4c5eb594e1eb6061d170\",\"scope\":\"global\",\"fields\":[\"fontSize\"],\"operationId\":\"pref-op-c59998c4-d7b5-442b-a5c3-c842c7993de7\",\"activationEpoch\":1,\"navEpoch\":1}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "unsavedB",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"req-94421aaa-7fbc-451d-9bf1-d80885abddf7\",\"sessionId\":\"2a8fefe1558e4c5eb594e1eb6061d170\",\"ok\":true,\"result\":{\"grant\":\"pg-e45162f7fecf4679ba66585c80ed015c\",\"fields\":[\"fontSize\"]}}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "unsavedB",
+    "time": 1700000000300,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"state.savePreferences\",\"requestId\":\"req-e412fc21-d7d1-44ba-b8f4-a02725e69221\",\"sessionId\":\"2a8fefe1558e4c5eb594e1eb6061d170\",\"scope\":\"global\",\"preferences\":{\"fontSize\":32},\"grants\":{\"fontSize\":\"pg-e45162f7fecf4679ba66585c80ed015c\"}}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "unsavedB",
+    "time": 1700000000300,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"req-e412fc21-d7d1-44ba-b8f4-a02725e69221\",\"sessionId\":\"2a8fefe1558e4c5eb594e1eb6061d170\",\"ok\":false,\"error\":{\"code\":\"WRITE_FAILED\",\"message\":\"\\u72B6\\u6001\\u5199\\u5165\\u5931\\u8D25\\uFF1AAccess to the path is denied.\"}}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "unsavedA",
+    "time": 1700000000300,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"state.savePreferences\",\"requestId\":\"req-3a218ad2-a35c-44e4-b7e7-c52e6e8b8c12\",\"sessionId\":\"0e107270d4634ef194e42e14631e879a\",\"scope\":\"global\",\"preferences\":{\"fontSize\":18},\"grants\":{\"fontSize\":\"pg-8a8f9c9445424c57ad0128dc940737b3\"}}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "unsavedA",
+    "time": 1700000000300,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"req-3a218ad2-a35c-44e4-b7e7-c52e6e8b8c12\",\"sessionId\":\"0e107270d4634ef194e42e14631e879a\",\"ok\":true,\"result\":{\"revision\":2,\"applied\":[],\"idempotent\":[],\"superseded\":[\"fontSize\"]}}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "unsavedA",
+    "time": 1700000000300,
+    "raw": "{\"type\":\"host.finalized\",\"requestId\":\"9c6f8a72e2a043b68b03a95df51816d3\",\"sessionId\":\"0e107270d4634ef194e42e14631e879a\",\"ok\":true,\"revision\":2,\"closeDiagnostics\":[]}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "completionA",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"app.ready\",\"sessionId\":\"7769f129d33c48bfb7dc4ca5c3f6fb5a\"}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "completionA",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"hello\",\"requestId\":\"hello-a8d6b7bf-cabe-4121-a15f-184366b9916c\",\"sessionId\":\"7769f129d33c48bfb7dc4ca5c3f6fb5a\"}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "completionA",
+    "time": 1700000000000,
+    "raw": "{\"type\":\"host.state\",\"sessionId\":\"7769f129d33c48bfb7dc4ca5c3f6fb5a\",\"activationEpoch\":1,\"navEpoch\":1}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "completionA",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"hello-a8d6b7bf-cabe-4121-a15f-184366b9916c\",\"sessionId\":\"7769f129d33c48bfb7dc4ca5c3f6fb5a\",\"ok\":true,\"result\":{\"protocolVersion\":3,\"appVersion\":\"1.0.0.0\",\"activationEpoch\":1,\"navEpoch\":1,\"capabilities\":{\"persistentState\":true,\"preferences\":true,\"bookmarks\":true,\"bookIdentity\":\"sha256\",\"atomicWrites\":true,\"interactionTokens\":true,\"preferenceGrants\":true,\"positionOperations\":true,\"finalizeAck\":true,\"fieldResults\":true,\"positionSubmitRevision\":true,\"frozenFinalize\":true,\"protocolVersion\":3,\"bookmarkPageSize\":50}}}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "completionA",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"app.ready\",\"sessionId\":\"7769f129d33c48bfb7dc4ca5c3f6fb5a\"}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "completionB",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"app.ready\",\"sessionId\":\"d5f2cdeaee7e41568f3f01bb0b0a29c7\"}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "completionB",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"hello\",\"requestId\":\"hello-ee856717-a198-43d5-85fa-510575285d0c\",\"sessionId\":\"d5f2cdeaee7e41568f3f01bb0b0a29c7\"}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "completionB",
+    "time": 1700000000000,
+    "raw": "{\"type\":\"host.state\",\"sessionId\":\"d5f2cdeaee7e41568f3f01bb0b0a29c7\",\"activationEpoch\":1,\"navEpoch\":1}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "completionB",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"hello-ee856717-a198-43d5-85fa-510575285d0c\",\"sessionId\":\"d5f2cdeaee7e41568f3f01bb0b0a29c7\",\"ok\":true,\"result\":{\"protocolVersion\":3,\"appVersion\":\"1.0.0.0\",\"activationEpoch\":1,\"navEpoch\":1,\"capabilities\":{\"persistentState\":true,\"preferences\":true,\"bookmarks\":true,\"bookIdentity\":\"sha256\",\"atomicWrites\":true,\"interactionTokens\":true,\"preferenceGrants\":true,\"positionOperations\":true,\"finalizeAck\":true,\"fieldResults\":true,\"positionSubmitRevision\":true,\"frozenFinalize\":true,\"protocolVersion\":3,\"bookmarkPageSize\":50}}}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "completionB",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"app.ready\",\"sessionId\":\"d5f2cdeaee7e41568f3f01bb0b0a29c7\"}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "completionA",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"state.grantPreferences\",\"requestId\":\"req-2efaf34c-1ac5-450e-831f-06a6c6062d92\",\"sessionId\":\"7769f129d33c48bfb7dc4ca5c3f6fb5a\",\"scope\":\"global\",\"fields\":[\"theme\",\"bg\",\"fg\"],\"operationId\":\"mixed-values\",\"activationEpoch\":1,\"navEpoch\":1}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "completionA",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"req-2efaf34c-1ac5-450e-831f-06a6c6062d92\",\"sessionId\":\"7769f129d33c48bfb7dc4ca5c3f6fb5a\",\"ok\":true,\"result\":{\"grant\":\"pg-d244b249a1434f699ef59cf519ce3129\",\"fields\":[\"theme\",\"bg\",\"fg\"]}}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "completionB",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"state.grantPreferences\",\"requestId\":\"req-64407a06-6658-47c3-9676-2145bed89f42\",\"sessionId\":\"d5f2cdeaee7e41568f3f01bb0b0a29c7\",\"scope\":\"global\",\"fields\":[\"theme\",\"bg\"],\"operationId\":\"newer-bg\",\"activationEpoch\":1,\"navEpoch\":1}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "completionB",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"req-64407a06-6658-47c3-9676-2145bed89f42\",\"sessionId\":\"d5f2cdeaee7e41568f3f01bb0b0a29c7\",\"ok\":true,\"result\":{\"grant\":\"pg-1d5252301fa040df97efc28780848347\",\"fields\":[\"theme\",\"bg\"]}}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "completionB",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"state.savePreferences\",\"requestId\":\"req-4fe51d90-a4df-482f-bbc2-734d138434cc\",\"sessionId\":\"d5f2cdeaee7e41568f3f01bb0b0a29c7\",\"scope\":\"global\",\"preferences\":{\"theme\":\"custom\",\"bg\":\"#ABCDEF\"},\"grants\":{\"theme\":\"pg-1d5252301fa040df97efc28780848347\",\"bg\":\"pg-1d5252301fa040df97efc28780848347\"}}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "completionB",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"req-4fe51d90-a4df-482f-bbc2-734d138434cc\",\"sessionId\":\"d5f2cdeaee7e41568f3f01bb0b0a29c7\",\"ok\":true,\"result\":{\"revision\":1,\"applied\":[\"theme\",\"bg\"],\"idempotent\":[],\"superseded\":[]}}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "completionA",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"state.savePreferences\",\"requestId\":\"req-bfb7445d-9656-4097-9ae7-9e736ff99a3c\",\"sessionId\":\"7769f129d33c48bfb7dc4ca5c3f6fb5a\",\"scope\":\"global\",\"preferences\":{\"theme\":\"sepia\",\"bg\":\"#F5F0E6\",\"fg\":\"#2B2620\"},\"grants\":{\"theme\":\"pg-d244b249a1434f699ef59cf519ce3129\",\"bg\":\"pg-d244b249a1434f699ef59cf519ce3129\",\"fg\":\"pg-d244b249a1434f699ef59cf519ce3129\"}}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "completionA",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"req-bfb7445d-9656-4097-9ae7-9e736ff99a3c\",\"sessionId\":\"7769f129d33c48bfb7dc4ca5c3f6fb5a\",\"ok\":true,\"result\":{\"revision\":2,\"applied\":[\"fg\"],\"idempotent\":[],\"superseded\":[\"theme\",\"bg\"]}}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "completionA",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"state.savePreferences\",\"requestId\":\"req-10998781-bf14-40b9-8642-401d2e407158\",\"sessionId\":\"7769f129d33c48bfb7dc4ca5c3f6fb5a\",\"scope\":\"global\",\"preferences\":{\"theme\":\"sepia\",\"bg\":\"#F5F0E6\",\"fg\":\"#2B2620\"},\"grants\":{\"theme\":\"pg-d244b249a1434f699ef59cf519ce3129\",\"bg\":\"pg-d244b249a1434f699ef59cf519ce3129\",\"fg\":\"pg-d244b249a1434f699ef59cf519ce3129\"}}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "completionA",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"req-10998781-bf14-40b9-8642-401d2e407158\",\"sessionId\":\"7769f129d33c48bfb7dc4ca5c3f6fb5a\",\"ok\":true,\"result\":{\"revision\":2,\"applied\":[\"fg\"],\"idempotent\":[\"fg\"],\"superseded\":[\"theme\",\"bg\"]}}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "completionA",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"state.savePreferences\",\"requestId\":\"req-7d6404e6-0728-4407-ab83-c250efc81015\",\"sessionId\":\"7769f129d33c48bfb7dc4ca5c3f6fb5a\",\"scope\":\"global\",\"preferences\":{\"fg\":\"#111111\"},\"grants\":{\"fg\":\"pg-d244b249a1434f699ef59cf519ce3129\"}}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "completionA",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"req-7d6404e6-0728-4407-ab83-c250efc81015\",\"sessionId\":\"7769f129d33c48bfb7dc4ca5c3f6fb5a\",\"ok\":false,\"error\":{\"code\":\"VALUE_MISMATCH\",\"message\":\"\\u540C\\u4E00\\u5B8C\\u6210\\u51ED\\u636E\\u4E0D\\u80FD\\u91CD\\u653E\\u4E0D\\u540C\\u5B57\\u6BB5\\u503C\\uFF1Afg\"}}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "completionA",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"state.savePreferences\",\"requestId\":\"req-10a2f8a9-8e3d-416d-8eb9-70fd8d8a42fb\",\"sessionId\":\"7769f129d33c48bfb7dc4ca5c3f6fb5a\",\"scope\":\"global\",\"preferences\":{\"theme\":\"dark\",\"bg\":\"#000000\",\"fg\":\"#2B2620\"},\"grants\":{\"theme\":\"pg-d244b249a1434f699ef59cf519ce3129\",\"bg\":\"pg-d244b249a1434f699ef59cf519ce3129\",\"fg\":\"pg-d244b249a1434f699ef59cf519ce3129\"}}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "completionA",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"req-10a2f8a9-8e3d-416d-8eb9-70fd8d8a42fb\",\"sessionId\":\"7769f129d33c48bfb7dc4ca5c3f6fb5a\",\"ok\":true,\"result\":{\"revision\":2,\"applied\":[\"fg\"],\"idempotent\":[\"fg\"],\"superseded\":[\"theme\",\"bg\"]}}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "completionA",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"state.savePreferences\",\"requestId\":\"req-db4949e3-e1e6-4d57-a71f-60ae7018e5e4\",\"sessionId\":\"7769f129d33c48bfb7dc4ca5c3f6fb5a\",\"scope\":\"global\",\"preferences\":{\"lineHeight\":2.2},\"grants\":{\"lineHeight\":\"pg-d244b249a1434f699ef59cf519ce3129\"}}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "completionA",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"req-db4949e3-e1e6-4d57-a71f-60ae7018e5e4\",\"sessionId\":\"7769f129d33c48bfb7dc4ca5c3f6fb5a\",\"ok\":false,\"error\":{\"code\":\"FIELD_NOT_GRANTED\",\"message\":\"\\u504F\\u597D\\u5B8C\\u6210\\u51ED\\u636E\\u672A\\u5305\\u542B\\u5B57\\u6BB5\\uFF1AlineHeight\"}}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "completionB",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"state.savePreferences\",\"requestId\":\"req-91f3fe14-e6e1-4a19-863c-49f3c705ec9a\",\"sessionId\":\"d5f2cdeaee7e41568f3f01bb0b0a29c7\",\"scope\":\"global\",\"preferences\":{\"fg\":\"#2B2620\"},\"grants\":{\"fg\":\"pg-d244b249a1434f699ef59cf519ce3129\"}}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "completionB",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"req-91f3fe14-e6e1-4a19-863c-49f3c705ec9a\",\"sessionId\":\"d5f2cdeaee7e41568f3f01bb0b0a29c7\",\"ok\":false,\"error\":{\"code\":\"GRANT_OWNER_MISMATCH\",\"message\":\"\\u504F\\u597D\\u5B8C\\u6210\\u51ED\\u636E\\u4E0D\\u5C5E\\u4E8E\\u5F53\\u524D\\u7A97\\u53E3\"}}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "allSupA",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"app.ready\",\"sessionId\":\"6b8064c9bc3e4bcdabb7c5e3d3aab868\"}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "allSupA",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"hello\",\"requestId\":\"hello-be622b68-5125-451d-9e75-284d5e2a5945\",\"sessionId\":\"6b8064c9bc3e4bcdabb7c5e3d3aab868\"}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "allSupA",
+    "time": 1700000000000,
+    "raw": "{\"type\":\"host.state\",\"sessionId\":\"6b8064c9bc3e4bcdabb7c5e3d3aab868\",\"activationEpoch\":1,\"navEpoch\":1}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "allSupA",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"hello-be622b68-5125-451d-9e75-284d5e2a5945\",\"sessionId\":\"6b8064c9bc3e4bcdabb7c5e3d3aab868\",\"ok\":true,\"result\":{\"protocolVersion\":3,\"appVersion\":\"1.0.0.0\",\"activationEpoch\":1,\"navEpoch\":1,\"capabilities\":{\"persistentState\":true,\"preferences\":true,\"bookmarks\":true,\"bookIdentity\":\"sha256\",\"atomicWrites\":true,\"interactionTokens\":true,\"preferenceGrants\":true,\"positionOperations\":true,\"finalizeAck\":true,\"fieldResults\":true,\"positionSubmitRevision\":true,\"frozenFinalize\":true,\"protocolVersion\":3,\"bookmarkPageSize\":50}}}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "allSupA",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"app.ready\",\"sessionId\":\"6b8064c9bc3e4bcdabb7c5e3d3aab868\"}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "allSupB",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"app.ready\",\"sessionId\":\"b44813d842d34d1586cb0bf89d5a89b8\"}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "allSupB",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"hello\",\"requestId\":\"hello-d0fcd1a1-7fa2-4670-a89f-08c0d41644cf\",\"sessionId\":\"b44813d842d34d1586cb0bf89d5a89b8\"}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "allSupB",
+    "time": 1700000000000,
+    "raw": "{\"type\":\"host.state\",\"sessionId\":\"b44813d842d34d1586cb0bf89d5a89b8\",\"activationEpoch\":1,\"navEpoch\":1}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "allSupB",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"hello-d0fcd1a1-7fa2-4670-a89f-08c0d41644cf\",\"sessionId\":\"b44813d842d34d1586cb0bf89d5a89b8\",\"ok\":true,\"result\":{\"protocolVersion\":3,\"appVersion\":\"1.0.0.0\",\"activationEpoch\":1,\"navEpoch\":1,\"capabilities\":{\"persistentState\":true,\"preferences\":true,\"bookmarks\":true,\"bookIdentity\":\"sha256\",\"atomicWrites\":true,\"interactionTokens\":true,\"preferenceGrants\":true,\"positionOperations\":true,\"finalizeAck\":true,\"fieldResults\":true,\"positionSubmitRevision\":true,\"frozenFinalize\":true,\"protocolVersion\":3,\"bookmarkPageSize\":50}}}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "allSupB",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"app.ready\",\"sessionId\":\"b44813d842d34d1586cb0bf89d5a89b8\"}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "allSupA",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"state.grantPreferences\",\"requestId\":\"req-c9ed95eb-8936-41bb-8bf7-6abf896bd140\",\"sessionId\":\"6b8064c9bc3e4bcdabb7c5e3d3aab868\",\"scope\":\"global\",\"fields\":[\"fontSize\"],\"operationId\":\"all-sup-old\",\"activationEpoch\":1,\"navEpoch\":1}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "allSupA",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"req-c9ed95eb-8936-41bb-8bf7-6abf896bd140\",\"sessionId\":\"6b8064c9bc3e4bcdabb7c5e3d3aab868\",\"ok\":true,\"result\":{\"grant\":\"pg-aa31583843954293af9554909f11592c\",\"fields\":[\"fontSize\"]}}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "allSupB",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"state.grantPreferences\",\"requestId\":\"req-666756a9-5f61-4804-a789-b8e21cb10a1a\",\"sessionId\":\"b44813d842d34d1586cb0bf89d5a89b8\",\"scope\":\"global\",\"fields\":[\"fontSize\"],\"operationId\":\"all-sup-new\",\"activationEpoch\":1,\"navEpoch\":1}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "allSupB",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"req-666756a9-5f61-4804-a789-b8e21cb10a1a\",\"sessionId\":\"b44813d842d34d1586cb0bf89d5a89b8\",\"ok\":true,\"result\":{\"grant\":\"pg-d0d11dfdee294087b321010b080f9bd2\",\"fields\":[\"fontSize\"]}}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "allSupB",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"state.savePreferences\",\"requestId\":\"req-8fa16d06-f540-42a9-96e2-7ca21cbe3389\",\"sessionId\":\"b44813d842d34d1586cb0bf89d5a89b8\",\"scope\":\"global\",\"preferences\":{\"fontSize\":32},\"grants\":{\"fontSize\":\"pg-d0d11dfdee294087b321010b080f9bd2\"}}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "allSupB",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"req-8fa16d06-f540-42a9-96e2-7ca21cbe3389\",\"sessionId\":\"b44813d842d34d1586cb0bf89d5a89b8\",\"ok\":true,\"result\":{\"revision\":1,\"applied\":[\"fontSize\"],\"idempotent\":[],\"superseded\":[]}}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "allSupA",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"state.savePreferences\",\"requestId\":\"req-eb96dff3-99bf-4a99-9c6e-244cd0182995\",\"sessionId\":\"6b8064c9bc3e4bcdabb7c5e3d3aab868\",\"scope\":\"global\",\"preferences\":{\"fontSize\":18},\"grants\":{\"fontSize\":\"pg-aa31583843954293af9554909f11592c\"}}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "allSupA",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"req-eb96dff3-99bf-4a99-9c6e-244cd0182995\",\"sessionId\":\"6b8064c9bc3e4bcdabb7c5e3d3aab868\",\"ok\":true,\"result\":{\"revision\":1,\"applied\":[],\"idempotent\":[],\"superseded\":[\"fontSize\"]}}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "allSupA",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"state.savePreferences\",\"requestId\":\"req-6ec2fe40-d44f-45cd-8fa3-3743b7316b68\",\"sessionId\":\"6b8064c9bc3e4bcdabb7c5e3d3aab868\",\"scope\":\"global\",\"preferences\":{\"fontSize\":18},\"grants\":{\"fontSize\":\"pg-aa31583843954293af9554909f11592c\"}}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "allSupA",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"req-6ec2fe40-d44f-45cd-8fa3-3743b7316b68\",\"sessionId\":\"6b8064c9bc3e4bcdabb7c5e3d3aab868\",\"ok\":true,\"result\":{\"revision\":1,\"applied\":[],\"idempotent\":[],\"superseded\":[\"fontSize\"]}}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "writeCredential",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"app.ready\",\"sessionId\":\"4353c01ef53f487992640b89776a8d9b\"}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "writeCredential",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"hello\",\"requestId\":\"hello-76531423-ba77-43f0-bf65-17fb706aa170\",\"sessionId\":\"4353c01ef53f487992640b89776a8d9b\"}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "writeCredential",
+    "time": 1700000000000,
+    "raw": "{\"type\":\"host.state\",\"sessionId\":\"4353c01ef53f487992640b89776a8d9b\",\"activationEpoch\":1,\"navEpoch\":1}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "writeCredential",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"hello-76531423-ba77-43f0-bf65-17fb706aa170\",\"sessionId\":\"4353c01ef53f487992640b89776a8d9b\",\"ok\":true,\"result\":{\"protocolVersion\":3,\"appVersion\":\"1.0.0.0\",\"activationEpoch\":1,\"navEpoch\":1,\"capabilities\":{\"persistentState\":true,\"preferences\":true,\"bookmarks\":true,\"bookIdentity\":\"sha256\",\"atomicWrites\":true,\"interactionTokens\":true,\"preferenceGrants\":true,\"positionOperations\":true,\"finalizeAck\":true,\"fieldResults\":true,\"positionSubmitRevision\":true,\"frozenFinalize\":true,\"protocolVersion\":3,\"bookmarkPageSize\":50}}}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "writeCredential",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"app.ready\",\"sessionId\":\"4353c01ef53f487992640b89776a8d9b\"}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "writeCredential",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"state.grantPreferences\",\"requestId\":\"req-ea3a5c67-d5c2-4c2d-bc58-df6c6717aee0\",\"sessionId\":\"4353c01ef53f487992640b89776a8d9b\",\"scope\":\"global\",\"fields\":[\"fontSize\"],\"operationId\":\"seed-write\",\"activationEpoch\":1,\"navEpoch\":1}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "writeCredential",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"req-ea3a5c67-d5c2-4c2d-bc58-df6c6717aee0\",\"sessionId\":\"4353c01ef53f487992640b89776a8d9b\",\"ok\":true,\"result\":{\"grant\":\"pg-2380edd395a4480583d7afe22858f6b6\",\"fields\":[\"fontSize\"]}}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "writeCredential",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"state.savePreferences\",\"requestId\":\"req-5d0abe21-8f76-4dfe-9f1d-fd0b735bc885\",\"sessionId\":\"4353c01ef53f487992640b89776a8d9b\",\"scope\":\"global\",\"preferences\":{\"fontSize\":22},\"grants\":{\"fontSize\":\"pg-2380edd395a4480583d7afe22858f6b6\"}}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "writeCredential",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"req-5d0abe21-8f76-4dfe-9f1d-fd0b735bc885\",\"sessionId\":\"4353c01ef53f487992640b89776a8d9b\",\"ok\":true,\"result\":{\"revision\":1,\"applied\":[\"fontSize\"],\"idempotent\":[],\"superseded\":[]}}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "writeCredential",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"state.grantPreferences\",\"requestId\":\"req-da80210b-0623-40a5-9127-6c1c83fa2829\",\"sessionId\":\"4353c01ef53f487992640b89776a8d9b\",\"scope\":\"global\",\"fields\":[\"fontSize\",\"lineHeight\"],\"operationId\":\"fail-write\",\"activationEpoch\":1,\"navEpoch\":1}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "writeCredential",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"req-da80210b-0623-40a5-9127-6c1c83fa2829\",\"sessionId\":\"4353c01ef53f487992640b89776a8d9b\",\"ok\":true,\"result\":{\"grant\":\"pg-dc16b6caaf334d61af02b5bdecf1eef3\",\"fields\":[\"fontSize\",\"lineHeight\"]}}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "writeCredential",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"state.savePreferences\",\"requestId\":\"req-4ac7ac54-041d-4b89-b86a-263dfbbc5d9e\",\"sessionId\":\"4353c01ef53f487992640b89776a8d9b\",\"scope\":\"global\",\"preferences\":{\"fontSize\":28,\"lineHeight\":2.2},\"grants\":{\"fontSize\":\"pg-dc16b6caaf334d61af02b5bdecf1eef3\",\"lineHeight\":\"pg-dc16b6caaf334d61af02b5bdecf1eef3\"}}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "writeCredential",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"req-4ac7ac54-041d-4b89-b86a-263dfbbc5d9e\",\"sessionId\":\"4353c01ef53f487992640b89776a8d9b\",\"ok\":false,\"error\":{\"code\":\"WRITE_FAILED\",\"message\":\"\\u72B6\\u6001\\u5199\\u5165\\u5931\\u8D25\\uFF1AAccess to the path is denied.\"}}"
+  },
+  {
+    "direction": "JS->C#",
+    "name": "writeCredential",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"state.savePreferences\",\"requestId\":\"req-3eb1dbcc-6950-4f74-90ea-1841170b41c4\",\"sessionId\":\"4353c01ef53f487992640b89776a8d9b\",\"scope\":\"global\",\"preferences\":{\"fontSize\":28,\"lineHeight\":2.2},\"grants\":{\"fontSize\":\"pg-dc16b6caaf334d61af02b5bdecf1eef3\",\"lineHeight\":\"pg-dc16b6caaf334d61af02b5bdecf1eef3\"}}"
+  },
+  {
+    "direction": "C#->JS",
+    "name": "writeCredential",
+    "time": 1700000000000,
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"req-3eb1dbcc-6950-4f74-90ea-1841170b41c4\",\"sessionId\":\"4353c01ef53f487992640b89776a8d9b\",\"ok\":true,\"result\":{\"revision\":2,\"applied\":[\"fontSize\",\"lineHeight\"],\"idempotent\":[],\"superseded\":[]}}"
+  },
+  {
+    "direction": "v2-direct->C#",
+    "name": "v2Security",
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":2,\"type\":\"book.begin\",\"sessionId\":\"fd880488c3874d3ba7859caad130204a\",\"loadId\":\"new\"}"
+  },
+  {
+    "direction": "v2-direct->C#",
+    "name": "v2Security",
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":2,\"type\":\"book.ready\",\"sessionId\":\"fd880488c3874d3ba7859caad130204a\",\"loadId\":\"old\"}"
+  },
+  {
+    "direction": "v2-direct->C#",
+    "name": "v2Security",
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":2,\"type\":\"book.ready\",\"sessionId\":\"old-session\",\"loadId\":\"new\"}"
+  },
+  {
+    "direction": "v2-direct->C#",
+    "name": "v2Security",
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":2,\"type\":\"book.ready\",\"sessionId\":\"fd880488c3874d3ba7859caad130204a\",\"loadId\":\"\"}"
+  },
+  {
+    "direction": "v2-direct->C#",
+    "name": "v2Security",
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":2,\"type\":\"book.ready\",\"sessionId\":\"fd880488c3874d3ba7859caad130204a\",\"loadId\":\"new\"}"
+  },
+  {
+    "direction": "v2-direct->C#",
+    "name": "v2Security",
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":2,\"type\":\"state.savePreferences\",\"sessionId\":\"fd880488c3874d3ba7859caad130204a\",\"requestId\":\"legacy-write\",\"scope\":\"global\",\"preferences\":{\"fontSize\":36},\"grants\":{\"fontSize\":\"fake\"}}"
+  },
+  {
+    "direction": "v2-direct->C#",
+    "name": "v2Security",
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":2,\"type\":\"book.ready\",\"sessionId\":\"fd880488c3874d3ba7859caad130204a\",\"loadId\":\"new\"}"
+  },
+  {
+    "direction": "v2-direct->C#",
+    "name": "v2Security",
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":2,\"type\":\"book.begin\",\"sessionId\":\"fd880488c3874d3ba7859caad130204a\",\"loadId\":\"second\"}"
+  },
+  {
+    "direction": "v2-direct->C#",
+    "name": "v2Security",
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":2,\"type\":\"book.error\",\"sessionId\":\"fd880488c3874d3ba7859caad130204a\",\"loadId\":\"old\"}"
+  },
+  {
+    "direction": "v2-direct->C#",
+    "name": "v2Security",
+    "raw": "{\"protocol\":\"lyra-reader\",\"version\":2,\"type\":\"book.error\",\"sessionId\":\"fd880488c3874d3ba7859caad130204a\",\"loadId\":\"second\"}"
+  }
+]

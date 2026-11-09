@@ -1,0 +1,20 @@
+﻿{
+    "newHostOldExtensions":  {
+                                 "runDir":  "D:\\Temp\\lyra_r3_compat_newhost",
+                                 "exeSha256":  "D0F1BB58B07D0B6AEAEB463C841914D9594D0A803E3831FC272A6A5FFED3B335",
+                                 "dllSha256":  "8067990EBBAF126239B1F3B8CC936D36CB3B1F47DC317D541FDF4CE9C4A9905E",
+                                 "epubVersion":  "0.5.26",
+                                 "epubIndexSha256":  "5A38641DD9FE98B8A9FEB0E104995A3F91B548650AC2D588E140204857A0CC77",
+                                 "pdfVersion":  "0.3.0",
+                                 "dataPath":  "D:\\Temp\\lyra_r3_compat_newhost\\data",
+                                 "result":  "with book: EPUB 0.5.26 basic ready+turn pass; no book: empty reader pass; PDF 0.3.0 with book: legacy ready and 50-page PDF visible; PDF no book: empty reader pass"
+                             },
+    "oldHostNewExtension":  {
+                                "runDir":  "D:\\Temp\\lyra_r3_compat_oldhost",
+                                "exeSha256":  "CFB5FE9EB889033ECBEE33AE9A981D62219690820D04DFB837CBAEB892B745CB",
+                                "dllSha256":  "3D330EDC6751DA559E46AD90649AC6BC5E924E115316A27CE0463201ACC82584",
+                                "epubVersion":  "0.7.0",
+                                "dataPath":  "D:\\Temp\\lyra_r3_compat_oldhost\\data",
+                                "result":  "new 0.7.0 opens/reads; page 1/9 -\u003e 3/9; honest local-mode footer visible; old host has no debug log"
+                            }
+}

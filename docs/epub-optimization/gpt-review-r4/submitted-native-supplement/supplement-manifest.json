@@ -1,0 +1,96 @@
+{
+  "generatedAt": "2026-10-28T02:26:30.800451+08:00",
+  "scope": "R4 freeze-period supplement; no candidate/r4-evidence/R3 freeze changes",
+  "report": {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\r4-evidence-supplement\\DeepSeek补充测试-R4.md",
+    "sha256": "390feaee8e04919731f51570d37aaadecccac12e9ccd830a0c0b41edba4b78cd"
+  },
+  "candidatePackageSha256": "B128B9DFBE9D7A1085CC3505F9B3EDC645847CFA24DA33958EB26EDD685F184B",
+  "finalHostDll": "9EBA643FA6E3933B5A3F86AFC1BE424FFAA08A09BF11B9AC89D2C451E3A9DF95",
+  "finalHostExe": "D0F1BB58B07D0B6AEAEB463C841914D9594D0A803E3831FC272A6A5FFED3B335",
+  "oldHostDll": "57CC576547C1FE8BC51780C722E6F39B7F00838A6CF75B19AAAC539DA2AAF3CD",
+  "extensionModules": {
+    "reader.js": "659A466FF7693FBEDD9A0DAEDBCCFBA5BE35389E9685CCCF5178A1C9084DACE4",
+    "reader-state.js": "A790F06F1585291094596F5E0C6075EEEEEF94E8EFF5A7347AE760EC4149FCC0",
+    "extension.json": "0.8.0"
+  },
+  "aStatus": {
+    "A01": "PASS",
+    "A02": "PASS",
+    "A03": "PASS",
+    "A04": "PASS",
+    "A05": "UNTESTED",
+    "A06": "PASS",
+    "A07": "PASS",
+    "A08": "PARTIAL",
+    "A09": "PASS",
+    "A10": "PASS",
+    "A11": "UNTESTED",
+    "A12": "PASS",
+    "A13": "PASS",
+    "A14": "PASS",
+    "A15": "PASS",
+    "A16": "PASS",
+    "A17": "PARTIAL",
+    "A18": "PASS",
+    "A19": "PARTIAL",
+    "A20": "PASS",
+    "A21": "PASS",
+    "A22": "PARTIAL",
+    "A23": "PARTIAL",
+    "A24": "FAIL",
+    "A25": "PASS"
+  },
+  "tests": [
+    {
+      "id": "R4-SUP-NORMAL-TWO-WINDOW",
+      "status": "PASS",
+      "detail": "A long fontSize18 -> B late fontSize32 -> A long lineHeight2.2; final prefs 32/2.2; raw windows/native-two-window-A18-B32-A22-raw.log; PID50020"
+    },
+    {
+      "id": "R4-SUP-PENDING-A18",
+      "status": "FAIL",
+      "detail": "Fast pending A18 + B32 + A lineHeight2.2: A save combines old font18 grant and lineHeight grant -> PREFERENCE_STALE; final disk only fontSize32; raw windows/native-fast-A18-B32-A22-raw.log; PID50864"
+    },
+    {
+      "id": "R4-SUP-WRITE-FAILURE-CLOSE",
+      "status": "PASS",
+      "detail": "Read-only preferences -> WRITE_FAILED on save and close retry; host.finalized ok:false; CLOSE_ERROR; file sha unchanged 6024154C...; PID40224"
+    },
+    {
+      "id": "R4-SUP-PENDING-ACK-IN-FLIGHT",
+      "status": "UNTESTED",
+      "detail": "not constructed stably in native; host specialist controlled case not claimed native"
+    },
+    {
+      "id": "R4-SUP-A08",
+      "status": "PARTIAL",
+      "detail": "c1 pure image page + lineHeight2.2 restored after app restart and window reopen; bookmark not added; PNG fixture broken; PID69936 / restart13132"
+    },
+    {
+      "id": "R4-SUP-A11",
+      "status": "UNTESTED",
+      "detail": "late resource after ready/restore intent not constructed; R3 evidence not substituted"
+    },
+    {
+      "id": "R4-SUP-A22",
+      "status": "PARTIAL",
+      "detail": "373/255 chapter real books first/mid/last/font/bookmark/reopen pass; search after 60s pending 373/373, 255/255 with zero results; realbooks/r4-real-books-results.json"
+    },
+    {
+      "id": "R4-SUP-A23",
+      "status": "PARTIAL",
+      "detail": "no new native 200 image chapter/10 book DOM/URL/process trend; only prior module evidence"
+    },
+    {
+      "id": "R4-SUP-A25",
+      "status": "PASS",
+      "detail": "clean 0.8.0 ZIP under old host b978661, local banner, page 2/9; PID73980 open / PID50636 page turn"
+    },
+    {
+      "id": "R4-SUP-A24",
+      "status": "FAIL",
+      "detail": "D03 close during chapter load still ack ok:true revision0, position unsaved, late read commits; early close/pending pass separately"
+    }
+  ]
+}

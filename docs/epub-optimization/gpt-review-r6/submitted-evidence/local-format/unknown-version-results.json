@@ -1,0 +1,23 @@
+{
+  "bookmarkUnknown": {
+    "warn": true,
+    "addCode": "LOCAL_CORRUPT",
+    "rawUnchanged": true
+  },
+  "bookmarkRecover": {
+    "items": 1,
+    "after": 2,
+    "version": 1,
+    "futureData": "retain"
+  },
+  "positionUnknown": {
+    "warn": true,
+    "saveCode": "LOCAL_CORRUPT",
+    "rawUnchanged": true
+  },
+  "prefsUnknown": {
+    "warn": true,
+    "saveCode": "LOCAL_CORRUPT",
+    "rawUnchanged": true
+  }
+}

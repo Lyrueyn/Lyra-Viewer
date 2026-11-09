@@ -1,0 +1,91 @@
+{
+  "scope": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit",
+  "readOnlyReviewRoots": [
+    "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5",
+    "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4",
+    "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3"
+  ],
+  "writePolicy": "All script outputs relative to scoped __dirname/run; fresh run guards; C# AppContext.BaseDirectory under scope; compile links resolve R5 host-snapshot",
+  "scripts": [
+    {
+      "file": "audit.cjs",
+      "sha256": "fadf167660d87d1dfee2b9f25347ea288659bf10242598bc6b509b2e36837a36",
+      "absolutePaths": []
+    },
+    {
+      "file": "boundary.cjs",
+      "sha256": "ce3336e4d3eee8c950fc287cd4de508942875a5f0fde82432d8d5c650555a536",
+      "absolutePaths": []
+    },
+    {
+      "file": "capacity.cjs",
+      "sha256": "4b624345fd91f1e31bac9890571bdbda398b3a46e126f2f9846d7ad30feaa595",
+      "absolutePaths": []
+    },
+    {
+      "file": "close-boundary.cjs",
+      "sha256": "8c48a8edeb4b1d1c94c74c92947809c2ccf558652af4801844d29b2b240c54b3",
+      "absolutePaths": []
+    },
+    {
+      "file": "completion-boundary.cjs",
+      "sha256": "6966fa0fff05059622ff05b612df51b1ad85db0a0e1ae5b78011a710e28dfd34",
+      "absolutePaths": []
+    },
+    {
+      "file": "extended.cjs",
+      "sha256": "b9a62c1eebc57b981ec9b476630f8ea061fceabcb7a464a0c32a4fa3cf71bb92",
+      "absolutePaths": []
+    },
+    {
+      "file": "finalize-evidence.cjs",
+      "sha256": "80734577f7e08ffccf20acafa353a2c21f215cac97db7b5731c891b25111f38c",
+      "absolutePaths": []
+    },
+    {
+      "file": "harness.cjs",
+      "sha256": "c39cf87560a0cff7531a4f77ec619c3e4eccdf21dcdc4415d5a1552cbd3c33e8",
+      "absolutePaths": []
+    },
+    {
+      "file": "HostAudit.csproj",
+      "sha256": "cf85337f51e4fd1a162d51426edaad210232d1c739d6dd3e7eaa90f7062f8576",
+      "absolutePaths": []
+    },
+    {
+      "file": "inspect-results.cjs",
+      "sha256": "89cba2367089b211010832cdd956090c32629cf8386a2c9ff3d1b938cf6424da",
+      "absolutePaths": []
+    },
+    {
+      "file": "prepare.cjs",
+      "sha256": "7caec18f7b1b6a7139af8b5a2254a6305f6acdb405e7d05afdfc1c31ac5496b8",
+      "absolutePaths": []
+    },
+    {
+      "file": "Program.cs",
+      "sha256": "9d2cb42f581ecd5d7b02c4a4d6aef0e3cf614b95a94907c0a5e3da3365579f86",
+      "absolutePaths": []
+    },
+    {
+      "file": "protocol-boundary.cjs",
+      "sha256": "a2b94cb550f3fff5a06d0b09849f8538e99af6b0343c6571ef44d1c407f60daf",
+      "absolutePaths": []
+    },
+    {
+      "file": "regression.cjs",
+      "sha256": "951f53c68be3beb70cd63a83ed38703374930aee2cd3d6e8ef3c0fb36ce55a45",
+      "absolutePaths": []
+    },
+    {
+      "file": "supplement.cjs",
+      "sha256": "c296f99adcdc41d3393d40a50129c2374f29a4d0eb72cc7660a29947e0440520",
+      "absolutePaths": []
+    },
+    {
+      "file": "UiStubs.cs",
+      "sha256": "aac9f334514053460bc1c96f745bccda33e3862b242a8dc7015bea8cb15fd11c",
+      "absolutePaths": []
+    }
+  ]
+}

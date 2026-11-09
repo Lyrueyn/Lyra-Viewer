@@ -1,0 +1,114 @@
+{
+  "generatedAt": "2026-10-27T19:41:11.457Z",
+  "candidate": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\candidate",
+  "identity": {
+    "expectedCommit": "76ced4c17efa4526fbc8c00e3fff5261959a7fe7",
+    "expectedPackageSha256": "60cc97bf2721bb0239122275b307833d871548c985a56068e649f3d3a1517b80",
+    "hashes": {
+      "epub-book.js": "62453a86f64fc9e883af379440c8306a8e218fa55456de490671873044c2cdc2",
+      "search.js": "470c4fe4bb68f299b1aa367cffd1f3b5e616af2dad25e7b1cc1d10f25bea702a",
+      "paginator.js": "15408a60cf6e65f83d2a3b479a878da888be964d7639ffafd468067c81a2a248",
+      "reader.js": "28790e1fb4cd5e04302c26217d80b293d8bdedfc3cd4e1551c9a02c0d93f61fb"
+    }
+  },
+  "runtime": {
+    "node": "v24.18.0",
+    "jsdom": "29.1.1"
+  },
+  "evidenceKind": "Frozen original JavaScript loaded unmodified; jsdom DOM/Range and real JSZip. Controlled async dependencies and geometry doubles disclosed per case. Not browser visibility, SVG painting or native desktop evidence.",
+  "results": [
+    {
+      "id": "Z-LATE-search-close",
+      "verdict": "FAIL",
+      "title": "Real late-image handler must not restart cancelled/finalized navigation layout",
+      "detail": {
+        "lateCount": 1,
+        "effects": [
+          {
+            "stage": "layout",
+            "book": "LATE",
+            "spine": 0,
+            "queryGen": 5,
+            "navGen": 4,
+            "openIntent": 1,
+            "finalizing": false,
+            "section": 1
+          }
+        ],
+        "finalizing": false,
+        "ready": true,
+        "paginatorReady": false,
+        "spine": 0,
+        "paginatorIndex": 1,
+        "hostMessages": [],
+        "note": "Image complete=false and load are controlled. Original 2500ms resource timeout/listener and 120ms relayout timer execute unchanged; no image painting claim."
+      }
+    },
+    {
+      "id": "Z-LATE-finalize",
+      "verdict": "FAIL",
+      "title": "Real late-image handler must not restart cancelled/finalized navigation layout",
+      "detail": {
+        "lateCount": 1,
+        "effects": [
+          {
+            "stage": "layout",
+            "book": "LATE",
+            "spine": 0,
+            "queryGen": 5,
+            "navGen": 5,
+            "openIntent": 1,
+            "finalizing": true,
+            "section": 1
+          }
+        ],
+        "finalizing": true,
+        "ready": true,
+        "paginatorReady": false,
+        "spine": 0,
+        "paginatorIndex": 1,
+        "hostMessages": [
+          {
+            "type": "host.finalized",
+            "requestId": "late-final",
+            "sessionId": "audit",
+            "ok": true,
+            "revision": 0
+          }
+        ],
+        "note": "Image complete=false and load are controlled. Original 2500ms resource timeout/listener and 120ms relayout timer execute unchanged; no image painting claim."
+      }
+    },
+    {
+      "id": "Z-FILE-AFTER-FINALIZE",
+      "verdict": "FAIL",
+      "title": "Pending file bytes must not restart open/rollback flow after finalized",
+      "detail": {
+        "before": {
+          "book": "PREVIOUS",
+          "ready": true,
+          "finalizing": true,
+          "ack": {
+            "type": "host.finalized",
+            "requestId": "file-final",
+            "sessionId": "audit",
+            "ok": true,
+            "revision": 0
+          }
+        },
+        "after": {
+          "book": "PREVIOUS",
+          "ready": false,
+          "busy": false,
+          "finalizing": true,
+          "error": "打开 EPUB 失败：正文载入失败",
+          "status": "打开 EPUB 失败：正文载入失败",
+          "spine": 0,
+          "text": "SAFE"
+        },
+        "effects": [],
+        "note": "file arrayBuffer controlled; original parsing/open/rollback functions unchanged. Not actual native window destruction."
+      }
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+﻿{
+    "capturedAt":  "2026-10-28T02:11:11.7505699+08:00",
+    "pid":  40224,
+    "exe":  "D0F1BB58B07D0B6AEAEB463C841914D9594D0A803E3831FC272A6A5FFED3B335",
+    "dll":  "9EBA643FA6E3933B5A3F86AFC1BE424FFAA08A09BF11B9AC89D2C451E3A9DF95",
+    "extensionReader":  "659A466FF7693FBEDD9A0DAEDBCCFBA5BE35389E9685CCCF5178A1C9084DACE4",
+    "dataRoot":  "D:\\Temp\\lyra_epub_r4_supplement\\data",
+    "prefsPath":  "D:\\Temp\\lyra_epub_r4_supplement\\data\\reader\\epub\\preferences.json",
+    "prefsBefore":  "6024154CB66AC2D534C563B475BB743AF799711CC8AAE67BB557A8131E5D904A",
+    "prefsAfter":  "6024154CB66AC2D534C563B475BB743AF799711CC8AAE67BB557A8131E5D904A",
+    "readOnlyFault":  "attrib +R on preferences.json, restored"
+}

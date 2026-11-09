@@ -1,0 +1,115 @@
+{
+  "preservedAssertions": [
+    {
+      "file": "audit-models.cjs",
+      "originalHash": "e7ab0771b38de81d8018e2e64fc4be907e84db0cfaf0b09a37fce22e7d769add",
+      "copiedHash": "e7ab0771b38de81d8018e2e64fc4be907e84db0cfaf0b09a37fce22e7d769add",
+      "byteIdentical": true
+    },
+    {
+      "file": "audit-reader-flow.cjs",
+      "originalHash": "c92c11714d16877577feb60fa49941ddb02f41fbf3208c24801f3f5f770782b7",
+      "copiedHash": "c92c11714d16877577feb60fa49941ddb02f41fbf3208c24801f3f5f770782b7",
+      "byteIdentical": true
+    },
+    {
+      "file": "audit-boundaries.cjs",
+      "originalHash": "e29794e4e7243362d6ca3ba6c5f60254cc0ac92a993bbc68e5e8cc6fd0886383",
+      "copiedHash": "e29794e4e7243362d6ca3ba6c5f60254cc0ac92a993bbc68e5e8cc6fd0886383",
+      "byteIdentical": true
+    },
+    {
+      "file": "audit-r4-boundaries.cjs",
+      "originalHash": "07b2a9a92aa3e558f6b504eca72d376cb88f807ea31032a4289eef8fe20ac363",
+      "copiedHash": "07b2a9a92aa3e558f6b504eca72d376cb88f807ea31032a4289eef8fe20ac363",
+      "byteIdentical": true
+    },
+    {
+      "file": "audit-r4-reader-stages.cjs",
+      "originalHash": "6bcaded9786ae00f6d47a2132d3bd4e101f83b3690479790fef2e404666937bd",
+      "copiedHash": "6bcaded9786ae00f6d47a2132d3bd4e101f83b3690479790fef2e404666937bd",
+      "byteIdentical": true
+    },
+    {
+      "file": "audit-r4-anchor-cancel.cjs",
+      "originalHash": "4495d364c22d85a15883eb477cdee907005918aa5f6d6dc020a0c311bd214929",
+      "copiedHash": "4495d364c22d85a15883eb477cdee907005918aa5f6d6dc020a0c311bd214929",
+      "byteIdentical": true
+    }
+  ],
+  "submittedScripts": [
+    {
+      "file": "audit-models.cjs",
+      "hash": "e7ab0771b38de81d8018e2e64fc4be907e84db0cfaf0b09a37fce22e7d769add",
+      "identicalToOriginal": true
+    },
+    {
+      "file": "audit-reader-flow.cjs",
+      "hash": "c92c11714d16877577feb60fa49941ddb02f41fbf3208c24801f3f5f770782b7",
+      "identicalToOriginal": true
+    }
+  ],
+  "submittedIdentityDiscrepancies": [
+    {
+      "file": "model/model-results.json",
+      "declaredIdentity": {
+        "expectedCommit": "ba6f763f9579a808ddc201b82b5867412265c104",
+        "expectedPackageSha256": "847d8047702e8de6a8dec8b7ae9e3fb60693686400b71aa65c2b134a7270636c",
+        "hashes": {
+          "epub-book.js": "62453a86f64fc9e883af379440c8306a8e218fa55456de490671873044c2cdc2",
+          "search.js": "470c4fe4bb68f299b1aa367cffd1f3b5e616af2dad25e7b1cc1d10f25bea702a",
+          "paginator.js": "15408a60cf6e65f83d2a3b479a878da888be964d7639ffafd468067c81a2a248",
+          "reader.js": "28790e1fb4cd5e04302c26217d80b293d8bdedfc3cd4e1551c9a02c0d93f61fb"
+        }
+      },
+      "actualHashMatches": true,
+      "sourcePathRecorded": "D:/Temp/Lyra-Extension-Epub"
+    },
+    {
+      "file": "model/reader-flow-results.json",
+      "declaredIdentity": {
+        "expectedCommit": "ba6f763f9579a808ddc201b82b5867412265c104",
+        "expectedPackageSha256": "847d8047702e8de6a8dec8b7ae9e3fb60693686400b71aa65c2b134a7270636c",
+        "hashes": {
+          "epub-book.js": "62453a86f64fc9e883af379440c8306a8e218fa55456de490671873044c2cdc2",
+          "search.js": "470c4fe4bb68f299b1aa367cffd1f3b5e616af2dad25e7b1cc1d10f25bea702a",
+          "paginator.js": "15408a60cf6e65f83d2a3b479a878da888be964d7639ffafd468067c81a2a248",
+          "reader.js": "28790e1fb4cd5e04302c26217d80b293d8bdedfc3cd4e1551c9a02c0d93f61fb"
+        }
+      },
+      "actualHashMatches": true,
+      "sourcePathRecorded": "D:/Temp/Lyra-Extension-Epub"
+    },
+    {
+      "file": "audits/boundary-results.json",
+      "declaredIdentity": {
+        "expectedCommit": "R5",
+        "expectedPackageSha256": "r5-candidate",
+        "hashes": {
+          "epub-book.js": "62453a86f64fc9e883af379440c8306a8e218fa55456de490671873044c2cdc2",
+          "search.js": "470c4fe4bb68f299b1aa367cffd1f3b5e616af2dad25e7b1cc1d10f25bea702a",
+          "paginator.js": "36856bd26e5053c8f809baa1ec65b9b570c03f3df45363ceb49dd14e2e646043",
+          "reader.js": "011aa11f43ad5e2f8327e3d8376881f10083061c78323a64d0b4c272f85ab56f"
+        }
+      },
+      "actualHashMatches": false,
+      "sourcePathRecorded": "D:/Temp/Lyra-Extension-Epub"
+    },
+    {
+      "file": "audits/reader-stage-results.json",
+      "declaredIdentity": {
+        "expectedCommit": "R5",
+        "expectedPackageSha256": "r5-candidate",
+        "hashes": {
+          "epub-book.js": "62453a86f64fc9e883af379440c8306a8e218fa55456de490671873044c2cdc2",
+          "search.js": "470c4fe4bb68f299b1aa367cffd1f3b5e616af2dad25e7b1cc1d10f25bea702a",
+          "paginator.js": "15408a60cf6e65f83d2a3b479a878da888be964d7639ffafd468067c81a2a248",
+          "reader.js": "28790e1fb4cd5e04302c26217d80b293d8bdedfc3cd4e1551c9a02c0d93f61fb"
+        }
+      },
+      "actualHashMatches": true,
+      "sourcePathRecorded": "D:/Temp/Lyra-Extension-Epub"
+    }
+  ],
+  "note": "Old R3 commit/ZIP constants and R5 placeholders are provenance defects, not evidence of old business source execution: actual four module hashes match frozen R5."
+}

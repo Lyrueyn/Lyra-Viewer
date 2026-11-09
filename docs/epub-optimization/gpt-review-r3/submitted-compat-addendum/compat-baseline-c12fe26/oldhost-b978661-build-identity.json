@@ -1,0 +1,13 @@
+﻿{
+    "capturedAt":  "2026-10-28T00:49:28.7044256+08:00",
+    "hostVersion":  "1.1.12.0",
+    "binaryDir":  "D:\\Temp\\lyra_old_host_real",
+    "exeSha256":  "D0F1BB58B07D0B6AEAEB463C841914D9594D0A803E3831FC272A6A5FFED3B335",
+    "dllSha256":  "57CC576547C1FE8BC51780C722E6F39B7F00838A6CF75B19AAAC539DA2AAF3CD",
+    "pdbSha256":  "6FE6B27FF096DB08221F4C4F3F36B76A510E39A36146CF5E25BB80508BCFE9C6",
+    "sourceRepo":  "F:\\DSH\\LocalMediaPlayer-Workspace",
+    "sourceHead":  "b978661b8a9ec7a9c9fee87d5d323ea1db2bc5ae",
+    "sourceTag":  "v1.1.12 at e17c4a3",
+    "webviewExeVersionObserved":  "1.1.12+b978661b8a9ec7a9c9fee87d5d323ea1db2bc5ae",
+    "note":  "实际运行 WebView2 子进程命令行包含 b978661；lyra_build_112b 的 61b53b2 样本不是此基线"
+}

@@ -1,0 +1,29 @@
+    await test('E05_CSS_VISIBILITY_DECLARATION_ORDER',async p=>{
+      await open(p,'cssorder');
+      const before=await p.evaluate(async()=>{const d=__lyraDebug.paginator.doc;return {plain:await __lyraDebug.state.book.getSectionPlainText(0),visible:d.body.innerText,
+        targetVisibility:d.defaultView.getComputedStyle(d.querySelector('#visible')).visibility,hiddenVisibility:d.defaultView.getComputedStyle(d.querySelector('#hidden')).visibility};});
+      await search(p,'TARGET');const target=await p.evaluate(()=>({count:document.querySelectorAll('.search-result').length,status:document.getElementById('searchInfo').textContent}));
+      await search(p,'HIDDEN');const hidden=await p.evaluate(()=>({count:document.querySelectorAll('.search-result').length,status:document.getElementById('searchInfo').textContent}));
+      await p.screenshot({path:path.join(out,'css-visibility-order.png')});
+      return {before,target,hidden,defect:target.count!==1||hidden.count!==0,note:'No fault injection. Actual CSS duplicate declarations follow last valid declaration; model must match displayed content.'};
+    });
+    for(const method of ['finalize','pagehide']) await test('E06_ANIMATION_'+method.toUpperCase(),async p=>{
+      await open(p,'normal');await p.evaluate(()=>{const d=__lyraDebug;d.paginator.setReduceMotion(false);const raf=window.requestAnimationFrame.bind(window),cancel=window.cancelAnimationFrame.bind(window);window.__rafCounter=1000000;window.__rafHeld=new Map();
+        window.requestAnimationFrame=fn=>{const id=++window.__rafCounter;window.__rafHeld.set(id,fn);return id;};window.cancelAnimationFrame=id=>{if(!window.__rafHeld.delete(id))cancel(id);};
+      });
+      await p.locator('#pageNext').click();const during=await p.evaluate(()=>({target:__lyraDebug.paginator.pageIndex,scroll:__lyraDebug.paginator.scrollPos,raf:__lyraDebug.paginator._anim.raf,modified:__lyraDebug.state.modified}));
+      if(!during.raf)throw new Error('Probe could not establish pending animation');
+      if(method==='finalize'){await p.evaluate(()=>window.__deliverHost({type:'host.finalize',requestId:'animation-close',sessionId:__lyraDebug.state.client.sessionId}));await p.waitForFunction(()=>window.__hostPosts.some(m=>m.type==='host.finalized'));}
+      else {await p.evaluate(()=>window.dispatchEvent(new Event('pagehide')));await p.waitForTimeout(200);}
+      const after=await snapshot(p),ack=await p.evaluate(()=>window.__hostPosts.find(m=>m.type==='host.finalized')||null);
+      await p.reload();await ready(p);const reopened=await snapshot(p);
+      return {during,ack,after,reopened,defect:reopened.page!==during.target,note:'Original UI next, real Edge geometry/storage/reload. Explicit controllable rAF clock holds animation before first tick; finalize message is local-only bridge. pagehide is settle-order control, not native close.'};
+    },true);
+    await test('E07_FILE_BYTES_COMPLETE_AFTER_FINALIZE',async p=>{
+      await open(p,'search');await p.evaluate(()=>{const orig=File.prototype.arrayBuffer;File.prototype.arrayBuffer=async function(){if(this.name==='LATE.epub'){window.__waiting=true;await new Promise(r=>window.__release=r);}return orig.call(this);};});
+      await p.locator('#file').setInputFiles({name:'LATE.epub',mimeType:'application/epub+zip',buffer:fixtures.normal});await p.waitForFunction(()=>window.__waiting);
+      await p.evaluate(()=>window.__deliverHost({type:'host.finalize',requestId:'file-after-close',sessionId:__lyraDebug.state.client.sessionId}));await p.waitForFunction(()=>window.__hostPosts.some(m=>m.type==='host.finalized'));
+      const atAck=await snapshot(p),ack=await p.evaluate(()=>window.__hostPosts.find(m=>m.type==='host.finalized'));
+      await p.evaluate(()=>window.__release());await p.waitForTimeout(500);const late=await snapshot(p),error=await p.locator('#errorText').innerText();
+      return {ack,atAck,late,error,defect:ack.ok&&(atAck.ready!==late.ready||/正文载入失败/.test(error)),note:'File bytes held after genuine file input; original code, local bridge keeps page alive to inspect post-ack work. Does not claim native window continues after actual disposal.'};
+    },true);

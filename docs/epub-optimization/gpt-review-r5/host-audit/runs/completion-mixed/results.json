@@ -1,0 +1,205 @@
+{
+  "evidenceKind": "Original JS/controller/C# serializers and isolated files; explicit capacity/delayed acknowledgement injection",
+  "results": [
+    {
+      "id": "K01-MIXED-FIELD-COMPLETION-PRUNE",
+      "pass": false,
+      "expected": "specified behavior",
+      "actual": {
+        "held": [
+          {
+            "req": {
+              "protocol": "lyra-reader",
+              "version": 3,
+              "type": "state.savePreferences",
+              "requestId": "req-df02f050-15b5-4b2f-ba5f-cf24a7e04f77",
+              "sessionId": "2ad23029be9d4c288fe7c181ca032efe",
+              "scope": "global",
+              "preferences": {
+                "theme": "sepia",
+                "bg": "#F5F0E6",
+                "fg": "#2B2620"
+              },
+              "grants": {
+                "theme": "pg-9b2e13da8c2c47569025baa0ada78747",
+                "bg": "pg-9b2e13da8c2c47569025baa0ada78747",
+                "fg": "pg-9b2e13da8c2c47569025baa0ada78747"
+              }
+            },
+            "msg": {
+              "protocol": "lyra-reader",
+              "version": 3,
+              "type": "response",
+              "requestId": "req-df02f050-15b5-4b2f-ba5f-cf24a7e04f77",
+              "sessionId": "2ad23029be9d4c288fe7c181ca032efe",
+              "ok": true,
+              "result": {
+                "revision": 2,
+                "applied": [
+                  "fg"
+                ],
+                "idempotent": [],
+                "superseded": [
+                  "theme",
+                  "bg"
+                ]
+              }
+            },
+            "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"req-df02f050-15b5-4b2f-ba5f-cf24a7e04f77\",\"sessionId\":\"2ad23029be9d4c288fe7c181ca032efe\",\"ok\":true,\"result\":{\"revision\":2,\"applied\":[\"fg\"],\"idempotent\":[],\"superseded\":[\"theme\",\"bg\"]}}"
+          }
+        ],
+        "committed": {
+          "version": 1,
+          "revision": 2,
+          "preferences": {
+            "theme": "custom",
+            "bg": "#ABCDEF",
+            "fg": "#2B2620"
+          },
+          "fieldSequences": {},
+          "preferenceOrders": {
+            "theme": 4096,
+            "bg": 4096,
+            "fg": 4095
+          },
+          "updatedAt": "2026-10-27T19:41:52.6629164Z"
+        },
+        "count": {
+          "count": 4096,
+          "order": 4097
+        },
+        "file": {
+          "version": 1,
+          "revision": 2,
+          "preferences": {
+            "theme": "custom",
+            "bg": "#ABCDEF",
+            "fg": "#2B2620"
+          },
+          "fieldSequences": {},
+          "preferenceOrders": {
+            "theme": 4096,
+            "bg": 4096,
+            "fg": 4095
+          },
+          "updatedAt": "2026-10-27T19:41:52.6629164Z"
+        },
+        "pending": [
+          "theme",
+          "bg",
+          "fg",
+          "lineHeight"
+        ],
+        "acks": [
+          {
+            "type": "host.finalized",
+            "requestId": "6896cc932abd46979ad65935beaa8a9b",
+            "sessionId": "2ad23029be9d4c288fe7c181ca032efe",
+            "ok": false,
+            "revision": 0
+          }
+        ],
+        "requests": [
+          {
+            "protocol": "lyra-reader",
+            "version": 3,
+            "type": "state.savePreferences",
+            "requestId": "req-df02f050-15b5-4b2f-ba5f-cf24a7e04f77",
+            "sessionId": "2ad23029be9d4c288fe7c181ca032efe",
+            "scope": "global",
+            "preferences": {
+              "theme": "sepia",
+              "bg": "#F5F0E6",
+              "fg": "#2B2620"
+            },
+            "grants": {
+              "theme": "pg-9b2e13da8c2c47569025baa0ada78747",
+              "bg": "pg-9b2e13da8c2c47569025baa0ada78747",
+              "fg": "pg-9b2e13da8c2c47569025baa0ada78747"
+            }
+          },
+          {
+            "protocol": "lyra-reader",
+            "version": 3,
+            "type": "state.savePreferences",
+            "requestId": "req-d86e4b5b-52d1-4667-b2e0-4c88a8232046",
+            "sessionId": "2ad23029be9d4c288fe7c181ca032efe",
+            "scope": "global",
+            "preferences": {
+              "theme": "sepia",
+              "bg": "#F5F0E6",
+              "fg": "#2B2620"
+            },
+            "grants": {
+              "theme": "pg-9b2e13da8c2c47569025baa0ada78747",
+              "bg": "pg-9b2e13da8c2c47569025baa0ada78747",
+              "fg": "pg-9b2e13da8c2c47569025baa0ada78747"
+            }
+          },
+          {
+            "protocol": "lyra-reader",
+            "version": 3,
+            "type": "state.savePreferences",
+            "requestId": "req-423bee4d-c794-4b8e-90f4-f0f232284286",
+            "sessionId": "2ad23029be9d4c288fe7c181ca032efe",
+            "scope": "global",
+            "preferences": {
+              "theme": "sepia",
+              "bg": "#F5F0E6",
+              "fg": "#2B2620",
+              "lineHeight": 2.2
+            },
+            "grants": {
+              "theme": "pg-9b2e13da8c2c47569025baa0ada78747",
+              "bg": "pg-9b2e13da8c2c47569025baa0ada78747",
+              "fg": "pg-9b2e13da8c2c47569025baa0ada78747",
+              "lineHeight": "pg-862d7543c09e4bd894220215c70014f0"
+            }
+          },
+          {
+            "protocol": "lyra-reader",
+            "version": 3,
+            "type": "state.savePreferences",
+            "requestId": "req-ae1133a8-67ea-4667-80d3-5d6d1068745e",
+            "sessionId": "2ad23029be9d4c288fe7c181ca032efe",
+            "scope": "global",
+            "preferences": {
+              "theme": "sepia",
+              "bg": "#F5F0E6",
+              "fg": "#2B2620",
+              "lineHeight": 2.2
+            },
+            "grants": {
+              "theme": "pg-9b2e13da8c2c47569025baa0ada78747",
+              "bg": "pg-9b2e13da8c2c47569025baa0ada78747",
+              "fg": "pg-9b2e13da8c2c47569025baa0ada78747",
+              "lineHeight": "pg-862d7543c09e4bd894220215c70014f0"
+            }
+          }
+        ],
+        "elapsedMs": 723,
+        "errors": [
+          {
+            "direction": "C#->JS",
+            "name": "A",
+            "time": 1700000003300,
+            "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"req-d86e4b5b-52d1-4667-b2e0-4c88a8232046\",\"sessionId\":\"2ad23029be9d4c288fe7c181ca032efe\",\"ok\":false,\"error\":{\"code\":\"FIELD_NOT_GRANTED\",\"message\":\"\\u504F\\u597D\\u5B8C\\u6210\\u51ED\\u636E\\u672A\\u5305\\u542B\\u5B57\\u6BB5\\uFF1Atheme\"}}"
+          },
+          {
+            "direction": "C#->JS",
+            "name": "A",
+            "time": 1700000003300,
+            "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"req-423bee4d-c794-4b8e-90f4-f0f232284286\",\"sessionId\":\"2ad23029be9d4c288fe7c181ca032efe\",\"ok\":false,\"error\":{\"code\":\"FIELD_NOT_GRANTED\",\"message\":\"\\u504F\\u597D\\u5B8C\\u6210\\u51ED\\u636E\\u672A\\u5305\\u542B\\u5B57\\u6BB5\\uFF1Atheme\"}}"
+          },
+          {
+            "direction": "C#->JS",
+            "name": "A",
+            "time": 1700000003300,
+            "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"req-ae1133a8-67ea-4667-80d3-5d6d1068745e\",\"sessionId\":\"2ad23029be9d4c288fe7c181ca032efe\",\"ok\":false,\"error\":{\"code\":\"FIELD_NOT_GRANTED\",\"message\":\"\\u504F\\u597D\\u5B8C\\u6210\\u51ED\\u636E\\u672A\\u5305\\u542B\\u5B57\\u6BB5\\uFF1Atheme\"}}"
+          }
+        ],
+        "boundary": "4094 incomplete font grants; original A sepia UI operation; newer original B custom background supersedes A theme/bg; A fg committed but ack held; line grant reclaims completed A token; retry must preserve all field dispositions"
+      }
+    }
+  ]
+}

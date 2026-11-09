@@ -1,0 +1,28 @@
+{
+  "id": "B12_LATE_IMAGES_PREVIOUS_CHAPTER_LAST_INTENT",
+  "before": {
+    "page": 23,
+    "count": 24,
+    "incomplete": 0
+  },
+  "after": {
+    "page": 23,
+    "count": 24,
+    "incomplete": 0,
+    "anchor": {
+      "elementPath": [
+        104
+      ],
+      "textOffset": null,
+      "quote": "",
+      "prefix": "",
+      "suffix": "",
+      "elementId": "",
+      "chapterFraction": 1,
+      "pageIndex": 23
+    }
+  },
+  "lateRequests": 4,
+  "defect": false,
+  "note": "Previous chapter UI action requests last page. The review injects 8.5s image response delay after ordinary EPUB sanitization; no product source changes."
+}

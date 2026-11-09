@@ -1,0 +1,40 @@
+{
+  "evidenceKind": "Original JS/C# serializers and isolated disk; deliberate grant capacity stress",
+  "results": [
+    {
+      "id": "C02-4097-UNCOMPLETED-UI-INPUTS",
+      "pass": false,
+      "expected": "specified behavior",
+      "actual": {
+        "inputCount": 4097,
+        "count": {
+          "count": 4096,
+          "order": 4096
+        },
+        "file": null,
+        "pending": [
+          "fontSize"
+        ],
+        "acks": [
+          {
+            "type": "host.finalized",
+            "requestId": "2a6d5e820776477088ea2d7417b82ca1",
+            "sessionId": "5e2cf6f3d735432c910c6b9d84d8a635",
+            "ok": false,
+            "revision": 0
+          }
+        ],
+        "saveState": "设置授权失败，未保存",
+        "errors": [
+          {
+            "direction": "C#->JS",
+            "name": "capacity",
+            "time": 1700000000000,
+            "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"req-5f4943ce-843a-4e0a-8015-86744603cb3b\",\"sessionId\":\"5e2cf6f3d735432c910c6b9d84d8a635\",\"ok\":false,\"error\":{\"code\":\"GRANT_LIMIT\",\"message\":\"\\u504F\\u597D\\u6388\\u6743\\u6570\\u91CF\\u8FBE\\u5230\\u4E0A\\u9650\\uFF0C\\u8BF7\\u7A0D\\u540E\\u91CD\\u8BD5\"}}"
+          }
+        ],
+        "fixture": "Stress boundary: no 300ms debounce delivery during 4097 alternating input events; not ordinary human rate"
+      }
+    }
+  ]
+}

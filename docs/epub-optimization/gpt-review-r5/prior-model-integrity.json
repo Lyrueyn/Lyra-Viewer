@@ -1,0 +1,94 @@
+[
+  {
+    "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\model-audit\\assertion-comparison.json",
+    "ok": true
+  },
+  {
+    "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\model-audit\\audit-boundaries.cjs",
+    "ok": true
+  },
+  {
+    "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\model-audit\\audit-common.cjs",
+    "ok": true
+  },
+  {
+    "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\model-audit\\audit-models.cjs",
+    "ok": true
+  },
+  {
+    "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\model-audit\\audit-r4-anchor-cancel.cjs",
+    "ok": true
+  },
+  {
+    "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\model-audit\\audit-r4-boundaries.cjs",
+    "ok": true
+  },
+  {
+    "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\model-audit\\audit-r4-reader-stages.cjs",
+    "ok": true
+  },
+  {
+    "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\model-audit\\audit-reader-flow.cjs",
+    "ok": true
+  },
+  {
+    "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\model-audit\\audit-summary.json",
+    "ok": true
+  },
+  {
+    "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\model-audit\\boundary-results.json",
+    "ok": true
+  },
+  {
+    "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\model-audit\\frozen-after.json",
+    "ok": true
+  },
+  {
+    "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\model-audit\\frozen-before.json",
+    "ok": true
+  },
+  {
+    "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\model-audit\\model-results.json",
+    "ok": true
+  },
+  {
+    "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\model-audit\\prepare-audit.cjs",
+    "ok": true
+  },
+  {
+    "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\model-audit\\r4-anchor-cancel-results.json",
+    "ok": true
+  },
+  {
+    "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\model-audit\\r4-boundary-first-harness-error.json",
+    "ok": true
+  },
+  {
+    "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\model-audit\\r4-boundary-preclassification.json",
+    "ok": true
+  },
+  {
+    "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\model-audit\\r4-boundary-results.json",
+    "ok": true
+  },
+  {
+    "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\model-audit\\r4-reader-stage-first-harness-error.json",
+    "ok": true
+  },
+  {
+    "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\model-audit\\r4-reader-stage-results.json",
+    "ok": true
+  },
+  {
+    "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\model-audit\\reader-flow-results.json",
+    "ok": true
+  },
+  {
+    "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\model-audit\\verify-deliverables.cjs",
+    "ok": true
+  },
+  {
+    "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\model-audit\\解析搜索资源导航独立验收-R4.md",
+    "ok": true
+  }
+]

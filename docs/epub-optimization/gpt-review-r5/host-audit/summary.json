@@ -1,0 +1,710 @@
+{
+  "revision": "R5",
+  "conclusion": "FAIL",
+  "identity": {
+    "commit": "76ced4c17efa4526fbc8c00e3fff5261959a7fe7",
+    "version": "0.9.0",
+    "archiveSha256": "60cc97bf2721bb0239122275b307833d871548c985a56068e649f3d3a1517b80",
+    "hostDllSha256": "202954e5930fcdc7a50bd96975b84a12cbf7aa4375ac7334832d28a45f5f9480"
+  },
+  "evidenceBoundary": "原reader.js/reader-state.js/C#原样执行/Compile Link，指定用例原paginator.js；真实JSON和隔离Windows文件；WinUI/WebView/时间/DOM几何替身，不是候选DLL原生",
+  "counts": {
+    "PASS": 49,
+    "FAIL": 8,
+    "OBS": 5,
+    "UNTESTED": 0
+  },
+  "rawAssertions": {
+    "total": 62,
+    "satisfied": 51,
+    "unsatisfied": 11,
+    "probeErrors": 0
+  },
+  "cases": [
+    {
+      "id": "J01-OPAQUE-DEFAULT-UI",
+      "group": "main",
+      "status": "PASS",
+      "assertionSatisfied": true,
+      "note": null,
+      "resultFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\main\\results.json",
+      "wireFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\main\\wire.json"
+    },
+    {
+      "id": "J02-EMPTY-WINDOW",
+      "group": "main",
+      "status": "PASS",
+      "assertionSatisfied": true,
+      "note": null,
+      "resultFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\main\\results.json",
+      "wireFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\main\\wire.json"
+    },
+    {
+      "id": "J03-POSITION-PREF-SEPARATE",
+      "group": "main",
+      "status": "PASS",
+      "assertionSatisfied": true,
+      "note": null,
+      "resultFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\main\\results.json",
+      "wireFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\main\\wire.json"
+    },
+    {
+      "id": "J04-FINALIZE-18-INFLIGHT-32",
+      "group": "main",
+      "status": "PASS",
+      "assertionSatisfied": true,
+      "note": null,
+      "resultFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\main\\results.json",
+      "wireFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\main\\wire.json"
+    },
+    {
+      "id": "J05-REAL-WRITEFAIL-CLOSE",
+      "group": "main",
+      "status": "PASS",
+      "assertionSatisfied": true,
+      "note": null,
+      "resultFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\main\\results.json",
+      "wireFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\main\\wire.json"
+    },
+    {
+      "id": "J06-NOCHANGE-CLOSE",
+      "group": "main",
+      "status": "PASS",
+      "assertionSatisfied": true,
+      "note": null,
+      "resultFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\main\\results.json",
+      "wireFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\main\\wire.json"
+    },
+    {
+      "id": "J07-ACK-LOSS-RETRY",
+      "group": "main",
+      "status": "PASS",
+      "assertionSatisfied": true,
+      "note": null,
+      "resultFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\main\\results.json",
+      "wireFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\main\\wire.json"
+    },
+    {
+      "id": "J08-OLD-GRANT-BLOCKS-INDEPENDENT-FIELD",
+      "group": "main",
+      "status": "PASS",
+      "assertionSatisfied": true,
+      "note": null,
+      "resultFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\main\\results.json",
+      "wireFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\main\\wire.json"
+    },
+    {
+      "id": "J09-DELAY-GRANT-ORDER",
+      "group": "main",
+      "status": "PASS",
+      "assertionSatisfied": true,
+      "note": null,
+      "resultFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\main\\results.json",
+      "wireFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\main\\wire.json"
+    },
+    {
+      "id": "J10-IMAGE-ACK-OPERATION",
+      "group": "main",
+      "status": "PASS",
+      "assertionSatisfied": true,
+      "note": null,
+      "resultFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\main\\results.json",
+      "wireFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\main\\wire.json"
+    },
+    {
+      "id": "J11-POSITION-TOKEN-REVERSE-REPLIES",
+      "group": "main",
+      "status": "PASS",
+      "assertionSatisfied": true,
+      "note": null,
+      "resultFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\main\\results.json",
+      "wireFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\main\\wire.json"
+    },
+    {
+      "id": "J12-FAILED-100-DISK-900",
+      "group": "main",
+      "status": "PASS",
+      "assertionSatisfied": true,
+      "note": null,
+      "resultFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\main\\results.json",
+      "wireFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\main\\wire.json"
+    },
+    {
+      "id": "J13-CORRUPT-A-HEALTHY-B",
+      "group": "main",
+      "status": "PASS",
+      "assertionSatisfied": true,
+      "note": null,
+      "resultFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\main\\results.json",
+      "wireFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\main\\wire.json"
+    },
+    {
+      "id": "J14-SAME-BOOK-READ-RECOVERY",
+      "group": "main",
+      "status": "PASS",
+      "assertionSatisfied": true,
+      "note": null,
+      "resultFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\main\\results.json",
+      "wireFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\main\\wire.json"
+    },
+    {
+      "id": "J15-BOOKMARK-MATRIX",
+      "group": "main",
+      "status": "PASS",
+      "assertionSatisfied": true,
+      "note": null,
+      "resultFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\main\\results.json",
+      "wireFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\main\\wire.json"
+    },
+    {
+      "id": "J16-V1-R3-CLIENT-NEGOTIATION",
+      "group": "main",
+      "status": "PASS",
+      "assertionSatisfied": true,
+      "note": null,
+      "resultFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\main\\results.json",
+      "wireFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\main\\wire.json"
+    },
+    {
+      "id": "J17-CAPS-NEGOTIATION",
+      "group": "main",
+      "status": "PASS",
+      "assertionSatisfied": true,
+      "note": null,
+      "resultFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\main\\results.json",
+      "wireFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\main\\wire.json"
+    },
+    {
+      "id": "H01-FIELD-SESSION-OP",
+      "group": "main",
+      "status": "PASS",
+      "assertionSatisfied": true,
+      "note": null,
+      "resultFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\main\\results.json",
+      "wireFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\main\\wire.json"
+    },
+    {
+      "id": "H01-SCOPE-BOUND",
+      "group": "main",
+      "status": "PASS",
+      "assertionSatisfied": true,
+      "note": null,
+      "resultFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\main\\results.json",
+      "wireFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\main\\wire.json"
+    },
+    {
+      "id": "H02-GRANT-EPOCH",
+      "group": "main",
+      "status": "PASS",
+      "assertionSatisfied": true,
+      "note": null,
+      "resultFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\main\\results.json",
+      "wireFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\main\\wire.json"
+    },
+    {
+      "id": "H03-NEW-UNSAVED-GRANT",
+      "group": "main",
+      "status": "PASS",
+      "assertionSatisfied": true,
+      "note": null,
+      "resultFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\main\\results.json",
+      "wireFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\main\\wire.json"
+    },
+    {
+      "id": "H04-CLOSE-STRICT",
+      "group": "main",
+      "status": "PASS",
+      "assertionSatisfied": true,
+      "note": null,
+      "resultFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\main\\results.json",
+      "wireFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\main\\wire.json"
+    },
+    {
+      "id": "H05-EARLY-CLOSE",
+      "group": "main",
+      "status": "PASS",
+      "assertionSatisfied": true,
+      "note": null,
+      "resultFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\main\\results.json",
+      "wireFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\main\\wire.json"
+    },
+    {
+      "id": "H06-READFAIL-PROTECT",
+      "group": "main",
+      "status": "PASS",
+      "assertionSatisfied": true,
+      "note": null,
+      "resultFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\main\\results.json",
+      "wireFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\main\\wire.json"
+    },
+    {
+      "id": "J18-PAGE-INPUT-AFTER-FINALIZE",
+      "group": "main",
+      "status": "PASS",
+      "assertionSatisfied": true,
+      "note": null,
+      "resultFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\main\\results.json",
+      "wireFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\main\\wire.json"
+    },
+    {
+      "id": "S01-MUTUALLY-EXCLUSIVE-FOCUS",
+      "group": "supplement",
+      "status": "PASS",
+      "assertionSatisfied": true,
+      "note": null,
+      "resultFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\supplement\\results.json",
+      "wireFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\supplement\\wire.json"
+    },
+    {
+      "id": "S02-PAGE-DEBOUNCE-DURING-CLOSE",
+      "group": "supplement",
+      "status": "PASS",
+      "assertionSatisfied": true,
+      "note": null,
+      "resultFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\supplement\\results.json",
+      "wireFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\supplement\\wire.json"
+    },
+    {
+      "id": "S03-HOST-FAILED-POSITION-REOPEN",
+      "group": "supplement",
+      "status": "PASS",
+      "assertionSatisfied": true,
+      "note": null,
+      "resultFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\supplement\\results.json",
+      "wireFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\supplement\\wire.json"
+    },
+    {
+      "id": "S04-THEME-THREE-FIELDS",
+      "group": "supplement",
+      "status": "PASS",
+      "assertionSatisfied": true,
+      "note": null,
+      "resultFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\supplement\\results.json",
+      "wireFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\supplement\\wire.json"
+    },
+    {
+      "id": "S05-NEW-GRANT-WRITE-FAIL-OLD-PENDING",
+      "group": "supplement",
+      "status": "PASS",
+      "assertionSatisfied": true,
+      "note": null,
+      "resultFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\supplement\\results.json",
+      "wireFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\supplement\\wire.json"
+    },
+    {
+      "id": "S06-CAPACITY-UI-PENDING",
+      "group": "supplement",
+      "status": "PASS",
+      "assertionSatisfied": true,
+      "note": null,
+      "resultFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\supplement\\results.json",
+      "wireFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\supplement\\wire.json"
+    },
+    {
+      "id": "C01-ACK-LOSS-AFTER-CAPACITY-PRUNE",
+      "group": "capacity-ack",
+      "status": "PASS",
+      "assertionSatisfied": true,
+      "note": null,
+      "resultFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\capacity-ack\\results.json",
+      "wireFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\capacity-ack\\wire.json"
+    },
+    {
+      "id": "C02-4097-UNCOMPLETED-UI-INPUTS",
+      "group": "capacity-burst",
+      "status": "FAIL",
+      "assertionSatisfied": false,
+      "note": null,
+      "resultFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\capacity-burst\\results.json",
+      "wireFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\capacity-burst\\wire.json"
+    },
+    {
+      "id": "B01-RESTART-MIGRATION",
+      "group": "boundary",
+      "status": "PASS",
+      "assertionSatisfied": true,
+      "note": null,
+      "resultFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\boundary\\results.json",
+      "wireFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\boundary\\wire.json"
+    },
+    {
+      "id": "B02-TWO-PROCESS-SMALL-ORDER-COLLISION",
+      "group": "boundary",
+      "status": "OBS",
+      "assertionSatisfied": false,
+      "note": "两个独立进程共享目录前提未证实为产品支持场景；不能混同单进程双窗。",
+      "resultFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\boundary\\results.json",
+      "wireFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\boundary\\wire.json"
+    },
+    {
+      "id": "B03-GRANT-4096",
+      "group": "boundary",
+      "status": "PASS",
+      "assertionSatisfied": true,
+      "note": null,
+      "resultFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\boundary\\results.json",
+      "wireFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\boundary\\wire.json"
+    },
+    {
+      "id": "B04-COMPLETED-GRANT-IDEMPOTENCE-AFTER-PRUNE",
+      "group": "boundary",
+      "status": "PASS",
+      "assertionSatisfied": true,
+      "note": null,
+      "resultFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\boundary\\results.json",
+      "wireFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\boundary\\wire.json"
+    },
+    {
+      "id": "B05-EXPIRY-RECOVERY",
+      "group": "boundary",
+      "status": "PASS",
+      "assertionSatisfied": true,
+      "note": null,
+      "resultFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\boundary\\results.json",
+      "wireFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\boundary\\wire.json"
+    },
+    {
+      "id": "R01-POSITION-OWNER-SEQUENCE-UNICODE",
+      "group": "regression",
+      "status": "PASS",
+      "assertionSatisfied": true,
+      "note": null,
+      "resultFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\regression\\results.json",
+      "wireFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\regression\\wire.json"
+    },
+    {
+      "id": "R02-REAL-BOOK-READFAIL-UNKNOWN-CORRUPT",
+      "group": "regression",
+      "status": "PASS",
+      "assertionSatisfied": true,
+      "note": null,
+      "resultFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\regression\\results.json",
+      "wireFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\regression\\wire.json"
+    },
+    {
+      "id": "R03-LARGE-BOOKMARK-PAGES",
+      "group": "regression",
+      "status": "PASS",
+      "assertionSatisfied": true,
+      "note": null,
+      "resultFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\regression\\results.json",
+      "wireFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\regression\\wire.json"
+    },
+    {
+      "id": "R04-STRICT-CLIENT-RESPONSE",
+      "group": "regression",
+      "status": "PASS",
+      "assertionSatisfied": true,
+      "note": null,
+      "resultFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\regression\\results.json",
+      "wireFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\regression\\wire.json"
+    },
+    {
+      "id": "R05-MISSING-EPOCH-AND-RELOAD",
+      "group": "regression",
+      "status": "PASS",
+      "assertionSatisfied": true,
+      "note": null,
+      "resultFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\regression\\results.json",
+      "wireFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\regression\\wire.json"
+    },
+    {
+      "id": "E01-RETRY-ORIGINAL-IDENTITY",
+      "group": "extended",
+      "status": "FAIL",
+      "assertionSatisfied": false,
+      "note": null,
+      "resultFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\extended\\results.json",
+      "wireFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\extended\\wire.json"
+    },
+    {
+      "id": "E02-METADATA-ONLY-FAILED-REOPEN",
+      "group": "extended",
+      "status": "PASS",
+      "assertionSatisfied": true,
+      "note": null,
+      "resultFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\extended\\results.json",
+      "wireFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\extended\\wire.json"
+    },
+    {
+      "id": "E03-FAILED-OTHER-BOOK-CLOSE",
+      "group": "extended",
+      "status": "FAIL",
+      "assertionSatisfied": false,
+      "note": null,
+      "resultFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\extended\\results.json",
+      "wireFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\extended\\wire.json"
+    },
+    {
+      "id": "E04-CLOSE-DURING-PREPARE",
+      "group": "extended",
+      "status": "PASS",
+      "assertionSatisfied": true,
+      "note": null,
+      "resultFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\extended\\results.json",
+      "wireFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\extended\\wire.json"
+    },
+    {
+      "id": "E04-CLOSE-DURING-RESOURCES",
+      "group": "extended",
+      "status": "FAIL",
+      "assertionSatisfied": false,
+      "note": null,
+      "resultFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\extended\\results.json",
+      "wireFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\extended\\wire.json"
+    },
+    {
+      "id": "E05-ANIMATION-CLOSE",
+      "group": "extended",
+      "status": "FAIL",
+      "assertionSatisfied": false,
+      "note": null,
+      "resultFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\extended\\results.json",
+      "wireFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\extended\\wire.json"
+    },
+    {
+      "id": "E05-ANIMATION-PAGEHIDE-CONTROL",
+      "group": "extended",
+      "status": "PASS",
+      "assertionSatisfied": true,
+      "note": null,
+      "resultFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\extended\\results.json",
+      "wireFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\extended\\wire.json"
+    },
+    {
+      "id": "E06-CAPS-ALL-REQUIRED",
+      "group": "extended",
+      "status": "PASS",
+      "assertionSatisfied": true,
+      "note": null,
+      "resultFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\extended\\results.json",
+      "wireFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\extended\\wire.json"
+    },
+    {
+      "id": "E07-LOCAL-BOOKMARK-RECOVERY-MATRIX",
+      "group": "extended",
+      "status": "PASS",
+      "assertionSatisfied": true,
+      "note": null,
+      "resultFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\extended\\results.json",
+      "wireFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\extended\\wire.json"
+    },
+    {
+      "id": "E08-LOCAL-UNKNOWN-SCHEMA-PROTECTION",
+      "group": "extended",
+      "status": "FAIL",
+      "assertionSatisfied": false,
+      "note": null,
+      "resultFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\extended\\results.json",
+      "wireFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\extended\\wire.json"
+    },
+    {
+      "id": "E09-LOADED-LEGACY-REVISION",
+      "group": "extended",
+      "status": "PASS",
+      "assertionSatisfied": true,
+      "note": null,
+      "resultFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\extended\\results.json",
+      "wireFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\extended\\wire.json"
+    },
+    {
+      "id": "K01-MIXED-FIELD-COMPLETION-PRUNE",
+      "group": "completion-mixed",
+      "status": "FAIL",
+      "assertionSatisfied": false,
+      "note": null,
+      "resultFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\completion-mixed\\results.json",
+      "wireFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\completion-mixed\\wire.json"
+    },
+    {
+      "id": "K02-COMPLETION-WINDOW-2048",
+      "group": "completion-overflow",
+      "status": "OBS",
+      "assertionSatisfied": false,
+      "note": "2048完成项压力触发缓存回收，宿主实际约119秒内、JS计时器人为暂停后推进3秒；不能据此声称自然3秒重试窗口失败。",
+      "resultFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\completion-overflow\\results.json",
+      "wireFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\completion-overflow\\wire.json"
+    },
+    {
+      "id": "L01-ORIGINAL-PAGINATOR-RESOURCE-CLOSE",
+      "group": "close-boundary",
+      "status": "FAIL",
+      "assertionSatisfied": false,
+      "note": null,
+      "resultFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\close-boundary\\results.json",
+      "wireFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\close-boundary\\wire.json"
+    },
+    {
+      "id": "L02-PREF-GRANT-STARVES-POSITION-DEADLINE",
+      "group": "close-boundary",
+      "status": "OBS",
+      "assertionSatisfied": false,
+      "note": "受控扣grant回执，手动触发宿主1500ms期限：独立有效位置尚未发送；没有成功ack，列等待预算观察而非假成功。",
+      "resultFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\close-boundary\\results.json",
+      "wireFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\close-boundary\\wire.json"
+    },
+    {
+      "id": "L03-PENDING-BOOKMARK-ACK-AFTER-FINALIZE",
+      "group": "close-boundary",
+      "status": "PASS",
+      "assertionSatisfied": true,
+      "note": null,
+      "resultFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\close-boundary\\results.json",
+      "wireFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\close-boundary\\wire.json"
+    },
+    {
+      "id": "P01-R4-V2-CLIENT-ON-R5",
+      "group": "protocol-boundary",
+      "status": "OBS",
+      "assertionSatisfied": true,
+      "note": "诚实local通过；v2生命周期被忽略、无ready回执。有书原生遮罩影响未测。",
+      "resultFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\protocol-boundary\\results.json",
+      "wireFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\protocol-boundary\\wire.json"
+    },
+    {
+      "id": "P02-POSITION-OPERATION-ID-CONTRACT",
+      "group": "protocol-boundary",
+      "status": "OBS",
+      "assertionSatisfied": true,
+      "note": "宿主幂等身份实际为session/token/sequence/value；operationId未读、load未回positionSequence。仅契约观察。",
+      "resultFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\protocol-boundary\\results.json",
+      "wireFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\protocol-boundary\\wire.json"
+    },
+    {
+      "id": "P03-SCOPE-EXACT-GLOBAL-ONLY",
+      "group": "protocol-boundary",
+      "status": "PASS",
+      "assertionSatisfied": true,
+      "note": null,
+      "resultFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\protocol-boundary\\results.json",
+      "wireFile": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit\\runs\\protocol-boundary\\wire.json"
+    }
+  ],
+  "untested": [
+    "运行最终候选WinUI DLL的原生关闭/焦点/窗口销毁时刻",
+    "真实浏览器DOM/Range/字体/图片与localStorage拒读；由主代理另验",
+    "真实R4 v2客户端在R5有书宿主的加载遮罩生命周期",
+    "同时两独立产品进程共享同一路径是否被产品允许",
+    "全量网络/搜索/换书/窗口销毁后任务组合与长期资源趋势",
+    "所有本地格式畸形、Unicode空白ID/未知版本变体",
+    "动画/资源等待失败项的实际原生重开可见页；本子任务保留精确实际盘，S03另已原链完整重开"
+  ],
+  "inputIntegrity": {
+    "checkedAt": "2026-10-27T19:50:37.772Z",
+    "inputCount": 125,
+    "submittedEvidenceFiles": 86,
+    "changed": [],
+    "candidateChecks": [
+      {
+        "path": "extension.json",
+        "sha256": "564a8d33896d9d17aadf4066ec40c56a681889aceb4067b34ee0198bea43cca1",
+        "expected": "564a8d33896d9d17aadf4066ec40c56a681889aceb4067b34ee0198bea43cca1"
+      },
+      {
+        "path": "index.html",
+        "sha256": "f6b244c642b1842652b4ed733116a26a3e92b1b0271bf7c1b444a1c8af3b411d",
+        "expected": "f6b244c642b1842652b4ed733116a26a3e92b1b0271bf7c1b444a1c8af3b411d"
+      },
+      {
+        "path": "reader.css",
+        "sha256": "d41553524e1dbed4c895cceb7e66e9b08ae35905b69545ff4637cedeac4a148b",
+        "expected": "d41553524e1dbed4c895cceb7e66e9b08ae35905b69545ff4637cedeac4a148b"
+      },
+      {
+        "path": "reader.js",
+        "sha256": "28790e1fb4cd5e04302c26217d80b293d8bdedfc3cd4e1551c9a02c0d93f61fb",
+        "expected": "28790e1fb4cd5e04302c26217d80b293d8bdedfc3cd4e1551c9a02c0d93f61fb"
+      },
+      {
+        "path": "epub-book.js",
+        "sha256": "62453a86f64fc9e883af379440c8306a8e218fa55456de490671873044c2cdc2",
+        "expected": "62453a86f64fc9e883af379440c8306a8e218fa55456de490671873044c2cdc2"
+      },
+      {
+        "path": "paginator.js",
+        "sha256": "15408a60cf6e65f83d2a3b479a878da888be964d7639ffafd468067c81a2a248",
+        "expected": "15408a60cf6e65f83d2a3b479a878da888be964d7639ffafd468067c81a2a248"
+      },
+      {
+        "path": "reader-state.js",
+        "sha256": "fd9e7cad46398d393966358d0813668975d8f93bf915a573e06536c747175e8d",
+        "expected": "fd9e7cad46398d393966358d0813668975d8f93bf915a573e06536c747175e8d"
+      },
+      {
+        "path": "search.js",
+        "sha256": "470c4fe4bb68f299b1aa367cffd1f3b5e616af2dad25e7b1cc1d10f25bea702a",
+        "expected": "470c4fe4bb68f299b1aa367cffd1f3b5e616af2dad25e7b1cc1d10f25bea702a"
+      },
+      {
+        "path": "lib/jszip.min.js",
+        "sha256": "acc7e41455a80765b5fd9c7ee1b8078a6d160bbbca455aeae854de65c947d59e",
+        "expected": "acc7e41455a80765b5fd9c7ee1b8078a6d160bbbca455aeae854de65c947d59e"
+      },
+      {
+        "path": "LICENSE",
+        "sha256": "230184f60bae2feaf244f10a8bac053c8ff33a183bcc365b4d8b876d2b7f4809",
+        "expected": "230184f60bae2feaf244f10a8bac053c8ff33a183bcc365b4d8b876d2b7f4809"
+      },
+      {
+        "path": "README.md",
+        "sha256": "ebf3fd969d9d2403072e3d8f6a20a9bbdc2fbb7dcdf2a75dad63eb3d372a9b69",
+        "expected": "ebf3fd969d9d2403072e3d8f6a20a9bbdc2fbb7dcdf2a75dad63eb3d372a9b69"
+      }
+    ],
+    "hostChecks": [
+      {
+        "path": "ExtensionHostWindow.xaml",
+        "sha256": "283e3e4f682d1ca20563843e19eedd71f3829b29cb8bd69cdf1a64a42876ff88",
+        "expected": "283e3e4f682d1ca20563843e19eedd71f3829b29cb8bd69cdf1a64a42876ff88"
+      },
+      {
+        "path": "ExtensionHostWindow.xaml.cs",
+        "sha256": "cb8bfbbd0c3b9bf11770dd1d10ff1065b919ff5b03d72de93c1e2f3f1f1d0952",
+        "expected": "cb8bfbbd0c3b9bf11770dd1d10ff1065b919ff5b03d72de93c1e2f3f1f1d0952"
+      },
+      {
+        "path": "ReaderProtocol.cs",
+        "sha256": "079123e5d176d9db960f8eb4b4106a34295a4de3b416b75dc8458f0e8bbea913",
+        "expected": "079123e5d176d9db960f8eb4b4106a34295a4de3b416b75dc8458f0e8bbea913"
+      },
+      {
+        "path": "ReaderStateStore.cs",
+        "sha256": "58d7f17400a3a6917fe8c4c120e2d9ef8c58ba8b7d0df62eff8dddc59bd21c0a",
+        "expected": "58d7f17400a3a6917fe8c4c120e2d9ef8c58ba8b7d0df62eff8dddc59bd21c0a"
+      }
+    ],
+    "allUnchanged": true,
+    "identityMatches": true,
+    "boundary": "Hash baselines taken before execution; additional R4 client input baseline taken immediately before its protocol run; identity ZIP/DLL values are declared review identity, not native execution proof"
+  },
+  "jobs": {
+    "allCollected": true,
+    "allCompletedExit0": [
+      "pwsh-689",
+      "pwsh-692",
+      "pwsh-693",
+      "pwsh-694",
+      "pwsh-695",
+      "pwsh-696",
+      "pwsh-722",
+      "pwsh-723"
+    ],
+    "synchronousScripts": [
+      "regression.cjs",
+      "extended.cjs",
+      "close-boundary.cjs",
+      "protocol-boundary.cjs"
+    ]
+  },
+  "probeNotes": [
+    "一次node -e命令因PowerShell引号处理语法失败，未启动测试；改为保存脚本执行。",
+    "日志默认UTF16，原文件保留并提供UTF8副本。",
+    "原R4 J18判据改为R5既定政策：收尾结算待页码到第9页；原harness.attach补doc可用，避免R5 usingStable误判夹具。",
+    "S05 actual.boundary与部分历史用例ID中留有R4描述，不作为R5结论；以pass、实际wire fieldResults、实际文件为准。"
+  ],
+  "submittedAssertionAudit": {
+    "claimedHostCount": 7,
+    "actualHostResults": 6,
+    "clientCloseUsesFakeHost": true
+  }
+}

@@ -34,6 +34,7 @@ namespace WinUIGui
         private readonly string? _projectRoot;
         private readonly bool _isProject;
         private readonly string _projectEntry = "";
+        private readonly bool _startEdit;
         private string? _bookAssetsRoot;
         // ★ 固定虚拟域名（按扩展 id）：网页的本地存储按“网址来源”隔离，
         // 以前每开一次窗口换一个随机域名，扩展存下的进度/设置下次就找不到了。
@@ -61,12 +62,13 @@ namespace WinUIGui
         private DispatcherTimer? _closeTimer;
 
         public ExtensionHostWindow(string extensionId, string name, string dir, string entry, string? bookPath = null)
-            : this(extensionId, name, dir, entry, bookPath, null, null)
+            : this(extensionId, name, dir, entry, bookPath, null, null, false)
         {
         }
 
         public ExtensionHostWindow(string extensionId, string name, string dir, string entry,
-                                   string? bookPath, ExtensionCatalog.HostSpec? hostSpec, string? projectEntry = null)
+                                   string? bookPath, ExtensionCatalog.HostSpec? hostSpec, string? projectEntry = null,
+                                     bool startEdit = false)
         {
             InitializeComponent();
             _extensionId = extensionId;
@@ -78,6 +80,7 @@ namespace WinUIGui
             _isProject = !string.IsNullOrEmpty(bookPath) && Directory.Exists(bookPath);
             _projectRoot = _isProject ? Path.GetFullPath(bookPath!) : null;
             _projectEntry = (_isProject ? (projectEntry ?? "") : "").Replace('\\', '/').TrimStart('/');
+            _startEdit = startEdit;
             _hasBook = !string.IsNullOrEmpty(bookPath) && File.Exists(bookPath);
             Title = "璃鸢镜 · " + (string.IsNullOrWhiteSpace(name) ? extensionId : name);
             if (_isProject) Title = "璃鸢镜 · " + Path.GetFileName(_projectRoot!.TrimEnd(Path.DirectorySeparatorChar));
@@ -170,6 +173,21 @@ namespace WinUIGui
                         if (!string.IsNullOrWhiteSpace(_projectEntry)) query += "&projectEntry=" + Uri.EscapeDataString(_projectEntry);
                     }
                 query += "&extensionId=" + Uri.EscapeDataString(_extensionId);
+                if (string.Equals(_extensionId, "html-reader", StringComparison.OrdinalIgnoreCase))
+                {
+                    bool editorAvailable = false;
+                    try
+                    {
+                        var defs = ExtensionCatalog.LoadDefinitions();
+                        bool hasEditorHost = defs.Any(d => d.IsEditorHost);
+                        bool hasHtmlPlugin = defs.Any(d => d.IsEditorPlugin &&
+                            string.Equals(d.Info.Id, "html-editor", StringComparison.OrdinalIgnoreCase));
+                        editorAvailable = hasEditorHost && hasHtmlPlugin;
+                    }
+                    catch { }
+                    query += "&editorEnabled=" + (editorAvailable ? "1" : "0");
+                      if (_startEdit) query += "&startEdit=1";
+                }
                 // 网页扩展需要调用本机 AI 后端（如 PDF 页面 Real-ESRGAN 超分）时，把当前实际端口传过去，
                 // 不能假设固定 8765（多实例时端口会顺延）。
                 try { query += "&backend=" + Uri.EscapeDataString(Backend.BaseUrl); } catch { }

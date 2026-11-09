@@ -1,0 +1,40 @@
+[
+  {
+    "id": "B13_CORRUPT_LOCAL_POSITION",
+    "ready": true,
+    "error": "",
+    "raw": "{invalid-json",
+    "defect": false,
+    "preserved": true
+  },
+  {
+    "id": "B13_CORRUPT_LOCAL_PREFERENCES",
+    "ready": true,
+    "error": "",
+    "raw": "{invalid-json",
+    "defect": false,
+    "preserved": true
+  },
+  {
+    "id": "B13_CORRUPT_LOCAL_BOOKMARKS",
+    "ready": true,
+    "error": "",
+    "raw": "{invalid-json",
+    "defect": false,
+    "preserved": true
+  },
+  {
+    "id": "B14_FAILED_SAVE_SWITCH_LOSES_PENDING_POSITION",
+    "book": "FRESH",
+    "modified": false,
+    "oldSaved": null,
+    "writes": [
+      "sha256:7239b1268fce06509863514819e81bb793976ec059d14cfebdb10d10b4d390b3",
+      "sha256:7239b1268fce06509863514819e81bb793976ec059d14cfebdb10d10b4d390b3",
+      "sha256:3c4151f542874432b91b28836707f44986a1a3873efa41223fc253271a13e2da"
+    ],
+    "status": "位置已保存在当前窗口",
+    "defect": true,
+    "note": "Controlled temporary storage failure; verifies whether the old-book unsaved snapshot survives switching and later storage recovery."
+  }
+]

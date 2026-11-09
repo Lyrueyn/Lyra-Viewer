@@ -1,0 +1,55 @@
+  const snapshot = p => p.evaluate(() => {
+    const s=__lyraDebug.state, pg=__lyraDebug.paginator;
+    const saved=localStorage.getItem('lyra_epub_state_'+s.bookId);
+    return {ready:s.ready,busy:s.busy,modified:s.modified,spine:s.spineIndex,preparedIndex:s.prepared?.index,owner:s.prepared?.owner,
+      paginatorReady:pg.ready,paginatorSpine:pg.sectionIndex,page:pg.pageIndex,count:pg.pageCount,
+      text:pg.doc?.body.innerText.slice(0,100),stable:s.lastStablePosition,saved:saved?JSON.parse(saved):null,
+      footer:document.getElementById('pageInfo')?.textContent,finalizing:s.finalizing};
+  });
+  async function resourceStage(p) {
+    await open(p,'search');
+    await p.locator('#pageInput').fill('5');await p.locator('#pageInput').press('Enter');
+    await p.waitForTimeout(500);await search(p,'OLDQUERY');
+    await p.evaluate(()=>{const pg=__lyraDebug.paginator,orig=pg._waitForResources.bind(pg);pg._waitForResources=async()=>{
+      if(pg.sectionIndex===1&&!window.__gateUsed){window.__gateUsed=true;window.__waiting=true;await new Promise(r=>window.__release=r);}return orig();
+    };});
+    await p.locator('#pageNext').click();
+    const before=await snapshot(p);
+    await p.locator('.search-result').first().click();await p.waitForFunction(()=>window.__waiting);
+    return {before,during:await snapshot(p)};
+  }
+  try {
+    for (const kind of ['input','close']) await test('E01_RESOURCE_CANCEL_'+kind.toUpperCase(),async p=>{
+      const {before,during}=await resourceStage(p);
+      if(kind==='input') await p.locator('#searchInput').fill('NEWQUERY');else await p.locator('#searchClose').click();
+      await p.evaluate(()=>window.__release());await p.waitForTimeout(180);
+      const cancelled=await snapshot(p);await p.screenshot({path:path.join(out,'resource-cancel-'+kind+'.png')});
+      await p.locator('#pageNext').click();await p.waitForTimeout(600);const afterNext=await snapshot(p);
+      return {before,during,cancelled,afterNext,defect:cancelled.ready&&(!cancelled.paginatorReady||cancelled.spine!==cancelled.paginatorSpine),
+        note:'Original Edge reader/paginator. Only resource-wait completion gated. Cancellation is real UI input/close; next uses real pageNext and localStorage. Full document/position coherence, not only lack of goToPage/highlight.'};
+    });
+    await test('E02_FINALIZE_AFTER_DOCUMENT_BEFORE_LAYOUT',async p=>{
+      const {before,during}=await resourceStage(p);
+      await p.evaluate(()=>window.__deliverHost({type:'host.finalize',requestId:'close-after-document',sessionId:__lyraDebug.state.client.sessionId}));
+      await p.waitForFunction(()=>window.__hostPosts.some(m=>m.type==='host.finalized'));
+      const ack=await p.evaluate(()=>window.__hostPosts.find(m=>m.type==='host.finalized'));const closed=await snapshot(p);
+      await p.evaluate(()=>window.__release());await p.waitForTimeout(500);const late=await snapshot(p);
+      return {before,during,ack,closed,late,defect:ack.ok&&before.stable?.locator!=null&&closed.saved?.position?.locator==null,
+        note:'Real Edge and actual isolated localStorage. Local-only protocol bridge delivers host.finalize, not original C# or native closure. A valid old chapter position is pending when the target document has committed but resources/layout have not.'};
+    },true);
+    await test('E03_SVG_HIGHLIGHT_DISAPPEARS',async p=>{
+      await open(p,'svgpaint');
+      const measure=()=>{const d=__lyraDebug.paginator.doc,t=d.querySelector('#paint-text'),m=d.querySelector('.lyra-search-mark');return{
+        visible:d.body.innerText,raw:t.textContent,length:t.getComputedTextLength(),bbox:{width:t.getBBox().width,height:t.getBBox().height},
+        mark:m?{namespace:m.namespaceURI,text:m.textContent,rects:m.getClientRects().length,width:m.getBoundingClientRect().width}:null};};
+      const before=await p.evaluate(measure);await p.screenshot({path:path.join(out,'svg-before.png')});
+      await search(p,'TARGET');await p.locator('.search-result').first().click();await p.waitForTimeout(250);
+      const after=await p.evaluate(measure);await p.screenshot({path:path.join(out,'svg-after-highlight.png')});
+      return {before,after,defect:before.visible.includes('TARGET')&&!after.visible.includes('TARGET'),
+        note:'No fault or timing injection. Valid visible inline SVG text, real UI search click. Check browser text geometry/paint, not just the wrapped DOM textContent.'};
+    });
+    await test('E04_QUERY_LIMIT_MESSAGE',async p=>{
+      await open(p,'search');await search(p,'a'.repeat(4097));
+      const actual=await p.evaluate(()=>({length:document.getElementById('searchInput').value.length,info:document.getElementById('searchInfo').textContent,status:document.getElementById('statusText')?.textContent,buttons:document.querySelectorAll('.search-result').length}));
+      return {actual,defect:!(/4096|过长|太长|长度|QUERY_TOO_LONG/.test(actual.info+' '+(actual.status||''))),note:'Actual 4097-character pasted query; verify new explicit input limit is visible to user.'};
+    });

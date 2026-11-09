@@ -1,0 +1,193 @@
+{
+  "evidenceKind": "Real Edge, frozen candidate; controlled delays/faults documented per case",
+  "results": [
+    {
+      "id": "C02_FAILED_SNAPSHOT_REOPEN_VISIBLE_POSITION",
+      "before": {
+        "page": 4,
+        "anchor": {
+          "elementPath": null,
+          "textOffset": 2973,
+          "quote": "位置，不以内部页号代替内容检查。 NORMAL paragraph 28: independent reading text",
+          "prefix": "位置，不以内部页号代替内容检查。 NORMAL paragra",
+          "suffix": "ph 28: independent reading text",
+          "elementId": "",
+          "chapterFraction": 0.2857142857142857,
+          "pageIndex": 4
+        }
+      },
+      "retained": 1,
+      "after": {
+        "page": 4,
+        "anchor": {
+          "elementPath": null,
+          "textOffset": 2973,
+          "quote": "位置，不以内部页号代替内容检查。 NORMAL paragraph 28: independent reading text",
+          "prefix": "位置，不以内部页号代替内容检查。 NORMAL paragra",
+          "suffix": "ph 28: independent reading text",
+          "elementId": "",
+          "chapterFraction": 0.2857142857142857,
+          "pageIndex": 4
+        },
+        "saved": {
+          "revision": 1,
+          "position": {
+            "spineHref": "OPS/c0.xhtml",
+            "spineIndex": 0,
+            "locator": {
+              "elementPath": null,
+              "textOffset": 2973,
+              "quote": "位置，不以内部页号代替内容检查。 NORMAL paragraph 28: independent reading text",
+              "prefix": "位置，不以内部页号代替内容检查。 NORMAL paragra",
+              "suffix": "ph 28: independent reading text",
+              "elementId": "",
+              "chapterFraction": 0.2857142857142857,
+              "pageIndex": 4
+            },
+            "chapterFraction": 0.2857142857142857,
+            "savedAt": "2026-10-28T11:14:20.035Z"
+          },
+          "positionSequence": 1793186060035000,
+          "positionOperationId": "pos-op-c14f10d7-7ed0-4f2e-adb9-0c5dda58cf0e",
+          "positionRevision": 1,
+          "updatedAt": "2026-10-28T11:14:20.199Z"
+        },
+        "pending": 0
+      },
+      "defect": false,
+      "note": "Failure snapshot now survives and is retried, but check the actual reader destination on reopening, not only disk."
+    },
+    {
+      "id": "C03_OLD_IMAGE_SAVE_ACK_CLEARS_NEW_PAGE",
+      "before": {
+        "elementPath": [
+          1,
+          0
+        ],
+        "textOffset": null,
+        "quote": "",
+        "prefix": "",
+        "suffix": "",
+        "elementId": "",
+        "chapterFraction": 0.1111111111111111,
+        "pageIndex": 1
+      },
+      "atRelease": {
+        "elementPath": [
+          2,
+          0
+        ],
+        "textOffset": null,
+        "quote": "",
+        "prefix": "",
+        "suffix": "",
+        "elementId": "",
+        "chapterFraction": 0.2222222222222222,
+        "pageIndex": 2
+      },
+      "after": {
+        "current": {
+          "elementPath": [
+            2,
+            0
+          ],
+          "textOffset": null,
+          "quote": "",
+          "prefix": "",
+          "suffix": "",
+          "elementId": "",
+          "chapterFraction": 0.2222222222222222,
+          "pageIndex": 2
+        },
+        "modified": false,
+        "saves": [
+          {
+            "spineHref": "OPS/c0.xhtml",
+            "spineIndex": 0,
+            "locator": {
+              "elementPath": [
+                1,
+                0
+              ],
+              "textOffset": null,
+              "quote": "",
+              "prefix": "",
+              "suffix": "",
+              "elementId": "",
+              "chapterFraction": 0.1111111111111111,
+              "pageIndex": 1
+            },
+            "chapterFraction": 0.1111111111111111,
+            "savedAt": "2026-10-28T11:14:20.993Z"
+          },
+          {
+            "spineHref": "OPS/c0.xhtml",
+            "spineIndex": 0,
+            "locator": {
+              "elementPath": [
+                2,
+                0
+              ],
+              "textOffset": null,
+              "quote": "",
+              "prefix": "",
+              "suffix": "",
+              "elementId": "",
+              "chapterFraction": 0.2222222222222222,
+              "pageIndex": 2
+            },
+            "chapterFraction": 0.2222222222222222,
+            "savedAt": "2026-10-28T11:14:21.087Z"
+          },
+          {
+            "spineHref": "OPS/c0.xhtml",
+            "spineIndex": 0,
+            "locator": {
+              "elementPath": [
+                2,
+                0
+              ],
+              "textOffset": null,
+              "quote": "",
+              "prefix": "",
+              "suffix": "",
+              "elementId": "",
+              "chapterFraction": 0.2222222222222222,
+              "pageIndex": 2
+            },
+            "chapterFraction": 0.2222222222222222,
+            "savedAt": "2026-10-28T11:14:21.408Z"
+          }
+        ],
+        "saved": {
+          "revision": 3,
+          "position": {
+            "spineHref": "OPS/c0.xhtml",
+            "spineIndex": 0,
+            "locator": {
+              "elementPath": [
+                2,
+                0
+              ],
+              "textOffset": null,
+              "quote": "",
+              "prefix": "",
+              "suffix": "",
+              "elementId": "",
+              "chapterFraction": 0.2222222222222222,
+              "pageIndex": 2
+            },
+            "chapterFraction": 0.2222222222222222,
+            "savedAt": "2026-10-28T11:14:21.408Z"
+          },
+          "positionSequence": 1793186061408000,
+          "positionOperationId": "pos-op-c34ebc10-94f7-4010-89e5-12318b1f98d6",
+          "positionRevision": 3,
+          "updatedAt": "2026-10-28T11:14:21.494Z"
+        }
+      },
+      "defect": false,
+      "note": "Controlled delay only after first actual local write, before its acknowledgement; next user input is a different pure-image page."
+    }
+  ]
+}

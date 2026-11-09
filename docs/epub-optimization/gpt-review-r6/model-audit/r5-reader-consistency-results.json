@@ -1,0 +1,3979 @@
+{
+  "generatedAt": "2026-10-28T11:16:47.054Z",
+  "candidate": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r6\\candidate",
+  "identity": {
+    "expectedCommit": "99bd102f4c9b4c1a92668d04e2e12260e523ad94",
+    "expectedPackageSha256": "f2b2741a166749e7108e010151a46246ac2df40bf1f0861050e8e12d612c535c",
+    "hashes": {
+      "epub-book.js": "e65e976116da95a29689c5b81c358c1465957787bc81c796d5dc10eccf023417",
+      "search.js": "470c4fe4bb68f299b1aa367cffd1f3b5e616af2dad25e7b1cc1d10f25bea702a",
+      "paginator.js": "5dbbbe764bc616d5fa3829953dbf204786c4c65cc4191db782e63352d6800750",
+      "reader.js": "5a81d526b8126b590738bc50652db829d701fdb9e3319240766fb3d07c2fc837"
+    }
+  },
+  "runtime": {
+    "node": "v24.18.0",
+    "jsdom": "29.1.1"
+  },
+  "evidenceKind": "Frozen original JavaScript loaded unmodified; jsdom DOM/Range and real JSZip. Controlled async dependencies and geometry doubles disclosed per case. Not browser visibility, SVG painting or native desktop evidence.",
+  "results": [
+    {
+      "id": "Y-prepare-input",
+      "verdict": "FAIL",
+      "title": "Cancellation leaves coherent document/state/ready/resources",
+      "detail": {
+        "before": {
+          "book": "CONSIST",
+          "spine": 0,
+          "preparedIndex": 0,
+          "owner": 1,
+          "paginatorIndex": 0,
+          "activeIndex": 0,
+          "ready": true,
+          "paginatorReady": true,
+          "busy": false,
+          "statePage": 1,
+          "stateCount": 3,
+          "page": 1,
+          "count": 3,
+          "text": "SAFE_HEADSAFE_MIDDLESAFE_END",
+          "anchor": {
+            "elementPath": null,
+            "textOffset": 12,
+            "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+            "prefix": "SAFE_HEAD",
+            "suffix": "SAFE_MIDDLE SAFE_END",
+            "elementId": "",
+            "chapterFraction": 0.5,
+            "pageIndex": 1
+          },
+          "lastStable": {
+            "spineHref": "OPS/c0.xhtml",
+            "spineIndex": 0,
+            "locator": {
+              "elementPath": null,
+              "textOffset": 12,
+              "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+              "prefix": "SAFE_HEAD",
+              "suffix": "SAFE_MIDDLE SAFE_END",
+              "elementId": "",
+              "chapterFraction": 0.5,
+              "pageIndex": 1
+            },
+            "chapterFraction": 0.5,
+            "savedAt": "2026-10-28T11:16:41.088Z"
+          },
+          "modified": true,
+          "saveFailed": false,
+          "pageInput": "2",
+          "pageTotal": "/ 3",
+          "activeToc": [
+            "c0"
+          ],
+          "urls": [
+            {
+              "url": "blob:audit-1",
+              "live": true
+            }
+          ],
+          "resources": [
+            "OPS/old.png"
+          ],
+          "owners": [
+            1
+          ],
+          "saveCalls": [],
+          "hostMessages": [],
+          "status": "此主程序版本不支持跨窗口保存；阅读位置仅保存在当前窗口"
+        },
+        "atBoundary": {
+          "book": "CONSIST",
+          "spine": 0,
+          "preparedIndex": 0,
+          "owner": 1,
+          "paginatorIndex": 0,
+          "activeIndex": 0,
+          "ready": false,
+          "paginatorReady": true,
+          "busy": true,
+          "statePage": 1,
+          "stateCount": 3,
+          "page": 1,
+          "count": 3,
+          "text": "SAFE_HEADSAFE_MIDDLESAFE_END",
+          "anchor": {
+            "elementPath": null,
+            "textOffset": 12,
+            "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+            "prefix": "SAFE_HEAD",
+            "suffix": "SAFE_MIDDLE SAFE_END",
+            "elementId": "",
+            "chapterFraction": 0.5,
+            "pageIndex": 1
+          },
+          "lastStable": {
+            "spineHref": "OPS/c0.xhtml",
+            "spineIndex": 0,
+            "locator": {
+              "elementPath": null,
+              "textOffset": 12,
+              "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+              "prefix": "SAFE_HEAD",
+              "suffix": "SAFE_MIDDLE SAFE_END",
+              "elementId": "",
+              "chapterFraction": 0.5,
+              "pageIndex": 1
+            },
+            "chapterFraction": 0.5,
+            "savedAt": "2026-10-28T11:16:41.088Z"
+          },
+          "modified": true,
+          "saveFailed": false,
+          "pageInput": "2",
+          "pageTotal": "/ 3",
+          "activeToc": [
+            "c0"
+          ],
+          "urls": [
+            {
+              "url": "blob:audit-1",
+              "live": true
+            }
+          ],
+          "resources": [
+            "OPS/old.png"
+          ],
+          "owners": [
+            1,
+            2
+          ],
+          "saveCalls": [],
+          "hostMessages": [],
+          "status": "此主程序版本不支持跨窗口保存；阅读位置仅保存在当前窗口"
+        },
+        "afterInvalidation": {
+          "book": "CONSIST",
+          "spine": 0,
+          "preparedIndex": 0,
+          "owner": 1,
+          "paginatorIndex": 0,
+          "activeIndex": 0,
+          "ready": false,
+          "paginatorReady": true,
+          "busy": true,
+          "statePage": 1,
+          "stateCount": 3,
+          "page": 1,
+          "count": 3,
+          "text": "SAFE_HEADSAFE_MIDDLESAFE_END",
+          "anchor": {
+            "elementPath": null,
+            "textOffset": 12,
+            "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+            "prefix": "SAFE_HEAD",
+            "suffix": "SAFE_MIDDLE SAFE_END",
+            "elementId": "",
+            "chapterFraction": 0.5,
+            "pageIndex": 1
+          },
+          "lastStable": {
+            "spineHref": "OPS/c0.xhtml",
+            "spineIndex": 0,
+            "locator": {
+              "elementPath": null,
+              "textOffset": 12,
+              "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+              "prefix": "SAFE_HEAD",
+              "suffix": "SAFE_MIDDLE SAFE_END",
+              "elementId": "",
+              "chapterFraction": 0.5,
+              "pageIndex": 1
+            },
+            "chapterFraction": 0.5,
+            "savedAt": "2026-10-28T11:16:41.088Z"
+          },
+          "modified": true,
+          "saveFailed": false,
+          "pageInput": "2",
+          "pageTotal": "/ 3",
+          "activeToc": [
+            "c0"
+          ],
+          "urls": [
+            {
+              "url": "blob:audit-1",
+              "live": true
+            }
+          ],
+          "resources": [
+            "OPS/old.png"
+          ],
+          "owners": [
+            1,
+            2
+          ],
+          "saveCalls": [],
+          "hostMessages": [],
+          "status": "此主程序版本不支持跨窗口保存；阅读位置仅保存在当前窗口"
+        },
+        "after": {
+          "book": "CONSIST",
+          "spine": 0,
+          "preparedIndex": 0,
+          "owner": 1,
+          "paginatorIndex": 0,
+          "activeIndex": 0,
+          "ready": true,
+          "paginatorReady": true,
+          "busy": false,
+          "statePage": 0,
+          "stateCount": 3,
+          "page": 1,
+          "count": 3,
+          "text": "SAFE_HEADSAFE_MIDDLESAFE_END",
+          "anchor": {
+            "elementPath": null,
+            "textOffset": 12,
+            "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+            "prefix": "SAFE_HEAD",
+            "suffix": "SAFE_MIDDLE SAFE_END",
+            "elementId": "",
+            "chapterFraction": 0.5,
+            "pageIndex": 1
+          },
+          "lastStable": {
+            "spineHref": "OPS/c0.xhtml",
+            "spineIndex": 0,
+            "locator": {
+              "elementPath": null,
+              "textOffset": 12,
+              "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+              "prefix": "SAFE_HEAD",
+              "suffix": "SAFE_MIDDLE SAFE_END",
+              "elementId": "",
+              "chapterFraction": 0.5,
+              "pageIndex": 1
+            },
+            "chapterFraction": 0.5,
+            "savedAt": "2026-10-28T11:16:41.088Z"
+          },
+          "modified": true,
+          "saveFailed": false,
+          "pageInput": "1",
+          "pageTotal": "/ 3",
+          "activeToc": [
+            "c0"
+          ],
+          "urls": [
+            {
+              "url": "blob:audit-1",
+              "live": true
+            }
+          ],
+          "resources": [
+            "OPS/old.png"
+          ],
+          "owners": [
+            1
+          ],
+          "saveCalls": [],
+          "hostMessages": [],
+          "status": "此主程序版本不支持跨窗口保存；阅读位置仅保存在当前窗口"
+        }
+      }
+    },
+    {
+      "id": "YT-prepare-input",
+      "verdict": "FAIL",
+      "title": "After cancel, next page actually moves and save matches displayed document",
+      "detail": {
+        "startPage": 1,
+        "turned": {
+          "book": "CONSIST",
+          "spine": 0,
+          "preparedIndex": 0,
+          "owner": 1,
+          "paginatorIndex": 0,
+          "activeIndex": 0,
+          "ready": true,
+          "paginatorReady": true,
+          "busy": false,
+          "statePage": 1,
+          "stateCount": 3,
+          "page": 1,
+          "count": 3,
+          "text": "SAFE_HEADSAFE_MIDDLESAFE_END",
+          "anchor": {
+            "elementPath": null,
+            "textOffset": 12,
+            "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+            "prefix": "SAFE_HEAD",
+            "suffix": "SAFE_MIDDLE SAFE_END",
+            "elementId": "",
+            "chapterFraction": 0.5,
+            "pageIndex": 1
+          },
+          "lastStable": {
+            "spineHref": "OPS/c0.xhtml",
+            "spineIndex": 0,
+            "locator": {
+              "elementPath": null,
+              "textOffset": 12,
+              "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+              "prefix": "SAFE_HEAD",
+              "suffix": "SAFE_MIDDLE SAFE_END",
+              "elementId": "",
+              "chapterFraction": 0.5,
+              "pageIndex": 1
+            },
+            "chapterFraction": 0.5,
+            "savedAt": "2026-10-28T11:16:41.657Z"
+          },
+          "modified": false,
+          "saveFailed": false,
+          "pageInput": "2",
+          "pageTotal": "/ 3",
+          "activeToc": [
+            "c0"
+          ],
+          "urls": [
+            {
+              "url": "blob:audit-1",
+              "live": true
+            }
+          ],
+          "resources": [
+            "OPS/old.png"
+          ],
+          "owners": [
+            1
+          ],
+          "saveCalls": [
+            {
+              "bookId": "sha256:a5456638df58436ae74370709e0e8463bc7b719c903e0b64f7912e86c278e4c2",
+              "pos": {
+                "spineHref": "OPS/c0.xhtml",
+                "spineIndex": 0,
+                "locator": {
+                  "elementPath": null,
+                  "textOffset": 12,
+                  "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+                  "prefix": "SAFE_HEAD",
+                  "suffix": "SAFE_MIDDLE SAFE_END",
+                  "elementId": "",
+                  "chapterFraction": 0.5,
+                  "pageIndex": 1
+                },
+                "chapterFraction": 0.5,
+                "savedAt": "2026-10-28T11:16:41.295Z"
+              },
+              "token": 0,
+              "sequence": 2,
+              "operationId": "pos-op-61c120e0-b172-48d0-83a1-000c418add21"
+            }
+          ],
+          "hostMessages": [],
+          "status": "此主程序版本不支持跨窗口保存；阅读位置仅保存在当前窗口"
+        }
+      }
+    },
+    {
+      "id": "YR-prepare-input",
+      "verdict": "PASS",
+      "title": "Explicit subsequent chapter navigation recovers and releases old owners",
+      "detail": {
+        "book": "CONSIST",
+        "spine": 1,
+        "preparedIndex": 1,
+        "owner": 3,
+        "paginatorIndex": 1,
+        "activeIndex": 1,
+        "ready": true,
+        "paginatorReady": true,
+        "busy": false,
+        "statePage": 0,
+        "stateCount": 3,
+        "page": 0,
+        "count": 3,
+        "text": "OLDQUERYCANDIDATE_MIDDLECANDIDATE_END",
+        "anchor": {
+          "elementPath": null,
+          "textOffset": 1,
+          "quote": "OLDQUERY CANDIDATE_MIDDLE CAND",
+          "prefix": "",
+          "suffix": "OLDQUERY CANDIDATE_MIDDLE CAND",
+          "elementId": "",
+          "chapterFraction": 0,
+          "pageIndex": 0
+        },
+        "lastStable": {
+          "spineHref": "OPS/c1.xhtml",
+          "spineIndex": 1,
+          "locator": {
+            "elementPath": null,
+            "textOffset": 1,
+            "quote": "OLDQUERY CANDIDATE_MIDDLE CAND",
+            "prefix": "",
+            "suffix": "OLDQUERY CANDIDATE_MIDDLE CAND",
+            "elementId": "",
+            "chapterFraction": 0,
+            "pageIndex": 0
+          },
+          "chapterFraction": 0,
+          "savedAt": "2026-10-28T11:16:41.849Z"
+        },
+        "modified": false,
+        "saveFailed": false,
+        "pageInput": "1",
+        "pageTotal": "/ 3",
+        "activeToc": [
+          "c1"
+        ],
+        "urls": [
+          {
+            "url": "blob:audit-3",
+            "live": true
+          }
+        ],
+        "resources": [
+          "OPS/new.png"
+        ],
+        "owners": [
+          3
+        ],
+        "saveCalls": [
+          {
+            "bookId": "sha256:a5456638df58436ae74370709e0e8463bc7b719c903e0b64f7912e86c278e4c2",
+            "pos": {
+              "spineHref": "OPS/c0.xhtml",
+              "spineIndex": 0,
+              "locator": {
+                "elementPath": null,
+                "textOffset": 12,
+                "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+                "prefix": "SAFE_HEAD",
+                "suffix": "SAFE_MIDDLE SAFE_END",
+                "elementId": "",
+                "chapterFraction": 0.5,
+                "pageIndex": 1
+              },
+              "chapterFraction": 0.5,
+              "savedAt": "2026-10-28T11:16:41.295Z"
+            },
+            "token": 0,
+            "sequence": 2,
+            "operationId": "pos-op-61c120e0-b172-48d0-83a1-000c418add21"
+          }
+        ],
+        "hostMessages": [],
+        "status": "已打开：c1"
+      }
+    },
+    {
+      "id": "Y-prepare-search-close",
+      "verdict": "FAIL",
+      "title": "Cancellation leaves coherent document/state/ready/resources",
+      "detail": {
+        "before": {
+          "book": "CONSIST",
+          "spine": 0,
+          "preparedIndex": 0,
+          "owner": 1,
+          "paginatorIndex": 0,
+          "activeIndex": 0,
+          "ready": true,
+          "paginatorReady": true,
+          "busy": false,
+          "statePage": 1,
+          "stateCount": 3,
+          "page": 1,
+          "count": 3,
+          "text": "SAFE_HEADSAFE_MIDDLESAFE_END",
+          "anchor": {
+            "elementPath": null,
+            "textOffset": 12,
+            "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+            "prefix": "SAFE_HEAD",
+            "suffix": "SAFE_MIDDLE SAFE_END",
+            "elementId": "",
+            "chapterFraction": 0.5,
+            "pageIndex": 1
+          },
+          "lastStable": {
+            "spineHref": "OPS/c0.xhtml",
+            "spineIndex": 0,
+            "locator": {
+              "elementPath": null,
+              "textOffset": 12,
+              "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+              "prefix": "SAFE_HEAD",
+              "suffix": "SAFE_MIDDLE SAFE_END",
+              "elementId": "",
+              "chapterFraction": 0.5,
+              "pageIndex": 1
+            },
+            "chapterFraction": 0.5,
+            "savedAt": "2026-10-28T11:16:41.909Z"
+          },
+          "modified": true,
+          "saveFailed": false,
+          "pageInput": "2",
+          "pageTotal": "/ 3",
+          "activeToc": [
+            "c0"
+          ],
+          "urls": [
+            {
+              "url": "blob:audit-1",
+              "live": true
+            }
+          ],
+          "resources": [
+            "OPS/old.png"
+          ],
+          "owners": [
+            1
+          ],
+          "saveCalls": [],
+          "hostMessages": [],
+          "status": "此主程序版本不支持跨窗口保存；阅读位置仅保存在当前窗口"
+        },
+        "atBoundary": {
+          "book": "CONSIST",
+          "spine": 0,
+          "preparedIndex": 0,
+          "owner": 1,
+          "paginatorIndex": 0,
+          "activeIndex": 0,
+          "ready": false,
+          "paginatorReady": true,
+          "busy": true,
+          "statePage": 1,
+          "stateCount": 3,
+          "page": 1,
+          "count": 3,
+          "text": "SAFE_HEADSAFE_MIDDLESAFE_END",
+          "anchor": {
+            "elementPath": null,
+            "textOffset": 12,
+            "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+            "prefix": "SAFE_HEAD",
+            "suffix": "SAFE_MIDDLE SAFE_END",
+            "elementId": "",
+            "chapterFraction": 0.5,
+            "pageIndex": 1
+          },
+          "lastStable": {
+            "spineHref": "OPS/c0.xhtml",
+            "spineIndex": 0,
+            "locator": {
+              "elementPath": null,
+              "textOffset": 12,
+              "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+              "prefix": "SAFE_HEAD",
+              "suffix": "SAFE_MIDDLE SAFE_END",
+              "elementId": "",
+              "chapterFraction": 0.5,
+              "pageIndex": 1
+            },
+            "chapterFraction": 0.5,
+            "savedAt": "2026-10-28T11:16:41.909Z"
+          },
+          "modified": true,
+          "saveFailed": false,
+          "pageInput": "2",
+          "pageTotal": "/ 3",
+          "activeToc": [
+            "c0"
+          ],
+          "urls": [
+            {
+              "url": "blob:audit-1",
+              "live": true
+            }
+          ],
+          "resources": [
+            "OPS/old.png"
+          ],
+          "owners": [
+            1,
+            2
+          ],
+          "saveCalls": [],
+          "hostMessages": [],
+          "status": "此主程序版本不支持跨窗口保存；阅读位置仅保存在当前窗口"
+        },
+        "afterInvalidation": {
+          "book": "CONSIST",
+          "spine": 0,
+          "preparedIndex": 0,
+          "owner": 1,
+          "paginatorIndex": 0,
+          "activeIndex": 0,
+          "ready": false,
+          "paginatorReady": true,
+          "busy": true,
+          "statePage": 1,
+          "stateCount": 3,
+          "page": 1,
+          "count": 3,
+          "text": "SAFE_HEADSAFE_MIDDLESAFE_END",
+          "anchor": {
+            "elementPath": null,
+            "textOffset": 12,
+            "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+            "prefix": "SAFE_HEAD",
+            "suffix": "SAFE_MIDDLE SAFE_END",
+            "elementId": "",
+            "chapterFraction": 0.5,
+            "pageIndex": 1
+          },
+          "lastStable": {
+            "spineHref": "OPS/c0.xhtml",
+            "spineIndex": 0,
+            "locator": {
+              "elementPath": null,
+              "textOffset": 12,
+              "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+              "prefix": "SAFE_HEAD",
+              "suffix": "SAFE_MIDDLE SAFE_END",
+              "elementId": "",
+              "chapterFraction": 0.5,
+              "pageIndex": 1
+            },
+            "chapterFraction": 0.5,
+            "savedAt": "2026-10-28T11:16:41.909Z"
+          },
+          "modified": true,
+          "saveFailed": false,
+          "pageInput": "2",
+          "pageTotal": "/ 3",
+          "activeToc": [
+            "c0"
+          ],
+          "urls": [
+            {
+              "url": "blob:audit-1",
+              "live": true
+            }
+          ],
+          "resources": [
+            "OPS/old.png"
+          ],
+          "owners": [
+            1,
+            2
+          ],
+          "saveCalls": [],
+          "hostMessages": [],
+          "status": "此主程序版本不支持跨窗口保存；阅读位置仅保存在当前窗口"
+        },
+        "after": {
+          "book": "CONSIST",
+          "spine": 0,
+          "preparedIndex": 0,
+          "owner": 1,
+          "paginatorIndex": 0,
+          "activeIndex": 0,
+          "ready": true,
+          "paginatorReady": true,
+          "busy": false,
+          "statePage": 0,
+          "stateCount": 3,
+          "page": 1,
+          "count": 3,
+          "text": "SAFE_HEADSAFE_MIDDLESAFE_END",
+          "anchor": {
+            "elementPath": null,
+            "textOffset": 12,
+            "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+            "prefix": "SAFE_HEAD",
+            "suffix": "SAFE_MIDDLE SAFE_END",
+            "elementId": "",
+            "chapterFraction": 0.5,
+            "pageIndex": 1
+          },
+          "lastStable": {
+            "spineHref": "OPS/c0.xhtml",
+            "spineIndex": 0,
+            "locator": {
+              "elementPath": null,
+              "textOffset": 12,
+              "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+              "prefix": "SAFE_HEAD",
+              "suffix": "SAFE_MIDDLE SAFE_END",
+              "elementId": "",
+              "chapterFraction": 0.5,
+              "pageIndex": 1
+            },
+            "chapterFraction": 0.5,
+            "savedAt": "2026-10-28T11:16:41.909Z"
+          },
+          "modified": true,
+          "saveFailed": false,
+          "pageInput": "1",
+          "pageTotal": "/ 3",
+          "activeToc": [
+            "c0"
+          ],
+          "urls": [
+            {
+              "url": "blob:audit-1",
+              "live": true
+            }
+          ],
+          "resources": [
+            "OPS/old.png"
+          ],
+          "owners": [
+            1
+          ],
+          "saveCalls": [],
+          "hostMessages": [],
+          "status": "此主程序版本不支持跨窗口保存；阅读位置仅保存在当前窗口"
+        }
+      }
+    },
+    {
+      "id": "YT-prepare-search-close",
+      "verdict": "FAIL",
+      "title": "After cancel, next page actually moves and save matches displayed document",
+      "detail": {
+        "startPage": 1,
+        "turned": {
+          "book": "CONSIST",
+          "spine": 0,
+          "preparedIndex": 0,
+          "owner": 1,
+          "paginatorIndex": 0,
+          "activeIndex": 0,
+          "ready": true,
+          "paginatorReady": true,
+          "busy": false,
+          "statePage": 1,
+          "stateCount": 3,
+          "page": 1,
+          "count": 3,
+          "text": "SAFE_HEADSAFE_MIDDLESAFE_END",
+          "anchor": {
+            "elementPath": null,
+            "textOffset": 12,
+            "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+            "prefix": "SAFE_HEAD",
+            "suffix": "SAFE_MIDDLE SAFE_END",
+            "elementId": "",
+            "chapterFraction": 0.5,
+            "pageIndex": 1
+          },
+          "lastStable": {
+            "spineHref": "OPS/c0.xhtml",
+            "spineIndex": 0,
+            "locator": {
+              "elementPath": null,
+              "textOffset": 12,
+              "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+              "prefix": "SAFE_HEAD",
+              "suffix": "SAFE_MIDDLE SAFE_END",
+              "elementId": "",
+              "chapterFraction": 0.5,
+              "pageIndex": 1
+            },
+            "chapterFraction": 0.5,
+            "savedAt": "2026-10-28T11:16:42.457Z"
+          },
+          "modified": false,
+          "saveFailed": false,
+          "pageInput": "2",
+          "pageTotal": "/ 3",
+          "activeToc": [
+            "c0"
+          ],
+          "urls": [
+            {
+              "url": "blob:audit-1",
+              "live": true
+            }
+          ],
+          "resources": [
+            "OPS/old.png"
+          ],
+          "owners": [
+            1
+          ],
+          "saveCalls": [
+            {
+              "bookId": "sha256:a5456638df58436ae74370709e0e8463bc7b719c903e0b64f7912e86c278e4c2",
+              "pos": {
+                "spineHref": "OPS/c0.xhtml",
+                "spineIndex": 0,
+                "locator": {
+                  "elementPath": null,
+                  "textOffset": 12,
+                  "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+                  "prefix": "SAFE_HEAD",
+                  "suffix": "SAFE_MIDDLE SAFE_END",
+                  "elementId": "",
+                  "chapterFraction": 0.5,
+                  "pageIndex": 1
+                },
+                "chapterFraction": 0.5,
+                "savedAt": "2026-10-28T11:16:42.096Z"
+              },
+              "token": 0,
+              "sequence": 2,
+              "operationId": "pos-op-f1271825-89fc-46b0-a27f-79062d080cae"
+            }
+          ],
+          "hostMessages": [],
+          "status": "此主程序版本不支持跨窗口保存；阅读位置仅保存在当前窗口"
+        }
+      }
+    },
+    {
+      "id": "YR-prepare-search-close",
+      "verdict": "PASS",
+      "title": "Explicit subsequent chapter navigation recovers and releases old owners",
+      "detail": {
+        "book": "CONSIST",
+        "spine": 1,
+        "preparedIndex": 1,
+        "owner": 3,
+        "paginatorIndex": 1,
+        "activeIndex": 1,
+        "ready": true,
+        "paginatorReady": true,
+        "busy": false,
+        "statePage": 0,
+        "stateCount": 3,
+        "page": 0,
+        "count": 3,
+        "text": "OLDQUERYCANDIDATE_MIDDLECANDIDATE_END",
+        "anchor": {
+          "elementPath": null,
+          "textOffset": 1,
+          "quote": "OLDQUERY CANDIDATE_MIDDLE CAND",
+          "prefix": "",
+          "suffix": "OLDQUERY CANDIDATE_MIDDLE CAND",
+          "elementId": "",
+          "chapterFraction": 0,
+          "pageIndex": 0
+        },
+        "lastStable": {
+          "spineHref": "OPS/c1.xhtml",
+          "spineIndex": 1,
+          "locator": {
+            "elementPath": null,
+            "textOffset": 1,
+            "quote": "OLDQUERY CANDIDATE_MIDDLE CAND",
+            "prefix": "",
+            "suffix": "OLDQUERY CANDIDATE_MIDDLE CAND",
+            "elementId": "",
+            "chapterFraction": 0,
+            "pageIndex": 0
+          },
+          "chapterFraction": 0,
+          "savedAt": "2026-10-28T11:16:42.644Z"
+        },
+        "modified": false,
+        "saveFailed": false,
+        "pageInput": "1",
+        "pageTotal": "/ 3",
+        "activeToc": [
+          "c1"
+        ],
+        "urls": [
+          {
+            "url": "blob:audit-3",
+            "live": true
+          }
+        ],
+        "resources": [
+          "OPS/new.png"
+        ],
+        "owners": [
+          3
+        ],
+        "saveCalls": [
+          {
+            "bookId": "sha256:a5456638df58436ae74370709e0e8463bc7b719c903e0b64f7912e86c278e4c2",
+            "pos": {
+              "spineHref": "OPS/c0.xhtml",
+              "spineIndex": 0,
+              "locator": {
+                "elementPath": null,
+                "textOffset": 12,
+                "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+                "prefix": "SAFE_HEAD",
+                "suffix": "SAFE_MIDDLE SAFE_END",
+                "elementId": "",
+                "chapterFraction": 0.5,
+                "pageIndex": 1
+              },
+              "chapterFraction": 0.5,
+              "savedAt": "2026-10-28T11:16:42.096Z"
+            },
+            "token": 0,
+            "sequence": 2,
+            "operationId": "pos-op-f1271825-89fc-46b0-a27f-79062d080cae"
+          }
+        ],
+        "hostMessages": [],
+        "status": "已打开：c1"
+      }
+    },
+    {
+      "id": "Y-prepare-open-intent",
+      "verdict": "FAIL",
+      "title": "Cancellation leaves coherent document/state/ready/resources",
+      "detail": {
+        "before": {
+          "book": "CONSIST",
+          "spine": 0,
+          "preparedIndex": 0,
+          "owner": 1,
+          "paginatorIndex": 0,
+          "activeIndex": 0,
+          "ready": true,
+          "paginatorReady": true,
+          "busy": false,
+          "statePage": 1,
+          "stateCount": 3,
+          "page": 1,
+          "count": 3,
+          "text": "SAFE_HEADSAFE_MIDDLESAFE_END",
+          "anchor": {
+            "elementPath": null,
+            "textOffset": 12,
+            "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+            "prefix": "SAFE_HEAD",
+            "suffix": "SAFE_MIDDLE SAFE_END",
+            "elementId": "",
+            "chapterFraction": 0.5,
+            "pageIndex": 1
+          },
+          "lastStable": {
+            "spineHref": "OPS/c0.xhtml",
+            "spineIndex": 0,
+            "locator": {
+              "elementPath": null,
+              "textOffset": 12,
+              "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+              "prefix": "SAFE_HEAD",
+              "suffix": "SAFE_MIDDLE SAFE_END",
+              "elementId": "",
+              "chapterFraction": 0.5,
+              "pageIndex": 1
+            },
+            "chapterFraction": 0.5,
+            "savedAt": "2026-10-28T11:16:42.706Z"
+          },
+          "modified": true,
+          "saveFailed": false,
+          "pageInput": "2",
+          "pageTotal": "/ 3",
+          "activeToc": [
+            "c0"
+          ],
+          "urls": [
+            {
+              "url": "blob:audit-1",
+              "live": true
+            }
+          ],
+          "resources": [
+            "OPS/old.png"
+          ],
+          "owners": [
+            1
+          ],
+          "saveCalls": [],
+          "hostMessages": [],
+          "status": "此主程序版本不支持跨窗口保存；阅读位置仅保存在当前窗口"
+        },
+        "atBoundary": {
+          "book": "CONSIST",
+          "spine": 0,
+          "preparedIndex": 0,
+          "owner": 1,
+          "paginatorIndex": 0,
+          "activeIndex": 0,
+          "ready": false,
+          "paginatorReady": true,
+          "busy": true,
+          "statePage": 1,
+          "stateCount": 3,
+          "page": 1,
+          "count": 3,
+          "text": "SAFE_HEADSAFE_MIDDLESAFE_END",
+          "anchor": {
+            "elementPath": null,
+            "textOffset": 12,
+            "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+            "prefix": "SAFE_HEAD",
+            "suffix": "SAFE_MIDDLE SAFE_END",
+            "elementId": "",
+            "chapterFraction": 0.5,
+            "pageIndex": 1
+          },
+          "lastStable": {
+            "spineHref": "OPS/c0.xhtml",
+            "spineIndex": 0,
+            "locator": {
+              "elementPath": null,
+              "textOffset": 12,
+              "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+              "prefix": "SAFE_HEAD",
+              "suffix": "SAFE_MIDDLE SAFE_END",
+              "elementId": "",
+              "chapterFraction": 0.5,
+              "pageIndex": 1
+            },
+            "chapterFraction": 0.5,
+            "savedAt": "2026-10-28T11:16:42.706Z"
+          },
+          "modified": true,
+          "saveFailed": false,
+          "pageInput": "2",
+          "pageTotal": "/ 3",
+          "activeToc": [
+            "c0"
+          ],
+          "urls": [
+            {
+              "url": "blob:audit-1",
+              "live": true
+            }
+          ],
+          "resources": [
+            "OPS/old.png"
+          ],
+          "owners": [
+            1,
+            2
+          ],
+          "saveCalls": [],
+          "hostMessages": [],
+          "status": "此主程序版本不支持跨窗口保存；阅读位置仅保存在当前窗口"
+        },
+        "afterInvalidation": {
+          "book": "CONSIST",
+          "spine": 0,
+          "preparedIndex": 0,
+          "owner": 1,
+          "paginatorIndex": 0,
+          "activeIndex": 0,
+          "ready": false,
+          "paginatorReady": true,
+          "busy": true,
+          "statePage": 1,
+          "stateCount": 3,
+          "page": 1,
+          "count": 3,
+          "text": "SAFE_HEADSAFE_MIDDLESAFE_END",
+          "anchor": {
+            "elementPath": null,
+            "textOffset": 12,
+            "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+            "prefix": "SAFE_HEAD",
+            "suffix": "SAFE_MIDDLE SAFE_END",
+            "elementId": "",
+            "chapterFraction": 0.5,
+            "pageIndex": 1
+          },
+          "lastStable": {
+            "spineHref": "OPS/c0.xhtml",
+            "spineIndex": 0,
+            "locator": {
+              "elementPath": null,
+              "textOffset": 12,
+              "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+              "prefix": "SAFE_HEAD",
+              "suffix": "SAFE_MIDDLE SAFE_END",
+              "elementId": "",
+              "chapterFraction": 0.5,
+              "pageIndex": 1
+            },
+            "chapterFraction": 0.5,
+            "savedAt": "2026-10-28T11:16:42.706Z"
+          },
+          "modified": true,
+          "saveFailed": false,
+          "pageInput": "2",
+          "pageTotal": "/ 3",
+          "activeToc": [
+            "c0"
+          ],
+          "urls": [
+            {
+              "url": "blob:audit-1",
+              "live": true
+            }
+          ],
+          "resources": [
+            "OPS/old.png"
+          ],
+          "owners": [
+            1,
+            2
+          ],
+          "saveCalls": [],
+          "hostMessages": [],
+          "status": "此主程序版本不支持跨窗口保存；阅读位置仅保存在当前窗口"
+        },
+        "after": {
+          "book": "CONSIST",
+          "spine": 0,
+          "preparedIndex": 0,
+          "owner": 1,
+          "paginatorIndex": 0,
+          "activeIndex": 0,
+          "ready": true,
+          "paginatorReady": true,
+          "busy": false,
+          "statePage": 0,
+          "stateCount": 3,
+          "page": 1,
+          "count": 3,
+          "text": "SAFE_HEADSAFE_MIDDLESAFE_END",
+          "anchor": {
+            "elementPath": null,
+            "textOffset": 12,
+            "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+            "prefix": "SAFE_HEAD",
+            "suffix": "SAFE_MIDDLE SAFE_END",
+            "elementId": "",
+            "chapterFraction": 0.5,
+            "pageIndex": 1
+          },
+          "lastStable": {
+            "spineHref": "OPS/c0.xhtml",
+            "spineIndex": 0,
+            "locator": {
+              "elementPath": null,
+              "textOffset": 12,
+              "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+              "prefix": "SAFE_HEAD",
+              "suffix": "SAFE_MIDDLE SAFE_END",
+              "elementId": "",
+              "chapterFraction": 0.5,
+              "pageIndex": 1
+            },
+            "chapterFraction": 0.5,
+            "savedAt": "2026-10-28T11:16:42.706Z"
+          },
+          "modified": true,
+          "saveFailed": false,
+          "pageInput": "1",
+          "pageTotal": "/ 3",
+          "activeToc": [
+            "c0"
+          ],
+          "urls": [
+            {
+              "url": "blob:audit-1",
+              "live": true
+            }
+          ],
+          "resources": [
+            "OPS/old.png"
+          ],
+          "owners": [
+            1
+          ],
+          "saveCalls": [],
+          "hostMessages": [],
+          "status": "此主程序版本不支持跨窗口保存；阅读位置仅保存在当前窗口"
+        }
+      }
+    },
+    {
+      "id": "YT-prepare-open-intent",
+      "verdict": "FAIL",
+      "title": "After cancel, next page actually moves and save matches displayed document",
+      "detail": {
+        "startPage": 1,
+        "turned": {
+          "book": "CONSIST",
+          "spine": 0,
+          "preparedIndex": 0,
+          "owner": 1,
+          "paginatorIndex": 0,
+          "activeIndex": 0,
+          "ready": true,
+          "paginatorReady": true,
+          "busy": false,
+          "statePage": 1,
+          "stateCount": 3,
+          "page": 1,
+          "count": 3,
+          "text": "SAFE_HEADSAFE_MIDDLESAFE_END",
+          "anchor": {
+            "elementPath": null,
+            "textOffset": 12,
+            "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+            "prefix": "SAFE_HEAD",
+            "suffix": "SAFE_MIDDLE SAFE_END",
+            "elementId": "",
+            "chapterFraction": 0.5,
+            "pageIndex": 1
+          },
+          "lastStable": {
+            "spineHref": "OPS/c0.xhtml",
+            "spineIndex": 0,
+            "locator": {
+              "elementPath": null,
+              "textOffset": 12,
+              "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+              "prefix": "SAFE_HEAD",
+              "suffix": "SAFE_MIDDLE SAFE_END",
+              "elementId": "",
+              "chapterFraction": 0.5,
+              "pageIndex": 1
+            },
+            "chapterFraction": 0.5,
+            "savedAt": "2026-10-28T11:16:43.262Z"
+          },
+          "modified": false,
+          "saveFailed": false,
+          "pageInput": "2",
+          "pageTotal": "/ 3",
+          "activeToc": [
+            "c0"
+          ],
+          "urls": [
+            {
+              "url": "blob:audit-1",
+              "live": true
+            }
+          ],
+          "resources": [
+            "OPS/old.png"
+          ],
+          "owners": [
+            1
+          ],
+          "saveCalls": [
+            {
+              "bookId": "sha256:80b89e4c5fcaba6a71894469ed5a03c603710c192c64783c27024c7d3242c1b0",
+              "pos": {
+                "spineHref": "OPS/c0.xhtml",
+                "spineIndex": 0,
+                "locator": {
+                  "elementPath": null,
+                  "textOffset": 12,
+                  "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+                  "prefix": "SAFE_HEAD",
+                  "suffix": "SAFE_MIDDLE SAFE_END",
+                  "elementId": "",
+                  "chapterFraction": 0.5,
+                  "pageIndex": 1
+                },
+                "chapterFraction": 0.5,
+                "savedAt": "2026-10-28T11:16:42.897Z"
+              },
+              "token": 0,
+              "sequence": 2,
+              "operationId": "pos-op-7b48c2ef-8e6e-40b2-8722-9a863dc27536"
+            }
+          ],
+          "hostMessages": [],
+          "status": "此主程序版本不支持跨窗口保存；阅读位置仅保存在当前窗口"
+        }
+      }
+    },
+    {
+      "id": "YF-prepare",
+      "verdict": "PASS",
+      "title": "Delayed file eventually replaces cancelled navigation cleanly",
+      "detail": {
+        "book": "FRESH",
+        "spine": 0,
+        "preparedIndex": 0,
+        "owner": 1,
+        "paginatorIndex": 0,
+        "activeIndex": 0,
+        "ready": true,
+        "paginatorReady": true,
+        "busy": false,
+        "statePage": 0,
+        "stateCount": 3,
+        "page": 0,
+        "count": 3,
+        "text": "FRESH_TEXT",
+        "anchor": {
+          "elementPath": null,
+          "textOffset": 1,
+          "quote": "FRESH_TEXT",
+          "prefix": "",
+          "suffix": "FRESH_TEXT",
+          "elementId": "",
+          "chapterFraction": 0,
+          "pageIndex": 0
+        },
+        "lastStable": {
+          "spineHref": "OPS/c0.xhtml",
+          "spineIndex": 0,
+          "locator": {
+            "elementPath": null,
+            "textOffset": 1,
+            "quote": "FRESH_TEXT",
+            "prefix": "",
+            "suffix": "FRESH_TEXT",
+            "elementId": "",
+            "chapterFraction": 0,
+            "pageIndex": 0
+          },
+          "chapterFraction": 0,
+          "savedAt": "2026-10-28T11:16:43.435Z"
+        },
+        "modified": false,
+        "saveFailed": false,
+        "pageInput": "1",
+        "pageTotal": "/ 3",
+        "activeToc": [
+          "c0"
+        ],
+        "urls": [],
+        "resources": [],
+        "owners": [
+          1
+        ],
+        "saveCalls": [
+          {
+            "bookId": "sha256:80b89e4c5fcaba6a71894469ed5a03c603710c192c64783c27024c7d3242c1b0",
+            "pos": {
+              "spineHref": "OPS/c0.xhtml",
+              "spineIndex": 0,
+              "locator": {
+                "elementPath": null,
+                "textOffset": 12,
+                "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+                "prefix": "SAFE_HEAD",
+                "suffix": "SAFE_MIDDLE SAFE_END",
+                "elementId": "",
+                "chapterFraction": 0.5,
+                "pageIndex": 1
+              },
+              "chapterFraction": 0.5,
+              "savedAt": "2026-10-28T11:16:42.897Z"
+            },
+            "token": 0,
+            "sequence": 2,
+            "operationId": "pos-op-7b48c2ef-8e6e-40b2-8722-9a863dc27536"
+          }
+        ],
+        "hostMessages": [],
+        "status": "此主程序版本不支持跨窗口保存；阅读位置仅保存在当前窗口"
+      }
+    },
+    {
+      "id": "Y-prepare-finalize",
+      "verdict": "FAIL",
+      "title": "Cancellation leaves coherent document/state/ready/resources",
+      "detail": {
+        "before": {
+          "book": "CONSIST",
+          "spine": 0,
+          "preparedIndex": 0,
+          "owner": 1,
+          "paginatorIndex": 0,
+          "activeIndex": 0,
+          "ready": true,
+          "paginatorReady": true,
+          "busy": false,
+          "statePage": 1,
+          "stateCount": 3,
+          "page": 1,
+          "count": 3,
+          "text": "SAFE_HEADSAFE_MIDDLESAFE_END",
+          "anchor": {
+            "elementPath": null,
+            "textOffset": 12,
+            "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+            "prefix": "SAFE_HEAD",
+            "suffix": "SAFE_MIDDLE SAFE_END",
+            "elementId": "",
+            "chapterFraction": 0.5,
+            "pageIndex": 1
+          },
+          "lastStable": {
+            "spineHref": "OPS/c0.xhtml",
+            "spineIndex": 0,
+            "locator": {
+              "elementPath": null,
+              "textOffset": 12,
+              "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+              "prefix": "SAFE_HEAD",
+              "suffix": "SAFE_MIDDLE SAFE_END",
+              "elementId": "",
+              "chapterFraction": 0.5,
+              "pageIndex": 1
+            },
+            "chapterFraction": 0.5,
+            "savedAt": "2026-10-28T11:16:43.480Z"
+          },
+          "modified": true,
+          "saveFailed": false,
+          "pageInput": "2",
+          "pageTotal": "/ 3",
+          "activeToc": [
+            "c0"
+          ],
+          "urls": [
+            {
+              "url": "blob:audit-1",
+              "live": true
+            }
+          ],
+          "resources": [
+            "OPS/old.png"
+          ],
+          "owners": [
+            1
+          ],
+          "saveCalls": [],
+          "hostMessages": [],
+          "status": "此主程序版本不支持跨窗口保存；阅读位置仅保存在当前窗口"
+        },
+        "atBoundary": {
+          "book": "CONSIST",
+          "spine": 0,
+          "preparedIndex": 0,
+          "owner": 1,
+          "paginatorIndex": 0,
+          "activeIndex": 0,
+          "ready": false,
+          "paginatorReady": true,
+          "busy": true,
+          "statePage": 1,
+          "stateCount": 3,
+          "page": 1,
+          "count": 3,
+          "text": "SAFE_HEADSAFE_MIDDLESAFE_END",
+          "anchor": {
+            "elementPath": null,
+            "textOffset": 12,
+            "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+            "prefix": "SAFE_HEAD",
+            "suffix": "SAFE_MIDDLE SAFE_END",
+            "elementId": "",
+            "chapterFraction": 0.5,
+            "pageIndex": 1
+          },
+          "lastStable": {
+            "spineHref": "OPS/c0.xhtml",
+            "spineIndex": 0,
+            "locator": {
+              "elementPath": null,
+              "textOffset": 12,
+              "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+              "prefix": "SAFE_HEAD",
+              "suffix": "SAFE_MIDDLE SAFE_END",
+              "elementId": "",
+              "chapterFraction": 0.5,
+              "pageIndex": 1
+            },
+            "chapterFraction": 0.5,
+            "savedAt": "2026-10-28T11:16:43.480Z"
+          },
+          "modified": true,
+          "saveFailed": false,
+          "pageInput": "2",
+          "pageTotal": "/ 3",
+          "activeToc": [
+            "c0"
+          ],
+          "urls": [
+            {
+              "url": "blob:audit-1",
+              "live": true
+            }
+          ],
+          "resources": [
+            "OPS/old.png"
+          ],
+          "owners": [
+            1,
+            2
+          ],
+          "saveCalls": [],
+          "hostMessages": [],
+          "status": "此主程序版本不支持跨窗口保存；阅读位置仅保存在当前窗口"
+        },
+        "afterInvalidation": {
+          "book": "CONSIST",
+          "spine": 0,
+          "preparedIndex": 0,
+          "owner": 1,
+          "paginatorIndex": 0,
+          "activeIndex": 0,
+          "ready": false,
+          "paginatorReady": true,
+          "busy": true,
+          "statePage": 1,
+          "stateCount": 3,
+          "page": 1,
+          "count": 3,
+          "text": "SAFE_HEADSAFE_MIDDLESAFE_END",
+          "anchor": {
+            "elementPath": null,
+            "textOffset": 12,
+            "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+            "prefix": "SAFE_HEAD",
+            "suffix": "SAFE_MIDDLE SAFE_END",
+            "elementId": "",
+            "chapterFraction": 0.5,
+            "pageIndex": 1
+          },
+          "lastStable": {
+            "spineHref": "OPS/c0.xhtml",
+            "spineIndex": 0,
+            "locator": {
+              "elementPath": null,
+              "textOffset": 12,
+              "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+              "prefix": "SAFE_HEAD",
+              "suffix": "SAFE_MIDDLE SAFE_END",
+              "elementId": "",
+              "chapterFraction": 0.5,
+              "pageIndex": 1
+            },
+            "chapterFraction": 0.5,
+            "savedAt": "2026-10-28T11:16:43.480Z"
+          },
+          "modified": false,
+          "saveFailed": false,
+          "pageInput": "2",
+          "pageTotal": "/ 3",
+          "activeToc": [
+            "c0"
+          ],
+          "urls": [
+            {
+              "url": "blob:audit-1",
+              "live": true
+            }
+          ],
+          "resources": [
+            "OPS/old.png"
+          ],
+          "owners": [
+            1,
+            2
+          ],
+          "saveCalls": [
+            {
+              "bookId": "sha256:80b89e4c5fcaba6a71894469ed5a03c603710c192c64783c27024c7d3242c1b0",
+              "pos": {
+                "spineHref": "OPS/c0.xhtml",
+                "spineIndex": 0,
+                "locator": {
+                  "elementPath": null,
+                  "textOffset": 12,
+                  "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+                  "prefix": "SAFE_HEAD",
+                  "suffix": "SAFE_MIDDLE SAFE_END",
+                  "elementId": "",
+                  "chapterFraction": 0.5,
+                  "pageIndex": 1
+                },
+                "chapterFraction": 0.5,
+                "savedAt": "2026-10-28T11:16:43.480Z"
+              },
+              "token": 0,
+              "sequence": 1,
+              "operationId": "pos-op-d72e6d3a-57af-4a2c-9a17-0a66e3ec76b5"
+            }
+          ],
+          "hostMessages": [
+            {
+              "type": "host.finalized",
+              "requestId": "audit-final",
+              "sessionId": "audit",
+              "ok": true,
+              "revision": 1,
+              "closeDiagnostics": []
+            }
+          ],
+          "status": "此主程序版本不支持跨窗口保存；阅读位置仅保存在当前窗口"
+        },
+        "after": {
+          "book": "CONSIST",
+          "spine": 0,
+          "preparedIndex": 0,
+          "owner": 1,
+          "paginatorIndex": 0,
+          "activeIndex": 0,
+          "ready": true,
+          "paginatorReady": true,
+          "busy": false,
+          "statePage": 0,
+          "stateCount": 3,
+          "page": 1,
+          "count": 3,
+          "text": "SAFE_HEADSAFE_MIDDLESAFE_END",
+          "anchor": {
+            "elementPath": null,
+            "textOffset": 12,
+            "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+            "prefix": "SAFE_HEAD",
+            "suffix": "SAFE_MIDDLE SAFE_END",
+            "elementId": "",
+            "chapterFraction": 0.5,
+            "pageIndex": 1
+          },
+          "lastStable": {
+            "spineHref": "OPS/c0.xhtml",
+            "spineIndex": 0,
+            "locator": {
+              "elementPath": null,
+              "textOffset": 12,
+              "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+              "prefix": "SAFE_HEAD",
+              "suffix": "SAFE_MIDDLE SAFE_END",
+              "elementId": "",
+              "chapterFraction": 0.5,
+              "pageIndex": 1
+            },
+            "chapterFraction": 0.5,
+            "savedAt": "2026-10-28T11:16:43.480Z"
+          },
+          "modified": false,
+          "saveFailed": false,
+          "pageInput": "1",
+          "pageTotal": "/ 3",
+          "activeToc": [
+            "c0"
+          ],
+          "urls": [
+            {
+              "url": "blob:audit-1",
+              "live": true
+            }
+          ],
+          "resources": [
+            "OPS/old.png"
+          ],
+          "owners": [
+            1
+          ],
+          "saveCalls": [
+            {
+              "bookId": "sha256:80b89e4c5fcaba6a71894469ed5a03c603710c192c64783c27024c7d3242c1b0",
+              "pos": {
+                "spineHref": "OPS/c0.xhtml",
+                "spineIndex": 0,
+                "locator": {
+                  "elementPath": null,
+                  "textOffset": 12,
+                  "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+                  "prefix": "SAFE_HEAD",
+                  "suffix": "SAFE_MIDDLE SAFE_END",
+                  "elementId": "",
+                  "chapterFraction": 0.5,
+                  "pageIndex": 1
+                },
+                "chapterFraction": 0.5,
+                "savedAt": "2026-10-28T11:16:43.480Z"
+              },
+              "token": 0,
+              "sequence": 1,
+              "operationId": "pos-op-d72e6d3a-57af-4a2c-9a17-0a66e3ec76b5"
+            }
+          ],
+          "hostMessages": [
+            {
+              "type": "host.finalized",
+              "requestId": "audit-final",
+              "sessionId": "audit",
+              "ok": true,
+              "revision": 1,
+              "closeDiagnostics": []
+            }
+          ],
+          "status": "此主程序版本不支持跨窗口保存；阅读位置仅保存在当前窗口"
+        }
+      }
+    },
+    {
+      "id": "YC-prepare",
+      "verdict": "PASS",
+      "title": "Finalize during pending navigation preserves prior stable page locator",
+      "detail": {
+        "before": {
+          "book": "CONSIST",
+          "spine": 0,
+          "preparedIndex": 0,
+          "owner": 1,
+          "paginatorIndex": 0,
+          "activeIndex": 0,
+          "ready": true,
+          "paginatorReady": true,
+          "busy": false,
+          "statePage": 1,
+          "stateCount": 3,
+          "page": 1,
+          "count": 3,
+          "text": "SAFE_HEADSAFE_MIDDLESAFE_END",
+          "anchor": {
+            "elementPath": null,
+            "textOffset": 12,
+            "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+            "prefix": "SAFE_HEAD",
+            "suffix": "SAFE_MIDDLE SAFE_END",
+            "elementId": "",
+            "chapterFraction": 0.5,
+            "pageIndex": 1
+          },
+          "lastStable": {
+            "spineHref": "OPS/c0.xhtml",
+            "spineIndex": 0,
+            "locator": {
+              "elementPath": null,
+              "textOffset": 12,
+              "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+              "prefix": "SAFE_HEAD",
+              "suffix": "SAFE_MIDDLE SAFE_END",
+              "elementId": "",
+              "chapterFraction": 0.5,
+              "pageIndex": 1
+            },
+            "chapterFraction": 0.5,
+            "savedAt": "2026-10-28T11:16:43.480Z"
+          },
+          "modified": true,
+          "saveFailed": false,
+          "pageInput": "2",
+          "pageTotal": "/ 3",
+          "activeToc": [
+            "c0"
+          ],
+          "urls": [
+            {
+              "url": "blob:audit-1",
+              "live": true
+            }
+          ],
+          "resources": [
+            "OPS/old.png"
+          ],
+          "owners": [
+            1
+          ],
+          "saveCalls": [],
+          "hostMessages": [],
+          "status": "此主程序版本不支持跨窗口保存；阅读位置仅保存在当前窗口"
+        },
+        "save": {
+          "bookId": "sha256:80b89e4c5fcaba6a71894469ed5a03c603710c192c64783c27024c7d3242c1b0",
+          "pos": {
+            "spineHref": "OPS/c0.xhtml",
+            "spineIndex": 0,
+            "locator": {
+              "elementPath": null,
+              "textOffset": 12,
+              "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+              "prefix": "SAFE_HEAD",
+              "suffix": "SAFE_MIDDLE SAFE_END",
+              "elementId": "",
+              "chapterFraction": 0.5,
+              "pageIndex": 1
+            },
+            "chapterFraction": 0.5,
+            "savedAt": "2026-10-28T11:16:43.480Z"
+          },
+          "token": 0,
+          "sequence": 1,
+          "operationId": "pos-op-d72e6d3a-57af-4a2c-9a17-0a66e3ec76b5"
+        },
+        "ack": {
+          "type": "host.finalized",
+          "requestId": "audit-final",
+          "sessionId": "audit",
+          "ok": true,
+          "revision": 1,
+          "closeDiagnostics": []
+        },
+        "after": {
+          "book": "CONSIST",
+          "spine": 0,
+          "preparedIndex": 0,
+          "owner": 1,
+          "paginatorIndex": 0,
+          "activeIndex": 0,
+          "ready": true,
+          "paginatorReady": true,
+          "busy": false,
+          "statePage": 0,
+          "stateCount": 3,
+          "page": 1,
+          "count": 3,
+          "text": "SAFE_HEADSAFE_MIDDLESAFE_END",
+          "anchor": {
+            "elementPath": null,
+            "textOffset": 12,
+            "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+            "prefix": "SAFE_HEAD",
+            "suffix": "SAFE_MIDDLE SAFE_END",
+            "elementId": "",
+            "chapterFraction": 0.5,
+            "pageIndex": 1
+          },
+          "lastStable": {
+            "spineHref": "OPS/c0.xhtml",
+            "spineIndex": 0,
+            "locator": {
+              "elementPath": null,
+              "textOffset": 12,
+              "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+              "prefix": "SAFE_HEAD",
+              "suffix": "SAFE_MIDDLE SAFE_END",
+              "elementId": "",
+              "chapterFraction": 0.5,
+              "pageIndex": 1
+            },
+            "chapterFraction": 0.5,
+            "savedAt": "2026-10-28T11:16:43.480Z"
+          },
+          "modified": false,
+          "saveFailed": false,
+          "pageInput": "1",
+          "pageTotal": "/ 3",
+          "activeToc": [
+            "c0"
+          ],
+          "urls": [
+            {
+              "url": "blob:audit-1",
+              "live": true
+            }
+          ],
+          "resources": [
+            "OPS/old.png"
+          ],
+          "owners": [
+            1
+          ],
+          "saveCalls": [
+            {
+              "bookId": "sha256:80b89e4c5fcaba6a71894469ed5a03c603710c192c64783c27024c7d3242c1b0",
+              "pos": {
+                "spineHref": "OPS/c0.xhtml",
+                "spineIndex": 0,
+                "locator": {
+                  "elementPath": null,
+                  "textOffset": 12,
+                  "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+                  "prefix": "SAFE_HEAD",
+                  "suffix": "SAFE_MIDDLE SAFE_END",
+                  "elementId": "",
+                  "chapterFraction": 0.5,
+                  "pageIndex": 1
+                },
+                "chapterFraction": 0.5,
+                "savedAt": "2026-10-28T11:16:43.480Z"
+              },
+              "token": 0,
+              "sequence": 1,
+              "operationId": "pos-op-d72e6d3a-57af-4a2c-9a17-0a66e3ec76b5"
+            }
+          ],
+          "hostMessages": [
+            {
+              "type": "host.finalized",
+              "requestId": "audit-final",
+              "sessionId": "audit",
+              "ok": true,
+              "revision": 1,
+              "closeDiagnostics": []
+            }
+          ],
+          "status": "此主程序版本不支持跨窗口保存；阅读位置仅保存在当前窗口"
+        }
+      }
+    },
+    {
+      "id": "Y-resources-input",
+      "verdict": "PASS",
+      "title": "Cancellation leaves coherent document/state/ready/resources",
+      "detail": {
+        "before": {
+          "book": "CONSIST",
+          "spine": 0,
+          "preparedIndex": 0,
+          "owner": 1,
+          "paginatorIndex": 0,
+          "activeIndex": 0,
+          "ready": true,
+          "paginatorReady": true,
+          "busy": false,
+          "statePage": 1,
+          "stateCount": 3,
+          "page": 1,
+          "count": 3,
+          "text": "SAFE_HEADSAFE_MIDDLESAFE_END",
+          "anchor": {
+            "elementPath": null,
+            "textOffset": 12,
+            "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+            "prefix": "SAFE_HEAD",
+            "suffix": "SAFE_MIDDLE SAFE_END",
+            "elementId": "",
+            "chapterFraction": 0.5,
+            "pageIndex": 1
+          },
+          "lastStable": {
+            "spineHref": "OPS/c0.xhtml",
+            "spineIndex": 0,
+            "locator": {
+              "elementPath": null,
+              "textOffset": 12,
+              "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+              "prefix": "SAFE_HEAD",
+              "suffix": "SAFE_MIDDLE SAFE_END",
+              "elementId": "",
+              "chapterFraction": 0.5,
+              "pageIndex": 1
+            },
+            "chapterFraction": 0.5,
+            "savedAt": "2026-10-28T11:16:43.753Z"
+          },
+          "modified": true,
+          "saveFailed": false,
+          "pageInput": "2",
+          "pageTotal": "/ 3",
+          "activeToc": [
+            "c0"
+          ],
+          "urls": [
+            {
+              "url": "blob:audit-1",
+              "live": true
+            }
+          ],
+          "resources": [
+            "OPS/old.png"
+          ],
+          "owners": [
+            1
+          ],
+          "saveCalls": [],
+          "hostMessages": [],
+          "status": "此主程序版本不支持跨窗口保存；阅读位置仅保存在当前窗口"
+        },
+        "atBoundary": {
+          "book": "CONSIST",
+          "spine": 0,
+          "preparedIndex": 0,
+          "owner": 1,
+          "paginatorIndex": 1,
+          "activeIndex": 1,
+          "ready": false,
+          "paginatorReady": false,
+          "busy": true,
+          "statePage": 1,
+          "stateCount": 3,
+          "page": 0,
+          "count": 1,
+          "text": "OLDQUERYCANDIDATE_MIDDLECANDIDATE_END",
+          "anchor": null,
+          "lastStable": {
+            "spineHref": "OPS/c0.xhtml",
+            "spineIndex": 0,
+            "locator": {
+              "elementPath": null,
+              "textOffset": 12,
+              "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+              "prefix": "SAFE_HEAD",
+              "suffix": "SAFE_MIDDLE SAFE_END",
+              "elementId": "",
+              "chapterFraction": 0.5,
+              "pageIndex": 1
+            },
+            "chapterFraction": 0.5,
+            "savedAt": "2026-10-28T11:16:43.753Z"
+          },
+          "modified": true,
+          "saveFailed": false,
+          "pageInput": "2",
+          "pageTotal": "/ 3",
+          "activeToc": [
+            "c0"
+          ],
+          "urls": [
+            {
+              "url": "blob:audit-2",
+              "live": true
+            }
+          ],
+          "resources": [
+            "OPS/old.png",
+            "OPS/new.png"
+          ],
+          "owners": [
+            1,
+            2
+          ],
+          "saveCalls": [],
+          "hostMessages": [],
+          "status": "此主程序版本不支持跨窗口保存；阅读位置仅保存在当前窗口"
+        },
+        "afterInvalidation": {
+          "book": "CONSIST",
+          "spine": 0,
+          "preparedIndex": 0,
+          "owner": 1,
+          "paginatorIndex": 1,
+          "activeIndex": 1,
+          "ready": false,
+          "paginatorReady": false,
+          "busy": true,
+          "statePage": 1,
+          "stateCount": 3,
+          "page": 0,
+          "count": 1,
+          "text": "OLDQUERYCANDIDATE_MIDDLECANDIDATE_END",
+          "anchor": null,
+          "lastStable": {
+            "spineHref": "OPS/c0.xhtml",
+            "spineIndex": 0,
+            "locator": {
+              "elementPath": null,
+              "textOffset": 12,
+              "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+              "prefix": "SAFE_HEAD",
+              "suffix": "SAFE_MIDDLE SAFE_END",
+              "elementId": "",
+              "chapterFraction": 0.5,
+              "pageIndex": 1
+            },
+            "chapterFraction": 0.5,
+            "savedAt": "2026-10-28T11:16:43.753Z"
+          },
+          "modified": true,
+          "saveFailed": false,
+          "pageInput": "2",
+          "pageTotal": "/ 3",
+          "activeToc": [
+            "c0"
+          ],
+          "urls": [
+            {
+              "url": "blob:audit-2",
+              "live": true
+            }
+          ],
+          "resources": [
+            "OPS/old.png",
+            "OPS/new.png"
+          ],
+          "owners": [
+            1,
+            2
+          ],
+          "saveCalls": [],
+          "hostMessages": [],
+          "status": "此主程序版本不支持跨窗口保存；阅读位置仅保存在当前窗口"
+        },
+        "after": {
+          "book": "CONSIST",
+          "spine": 0,
+          "preparedIndex": 0,
+          "owner": 1,
+          "paginatorIndex": 0,
+          "activeIndex": 0,
+          "ready": true,
+          "paginatorReady": true,
+          "busy": false,
+          "statePage": 0,
+          "stateCount": 3,
+          "page": 0,
+          "count": 3,
+          "text": "SAFE_HEADSAFE_MIDDLESAFE_END",
+          "anchor": {
+            "elementPath": null,
+            "textOffset": 1,
+            "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+            "prefix": "",
+            "suffix": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+            "elementId": "",
+            "chapterFraction": 0,
+            "pageIndex": 0
+          },
+          "lastStable": {
+            "spineHref": "OPS/c0.xhtml",
+            "spineIndex": 0,
+            "locator": {
+              "elementPath": null,
+              "textOffset": 12,
+              "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+              "prefix": "SAFE_HEAD",
+              "suffix": "SAFE_MIDDLE SAFE_END",
+              "elementId": "",
+              "chapterFraction": 0.5,
+              "pageIndex": 1
+            },
+            "chapterFraction": 0.5,
+            "savedAt": "2026-10-28T11:16:43.753Z"
+          },
+          "modified": true,
+          "saveFailed": false,
+          "pageInput": "1",
+          "pageTotal": "/ 3",
+          "activeToc": [
+            "c0"
+          ],
+          "urls": [
+            {
+              "url": "blob:audit-1",
+              "live": true
+            }
+          ],
+          "resources": [
+            "OPS/old.png"
+          ],
+          "owners": [
+            1
+          ],
+          "saveCalls": [],
+          "hostMessages": [],
+          "status": "此主程序版本不支持跨窗口保存；阅读位置仅保存在当前窗口"
+        }
+      }
+    },
+    {
+      "id": "YT-resources-input",
+      "verdict": "PASS",
+      "title": "After cancel, next page actually moves and save matches displayed document",
+      "detail": {
+        "startPage": 0,
+        "turned": {
+          "book": "CONSIST",
+          "spine": 0,
+          "preparedIndex": 0,
+          "owner": 1,
+          "paginatorIndex": 0,
+          "activeIndex": 0,
+          "ready": true,
+          "paginatorReady": true,
+          "busy": false,
+          "statePage": 1,
+          "stateCount": 3,
+          "page": 1,
+          "count": 3,
+          "text": "SAFE_HEADSAFE_MIDDLESAFE_END",
+          "anchor": {
+            "elementPath": null,
+            "textOffset": 12,
+            "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+            "prefix": "SAFE_HEAD",
+            "suffix": "SAFE_MIDDLE SAFE_END",
+            "elementId": "",
+            "chapterFraction": 0.5,
+            "pageIndex": 1
+          },
+          "lastStable": {
+            "spineHref": "OPS/c0.xhtml",
+            "spineIndex": 0,
+            "locator": {
+              "elementPath": null,
+              "textOffset": 12,
+              "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+              "prefix": "SAFE_HEAD",
+              "suffix": "SAFE_MIDDLE SAFE_END",
+              "elementId": "",
+              "chapterFraction": 0.5,
+              "pageIndex": 1
+            },
+            "chapterFraction": 0.5,
+            "savedAt": "2026-10-28T11:16:44.321Z"
+          },
+          "modified": false,
+          "saveFailed": false,
+          "pageInput": "2",
+          "pageTotal": "/ 3",
+          "activeToc": [
+            "c0"
+          ],
+          "urls": [
+            {
+              "url": "blob:audit-1",
+              "live": true
+            }
+          ],
+          "resources": [
+            "OPS/old.png"
+          ],
+          "owners": [
+            1
+          ],
+          "saveCalls": [
+            {
+              "bookId": "sha256:80b89e4c5fcaba6a71894469ed5a03c603710c192c64783c27024c7d3242c1b0",
+              "pos": {
+                "spineHref": "OPS/c0.xhtml",
+                "spineIndex": 0,
+                "locator": {
+                  "elementPath": null,
+                  "textOffset": 12,
+                  "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+                  "prefix": "SAFE_HEAD",
+                  "suffix": "SAFE_MIDDLE SAFE_END",
+                  "elementId": "",
+                  "chapterFraction": 0.5,
+                  "pageIndex": 1
+                },
+                "chapterFraction": 0.5,
+                "savedAt": "2026-10-28T11:16:43.960Z"
+              },
+              "token": 0,
+              "sequence": 2,
+              "operationId": "pos-op-2abd1758-8844-45fe-baa0-0dd15840e266"
+            }
+          ],
+          "hostMessages": [],
+          "status": "此主程序版本不支持跨窗口保存；阅读位置仅保存在当前窗口"
+        }
+      }
+    },
+    {
+      "id": "YR-resources-input",
+      "verdict": "PASS",
+      "title": "Explicit subsequent chapter navigation recovers and releases old owners",
+      "detail": {
+        "book": "CONSIST",
+        "spine": 1,
+        "preparedIndex": 1,
+        "owner": 3,
+        "paginatorIndex": 1,
+        "activeIndex": 1,
+        "ready": true,
+        "paginatorReady": true,
+        "busy": false,
+        "statePage": 0,
+        "stateCount": 3,
+        "page": 0,
+        "count": 3,
+        "text": "OLDQUERYCANDIDATE_MIDDLECANDIDATE_END",
+        "anchor": {
+          "elementPath": null,
+          "textOffset": 1,
+          "quote": "OLDQUERY CANDIDATE_MIDDLE CAND",
+          "prefix": "",
+          "suffix": "OLDQUERY CANDIDATE_MIDDLE CAND",
+          "elementId": "",
+          "chapterFraction": 0,
+          "pageIndex": 0
+        },
+        "lastStable": {
+          "spineHref": "OPS/c1.xhtml",
+          "spineIndex": 1,
+          "locator": {
+            "elementPath": null,
+            "textOffset": 1,
+            "quote": "OLDQUERY CANDIDATE_MIDDLE CAND",
+            "prefix": "",
+            "suffix": "OLDQUERY CANDIDATE_MIDDLE CAND",
+            "elementId": "",
+            "chapterFraction": 0,
+            "pageIndex": 0
+          },
+          "chapterFraction": 0,
+          "savedAt": "2026-10-28T11:16:44.508Z"
+        },
+        "modified": false,
+        "saveFailed": false,
+        "pageInput": "1",
+        "pageTotal": "/ 3",
+        "activeToc": [
+          "c1"
+        ],
+        "urls": [
+          {
+            "url": "blob:audit-3",
+            "live": true
+          }
+        ],
+        "resources": [
+          "OPS/new.png"
+        ],
+        "owners": [
+          3
+        ],
+        "saveCalls": [
+          {
+            "bookId": "sha256:80b89e4c5fcaba6a71894469ed5a03c603710c192c64783c27024c7d3242c1b0",
+            "pos": {
+              "spineHref": "OPS/c0.xhtml",
+              "spineIndex": 0,
+              "locator": {
+                "elementPath": null,
+                "textOffset": 12,
+                "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+                "prefix": "SAFE_HEAD",
+                "suffix": "SAFE_MIDDLE SAFE_END",
+                "elementId": "",
+                "chapterFraction": 0.5,
+                "pageIndex": 1
+              },
+              "chapterFraction": 0.5,
+              "savedAt": "2026-10-28T11:16:43.960Z"
+            },
+            "token": 0,
+            "sequence": 2,
+            "operationId": "pos-op-2abd1758-8844-45fe-baa0-0dd15840e266"
+          }
+        ],
+        "hostMessages": [],
+        "status": "已打开：c1"
+      }
+    },
+    {
+      "id": "Y-resources-search-close",
+      "verdict": "PASS",
+      "title": "Cancellation leaves coherent document/state/ready/resources",
+      "detail": {
+        "before": {
+          "book": "CONSIST",
+          "spine": 0,
+          "preparedIndex": 0,
+          "owner": 1,
+          "paginatorIndex": 0,
+          "activeIndex": 0,
+          "ready": true,
+          "paginatorReady": true,
+          "busy": false,
+          "statePage": 1,
+          "stateCount": 3,
+          "page": 1,
+          "count": 3,
+          "text": "SAFE_HEADSAFE_MIDDLESAFE_END",
+          "anchor": {
+            "elementPath": null,
+            "textOffset": 12,
+            "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+            "prefix": "SAFE_HEAD",
+            "suffix": "SAFE_MIDDLE SAFE_END",
+            "elementId": "",
+            "chapterFraction": 0.5,
+            "pageIndex": 1
+          },
+          "lastStable": {
+            "spineHref": "OPS/c0.xhtml",
+            "spineIndex": 0,
+            "locator": {
+              "elementPath": null,
+              "textOffset": 12,
+              "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+              "prefix": "SAFE_HEAD",
+              "suffix": "SAFE_MIDDLE SAFE_END",
+              "elementId": "",
+              "chapterFraction": 0.5,
+              "pageIndex": 1
+            },
+            "chapterFraction": 0.5,
+            "savedAt": "2026-10-28T11:16:44.554Z"
+          },
+          "modified": true,
+          "saveFailed": false,
+          "pageInput": "2",
+          "pageTotal": "/ 3",
+          "activeToc": [
+            "c0"
+          ],
+          "urls": [
+            {
+              "url": "blob:audit-1",
+              "live": true
+            }
+          ],
+          "resources": [
+            "OPS/old.png"
+          ],
+          "owners": [
+            1
+          ],
+          "saveCalls": [],
+          "hostMessages": [],
+          "status": "此主程序版本不支持跨窗口保存；阅读位置仅保存在当前窗口"
+        },
+        "atBoundary": {
+          "book": "CONSIST",
+          "spine": 0,
+          "preparedIndex": 0,
+          "owner": 1,
+          "paginatorIndex": 1,
+          "activeIndex": 1,
+          "ready": false,
+          "paginatorReady": false,
+          "busy": true,
+          "statePage": 1,
+          "stateCount": 3,
+          "page": 0,
+          "count": 1,
+          "text": "OLDQUERYCANDIDATE_MIDDLECANDIDATE_END",
+          "anchor": null,
+          "lastStable": {
+            "spineHref": "OPS/c0.xhtml",
+            "spineIndex": 0,
+            "locator": {
+              "elementPath": null,
+              "textOffset": 12,
+              "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+              "prefix": "SAFE_HEAD",
+              "suffix": "SAFE_MIDDLE SAFE_END",
+              "elementId": "",
+              "chapterFraction": 0.5,
+              "pageIndex": 1
+            },
+            "chapterFraction": 0.5,
+            "savedAt": "2026-10-28T11:16:44.554Z"
+          },
+          "modified": true,
+          "saveFailed": false,
+          "pageInput": "2",
+          "pageTotal": "/ 3",
+          "activeToc": [
+            "c0"
+          ],
+          "urls": [
+            {
+              "url": "blob:audit-2",
+              "live": true
+            }
+          ],
+          "resources": [
+            "OPS/old.png",
+            "OPS/new.png"
+          ],
+          "owners": [
+            1,
+            2
+          ],
+          "saveCalls": [],
+          "hostMessages": [],
+          "status": "此主程序版本不支持跨窗口保存；阅读位置仅保存在当前窗口"
+        },
+        "afterInvalidation": {
+          "book": "CONSIST",
+          "spine": 0,
+          "preparedIndex": 0,
+          "owner": 1,
+          "paginatorIndex": 1,
+          "activeIndex": 1,
+          "ready": false,
+          "paginatorReady": false,
+          "busy": true,
+          "statePage": 1,
+          "stateCount": 3,
+          "page": 0,
+          "count": 1,
+          "text": "OLDQUERYCANDIDATE_MIDDLECANDIDATE_END",
+          "anchor": null,
+          "lastStable": {
+            "spineHref": "OPS/c0.xhtml",
+            "spineIndex": 0,
+            "locator": {
+              "elementPath": null,
+              "textOffset": 12,
+              "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+              "prefix": "SAFE_HEAD",
+              "suffix": "SAFE_MIDDLE SAFE_END",
+              "elementId": "",
+              "chapterFraction": 0.5,
+              "pageIndex": 1
+            },
+            "chapterFraction": 0.5,
+            "savedAt": "2026-10-28T11:16:44.554Z"
+          },
+          "modified": true,
+          "saveFailed": false,
+          "pageInput": "2",
+          "pageTotal": "/ 3",
+          "activeToc": [
+            "c0"
+          ],
+          "urls": [
+            {
+              "url": "blob:audit-2",
+              "live": true
+            }
+          ],
+          "resources": [
+            "OPS/old.png",
+            "OPS/new.png"
+          ],
+          "owners": [
+            1,
+            2
+          ],
+          "saveCalls": [],
+          "hostMessages": [],
+          "status": "此主程序版本不支持跨窗口保存；阅读位置仅保存在当前窗口"
+        },
+        "after": {
+          "book": "CONSIST",
+          "spine": 0,
+          "preparedIndex": 0,
+          "owner": 1,
+          "paginatorIndex": 0,
+          "activeIndex": 0,
+          "ready": true,
+          "paginatorReady": true,
+          "busy": false,
+          "statePage": 0,
+          "stateCount": 3,
+          "page": 0,
+          "count": 3,
+          "text": "SAFE_HEADSAFE_MIDDLESAFE_END",
+          "anchor": {
+            "elementPath": null,
+            "textOffset": 1,
+            "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+            "prefix": "",
+            "suffix": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+            "elementId": "",
+            "chapterFraction": 0,
+            "pageIndex": 0
+          },
+          "lastStable": {
+            "spineHref": "OPS/c0.xhtml",
+            "spineIndex": 0,
+            "locator": {
+              "elementPath": null,
+              "textOffset": 12,
+              "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+              "prefix": "SAFE_HEAD",
+              "suffix": "SAFE_MIDDLE SAFE_END",
+              "elementId": "",
+              "chapterFraction": 0.5,
+              "pageIndex": 1
+            },
+            "chapterFraction": 0.5,
+            "savedAt": "2026-10-28T11:16:44.554Z"
+          },
+          "modified": true,
+          "saveFailed": false,
+          "pageInput": "1",
+          "pageTotal": "/ 3",
+          "activeToc": [
+            "c0"
+          ],
+          "urls": [
+            {
+              "url": "blob:audit-1",
+              "live": true
+            }
+          ],
+          "resources": [
+            "OPS/old.png"
+          ],
+          "owners": [
+            1
+          ],
+          "saveCalls": [],
+          "hostMessages": [],
+          "status": "此主程序版本不支持跨窗口保存；阅读位置仅保存在当前窗口"
+        }
+      }
+    },
+    {
+      "id": "YT-resources-search-close",
+      "verdict": "PASS",
+      "title": "After cancel, next page actually moves and save matches displayed document",
+      "detail": {
+        "startPage": 0,
+        "turned": {
+          "book": "CONSIST",
+          "spine": 0,
+          "preparedIndex": 0,
+          "owner": 1,
+          "paginatorIndex": 0,
+          "activeIndex": 0,
+          "ready": true,
+          "paginatorReady": true,
+          "busy": false,
+          "statePage": 1,
+          "stateCount": 3,
+          "page": 1,
+          "count": 3,
+          "text": "SAFE_HEADSAFE_MIDDLESAFE_END",
+          "anchor": {
+            "elementPath": null,
+            "textOffset": 12,
+            "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+            "prefix": "SAFE_HEAD",
+            "suffix": "SAFE_MIDDLE SAFE_END",
+            "elementId": "",
+            "chapterFraction": 0.5,
+            "pageIndex": 1
+          },
+          "lastStable": {
+            "spineHref": "OPS/c0.xhtml",
+            "spineIndex": 0,
+            "locator": {
+              "elementPath": null,
+              "textOffset": 12,
+              "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+              "prefix": "SAFE_HEAD",
+              "suffix": "SAFE_MIDDLE SAFE_END",
+              "elementId": "",
+              "chapterFraction": 0.5,
+              "pageIndex": 1
+            },
+            "chapterFraction": 0.5,
+            "savedAt": "2026-10-28T11:16:45.127Z"
+          },
+          "modified": false,
+          "saveFailed": false,
+          "pageInput": "2",
+          "pageTotal": "/ 3",
+          "activeToc": [
+            "c0"
+          ],
+          "urls": [
+            {
+              "url": "blob:audit-1",
+              "live": true
+            }
+          ],
+          "resources": [
+            "OPS/old.png"
+          ],
+          "owners": [
+            1
+          ],
+          "saveCalls": [
+            {
+              "bookId": "sha256:eb73c6c883ab0e38afb41db8184f0099b606d649da1e009b87ccaf86d092f769",
+              "pos": {
+                "spineHref": "OPS/c0.xhtml",
+                "spineIndex": 0,
+                "locator": {
+                  "elementPath": null,
+                  "textOffset": 12,
+                  "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+                  "prefix": "SAFE_HEAD",
+                  "suffix": "SAFE_MIDDLE SAFE_END",
+                  "elementId": "",
+                  "chapterFraction": 0.5,
+                  "pageIndex": 1
+                },
+                "chapterFraction": 0.5,
+                "savedAt": "2026-10-28T11:16:44.763Z"
+              },
+              "token": 0,
+              "sequence": 2,
+              "operationId": "pos-op-9a7af869-5ff0-403a-9465-59043bf7e6be"
+            }
+          ],
+          "hostMessages": [],
+          "status": "此主程序版本不支持跨窗口保存；阅读位置仅保存在当前窗口"
+        }
+      }
+    },
+    {
+      "id": "YR-resources-search-close",
+      "verdict": "PASS",
+      "title": "Explicit subsequent chapter navigation recovers and releases old owners",
+      "detail": {
+        "book": "CONSIST",
+        "spine": 1,
+        "preparedIndex": 1,
+        "owner": 3,
+        "paginatorIndex": 1,
+        "activeIndex": 1,
+        "ready": true,
+        "paginatorReady": true,
+        "busy": false,
+        "statePage": 0,
+        "stateCount": 3,
+        "page": 0,
+        "count": 3,
+        "text": "OLDQUERYCANDIDATE_MIDDLECANDIDATE_END",
+        "anchor": {
+          "elementPath": null,
+          "textOffset": 1,
+          "quote": "OLDQUERY CANDIDATE_MIDDLE CAND",
+          "prefix": "",
+          "suffix": "OLDQUERY CANDIDATE_MIDDLE CAND",
+          "elementId": "",
+          "chapterFraction": 0,
+          "pageIndex": 0
+        },
+        "lastStable": {
+          "spineHref": "OPS/c1.xhtml",
+          "spineIndex": 1,
+          "locator": {
+            "elementPath": null,
+            "textOffset": 1,
+            "quote": "OLDQUERY CANDIDATE_MIDDLE CAND",
+            "prefix": "",
+            "suffix": "OLDQUERY CANDIDATE_MIDDLE CAND",
+            "elementId": "",
+            "chapterFraction": 0,
+            "pageIndex": 0
+          },
+          "chapterFraction": 0,
+          "savedAt": "2026-10-28T11:16:45.312Z"
+        },
+        "modified": false,
+        "saveFailed": false,
+        "pageInput": "1",
+        "pageTotal": "/ 3",
+        "activeToc": [
+          "c1"
+        ],
+        "urls": [
+          {
+            "url": "blob:audit-3",
+            "live": true
+          }
+        ],
+        "resources": [
+          "OPS/new.png"
+        ],
+        "owners": [
+          3
+        ],
+        "saveCalls": [
+          {
+            "bookId": "sha256:eb73c6c883ab0e38afb41db8184f0099b606d649da1e009b87ccaf86d092f769",
+            "pos": {
+              "spineHref": "OPS/c0.xhtml",
+              "spineIndex": 0,
+              "locator": {
+                "elementPath": null,
+                "textOffset": 12,
+                "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+                "prefix": "SAFE_HEAD",
+                "suffix": "SAFE_MIDDLE SAFE_END",
+                "elementId": "",
+                "chapterFraction": 0.5,
+                "pageIndex": 1
+              },
+              "chapterFraction": 0.5,
+              "savedAt": "2026-10-28T11:16:44.763Z"
+            },
+            "token": 0,
+            "sequence": 2,
+            "operationId": "pos-op-9a7af869-5ff0-403a-9465-59043bf7e6be"
+          }
+        ],
+        "hostMessages": [],
+        "status": "已打开：c1"
+      }
+    },
+    {
+      "id": "Y-resources-open-intent",
+      "verdict": "PASS",
+      "title": "Cancellation leaves coherent document/state/ready/resources",
+      "detail": {
+        "before": {
+          "book": "CONSIST",
+          "spine": 0,
+          "preparedIndex": 0,
+          "owner": 1,
+          "paginatorIndex": 0,
+          "activeIndex": 0,
+          "ready": true,
+          "paginatorReady": true,
+          "busy": false,
+          "statePage": 1,
+          "stateCount": 3,
+          "page": 1,
+          "count": 3,
+          "text": "SAFE_HEADSAFE_MIDDLESAFE_END",
+          "anchor": {
+            "elementPath": null,
+            "textOffset": 12,
+            "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+            "prefix": "SAFE_HEAD",
+            "suffix": "SAFE_MIDDLE SAFE_END",
+            "elementId": "",
+            "chapterFraction": 0.5,
+            "pageIndex": 1
+          },
+          "lastStable": {
+            "spineHref": "OPS/c0.xhtml",
+            "spineIndex": 0,
+            "locator": {
+              "elementPath": null,
+              "textOffset": 12,
+              "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+              "prefix": "SAFE_HEAD",
+              "suffix": "SAFE_MIDDLE SAFE_END",
+              "elementId": "",
+              "chapterFraction": 0.5,
+              "pageIndex": 1
+            },
+            "chapterFraction": 0.5,
+            "savedAt": "2026-10-28T11:16:45.359Z"
+          },
+          "modified": true,
+          "saveFailed": false,
+          "pageInput": "2",
+          "pageTotal": "/ 3",
+          "activeToc": [
+            "c0"
+          ],
+          "urls": [
+            {
+              "url": "blob:audit-1",
+              "live": true
+            }
+          ],
+          "resources": [
+            "OPS/old.png"
+          ],
+          "owners": [
+            1
+          ],
+          "saveCalls": [],
+          "hostMessages": [],
+          "status": "此主程序版本不支持跨窗口保存；阅读位置仅保存在当前窗口"
+        },
+        "atBoundary": {
+          "book": "CONSIST",
+          "spine": 0,
+          "preparedIndex": 0,
+          "owner": 1,
+          "paginatorIndex": 1,
+          "activeIndex": 1,
+          "ready": false,
+          "paginatorReady": false,
+          "busy": true,
+          "statePage": 1,
+          "stateCount": 3,
+          "page": 0,
+          "count": 1,
+          "text": "OLDQUERYCANDIDATE_MIDDLECANDIDATE_END",
+          "anchor": null,
+          "lastStable": {
+            "spineHref": "OPS/c0.xhtml",
+            "spineIndex": 0,
+            "locator": {
+              "elementPath": null,
+              "textOffset": 12,
+              "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+              "prefix": "SAFE_HEAD",
+              "suffix": "SAFE_MIDDLE SAFE_END",
+              "elementId": "",
+              "chapterFraction": 0.5,
+              "pageIndex": 1
+            },
+            "chapterFraction": 0.5,
+            "savedAt": "2026-10-28T11:16:45.359Z"
+          },
+          "modified": true,
+          "saveFailed": false,
+          "pageInput": "2",
+          "pageTotal": "/ 3",
+          "activeToc": [
+            "c0"
+          ],
+          "urls": [
+            {
+              "url": "blob:audit-2",
+              "live": true
+            }
+          ],
+          "resources": [
+            "OPS/old.png",
+            "OPS/new.png"
+          ],
+          "owners": [
+            1,
+            2
+          ],
+          "saveCalls": [],
+          "hostMessages": [],
+          "status": "此主程序版本不支持跨窗口保存；阅读位置仅保存在当前窗口"
+        },
+        "afterInvalidation": {
+          "book": "CONSIST",
+          "spine": 0,
+          "preparedIndex": 0,
+          "owner": 1,
+          "paginatorIndex": 1,
+          "activeIndex": 1,
+          "ready": false,
+          "paginatorReady": false,
+          "busy": true,
+          "statePage": 1,
+          "stateCount": 3,
+          "page": 0,
+          "count": 1,
+          "text": "OLDQUERYCANDIDATE_MIDDLECANDIDATE_END",
+          "anchor": null,
+          "lastStable": {
+            "spineHref": "OPS/c0.xhtml",
+            "spineIndex": 0,
+            "locator": {
+              "elementPath": null,
+              "textOffset": 12,
+              "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+              "prefix": "SAFE_HEAD",
+              "suffix": "SAFE_MIDDLE SAFE_END",
+              "elementId": "",
+              "chapterFraction": 0.5,
+              "pageIndex": 1
+            },
+            "chapterFraction": 0.5,
+            "savedAt": "2026-10-28T11:16:45.359Z"
+          },
+          "modified": true,
+          "saveFailed": false,
+          "pageInput": "2",
+          "pageTotal": "/ 3",
+          "activeToc": [
+            "c0"
+          ],
+          "urls": [
+            {
+              "url": "blob:audit-2",
+              "live": true
+            }
+          ],
+          "resources": [
+            "OPS/old.png",
+            "OPS/new.png"
+          ],
+          "owners": [
+            1,
+            2
+          ],
+          "saveCalls": [],
+          "hostMessages": [],
+          "status": "此主程序版本不支持跨窗口保存；阅读位置仅保存在当前窗口"
+        },
+        "after": {
+          "book": "CONSIST",
+          "spine": 0,
+          "preparedIndex": 0,
+          "owner": 1,
+          "paginatorIndex": 0,
+          "activeIndex": 0,
+          "ready": true,
+          "paginatorReady": true,
+          "busy": false,
+          "statePage": 0,
+          "stateCount": 3,
+          "page": 0,
+          "count": 3,
+          "text": "SAFE_HEADSAFE_MIDDLESAFE_END",
+          "anchor": {
+            "elementPath": null,
+            "textOffset": 1,
+            "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+            "prefix": "",
+            "suffix": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+            "elementId": "",
+            "chapterFraction": 0,
+            "pageIndex": 0
+          },
+          "lastStable": {
+            "spineHref": "OPS/c0.xhtml",
+            "spineIndex": 0,
+            "locator": {
+              "elementPath": null,
+              "textOffset": 12,
+              "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+              "prefix": "SAFE_HEAD",
+              "suffix": "SAFE_MIDDLE SAFE_END",
+              "elementId": "",
+              "chapterFraction": 0.5,
+              "pageIndex": 1
+            },
+            "chapterFraction": 0.5,
+            "savedAt": "2026-10-28T11:16:45.359Z"
+          },
+          "modified": true,
+          "saveFailed": false,
+          "pageInput": "1",
+          "pageTotal": "/ 3",
+          "activeToc": [
+            "c0"
+          ],
+          "urls": [
+            {
+              "url": "blob:audit-1",
+              "live": true
+            }
+          ],
+          "resources": [
+            "OPS/old.png"
+          ],
+          "owners": [
+            1
+          ],
+          "saveCalls": [],
+          "hostMessages": [],
+          "status": "此主程序版本不支持跨窗口保存；阅读位置仅保存在当前窗口"
+        }
+      }
+    },
+    {
+      "id": "YT-resources-open-intent",
+      "verdict": "PASS",
+      "title": "After cancel, next page actually moves and save matches displayed document",
+      "detail": {
+        "startPage": 0,
+        "turned": {
+          "book": "CONSIST",
+          "spine": 0,
+          "preparedIndex": 0,
+          "owner": 1,
+          "paginatorIndex": 0,
+          "activeIndex": 0,
+          "ready": true,
+          "paginatorReady": true,
+          "busy": false,
+          "statePage": 1,
+          "stateCount": 3,
+          "page": 1,
+          "count": 3,
+          "text": "SAFE_HEADSAFE_MIDDLESAFE_END",
+          "anchor": {
+            "elementPath": null,
+            "textOffset": 12,
+            "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+            "prefix": "SAFE_HEAD",
+            "suffix": "SAFE_MIDDLE SAFE_END",
+            "elementId": "",
+            "chapterFraction": 0.5,
+            "pageIndex": 1
+          },
+          "lastStable": {
+            "spineHref": "OPS/c0.xhtml",
+            "spineIndex": 0,
+            "locator": {
+              "elementPath": null,
+              "textOffset": 12,
+              "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+              "prefix": "SAFE_HEAD",
+              "suffix": "SAFE_MIDDLE SAFE_END",
+              "elementId": "",
+              "chapterFraction": 0.5,
+              "pageIndex": 1
+            },
+            "chapterFraction": 0.5,
+            "savedAt": "2026-10-28T11:16:45.929Z"
+          },
+          "modified": false,
+          "saveFailed": false,
+          "pageInput": "2",
+          "pageTotal": "/ 3",
+          "activeToc": [
+            "c0"
+          ],
+          "urls": [
+            {
+              "url": "blob:audit-1",
+              "live": true
+            }
+          ],
+          "resources": [
+            "OPS/old.png"
+          ],
+          "owners": [
+            1
+          ],
+          "saveCalls": [
+            {
+              "bookId": "sha256:eb73c6c883ab0e38afb41db8184f0099b606d649da1e009b87ccaf86d092f769",
+              "pos": {
+                "spineHref": "OPS/c0.xhtml",
+                "spineIndex": 0,
+                "locator": {
+                  "elementPath": null,
+                  "textOffset": 12,
+                  "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+                  "prefix": "SAFE_HEAD",
+                  "suffix": "SAFE_MIDDLE SAFE_END",
+                  "elementId": "",
+                  "chapterFraction": 0.5,
+                  "pageIndex": 1
+                },
+                "chapterFraction": 0.5,
+                "savedAt": "2026-10-28T11:16:45.566Z"
+              },
+              "token": 0,
+              "sequence": 2,
+              "operationId": "pos-op-a464efb0-ba43-4382-bb55-f461c80f9a23"
+            }
+          ],
+          "hostMessages": [],
+          "status": "此主程序版本不支持跨窗口保存；阅读位置仅保存在当前窗口"
+        }
+      }
+    },
+    {
+      "id": "YF-resources",
+      "verdict": "PASS",
+      "title": "Delayed file eventually replaces cancelled navigation cleanly",
+      "detail": {
+        "book": "FRESH",
+        "spine": 0,
+        "preparedIndex": 0,
+        "owner": 1,
+        "paginatorIndex": 0,
+        "activeIndex": 0,
+        "ready": true,
+        "paginatorReady": true,
+        "busy": false,
+        "statePage": 0,
+        "stateCount": 3,
+        "page": 0,
+        "count": 3,
+        "text": "FRESH_TEXT",
+        "anchor": {
+          "elementPath": null,
+          "textOffset": 1,
+          "quote": "FRESH_TEXT",
+          "prefix": "",
+          "suffix": "FRESH_TEXT",
+          "elementId": "",
+          "chapterFraction": 0,
+          "pageIndex": 0
+        },
+        "lastStable": {
+          "spineHref": "OPS/c0.xhtml",
+          "spineIndex": 0,
+          "locator": {
+            "elementPath": null,
+            "textOffset": 1,
+            "quote": "FRESH_TEXT",
+            "prefix": "",
+            "suffix": "FRESH_TEXT",
+            "elementId": "",
+            "chapterFraction": 0,
+            "pageIndex": 0
+          },
+          "chapterFraction": 0,
+          "savedAt": "2026-10-28T11:16:46.101Z"
+        },
+        "modified": false,
+        "saveFailed": false,
+        "pageInput": "1",
+        "pageTotal": "/ 3",
+        "activeToc": [
+          "c0"
+        ],
+        "urls": [],
+        "resources": [],
+        "owners": [
+          1
+        ],
+        "saveCalls": [
+          {
+            "bookId": "sha256:eb73c6c883ab0e38afb41db8184f0099b606d649da1e009b87ccaf86d092f769",
+            "pos": {
+              "spineHref": "OPS/c0.xhtml",
+              "spineIndex": 0,
+              "locator": {
+                "elementPath": null,
+                "textOffset": 12,
+                "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+                "prefix": "SAFE_HEAD",
+                "suffix": "SAFE_MIDDLE SAFE_END",
+                "elementId": "",
+                "chapterFraction": 0.5,
+                "pageIndex": 1
+              },
+              "chapterFraction": 0.5,
+              "savedAt": "2026-10-28T11:16:45.566Z"
+            },
+            "token": 0,
+            "sequence": 2,
+            "operationId": "pos-op-a464efb0-ba43-4382-bb55-f461c80f9a23"
+          }
+        ],
+        "hostMessages": [],
+        "status": "此主程序版本不支持跨窗口保存；阅读位置仅保存在当前窗口"
+      }
+    },
+    {
+      "id": "Y-resources-finalize",
+      "verdict": "FAIL",
+      "title": "Cancellation leaves coherent document/state/ready/resources",
+      "detail": {
+        "before": {
+          "book": "CONSIST",
+          "spine": 0,
+          "preparedIndex": 0,
+          "owner": 1,
+          "paginatorIndex": 0,
+          "activeIndex": 0,
+          "ready": true,
+          "paginatorReady": true,
+          "busy": false,
+          "statePage": 1,
+          "stateCount": 3,
+          "page": 1,
+          "count": 3,
+          "text": "SAFE_HEADSAFE_MIDDLESAFE_END",
+          "anchor": {
+            "elementPath": null,
+            "textOffset": 12,
+            "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+            "prefix": "SAFE_HEAD",
+            "suffix": "SAFE_MIDDLE SAFE_END",
+            "elementId": "",
+            "chapterFraction": 0.5,
+            "pageIndex": 1
+          },
+          "lastStable": {
+            "spineHref": "OPS/c0.xhtml",
+            "spineIndex": 0,
+            "locator": {
+              "elementPath": null,
+              "textOffset": 12,
+              "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+              "prefix": "SAFE_HEAD",
+              "suffix": "SAFE_MIDDLE SAFE_END",
+              "elementId": "",
+              "chapterFraction": 0.5,
+              "pageIndex": 1
+            },
+            "chapterFraction": 0.5,
+            "savedAt": "2026-10-28T11:16:46.151Z"
+          },
+          "modified": true,
+          "saveFailed": false,
+          "pageInput": "2",
+          "pageTotal": "/ 3",
+          "activeToc": [
+            "c0"
+          ],
+          "urls": [
+            {
+              "url": "blob:audit-1",
+              "live": true
+            }
+          ],
+          "resources": [
+            "OPS/old.png"
+          ],
+          "owners": [
+            1
+          ],
+          "saveCalls": [],
+          "hostMessages": [],
+          "status": "此主程序版本不支持跨窗口保存；阅读位置仅保存在当前窗口"
+        },
+        "atBoundary": {
+          "book": "CONSIST",
+          "spine": 0,
+          "preparedIndex": 0,
+          "owner": 1,
+          "paginatorIndex": 1,
+          "activeIndex": 1,
+          "ready": false,
+          "paginatorReady": false,
+          "busy": true,
+          "statePage": 1,
+          "stateCount": 3,
+          "page": 0,
+          "count": 1,
+          "text": "OLDQUERYCANDIDATE_MIDDLECANDIDATE_END",
+          "anchor": null,
+          "lastStable": {
+            "spineHref": "OPS/c0.xhtml",
+            "spineIndex": 0,
+            "locator": {
+              "elementPath": null,
+              "textOffset": 12,
+              "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+              "prefix": "SAFE_HEAD",
+              "suffix": "SAFE_MIDDLE SAFE_END",
+              "elementId": "",
+              "chapterFraction": 0.5,
+              "pageIndex": 1
+            },
+            "chapterFraction": 0.5,
+            "savedAt": "2026-10-28T11:16:46.151Z"
+          },
+          "modified": true,
+          "saveFailed": false,
+          "pageInput": "2",
+          "pageTotal": "/ 3",
+          "activeToc": [
+            "c0"
+          ],
+          "urls": [
+            {
+              "url": "blob:audit-2",
+              "live": true
+            }
+          ],
+          "resources": [
+            "OPS/old.png",
+            "OPS/new.png"
+          ],
+          "owners": [
+            1,
+            2
+          ],
+          "saveCalls": [],
+          "hostMessages": [],
+          "status": "此主程序版本不支持跨窗口保存；阅读位置仅保存在当前窗口"
+        },
+        "afterInvalidation": {
+          "book": "CONSIST",
+          "spine": 0,
+          "preparedIndex": 0,
+          "owner": 1,
+          "paginatorIndex": 1,
+          "activeIndex": 1,
+          "ready": false,
+          "paginatorReady": false,
+          "busy": true,
+          "statePage": 1,
+          "stateCount": 3,
+          "page": 0,
+          "count": 1,
+          "text": "OLDQUERYCANDIDATE_MIDDLECANDIDATE_END",
+          "anchor": null,
+          "lastStable": {
+            "spineHref": "OPS/c0.xhtml",
+            "spineIndex": 0,
+            "locator": {
+              "elementPath": null,
+              "textOffset": 12,
+              "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+              "prefix": "SAFE_HEAD",
+              "suffix": "SAFE_MIDDLE SAFE_END",
+              "elementId": "",
+              "chapterFraction": 0.5,
+              "pageIndex": 1
+            },
+            "chapterFraction": 0.5,
+            "savedAt": "2026-10-28T11:16:46.151Z"
+          },
+          "modified": false,
+          "saveFailed": false,
+          "pageInput": "2",
+          "pageTotal": "/ 3",
+          "activeToc": [
+            "c0"
+          ],
+          "urls": [
+            {
+              "url": "blob:audit-2",
+              "live": true
+            }
+          ],
+          "resources": [
+            "OPS/old.png",
+            "OPS/new.png"
+          ],
+          "owners": [
+            1,
+            2
+          ],
+          "saveCalls": [
+            {
+              "bookId": "sha256:b094a2e6c88446de7662f188c04d9dd321f4a24ffb8ab23293af06b2d9bc5fa5",
+              "pos": {
+                "spineHref": "OPS/c0.xhtml",
+                "spineIndex": 0,
+                "locator": {
+                  "elementPath": null,
+                  "textOffset": 12,
+                  "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+                  "prefix": "SAFE_HEAD",
+                  "suffix": "SAFE_MIDDLE SAFE_END",
+                  "elementId": "",
+                  "chapterFraction": 0.5,
+                  "pageIndex": 1
+                },
+                "chapterFraction": 0.5,
+                "savedAt": "2026-10-28T11:16:46.151Z"
+              },
+              "token": 0,
+              "sequence": 1,
+              "operationId": "pos-op-8a02e2d2-2c9d-49db-b1e4-a22a9d39b415"
+            }
+          ],
+          "hostMessages": [
+            {
+              "type": "host.finalized",
+              "requestId": "audit-final",
+              "sessionId": "audit",
+              "ok": true,
+              "revision": 1,
+              "closeDiagnostics": []
+            }
+          ],
+          "status": "此主程序版本不支持跨窗口保存；阅读位置仅保存在当前窗口"
+        },
+        "after": {
+          "book": "CONSIST",
+          "spine": 0,
+          "preparedIndex": 0,
+          "owner": 1,
+          "paginatorIndex": -1,
+          "ready": false,
+          "paginatorReady": false,
+          "busy": false,
+          "statePage": 0,
+          "stateCount": 3,
+          "page": 0,
+          "count": 1,
+          "anchor": null,
+          "lastStable": {
+            "spineHref": "OPS/c0.xhtml",
+            "spineIndex": 0,
+            "locator": {
+              "elementPath": null,
+              "textOffset": 12,
+              "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+              "prefix": "SAFE_HEAD",
+              "suffix": "SAFE_MIDDLE SAFE_END",
+              "elementId": "",
+              "chapterFraction": 0.5,
+              "pageIndex": 1
+            },
+            "chapterFraction": 0.5,
+            "savedAt": "2026-10-28T11:16:46.151Z"
+          },
+          "modified": false,
+          "saveFailed": false,
+          "pageInput": "1",
+          "pageTotal": "/ 3",
+          "activeToc": [
+            "c0"
+          ],
+          "urls": [],
+          "resources": [
+            "OPS/old.png"
+          ],
+          "owners": [
+            1
+          ],
+          "saveCalls": [
+            {
+              "bookId": "sha256:b094a2e6c88446de7662f188c04d9dd321f4a24ffb8ab23293af06b2d9bc5fa5",
+              "pos": {
+                "spineHref": "OPS/c0.xhtml",
+                "spineIndex": 0,
+                "locator": {
+                  "elementPath": null,
+                  "textOffset": 12,
+                  "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+                  "prefix": "SAFE_HEAD",
+                  "suffix": "SAFE_MIDDLE SAFE_END",
+                  "elementId": "",
+                  "chapterFraction": 0.5,
+                  "pageIndex": 1
+                },
+                "chapterFraction": 0.5,
+                "savedAt": "2026-10-28T11:16:46.151Z"
+              },
+              "token": 0,
+              "sequence": 1,
+              "operationId": "pos-op-8a02e2d2-2c9d-49db-b1e4-a22a9d39b415"
+            }
+          ],
+          "hostMessages": [
+            {
+              "type": "host.finalized",
+              "requestId": "audit-final",
+              "sessionId": "audit",
+              "ok": true,
+              "revision": 1,
+              "closeDiagnostics": []
+            }
+          ],
+          "status": "此主程序版本不支持跨窗口保存；阅读位置仅保存在当前窗口"
+        }
+      }
+    },
+    {
+      "id": "YC-resources",
+      "verdict": "PASS",
+      "title": "Finalize during pending navigation preserves prior stable page locator",
+      "detail": {
+        "before": {
+          "book": "CONSIST",
+          "spine": 0,
+          "preparedIndex": 0,
+          "owner": 1,
+          "paginatorIndex": 0,
+          "activeIndex": 0,
+          "ready": true,
+          "paginatorReady": true,
+          "busy": false,
+          "statePage": 1,
+          "stateCount": 3,
+          "page": 1,
+          "count": 3,
+          "text": "SAFE_HEADSAFE_MIDDLESAFE_END",
+          "anchor": {
+            "elementPath": null,
+            "textOffset": 12,
+            "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+            "prefix": "SAFE_HEAD",
+            "suffix": "SAFE_MIDDLE SAFE_END",
+            "elementId": "",
+            "chapterFraction": 0.5,
+            "pageIndex": 1
+          },
+          "lastStable": {
+            "spineHref": "OPS/c0.xhtml",
+            "spineIndex": 0,
+            "locator": {
+              "elementPath": null,
+              "textOffset": 12,
+              "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+              "prefix": "SAFE_HEAD",
+              "suffix": "SAFE_MIDDLE SAFE_END",
+              "elementId": "",
+              "chapterFraction": 0.5,
+              "pageIndex": 1
+            },
+            "chapterFraction": 0.5,
+            "savedAt": "2026-10-28T11:16:46.151Z"
+          },
+          "modified": true,
+          "saveFailed": false,
+          "pageInput": "2",
+          "pageTotal": "/ 3",
+          "activeToc": [
+            "c0"
+          ],
+          "urls": [
+            {
+              "url": "blob:audit-1",
+              "live": true
+            }
+          ],
+          "resources": [
+            "OPS/old.png"
+          ],
+          "owners": [
+            1
+          ],
+          "saveCalls": [],
+          "hostMessages": [],
+          "status": "此主程序版本不支持跨窗口保存；阅读位置仅保存在当前窗口"
+        },
+        "save": {
+          "bookId": "sha256:b094a2e6c88446de7662f188c04d9dd321f4a24ffb8ab23293af06b2d9bc5fa5",
+          "pos": {
+            "spineHref": "OPS/c0.xhtml",
+            "spineIndex": 0,
+            "locator": {
+              "elementPath": null,
+              "textOffset": 12,
+              "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+              "prefix": "SAFE_HEAD",
+              "suffix": "SAFE_MIDDLE SAFE_END",
+              "elementId": "",
+              "chapterFraction": 0.5,
+              "pageIndex": 1
+            },
+            "chapterFraction": 0.5,
+            "savedAt": "2026-10-28T11:16:46.151Z"
+          },
+          "token": 0,
+          "sequence": 1,
+          "operationId": "pos-op-8a02e2d2-2c9d-49db-b1e4-a22a9d39b415"
+        },
+        "ack": {
+          "type": "host.finalized",
+          "requestId": "audit-final",
+          "sessionId": "audit",
+          "ok": true,
+          "revision": 1,
+          "closeDiagnostics": []
+        },
+        "after": {
+          "book": "CONSIST",
+          "spine": 0,
+          "preparedIndex": 0,
+          "owner": 1,
+          "paginatorIndex": -1,
+          "ready": false,
+          "paginatorReady": false,
+          "busy": false,
+          "statePage": 0,
+          "stateCount": 3,
+          "page": 0,
+          "count": 1,
+          "anchor": null,
+          "lastStable": {
+            "spineHref": "OPS/c0.xhtml",
+            "spineIndex": 0,
+            "locator": {
+              "elementPath": null,
+              "textOffset": 12,
+              "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+              "prefix": "SAFE_HEAD",
+              "suffix": "SAFE_MIDDLE SAFE_END",
+              "elementId": "",
+              "chapterFraction": 0.5,
+              "pageIndex": 1
+            },
+            "chapterFraction": 0.5,
+            "savedAt": "2026-10-28T11:16:46.151Z"
+          },
+          "modified": false,
+          "saveFailed": false,
+          "pageInput": "1",
+          "pageTotal": "/ 3",
+          "activeToc": [
+            "c0"
+          ],
+          "urls": [],
+          "resources": [
+            "OPS/old.png"
+          ],
+          "owners": [
+            1
+          ],
+          "saveCalls": [
+            {
+              "bookId": "sha256:b094a2e6c88446de7662f188c04d9dd321f4a24ffb8ab23293af06b2d9bc5fa5",
+              "pos": {
+                "spineHref": "OPS/c0.xhtml",
+                "spineIndex": 0,
+                "locator": {
+                  "elementPath": null,
+                  "textOffset": 12,
+                  "quote": "SAFE_HEAD SAFE_MIDDLE SAFE_END",
+                  "prefix": "SAFE_HEAD",
+                  "suffix": "SAFE_MIDDLE SAFE_END",
+                  "elementId": "",
+                  "chapterFraction": 0.5,
+                  "pageIndex": 1
+                },
+                "chapterFraction": 0.5,
+                "savedAt": "2026-10-28T11:16:46.151Z"
+              },
+              "token": 0,
+              "sequence": 1,
+              "operationId": "pos-op-8a02e2d2-2c9d-49db-b1e4-a22a9d39b415"
+            }
+          ],
+          "hostMessages": [
+            {
+              "type": "host.finalized",
+              "requestId": "audit-final",
+              "sessionId": "audit",
+              "ok": true,
+              "revision": 1,
+              "closeDiagnostics": []
+            }
+          ],
+          "status": "此主程序版本不支持跨窗口保存；阅读位置仅保存在当前窗口"
+        }
+      }
+    },
+    {
+      "id": "YFAIL-resource-wait",
+      "verdict": "FAIL",
+      "title": "Same-book failure preserves previous actual document and resources",
+      "detail": {
+        "before": {
+          "book": "FAILURE",
+          "spine": 0,
+          "preparedIndex": 0,
+          "owner": 1,
+          "paginatorIndex": 0,
+          "activeIndex": 0,
+          "ready": true,
+          "paginatorReady": true,
+          "busy": false,
+          "statePage": 0,
+          "stateCount": 3,
+          "page": 0,
+          "count": 3,
+          "text": "OLDOLD_MIDDLE",
+          "anchor": {
+            "elementPath": null,
+            "textOffset": 1,
+            "quote": "OLD OLD_MIDDLE",
+            "prefix": "",
+            "suffix": "OLD OLD_MIDDLE",
+            "elementId": "",
+            "chapterFraction": 0,
+            "pageIndex": 0
+          },
+          "lastStable": {
+            "spineHref": "OPS/c0.xhtml",
+            "spineIndex": 0,
+            "locator": {
+              "elementPath": null,
+              "textOffset": 1,
+              "quote": "OLD OLD_MIDDLE",
+              "prefix": "",
+              "suffix": "OLD OLD_MIDDLE",
+              "elementId": "",
+              "chapterFraction": 0,
+              "pageIndex": 0
+            },
+            "chapterFraction": 0,
+            "savedAt": "2026-10-28T11:16:46.403Z"
+          },
+          "modified": false,
+          "saveFailed": false,
+          "pageInput": "1",
+          "pageTotal": "/ 3",
+          "activeToc": [
+            "c0"
+          ],
+          "urls": [
+            {
+              "url": "blob:audit-1",
+              "live": true
+            }
+          ],
+          "resources": [
+            "OPS/same.png"
+          ],
+          "owners": [
+            1
+          ],
+          "saveCalls": [],
+          "hostMessages": [],
+          "status": "此主程序版本不支持跨窗口保存；阅读位置仅保存在当前窗口"
+        },
+        "after": {
+          "book": "FAILURE",
+          "spine": 0,
+          "preparedIndex": 0,
+          "owner": 1,
+          "paginatorIndex": 1,
+          "activeIndex": 1,
+          "ready": false,
+          "paginatorReady": false,
+          "busy": false,
+          "statePage": 0,
+          "stateCount": 3,
+          "page": 0,
+          "count": 1,
+          "text": "NEW",
+          "anchor": null,
+          "lastStable": {
+            "spineHref": "OPS/c0.xhtml",
+            "spineIndex": 0,
+            "locator": {
+              "elementPath": null,
+              "textOffset": 1,
+              "quote": "OLD OLD_MIDDLE",
+              "prefix": "",
+              "suffix": "OLD OLD_MIDDLE",
+              "elementId": "",
+              "chapterFraction": 0,
+              "pageIndex": 0
+            },
+            "chapterFraction": 0,
+            "savedAt": "2026-10-28T11:16:46.403Z"
+          },
+          "modified": false,
+          "saveFailed": false,
+          "pageInput": "1",
+          "pageTotal": "/ 3",
+          "activeToc": [
+            "c0"
+          ],
+          "urls": [
+            {
+              "url": "blob:audit-1",
+              "live": true
+            },
+            {
+              "url": "blob:audit-2",
+              "live": false
+            }
+          ],
+          "resources": [
+            "OPS/same.png"
+          ],
+          "owners": [
+            1
+          ],
+          "saveCalls": [],
+          "hostMessages": [],
+          "status": "章节载入失败：controlled resource-wait failure"
+        }
+      }
+    },
+    {
+      "id": "YFAIL-after-layout",
+      "verdict": "FAIL",
+      "title": "Same-book failure preserves previous actual document and resources",
+      "detail": {
+        "before": {
+          "book": "FAILURE",
+          "spine": 0,
+          "preparedIndex": 0,
+          "owner": 1,
+          "paginatorIndex": 0,
+          "activeIndex": 0,
+          "ready": true,
+          "paginatorReady": true,
+          "busy": false,
+          "statePage": 0,
+          "stateCount": 3,
+          "page": 0,
+          "count": 3,
+          "text": "OLDOLD_MIDDLE",
+          "anchor": {
+            "elementPath": null,
+            "textOffset": 1,
+            "quote": "OLD OLD_MIDDLE",
+            "prefix": "",
+            "suffix": "OLD OLD_MIDDLE",
+            "elementId": "",
+            "chapterFraction": 0,
+            "pageIndex": 0
+          },
+          "lastStable": {
+            "spineHref": "OPS/c0.xhtml",
+            "spineIndex": 0,
+            "locator": {
+              "elementPath": null,
+              "textOffset": 1,
+              "quote": "OLD OLD_MIDDLE",
+              "prefix": "",
+              "suffix": "OLD OLD_MIDDLE",
+              "elementId": "",
+              "chapterFraction": 0,
+              "pageIndex": 0
+            },
+            "chapterFraction": 0,
+            "savedAt": "2026-10-28T11:16:46.477Z"
+          },
+          "modified": false,
+          "saveFailed": false,
+          "pageInput": "1",
+          "pageTotal": "/ 3",
+          "activeToc": [
+            "c0"
+          ],
+          "urls": [
+            {
+              "url": "blob:audit-1",
+              "live": true
+            }
+          ],
+          "resources": [
+            "OPS/same.png"
+          ],
+          "owners": [
+            1
+          ],
+          "saveCalls": [],
+          "hostMessages": [],
+          "status": "此主程序版本不支持跨窗口保存；阅读位置仅保存在当前窗口"
+        },
+        "after": {
+          "book": "FAILURE",
+          "spine": 0,
+          "preparedIndex": 0,
+          "owner": 1,
+          "paginatorIndex": 1,
+          "activeIndex": 1,
+          "ready": true,
+          "paginatorReady": true,
+          "busy": false,
+          "statePage": 0,
+          "stateCount": 3,
+          "page": 0,
+          "count": 3,
+          "text": "NEW",
+          "anchor": {
+            "elementPath": null,
+            "textOffset": 1,
+            "quote": "NEW",
+            "prefix": "",
+            "suffix": "NEW",
+            "elementId": "",
+            "chapterFraction": 0,
+            "pageIndex": 0
+          },
+          "lastStable": {
+            "spineHref": "OPS/c0.xhtml",
+            "spineIndex": 0,
+            "locator": {
+              "elementPath": null,
+              "textOffset": 1,
+              "quote": "OLD OLD_MIDDLE",
+              "prefix": "",
+              "suffix": "OLD OLD_MIDDLE",
+              "elementId": "",
+              "chapterFraction": 0,
+              "pageIndex": 0
+            },
+            "chapterFraction": 0,
+            "savedAt": "2026-10-28T11:16:46.477Z"
+          },
+          "modified": false,
+          "saveFailed": false,
+          "pageInput": "1",
+          "pageTotal": "/ 3",
+          "activeToc": [
+            "c0"
+          ],
+          "urls": [
+            {
+              "url": "blob:audit-1",
+              "live": true
+            },
+            {
+              "url": "blob:audit-2",
+              "live": false
+            }
+          ],
+          "resources": [
+            "OPS/same.png"
+          ],
+          "owners": [
+            1
+          ],
+          "saveCalls": [],
+          "hostMessages": [],
+          "status": "章节载入失败：controlled failure after DOM/layout"
+        }
+      }
+    },
+    {
+      "id": "YQ-4096",
+      "verdict": "PASS",
+      "title": "4096-unit query still supported by original UI",
+      "detail": {
+        "info": "找到 1 处 · 已扫描 1/1 章 · 缓存 4098 字符",
+        "count": 1,
+        "reads": 1
+      }
+    },
+    {
+      "id": "YQ-4097",
+      "verdict": "PASS",
+      "title": "Overlength query has specific actionable UI error and does not read chapters",
+      "detail": {
+        "good": {
+          "info": "找到 1 处 · 已扫描 1/1 章 · 缓存 4098 字符",
+          "count": 1,
+          "reads": 1
+        },
+        "bad": {
+          "info": "查找词超过 4096 个 UTF-16 单位，请缩短后重新查找；当前输入未被发送扫描。",
+          "count": 0,
+          "reads": 1
+        }
+      }
+    },
+    {
+      "id": "YQ-recover",
+      "verdict": "PASS",
+      "title": "Ordinary query works immediately after overlength query",
+      "detail": {
+        "info": "找到 1024+ 处 · 已扫描 1/1 章 · 缓存 4098 字符（结果/缓存已截断）"
+      }
+    }
+  ]
+}

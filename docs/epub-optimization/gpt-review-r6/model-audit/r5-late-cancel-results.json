@@ -1,0 +1,24 @@
+{
+  "generatedAt": "2026-10-28T11:16:43.751Z",
+  "candidate": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r6\\candidate",
+  "identity": {
+    "expectedCommit": "99bd102f4c9b4c1a92668d04e2e12260e523ad94",
+    "expectedPackageSha256": "f2b2741a166749e7108e010151a46246ac2df40bf1f0861050e8e12d612c535c",
+    "hashes": {
+      "epub-book.js": "e65e976116da95a29689c5b81c358c1465957787bc81c796d5dc10eccf023417",
+      "search.js": "470c4fe4bb68f299b1aa367cffd1f3b5e616af2dad25e7b1cc1d10f25bea702a",
+      "paginator.js": "5dbbbe764bc616d5fa3829953dbf204786c4c65cc4191db782e63352d6800750",
+      "reader.js": "5a81d526b8126b590738bc50652db829d701fdb9e3319240766fb3d07c2fc837"
+    }
+  },
+  "runtime": {
+    "node": "v24.18.0",
+    "jsdom": "29.1.1"
+  },
+  "evidenceKind": "Frozen original JavaScript loaded unmodified; jsdom DOM/Range and real JSZip. Controlled async dependencies and geometry doubles disclosed per case. Not browser visibility, SVG painting or native desktop evidence.",
+  "harnessError": {
+    "message": "Cannot read properties of undefined (reading 'dispatchEvent')",
+    "stack": "TypeError: Cannot read properties of undefined (reading 'dispatchEvent')\n    at F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r6\\model-audit\\audit-r5-late-cancel.cjs:5:957\n    at async isolated (F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r6\\model-audit\\reader-harness.cjs:33:49)\n    at async main (F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r6\\model-audit\\audit-r5-late-cancel.cjs:5:71)"
+  },
+  "results": []
+}

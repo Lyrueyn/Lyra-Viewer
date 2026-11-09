@@ -1,0 +1,81 @@
+{
+  "evidenceKind": "Real Edge, frozen candidate, controlled delays and optional explicitly local bridge fixture",
+  "results": [
+    {
+      "id": "D01_CHUNK_BOUNDARY_LOST_MATCH",
+      "query": "CROSSBOUNDARY",
+      "actualChunkEdge": 65844,
+      "expected": 3,
+      "status": "找到 3 处 · 已扫描 3/3 章 · 缓存 131781 字符",
+      "buttons": 3,
+      "truth": [
+        {
+          "spine": 0,
+          "offset": 8,
+          "length": 28
+        },
+        {
+          "spine": 1,
+          "offset": 65840,
+          "length": 65859
+        },
+        {
+          "spine": 2,
+          "offset": 65875,
+          "length": 65894
+        }
+      ],
+      "defect": false,
+      "note": "Original UI query, actual ZIP and original sanitized text; three unique chapter matches, middle crosses actual chunk end."
+    },
+    {
+      "id": "D02_CHANGED_QUERY_STILL_REPLACES_DOCUMENT",
+      "before": {
+        "spine": 0,
+        "text": "START DOCUMENT\n\nSTART paragraph 0: independent visible reading and position preservation. "
+      },
+      "after": {
+        "spine": 0,
+        "text": "START DOCUMENT\n\nSTART paragraph 0: independent visible reading and position preservation. ",
+        "input": "NEWQUERY",
+        "highlights": [],
+        "active": null,
+        "queryGen": 5
+      },
+      "defect": false,
+      "note": "Highlights correctly suppressed; stronger R4 requirement checks the obsolete navigation must not commit a replacement document."
+    },
+    {
+      "id": "D03_CLOSE_DURING_CHAPTER_LOAD_ACKS_UNSAVED_POSITION",
+      "before": {
+        "modified": true,
+        "ready": false,
+        "spine": 0,
+        "page": 1,
+        "saved": null
+      },
+      "ack": {
+        "message": {
+          "type": "host.finalized",
+          "requestId": "close-during-chapter",
+          "sessionId": "local-mvsap0dx",
+          "ok": true,
+          "revision": 1,
+          "closeDiagnostics": []
+        },
+        "modified": false,
+        "ready": true,
+        "saved": "{\"revision\":1,\"position\":{\"spineHref\":\"OPS/c0.xhtml\",\"spineIndex\":0,\"locator\":{\"elementPath\":null,\"textOffset\":15,\"quote\":\"NORMAL paragraph 0: independent visible readin\",\"prefix\":\"NORMAL paragra\",\"suffix\":\"ph 0: independent visible readin\",\"elementId\":\"\",\"chapterFraction\":0,\"pageIndex\":0},\"chapterFraction\":0,\"savedAt\":\"2026-10-28T15:54:39.787Z\"},\"positionSequence\":1793202879787000,\"positionOperationId\":\"pos-op-9e82d9e4-acc0-476c-aa7d-ccae298412e9\",\"positionRevision\":1,\"updatedAt\":\"2026-10-28T15:54:39.787Z\"}"
+      },
+      "late": {
+        "finalizing": true,
+        "spine": 0,
+        "text": "NORMAL paragraph 0: independent visible reading and position preservation. 这是用于验证实际正文的长段落。",
+        "modified": false,
+        "saved": "{\"revision\":1,\"position\":{\"spineHref\":\"OPS/c0.xhtml\",\"spineIndex\":0,\"locator\":{\"elementPath\":null,\"textOffset\":15,\"quote\":\"NORMAL paragraph 0: independent visible readin\",\"prefix\":\"NORMAL paragra\",\"suffix\":\"ph 0: independent visible readin\",\"elementId\":\"\",\"chapterFraction\":0,\"pageIndex\":0},\"chapterFraction\":0,\"savedAt\":\"2026-10-28T15:54:39.787Z\"},\"positionSequence\":1793202879787000,\"positionOperationId\":\"pos-op-9e82d9e4-acc0-476c-aa7d-ccae298412e9\",\"positionRevision\":1,\"updatedAt\":\"2026-10-28T15:54:39.787Z\"}"
+      },
+      "defect": false,
+      "note": "Actual browser/controller/localStorage; host-message delivery fixture explicitly chooses local capability. Not native C#/WinUI evidence. Delay only old chapter read; tests ready=false skips dirty-save and late navigation still commits."
+    }
+  ]
+}

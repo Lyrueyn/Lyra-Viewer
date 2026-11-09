@@ -1,0 +1,108 @@
+{
+  "generatedAt": "2026-10-27T19:07:46.593Z",
+  "results": [
+    {
+      "id": "R2-A22-1",
+      "name": "real book first/mid/last + font/bookmark/reopen",
+      "status": "PASS",
+      "detail": {
+        "title": "死敌怎么能变妻子呢？不行不行！ · 简介",
+        "initial": {
+          "title": "死敌怎么能变妻子呢？不行不行！ · 简介",
+          "spine": 373,
+          "toc": 373,
+          "pageCount": 4,
+          "spineIndex": 0
+        },
+        "samples": [
+          {
+            "spine": 0,
+            "page": 0,
+            "total": 4,
+            "quote": "简介 书名：死敌怎么能变妻子呢？不行不行！ 作者：坠月雨璐"
+          },
+          {
+            "spine": 186,
+            "page": 0,
+            "total": 28,
+            "quote": "第7章 喜欢上她了？不行不行！ 夜幕渐渐降临。 元宵街的花灯"
+          },
+          {
+            "spine": 372,
+            "page": 0,
+            "total": 30,
+            "quote": "第23章 又要酱酱酿？不行不行！ 夜色如浓稠的墨汁，一点点晕"
+          }
+        ],
+        "after": {
+          "total": 38,
+          "bookmarks": 1
+        },
+        "reopened": {
+          "spine": 372,
+          "page": 0,
+          "total": 38,
+          "bookmarks": 1
+        },
+        "search": {
+          "count": 1000,
+          "info": "找到 1236+ 处 · 已扫描 373/373 章 · 缓存 1330102 字符（结果/缓存已截断）",
+          "elapsedMs": 4030,
+          "complete": true
+        }
+      }
+    },
+    {
+      "id": "R2-A22-2",
+      "name": "real book first/mid/last + font/bookmark/reopen",
+      "status": "PASS",
+      "detail": {
+        "title": "逃婚后被隔壁宗主追杀半个修仙界 · 简介",
+        "initial": {
+          "title": "逃婚后被隔壁宗主追杀半个修仙界 · 简介",
+          "spine": 255,
+          "toc": 255,
+          "pageCount": 4,
+          "spineIndex": 0
+        },
+        "samples": [
+          {
+            "spine": 0,
+            "page": 0,
+            "total": 4,
+            "quote": "简介 书名：逃婚后被隔壁宗主追杀半个修仙界 作者：知鱼之寻"
+          },
+          {
+            "spine": 127,
+            "page": 0,
+            "total": 12,
+            "quote": "第126 章 入戏 听见莫岫的话，缪玉瑾不受控一抖，呜呜咽咽"
+          },
+          {
+            "spine": 254,
+            "page": 0,
+            "total": 13,
+            "quote": "第 253章 终章 “消消气，夫人，我真不是有意的，欺负你顺"
+          }
+        ],
+        "after": {
+          "total": 13,
+          "bookmarks": 1
+        },
+        "reopened": {
+          "spine": 254,
+          "page": 0,
+          "total": 13,
+          "bookmarks": 1
+        },
+        "search": {
+          "count": 591,
+          "info": "找到 591 处 · 已扫描 255/255 章 · 缓存 598056 字符",
+          "elapsedMs": 2678,
+          "complete": true
+        }
+      }
+    }
+  ],
+  "errors": []
+}

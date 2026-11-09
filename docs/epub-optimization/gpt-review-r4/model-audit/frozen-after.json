@@ -1,0 +1,578 @@
+{
+  "checkedAt": "2026-10-27T18:09:03.877Z",
+  "count": 95,
+  "unchanged": true,
+  "changed": [],
+  "files": [
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\candidate\\epub-book.js",
+      "before": "dd70621ef84ea0ea81a366b0649ffc9198aefc38f584b09a0505074d7e86aa21",
+      "after": "dd70621ef84ea0ea81a366b0649ffc9198aefc38f584b09a0505074d7e86aa21",
+      "size": 36530
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\candidate\\extension.json",
+      "before": "85072f06673ac369cb2da572a1a945cb9941c74d06816b5779d6d7a854df9c4a",
+      "after": "85072f06673ac369cb2da572a1a945cb9941c74d06816b5779d6d7a854df9c4a",
+      "size": 298
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\candidate\\index.html",
+      "before": "f6b244c642b1842652b4ed733116a26a3e92b1b0271bf7c1b444a1c8af3b411d",
+      "after": "f6b244c642b1842652b4ed733116a26a3e92b1b0271bf7c1b444a1c8af3b411d",
+      "size": 5367
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\candidate\\lib\\jszip.min.js",
+      "before": "acc7e41455a80765b5fd9c7ee1b8078a6d160bbbca455aeae854de65c947d59e",
+      "after": "acc7e41455a80765b5fd9c7ee1b8078a6d160bbbca455aeae854de65c947d59e",
+      "size": 97630
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\candidate\\LICENSE",
+      "before": "230184f60bae2feaf244f10a8bac053c8ff33a183bcc365b4d8b876d2b7f4809",
+      "after": "230184f60bae2feaf244f10a8bac053c8ff33a183bcc365b4d8b876d2b7f4809",
+      "size": 35823
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\candidate\\paginator.js",
+      "before": "36856bd26e5053c8f809baa1ec65b9b570c03f3df45363ceb49dd14e2e646043",
+      "after": "36856bd26e5053c8f809baa1ec65b9b570c03f3df45363ceb49dd14e2e646043",
+      "size": 28129
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\candidate\\reader-state.js",
+      "before": "a790f06f1585291094596f5e0c6075eeeeef94e8eff5a7347ae760ec4149fcc0",
+      "after": "a790f06f1585291094596f5e0c6075eeeeef94e8eff5a7347ae760ec4149fcc0",
+      "size": 23176
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\candidate\\reader.css",
+      "before": "d41553524e1dbed4c895cceb7e66e9b08ae35905b69545ff4637cedeac4a148b",
+      "after": "d41553524e1dbed4c895cceb7e66e9b08ae35905b69545ff4637cedeac4a148b",
+      "size": 8764
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\candidate\\reader.js",
+      "before": "659a466ff7693fbedd9a0daedbccfba5be35389e9685cccf5178a1c9084dace4",
+      "after": "659a466ff7693fbedd9a0daedbccfba5be35389e9685cccf5178a1c9084dace4",
+      "size": 68564
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\candidate\\README.md",
+      "before": "ebf3fd969d9d2403072e3d8f6a20a9bbdc2fbb7dcdf2a75dad63eb3d372a9b69",
+      "after": "ebf3fd969d9d2403072e3d8f6a20a9bbdc2fbb7dcdf2a75dad63eb3d372a9b69",
+      "size": 1802
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\candidate\\search.js",
+      "before": "564f4b5d783cbb26671046f6332a9717fc22495b132d515ece24b1c3ada8fac9",
+      "after": "564f4b5d783cbb26671046f6332a9717fc22495b132d515ece24b1c3ada8fac9",
+      "size": 7299
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\candidate\\tests\\r2-checks.cjs",
+      "before": "8172b2f3c7cc9d0d9e88c01c3ebe0c30d910d37bf7c600821b87742ae0456723",
+      "after": "8172b2f3c7cc9d0d9e88c01c3ebe0c30d910d37bf7c600821b87742ae0456723",
+      "size": 22543
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\candidate\\tests\\r2-client.cjs",
+      "before": "0bfd36d00a328473b7fd0669a91025cf4d6341bd88ceb16a8cf9f7c1318f3dec",
+      "after": "0bfd36d00a328473b7fd0669a91025cf4d6341bd88ceb16a8cf9f7c1318f3dec",
+      "size": 3501
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\candidate\\tests\\r2-model.cjs",
+      "before": "2953a8bfa11934baa3255b6b203b0615e571c9fcbf3a1fad22677efa02e85778",
+      "after": "2953a8bfa11934baa3255b6b203b0615e571c9fcbf3a1fad22677efa02e85778",
+      "size": 7934
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\candidate\\tests\\r2-realbooks.cjs",
+      "before": "00af437fa42388314c4486fa3f5df8fccc2945b6312d404e7b36a84c2a793ba0",
+      "after": "00af437fa42388314c4486fa3f5df8fccc2945b6312d404e7b36a84c2a793ba0",
+      "size": 5449
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\candidate\\tests\\r3-checks.cjs",
+      "before": "ca4ffb28ece182b878f5bee66b72a5cb6d0ac7ed47baa86541d9f813abdc6c13",
+      "after": "ca4ffb28ece182b878f5bee66b72a5cb6d0ac7ed47baa86541d9f813abdc6c13",
+      "size": 21948
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\candidate\\tests\\r3-model-checks.cjs",
+      "before": "dba6d4661bb432427648e18aa7d72acabc92f6a971ebd5733a2063c91795ca79",
+      "after": "dba6d4661bb432427648e18aa7d72acabc92f6a971ebd5733a2063c91795ca79",
+      "size": 8451
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\candidate\\tests\\reader-extra.cjs",
+      "before": "144ced554ebd98cff8644c726982e14c59355a4a247ebe36414ad6df6a8c93f3",
+      "after": "144ced554ebd98cff8644c726982e14c59355a4a247ebe36414ad6df6a8c93f3",
+      "size": 14247
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\candidate\\tests\\reader-perf.cjs",
+      "before": "262a12b256d251281012ff3ab29bfa551802933ae635e4ae65459178238c1d7d",
+      "after": "262a12b256d251281012ff3ab29bfa551802933ae635e4ae65459178238c1d7d",
+      "size": 6913
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\candidate\\tests\\reader-smoke.cjs",
+      "before": "b8dd739668cb9cf7f48da04280c4fbf5443f2d7174e271e0ce13a796650fd670",
+      "after": "b8dd739668cb9cf7f48da04280c4fbf5443f2d7174e271e0ce13a796650fd670",
+      "size": 14956
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-report\\DeepSeek实施回报-R4.md",
+      "before": "3168031da48b7c4d127f3a5102641aa9e324cbefd6fd8e8fb0e20da5573af207",
+      "after": "3168031da48b7c4d127f3a5102641aa9e324cbefd6fd8e8fb0e20da5573af207",
+      "size": 14935
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\build-manifest.json",
+      "before": "13ef5bb1d382fcc579e84654c4745a2ba900cd80a893f70aa8db59f59cd79c71",
+      "after": "13ef5bb1d382fcc579e84654c4745a2ba900cd80a893f70aa8db59f59cd79c71",
+      "size": 3038
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\client-close\\results.json",
+      "before": "a3379f3d855b11c78cef57bf58cc590b8750a3f21f1fff7ed46be2d23ab41012",
+      "after": "a3379f3d855b11c78cef57bf58cc590b8750a3f21f1fff7ed46be2d23ab41012",
+      "size": 2338
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\compat\\oldhost-b978661-r4ext-identity.json",
+      "before": "d4dddf9f199361f5731947486fe0fb45598db25c1753166419021c7646f0643c",
+      "after": "d4dddf9f199361f5731947486fe0fb45598db25c1753166419021c7646f0643c",
+      "size": 620
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\compat\\oldhost-b978661-r4ext-withbook.png",
+      "before": "759cf6ab504f36b32ae3fbc9bfb060076645e0458e600dea1948ec375351ea4f",
+      "after": "759cf6ab504f36b32ae3fbc9bfb060076645e0458e600dea1948ec375351ea4f",
+      "size": 359633
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\compat\\r4host-c12-nobook-identity.json",
+      "before": "c64b4ff7441bfa457fcff460a7de5e6bf8db90000d92c52e2def53dd22bb6848",
+      "after": "c64b4ff7441bfa457fcff460a7de5e6bf8db90000d92c52e2def53dd22bb6848",
+      "size": 524
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\compat\\r4host-c12-nobook.png",
+      "before": "41bf8f137d2689c71437d60849e4c5e81e0f416ac96e46e80f4c5920ae295ee3",
+      "after": "41bf8f137d2689c71437d60849e4c5e81e0f416ac96e46e80f4c5920ae295ee3",
+      "size": 80287
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\compat\\r4host-c12-withbook-identity.json",
+      "before": "4445bdf69523f8a8bb76c77e5dc1707349a6f8bfc5892022a802261cf21b0072",
+      "after": "4445bdf69523f8a8bb76c77e5dc1707349a6f8bfc5892022a802261cf21b0072",
+      "size": 499
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\compat\\r4host-c12-withbook.png",
+      "before": "dbdb3eb3104cfef031300eca4989efb187f899beea9bca1d0d639e934218a21f",
+      "after": "dbdb3eb3104cfef031300eca4989efb187f899beea9bca1d0d639e934218a21f",
+      "size": 403188
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\compat\\r4host-pdf030-identity.json",
+      "before": "50e87a196cf1f6d5eb322505702e62b9c129fc68db4fa970c11eb588e00ca30e",
+      "after": "50e87a196cf1f6d5eb322505702e62b9c129fc68db4fa970c11eb588e00ca30e",
+      "size": 311
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\compat\\r4host-pdf030-withbook.png",
+      "before": "b9aa72e84b119a10c20627223e4486f8007fcfd19214ae0111c5f481e29076e4",
+      "after": "b9aa72e84b119a10c20627223e4486f8007fcfd19214ae0111c5f481e29076e4",
+      "size": 482573
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\compat\\r4host-r3client-identity.json",
+      "before": "4e58f3288f4319e555c464a9c3ebdad8a11f1d705e6c7df99160ad0d2db6e4c0",
+      "after": "4e58f3288f4319e555c464a9c3ebdad8a11f1d705e6c7df99160ad0d2db6e4c0",
+      "size": 427
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\compat\\r4host-r3client-withbook.png",
+      "before": "78907df17abd8e107e12776c8bb66de98e6c05d04710a3ed1b33d10adf694eac",
+      "after": "78907df17abd8e107e12776c8bb66de98e6c05d04710a3ed1b33d10adf694eac",
+      "size": 363854
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\early-close-raw.log",
+      "before": "86c4f1fbfb09275e85238783a2835195e47434f25c38631fab161ff2938f0e22",
+      "after": "86c4f1fbfb09275e85238783a2835195e47434f25c38631fab161ff2938f0e22",
+      "size": 240
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\host-audit\\r4-host-results.json",
+      "before": "7c3833b9b338e2a8c5faed6004f0fb32b80fc41a319bca63709c05d6bf815a8f",
+      "after": "7c3833b9b338e2a8c5faed6004f0fb32b80fc41a319bca63709c05d6bf815a8f",
+      "size": 7308
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\image-ack\\fresh.epub",
+      "before": "cd8f54478c4516ab552d033b9a6c5ef1c05a0fb4acf749e184bb668d9540189c",
+      "after": "cd8f54478c4516ab552d033b9a6c5ef1c05a0fb4acf749e184bb668d9540189c",
+      "size": 35917
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\image-ack\\hidden.epub",
+      "before": "db48e97018bdc67ef03c6cc3bd08e5fb4c155c091f2cc9f0da62ea7ef91e558c",
+      "after": "db48e97018bdc67ef03c6cc3bd08e5fb4c155c091f2cc9f0da62ea7ef91e558c",
+      "size": 1418
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\image-ack\\image.epub",
+      "before": "60bd921810e9b1b8c052a70d65f9a6807e13e94ffd5d58bc3b715190abadadfd",
+      "after": "60bd921810e9b1b8c052a70d65f9a6807e13e94ffd5d58bc3b715190abadadfd",
+      "size": 2069
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\image-ack\\newimg.epub",
+      "before": "23efdc7d41df2c5cb5a751169a6fd1eac0fcee12b6fcaf873b8ef1a73222ce73",
+      "after": "23efdc7d41df2c5cb5a751169a6fd1eac0fcee12b6fcaf873b8ef1a73222ce73",
+      "size": 2001
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\image-ack\\normal.epub",
+      "before": "07c68d8f2b4eaabc365e7a0f35637bad8c970609e091451a5fa7819c3828fee4",
+      "after": "07c68d8f2b4eaabc365e7a0f35637bad8c970609e091451a5fa7819c3828fee4",
+      "size": 36120
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\image-ack\\oldimg.epub",
+      "before": "14a2cbafc3695abe5fcb8a763414116f346d21d4a01d60b22f4370c95973b961",
+      "after": "14a2cbafc3695abe5fcb8a763414116f346d21d4a01d60b22f4370c95973b961",
+      "size": 2001
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\image-ack\\results.json",
+      "before": "bbe85520d3f346a3d783822d1d0ee2db01733deefb039f9080f19db8b73dce23",
+      "after": "bbe85520d3f346a3d783822d1d0ee2db01733deefb039f9080f19db8b73dce23",
+      "size": 8859
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\image-ack\\search.epub",
+      "before": "e828b78bc3e2b198fd81576f99d0c5f6112d005a2bbe82631d6583eee0977507",
+      "after": "e828b78bc3e2b198fd81576f99d0c5f6112d005a2bbe82631d6583eee0977507",
+      "size": 18764
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\image-ack\\stale-search-click.png",
+      "before": "7cee13caa4cd182d87021312a1ab7f84497e3f15c6942c3430e23c8cc6f6a4aa",
+      "after": "7cee13caa4cd182d87021312a1ab7f84497e3f15c6942c3430e23c8cc6f6a4aa",
+      "size": 161400
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\model\\audit-common.cjs",
+      "before": "5b708e69cd6e56b09d7e73cca8c3304370f3804cd0e823581c61ced47939a429",
+      "after": "5b708e69cd6e56b09d7e73cca8c3304370f3804cd0e823581c61ced47939a429",
+      "size": 4335
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\model\\audit-models.cjs",
+      "before": "e7ab0771b38de81d8018e2e64fc4be907e84db0cfaf0b09a37fce22e7d769add",
+      "after": "e7ab0771b38de81d8018e2e64fc4be907e84db0cfaf0b09a37fce22e7d769add",
+      "size": 17780
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\model\\audit-reader-flow.cjs",
+      "before": "c92c11714d16877577feb60fa49941ddb02f41fbf3208c24801f3f5f770782b7",
+      "after": "c92c11714d16877577feb60fa49941ddb02f41fbf3208c24801f3f5f770782b7",
+      "size": 10227
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\model\\model-results.json",
+      "before": "12c5665c86b069d808f573d0cdc3649af5c7ade38cf70b1b85d43967c8a1a61e",
+      "after": "12c5665c86b069d808f573d0cdc3649af5c7ade38cf70b1b85d43967c8a1a61e",
+      "size": 20021
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\model\\reader-flow-results.json",
+      "before": "4b3a2658c2bbdfd1cbe45acb2a43d58723b11a78760762fdabf87a0f5c2aacdf",
+      "after": "4b3a2658c2bbdfd1cbe45acb2a43d58723b11a78760762fdabf87a0f5c2aacdf",
+      "size": 5019
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\native-early-close.log",
+      "before": "00932e298f5a84f26acad9d6af24bf4d0497cca08f68d5c8e178f0ee16b17b78",
+      "after": "00932e298f5a84f26acad9d6af24bf4d0497cca08f68d5c8e178f0ee16b17b78",
+      "size": 240
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\native-final-identity.json",
+      "before": "a0d83e5f0a227c5215d30a0666b77ac91906770d5f8257d89ca9f7d54825d23e",
+      "after": "a0d83e5f0a227c5215d30a0666b77ac91906770d5f8257d89ca9f7d54825d23e",
+      "size": 431
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\native-final-pending-close.log",
+      "before": "7e6ff87cb58ab5abc02baaa1e69b36c2ba8c4f16e9ce544c634fe08242f476b6",
+      "after": "7e6ff87cb58ab5abc02baaa1e69b36c2ba8c4f16e9ce544c634fe08242f476b6",
+      "size": 12175
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\native-final-pending-prefs.json",
+      "before": "764f1dfb44ca300485f931eebf7057185ef80bbd6434776a8a1cf5ee65b7af25",
+      "after": "764f1dfb44ca300485f931eebf7057185ef80bbd6434776a8a1cf5ee65b7af25",
+      "size": 255
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\native-nochange-close.log",
+      "before": "86662489c82190514923b1f97dc42ef078035703048b54fadcfbe5516096a688",
+      "after": "86662489c82190514923b1f97dc42ef078035703048b54fadcfbe5516096a688",
+      "size": 2748
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\native-pending-prefs-close.json",
+      "before": "53ccb3f6993d42d2f0e8331f6470a1d2060fa3e5f5673db88daea3857352565c",
+      "after": "53ccb3f6993d42d2f0e8331f6470a1d2060fa3e5f5673db88daea3857352565c",
+      "size": 255
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\native-pending-prefs-close.log",
+      "before": "f07f01f07ea719947408ee32910e415fcbc77d8562d010041799e97b54072d77",
+      "after": "f07f01f07ea719947408ee32910e415fcbc77d8562d010041799e97b54072d77",
+      "size": 18259
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\native-two-window-prefs-identity.json",
+      "before": "21a92d273568400b50431b1acd312c0e8a5c39b6e15c64355e6b4f97f11f3d17",
+      "after": "21a92d273568400b50431b1acd312c0e8a5c39b6e15c64355e6b4f97f11f3d17",
+      "size": 543
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\native-two-window-prefs-raw.log",
+      "before": "b72f4513dbb7287bc07511cc7ebd78c3b1fe38de0ec65239dd4203b5ba0d1d03",
+      "after": "b72f4513dbb7287bc07511cc7ebd78c3b1fe38de0ec65239dd4203b5ba0d1d03",
+      "size": 27854
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\nochange-close-raw.log",
+      "before": "4d6ee281108427120132e337c765207a467d0c174e458465b00ec47169d180a1",
+      "after": "4d6ee281108427120132e337c765207a467d0c174e458465b00ec47169d180a1",
+      "size": 16731
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\package-smoke.png",
+      "before": "5259337ee05f2f4d4a5085f3c0aa50772cb1b7b1b9fe8c563c4dbf56b9e527ee",
+      "after": "5259337ee05f2f4d4a5085f3c0aa50772cb1b7b1b9fe8c563c4dbf56b9e527ee",
+      "size": 162490
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\pending-close-raw.log",
+      "before": "a23468c362c2947d30144524341f9dd7495d3d11e4e3eae1c0d78a8315250e8b",
+      "after": "a23468c362c2947d30144524341f9dd7495d3d11e4e3eae1c0d78a8315250e8b",
+      "size": 14311
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\races-v2\\fresh.epub",
+      "before": "037e0b84b86761332178822f8c222c18e54ac185f6e226e5be9d2451915b6b02",
+      "after": "037e0b84b86761332178822f8c222c18e54ac185f6e226e5be9d2451915b6b02",
+      "size": 35917
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\races-v2\\hidden.epub",
+      "before": "583c0ba3f880db6821c955e8ccdccb0d7d6ce5008b83e6335076969df6beca87",
+      "after": "583c0ba3f880db6821c955e8ccdccb0d7d6ce5008b83e6335076969df6beca87",
+      "size": 1418
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\races-v2\\image.epub",
+      "before": "dc79b216fa4f8e5f4d860fad4cfff9a08bc4719a1b28b6eedda53e9834805096",
+      "after": "dc79b216fa4f8e5f4d860fad4cfff9a08bc4719a1b28b6eedda53e9834805096",
+      "size": 2069
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\races-v2\\newimg.epub",
+      "before": "8e5c0659afd1e4899f19bbe1fb88dd687c36e5b7948e549103a498bbdb867b61",
+      "after": "8e5c0659afd1e4899f19bbe1fb88dd687c36e5b7948e549103a498bbdb867b61",
+      "size": 2001
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\races-v2\\normal.epub",
+      "before": "63e5efd0011b166180fa3bdacede3c19f83305a788bc070ad0c3698a1267f8cf",
+      "after": "63e5efd0011b166180fa3bdacede3c19f83305a788bc070ad0c3698a1267f8cf",
+      "size": 36120
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\races-v2\\oldimg.epub",
+      "before": "d26519658112c349a8a84173f89e55a3cea8ea611f4bd7abaea28f5ac10dc098",
+      "after": "d26519658112c349a8a84173f89e55a3cea8ea611f4bd7abaea28f5ac10dc098",
+      "size": 2001
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\races-v2\\results.json",
+      "before": "c80adc694d7c94b3d928bed2c62f9c34ea8a7c306f2c784431de19955c32c638",
+      "after": "c80adc694d7c94b3d928bed2c62f9c34ea8a7c306f2c784431de19955c32c638",
+      "size": 5936
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\races-v2\\search.epub",
+      "before": "9cd52a71462982789f7dc30cf8afa0edcf5580bf5af492979a959fc6a85f8817",
+      "after": "9cd52a71462982789f7dc30cf8afa0edcf5580bf5af492979a959fc6a85f8817",
+      "size": 18764
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\reader-extra.out",
+      "before": "1e6ccbed83ce9da070a8d3aa8d19e7e58380bee241c494155bc8a97aa81a7dcc",
+      "after": "1e6ccbed83ce9da070a8d3aa8d19e7e58380bee241c494155bc8a97aa81a7dcc",
+      "size": 2440
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\reader-smoke.out",
+      "before": "56eac27ba927399281d4b49e5e7a61462c8975fcdd671e084959e0a118df3acf",
+      "after": "56eac27ba927399281d4b49e5e7a61462c8975fcdd671e084959e0a118df3acf",
+      "size": 3184
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\README-证据边界.md",
+      "before": "c6af35e0c6bbeb90f9d5a827fa2a38ce7f58eb53143f723d41275d788bd0b48e",
+      "after": "c6af35e0c6bbeb90f9d5a827fa2a38ce7f58eb53143f723d41275d788bd0b48e",
+      "size": 2159
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\SHA256SUMS",
+      "before": "a7bc43c89cb6e30df1f485c25baae97b70a41cb12b938c47c68cfba8ca0ef48e",
+      "after": "a7bc43c89cb6e30df1f485c25baae97b70a41cb12b938c47c68cfba8ca0ef48e",
+      "size": 5009
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\tools\\review-client-close.cjs",
+      "before": "33c3d9d9bd12c1dc754c499e61832e398a73b2f59dce02a656f4ea165c81f43d",
+      "after": "33c3d9d9bd12c1dc754c499e61832e398a73b2f59dce02a656f4ea165c81f43d",
+      "size": 10828
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\tools\\review-image-ack.cjs",
+      "before": "98694b0e6695f03fa15a79d6eeb2ccc73580674125ada3c20421b2d12d4db23a",
+      "after": "98694b0e6695f03fa15a79d6eeb2ccc73580674125ada3c20421b2d12d4db23a",
+      "size": 12441
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\tools\\review-races-v2.cjs",
+      "before": "dab596f54d03b691d65c9e92a35eb569cdaded0a0fccc0e0db0051f3454b1016",
+      "after": "dab596f54d03b691d65c9e92a35eb569cdaded0a0fccc0e0db0051f3454b1016",
+      "size": 12522
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\host-snapshot\\ExtensionHostWindow.xaml",
+      "before": "283e3e4f682d1ca20563843e19eedd71f3829b29cb8bd69cdf1a64a42876ff88",
+      "after": "283e3e4f682d1ca20563843e19eedd71f3829b29cb8bd69cdf1a64a42876ff88",
+      "size": 1863
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\host-snapshot\\ExtensionHostWindow.xaml.cs",
+      "before": "ee771ba4397c001d8ea3dcfbb5fa9b627e511d4a03f8c5fb853e21bcf2622d1c",
+      "after": "ee771ba4397c001d8ea3dcfbb5fa9b627e511d4a03f8c5fb853e21bcf2622d1c",
+      "size": 32327
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\host-snapshot\\ReaderProtocol.cs",
+      "before": "4c46cfddde80eb093753f114a43a52405a17fd8c9e5289b078fe6870d5669178",
+      "after": "4c46cfddde80eb093753f114a43a52405a17fd8c9e5289b078fe6870d5669178",
+      "size": 4384
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\host-snapshot\\ReaderStateStore.cs",
+      "before": "c11d53dc7973c1bacfc18a7683e713c5e662054330697224911301ee78443d6b",
+      "after": "c11d53dc7973c1bacfc18a7683e713c5e662054330697224911301ee78443d6b",
+      "size": 32343
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\model-audit\\audit-boundaries.cjs",
+      "before": "e29794e4e7243362d6ca3ba6c5f60254cc0ac92a993bbc68e5e8cc6fd0886383",
+      "after": "e29794e4e7243362d6ca3ba6c5f60254cc0ac92a993bbc68e5e8cc6fd0886383",
+      "size": 4322
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\model-audit\\audit-common.cjs",
+      "before": "46ae10f88024f03c35c6927bf50d9c64c162a1591659d85b9129ed2801bcf5a0",
+      "after": "46ae10f88024f03c35c6927bf50d9c64c162a1591659d85b9129ed2801bcf5a0",
+      "size": 4268
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\model-audit\\audit-models.cjs",
+      "before": "e7ab0771b38de81d8018e2e64fc4be907e84db0cfaf0b09a37fce22e7d769add",
+      "after": "e7ab0771b38de81d8018e2e64fc4be907e84db0cfaf0b09a37fce22e7d769add",
+      "size": 17780
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\model-audit\\audit-reader-flow.cjs",
+      "before": "c92c11714d16877577feb60fa49941ddb02f41fbf3208c24801f3f5f770782b7",
+      "after": "c92c11714d16877577feb60fa49941ddb02f41fbf3208c24801f3f5f770782b7",
+      "size": 10227
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\model-audit\\audit-summary.json",
+      "before": "bb421a480e4b48910daea17f3458760fa89c813edd58bfa6b69f0bbb6b5d27e0",
+      "after": "bb421a480e4b48910daea17f3458760fa89c813edd58bfa6b69f0bbb6b5d27e0",
+      "size": 6012
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\model-audit\\boundary-results.json",
+      "before": "671427187944070314a55319087b1d7f17426ac2e2379d7412ed0fc052bd9fdb",
+      "after": "671427187944070314a55319087b1d7f17426ac2e2379d7412ed0fc052bd9fdb",
+      "size": 8683
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\model-audit\\model-results.json",
+      "before": "ea5e40d7e0532ddfaef72c923703ae4970c10cf230977fe0b982847f53b6eeea",
+      "after": "ea5e40d7e0532ddfaef72c923703ae4970c10cf230977fe0b982847f53b6eeea",
+      "size": 20257
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\model-audit\\reader-flow-results.json",
+      "before": "4e67ff3352c14bca52de55ad81f68b9910d3aca3cf12d71c5815f8329d3d04a7",
+      "after": "4e67ff3352c14bca52de55ad81f68b9910d3aca3cf12d71c5815f8329d3d04a7",
+      "size": 5106
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\model-audit\\rerun-submitted-model.cjs",
+      "before": "2b52f3111f62b0dcfd4862df730d16437197a4f7b9cdaf6f47bbc8522e8fd67c",
+      "after": "2b52f3111f62b0dcfd4862df730d16437197a4f7b9cdaf6f47bbc8522e8fd67c",
+      "size": 1182
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\model-audit\\submitted-model-adapted.cjs",
+      "before": "297690bc14fb5a460574848b4247c75e4e6ad33ef5ba3f29d416dbfba2932c23",
+      "after": "297690bc14fb5a460574848b4247c75e4e6ad33ef5ba3f29d416dbfba2932c23",
+      "size": 8397
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\model-audit\\submitted-model-rerun.json",
+      "before": "9211f1a2bfedc22f93eabff7054b7bb85941006ce61934bc75b00ee4ba7a136f",
+      "after": "9211f1a2bfedc22f93eabff7054b7bb85941006ce61934bc75b00ee4ba7a136f",
+      "size": 2193
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\model-audit\\verify-deliverables.cjs",
+      "before": "fbcd7e9253d7443a93517e4b05a8e3b5803106f2713fa989f88686a4059ac6a0",
+      "after": "fbcd7e9253d7443a93517e4b05a8e3b5803106f2713fa989f88686a4059ac6a0",
+      "size": 1624
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\model-audit\\解析搜索资源独立验收-R3.md",
+      "before": "3a4505c71102b4ad465612b190cea073fba19cc5ef43c70111e6df06d9dbed49",
+      "after": "3a4505c71102b4ad465612b190cea073fba19cc5ef43c70111e6df06d9dbed49",
+      "size": 25362
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\identity.json",
+      "before": "e55ba35d00fee033fc8911b25d4ee25c2665f2fb6e7462acf05345ddcd8e7bd2",
+      "after": "e55ba35d00fee033fc8911b25d4ee25c2665f2fb6e7462acf05345ddcd8e7bd2",
+      "size": 10783
+    },
+    {
+      "file": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\GPT验收结论-R3暨DeepSeek返工任务书-R4.md",
+      "before": "20e37f00b70e7e7bd72ce072164049269cbe94998fbe147abd50a7a59f989569",
+      "after": "20e37f00b70e7e7bd72ce072164049269cbe94998fbe147abd50a7a59f989569",
+      "size": 33266
+    }
+  ]
+}

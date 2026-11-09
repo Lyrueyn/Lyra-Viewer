@@ -1,0 +1,9 @@
+  try {
+    await test('F05_CSS_IMPORTANT_INVALID_AND_DISPLAY',async p=>{
+      await open(p,'cssmix');
+      const before=await p.evaluate(async()=>{const pg=__lyraDebug.paginator,d=pg.doc;return{plain:await __lyraDebug.state.book.getSectionPlainText(0),visible:d.body.innerText,items:[...d.querySelectorAll('[id^=case]')].map(e=>({id:e.id,text:e.textContent,style:e.getAttribute('style'),display:d.defaultView.getComputedStyle(e).display,visibility:d.defaultView.getComputedStyle(e).visibility}))};});
+      const counts={};for(const q of ['IMPORTANTWORD','DISPLAYWORD','INVALIDWORD']){await search(p,q);counts[q]=await p.locator('.search-result').count();}
+      await p.screenshot({path:path.join(out,'css-mix.png')});
+      return{before,counts,defect:counts.IMPORTANTWORD!==1||counts.DISPLAYWORD!==0||counts.INVALIDWORD!==0,note:'No timing/fault injection. Test cold index against sanitized actual browser visibility, not two self-consistent model strings. IMPORTANT visible after sanitizer removes priority; DISPLAY/INVALID hidden after filtering.'};
+    });
+    await test('F06_SVG_NATIVE_MARK_VISIBLE',async p=>{await open(p,'svgmark');await search(p,'TARGET');await p.locator('.search-result').first().click();await p.waitForTimeout(150);const after=await p.evaluate(()=>{const d=__lyraDebug.paginator.doc;return{visible:d.body.innerText,marks:[...d.querySelectorAll('.lyra-search-mark-svg')].map(e=>({namespace:e.namespaceURI,text:e.textContent,width:e.getBoundingClientRect().width,rects:e.getClientRects().length})),status:document.getElementById('statusText').textContent};});await p.screenshot({path:path.join(out,'svg-mark.png')});return{after,defect:after.marks.length!==1||after.marks[0]?.text!=='TARGET'||after.marks[0]?.width<=0,note:'Updated independent oracle checks SVG tspan namespace and actual geometry, not obsolete HTML .lyra-search-mark selector.'};});

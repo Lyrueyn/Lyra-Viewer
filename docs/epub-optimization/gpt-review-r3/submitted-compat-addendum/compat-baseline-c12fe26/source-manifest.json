@@ -1,0 +1,34 @@
+﻿{
+    "baselineCommit":  "c12fe26275cdec67922cccb64d9b5f2b4c269cd2",
+    "createdAt":  "2026-10-28T00:49:07.7901972+08:00",
+    "indexLines":  675,
+    "indexBytes":  30973,
+    "indexSha256":  "88FA8B2E0537E535B3430B2D8B6D1C3FF7085F3599CF2CD2813267448939721A",
+    "files":  [
+                  {
+                      "path":  "extension.json",
+                      "bytes":  240,
+                      "sha256":  "F7156ECE4916C3A2381CD93855887A3A654A54207BEC50836857CBEB703EE891"
+                  },
+                  {
+                      "path":  "index.html",
+                      "bytes":  30973,
+                      "sha256":  "88FA8B2E0537E535B3430B2D8B6D1C3FF7085F3599CF2CD2813267448939721A"
+                  },
+                  {
+                      "path":  "lib/jszip.min.js",
+                      "bytes":  97630,
+                      "sha256":  "ACC7E41455A80765B5FD9C7EE1B8078A6D160BBBCA455AEAE854DE65C947D59E"
+                  },
+                  {
+                      "path":  "LICENSE",
+                      "bytes":  35149,
+                      "sha256":  "3972DC9744F6499F0F9B2DBF76696F2AE7AD8AF9B23DDE66D6AF86C9DFB36986"
+                  },
+                  {
+                      "path":  "README.md",
+                      "bytes":  672,
+                      "sha256":  "6C5FB734520608FA9E178EEA4F32905D45981E8413944766F36E8A253AD09098"
+                  }
+              ]
+}

@@ -1,0 +1,1805 @@
+{
+  "evidenceKind": "Original frozen JS/C# with actual serializers; synthetic DOM/geometry/time/focus; isolated true Windows files; no native GUI",
+  "results": [
+    {
+      "id": "J01-OPAQUE-DEFAULT-UI",
+      "pass": true,
+      "expected": "specified behavior",
+      "actual": {
+        "grantReplies": [
+          "pg-16d82ce833d94d09b1ca1fb0394b8c3f",
+          "pg-307c103f182e4368b6f63ca5400caf6b",
+          "pg-ea7b464c382540bf9919d686286d1210"
+        ],
+        "requests": [
+          {
+            "protocol": "lyra-reader",
+            "version": 3,
+            "type": "state.savePreferences",
+            "requestId": "req-35bfd9e7-26fc-40fd-82a7-16a323bba907",
+            "sessionId": "0e81a7c5e1f34d5caee419efea4d2a8a",
+            "scope": "global",
+            "preferences": {
+              "fontSize": 18
+            },
+            "grants": {
+              "fontSize": "pg-16d82ce833d94d09b1ca1fb0394b8c3f"
+            }
+          },
+          {
+            "protocol": "lyra-reader",
+            "version": 3,
+            "type": "state.savePreferences",
+            "requestId": "req-5ff767a8-6e4f-4d49-881f-ff9ffddddbb3",
+            "sessionId": "0e81a7c5e1f34d5caee419efea4d2a8a",
+            "scope": "global",
+            "preferences": {
+              "fontSize": 32,
+              "lineHeight": 2.2
+            },
+            "grants": {
+              "fontSize": "pg-307c103f182e4368b6f63ca5400caf6b",
+              "lineHeight": "pg-ea7b464c382540bf9919d686286d1210"
+            }
+          }
+        ],
+        "file": {
+          "version": 1,
+          "revision": 2,
+          "preferences": {
+            "fontSize": 32,
+            "lineHeight": 2.2
+          },
+          "fieldSequences": {},
+          "preferenceOrders": {
+            "fontSize": 2,
+            "lineHeight": 3
+          },
+          "updatedAt": "2026-10-29T11:34:45.4576383Z"
+        }
+      }
+    },
+    {
+      "id": "J02-EMPTY-WINDOW",
+      "pass": true,
+      "expected": "specified behavior",
+      "actual": {
+        "requests": [
+          {
+            "protocol": "lyra-reader",
+            "version": 3,
+            "type": "app.ready",
+            "sessionId": "f3b936938e3f4665b1f9bec8b35ae6be"
+          },
+          {
+            "protocol": "lyra-reader",
+            "version": 3,
+            "type": "hello",
+            "requestId": "hello-431da8b0-4810-4096-9ba5-4f8879a34dd4",
+            "sessionId": "f3b936938e3f4665b1f9bec8b35ae6be"
+          },
+          {
+            "protocol": "lyra-reader",
+            "version": 3,
+            "type": "app.ready",
+            "sessionId": "f3b936938e3f4665b1f9bec8b35ae6be"
+          },
+          {
+            "protocol": "lyra-reader",
+            "version": 3,
+            "type": "state.grantPreferences",
+            "requestId": "req-10628127-02d1-4117-afad-492d19a68fff",
+            "sessionId": "f3b936938e3f4665b1f9bec8b35ae6be",
+            "scope": "global",
+            "fields": [
+              "fontSize"
+            ],
+            "operationId": "pref-op-55c254a4-e6de-47c3-86e4-0e5629e6b1ed",
+            "activationEpoch": 1,
+            "navEpoch": 1
+          },
+          {
+            "protocol": "lyra-reader",
+            "version": 3,
+            "type": "state.savePreferences",
+            "requestId": "req-934ab3cc-7a37-4bde-af3a-fd0908a0e0b6",
+            "sessionId": "f3b936938e3f4665b1f9bec8b35ae6be",
+            "scope": "global",
+            "preferences": {
+              "fontSize": 28
+            },
+            "grants": {
+              "fontSize": "pg-958ece2d79e140ff912efb00cbf751df"
+            }
+          }
+        ],
+        "pending": [],
+        "file": {
+          "version": 1,
+          "revision": 1,
+          "preferences": {
+            "fontSize": 28
+          },
+          "fieldSequences": {},
+          "preferenceOrders": {
+            "fontSize": 4
+          },
+          "updatedAt": "2026-10-29T11:34:45.4670257Z"
+        }
+      }
+    },
+    {
+      "id": "J03-POSITION-PREF-SEPARATE",
+      "pass": true,
+      "expected": "specified behavior",
+      "actual": {
+        "requests": [
+          {
+            "protocol": "lyra-reader",
+            "version": 3,
+            "type": "app.ready",
+            "sessionId": "aa149af4371f43369c6b291cf300417a"
+          },
+          {
+            "protocol": "lyra-reader",
+            "version": 3,
+            "type": "hello",
+            "requestId": "hello-c04b7e54-b138-4fe9-87f6-a97a4f70b5e3",
+            "sessionId": "aa149af4371f43369c6b291cf300417a"
+          },
+          {
+            "protocol": "lyra-reader",
+            "version": 3,
+            "type": "app.ready",
+            "sessionId": "aa149af4371f43369c6b291cf300417a"
+          },
+          {
+            "protocol": "lyra-reader",
+            "version": 3,
+            "type": "state.interact",
+            "requestId": "req-b11d82f2-94c7-4ab0-9e0b-2f043aebc2cf",
+            "sessionId": "aa149af4371f43369c6b291cf300417a",
+            "bookId": "sha256:d6586cd83772a5c5316fee57bc4c3d57a49488d7e1310d79e7743eda36317e32",
+            "activationEpoch": 1,
+            "navEpoch": 1
+          },
+          {
+            "protocol": "lyra-reader",
+            "version": 3,
+            "type": "state.grantPreferences",
+            "requestId": "req-2258fd98-2181-4e78-89e7-c7c2098ce897",
+            "sessionId": "aa149af4371f43369c6b291cf300417a",
+            "scope": "global",
+            "fields": [
+              "fontSize"
+            ],
+            "operationId": "pref-op-0d52846f-5634-41b9-9c66-473e723bfde0",
+            "activationEpoch": 1,
+            "navEpoch": 1
+          },
+          {
+            "protocol": "lyra-reader",
+            "version": 3,
+            "type": "state.savePosition",
+            "requestId": "req-49f8e33f-a33a-43d3-84bc-1b64eb0ea464",
+            "sessionId": "aa149af4371f43369c6b291cf300417a",
+            "bookId": "sha256:d6586cd83772a5c5316fee57bc4c3d57a49488d7e1310d79e7743eda36317e32",
+            "position": {
+              "spineHref": "a.xhtml",
+              "spineIndex": 0,
+              "locator": {
+                "textOffset": 100,
+                "quote": "synthetic",
+                "chapterFraction": 0.05263157894736842
+              },
+              "chapterFraction": 0.05263157894736842,
+              "savedAt": "2023-11-14T22:13:20.000Z"
+            },
+            "interactionToken": 1,
+            "sequence": 1700000000000000,
+            "operationId": "pos-op-0833d6ac-b74e-48b7-a44d-4d47a85eff47"
+          },
+          {
+            "protocol": "lyra-reader",
+            "version": 3,
+            "type": "state.savePreferences",
+            "requestId": "req-9fb22704-6012-446f-8883-ae51017a36bf",
+            "sessionId": "aa149af4371f43369c6b291cf300417a",
+            "scope": "global",
+            "preferences": {
+              "fontSize": 28
+            },
+            "grants": {
+              "fontSize": "pg-88e100e41eb14c9787d98ce8c0d722f9"
+            }
+          }
+        ],
+        "file": {
+          "version": 1,
+          "revision": 1,
+          "positionRevision": 1,
+          "metadataRevision": 0,
+          "interaction": 1,
+          "interactionOwner": "aa149af4371f43369c6b291cf300417a",
+          "position": {
+            "spineHref": "a.xhtml",
+            "spineIndex": 0,
+            "locator": {
+              "textOffset": 100,
+              "quote": "synthetic",
+              "chapterFraction": 0.05263157894736842
+            },
+            "chapterFraction": 0.05263157894736842,
+            "savedAt": "2023-11-14T22:13:20.000Z"
+          },
+          "positionToken": 1,
+          "positionSequence": 1700000000000000,
+          "bookmarks": [],
+          "bookmarksRevision": 0,
+          "positionSession": "aa149af4371f43369c6b291cf300417a",
+          "positionSavedAt": "2026-10-29T11:34:45.4778172Z"
+        },
+        "prefs": {
+          "version": 1,
+          "revision": 1,
+          "preferences": {
+            "fontSize": 28
+          },
+          "fieldSequences": {},
+          "preferenceOrders": {
+            "fontSize": 5
+          },
+          "updatedAt": "2026-10-29T11:34:45.4803325Z"
+        }
+      }
+    },
+    {
+      "id": "J04-FINALIZE-18-INFLIGHT-32",
+      "pass": true,
+      "expected": "specified behavior",
+      "actual": {
+        "first": {
+          "version": 1,
+          "revision": 1,
+          "preferences": {
+            "fontSize": 18
+          },
+          "fieldSequences": {},
+          "preferenceOrders": {
+            "fontSize": 6
+          },
+          "updatedAt": "2026-10-29T11:34:45.5057344Z"
+        },
+        "before": [],
+        "acks": [
+          {
+            "type": "host.finalized",
+            "requestId": "ac8cd1a5e904481db8f34aef5a1cff28",
+            "sessionId": "a347c4bd101e4e2096dec17e65ae1d88",
+            "ok": true,
+            "revision": 2,
+            "closeDiagnostics": []
+          }
+        ],
+        "requests": [
+          {
+            "protocol": "lyra-reader",
+            "version": 3,
+            "type": "state.savePreferences",
+            "requestId": "req-e349feaa-44f0-4a29-aacf-32742cae753b",
+            "sessionId": "a347c4bd101e4e2096dec17e65ae1d88",
+            "scope": "global",
+            "preferences": {
+              "fontSize": 18
+            },
+            "grants": {
+              "fontSize": "pg-7cf9e6e3fc0446c69e4145d970ee3c40"
+            }
+          },
+          {
+            "protocol": "lyra-reader",
+            "version": 3,
+            "type": "state.savePreferences",
+            "requestId": "req-e32eed3b-06e2-4360-9a31-e15a5ea2f60e",
+            "sessionId": "a347c4bd101e4e2096dec17e65ae1d88",
+            "scope": "global",
+            "preferences": {
+              "fontSize": 32
+            },
+            "grants": {
+              "fontSize": "pg-89bd4268389549b98cc0f90388a87f3c"
+            }
+          }
+        ],
+        "pending": [],
+        "file": {
+          "version": 1,
+          "revision": 2,
+          "preferences": {
+            "fontSize": 32
+          },
+          "fieldSequences": {},
+          "preferenceOrders": {
+            "fontSize": 7
+          },
+          "updatedAt": "2026-10-29T11:34:45.5117047Z"
+        },
+        "host": {
+          "session": "a347c4bd101e4e2096dec17e65ae1d88",
+          "source": "https://lyra-extension-d4523964.local/index.html?sessionId=a347c4bd101e4e2096dec17e65ae1d88&loadId=4b04f1d3a6a54389a5e522daf2cdd3e6",
+          "activationEpoch": 1,
+          "navEpoch": 1,
+          "ClosedCount": 1,
+          "pending": false,
+          "closeRequest": "ac8cd1a5e904481db8f34aef5a1cff28",
+          "closeTimer": false,
+          "ready": false,
+          "ensureCalls": 1,
+          "loadId": "4b04f1d3a6a54389a5e522daf2cdd3e6",
+          "overlay": "Collapsed",
+          "loadingText": "正在打开…",
+          "closeInterval": null,
+          "failed": false
+        }
+      }
+    },
+    {
+      "id": "J05-REAL-WRITEFAIL-CLOSE",
+      "pass": true,
+      "expected": "specified behavior",
+      "actual": {
+        "acks": [
+          {
+            "type": "host.finalized",
+            "requestId": "5954421e7e2a4a6fa460fc2c552badc0",
+            "sessionId": "febe1fc2f0fa4d478e72d1a04303a74c",
+            "ok": false,
+            "revision": 1,
+            "closeDiagnostics": [
+              {
+                "bookId": "",
+                "code": "PREFS_NOT_SETTLED",
+                "timeout": false
+              }
+            ]
+          }
+        ],
+        "pending": [
+          "fontSize"
+        ],
+        "host": {
+          "session": "febe1fc2f0fa4d478e72d1a04303a74c",
+          "source": "https://lyra-extension-e417aa4f.local/index.html?sessionId=febe1fc2f0fa4d478e72d1a04303a74c&loadId=feb61cbb75f7400ea9af19937a0cfae6",
+          "activationEpoch": 1,
+          "navEpoch": 1,
+          "ClosedCount": 1,
+          "pending": false,
+          "closeRequest": "5954421e7e2a4a6fa460fc2c552badc0",
+          "closeTimer": false,
+          "ready": false,
+          "ensureCalls": 1,
+          "loadId": "feb61cbb75f7400ea9af19937a0cfae6",
+          "overlay": "Collapsed",
+          "loadingText": "正在打开…",
+          "closeInterval": null,
+          "failed": false
+        },
+        "file": {
+          "version": 1,
+          "revision": 1,
+          "preferences": {
+            "fontSize": 18
+          },
+          "fieldSequences": {},
+          "preferenceOrders": {
+            "fontSize": 8
+          },
+          "updatedAt": "2026-10-29T11:34:45.5201451Z"
+        },
+        "injection": "ReadOnly attribute on isolated preferences.json; original AtomicWrite fails"
+      }
+    },
+    {
+      "id": "J06-NOCHANGE-CLOSE",
+      "pass": true,
+      "expected": "specified behavior",
+      "actual": {
+        "acks": [
+          {
+            "type": "host.finalized",
+            "requestId": "568d679aa89b4f15a9b7ce32c11a1676",
+            "sessionId": "d9ae34938b9e4db7844ac49ea1c31139",
+            "ok": true,
+            "revision": 0,
+            "closeDiagnostics": []
+          }
+        ],
+        "host": {
+          "session": "d9ae34938b9e4db7844ac49ea1c31139",
+          "source": "https://lyra-extension-9b0132b3.local/index.html?sessionId=d9ae34938b9e4db7844ac49ea1c31139&loadId=1e2e5932915f4488ab9851f819b678b7",
+          "activationEpoch": 1,
+          "navEpoch": 1,
+          "ClosedCount": 1,
+          "pending": false,
+          "closeRequest": "568d679aa89b4f15a9b7ce32c11a1676",
+          "closeTimer": false,
+          "ready": false,
+          "ensureCalls": 1,
+          "loadId": "1e2e5932915f4488ab9851f819b678b7",
+          "overlay": "Collapsed",
+          "loadingText": "正在打开…",
+          "closeInterval": null,
+          "failed": false
+        }
+      }
+    },
+    {
+      "id": "J07-ACK-LOSS-RETRY",
+      "pass": true,
+      "expected": "specified behavior",
+      "actual": {
+        "committed": {
+          "version": 1,
+          "revision": 1,
+          "preferences": {
+            "fontSize": 28
+          },
+          "fieldSequences": {},
+          "preferenceOrders": {
+            "fontSize": 10
+          },
+          "updatedAt": "2026-10-29T11:34:45.5363675Z"
+        },
+        "file": {
+          "version": 1,
+          "revision": 1,
+          "preferences": {
+            "fontSize": 28
+          },
+          "fieldSequences": {},
+          "preferenceOrders": {
+            "fontSize": 10
+          },
+          "updatedAt": "2026-10-29T11:34:45.5363675Z"
+        },
+        "requests": [
+          {
+            "protocol": "lyra-reader",
+            "version": 3,
+            "type": "state.savePreferences",
+            "requestId": "req-b41dcf43-b07b-41a5-8a95-cde45e775ebf",
+            "sessionId": "59be700636ad4aeaadd8600567abdb71",
+            "scope": "global",
+            "preferences": {
+              "fontSize": 28
+            },
+            "grants": {
+              "fontSize": "pg-171cf8af2b60469db931a114b819136f"
+            }
+          },
+          {
+            "protocol": "lyra-reader",
+            "version": 3,
+            "type": "state.savePreferences",
+            "requestId": "req-7e660ac2-c0d0-4fed-b585-f7a9a266c2f1",
+            "sessionId": "59be700636ad4aeaadd8600567abdb71",
+            "scope": "global",
+            "preferences": {
+              "fontSize": 28
+            },
+            "grants": {
+              "fontSize": "pg-171cf8af2b60469db931a114b819136f"
+            }
+          }
+        ],
+        "pending": [],
+        "heldOriginalAck": 1
+      }
+    },
+    {
+      "id": "J08-OLD-GRANT-BLOCKS-INDEPENDENT-FIELD",
+      "pass": true,
+      "expected": "specified behavior",
+      "actual": {
+        "file": {
+          "version": 1,
+          "revision": 2,
+          "preferences": {
+            "fontSize": 32,
+            "lineHeight": 2.2
+          },
+          "fieldSequences": {},
+          "preferenceOrders": {
+            "fontSize": 12,
+            "lineHeight": 13
+          },
+          "updatedAt": "2026-10-29T11:34:45.5523346Z"
+        },
+        "requestsA": [
+          {
+            "protocol": "lyra-reader",
+            "version": 3,
+            "type": "state.savePreferences",
+            "requestId": "req-06b13f9d-1d92-473a-9d8f-450d1bffb9eb",
+            "sessionId": "99e01de63ed342a6a7ad917a28c00f7a",
+            "scope": "global",
+            "preferences": {
+              "fontSize": 18,
+              "lineHeight": 2.2
+            },
+            "grants": {
+              "fontSize": "pg-62d1699916e34176a389fb154be83bc3",
+              "lineHeight": "pg-b9ef0a59cc58403eba20659edbc2ced2"
+            }
+          }
+        ],
+        "pendingA": [],
+        "ackA": [
+          {
+            "type": "host.finalized",
+            "requestId": "3908e44359194725b7395aeeeca96d72",
+            "sessionId": "99e01de63ed342a6a7ad917a28c00f7a",
+            "ok": true,
+            "revision": 2,
+            "closeDiagnostics": []
+          }
+        ],
+        "fixture": "Both event doubles remain active; tests transaction rejection/reconciliation only, not natural OS focus"
+      }
+    },
+    {
+      "id": "J09-DELAY-GRANT-ORDER",
+      "pass": true,
+      "expected": "specified behavior",
+      "actual": {
+        "requestedBeforeRelease": 2,
+        "requestsA": [
+          {
+            "protocol": "lyra-reader",
+            "version": 3,
+            "type": "app.ready",
+            "sessionId": "2e8f6b1655414f5791cd0cc419963835"
+          },
+          {
+            "protocol": "lyra-reader",
+            "version": 3,
+            "type": "hello",
+            "requestId": "hello-3823ae9c-d6ec-4e7d-aebf-11b246af49dc",
+            "sessionId": "2e8f6b1655414f5791cd0cc419963835"
+          },
+          {
+            "protocol": "lyra-reader",
+            "version": 3,
+            "type": "app.ready",
+            "sessionId": "2e8f6b1655414f5791cd0cc419963835"
+          },
+          {
+            "protocol": "lyra-reader",
+            "version": 3,
+            "type": "state.grantPreferences",
+            "requestId": "req-90a7a44b-88b7-4e12-8353-a4b1a5f93898",
+            "sessionId": "2e8f6b1655414f5791cd0cc419963835",
+            "scope": "global",
+            "fields": [
+              "lineHeight"
+            ],
+            "operationId": "pref-op-c3f9d9b5-20fa-45bb-b8c1-46cdbcc9182e",
+            "activationEpoch": 1,
+            "navEpoch": 1
+          },
+          {
+            "protocol": "lyra-reader",
+            "version": 3,
+            "type": "state.grantPreferences",
+            "requestId": "req-6760ed2e-6d5c-468b-8799-db06cc6d0068",
+            "sessionId": "2e8f6b1655414f5791cd0cc419963835",
+            "scope": "global",
+            "fields": [
+              "fontSize"
+            ],
+            "operationId": "pref-op-ea80319b-157b-458d-800c-e8bd8230ae76",
+            "activationEpoch": 1,
+            "navEpoch": 1
+          },
+          {
+            "protocol": "lyra-reader",
+            "version": 3,
+            "type": "state.savePreferences",
+            "requestId": "req-d8ed5f04-eb4e-4b44-86b0-42036a86d370",
+            "sessionId": "2e8f6b1655414f5791cd0cc419963835",
+            "scope": "global",
+            "preferences": {
+              "lineHeight": 2.2,
+              "fontSize": 18
+            },
+            "grants": {
+              "lineHeight": "pg-fa8224cfb1f74ca1b568092e58c076fa",
+              "fontSize": "pg-8ef62c0594d043009b7a5cc917266908"
+            }
+          }
+        ],
+        "file": {
+          "version": 1,
+          "revision": 2,
+          "preferences": {
+            "fontSize": 32,
+            "lineHeight": 2.2
+          },
+          "fieldSequences": {},
+          "preferenceOrders": {
+            "fontSize": 16,
+            "lineHeight": 14
+          },
+          "updatedAt": "2026-10-29T11:34:45.5766014Z"
+        },
+        "pending": [],
+        "boundary": "Delay original grant replies under unchanged synthetic active epochs"
+      }
+    },
+    {
+      "id": "J10-IMAGE-ACK-OPERATION",
+      "pass": true,
+      "expected": "specified behavior",
+      "actual": {
+        "modifiedBeforeTimer": true,
+        "modified": false,
+        "requests": [
+          {
+            "protocol": "lyra-reader",
+            "version": 3,
+            "type": "state.savePosition",
+            "requestId": "req-22e09fef-30e5-4eba-a820-39a82305766f",
+            "sessionId": "57c936f019d7496e810fd975fdc600eb",
+            "bookId": "sha256:fdd6ed91cc141a2f30faaa8e6b135b2a89b4953311d8e67e9a65027f2bb193b0",
+            "position": {
+              "spineHref": "a.xhtml",
+              "spineIndex": 0,
+              "locator": {
+                "textOffset": null,
+                "elementPath": [
+                  1
+                ],
+                "chapterFraction": 0.05263157894736842
+              },
+              "chapterFraction": 0.05263157894736842,
+              "savedAt": "2023-11-14T22:13:20.000Z"
+            },
+            "interactionToken": 1,
+            "sequence": 1700000000000000,
+            "operationId": "pos-op-7fb5702b-cd67-4fc2-a64f-5214e0544fcb"
+          },
+          {
+            "protocol": "lyra-reader",
+            "version": 3,
+            "type": "state.savePosition",
+            "requestId": "req-949e34e5-6030-4db7-94ac-e0b219a34680",
+            "sessionId": "57c936f019d7496e810fd975fdc600eb",
+            "bookId": "sha256:fdd6ed91cc141a2f30faaa8e6b135b2a89b4953311d8e67e9a65027f2bb193b0",
+            "position": {
+              "spineHref": "a.xhtml",
+              "spineIndex": 0,
+              "locator": {
+                "textOffset": null,
+                "elementPath": [
+                  2
+                ],
+                "chapterFraction": 0.10526315789473684
+              },
+              "chapterFraction": 0.10526315789473684,
+              "savedAt": "2023-11-14T22:13:20.400Z"
+            },
+            "interactionToken": 2,
+            "sequence": 1700000000400000,
+            "operationId": "pos-op-f74352fd-d2fc-4a93-aa1d-bc769adb11f1"
+          }
+        ],
+        "file": {
+          "version": 1,
+          "revision": 2,
+          "positionRevision": 2,
+          "metadataRevision": 0,
+          "interaction": 2,
+          "interactionOwner": "57c936f019d7496e810fd975fdc600eb",
+          "position": {
+            "spineHref": "a.xhtml",
+            "spineIndex": 0,
+            "locator": {
+              "textOffset": null,
+              "elementPath": [
+                2
+              ],
+              "chapterFraction": 0.10526315789473684
+            },
+            "chapterFraction": 0.10526315789473684,
+            "savedAt": "2023-11-14T22:13:20.400Z"
+          },
+          "positionToken": 2,
+          "positionSequence": 1700000000400000,
+          "bookmarks": [],
+          "bookmarksRevision": 0,
+          "positionSession": "57c936f019d7496e810fd975fdc600eb",
+          "positionSavedAt": "2026-10-29T11:34:45.5878165Z"
+        },
+        "fixture": "Geometric image anchors; original next-button callbacks/controller/state/C#"
+      }
+    },
+    {
+      "id": "J11-POSITION-TOKEN-REVERSE-REPLIES",
+      "pass": true,
+      "expected": "Original two next clicks, first interaction reply delayed beyond second; latest position must save with its own token",
+      "actual": {
+        "held": [
+          {
+            "req": {
+              "protocol": "lyra-reader",
+              "version": 3,
+              "type": "state.interact",
+              "requestId": "req-2f48c4c4-8ada-4c39-8817-214adbd5540c",
+              "sessionId": "4ec61fb4428f49029f9b332cb6351ba5",
+              "bookId": "sha256:85e6172d11cae687da03f4af6d33f5a56d474280856b53aeb5d852c3bde3ce36",
+              "activationEpoch": 1,
+              "navEpoch": 1
+            },
+            "msg": {
+              "protocol": "lyra-reader",
+              "version": 3,
+              "type": "response",
+              "requestId": "req-2f48c4c4-8ada-4c39-8817-214adbd5540c",
+              "sessionId": "4ec61fb4428f49029f9b332cb6351ba5",
+              "ok": true,
+              "result": {
+                "interactionToken": 1
+              }
+            },
+            "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"req-2f48c4c4-8ada-4c39-8817-214adbd5540c\",\"sessionId\":\"4ec61fb4428f49029f9b332cb6351ba5\",\"ok\":true,\"result\":{\"interactionToken\":1}}"
+          },
+          {
+            "req": {
+              "protocol": "lyra-reader",
+              "version": 3,
+              "type": "state.interact",
+              "requestId": "req-7a4d66fe-63da-4f9b-8740-d03befdcf7cb",
+              "sessionId": "4ec61fb4428f49029f9b332cb6351ba5",
+              "bookId": "sha256:85e6172d11cae687da03f4af6d33f5a56d474280856b53aeb5d852c3bde3ce36",
+              "activationEpoch": 1,
+              "navEpoch": 1
+            },
+            "msg": {
+              "protocol": "lyra-reader",
+              "version": 3,
+              "type": "response",
+              "requestId": "req-7a4d66fe-63da-4f9b-8740-d03befdcf7cb",
+              "sessionId": "4ec61fb4428f49029f9b332cb6351ba5",
+              "ok": true,
+              "result": {
+                "interactionToken": 2
+              }
+            },
+            "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"req-7a4d66fe-63da-4f9b-8740-d03befdcf7cb\",\"sessionId\":\"4ec61fb4428f49029f9b332cb6351ba5\",\"ok\":true,\"result\":{\"interactionToken\":2}}"
+          }
+        ],
+        "positions": [
+          {
+            "protocol": "lyra-reader",
+            "version": 3,
+            "type": "state.savePosition",
+            "requestId": "req-7282491b-ba6f-42b4-bab9-73c143221762",
+            "sessionId": "4ec61fb4428f49029f9b332cb6351ba5",
+            "bookId": "sha256:85e6172d11cae687da03f4af6d33f5a56d474280856b53aeb5d852c3bde3ce36",
+            "position": {
+              "spineHref": "a.xhtml",
+              "spineIndex": 0,
+              "locator": {
+                "textOffset": 100,
+                "quote": "synthetic",
+                "chapterFraction": 0.05263157894736842
+              },
+              "chapterFraction": 0.05263157894736842,
+              "savedAt": "2023-11-14T22:13:20.000Z"
+            },
+            "interactionToken": 1,
+            "sequence": 1700000000000000,
+            "operationId": "pos-op-61055cc6-8ec6-4cc3-95aa-7f91abfab01e"
+          },
+          {
+            "protocol": "lyra-reader",
+            "version": 3,
+            "type": "state.savePosition",
+            "requestId": "req-89683bb2-cdf9-412e-a4ab-14a368f307a9",
+            "sessionId": "4ec61fb4428f49029f9b332cb6351ba5",
+            "bookId": "sha256:85e6172d11cae687da03f4af6d33f5a56d474280856b53aeb5d852c3bde3ce36",
+            "position": {
+              "spineHref": "a.xhtml",
+              "spineIndex": 0,
+              "locator": {
+                "textOffset": 200,
+                "quote": "synthetic",
+                "chapterFraction": 0.10526315789473684
+              },
+              "chapterFraction": 0.10526315789473684,
+              "savedAt": "2023-11-14T22:13:20.400Z"
+            },
+            "interactionToken": 2,
+            "sequence": 1700000000400000,
+            "operationId": "pos-op-755ee225-4641-415c-ac78-3548cab9ed9c"
+          }
+        ],
+        "file": {
+          "version": 1,
+          "revision": 1,
+          "positionRevision": 1,
+          "metadataRevision": 0,
+          "interaction": 2,
+          "interactionOwner": "4ec61fb4428f49029f9b332cb6351ba5",
+          "position": {
+            "spineHref": "a.xhtml",
+            "spineIndex": 0,
+            "locator": {
+              "textOffset": 200,
+              "quote": "synthetic",
+              "chapterFraction": 0.10526315789473684
+            },
+            "chapterFraction": 0.10526315789473684,
+            "savedAt": "2023-11-14T22:13:20.400Z"
+          },
+          "positionToken": 2,
+          "positionSequence": 1700000000400000,
+          "bookmarks": [],
+          "bookmarksRevision": 0,
+          "positionSession": "4ec61fb4428f49029f9b332cb6351ba5",
+          "positionSavedAt": "2026-10-29T11:34:45.6007115Z"
+        },
+        "failed": [],
+        "globalToken": 1,
+        "expectedCurrentToken": 2
+      }
+    },
+    {
+      "id": "J12-FAILED-100-DISK-900",
+      "pass": true,
+      "expected": "specified behavior",
+      "actual": {
+        "failedOffset": 100,
+        "file": {
+          "revision": 8,
+          "position": {
+            "spineHref": "a.xhtml",
+            "spineIndex": 0,
+            "locator": {
+              "textOffset": 900
+            },
+            "chapterFraction": 0.9
+          }
+        },
+        "visibleAnchor": {
+          "textOffset": 900
+        },
+        "failedRemaining": 0
+      }
+    },
+    {
+      "id": "J13-CORRUPT-A-HEALTHY-B",
+      "pass": true,
+      "expected": "specified behavior",
+      "actual": {
+        "loadA": {
+          "mode": "local",
+          "revision": 0,
+          "positionRevision": 0,
+          "metadataRevision": 0,
+          "position": null,
+          "positionSequence": 0,
+          "preferences": null,
+          "bookmarksRevision": 0,
+          "bookmarkCount": 0,
+          "interactionToken": 0,
+          "warnings": [
+            "当前窗口本地阅读状态损坏，未覆盖原数据",
+            "当前窗口本地书签损坏，未覆盖原数据"
+          ]
+        },
+        "loadB": {
+          "mode": "local",
+          "revision": 0,
+          "positionRevision": 0,
+          "metadataRevision": 0,
+          "position": null,
+          "positionSequence": 0,
+          "preferences": null,
+          "bookmarksRevision": 0,
+          "bookmarkCount": 0,
+          "interactionToken": 0,
+          "warnings": []
+        },
+        "again": {
+          "mode": "local",
+          "revision": 0,
+          "positionRevision": 0,
+          "metadataRevision": 0,
+          "position": null,
+          "positionSequence": 0,
+          "preferences": null,
+          "bookmarksRevision": 0,
+          "bookmarkCount": 0,
+          "interactionToken": 0,
+          "warnings": [
+            "当前窗口本地阅读状态损坏，未覆盖原数据",
+            "当前窗口本地书签损坏，未覆盖原数据"
+          ]
+        },
+        "storage": [
+          [
+            "lyra_epub_state_sha256:0d05a677b530913b8fa52e21e5eebb71e8cbc77b185c0d60ff6fecdba9819917",
+            "{bad"
+          ],
+          [
+            "lyra_epub_bookmarks_sha256:0d05a677b530913b8fa52e21e5eebb71e8cbc77b185c0d60ff6fecdba9819917",
+            "{bad"
+          ],
+          [
+            "lyra_epub_state_sha256:960abf7f167e6a9ce0103ca30acb8a6649be82d0baa4c8e04a6587bd5f717dde",
+            "{\"revision\":1,\"position\":{\"page\":3},\"positionSequence\":1700000000000000,\"positionOperationId\":\"\",\"positionRevision\":1,\"updatedAt\":\"2023-11-14T22:13:20.000Z\"}"
+          ],
+          [
+            "lyra_epub_bookmarks_sha256:960abf7f167e6a9ce0103ca30acb8a6649be82d0baa4c8e04a6587bd5f717dde",
+            "{\"revision\":1,\"items\":[{\"id\":\"healthy\"}]}"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "J14-SAME-BOOK-READ-RECOVERY",
+      "pass": true,
+      "expected": "Transient read denial lifted; reopening same healthy book must re-read bookmarks",
+      "actual": {
+        "denied": {
+          "mode": "local",
+          "revision": 0,
+          "positionRevision": 0,
+          "metadataRevision": 0,
+          "position": null,
+          "positionSequence": 0,
+          "preferences": null,
+          "bookmarksRevision": 0,
+          "bookmarkCount": 0,
+          "interactionToken": 0,
+          "warnings": [
+            "当前窗口本地存储不可用",
+            "当前窗口本地存储不可用",
+            "本地设置损坏，已按默认设置打开并保留原数据"
+          ]
+        },
+        "recovered": {
+          "mode": "local",
+          "revision": 0,
+          "positionRevision": 0,
+          "metadataRevision": 0,
+          "position": null,
+          "positionSequence": 0,
+          "preferences": null,
+          "bookmarksRevision": 1,
+          "bookmarkCount": 1,
+          "interactionToken": 0,
+          "warnings": []
+        },
+        "error": null,
+        "storage": [
+          [
+            "lyra_epub_bookmarks_sha256:7745a37dfbbdc2f56c45e88b24ecdc7a0ea815fc0392a0867244e0794605d67e",
+            "{\"revision\":2,\"items\":[{\"id\":\"keep\"},{\"id\":\"new\"}]}"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "J15-BOOKMARK-MATRIX",
+      "pass": true,
+      "expected": "specified behavior",
+      "actual": [
+        {
+          "mode": "host",
+          "rows": [
+            {
+              "id": "",
+              "bytes": 9,
+              "error": "BAD_BOOKMARK"
+            },
+            {
+              "id": "  ",
+              "bytes": 11,
+              "error": "BAD_BOOKMARK"
+            },
+            {
+              "id": "中😀",
+              "bytes": 16,
+              "error": null
+            },
+            {
+              "id": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+              "bytes": 130,
+              "error": "BAD_BOOKMARK"
+            },
+            {
+              "id": "sum256",
+              "bytes": 796,
+              "error": null
+            },
+            {
+              "id": "sum257",
+              "bytes": 799,
+              "error": "BOOKMARK_TOO_LARGE"
+            },
+            {
+              "id": "byte4096",
+              "bytes": 4096,
+              "error": null
+            },
+            {
+              "id": "byte4097",
+              "bytes": 4097,
+              "error": "BOOKMARK_TOO_LARGE"
+            }
+          ],
+          "counts": [
+            {
+              "n": 0,
+              "total": 0,
+              "unique": 0,
+              "pages": [
+                0
+              ]
+            },
+            {
+              "n": 1,
+              "total": 1,
+              "unique": 1,
+              "pages": [
+                1
+              ]
+            },
+            {
+              "n": 50,
+              "total": 50,
+              "unique": 50,
+              "pages": [
+                50
+              ]
+            },
+            {
+              "n": 51,
+              "total": 51,
+              "unique": 51,
+              "pages": [
+                50,
+                1
+              ]
+            },
+            {
+              "n": 499,
+              "total": 499,
+              "unique": 499,
+              "pages": [
+                50,
+                50,
+                50,
+                50,
+                50,
+                50,
+                50,
+                50,
+                50,
+                49
+              ]
+            },
+            {
+              "n": 500,
+              "total": 500,
+              "unique": 500,
+              "pages": [
+                50,
+                50,
+                50,
+                50,
+                50,
+                50,
+                50,
+                50,
+                50,
+                50
+              ]
+            }
+          ],
+          "cap": "BOOKMARK_LIMIT"
+        },
+        {
+          "mode": "local",
+          "rows": [
+            {
+              "id": "",
+              "bytes": 9,
+              "error": "BAD_BOOKMARK"
+            },
+            {
+              "id": "  ",
+              "bytes": 11,
+              "error": "BAD_BOOKMARK"
+            },
+            {
+              "id": "中😀",
+              "bytes": 16,
+              "error": null
+            },
+            {
+              "id": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+              "bytes": 130,
+              "error": "BAD_BOOKMARK"
+            },
+            {
+              "id": "sum256",
+              "bytes": 796,
+              "error": null
+            },
+            {
+              "id": "sum257",
+              "bytes": 799,
+              "error": "BOOKMARK_TOO_LARGE"
+            },
+            {
+              "id": "byte4096",
+              "bytes": 4096,
+              "error": null
+            },
+            {
+              "id": "byte4097",
+              "bytes": 4097,
+              "error": "BOOKMARK_TOO_LARGE"
+            }
+          ],
+          "counts": [
+            {
+              "n": 0,
+              "total": 0,
+              "unique": 0,
+              "pages": [
+                0
+              ]
+            },
+            {
+              "n": 1,
+              "total": 1,
+              "unique": 1,
+              "pages": [
+                1
+              ]
+            },
+            {
+              "n": 50,
+              "total": 50,
+              "unique": 50,
+              "pages": [
+                50
+              ]
+            },
+            {
+              "n": 51,
+              "total": 51,
+              "unique": 51,
+              "pages": [
+                50,
+                1
+              ]
+            },
+            {
+              "n": 499,
+              "total": 499,
+              "unique": 499,
+              "pages": [
+                50,
+                50,
+                50,
+                50,
+                50,
+                50,
+                50,
+                50,
+                50,
+                49
+              ]
+            },
+            {
+              "n": 500,
+              "total": 500,
+              "unique": 500,
+              "pages": [
+                50,
+                50,
+                50,
+                50,
+                50,
+                50,
+                50,
+                50,
+                50,
+                50
+              ]
+            }
+          ],
+          "cap": "BOOKMARK_LIMIT"
+        }
+      ]
+    },
+    {
+      "id": "J16-V1-R3-CLIENT-NEGOTIATION",
+      "pass": true,
+      "expected": "specified behavior",
+      "actual": {
+        "hello": false,
+        "mode": "local",
+        "requests": [
+          {
+            "protocol": "lyra-reader",
+            "version": 1,
+            "type": "hello",
+            "requestId": "hello-92e88369-2eca-460c-8bbc-31861e8428d8",
+            "sessionId": "08cc21b5b0fb4e17ba8eda4752932fb9"
+          }
+        ],
+        "explicitBoundary": "R3 candidate v1 client, NOT original 0.5.26/1.1.12 matrix"
+      }
+    },
+    {
+      "id": "J17-CAPS-NEGOTIATION",
+      "pass": true,
+      "expected": "specified behavior",
+      "actual": [
+        {
+          "kind": "missing-grant",
+          "hello": false,
+          "mode": "local"
+        },
+        {
+          "kind": "v1",
+          "hello": false,
+          "mode": "local"
+        },
+        {
+          "kind": "silent",
+          "hello": false,
+          "mode": "local"
+        }
+      ]
+    },
+    {
+      "id": "H01-FIELD-SESSION-OP",
+      "pass": true,
+      "expected": "specified behavior",
+      "actual": {
+        "g": {
+          "protocol": "lyra-reader",
+          "version": 3,
+          "type": "response",
+          "requestId": "audit-1",
+          "sessionId": "dbbbe92dd118453f9ec333e64106ca95",
+          "ok": true,
+          "result": {
+            "grant": "pg-cc48ce38cc5243868da015ce46031769",
+            "fields": [
+              "fontSize"
+            ]
+          }
+        },
+        "other": {
+          "protocol": "lyra-reader",
+          "version": 3,
+          "type": "response",
+          "requestId": "audit-2",
+          "sessionId": "dbbbe92dd118453f9ec333e64106ca95",
+          "ok": false,
+          "error": {
+            "code": "FIELD_NOT_GRANTED",
+            "message": "偏好授权未包含字段：lineHeight"
+          }
+        },
+        "owner": {
+          "protocol": "lyra-reader",
+          "version": 3,
+          "type": "response",
+          "requestId": "audit-3",
+          "sessionId": "4136640e1ce44aab94d117244fdf5c42",
+          "ok": false,
+          "error": {
+            "code": "GRANT_OWNER_MISMATCH",
+            "message": "偏好授权不属于当前窗口"
+          }
+        },
+        "duplicate": {
+          "protocol": "lyra-reader",
+          "version": 3,
+          "type": "response",
+          "requestId": "audit-4",
+          "sessionId": "dbbbe92dd118453f9ec333e64106ca95",
+          "ok": false,
+          "error": {
+            "code": "DUPLICATE_OPERATION",
+            "message": "同一偏好操作身份对应不同字段"
+          }
+        },
+        "wrongScope": {
+          "protocol": "lyra-reader",
+          "version": 3,
+          "type": "response",
+          "requestId": "audit-5",
+          "sessionId": "dbbbe92dd118453f9ec333e64106ca95",
+          "ok": false,
+          "error": {
+            "code": "UNSUPPORTED_SCOPE",
+            "message": "只支持 global 偏好作用域"
+          }
+        },
+        "conflict": {
+          "protocol": "lyra-reader",
+          "version": 3,
+          "type": "response",
+          "requestId": "audit-6",
+          "sessionId": "dbbbe92dd118453f9ec333e64106ca95",
+          "ok": true,
+          "result": {
+            "revision": 1,
+            "applied": [
+              "fontSize"
+            ],
+            "idempotent": [],
+            "superseded": []
+          }
+        }
+      }
+    },
+    {
+      "id": "H01-SCOPE-BOUND",
+      "pass": true,
+      "expected": "Unexpected scope must not be silently committed into global preferences",
+      "actual": {
+        "wrongScope": {
+          "protocol": "lyra-reader",
+          "version": 3,
+          "type": "response",
+          "requestId": "audit-5",
+          "sessionId": "dbbbe92dd118453f9ec333e64106ca95",
+          "ok": false,
+          "error": {
+            "code": "UNSUPPORTED_SCOPE",
+            "message": "只支持 global 偏好作用域"
+          }
+        },
+        "file": {
+          "version": 1,
+          "revision": 1,
+          "preferences": {
+            "fontSize": 32
+          },
+          "fieldSequences": {},
+          "preferenceOrders": {
+            "fontSize": 17
+          },
+          "updatedAt": "2026-10-29T11:34:47.1669841Z"
+        }
+      }
+    },
+    {
+      "id": "H02-GRANT-EPOCH",
+      "pass": true,
+      "expected": "specified behavior",
+      "actual": {
+        "old": {
+          "protocol": "lyra-reader",
+          "version": 3,
+          "type": "response",
+          "requestId": "audit-9",
+          "sessionId": "211fbf75e2994d5cb5cc5e6a79b9f419",
+          "ok": false,
+          "error": {
+            "code": "STALE_OPERATION_EPOCH",
+            "message": "偏好授权请求属于已失效的激活/导航代次"
+          }
+        },
+        "saveOld": {
+          "protocol": "lyra-reader",
+          "version": 3,
+          "type": "response",
+          "requestId": "audit-10",
+          "sessionId": "211fbf75e2994d5cb5cc5e6a79b9f419",
+          "ok": true,
+          "result": {
+            "revision": 1,
+            "applied": [
+              "lineHeight"
+            ],
+            "idempotent": [],
+            "superseded": []
+          }
+        },
+        "boundary": "Previously issued grant can finish after activation change; no claim this alone is invalid"
+      }
+    },
+    {
+      "id": "H03-NEW-UNSAVED-GRANT",
+      "pass": true,
+      "expected": "specified behavior",
+      "actual": {
+        "old": {
+          "protocol": "lyra-reader",
+          "version": 3,
+          "type": "response",
+          "requestId": "audit-12",
+          "sessionId": "b9be9075f74c449fbb7a8164954a20ff",
+          "ok": true,
+          "result": {
+            "grant": "pg-eaddf2e16d694831b058500ea69ffa99",
+            "fields": [
+              "fontSize"
+            ]
+          }
+        },
+        "newer": {
+          "protocol": "lyra-reader",
+          "version": 3,
+          "type": "response",
+          "requestId": "audit-14",
+          "sessionId": "b9be9075f74c449fbb7a8164954a20ff",
+          "ok": true,
+          "result": {
+            "grant": "pg-7acfb2c8f035487fad1db10d5b333122",
+            "fields": [
+              "fontSize"
+            ]
+          }
+        },
+        "save": {
+          "protocol": "lyra-reader",
+          "version": 3,
+          "type": "response",
+          "requestId": "audit-15",
+          "sessionId": "b9be9075f74c449fbb7a8164954a20ff",
+          "ok": true,
+          "result": {
+            "revision": 1,
+            "applied": [
+              "fontSize"
+            ],
+            "idempotent": [],
+            "superseded": []
+          }
+        },
+        "newerSave": {
+          "protocol": "lyra-reader",
+          "version": 3,
+          "type": "response",
+          "requestId": "audit-16",
+          "sessionId": "b9be9075f74c449fbb7a8164954a20ff",
+          "ok": true,
+          "result": {
+            "revision": 2,
+            "applied": [
+              "fontSize"
+            ],
+            "idempotent": [],
+            "superseded": []
+          }
+        },
+        "retryGrant": {
+          "protocol": "lyra-reader",
+          "version": 3,
+          "type": "response",
+          "requestId": "audit-17",
+          "sessionId": "b9be9075f74c449fbb7a8164954a20ff",
+          "ok": true,
+          "result": {
+            "grant": "pg-5a3e9fe979b549f68a8c7a61ba8019b5",
+            "fields": [
+              "fontSize"
+            ]
+          }
+        },
+        "designObservation": "R8 contract (R6-02): an unpersisted newer grant is not superseded proof; old grant applies, newer grant later still wins by order."
+      }
+    },
+    {
+      "id": "H04-CLOSE-STRICT",
+      "pass": true,
+      "expected": "specified behavior",
+      "actual": {
+        "observations": [
+          {
+            "session": "7458d976621c4087a3b669cbd253bb5d",
+            "source": "https://lyra-extension-47036d50.local/index.html?sessionId=7458d976621c4087a3b669cbd253bb5d&loadId=96f8aca263de4f6b87b38053877b7ad3",
+            "activationEpoch": 1,
+            "navEpoch": 1,
+            "ClosedCount": 0,
+            "pending": true,
+            "closeRequest": "c9b28e61e64e41ea8a474b4eb96ccc86",
+            "closeTimer": true,
+            "ready": false,
+            "ensureCalls": 1,
+            "loadId": "96f8aca263de4f6b87b38053877b7ad3",
+            "overlay": "Visible",
+            "loadingText": "正在打开…",
+            "closeInterval": 1500,
+            "failed": false
+          },
+          {
+            "session": "7458d976621c4087a3b669cbd253bb5d",
+            "source": "https://lyra-extension-47036d50.local/index.html?sessionId=7458d976621c4087a3b669cbd253bb5d&loadId=96f8aca263de4f6b87b38053877b7ad3",
+            "activationEpoch": 1,
+            "navEpoch": 1,
+            "ClosedCount": 0,
+            "pending": true,
+            "closeRequest": "c9b28e61e64e41ea8a474b4eb96ccc86",
+            "closeTimer": true,
+            "ready": false,
+            "ensureCalls": 1,
+            "loadId": "96f8aca263de4f6b87b38053877b7ad3",
+            "overlay": "Visible",
+            "loadingText": "正在打开…",
+            "closeInterval": 1500,
+            "failed": false
+          },
+          {
+            "session": "7458d976621c4087a3b669cbd253bb5d",
+            "source": "https://lyra-extension-47036d50.local/index.html?sessionId=7458d976621c4087a3b669cbd253bb5d&loadId=96f8aca263de4f6b87b38053877b7ad3",
+            "activationEpoch": 1,
+            "navEpoch": 1,
+            "ClosedCount": 0,
+            "pending": true,
+            "closeRequest": "c9b28e61e64e41ea8a474b4eb96ccc86",
+            "closeTimer": true,
+            "ready": false,
+            "ensureCalls": 1,
+            "loadId": "96f8aca263de4f6b87b38053877b7ad3",
+            "overlay": "Visible",
+            "loadingText": "正在打开…",
+            "closeInterval": 1500,
+            "failed": false
+          }
+        ],
+        "foreign": {
+          "session": "7458d976621c4087a3b669cbd253bb5d",
+          "source": "https://lyra-extension-47036d50.local/index.html?sessionId=7458d976621c4087a3b669cbd253bb5d&loadId=96f8aca263de4f6b87b38053877b7ad3",
+          "activationEpoch": 1,
+          "navEpoch": 1,
+          "ClosedCount": 0,
+          "pending": true,
+          "closeRequest": "c9b28e61e64e41ea8a474b4eb96ccc86",
+          "closeTimer": true,
+          "ready": false,
+          "ensureCalls": 1,
+          "loadId": "96f8aca263de4f6b87b38053877b7ad3",
+          "overlay": "Visible",
+          "loadingText": "正在打开…",
+          "closeInterval": 1500,
+          "failed": false
+        },
+        "final": {
+          "session": "7458d976621c4087a3b669cbd253bb5d",
+          "source": "https://lyra-extension-47036d50.local/index.html?sessionId=7458d976621c4087a3b669cbd253bb5d&loadId=96f8aca263de4f6b87b38053877b7ad3",
+          "activationEpoch": 1,
+          "navEpoch": 1,
+          "ClosedCount": 1,
+          "pending": false,
+          "closeRequest": "c9b28e61e64e41ea8a474b4eb96ccc86",
+          "closeTimer": false,
+          "ready": false,
+          "ensureCalls": 1,
+          "loadId": "96f8aca263de4f6b87b38053877b7ad3",
+          "overlay": "Visible",
+          "loadingText": "正在打开…",
+          "closeInterval": null,
+          "failed": false
+        }
+      }
+    },
+    {
+      "id": "H05-EARLY-CLOSE",
+      "pass": true,
+      "expected": "specified behavior",
+      "actual": {
+        "rows": [
+          {
+            "stage": "before-root",
+            "before": {
+              "session": "116f233244144b209a20acb8b9d58bbe",
+              "source": "",
+              "activationEpoch": 1,
+              "navEpoch": 0,
+              "ClosedCount": 0,
+              "pending": true,
+              "closeRequest": "b5a7d117afd1483a89517a3983cb8023",
+              "closeTimer": true,
+              "ready": false,
+              "ensureCalls": 0,
+              "loadId": "6a67efe17e2d41fcae016f017cca7936",
+              "overlay": "Visible",
+              "loadingText": "",
+              "closeInterval": 1500,
+              "failed": false
+            },
+            "after": {
+              "session": "116f233244144b209a20acb8b9d58bbe",
+              "source": "",
+              "activationEpoch": 1,
+              "navEpoch": 0,
+              "ClosedCount": 1,
+              "pending": false,
+              "closeRequest": "b5a7d117afd1483a89517a3983cb8023",
+              "closeTimer": false,
+              "ready": false,
+              "ensureCalls": 0,
+              "loadId": "6a67efe17e2d41fcae016f017cca7936",
+              "overlay": "Visible",
+              "loadingText": "",
+              "closeInterval": null,
+              "failed": false
+            }
+          },
+          {
+            "stage": "ensure-pending",
+            "before": {
+              "session": "bdac46e598574794aaef90ba7da2edd6",
+              "source": "",
+              "activationEpoch": 1,
+              "navEpoch": 0,
+              "ClosedCount": 0,
+              "pending": true,
+              "closeRequest": "00c6b9e311f14ce0b6b3ced8acca18d0",
+              "closeTimer": true,
+              "ready": false,
+              "ensureCalls": 1,
+              "loadId": "e23a882c73504dd18d6659ebc63a3de8",
+              "overlay": "Visible",
+              "loadingText": "",
+              "closeInterval": 1500,
+              "failed": false
+            },
+            "after": {
+              "session": "bdac46e598574794aaef90ba7da2edd6",
+              "source": "",
+              "activationEpoch": 1,
+              "navEpoch": 0,
+              "ClosedCount": 1,
+              "pending": false,
+              "closeRequest": "00c6b9e311f14ce0b6b3ced8acca18d0",
+              "closeTimer": false,
+              "ready": false,
+              "ensureCalls": 1,
+              "loadId": "e23a882c73504dd18d6659ebc63a3de8",
+              "overlay": "Visible",
+              "loadingText": "",
+              "closeInterval": null,
+              "failed": false
+            }
+          }
+        ],
+        "boundary": "EnsureCore TaskCompletionSource gate; dispatcher ticks manual; not native timing measurement"
+      }
+    },
+    {
+      "id": "H06-READFAIL-PROTECT",
+      "pass": true,
+      "expected": "specified behavior",
+      "actual": {
+        "response": {
+          "protocol": "lyra-reader",
+          "version": 3,
+          "type": "response",
+          "requestId": "audit-23",
+          "sessionId": "80a6338781854331975e2f6d8afe7f5e",
+          "ok": false,
+          "error": {
+            "code": "PREFS_UNREADABLE",
+            "message": "阅读设置暂时不可读，已停止写入以保护原文件"
+          }
+        },
+        "original": {
+          "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r8\\host-audit\\runs\\main\\bin\\data\\reader\\epub\\preferences.json",
+          "raw": "{\r\n  \"version\": 1,\r\n  \"revision\": 3,\r\n  \"preferences\": {\r\n    \"fontSize\": 28\r\n  },\r\n  \"fieldSequences\": {},\r\n  \"preferenceOrders\": {\r\n    \"fontSize\": 22\r\n  },\r\n  \"updatedAt\": \"2026-10-29T11:34:47.2248045Z\"\r\n}"
+        },
+        "file": {
+          "version": 1,
+          "revision": 3,
+          "preferences": {
+            "fontSize": 28
+          },
+          "fieldSequences": {},
+          "preferenceOrders": {
+            "fontSize": 22
+          },
+          "updatedAt": "2026-10-29T11:34:47.2248045Z"
+        }
+      }
+    },
+    {
+      "id": "J18-PAGE-INPUT-AFTER-FINALIZE",
+      "pass": true,
+      "expected": "Pending pageInput debounce must not mutate position after successful finalize",
+      "actual": {
+        "ack": [
+          {
+            "type": "host.finalized",
+            "requestId": "76cbc15b85004e76953929a1f4bf9e5f",
+            "sessionId": "4126e880bcce415c8b14d53e8e578337",
+            "ok": true,
+            "revision": 1,
+            "closeDiagnostics": []
+          }
+        ],
+        "afterPage": 8,
+        "modified": false,
+        "positions": [
+          {
+            "protocol": "lyra-reader",
+            "version": 3,
+            "type": "state.savePosition",
+            "requestId": "req-5595e675-bca3-40fc-9500-766fec24f9a1",
+            "sessionId": "4126e880bcce415c8b14d53e8e578337",
+            "bookId": "sha256:fb8e0cf947fc4d790411c49b34bb806de72610de27632d3885d87e69d73505d8",
+            "position": {
+              "spineHref": "a.xhtml",
+              "spineIndex": 0,
+              "locator": {
+                "textOffset": 800,
+                "quote": "synthetic",
+                "chapterFraction": 0.42105263157894735
+              },
+              "chapterFraction": 0.42105263157894735,
+              "savedAt": "2023-11-14T22:13:20.000Z"
+            },
+            "interactionToken": 1,
+            "sequence": 1700000000000000,
+            "operationId": "pos-op-33c59a4c-6d98-48b6-a49c-a9f6e22ed2e1"
+          }
+        ],
+        "disk": {
+          "version": 1,
+          "revision": 1,
+          "positionRevision": 1,
+          "metadataRevision": 0,
+          "interaction": 1,
+          "interactionOwner": "4126e880bcce415c8b14d53e8e578337",
+          "position": {
+            "spineHref": "a.xhtml",
+            "spineIndex": 0,
+            "locator": {
+              "textOffset": 800,
+              "quote": "synthetic",
+              "chapterFraction": 0.42105263157894735
+            },
+            "chapterFraction": 0.42105263157894735,
+            "savedAt": "2023-11-14T22:13:20.000Z"
+          },
+          "positionToken": 1,
+          "positionSequence": 1700000000000000,
+          "bookmarks": [],
+          "bookmarksRevision": 0,
+          "positionSession": "4126e880bcce415c8b14d53e8e578337",
+          "positionSavedAt": "2026-10-29T11:34:47.2348618Z"
+        },
+        "host": {
+          "session": "4126e880bcce415c8b14d53e8e578337",
+          "source": "https://lyra-extension-d019dbb6.local/index.html?sessionId=4126e880bcce415c8b14d53e8e578337&loadId=385f4f839e8c44ffa7f6d849d2aa74be",
+          "activationEpoch": 1,
+          "navEpoch": 1,
+          "ClosedCount": 1,
+          "pending": false,
+          "closeRequest": "76cbc15b85004e76953929a1f4bf9e5f",
+          "closeTimer": false,
+          "ready": false,
+          "ensureCalls": 1,
+          "loadId": "385f4f839e8c44ffa7f6d849d2aa74be",
+          "overlay": "Collapsed",
+          "loadingText": "正在打开…",
+          "closeInterval": null,
+          "failed": false
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,309 @@
+{
+  "evidenceKind": "Original frozen C# real processes and isolated true files; UI event doubles; disclosed grant-age reflection",
+  "results": [
+    {
+      "id": "B01-RESTART-MIGRATION",
+      "pass": true,
+      "actual": {
+        "pid1": 54792,
+        "pid2": 18252,
+        "g": {
+          "protocol": "lyra-reader",
+          "version": 2,
+          "type": "response",
+          "requestId": "boundary-2",
+          "sessionId": "2c6098a4b82449c2a6204c9b6af4c9e5",
+          "ok": true,
+          "result": {
+            "grant": "pg-57d6c64e69ca48d0828bde50980e1da5",
+            "fields": [
+              "fontSize"
+            ]
+          }
+        },
+        "s": {
+          "protocol": "lyra-reader",
+          "version": 2,
+          "type": "response",
+          "requestId": "boundary-3",
+          "sessionId": "2c6098a4b82449c2a6204c9b6af4c9e5",
+          "ok": true,
+          "result": {
+            "revision": 8,
+            "applied": [
+              "fontSize"
+            ],
+            "idempotent": []
+          }
+        },
+        "first": {
+          "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\host-audit\\runs\\boundary\\restart\\data\\reader\\epub\\preferences.json",
+          "raw": "{\r\n  \"version\": 1,\r\n  \"revision\": 8,\r\n  \"preferences\": {\r\n    \"fontSize\": 28,\r\n    \"theme\": \"sepia\"\r\n  },\r\n  \"fieldSequences\": {\r\n    \"fontSize\": 639287159852507025\r\n  },\r\n  \"preferenceOrders\": {\r\n    \"fontSize\": 901\r\n  },\r\n  \"updatedAt\": \"2026-10-27T18:00:08.5906991Z\"\r\n}"
+        },
+        "next": {
+          "protocol": "lyra-reader",
+          "version": 2,
+          "type": "response",
+          "requestId": "boundary-5",
+          "sessionId": "56846dd157cc466585909ac77568f31a",
+          "ok": true,
+          "result": {
+            "grant": "pg-0f02ccc0ea4d4ad6960bc9ceac661df8",
+            "fields": [
+              "fontSize"
+            ]
+          }
+        },
+        "s2": {
+          "protocol": "lyra-reader",
+          "version": 2,
+          "type": "response",
+          "requestId": "boundary-6",
+          "sessionId": "56846dd157cc466585909ac77568f31a",
+          "ok": true,
+          "result": {
+            "revision": 9,
+            "applied": [
+              "fontSize"
+            ],
+            "idempotent": []
+          }
+        },
+        "last": {
+          "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\host-audit\\runs\\boundary\\restart\\data\\reader\\epub\\preferences.json",
+          "raw": "{\r\n  \"version\": 1,\r\n  \"revision\": 9,\r\n  \"preferences\": {\r\n    \"fontSize\": 32,\r\n    \"theme\": \"sepia\"\r\n  },\r\n  \"fieldSequences\": {\r\n    \"fontSize\": 639287159852507025\r\n  },\r\n  \"preferenceOrders\": {\r\n    \"fontSize\": 902\r\n  },\r\n  \"updatedAt\": \"2026-10-27T18:00:08.6948217Z\"\r\n}"
+        }
+      }
+    },
+    {
+      "id": "B02-TWO-PROCESS-SMALL-ORDER-COLLISION",
+      "pass": false,
+      "actual": {
+        "aPid": 52836,
+        "bPid": 74304,
+        "ga": {
+          "protocol": "lyra-reader",
+          "version": 2,
+          "type": "response",
+          "requestId": "boundary-8",
+          "sessionId": "e30d04652b0345369a19d7fc1ff00df2",
+          "ok": true,
+          "result": {
+            "grant": "pg-2211bfd4c21343d5b5b31c729f2aaa7d",
+            "fields": [
+              "fontSize"
+            ]
+          }
+        },
+        "gb": {
+          "protocol": "lyra-reader",
+          "version": 2,
+          "type": "response",
+          "requestId": "boundary-10",
+          "sessionId": "4b82fc90476449aabe03dcc1855a23ed",
+          "ok": true,
+          "result": {
+            "grant": "pg-3f2d5285627d408db90019832f7246a2",
+            "fields": [
+              "fontSize"
+            ]
+          }
+        },
+        "sa": {
+          "protocol": "lyra-reader",
+          "version": 2,
+          "type": "response",
+          "requestId": "boundary-11",
+          "sessionId": "e30d04652b0345369a19d7fc1ff00df2",
+          "ok": true,
+          "result": {
+            "revision": 1,
+            "applied": [
+              "fontSize"
+            ],
+            "idempotent": []
+          }
+        },
+        "sb": {
+          "protocol": "lyra-reader",
+          "version": 2,
+          "type": "response",
+          "requestId": "boundary-12",
+          "sessionId": "4b82fc90476449aabe03dcc1855a23ed",
+          "ok": false,
+          "error": {
+            "code": "PREFERENCE_CONFLICT",
+            "message": "同一偏好操作值冲突：fontSize"
+          }
+        },
+        "file": {
+          "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\host-audit\\runs\\boundary\\shared\\data\\reader\\epub\\preferences.json",
+          "raw": "{\r\n  \"version\": 1,\r\n  \"revision\": 1,\r\n  \"preferences\": {\r\n    \"fontSize\": 18\r\n  },\r\n  \"fieldSequences\": {},\r\n  \"preferenceOrders\": {\r\n    \"fontSize\": 1\r\n  },\r\n  \"updatedAt\": \"2026-10-27T18:00:08.8670010Z\"\r\n}"
+        },
+        "boundary": "Two real audit processes sharing isolated store; not ordinary windows in one process. Eligibility of multi-process production remains unestablished."
+      }
+    },
+    {
+      "id": "B03-GRANT-4096",
+      "pass": true,
+      "actual": {
+        "first": {
+          "protocol": "lyra-reader",
+          "version": 2,
+          "type": "response",
+          "requestId": "boundary-13",
+          "sessionId": "eb360b163408455fb5796413afd9a205",
+          "ok": true,
+          "result": {
+            "grant": "pg-734bf8f226d046fd98834e9b9d7d5a89",
+            "fields": [
+              "fontSize"
+            ]
+          }
+        },
+        "last": {
+          "protocol": "lyra-reader",
+          "version": 2,
+          "type": "response",
+          "requestId": "boundary-4108",
+          "sessionId": "eb360b163408455fb5796413afd9a205",
+          "ok": true,
+          "result": {
+            "grant": "pg-f5ffe94a73054c8db562239dfcd3171f",
+            "fields": [
+              "fontSize"
+            ]
+          }
+        },
+        "blocked": {
+          "protocol": "lyra-reader",
+          "version": 2,
+          "type": "response",
+          "requestId": "boundary-4109",
+          "sessionId": "eb360b163408455fb5796413afd9a205",
+          "ok": false,
+          "error": {
+            "code": "GRANT_LIMIT",
+            "message": "偏好授权数量达到上限，请稍后重试"
+          }
+        },
+        "older": {
+          "protocol": "lyra-reader",
+          "version": 2,
+          "type": "response",
+          "requestId": "boundary-4110",
+          "sessionId": "eb360b163408455fb5796413afd9a205",
+          "ok": false,
+          "error": {
+            "code": "PREFERENCE_STALE",
+            "message": "偏好字段已有更新的用户操作，旧提交被拒绝：fontSize"
+          }
+        },
+        "current": {
+          "protocol": "lyra-reader",
+          "version": 2,
+          "type": "response",
+          "requestId": "boundary-4111",
+          "sessionId": "eb360b163408455fb5796413afd9a205",
+          "ok": true,
+          "result": {
+            "revision": 1,
+            "applied": [
+              "fontSize"
+            ],
+            "idempotent": []
+          }
+        },
+        "freed": {
+          "protocol": "lyra-reader",
+          "version": 2,
+          "type": "response",
+          "requestId": "boundary-4112",
+          "sessionId": "eb360b163408455fb5796413afd9a205",
+          "ok": true,
+          "result": {
+            "grant": "pg-e68f19d41d9546338404fdcbf8025a8e",
+            "fields": [
+              "lineHeight"
+            ]
+          }
+        },
+        "count": {
+          "count": 4096,
+          "order": 4097
+        },
+        "behavior": "4096 incomplete grants retained; completed latest reclaimed FIFO; no random in-flight eviction"
+      }
+    },
+    {
+      "id": "B04-COMPLETED-GRANT-IDEMPOTENCE-AFTER-PRUNE",
+      "pass": false,
+      "actual": {
+        "sameOperation": {
+          "protocol": "lyra-reader",
+          "version": 2,
+          "type": "response",
+          "requestId": "boundary-4113",
+          "sessionId": "eb360b163408455fb5796413afd9a205",
+          "ok": false,
+          "error": {
+            "code": "GRANT_LIMIT",
+            "message": "偏好授权数量达到上限，请稍后重试"
+          }
+        },
+        "last": {
+          "protocol": "lyra-reader",
+          "version": 2,
+          "type": "response",
+          "requestId": "boundary-4108",
+          "sessionId": "eb360b163408455fb5796413afd9a205",
+          "ok": true,
+          "result": {
+            "grant": "pg-f5ffe94a73054c8db562239dfcd3171f",
+            "fields": [
+              "fontSize"
+            ]
+          }
+        },
+        "observedBoundary": "Idempotency lifetime under capacity pressure; old completed grant removed; retry may return GRANT_LIMIT/new identity"
+      }
+    },
+    {
+      "id": "B05-EXPIRY-RECOVERY",
+      "pass": true,
+      "actual": {
+        "expired": {
+          "protocol": "lyra-reader",
+          "version": 2,
+          "type": "response",
+          "requestId": "boundary-4114",
+          "sessionId": "eb360b163408455fb5796413afd9a205",
+          "ok": false,
+          "error": {
+            "code": "GRANT_EXPIRED",
+            "message": "偏好授权已过期，请重新修改：lineHeight"
+          }
+        },
+        "after": {
+          "protocol": "lyra-reader",
+          "version": 2,
+          "type": "response",
+          "requestId": "boundary-4115",
+          "sessionId": "eb360b163408455fb5796413afd9a205",
+          "ok": true,
+          "result": {
+            "grant": "pg-2b40b55210ca4a6c8dec3563fe13327b",
+            "fields": [
+              "fontSize"
+            ]
+          }
+        },
+        "count": {
+          "count": 4096,
+          "order": 4098
+        },
+        "injection": "Only CreatedAtUtc shifted -11m by disclosed reflection; no business method patched"
+      }
+    }
+  ]
+}

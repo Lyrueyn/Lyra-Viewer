@@ -1,0 +1,106 @@
+{
+  "generatedAt": "2026-10-26T15:19:42.923Z",
+  "evidenceKind": "Original JavaScript in isolated Node VM; no DOM/browser",
+  "results": [
+    {
+      "id": "J-LOCAL-CURSOR",
+      "defectObserved": true,
+      "details": {
+        "firstPage": {
+          "first": "bm-0",
+          "last": "bm-49",
+          "nextCursor": "50",
+          "total": 51
+        },
+        "secondPage": {
+          "first": "bm-0",
+          "last": "bm-49",
+          "nextCursor": "50",
+          "total": 51
+        }
+      }
+    },
+    {
+      "id": "J-LOCAL-CAP",
+      "defectObserved": true,
+      "details": {
+        "all501AddsResolved": true,
+        "persistedCount": 500,
+        "first": "bm-1",
+        "last": "bm-500"
+      }
+    },
+    {
+      "id": "J-LOCAL-WRITE-FAIL",
+      "defectObserved": true,
+      "details": {
+        "save": {
+          "revision": 1,
+          "mode": "local"
+        },
+        "prefs": {
+          "mode": "local"
+        },
+        "bookmark": {
+          "bookmarks": [
+            {
+              "id": "unsaved-bookmark",
+              "summary": "synthetic"
+            }
+          ],
+          "mode": "local"
+        },
+        "restored": {
+          "mode": "local",
+          "revision": 0,
+          "position": null,
+          "preferences": null,
+          "bookmarksRevision": 0,
+          "bookmarkCount": 0,
+          "interactionToken": 0
+        },
+        "statuses": []
+      }
+    },
+    {
+      "id": "J-READ-FALLBACK-MODE",
+      "defectObserved": true,
+      "details": {
+        "reportedLoadMode": "local",
+        "clientMode": "host",
+        "saveError": {
+          "code": "HOST_ERROR",
+          "message": "synthetic disk failure"
+        },
+        "sentTypes": [
+          "hello",
+          "state.load",
+          "state.savePosition"
+        ],
+        "statuses": [
+          "宿主存储读取失败，已回退到当前窗口本地存储"
+        ],
+        "localStorageEntryCount": 0
+      }
+    },
+    {
+      "id": "J-RESPONSE-VALIDATION",
+      "defectObserved": true,
+      "details": {
+        "mode": "host",
+        "accepted": {
+          "capabilities": {
+            "persistentState": true
+          }
+        },
+        "syntheticResponse": {
+          "protocol": "other-protocol",
+          "version": 99,
+          "type": "not-a-response",
+          "sessionId": "old-session"
+        },
+        "note": "Wrong envelope with matching requestId is accepted; not a claim that random request IDs collide in practice"
+      }
+    }
+  ]
+}

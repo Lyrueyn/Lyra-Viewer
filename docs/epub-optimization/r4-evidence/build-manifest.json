@@ -1,0 +1,50 @@
+{
+  "generatedAt": "2026-10-28T01:49:27.052930+08:00",
+  "r4TaskSha256": "20E37F00B70E7E7BD72CE072164049269CBE94998FBE147ABD50A7A59F989569",
+  "extension": {
+    "commit": "04f6ccb80546d6d04fe3c21f4a08775d83bfc0c6",
+    "version": "0.8.0",
+    "branch": "r4",
+    "package": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\candidates-r4\\lyra-ext-epub-0.8.0-candidate.zip",
+    "packageSha256": "b128b9dfbe9d7a1085cc3505f9b3edc645847cfa24da33958eb26edd685f184b",
+    "packageBytes": 93401
+  },
+  "host": {
+    "dllSha256": "9eba643fa6e3933b5a3f86afc1be424ffaa08a09bf11b9ac89d2c451e3a9df95",
+    "exeSha256": "d0f1bb58b07d0b6aeaeb463c841914d9594d0a803e3831fc272a6a5ffed3b335",
+    "hostBuildDll": "9eba643fa6e3933b5a3f86afc1be424ffaa08a09bf11b9ac89d2c451e3a9df95",
+    "sourceHashes": {
+      "ExtensionHostWindow_xaml": "283e3e4f682d1ca20563843e19eedd71f3829b29cb8bd69cdf1a64a42876ff88",
+      "ExtensionHostWindow_xaml_cs": "ee771ba4397c001d8ea3dcfbb5fa9b627e511d4a03f8c5fb853e21bcf2622d1c",
+      "ReaderProtocol_cs": "4c46cfddde80eb093753f114a43a52405a17fd8c9e5289b078fe6870d5669178",
+      "ReaderStateStore_cs": "c11d53dc7973c1bacfc18a7683e713c5e662054330697224911301ee78443d6b"
+    }
+  },
+  "runtime": {
+    "runDir": "D:\\Temp\\lyra_epub_r4_candidate",
+    "extensionPath": "D:\\Temp\\lyra_epub_r4_candidate\\extensions\\epub",
+    "extensionIndexSha256": "f6b244c642b1842652b4ed733116a26a3e92b1b0271bf7c1b444a1c8af3b411d",
+    "extensionReaderSha256": "659a466ff7693fbedd9a0daedbccfba5be35389e9685cccf5178a1c9084dace4",
+    "dataPath": "D:\\Temp\\lyra_epub_r4_candidate\\data",
+    "statePath": "D:\\Temp\\lyra_epub_r4_candidate\\data\\reader\\epub"
+  },
+  "tests": {
+    "hostAudit": "host-audit/r4-host-results.json; 7/7 pass",
+    "model": "model/model-results.json; 22 results, 0 FAIL, 1 OBSERVATION",
+    "readerFlow": "model/reader-flow-results.json; 8/8 pass",
+    "imageAck": "image-ack/results.json; C01-C06, 0 defects",
+    "racesV2": "races-v2/results.json; C02,C03, 0 defects",
+    "clientClose": "client-close/results.json; 4/4 pass",
+    "smoke": "reader-smoke.out; 12/12 pass",
+    "extra": "reader-extra.out; 9/9 pass",
+    "nativePendingClose": "native-final-pending-close.log; prefs lineHeight2.1 saved; host.finalized ok:true; CLOSE_ACK revision=4",
+    "nativeEarlyClose": "native-early-close.log; CLOSING then CLOSE_TIMEOUT 1.5s, window closes",
+    "compat": "compat/; R4 host + c12fe26 with/no book; original b978661 + 0.8.0 honest degradation; R4 host + R3 0.7.0 local fallback; PDF 0.3.0 with book"
+  },
+  "boundaries": [
+    "R4-01/02 actual two-window UI sequence is partial; host audit and protocol fake-client cover grant ordering/latest-pending.",
+    "A11/A22 real-book/image stress not expanded in R4; R3 evidence retained.",
+    "Search visible policy includes aria-hidden visual text; SVG symbol content excluded; documented in report.",
+    "Old/old true baseline was established in accepted R3 addendum and not rerun in R4."
+  ]
+}

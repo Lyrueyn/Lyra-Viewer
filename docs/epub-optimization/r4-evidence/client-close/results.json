@@ -1,0 +1,93 @@
+{
+  "evidenceKind": "Real Edge client + protocol v2 fake host; controlled delays/failures disclosed",
+  "results": [
+    {
+      "id": "R4-CLIENT-LATEST-PENDING-CLOSE",
+      "pass": true,
+      "detail": {
+        "prefs": {
+          "fontSize": 32
+        },
+        "finalized": {
+          "type": "host.finalized",
+          "requestId": "close-1",
+          "sessionId": "testsession",
+          "ok": true,
+          "revision": 1
+        },
+        "saves": [
+          {
+            "preferences": {
+              "fontSize": 18
+            },
+            "grants": {
+              "fontSize": "pg-1"
+            }
+          },
+          {
+            "preferences": {
+              "fontSize": 32
+            },
+            "grants": {
+              "fontSize": "pg-2"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "R4-CLIENT-FAILURE-ACK-FALSE",
+      "pass": true,
+      "detail": {
+        "finalized": {
+          "type": "host.finalized",
+          "requestId": "close-2",
+          "sessionId": "testsession",
+          "ok": false,
+          "revision": 0
+        },
+        "prefs": {},
+        "saves": 2
+      }
+    },
+    {
+      "id": "R4-CLIENT-AUTH-SEPARATE",
+      "pass": true,
+      "detail": {
+        "token1": 2,
+        "positionToken": 2,
+        "position": {
+          "spineHref": "OPS/c0.xhtml",
+          "spineIndex": 0,
+          "locator": {
+            "elementPath": null,
+            "textOffset": 433,
+            "quote": "保存位置，不以内部页号代替内容检查。 NORMAL paragraph 4: independent reading text",
+            "prefix": "保存位置，不以内部页号代替内容检查。 NORMAL parag",
+            "suffix": "raph 4: independent reading text",
+            "elementId": "",
+            "chapterFraction": 0.041666666666666664,
+            "pageIndex": 1
+          },
+          "chapterFraction": 0.041666666666666664,
+          "savedAt": "2026-10-27T17:39:55.420Z"
+        },
+        "prefs": {
+          "fontSize": 24
+        }
+      }
+    },
+    {
+      "id": "R4-LOCAL-BOOKMARK-VALIDATE",
+      "pass": true,
+      "detail": {
+        "isPersistent": false,
+        "blank": "BAD_BOOKMARK",
+        "big": "BOOKMARK_TOO_LARGE",
+        "bytes": "BOOKMARK_TOO_LARGE",
+        "valid": "ACCEPTED",
+        "count": 1
+      }
+    }
+  ]
+}

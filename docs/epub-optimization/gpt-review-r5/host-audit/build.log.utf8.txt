@@ -1,0 +1,38 @@
+dotnet : 
+At line:1 char:512
++ ... | Out-Null; dotnet build .\HostAudit.csproj --configfile .\NuGet.Conf ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+欢迎使用 .NET 10.0!
+---------------------
+SDK 版本: 10.0.301
+
+----------------
+编写第一个应用: https://aka.ms/dotnet-hello-world
+了解新增功能: https://aka.ms/dotnet-whats-new
+浏览文档: https://aka.ms/dotnet-docs
+报告问题并在 GitHub 上查找来源: https://github.com/dotnet/core
+使用 "dotnet --help" 查看可用命令或访问: https://aka.ms/dotnet-cli
+--------------------------------------------------------------------------------------
+正在检查已安装的工作负载的状态...
+----------------
+  正在确定要还原的项目…
+  已还原 F:\DSH\LocalMediaPlayer-Workspace\docs\epub-optimization\gpt-review-r5\host-audit\HostAudit.csproj (用时 52 毫秒)。
+F:\DSH\LocalMediaPlayer-Workspace\docs\epub-optimization\gpt-review-r5\host-snapshot\ReaderProtocol.cs(103,19): warning CS8625: 无法将 null 字面量转换为非 null 的引用类型。 [F:\DSH\LocalMediaPlayer-Workspace\docs\epub-optimization\gpt-review-r5\host-audit\HostAudit.csproj]
+F:\DSH\LocalMediaPlayer-Workspace\docs\epub-optimization\gpt-review-r5\host-snapshot\ReaderStateStore.cs(429,33): warning CS8600: 将 null 文本或可能的 null 值转换为不可为 null 类型。 [F:\DSH\LocalMediaPlayer-Workspace\docs\epub-optimization\gpt-review-r5\host-audit\HostAudit.csproj]
+F:\DSH\LocalMediaPlayer-Workspace\docs\epub-optimization\gpt-review-r5\host-snapshot\ReaderStateStore.cs(661,31): warning CS8600: 将 null 文本或可能的 null 值转换为不可为 null 类型。 [F:\DSH\LocalMediaPlayer-Workspace\docs\epub-optimization\gpt-review-r5\host-audit\HostAudit.csproj]
+F:\DSH\LocalMediaPlayer-Workspace\docs\epub-optimization\gpt-review-r5\host-snapshot\ExtensionHostWindow.xaml.cs(39,22): warning CS0414: 字段“ExtensionHostWindow._navComplete”已被赋值，但从未使用过它的值 [F:\DSH\LocalMediaPlayer-Workspace\docs\epub-optimization\gpt-review-r5\host-audit\HostAudit.csproj]
+  HostAudit -> F:\DSH\LocalMediaPlayer-Workspace\docs\epub-optimization\gpt-review-r5\host-audit\runs\main\bin\HostAudit.dll
+
+已成功生成。
+
+F:\DSH\LocalMediaPlayer-Workspace\docs\epub-optimization\gpt-review-r5\host-snapshot\ReaderProtocol.cs(103,19): warning CS8625: 无法将 null 字面量转换为非 null 的引用类型。 [F:\DSH\LocalMediaPlayer-Workspace\docs\epub-optimization\gpt-review-r5\host-audit\HostAudit.csproj]
+F:\DSH\LocalMediaPlayer-Workspace\docs\epub-optimization\gpt-review-r5\host-snapshot\ReaderStateStore.cs(429,33): warning CS8600: 将 null 文本或可能的 null 值转换为不可为 null 类型。 [F:\DSH\LocalMediaPlayer-Workspace\docs\epub-optimization\gpt-review-r5\host-audit\HostAudit.csproj]
+F:\DSH\LocalMediaPlayer-Workspace\docs\epub-optimization\gpt-review-r5\host-snapshot\ReaderStateStore.cs(661,31): warning CS8600: 将 null 文本或可能的 null 值转换为不可为 null 类型。 [F:\DSH\LocalMediaPlayer-Workspace\docs\epub-optimization\gpt-review-r5\host-audit\HostAudit.csproj]
+F:\DSH\LocalMediaPlayer-Workspace\docs\epub-optimization\gpt-review-r5\host-snapshot\ExtensionHostWindow.xaml.cs(39,22): warning CS0414: 字段“ExtensionHostWindow._navComplete”已被赋值，但从未使用过它的值 [F:\DSH\LocalMediaPlayer-Workspace\docs\epub-optimization\gpt-review-r5\host-audit\HostAudit.csproj]
+    4 个警告
+    0 个错误
+
+已用时间 00:00:02.36

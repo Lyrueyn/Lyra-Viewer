@@ -1,0 +1,62 @@
+{
+  "generatedAt": "2026-10-27T15:07:48.911Z",
+  "candidate": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r2\\candidate",
+  "evidenceKind": "Original reader event/lifecycle execution with controlled paginator layout and state client; no browser.",
+  "results": [
+    {
+      "id": "M19",
+      "verdict": "FAIL",
+      "title": "Old book result buttons survive actual open-file switch and operate on new book",
+      "detail": {
+        "before": {
+          "book": "OLD",
+          "results": 1
+        },
+        "retained": {
+          "book": "FRESH",
+          "query": "OLDONLY",
+          "results": 1,
+          "text": "cOLDONLY"
+        },
+        "highlightedInNewBook": [
+          "NEWNEWN"
+        ],
+        "status": "查找结果：OLDONLY",
+        "navigation": [
+          {
+            "index": 0,
+            "path": "OPS/c.xhtml",
+            "html": "<p>OLDONLY</p>"
+          },
+          {
+            "index": 0,
+            "path": "OPS/c.xhtml",
+            "html": "<p>NEWNEWNEWNEW</p>"
+          },
+          {
+            "index": 0,
+            "path": "OPS/c.xhtml",
+            "html": "<p>NEWNEWNEWNEW</p>"
+          }
+        ],
+        "boundary": "Original reader openFile/openBookBuffer/search/click code; only paginator iframe/layout and state storage dependencies replaced. No pixel assertion."
+      }
+    },
+    {
+      "id": "M20",
+      "verdict": "FAIL",
+      "title": "Changing input does not invalidate previous query until debounce runs",
+      "detail": {
+        "input": "NEWQUERY",
+        "searchInfo": "找到 1 处 · 索引 0.0 MB",
+        "results": [
+          "cOLDQUERY NEWQUERY"
+        ],
+        "highlighted": [
+          "OLDQUERY"
+        ],
+        "queryIsPendingDebounce": true
+      }
+    }
+  ]
+}

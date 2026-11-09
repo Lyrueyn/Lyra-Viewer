@@ -1,0 +1,43 @@
+{
+  "id": "B15_ACTUAL_IMAGE_ANCHOR_REOPEN",
+  "before": {
+    "page": 23,
+    "count": 24,
+    "incomplete": 0
+  },
+  "after": {
+    "page": 23,
+    "count": 24,
+    "incomplete": 0,
+    "anchor": {
+      "elementPath": [
+        104
+      ],
+      "textOffset": null,
+      "quote": "",
+      "prefix": "",
+      "suffix": "",
+      "elementId": "",
+      "chapterFraction": 1,
+      "pageIndex": 23
+    }
+  },
+  "saved": "{\"revision\":1,\"position\":{\"spineHref\":\"OPS/a.xhtml\",\"spineIndex\":0,\"locator\":{\"elementPath\":[104],\"textOffset\":null,\"quote\":\"\",\"prefix\":\"\",\"suffix\":\"\",\"elementId\":\"\",\"chapterFraction\":1,\"pageIndex\":23},\"chapterFraction\":1,\"savedAt\":\"2026-10-27T15:20:44.351Z\"},\"updatedAt\":\"2026-10-27T15:20:44.352Z\"}",
+  "reopened": {
+    "page": 0,
+    "count": 24,
+    "anchor": {
+      "elementPath": null,
+      "textOffset": 6,
+      "quote": "FIRST 段落 0 用于晚到图片的阅读位置测试，正文末页应在图片载入后",
+      "prefix": "FIRST",
+      "suffix": "段落 0 用于晚到图片的阅读位置测试，正文末页应在图片载入后",
+      "elementId": "",
+      "chapterFraction": 0,
+      "pageIndex": 0
+    }
+  },
+  "lateRequests": 4,
+  "defect": true,
+  "note": "Actual chapter-prev action saves mixed chapter image-only last page, then browser reload tests original saved locator. Image responses complete in 50ms."
+}

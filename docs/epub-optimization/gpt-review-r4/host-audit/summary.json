@@ -1,0 +1,353 @@
+{
+  "counts": [
+    {
+      "run": "main",
+      "observations": 25,
+      "pass": 20,
+      "unmet": 5,
+      "probeErrors": 0
+    },
+    {
+      "run": "boundary",
+      "observations": 5,
+      "pass": 3,
+      "unmet": 2,
+      "probeErrors": 0
+    },
+    {
+      "run": "supplement",
+      "observations": 6,
+      "pass": 2,
+      "unmet": 4,
+      "probeErrors": 0
+    },
+    {
+      "run": "capacity-ack",
+      "observations": 1,
+      "pass": 0,
+      "unmet": 1,
+      "probeErrors": 0
+    },
+    {
+      "run": "capacity-burst",
+      "observations": 1,
+      "pass": 0,
+      "unmet": 1,
+      "probeErrors": 0
+    },
+    {
+      "run": "regression",
+      "observations": 5,
+      "pass": 5,
+      "unmet": 0,
+      "probeErrors": 0
+    }
+  ],
+  "total": 43,
+  "pass": 30,
+  "unmet": 13,
+  "probeErrors": 0,
+  "rows": [
+    {
+      "id": "J01-OPAQUE-DEFAULT-UI",
+      "pass": true,
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\host-audit\\runs\\main\\results.json",
+      "line": 5,
+      "probeError": null
+    },
+    {
+      "id": "J02-EMPTY-WINDOW",
+      "pass": true,
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\host-audit\\runs\\main\\results.json",
+      "line": 63,
+      "probeError": null
+    },
+    {
+      "id": "J03-POSITION-PREF-SEPARATE",
+      "pass": true,
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\host-audit\\runs\\main\\results.json",
+      "line": 132,
+      "probeError": null
+    },
+    {
+      "id": "J04-FINALIZE-18-INFLIGHT-32",
+      "pass": true,
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\host-audit\\runs\\main\\results.json",
+      "line": 255,
+      "probeError": null
+    },
+    {
+      "id": "J05-REAL-WRITEFAIL-CLOSE",
+      "pass": true,
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\host-audit\\runs\\main\\results.json",
+      "line": 339,
+      "probeError": null
+    },
+    {
+      "id": "J06-NOCHANGE-CLOSE",
+      "pass": true,
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\host-audit\\runs\\main\\results.json",
+      "line": 383,
+      "probeError": null
+    },
+    {
+      "id": "J07-ACK-LOSS-RETRY",
+      "pass": true,
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\host-audit\\runs\\main\\results.json",
+      "line": 411,
+      "probeError": null
+    },
+    {
+      "id": "J08-OLD-GRANT-BLOCKS-INDEPENDENT-FIELD",
+      "pass": false,
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\host-audit\\runs\\main\\results.json",
+      "line": 474,
+      "probeError": null
+    },
+    {
+      "id": "J09-DELAY-GRANT-ORDER",
+      "pass": true,
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\host-audit\\runs\\main\\results.json",
+      "line": 541,
+      "probeError": null
+    },
+    {
+      "id": "J10-IMAGE-ACK-OPERATION",
+      "pass": true,
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\host-audit\\runs\\main\\results.json",
+      "line": 631,
+      "probeError": null
+    },
+    {
+      "id": "J11-POSITION-TOKEN-REVERSE-REPLIES",
+      "pass": false,
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\host-audit\\runs\\main\\results.json",
+      "line": 716,
+      "probeError": null
+    },
+    {
+      "id": "J12-FAILED-100-DISK-900",
+      "pass": true,
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\host-audit\\runs\\main\\results.json",
+      "line": 839,
+      "probeError": null
+    },
+    {
+      "id": "J13-CORRUPT-A-HEALTHY-B",
+      "pass": true,
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\host-audit\\runs\\main\\results.json",
+      "line": 862,
+      "probeError": null
+    },
+    {
+      "id": "J14-SAME-BOOK-READ-RECOVERY",
+      "pass": false,
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\host-audit\\runs\\main\\results.json",
+      "line": 926,
+      "probeError": null
+    },
+    {
+      "id": "J15-BOOKMARK-MATRIX",
+      "pass": true,
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\host-audit\\runs\\main\\results.json",
+      "line": 968,
+      "probeError": null
+    },
+    {
+      "id": "J16-V1-R3-CLIENT-NEGOTIATION",
+      "pass": true,
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\host-audit\\runs\\main\\results.json",
+      "line": 1205,
+      "probeError": null
+    },
+    {
+      "id": "J17-CAPS-NEGOTIATION",
+      "pass": true,
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\host-audit\\runs\\main\\results.json",
+      "line": 1224,
+      "probeError": null
+    },
+    {
+      "id": "H01-FIELD-SESSION-OP",
+      "pass": true,
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\host-audit\\runs\\main\\results.json",
+      "line": 1246,
+      "probeError": null
+    },
+    {
+      "id": "H01-SCOPE-BOUND",
+      "pass": false,
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\host-audit\\runs\\main\\results.json",
+      "line": 1330,
+      "probeError": null
+    },
+    {
+      "id": "H02-GRANT-EPOCH",
+      "pass": true,
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\host-audit\\runs\\main\\results.json",
+      "line": 1364,
+      "probeError": null
+    },
+    {
+      "id": "H03-NEW-UNSAVED-GRANT",
+      "pass": true,
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\host-audit\\runs\\main\\results.json",
+      "line": 1399,
+      "probeError": null
+    },
+    {
+      "id": "H04-CLOSE-STRICT",
+      "pass": true,
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\host-audit\\runs\\main\\results.json",
+      "line": 1461,
+      "probeError": null
+    },
+    {
+      "id": "H05-EARLY-CLOSE",
+      "pass": true,
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\host-audit\\runs\\main\\results.json",
+      "line": 1530,
+      "probeError": null
+    },
+    {
+      "id": "H06-READFAIL-PROTECT",
+      "pass": true,
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\host-audit\\runs\\main\\results.json",
+      "line": 1594,
+      "probeError": null
+    },
+    {
+      "id": "J18-PAGE-INPUT-AFTER-FINALIZE",
+      "pass": false,
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\host-audit\\runs\\main\\results.json",
+      "line": 1629,
+      "probeError": null
+    },
+    {
+      "id": "B01-RESTART-MIGRATION",
+      "pass": true,
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\host-audit\\runs\\boundary\\results.json",
+      "line": 5,
+      "probeError": null
+    },
+    {
+      "id": "B02-TWO-PROCESS-SMALL-ORDER-COLLISION",
+      "pass": false,
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\host-audit\\runs\\boundary\\results.json",
+      "line": 79,
+      "probeError": null
+    },
+    {
+      "id": "B03-GRANT-4096",
+      "pass": true,
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\host-audit\\runs\\boundary\\results.json",
+      "line": 147,
+      "probeError": null
+    },
+    {
+      "id": "B04-COMPLETED-GRANT-IDEMPOTENCE-AFTER-PRUNE",
+      "pass": false,
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\host-audit\\runs\\boundary\\results.json",
+      "line": 239,
+      "probeError": null
+    },
+    {
+      "id": "B05-EXPIRY-RECOVERY",
+      "pass": true,
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\host-audit\\runs\\boundary\\results.json",
+      "line": 272,
+      "probeError": null
+    },
+    {
+      "id": "S01-MUTUALLY-EXCLUSIVE-FOCUS",
+      "pass": false,
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\host-audit\\runs\\supplement\\results.json",
+      "line": 5,
+      "probeError": null
+    },
+    {
+      "id": "S02-PAGE-DEBOUNCE-DURING-CLOSE",
+      "pass": false,
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\host-audit\\runs\\supplement\\results.json",
+      "line": 98,
+      "probeError": null
+    },
+    {
+      "id": "S03-HOST-FAILED-POSITION-REOPEN",
+      "pass": false,
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\host-audit\\runs\\supplement\\results.json",
+      "line": 207,
+      "probeError": null
+    },
+    {
+      "id": "S04-THEME-THREE-FIELDS",
+      "pass": true,
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\host-audit\\runs\\supplement\\results.json",
+      "line": 241,
+      "probeError": null
+    },
+    {
+      "id": "S05-NEW-GRANT-WRITE-FAIL-OLD-PENDING",
+      "pass": false,
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\host-audit\\runs\\supplement\\results.json",
+      "line": 319,
+      "probeError": null
+    },
+    {
+      "id": "S06-CAPACITY-UI-PENDING",
+      "pass": true,
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\host-audit\\runs\\supplement\\results.json",
+      "line": 394,
+      "probeError": null
+    },
+    {
+      "id": "C01-ACK-LOSS-AFTER-CAPACITY-PRUNE",
+      "pass": false,
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\host-audit\\runs\\capacity-ack\\results.json",
+      "line": 5,
+      "probeError": null
+    },
+    {
+      "id": "C02-4097-UNCOMPLETED-UI-INPUTS",
+      "pass": false,
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\host-audit\\runs\\capacity-burst\\results.json",
+      "line": 5,
+      "probeError": null
+    },
+    {
+      "id": "R01-POSITION-OWNER-SEQUENCE-UNICODE",
+      "pass": true,
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\host-audit\\runs\\regression\\results.json",
+      "line": 5,
+      "probeError": null
+    },
+    {
+      "id": "R02-REAL-BOOK-READFAIL-UNKNOWN-CORRUPT",
+      "pass": true,
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\host-audit\\runs\\regression\\results.json",
+      "line": 69,
+      "probeError": null
+    },
+    {
+      "id": "R03-LARGE-BOOKMARK-PAGES",
+      "pass": true,
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\host-audit\\runs\\regression\\results.json",
+      "line": 108,
+      "probeError": null
+    },
+    {
+      "id": "R04-STRICT-CLIENT-RESPONSE",
+      "pass": true,
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\host-audit\\runs\\regression\\results.json",
+      "line": 130,
+      "probeError": null
+    },
+    {
+      "id": "R05-MISSING-EPOCH-AND-RELOAD",
+      "pass": true,
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\host-audit\\runs\\regression\\results.json",
+      "line": 142,
+      "probeError": null
+    }
+  ]
+}

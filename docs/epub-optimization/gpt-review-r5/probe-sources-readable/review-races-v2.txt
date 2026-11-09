@@ -1,0 +1,209 @@
+/* Independent R3 browser regressions;
+ originals served unchanged. Controlled delays are explicit. */
+const fs=require('node:fs'),path=require('node:path'),http=require('node:http');
+
+const {chromium}=require(process.env.PLAYWRIGHT_MODULE);
+
+const root=__dirname, app=path.join(root,'candidate'), out=path.join(root,'race-evidence-v2');
+fs.mkdirSync(out,{recursive:true});
+
+const Zip=require(path.join(app,'lib/jszip.min.js'));
+
+const png=Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAFgwJ/lzcxkAAAAABJRU5ErkJggg==','base64');
+
+async function book(title,chapters,extras=[]){const z=new Zip();
+z.file('mimetype','application/epub+zip');
+z.file('META-INF/container.xml','<container xmlns="urn:oasis:names:tc:opendocument:xmlns:container"><rootfiles><rootfile full-path="OPS/book.opf"/></rootfiles></container>');
+z.file('OPS/book.opf',`<package xmlns="http://www.idpf.org/2007/opf" version="3.0"><metadata xmlns:dc="http://purl.org/dc/elements/1.1/"><dc:title>${title}</dc:title></metadata><manifest>${chapters.map((_,i)=>`<item id="c${i}" href="c${i}.xhtml" media-type="application/xhtml+xml"/>`).join('')}${extras.map(n=>`<item id="${n.replace(/\W/g,'')}" href="${n}" media-type="image/png"/>`).join('')}</manifest><spine>${chapters.map((_,i)=>`<itemref idref="c${i}"/>`).join('')}</spine></package>`);
+chapters.forEach((body,i)=>z.file(`OPS/c${i}.xhtml`,`<html xmlns="http://www.w3.org/1999/xhtml"><head><title>${title}-${i}</title></head><body>${body}</body></html>`));
+extras.forEach(n=>z.file('OPS/'+n,png));
+return z.generateAsync({type:'nodebuffer'});
+}
+const paras=(prefix,n=100)=>Array.from({length:n},(_,i)=>`<p>${prefix} paragraph ${i}: independent reading text repeated at each position. 本段用于确认真实可见文字和保存位置，不以内部页号代替内容检查。</p>`).join('');
+
+(async()=>{
+ const fixtures={normal:await book('NORMAL',[paras('NORMAL'),paras('NORMAL2')]),fresh:await book('FRESH',[paras('FRESH'),paras('FRESH2')]),oldimg:await book('OLD',[`<img id="old0" src="old0.png" width="500" height="600"/>`,`<img id="old1" src="old1.png" width="500" height="600"/>`],['old0.png','old1.png']),newimg:await book('NEW',[`<img id="new0" src="new0.png" width="500" height="600"/>`,`<img id="new1" src="new1.png" width="500" height="600"/>`],['new0.png','new1.png']),image:await book('IMAGES',[Array.from({length:10},(_,i)=>`<div><img id="image${i}" src="pic.png" width="700" height="1000"/></div>`).join('')],['pic.png']),search:await book('SEARCH',['<p>START</p>','<p>OLDQUERY target</p>'+paras('TARGET')]),hidden:await book('HIDDEN',['<p id="visibleAB">A<br hidden="hidden"/>B</p><svg xmlns="http://www.w3.org/2000/svg" width="300" height="100"><text id="svgHidden" visibility="hidden">INVISIBLE_TOKEN</text><defs><text>DEF_TOKEN</text></defs><text id="shown" x="0" y="40">VISIBLE_TOKEN</text></svg>'])};
+
+ for(const[k,v]of Object.entries(fixtures))fs.writeFileSync(path.join(out,k+'.epub'),v);
+
+ const server=http.createServer((req,res)=>{let p=new URL(req.url,'http://local').pathname;
+if(p.startsWith('/fixtures/')){const b=fixtures[path.basename(p,'.epub')];
+res.writeHead(b?200:404,{'Content-Type':'application/epub+zip'});
+return res.end(b);
+}const f=path.join(app,p==='/'?'index.html':decodeURIComponent(p));
+if(!f.startsWith(app)||!fs.existsSync(f)||!fs.statSync(f).isFile()){res.writeHead(404);
+return res.end();
+}res.writeHead(200,{'Content-Type':({'.js':'application/javascript','.css':'text/css','.html':'text/html'})[path.extname(f)]||'application/octet-stream'});
+fs.createReadStream(f).pipe(res);
+});
+await new Promise(r=>server.listen(0,'127.0.0.1',r));
+
+ const base='http://127.0.0.1:'+server.address().port,browser=await chromium.launch({headless:true,executablePath:process.env.LYRA_BROWSER_PATH});
+const results=[];
+
+ async function test(id,fn){if(!id.startsWith('C02_')&&!id.startsWith('C03_'))return;
+const c=await browser.newContext({viewport:{width:1400,height:900}});
+await c.addInitScript(()=>window.__LYRA_TEST_MODE__=true);
+const p=await c.newPage();
+p.setDefaultTimeout(15000);
+try{const value=await fn(p);
+results.push({id,...value});
+console.log(JSON.stringify({id,...value}));
+}catch(e){const item={id,probeError:e.message,stack:(e.stack||'').split('\n').slice(0,4)};
+results.push(item);
+console.log(JSON.stringify(item));
+}finally{await c.close();
+}}
+ const ready=p=>p.waitForFunction(()=>window.__lyraDebug?.state.ready&&!window.__lyraDebug?.state.busy);
+
+ async function open(p,k){await p.goto(base+'/index.html?book=fixtures/'+k+'.epub&name='+k+'.epub');
+await ready(p);
+await p.waitForTimeout(120);
+}
+ async function upload(p,k){await p.locator('#file').setInputFiles({name:k+'.epub',mimeType:'application/epub+zip',buffer:fixtures[k]});
+await p.waitForFunction(t=>window.__lyraDebug?.state.ready&&window.__lyraDebug?.state.book?.title===t,({normal:'NORMAL',fresh:'FRESH',newimg:'NEW',oldimg:'OLD'})[k]);
+await p.waitForTimeout(120);
+}
+ async function go(p,n){await p.locator('#pageInput').fill(String(n));
+await p.locator('#pageInput').press('Enter');
+}
+ async function search(p,q){await p.locator('#findBtn').click();
+await p.locator('#searchInput').fill(q);
+await p.locator('#searchInput').press('Enter');
+await p.waitForFunction(()=>!(/正在/.test(document.getElementById('searchInfo').textContent)));
+}
+ try{
+ await test('C01_CORRUPT_BOOK_BLOCKS_OTHER_BOOK',async p=>{await open(p,'normal');
+const oldId=await p.evaluate(()=>{const s=__lyraDebug.state;
+localStorage.setItem('lyra_epub_state_'+s.bookId,'{bad');
+localStorage.setItem('lyra_epub_bookmarks_'+s.bookId,'{bad');
+return s.bookId;
+});
+await p.reload();
+await ready(p);
+await upload(p,'fresh');
+await go(p,3);
+await p.locator('#addBookmarkBtn').click();
+await p.waitForTimeout(650);
+const v=await p.evaluate(oldId=>({book:__lyraDebug.state.book.title,flags:__lyraDebug.state.client._localCorrupt,newPosition:localStorage.getItem('lyra_epub_state_'+__lyraDebug.state.bookId),newBookmarks:localStorage.getItem('lyra_epub_bookmarks_'+__lyraDebug.state.bookId),status:document.getElementById('statusText').textContent,saveState:document.getElementById('saveStateText').textContent,oldPosition:localStorage.getItem('lyra_epub_state_'+oldId)}),oldId);
+return{...v,defect:!v.newPosition&&!v.newBookmarks,note:'Corrupt data belongs only to NORMAL;
+ FRESH has distinct bytes/id and no corrupt state.'};
+});
+
+ await test('C02_FAILED_SNAPSHOT_REOPEN_VISIBLE_POSITION',async p=>{await open(p,'normal');
+const oldId=await p.evaluate(()=>{const c=__lyraDebug.state.client,orig=c.savePosition.bind(c);
+window.__origSave=orig;
+c.savePosition=async()=>{throw Object.assign(new Error('controlled temporary write failure'),{code:'LOCAL_WRITE_FAILED'});
+};
+return __lyraDebug.state.bookId;
+});
+await go(p,5);
+await p.waitForTimeout(650);
+const before=await p.evaluate(()=>({page:__lyraDebug.paginator.pageIndex,anchor:__lyraDebug.paginator.captureAnchor()}));
+await upload(p,'fresh');
+const retained=await p.evaluate(()=>{__lyraDebug.state.client.savePosition=window.__origSave;
+return __lyraDebug.state.failedSaves.size;
+});
+await upload(p,'normal');
+await p.waitForTimeout(250);
+const after=await p.evaluate(id=>({page:__lyraDebug.paginator.pageIndex,anchor:__lyraDebug.paginator.captureAnchor(),saved:JSON.parse(localStorage.getItem('lyra_epub_state_'+id)||'null'),pending:__lyraDebug.state.failedSaves.size}),oldId);
+return{before,retained,after,defect:after.page!==before.page,note:'Failure snapshot now survives and is retried, but check the actual reader destination on reopening, not only disk.'};
+});
+
+ await test('C03_OLD_IMAGE_SAVE_ACK_CLEARS_NEW_PAGE',async p=>{await open(p,'image');
+await p.evaluate(()=>{const c=__lyraDebug.state.client,orig=c.savePosition.bind(c);
+window.__saves=[];
+c.savePosition=async(...args)=>{const result=await orig(...args);
+window.__saves.push(args[1]);
+if(window.__saves.length===1){window.__waiting=true;
+await new Promise(r=>window.__release=r);
+}return result;
+};
+});
+await go(p,2);
+await p.waitForFunction(()=>window.__waiting);
+const before=await p.evaluate(()=>__lyraDebug.paginator.captureAnchor());
+const atRelease=await p.evaluate(async()=>{const input=document.getElementById('pageInput');
+input.value='3';
+input.dispatchEvent(new KeyboardEvent('keydown',{key:'Enter',bubbles:true,cancelable:true}));
+await Promise.resolve();
+const a=__lyraDebug.paginator.captureAnchor();
+window.__release();
+return a;
+});
+await p.waitForTimeout(650);
+const after=await p.evaluate(()=>({current:__lyraDebug.paginator.captureAnchor(),modified:__lyraDebug.state.modified,saves:window.__saves,saved:JSON.parse(localStorage.getItem('lyra_epub_state_'+__lyraDebug.state.bookId)||'null')}));
+return{before,atRelease,after,defect:after.saved?.position?.locator?.pageIndex!==after.current.pageIndex,note:'Controlled delay only after first actual local write, before its acknowledgement;
+ next user input is a different pure-image page.'};
+});
+
+ await test('C04_OLD_BOOK_RELEASE_REVOKES_NEW_IMAGE',async p=>{await open(p,'oldimg');
+await p.evaluate(()=>{const b=__lyraDebug.state.book,orig=b.readBytes.bind(b);
+b.readBytes=async(...args)=>{if(args[0].endsWith('old1.png')){window.__oldWait=true;
+await new Promise(r=>window.__releaseOld=r);
+}return orig(...args);
+};
+const revoke=URL.revokeObjectURL.bind(URL);
+window.__revoked=[];
+URL.revokeObjectURL=u=>{window.__revoked.push(u);
+return revoke(u);
+};
+});
+await p.locator('#chapterNext').click();
+await p.waitForFunction(()=>window.__oldWait);
+await upload(p,'newimg');
+await p.locator('#chapterNext').click();
+await p.waitForFunction(()=>__lyraDebug.state.ready&&__lyraDebug.state.spineIndex===1);
+const before=await p.evaluate(async()=>{const img=__lyraDebug.paginator.doc.querySelector('#new1');
+return{url:img.src,naturalWidth:img.naturalWidth,owner:__lyraDebug.state.prepared.owner,resources:[...__lyraDebug.state.book._resources.keys()],fetchOK:(await fetch(img.src)).ok};
+});
+await p.evaluate(()=>window.__releaseOld());
+await p.waitForTimeout(300);
+const after=await p.evaluate(async()=>{const img=__lyraDebug.paginator.doc.querySelector('#new1');
+let fetchOK=false;
+try{fetchOK=(await fetch(img.src)).ok;
+}catch{}return{book:__lyraDebug.state.book.title,ready:__lyraDebug.state.ready,url:img.src,naturalWidth:img.naturalWidth,resources:[...__lyraDebug.state.book._resources.keys()],revoked:window.__revoked,fetchOK};
+});
+return{before,after,defect:before.fetchOK&&!after.fetchOK,note:'A displayed image may remain decoded in the browser cache;
+ this asserts current referenced blob becomes revoked and unfetchable, not that already painted pixels instantly vanish.'};
+});
+
+ await test('C05_SEARCH_CLICK_OLD_QUERY_COMMITS_AFTER_INPUT',async p=>{await open(p,'search');
+await search(p,'OLDQUERY');
+await p.evaluate(()=>{const b=__lyraDebug.state.book,orig=b.readText.bind(b);
+b.readText=async(...args)=>{if(args[0].endsWith('c1.xhtml')&&!window.__released){window.__clickWait=true;
+await new Promise(r=>window.__releaseClick=()=>{window.__released=true;
+r();
+});
+}return orig(...args);
+};
+});
+await p.locator('.search-result').first().click();
+await p.waitForFunction(()=>window.__clickWait);
+await p.locator('#searchInput').fill('NEWQUERY');
+await p.evaluate(()=>window.__releaseClick());
+await p.waitForTimeout(140);
+const v=await p.evaluate(()=>({input:document.getElementById('searchInput').value,queryGen:__lyraDebug.state.searchGen,active:__lyraDebug.state.activeSearchResult,highlights:[...__lyraDebug.paginator.doc.querySelectorAll('.lyra-search-mark')].map(x=>x.textContent),spine:__lyraDebug.state.spineIndex}));
+await p.screenshot({path:path.join(out,'stale-search-click.png')});
+return{...v,defect:v.highlights.join('').includes('OLDQUERY'),note:'New input invalidates old query immediately;
+ old chapter read is released before new 300ms debounce fires.'};
+});
+
+ await test('C06_VISIBLE_MODEL_HIDDEN_BREAK_AND_SVG',async p=>{await open(p,'hidden');
+const geom=await p.evaluate(()=>{const d=__lyraDebug.paginator.doc;
+return{AB:d.querySelector('#visibleAB').innerText,breakDisplay:d.defaultView.getComputedStyle(d.querySelector('br')).display,svgVisibility:d.defaultView.getComputedStyle(d.querySelector('#svgHidden')).visibility};
+});
+await search(p,'AB');
+const ab=await p.locator('.search-result').count();
+await search(p,'INVISIBLE_TOKEN');
+const svg=await p.locator('.search-result').count();
+return{geom,abMatches:ab,invisibleSvgMatches:svg,defect:ab===0||svg>0};
+});
+
+ }finally{await browser.close();
+server.close();
+fs.writeFileSync(path.join(out,'results.json'),JSON.stringify({evidenceKind:'Real Edge, frozen candidate;
+ controlled delays/faults documented per case',results},null,2));
+}
+})();
+

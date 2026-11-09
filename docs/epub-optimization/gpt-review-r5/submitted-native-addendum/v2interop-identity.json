@@ -1,0 +1,13 @@
+﻿{
+    "capturedAt":  "2026-10-28T03:58:31.9827472+08:00",
+    "pid":  43440,
+    "runDir":  "D:\\Temp\\lyra_r5_supp_addendum_v2interop",
+    "hostDll":  "202954E5930FCDC7A50BD96975B84A12CBF7AA4375AC7334832D28A45F5F9480",
+    "hostExe":  "D0F1BB58B07D0B6AEAEB463C841914D9594D0A803E3831FC272A6A5FFED3B335",
+    "extVersion":  "0.8.0",
+    "extReader":  "659A466FF7693FBEDD9A0DAEDBCCFBA5BE35389E9685CCCF5178A1C9084DACE4",
+    "extState":  "A790F06F1585291094596F5E0C6075EEEEEF94E8EFF5A7347AE760EC4149FCC0",
+    "extPackage":  "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\candidates-r4\\lyra-ext-epub-0.8.0-candidate.zip",
+    "extPackageSha":  "B128B9DFBE9D7A1085CC3505F9B3EDC645847CFA24DA33958EB26EDD685F184B",
+    "dataRoot":  "D:\\Temp\\lyra_r5_supp_addendum_v2interop\\data"
+}

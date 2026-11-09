@@ -1,0 +1,24 @@
+{
+  "comparisons": [
+    {
+      "name": "audit-models.cjs",
+      "r3Sha256": "e7ab0771b38de81d8018e2e64fc4be907e84db0cfaf0b09a37fce22e7d769add",
+      "submittedSha256": "e7ab0771b38de81d8018e2e64fc4be907e84db0cfaf0b09a37fce22e7d769add",
+      "byteIdentical": true
+    },
+    {
+      "name": "audit-reader-flow.cjs",
+      "r3Sha256": "c92c11714d16877577feb60fa49941ddb02f41fbf3208c24801f3f5f770782b7",
+      "submittedSha256": "c92c11714d16877577feb60fa49941ddb02f41fbf3208c24801f3f5f770782b7",
+      "byteIdentical": true
+    },
+    {
+      "name": "audit-common.cjs",
+      "r3Sha256": "46ae10f88024f03c35c6927bf50d9c64c162a1591659d85b9129ed2801bcf5a0",
+      "submittedSha256": "5b708e69cd6e56b09d7e73cca8c3304370f3804cd0e823581c61ced47939a429",
+      "byteIdentical": false
+    }
+  ],
+  "submittedMissingR3BoundaryScript": true,
+  "note": "audit-models and audit-reader-flow exact byte equality proves no changed/deleted assertions in these two supplied scripts. Common helper changes source/output paths; copied R3 identity constants are stale."
+}

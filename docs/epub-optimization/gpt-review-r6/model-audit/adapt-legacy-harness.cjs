@@ -1,0 +1,13 @@
+'use strict';
+const fs=require('node:fs'),path=require('node:path');
+const load=n=>fs.readFileSync(path.join(__dirname,n),'utf8'),save=(n,t)=>fs.writeFileSync(path.join(__dirname,n),t);
+let flow=load('audit-reader-flow.cjs');
+flow=flow.replace("const click=id=>w.document.getElementById(id).click();", "const click=id=>w.document.getElementById(id).click();");
+flow=flow.replace("proto.captureAnchor=function()", "proto.captureView=function(){return this._activePrepared?{prepared:this._activePrepared,sectionIndex:this.sectionIndex,sectionPath:this.sectionPath,pageIndex:this.pageIndex,pageCount:this.pageCount,anchor:this.captureAnchor()}:null;};\n  proto.captureAnchor=function()");
+flow=flow.replaceAll("output('reader-flow-results.json'", "output('reader-flow-adapted-results.json'");
+save('audit-reader-flow-adapted.cjs',flow);
+let late=load('audit-r5-late-cancel.cjs');
+late=late.replace("image=this.doc.images[0];if(image)","if(this.doc.images[0])image=this.doc.images[0];if(this.doc.images[0])");
+late=late.replaceAll("output('r5-late-cancel-results.json'", "output('r5-late-cancel-adapted-results.json'");
+save('audit-r5-late-cancel-adapted.cjs',late);
+save('legacy-harness-adaptations.json',JSON.stringify({changes:[{source:'audit-reader-flow.cjs',adapted:'audit-reader-flow-adapted.cjs',reason:'Old intentional setSection double never populates _committedView. Add captureView to that same double so R6 reader can restore metadata. Assertions unchanged, all real-Paginator suites remain original.'},{source:'audit-r5-late-cancel.cjs',adapted:'audit-r5-late-cancel-adapted.cjs',reason:'R6 rollback calls resource wait on old image-free document. Preserve the already captured candidate image when that happens; dispatch remains on exact old candidate image. Assertions unchanged.'}],originalsKept:true},null,2));

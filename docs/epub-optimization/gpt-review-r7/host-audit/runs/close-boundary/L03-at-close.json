@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "revision": 1,
+  "positionRevision": 0,
+  "metadataRevision": 1,
+  "interaction": 1,
+  "interactionOwner": "b488dfaf88a0416484f9f13e544b015a",
+  "position": null,
+  "positionToken": 0,
+  "positionSequence": 0,
+  "bookmarks": [
+    {
+      "id": "bm-loyw3v28-mkp8re",
+      "_key": "a.xhtml|t10",
+      "spineHref": "a.xhtml",
+      "spineIndex": 0,
+      "chapterTitle": "Fixture",
+      "title": "Fixture",
+      "summary": "synthetic",
+      "locator": {
+        "textOffset": 10,
+        "quote": "synthetic",
+        "chapterFraction": 0.1
+      },
+      "createdAt": "2023-11-14T22:13:20.000Z"
+    }
+  ],
+  "bookmarksRevision": 1
+}

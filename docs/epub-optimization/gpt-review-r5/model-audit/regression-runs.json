@@ -1,0 +1,38 @@
+[
+  {
+    "script": "audit-models.cjs",
+    "status": 0,
+    "signal": null,
+    "log": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\model-audit\\audit-models.cjs.log"
+  },
+  {
+    "script": "audit-reader-flow.cjs",
+    "status": 0,
+    "signal": null,
+    "log": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\model-audit\\audit-reader-flow.cjs.log"
+  },
+  {
+    "script": "audit-boundaries.cjs",
+    "status": 0,
+    "signal": null,
+    "log": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\model-audit\\audit-boundaries.cjs.log"
+  },
+  {
+    "script": "audit-r4-boundaries.cjs",
+    "status": 0,
+    "signal": null,
+    "log": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\model-audit\\audit-r4-boundaries.cjs.log"
+  },
+  {
+    "script": "audit-r4-reader-stages.cjs",
+    "status": 0,
+    "signal": null,
+    "log": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\model-audit\\audit-r4-reader-stages.cjs.log"
+  },
+  {
+    "script": "audit-r4-anchor-cancel.cjs",
+    "status": 0,
+    "signal": null,
+    "log": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\model-audit\\audit-r4-anchor-cancel.cjs.log"
+  }
+]

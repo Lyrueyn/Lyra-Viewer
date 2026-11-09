@@ -1,0 +1,139 @@
+{
+  "generatedAt": "2026-10-27T16:10:14.3443603Z",
+  "baseDirectory": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\r3-host-audit\\bin\\Debug\\net10.0\\",
+  "evidenceKind": "original C# host source with headless event doubles; not native WinUI/WebView2",
+  "results": [
+    {
+      "id": "H-R3-PREF-VERSION",
+      "pass": true,
+      "details": {
+        "fv1": 639287142142979429,
+        "fv2": 639287142142979430,
+        "prefs18": {
+          "protocol": "lyra-reader",
+          "version": 1,
+          "type": "response",
+          "requestId": "cc8c74c74da04c559b37271277dde4c0",
+          "sessionId": "9d5f02bdcaa845ffafbfa4ac563764da",
+          "ok": true,
+          "result": {
+            "revision": 1,
+            "applied": [
+              "fontSize"
+            ],
+            "rejected": []
+          }
+        },
+        "prefs32": {
+          "protocol": "lyra-reader",
+          "version": 1,
+          "type": "response",
+          "requestId": "180c564e3582410a920985081dcb73c3",
+          "sessionId": "9d5f02bdcaa845ffafbfa4ac563764da",
+          "ok": true,
+          "result": {
+            "revision": 2,
+            "applied": [
+              "fontSize"
+            ],
+            "rejected": []
+          }
+        },
+        "late18": {
+          "protocol": "lyra-reader",
+          "version": 1,
+          "type": "response",
+          "requestId": "667e120f9abe41a4bdd892c4b7d72ebf",
+          "sessionId": "9d5f02bdcaa845ffafbfa4ac563764da",
+          "ok": false,
+          "error": {
+            "code": "PREFERENCE_STALE",
+            "message": "\u504F\u597D\u5B57\u6BB5\u7248\u672C\u5DF2\u8FC7\u671F\u6216\u672A\u88AB\u5BBF\u4E3B\u6388\u4E88\uFF0C\u672A\u8986\u76D6\u8F83\u65B0\u8BBE\u7F6E"
+          }
+        },
+        "forged": {
+          "protocol": "lyra-reader",
+          "version": 1,
+          "type": "response",
+          "requestId": "dc4e2ad05aab4d27b1c8d3bab682df6e",
+          "sessionId": "9d5f02bdcaa845ffafbfa4ac563764da",
+          "ok": false,
+          "error": {
+            "code": "PREFERENCE_STALE",
+            "message": "\u504F\u597D\u5B57\u6BB5\u7248\u672C\u5DF2\u8FC7\u671F\u6216\u672A\u88AB\u5BBF\u4E3B\u6388\u4E88\uFF0C\u672A\u8986\u76D6\u8F83\u65B0\u8BBE\u7F6E"
+          }
+        },
+        "finalPrefs": {
+          "fontSize": 32
+        }
+      }
+    },
+    {
+      "id": "H-R3-OLD-INTERACT",
+      "pass": true,
+      "details": {
+        "oldAct": "1",
+        "oldNav": "1",
+        "oldActivation": 1,
+        "newEpoch": 3,
+        "oldInteract": {
+          "protocol": "lyra-reader",
+          "version": 1,
+          "type": "response",
+          "requestId": "394042b89e9041e4a5814a6c7f3e8fbd",
+          "sessionId": "9d5f02bdcaa845ffafbfa4ac563764da",
+          "ok": false,
+          "error": {
+            "code": "STALE_OPERATION_EPOCH",
+            "message": "\u4EA4\u4E92\u8BF7\u6C42\u5C5E\u4E8E\u5DF2\u5931\u6548\u7684\u6FC0\u6D3B/\u5BFC\u822A\u4EE3\u6B21"
+          }
+        },
+        "newInteract": {
+          "protocol": "lyra-reader",
+          "version": 1,
+          "type": "response",
+          "requestId": "3f8b7f5408ff46639bd6be57a75180c8",
+          "sessionId": "9d5f02bdcaa845ffafbfa4ac563764da",
+          "ok": true,
+          "result": {
+            "interactionToken": 3,
+            "fieldVersion": 639287142142979431
+          }
+        }
+      }
+    },
+    {
+      "id": "H-R3-REFRESH-HELLO",
+      "pass": true,
+      "details": {
+        "oldSession": "7eef61447c914a7b84b817e98b74db07",
+        "newSession": "11a00d5c6ce449d7bc15462011829d7f",
+        "canceled": true,
+        "oldHelloRejected": true,
+        "newHelloAccepted": true
+      }
+    },
+    {
+      "id": "H-R3-FINALIZE",
+      "pass": true,
+      "details": {
+        "reqId": "ee623dfac72546329044f95b65cf3e02",
+        "emptyIgnored": true,
+        "ackClosed": true,
+        "timeoutClosed": true,
+        "navFailClosed": true,
+        "closedCount": 3
+      }
+    },
+    {
+      "id": "H-R3-IDEMPOTENT-SEQ",
+      "pass": true,
+      "details": {
+        "unicodeIdem": true,
+        "unicodeDiffRejected": true,
+        "newTokenSeqReset": true,
+        "final": "\u65B0\u8D44\u683C"
+      }
+    }
+  ]
+}

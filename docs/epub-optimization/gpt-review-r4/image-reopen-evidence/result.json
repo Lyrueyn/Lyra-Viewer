@@ -1,0 +1,45 @@
+{
+  "id": "B15_ACTUAL_IMAGE_ANCHOR_REOPEN",
+  "before": {
+    "page": 23,
+    "count": 24,
+    "incomplete": 0
+  },
+  "after": {
+    "page": 23,
+    "count": 24,
+    "incomplete": 0,
+    "anchor": {
+      "elementPath": [
+        104
+      ],
+      "textOffset": null,
+      "quote": "",
+      "prefix": "",
+      "suffix": "",
+      "elementId": "",
+      "chapterFraction": 1,
+      "pageIndex": 23
+    }
+  },
+  "saved": "{\"revision\":1,\"position\":{\"spineHref\":\"OPS/a.xhtml\",\"spineIndex\":0,\"locator\":{\"elementPath\":[104],\"textOffset\":null,\"quote\":\"\",\"prefix\":\"\",\"suffix\":\"\",\"elementId\":\"\",\"chapterFraction\":1,\"pageIndex\":23},\"chapterFraction\":1,\"savedAt\":\"2026-10-27T17:56:47.693Z\"},\"positionSequence\":1793123807693000,\"positionOperationId\":\"pos-op-b90912f5-8055-45e0-8213-820cf456f6d0\",\"updatedAt\":\"2026-10-27T17:56:47.693Z\"}",
+  "reopened": {
+    "page": 23,
+    "count": 24,
+    "anchor": {
+      "elementPath": [
+        104
+      ],
+      "textOffset": null,
+      "quote": "",
+      "prefix": "",
+      "suffix": "",
+      "elementId": "",
+      "chapterFraction": 1,
+      "pageIndex": 23
+    }
+  },
+  "lateRequests": 4,
+  "defect": false,
+  "note": "Actual chapter-prev action saves mixed chapter image-only last page, then browser reload tests original saved locator. Image responses complete in 50ms."
+}

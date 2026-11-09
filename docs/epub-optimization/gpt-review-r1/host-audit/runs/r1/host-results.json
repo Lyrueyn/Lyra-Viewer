@@ -1,0 +1,289 @@
+{
+  "generatedAt": "2026-10-26T15:16:31.3019064Z",
+  "baseDirectory": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r1\\host-audit\\runs\\r1\\",
+  "evidenceKind": "Original C# source with headless event doubles; not desktop integration",
+  "results": [
+    {
+      "id": "H-ACTIVE",
+      "defectObserved": true,
+      "details": {
+        "activeAfterDeactivated": true,
+        "ta": 1,
+        "tb": 2,
+        "inactiveToken": 3,
+        "stale": {
+          "protocol": "lyra-reader",
+          "version": 1,
+          "type": "response",
+          "requestId": "14a656299227496ba5674f698d0109fd",
+          "sessionId": "f6b23265e47d4e0c93dc0c8f00366563",
+          "ok": false,
+          "error": {
+            "code": "STALE_INTERACTION",
+            "message": "\u8BE5\u9605\u8BFB\u4F4D\u7F6E\u6765\u81EA\u65E7\u4EA4\u4E92\uFF0C\u4E0D\u80FD\u8986\u76D6\u66F4\u65B0\u7A97\u53E3\u7684\u4F4D\u7F6E"
+          }
+        },
+        "overwrite": {
+          "protocol": "lyra-reader",
+          "version": 1,
+          "type": "response",
+          "requestId": "d13a94f546b540d1b5a203576efb62ab",
+          "sessionId": "f6b23265e47d4e0c93dc0c8f00366563",
+          "ok": true,
+          "result": {
+            "revision": 6,
+            "positionToken": 3
+          }
+        },
+        "finalQuote": "A inactive overwrite"
+      }
+    },
+    {
+      "id": "H-TOKEN",
+      "defectObserved": true,
+      "details": {
+        "notOwner": {
+          "protocol": "lyra-reader",
+          "version": 1,
+          "type": "response",
+          "requestId": "ef2e96a533bc4a77b3eaeef488dc85ec",
+          "sessionId": "f6b23265e47d4e0c93dc0c8f00366563",
+          "ok": true,
+          "result": {
+            "revision": 2,
+            "positionToken": 1
+          }
+        },
+        "replay": {
+          "protocol": "lyra-reader",
+          "version": 1,
+          "type": "response",
+          "requestId": "430c5e5be0114503969b4c52a7cbfbbd",
+          "sessionId": "1188f8ef57f8414a9387786a431fd2f2",
+          "ok": true,
+          "result": {
+            "revision": 4,
+            "positionToken": 1
+          }
+        },
+        "future": {
+          "protocol": "lyra-reader",
+          "version": 1,
+          "type": "response",
+          "requestId": "edbec3393951421aa59907cf5f32e312",
+          "sessionId": "f6b23265e47d4e0c93dc0c8f00366563",
+          "ok": true,
+          "result": {
+            "revision": 5,
+            "positionToken": 101
+          }
+        },
+        "finalQuote": "ungranted future token"
+      }
+    },
+    {
+      "id": "H-PREF-ORDER",
+      "defectObserved": true,
+      "details": {
+        "independentFieldMerge": {
+          "fontSize": 28,
+          "theme": "sepia"
+        },
+        "newer": {
+          "protocol": "lyra-reader",
+          "version": 1,
+          "type": "response",
+          "requestId": "c9fcd330c7c349888a7769877abe4821",
+          "sessionId": "1188f8ef57f8414a9387786a431fd2f2",
+          "ok": true,
+          "result": {
+            "revision": 3
+          }
+        },
+        "delayed": {
+          "protocol": "lyra-reader",
+          "version": 1,
+          "type": "response",
+          "requestId": "60aeaa00f6e94c52ab6497f1884ffff7",
+          "sessionId": "f6b23265e47d4e0c93dc0c8f00366563",
+          "ok": true,
+          "result": {
+            "revision": 4
+          }
+        },
+        "final": {
+          "fontSize": 18,
+          "theme": "sepia"
+        }
+      }
+    },
+    {
+      "id": "H-PAGE-BYTES",
+      "defectObserved": true,
+      "details": {
+        "accepted": 50,
+        "responseBytes": 379568,
+        "max": 262144,
+        "total": 50,
+        "count": 50
+      }
+    },
+    {
+      "id": "H-CAP-CONTROL",
+      "defectObserved": false,
+      "details": {
+        "rejection501": {
+          "protocol": "lyra-reader",
+          "version": 1,
+          "type": "response",
+          "requestId": "34e8d4b405654f0895b6414f889aaeb4",
+          "sessionId": "f6b23265e47d4e0c93dc0c8f00366563",
+          "ok": false,
+          "error": {
+            "code": "BOOKMARK_LIMIT",
+            "message": "\u6BCF\u672C\u4E66\u6700\u591A 500 \u6761\u4E66\u7B7E"
+          }
+        },
+        "summary257": {
+          "protocol": "lyra-reader",
+          "version": 1,
+          "type": "response",
+          "requestId": "64facf098f6641288c8dad99364bdf14",
+          "sessionId": "f6b23265e47d4e0c93dc0c8f00366563",
+          "ok": false,
+          "error": {
+            "code": "BOOKMARK_TOO_LARGE",
+            "message": "\u4E66\u7B7E\u6458\u8981\u8D85\u8FC7 256 \u4E2A\u5B57\u7B26"
+          }
+        },
+        "pageCount": 10,
+        "readCount": 500,
+        "reopenCount": 500
+      }
+    },
+    {
+      "id": "H-WRITE-FAIL-CONTROL",
+      "defectObserved": false,
+      "details": {
+        "response": {
+          "protocol": "lyra-reader",
+          "version": 1,
+          "type": "response",
+          "requestId": "188c25dc877f47b2bc1403c3f11bbcf6",
+          "sessionId": "f6b23265e47d4e0c93dc0c8f00366563",
+          "ok": false,
+          "error": {
+            "code": "HOST_ERROR",
+            "message": "Access to the path \u0027F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r1\\host-audit\\runs\\r1\\data\\reader\\epub\\books\\ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff.json\u0027 is denied."
+          }
+        },
+        "oldBytesPreserved": true,
+        "tmpFiles": 1
+      }
+    },
+    {
+      "id": "H-READ-FAIL-DATA-LOSS",
+      "defectObserved": true,
+      "details": {
+        "grantAfterUnreadable": {
+          "protocol": "lyra-reader",
+          "version": 1,
+          "type": "response",
+          "requestId": "ecdc969876f2475d937482b6aabd70f9",
+          "sessionId": "f6b23265e47d4e0c93dc0c8f00366563",
+          "ok": true,
+          "result": {
+            "interactionToken": 1
+          }
+        },
+        "afterUnreadable": {
+          "revision": 1,
+          "position": null,
+          "positionToken": 0,
+          "bookmarksRevision": 0,
+          "bookmarkCount": 0,
+          "interactionToken": 1,
+          "preferences": {
+            "fontSize": 18,
+            "theme": "sepia"
+          }
+        },
+        "corruptBackupCount": 0
+      }
+    },
+    {
+      "id": "H-ERROR-OVERLAY",
+      "defectObserved": true,
+      "details": {
+        "afterApp": "Collapsed",
+        "afterReady": "Visible",
+        "text": "\u6253\u5F00\u5931\u8D25\uFF1Asynthetic failure",
+        "ready": true
+      }
+    },
+    {
+      "id": "H-LEGACY-SOURCE",
+      "defectObserved": true,
+      "details": {
+        "ready": true,
+        "overlay": "Collapsed"
+      }
+    },
+    {
+      "id": "H-MISSING-LOAD",
+      "defectObserved": true,
+      "details": {
+        "currentLoad": "new-open",
+        "ready": true
+      }
+    },
+    {
+      "id": "H-REFRESH-SESSION",
+      "defectObserved": true,
+      "details": {
+        "sameSession": true,
+        "oldSessionWrite": {
+          "protocol": "lyra-reader",
+          "version": 1,
+          "type": "response",
+          "requestId": "21e8757817454dde8a579f64e5a2066a",
+          "sessionId": "26d321e35d0a44bc9db7d8a9bb1501c9",
+          "ok": true,
+          "result": {
+            "revision": 5
+          }
+        },
+        "note": "NavigationCompleted delivered; source has no NavigationStarting handler/session rotation on browser refresh"
+      }
+    },
+    {
+      "id": "H-EMPTY-NAV-FAIL",
+      "defectObserved": true,
+      "details": {
+        "beforeTimer": "Visible",
+        "afterTimer": "Collapsed",
+        "text": "\u6269\u5C55\u9875\u9762\u52A0\u8F7D\u5931\u8D25\uFF08SyntheticFailure\uFF09"
+      }
+    },
+    {
+      "id": "H-CLOSE-STRUCTURE",
+      "defectObserved": true,
+      "details": {
+        "timersBefore": 2,
+        "timersAfter": 1,
+        "outboundMessagesAtClose": 0,
+        "note": "Only timer/host control-flow observation; no native WinUI shutdown or pagehide durability simulated"
+      }
+    },
+    {
+      "id": "H-STORE-LOCKS",
+      "defectObserved": true,
+      "details": {
+        "iterations": 60,
+        "lostIndependentFieldUpdates": 60,
+        "errors": 0,
+        "note": "Concurrent store API calls, not proof of parallel WinUI UI dispatch"
+      }
+    }
+  ]
+}

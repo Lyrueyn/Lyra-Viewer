@@ -1,0 +1,33 @@
+﻿{
+    "generatedAt":  "2026-10-28T00:12:57.1109027+08:00",
+    "r3TaskBookSha256":  "212B47E2B8B977F7EEC77E55FFDE90CC6BE64374A538969E79AD28203A46C323",
+    "extensionCommit":  "ba6f763f9579a808ddc201b82b5867412265c104",
+    "extensionVersion":  "0.7.0",
+    "packagePath":  "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\candidates-r3\\lyra-ext-epub-0.7.0-candidate.zip",
+    "packageSha256":  "847D8047702E8DE6A8DEC8B7AE9E3FB60693686400B71AA65C2B134A7270636C",
+    "packageSize":  90769,
+    "hostRunDir":  "D:\\Temp\\lyra_epub_r3_candidate",
+    "hostExecutableSha256":  "D0F1BB58B07D0B6AEAEB463C841914D9594D0A803E3831FC272A6A5FFED3B335",
+    "hostAssemblySha256":  "8067990EBBAF126239B1F3B8CC936D36CB3B1F47DC317D541FDF4CE9C4A9905E",
+    "hostExtensionIndexSha256":  "F6B244C642B1842652B4ED733116A26A3E92B1B0271BF7C1B444A1C8AF3B411D",
+    "hostExtensionReaderSha256":  "34595090C9B84DBD3045DCBCA090FBEA7B980E8702BB6428116124662AA3085E",
+    "hostStateRoot":  "D:\\Temp\\lyra_epub_r3_candidate\\data\\reader\\epub",
+    "tests":  {
+                  "browser":  "r3-evidence/r3-browser-results.json; 13/13 PASS",
+                  "model":  "r3-evidence/r3-model-results.json; 6/6 PASS",
+                  "hostAudit":  "r3-evidence/r3-host-audit-results.json; 5/5 PASS",
+                  "hostAuditKind":  "linked original C# host sources with headless WinUI/WebView2 event doubles",
+                  "actualHostFinalize":  "r3-evidence/host-finalize-r3-final.log; ack matched request/session, no timeout",
+                  "actualHostIdentity":  "r3-evidence/real-host-identity.json",
+                  "smoke":  "r3-evidence/r3-reader-smoke.out; all A01/A03/A07/A05/A12/A14/A17/A18a/A16/A15a/A06a/A02a PASS",
+                  "extra":  "r3-evidence/r3-reader-extra.out; all A02b/A09/A10b/A10c/A13/A18b/A04b/A15-520/A15-1400 PASS",
+                  "packageSmoke":  "r3-evidence/r3-package.png; ready/book title/chapter count from clean unpacked package"
+              },
+    "frozenR2":  {
+                     "packageSha256":  "65CF0784AD4A006BA2444D1A5B08EF2C354B116E71325DFCC5E9A2C194170063",
+                     "extensionCommit":  "c96c912ea1ab1e9a7a311620663ea4f6634a3d18",
+                     "hostDllSha256":  "21932E2C246BF6152BA9C42834F60654A7A5AE239151B645F0EE8F14F17A30DA",
+                     "hostExeSha256":  "D0F1BB58B07D0B6AEAEB463C841914D9594D0A803E3831FC272A6A5FFED3B335",
+                     "evidenceDir":  "docs/epub-optimization/r2-evidence"
+                 }
+}

@@ -1,0 +1,66 @@
+{
+  "scope": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-audit",
+  "readOnlySources": {
+    "root": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5",
+    "old": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\host-audit"
+  },
+  "outputPolicy": "All outputs scoped beneath __dirname; fresh run guards; original C# Compile Link relative ../host-snapshot is R5",
+  "scan": [
+    {
+      "file": "HostAudit.csproj",
+      "absolutePaths": [],
+      "oldReviewLiteral": false,
+      "compileLink": "<Project Sdk=\"Microsoft.NET.Sdk\">\n  <PropertyGroup>\n    <OutputType>Exe</OutputType><TargetFramework>net10.0</TargetFramework>\n    <ImplicitUsings>enable</ImplicitUsings><Nullable>enable</Nullable>\n    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>\n  </PropertyGroup>\n  <ItemGroup>\n    <Compile Include=\"Program.cs\"/><Compile Include=\"UiStubs.cs\"/>\n    <Compile Include=\"..\\host-snapshot\\ReaderStateStore.cs\" Link=\"ReaderStateStore.cs\"/>\n    <Compile Include=\"..\\host-snapshot\\ReaderProtocol.cs\" Link=\"ReaderProtocol.cs\"/>\n    <Compile Include=\"..\\host-snapshot\\ExtensionHostWindow.xaml.cs\" Link=\"ExtensionHostWindow.xaml.cs\"/>\n  </ItemGroup>\n</Project>\n"
+    },
+    {
+      "file": "UiStubs.cs",
+      "absolutePaths": [],
+      "oldReviewLiteral": false,
+      "compileLink": null
+    },
+    {
+      "file": "Program.cs",
+      "absolutePaths": [],
+      "oldReviewLiteral": false,
+      "compileLink": null
+    },
+    {
+      "file": "harness.cjs",
+      "absolutePaths": [],
+      "oldReviewLiteral": false,
+      "compileLink": null
+    },
+    {
+      "file": "audit.cjs",
+      "absolutePaths": [
+        "s://foreign/"
+      ],
+      "oldReviewLiteral": false,
+      "compileLink": null
+    },
+    {
+      "file": "supplement.cjs",
+      "absolutePaths": [],
+      "oldReviewLiteral": false,
+      "compileLink": null
+    },
+    {
+      "file": "capacity.cjs",
+      "absolutePaths": [],
+      "oldReviewLiteral": false,
+      "compileLink": null
+    },
+    {
+      "file": "boundary.cjs",
+      "absolutePaths": [],
+      "oldReviewLiteral": false,
+      "compileLink": null
+    },
+    {
+      "file": "regression.cjs",
+      "absolutePaths": [],
+      "oldReviewLiteral": false,
+      "compileLink": null
+    }
+  ]
+}

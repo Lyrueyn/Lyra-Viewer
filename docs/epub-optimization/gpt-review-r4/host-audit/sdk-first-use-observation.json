@@ -1,0 +1,24 @@
+{
+  "observation": "Initial build SDK first-use banner said an ASP.NET Core HTTPS development certificate was installed. This is not evidence that a new certificate was created during this audit.",
+  "buildLog": "build.log:13",
+  "initialEnvironment": {
+    "DOTNET_CLI_HOME": "scope/.dotnet",
+    "DOTNET_SKIP_FIRST_TIME_EXPERIENCE": "1",
+    "DOTNET_CLI_TELEMETRY_OPTOUT": "1",
+    "NUGET_PACKAGES": "scope/.nuget",
+    "DOTNET_GENERATE_ASPNET_CERTIFICATE": "not explicitly set"
+  },
+  "readOnlyCheck": "Get-ChildItem Cert:\\CurrentUser\\My, filter Subject CN=localhost, inspect only thumbprint/validity/HasPrivateKey; no private key material read or exported",
+  "matchingCertificates": [
+    {
+      "Subject": "CN=localhost",
+      "Thumbprint": "DB471A05B1630E7E31A32117F21A4D1396585C75",
+      "NotBeforeUtc": "2026-08-05T12:14:21.0000000Z",
+      "NotAfterUtc": "2027-08-05T12:14:21.0000000Z",
+      "HasPrivateKey": true
+    }
+  ],
+  "conclusion": "The only matching certificate observed predates the October 27 audit by months. No newly dated certificate was observed. No certificate creation/deletion/trust command was run by the audit. There is no pre-audit certificate-store snapshot, so the audit does not claim proof of every possible SDK-global side effect being absent.",
+  "futureReplayEnvironment": {"DOTNET_GENERATE_ASPNET_CERTIFICATE": "false"},
+  "parentNotified": true
+}

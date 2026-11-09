@@ -1,0 +1,40 @@
+--- R5/epub-book.js
++++ R6/epub-book.js
+@@ -1,4 +1,4 @@
+-/* EPUB 书籍模型：ZIP / 容器 / OPF / spine / 目录 / 引用解析 / 资源与正文隔离准备。
++﻿/* EPUB 书籍模型：ZIP / 容器 / OPF / spine / 目录 / 引用解析 / 资源与正文隔离准备。
+  * 不依赖阅读器 DOM，可在普通浏览器和 WebView2 中直接使用。
+  * 依赖全局 JSZip（../lib/jszip.min.js）。
+  */
+@@ -136,11 +136,27 @@
+       segments.push({ node, start, end: text.length });
+     };
+     const styleOf = (node) => ((node.getAttribute && node.getAttribute("style")) || "");
+-    const styleDisplayNone = (node) => /(?:^|;)\s*display\s*:\s*none(?:\s*!important)?(?:\s*;|$)/i.test(styleOf(node));
++    // CSS 同一元素内重复声明：最后一条有效声明获胜；!important 优先于后续普通声明。
++    const effectiveDecl = (style, prop) => {
++      let value = null, important = false, found = false;
++      for (const part of String(style || "").split(";")) {
++        const idx = part.indexOf(":");
++        if (idx < 0) continue;
++        const name = part.slice(0, idx).trim().toLowerCase();
++        if (name !== prop) continue;
++        let val = part.slice(idx + 1).trim();
++        const imp = /!\s*important\s*$/i.test(val);
++        if (imp) val = val.replace(/!\s*important\s*$/i, "").trim();
++        if (found && important && !imp) continue;
++        value = val; important = imp; found = true;
++      }
++      return found ? value : null;
++    };
++    const styleDisplay = (node) => effectiveDecl(styleOf(node), "display");
++    const styleDisplayNone = (node) => /^none$/i.test(styleDisplay(node) || "");
+     const localVisibility = (node) => {
+-      const style = styleOf(node);
+-      const m = /(?:^|;)\s*visibility\s*:\s*(hidden|visible|collapse)(?:\s*!important)?(?:\s*;|$)/i.exec(style);
+-      if (m) return m[1].toLowerCase();
++      const val = effectiveDecl(styleOf(node), "visibility");
++      if (val && /^(hidden|visible|collapse)$/i.test(val)) return val.toLowerCase();
+       const attr = (node.getAttribute && node.getAttribute("visibility")) || "";
+       if (/^(hidden|visible|collapse)$/i.test(attr)) return attr.toLowerCase();
+       return null;

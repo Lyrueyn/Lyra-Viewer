@@ -1,0 +1,15 @@
+﻿{
+    "capturedAt":  "2026-10-28T00:46:54.3896153+08:00",
+    "pid":  56816,
+    "processPath":  "D:\\Temp\\lyra_r3_compat_oldhost\\WinUIGui.exe",
+    "exeSha256":  "CFB5FE9EB889033ECBEE33AE9A981D62219690820D04DFB837CBAEB892B745CB",
+    "dllSha256":  "3D330EDC6751DA559E46AD90649AC6BC5E924E115316A27CE0463201ACC82584",
+    "fileVersion":  "1.1.12.0",
+    "buildSourceBaseline":  "F:\\DSH\\LocalMediaPlayer-Workspace git b978661b8a9ec7a9c9fee87d5d323ea1db2bc5ae (tag v1.1.12 at e17c4a3)",
+    "webviewExeVersionLine":  "--webview-exe-version=1.1.12+61b53b24ac3f64ac0192d67dd542ff691f57be3d",
+    "runDir":  "D:\\Temp\\lyra_r3_compat_oldhost",
+    "dataPath":  "D:\\Temp\\lyra_r3_compat_oldhost\\data",
+    "extensionPath":  "D:\\Temp\\lyra_r3_compat_oldhost\\extensions\\epub",
+    "extensionVersion":  "0.7.0",
+    "extensionIndexSha256":  "F6B244C642B1842652B4ED733116A26A3E92B1B0271BF7C1B444A1C8AF3B411D"
+}

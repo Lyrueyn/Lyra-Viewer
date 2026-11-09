@@ -1,0 +1,214 @@
+{
+  "generatedAt": "2026-10-27T15:10:37.851Z",
+  "evidenceKind": "Node VM; original frozen JS; synthetic DOM/time/WebView/paginator; not browser/native",
+  "sourceHashes": {
+    "reader-state.js": "95455b42a672e3e0b8609c24318d5e96cb24aca46e33813d71f41ae7433bd559",
+    "reader.js": "f8de0735596a77d5f79e962c11feff10d1c52505eea141c1147ada1e5dcaa482"
+  },
+  "results": [
+    {
+      "id": "J-PREF-SEQUENCE-IS-SEND-TIME",
+      "pass": false,
+      "expected": "A earlier font change carries older authority than B later font change",
+      "actual": [
+        {
+          "protocol": "lyra-reader",
+          "version": 1,
+          "type": "state.savePreferences",
+          "requestId": "req-55d0512b-ee24-4181-ba39-19242915df63",
+          "sessionId": "order-B",
+          "preferences": {
+            "fontSize": 32
+          },
+          "sequence": 1700000000400000
+        },
+        {
+          "protocol": "lyra-reader",
+          "version": 1,
+          "type": "state.savePreferences",
+          "requestId": "req-4ad2e436-c90c-42f6-9499-07594ac3e78e",
+          "sessionId": "order-A",
+          "preferences": {
+            "fontSize": 18,
+            "lineHeight": 2.2
+          },
+          "sequence": 1700000000500000
+        }
+      ],
+      "timeline": "A font18 t0; B font32 t100; A lineHeight2.2 t200; B flush400; A flush500",
+      "note": "Exact emitted envelopes replayed through frozen C# host."
+    },
+    {
+      "id": "J-PREF-ACK-ERASES-NEW-PATCH",
+      "pass": false,
+      "expected": "second change32 remains pending and is emitted",
+      "actual": {
+        "before": {
+          "fontSize": 32
+        },
+        "after": {},
+        "uiFont": 32,
+        "sent": [
+          {
+            "protocol": "lyra-reader",
+            "version": 1,
+            "type": "state.savePreferences",
+            "requestId": "req-e8370096-e0f4-44a7-a041-02edf687f291",
+            "sessionId": "patch-A",
+            "preferences": {
+              "fontSize": 18
+            },
+            "sequence": 1700000000300000
+          }
+        ],
+        "saveLabel": "设置已保存"
+      }
+    },
+    {
+      "id": "J-FINALIZE-HANDLER",
+      "pass": false,
+      "expected": "host.finalize flushes pending preferences and returns correlated host.finalized",
+      "actual": {
+        "afterFinalize": [],
+        "afterUnload": [],
+        "pending": {
+          "fontSize": 30
+        }
+      }
+    },
+    {
+      "id": "J-PREF-NORMAL-TIMER",
+      "pass": true,
+      "expected": "regular debounce saves before close timeout",
+      "actual": [
+        {
+          "protocol": "lyra-reader",
+          "version": 1,
+          "type": "state.savePreferences",
+          "requestId": "req-88286418-1850-47eb-a3ed-4d3c5d1018ba",
+          "sessionId": "finalize-A",
+          "preferences": {
+            "fontSize": 30
+          },
+          "sequence": 1700000000300000
+        }
+      ]
+    },
+    {
+      "id": "J-LOCAL-CURSOR-CAP",
+      "pass": true,
+      "expected": "all 0/1/50/51/499/500 read uniquely; 501 rejected with first500 retained",
+      "actual": {
+        "counts": [
+          {
+            "target": 0,
+            "total": 0,
+            "unique": 0,
+            "pages": 1
+          },
+          {
+            "target": 1,
+            "total": 1,
+            "unique": 1,
+            "pages": 1
+          },
+          {
+            "target": 50,
+            "total": 50,
+            "unique": 50,
+            "pages": 1
+          },
+          {
+            "target": 51,
+            "total": 51,
+            "unique": 51,
+            "pages": 2
+          },
+          {
+            "target": 499,
+            "total": 499,
+            "unique": 499,
+            "pages": 10
+          },
+          {
+            "target": 500,
+            "total": 500,
+            "unique": 500,
+            "pages": 10
+          }
+        ],
+        "cap": "BOOKMARK_LIMIT",
+        "total": 500
+      }
+    },
+    {
+      "id": "J-LOCAL-WRITE-FAIL",
+      "pass": true,
+      "expected": "all writes reject",
+      "actual": {
+        "position": "LOCAL_WRITE_FAILED",
+        "preferences": "LOCAL_WRITE_FAILED",
+        "bookmark": "LOCAL_WRITE_FAILED"
+      }
+    },
+    {
+      "id": "J-LOCAL-SINGLE-ITEM-LIMIT",
+      "pass": false,
+      "expected": "same host limit: 4096 UTF8 bytes and summary<=256 UTF16",
+      "actual": {
+        "bytes": 6831,
+        "summaryLength": 257,
+        "accepted": true
+      }
+    },
+    {
+      "id": "J-LOCAL-PREF-READ-FAIL",
+      "pass": false,
+      "expected": "failed read preserves old prefs and rejects",
+      "actual": {
+        "before": "{\"preferences\":{\"fontSize\":32,\"theme\":\"sepia\"},\"fieldSequences\":{}}",
+        "after": "{\"preferences\":{\"lineHeight\":2.2},\"fieldSequences\":{\"lineHeight\":1700000000000000}}",
+        "status": {
+          "mode": "local",
+          "revision": 0,
+          "applied": [
+            "lineHeight"
+          ]
+        }
+      }
+    },
+    {
+      "id": "J-DEGRADE-ROUTE",
+      "pass": true,
+      "expected": "load failure permanently routes subsequent writes local",
+      "actual": {
+        "loadMode": "local",
+        "mode": "local",
+        "requestsAfterLoad": [],
+        "localKeys": [
+          "lyra_epub_state_sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+          "lyra_epub_prefs",
+          "lyra_epub_bookmarks_sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+        ]
+      }
+    },
+    {
+      "id": "J-RESPONSE-ENVELOPE",
+      "pass": true,
+      "expected": "bad envelopes ignored; valid resolves",
+      "actual": {
+        "invalidSettled": false,
+        "validSettled": true
+      }
+    },
+    {
+      "id": "J-CLOCK-ROLLBACK-SEQUENCE",
+      "pass": false,
+      "expected": "sequence is strictly increasing after wall clock correction",
+      "actual": {
+        "first": 1700000000000000,
+        "second": 1700000000000000
+      }
+    }
+  ]
+}

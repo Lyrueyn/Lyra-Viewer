@@ -1,0 +1,33 @@
+{
+  "generatedAt": "2026-10-28T03:58:45.452695+08:00",
+  "scope": "R5 addendum only; frozen R5/supplement product and files untouched",
+  "report": {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\r5-evidence-supplement-addendum\\DeepSeek补充测试-R5-addendum.md",
+    "sha256": "d21be48746773c5351b5d24f29bfe9e6a3e28553c64b4a64a1c704b8705b05f6"
+  },
+  "interop": {
+    "pid": 43440,
+    "hostDll": "202954E5930FCDC7A50BD96975B84A12CBF7AA4375AC7334832D28A45F5F9480",
+    "hostExe": "D0F1BB58B07D0B6AEAEB463C841914D9594D0A803E3831FC272A6A5FFED3B335",
+    "extVersion": "0.8.0",
+    "extPackageSha": "B128B9DFBE9D7A1085CC3505F9B3EDC645847CFA24DA33958EB26EDD685F184B",
+    "extReader": "659A466FF7693FBEDD9A0DAEDBCCFBA5BE35389E9685CCCF5178A1C9084DACE4",
+    "extReaderState": "A790F06F1585291094596F5E0C6075EEEEEF94E8EFF5A7347AE760EC4149FCC0",
+    "hostReplies": 0,
+    "overlay22s": "仍在加载这本书… + 重试/取消；无local正文/footer可见"
+  },
+  "corrections": {
+    "A08Combined": "combined 实际 textOffset1758/pageIndex2；3072 属于单独 text-anchor 用例",
+    "A19AckFalse": "第二窗 ack:false 前为 STALE_INTERACTION；旧资格被新位置取代，不应重授权覆盖"
+  },
+  "files": {
+    "01-3s.png": "68f7c53cab13a6c7e171c12ba6ecfc63dfe93687651d7eb25df5a2c933de9022",
+    "02-9s.png": "9f8c718c2fc8e4771b881c9e35eaa0cbd5c6133c2aceafc7643b3ea4e85c198b",
+    "03-12s.png": "6bb0d4174a4b1bd97fa5525237941f402703916af016c3dd49fea8d625481d7f",
+    "04-after-right.png": "4cd0e05ac055f06e741b9e17874627c664f66771fc8dc84dfff12d4ef5f78b66",
+    "05-22s.png": "2f4479a46054a8b50024cf0ff7f19e48c5092ef38644baddf64b44281ea90b67",
+    "DeepSeek补充测试-R5-addendum.md": "d21be48746773c5351b5d24f29bfe9e6a3e28553c64b4a64a1c704b8705b05f6",
+    "v2interop-host.log": "2a2d73b1c64f2006055617a73d597961886c06acf4158f2a9af9eb7dabc9888e",
+    "v2interop-identity.json": "6ef8da5fc0ce75adce0b358cd69fb3f99aa97cba428c62b604c87c965c328ee5"
+  }
+}

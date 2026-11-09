@@ -1,0 +1,109 @@
+{
+  "generatedAt": "2026-10-27T19:34:56.387Z",
+  "candidate": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\candidate",
+  "identity": {
+    "expectedCommit": "76ced4c17efa4526fbc8c00e3fff5261959a7fe7",
+    "expectedPackageSha256": "60cc97bf2721bb0239122275b307833d871548c985a56068e649f3d3a1517b80",
+    "hashes": {
+      "epub-book.js": "62453a86f64fc9e883af379440c8306a8e218fa55456de490671873044c2cdc2",
+      "search.js": "470c4fe4bb68f299b1aa367cffd1f3b5e616af2dad25e7b1cc1d10f25bea702a",
+      "paginator.js": "15408a60cf6e65f83d2a3b479a878da888be964d7639ffafd468067c81a2a248",
+      "reader.js": "28790e1fb4cd5e04302c26217d80b293d8bdedfc3cd4e1551c9a02c0d93f61fb"
+    }
+  },
+  "runtime": {
+    "node": "v24.18.0",
+    "jsdom": "29.1.1"
+  },
+  "evidenceKind": "Frozen original JavaScript loaded unmodified; jsdom DOM/Range and real JSZip. Controlled async dependencies and geometry doubles disclosed per case. Not browser visibility, SVG painting or native desktop evidence.",
+  "results": [
+    {
+      "id": "A01",
+      "verdict": "PASS",
+      "title": "Image null text offset remains element-based through original requestLayout",
+      "detail": {
+        "before": {
+          "elementPath": [
+            1
+          ],
+          "textOffset": null,
+          "quote": "",
+          "prefix": "",
+          "suffix": "",
+          "elementId": "",
+          "chapterFraction": 0.6,
+          "pageIndex": 3
+        },
+        "after": {
+          "elementPath": [
+            1
+          ],
+          "textOffset": null,
+          "quote": "",
+          "prefix": "",
+          "suffix": "",
+          "elementId": "",
+          "chapterFraction": 0.4,
+          "pageIndex": 2
+        },
+        "pageW": 900,
+        "pageIndex": 2,
+        "boundary": "Deterministic element rectangles, not browser image painting."
+      }
+    },
+    {
+      "id": "A02",
+      "verdict": "PASS",
+      "title": "Late image relayout preserves confirmed pure-element anchor",
+      "detail": {
+        "supplied": {
+          "elementPath": [
+            1
+          ],
+          "textOffset": null,
+          "quote": "",
+          "prefix": "",
+          "suffix": "",
+          "elementId": "",
+          "chapterFraction": 0.4,
+          "pageIndex": 2
+        },
+        "page": 2,
+        "boundary": "Original timer/layout/locator; late load event timing and image pixels require browser."
+      }
+    },
+    {
+      "id": "A03",
+      "verdict": "PASS",
+      "title": "Hot timer cancellation followed immediately by fresh query",
+      "detail": {
+        "cancelled": true,
+        "timerRan": true,
+        "freshTotal": 1
+      }
+    },
+    {
+      "id": "A04",
+      "verdict": "OBSERVATION",
+      "title": "Cold cancellation is observed after synchronous whole-chapter DOM/model construction",
+      "detail": {
+        "error": "搜索已取消",
+        "trace": [
+          {
+            "stage": "parse-start",
+            "ms": 0.109
+          },
+          {
+            "stage": "parse-end",
+            "ms": 71.628
+          },
+          {
+            "stage": "cancel-timer",
+            "ms": 72.071
+          }
+        ],
+        "boundary": "Controlled immediately resolved readText + Node/jsdom; no internal parser yield, no browser latency/serious jank claim."
+      }
+    }
+  ]
+}

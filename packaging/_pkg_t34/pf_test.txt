@@ -1,0 +1,5 @@
+﻿PF_DIR=OK
+SM_DIR=OK
+USER_SM=OK
+---GROUPS---
+BUILTIN\Administrators                         Alias            S-1-5-32-544 Mandatory group, Enabled by default, Enabled group, Group owner

@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "revision": 79,
+  "positionRevision": 78,
+  "metadataRevision": 1,
+  "interaction": 79,
+  "interactionOwner": "c8c5b646449342019d89c14716170553",
+  "position": {
+    "spineHref": "OPS/c0.xhtml",
+    "spineIndex": 0,
+    "locator": {
+      "elementPath": null,
+      "textOffset": 8182,
+      "quote": "start. \u8FD9\u662F\u53EF\u6838\u5BF9\u6B63\u6587\u3002 TEXT-A08-A paragraph 56: R5 A08 visible text an",
+      "prefix": "start. \u8FD9\u662F\u53EF\u6838\u5BF9\u6B63\u6587\u3002 TEXT-A08-A para",
+      "suffix": "graph 56: R5 A08 visible text an",
+      "elementId": "",
+      "chapterFraction": 0.7272727272727273,
+      "pageIndex": 8
+    },
+    "chapterFraction": 0.7272727272727273,
+    "savedAt": "2026-10-29T13:41:13.217Z"
+  },
+  "positionToken": 79,
+  "positionSequence": 1793281273217000,
+  "bookmarks": [
+    {
+      "id": "bm-mvtlgtat-it7g2s",
+      "_key": "OPS/c0.xhtml|t8182",
+      "spineHref": "OPS/c0.xhtml",
+      "spineIndex": 0,
+      "chapterTitle": "c0",
+      "title": "c0",
+      "summary": "start. \u8FD9\u662F\u53EF\u6838\u5BF9\u6B63\u6587\u3002 TEXT-A08-A paragraph 56: R5 A08 visible text an",
+      "locator": {
+        "elementPath": null,
+        "textOffset": 8182,
+        "quote": "start. \u8FD9\u662F\u53EF\u6838\u5BF9\u6B63\u6587\u3002 TEXT-A08-A paragraph 56: R5 A08 visible text an",
+        "prefix": "start. \u8FD9\u662F\u53EF\u6838\u5BF9\u6B63\u6587\u3002 TEXT-A08-A para",
+        "suffix": "graph 56: R5 A08 visible text an",
+        "elementId": "",
+        "chapterFraction": 0.7272727272727273,
+        "pageIndex": 8
+      },
+      "createdAt": "2026-10-29T13:43:58.037Z"
+    }
+  ],
+  "bookmarksRevision": 1,
+  "positionSession": "c8c5b646449342019d89c14716170553",
+  "positionSavedAt": "2026-10-29T13:41:13.2183531Z"
+}

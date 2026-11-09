@@ -1,0 +1,99 @@
+{
+  "evidenceKind": "Real Edge, frozen candidate, controlled delays and optional explicitly local bridge fixture",
+  "results": [
+    {
+      "id": "D04_HIDDEN_HTML_OFFSET_DIVERGENCE",
+      "before": {
+        "plain": "\nSTART  TARGET\n",
+        "visible": "START TARGET",
+        "renderText": "START HIDDEN TARGET"
+      },
+      "after": {
+        "visible": "START TARGET",
+        "renderText": "START HIDDEN TARGET",
+        "highlights": [
+          "TARGET"
+        ],
+        "active": {
+          "id": "r-0-8",
+          "spineIndex": 0,
+          "title": "c0",
+          "offset": 8,
+          "length": 6,
+          "quote": "START TARGET",
+          "prefix": "START",
+          "suffix": "",
+          "snippet": "START TARGET",
+          "bookId": "sha256:648a6475f75623243ab945a7447f7c96d45b42685f8011415d49333e34a426c2",
+          "openIntent": 1,
+          "queryGen": 4,
+          "query": "TARGET"
+        },
+        "status": "查找结果：TARGET，已定位：TARGET"
+      },
+      "defect": false,
+      "note": "No timing/fault injection. Original source model and prepared rendered document differ after sanitizer removes style."
+    },
+    {
+      "id": "D05_HIDDEN_SVG_OFFSET_DIVERGENCE",
+      "before": {
+        "plain": "START TARGET",
+        "visible": "START TARGET",
+        "renderText": "START HIDDEN TARGET"
+      },
+      "after": {
+        "visible": "START ",
+        "renderText": "START HIDDEN TARGET",
+        "highlights": [
+          "TARGET"
+        ],
+        "active": {
+          "id": "r-0-6",
+          "spineIndex": 0,
+          "title": "c0",
+          "offset": 6,
+          "length": 6,
+          "quote": "START TARGET",
+          "prefix": "START",
+          "suffix": "",
+          "snippet": "START TARGET",
+          "bookId": "sha256:433b1a05f73a5a8b30f457225ca389a20e380995e16e8242fb291236dfd444de",
+          "openIntent": 1,
+          "queryGen": 4,
+          "query": "TARGET"
+        },
+        "status": "查找结果：TARGET，已定位：TARGET"
+      },
+      "defect": false,
+      "note": "No timing/fault injection. Original source model and prepared rendered document differ after sanitizer removes style."
+    },
+    {
+      "id": "D06_FAILED_SHARED_IMAGE_PREPARE_REVOKES_VISIBLE_RESOURCE",
+      "before": {
+        "spine": 0,
+        "text": "OLD_VISIBLE",
+        "url": "blob:http://127.0.0.1:63725/bfefea62-fc60-4151-be9b-056bea4f1006",
+        "fetchOK": true,
+        "owners": [
+          1
+        ]
+      },
+      "after": {
+        "spine": 0,
+        "ready": true,
+        "text": "OLD_VISIBLE",
+        "url": "blob:http://127.0.0.1:63725/bfefea62-fc60-4151-be9b-056bea4f1006",
+        "fetchOK": true,
+        "naturalWidth": 1,
+        "resources": [
+          "OPS/shared.png"
+        ],
+        "owners": [
+          1
+        ]
+      },
+      "defect": false,
+      "note": "Injected section-title failure only after same-book resource acquisition; displayed old chapter remains, its referenced blob is revoked. Does not assert decoded pixels instantly disappear."
+    }
+  ]
+}

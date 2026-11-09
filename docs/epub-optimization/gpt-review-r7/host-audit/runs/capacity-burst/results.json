@@ -1,0 +1,43 @@
+{
+  "evidenceKind": "Original JS/C# serializers and isolated disk; deliberate grant capacity stress",
+  "results": [
+    {
+      "id": "C02-4097-UNCOMPLETED-UI-INPUTS",
+      "pass": true,
+      "expected": "specified behavior",
+      "actual": {
+        "inputCount": 4097,
+        "count": {
+          "count": 4096,
+          "order": 4097
+        },
+        "file": {
+          "version": 1,
+          "revision": 1,
+          "preferences": {
+            "fontSize": 18
+          },
+          "fieldSequences": {},
+          "preferenceOrders": {
+            "fontSize": 4097
+          },
+          "updatedAt": "2026-10-28T15:57:48.4596820Z"
+        },
+        "pending": [],
+        "acks": [
+          {
+            "type": "host.finalized",
+            "requestId": "efab740137b94b3892c628dd6a37c491",
+            "sessionId": "8f75bf4e5b064e349e1fe0067a80c49e",
+            "ok": true,
+            "revision": 1,
+            "closeDiagnostics": []
+          }
+        ],
+        "saveState": "设置已保存",
+        "errors": [],
+        "fixture": "Stress boundary: no 300ms debounce delivery during 4097 alternating input events; not ordinary human rate"
+      }
+    }
+  ]
+}

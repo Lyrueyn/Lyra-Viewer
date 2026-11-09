@@ -1,0 +1,122 @@
+{
+  "generatedAt": "2026-10-27T11:40:48.2647460Z",
+  "results": [
+    {
+      "id": "H01",
+      "name": "empty state loads",
+      "status": "PASS",
+      "detail": "{\u0022revision\u0022:0,\u0022position\u0022:null,\u0022positionToken\u0022:0,\u0022bookmarksRevision\u0022:0,\u0022bookmarkCount\u0022:0,\u0022interactionToken\u0022:0,\u0022preferences\u0022:{}}"
+    },
+    {
+      "id": "H02",
+      "name": "save and load position",
+      "status": "PASS",
+      "detail": "{\u0022revision\u0022:2,\u0022position\u0022:{\u0022spineHref\u0022:\u0022a.xhtml\u0022,\u0022spineIndex\u0022:1,\u0022locator\u0022:{\u0022quote\u0022:\u0022hello\u0022}},\u0022positionToken\u0022:1,\u0022bookmarksRevision\u0022:0,\u0022bookmarkCount\u0022:0,\u0022interactionToken\u0022:1,\u0022preferences\u0022:{}}"
+    },
+    {
+      "id": "H03",
+      "name": "stale interaction cannot overwrite newer window",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "id": "H04",
+      "name": "inactive window rejected; newly active window can take over",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "id": "H05",
+      "name": "preferences merge per-field",
+      "status": "PASS",
+      "detail": "{\u0022fontSize\u0022:28,\u0022theme\u0022:\u0022dark\u0022,\u0022lineHeight\u0022:2.1}"
+    },
+    {
+      "id": "H06",
+      "name": "bookmarks paginated read",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "id": "H07",
+      "name": "bookmark duplicate/delete",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "id": "H08",
+      "name": "bookmark cursor revision conflict",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "id": "H09",
+      "name": "corrupt state recovers and preserves original",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "id": "H10",
+      "name": "independent store reopens same data root",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "id": "H11",
+      "name": "F06 exact token/owner/sequence monotonic/idempotent",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "id": "H12",
+      "name": "F08 late preference field cannot overwrite newer field",
+      "status": "PASS",
+      "detail": "{\u0022fontSize\u0022:32,\u0022theme\u0022:\u0022dark\u0022,\u0022lineHeight\u0022:2.1}"
+    },
+    {
+      "id": "H13",
+      "name": "F09 51 bookmarks paginate without duplicate/loss",
+      "status": "PASS",
+      "detail": {
+        "seen": 51,
+        "loops": 2
+      }
+    },
+    {
+      "id": "H14",
+      "name": "F09 bookmark page respects UTF-8 byte budget",
+      "status": "PASS",
+      "detail": {
+        "pageCount": 23,
+        "bytes": 182188
+      }
+    },
+    {
+      "id": "H15",
+      "name": "F09 501st bookmark rejected, first 500 retained",
+      "status": "PASS",
+      "detail": {
+        "count": 500
+      }
+    },
+    {
+      "id": "H16",
+      "name": "F10 unreadable state is not treated as empty/overwritten",
+      "status": "PASS",
+      "detail": {
+        "unreadableRejected": true,
+        "same": true
+      }
+    },
+    {
+      "id": "H17",
+      "name": "F10 write failure preserves old bytes and reports error",
+      "status": "PASS",
+      "detail": {
+        "writeFailReported": true,
+        "bytesPreserved": true,
+        "tmpLeft": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,177 @@
+{
+  "generatedAt": "2026-10-27T16:24:36.084Z",
+  "candidate": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\candidate",
+  "identity": {
+    "expectedCommit": "ba6f763f9579a808ddc201b82b5867412265c104",
+    "expectedPackageSha256": "847d8047702e8de6a8dec8b7ae9e3fb60693686400b71aa65c2b134a7270636c",
+    "hashes": {
+      "epub-book.js": "66001a6b165fa42be59b1d64a6a5ccbbf020098bdb3482951e079b753a0538a0",
+      "search.js": "36eb37a9ead2eca1b1b1b3b92945f051c99d59062bf9934bfd77022d6e37ae71",
+      "paginator.js": "e40dbb93b5923b8017642e6827a5d04d5b6208c0f484744606507bd1eeb5c778",
+      "reader.js": "34595090c9b84dbd3045dcbca090fbea7b980e8702bb6428116124662aa3085e"
+    }
+  },
+  "runtime": {
+    "node": "v24.18.0",
+    "jsdom": "29.1.1"
+  },
+  "evidenceKind": "Frozen original JavaScript loaded unmodified; jsdom DOM/Range and real JSZip. Controlled async dependencies and geometry doubles disclosed per case. Not browser visibility, SVG painting or native desktop evidence.",
+  "results": [
+    {
+      "id": "F01",
+      "verdict": "PASS",
+      "title": "Original input-close clears debounce before any read",
+      "detail": {
+        "reads": 0,
+        "open": false,
+        "results": 0,
+        "info": ""
+      }
+    },
+    {
+      "id": "F02",
+      "verdict": "PASS",
+      "title": "Input then Enter starts only one read/build",
+      "detail": {
+        "reads": 1,
+        "results": 1
+      }
+    },
+    {
+      "id": "F03",
+      "verdict": "PASS",
+      "title": "Cross-book cleared list and retained old button callback reject old result",
+      "detail": {
+        "count": 0,
+        "highlight": [],
+        "status": "这条搜索结果已过期，请重新搜索",
+        "currentBook": "FRESH"
+      }
+    },
+    {
+      "id": "F04",
+      "verdict": "PASS",
+      "title": "Input invalidates pending old query before debounce",
+      "detail": {
+        "input": "NEWQUERY",
+        "results": 0,
+        "info": ""
+      }
+    },
+    {
+      "id": "F05",
+      "verdict": "FAIL",
+      "title": "Changing query while result navigation pending prevents old highlight commit",
+      "detail": {
+        "input": "NEWQUERY",
+        "generationAtInput": 4,
+        "currentGeneration": 4,
+        "highlight": [
+          "OLDQUERY"
+        ],
+        "activeResult": {
+          "query": "OLDQUERY",
+          "queryGen": 3
+        },
+        "status": "已打开：c0"
+      }
+    },
+    {
+      "id": "F06",
+      "verdict": "FAIL",
+      "title": "Late old-book task cannot release current new-book task with same numeric owner",
+      "detail": {
+        "before": {
+          "book": "NEW-IMAGE",
+          "owner": 2,
+          "currentTask": 2,
+          "resources": [
+            "OPS/new1.png"
+          ],
+          "taskOwners": [
+            2
+          ],
+          "url": "blob:audit-3",
+          "revoked": false
+        },
+        "after": {
+          "book": "NEW-IMAGE",
+          "ready": true,
+          "owner": 2,
+          "currentTask": 2,
+          "resources": [],
+          "taskOwners": [],
+          "url": "blob:audit-3",
+          "revoked": true,
+          "pendingOld": 0
+        },
+        "created": [
+          {
+            "url": "blob:audit-1",
+            "size": 1,
+            "type": "image/png"
+          },
+          {
+            "url": "blob:audit-2",
+            "size": 1,
+            "type": "image/png"
+          },
+          {
+            "url": "blob:audit-3",
+            "size": 1,
+            "type": "image/png"
+          }
+        ],
+        "revoked": [
+          "blob:audit-1",
+          "blob:audit-2",
+          "blob:audit-3"
+        ],
+        "boundary": "URL is a deterministic create/revoke double; actual image pixels require Edge test."
+      }
+    },
+    {
+      "id": "F07",
+      "verdict": "PASS",
+      "title": "Controlled failure after DOM submission restores old actual document and image resource",
+      "detail": {
+        "book": "ROLL-OLD",
+        "text": "OLD_DOCUMENT",
+        "ready": true,
+        "url": "blob:audit-1",
+        "revokedCurrent": false,
+        "resources": [
+          "OPS/old.png"
+        ],
+        "taskOwners": [
+          2
+        ],
+        "status": "打开新书失败，已保留原来的书：正文载入失败",
+        "boundary": "Original reader rollback runs; DOM submission is layout double, not browser iframe verification."
+      }
+    },
+    {
+      "id": "F08",
+      "verdict": "PASS",
+      "title": "Independent outer whitelist rejects non-http(s) and malformed URL",
+      "detail": {
+        "unsafe": [
+          "javascript:void(0)",
+          "data:text/plain,x",
+          "file:///audit",
+          "vbscript:x",
+          "mailto:x@example.invalid",
+          "about:blank",
+          "blob:https://audit.invalid/x",
+          "https://[bad"
+        ],
+        "afterUnsafe": [],
+        "opened": [
+          "http://example.invalid/a",
+          "https://example.invalid/b"
+        ],
+        "boundary": "Direct onLink entry, no sanitizer bypass or navigation execution claimed."
+      }
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+'use strict';
+const fs=require('fs'),path=require('path'),crypto=require('crypto');
+const root=path.resolve(__dirname,'..'),old=path.resolve(root,'../gpt-review-r3/host-audit');
+if(fs.existsSync(path.join(__dirname,'inputs-before.json')))throw Error('Preparation already done; preserve baseline and authored fixtures');
+const paths=[];function walk(p){for(const e of fs.readdirSync(p,{withFileTypes:true})){const q=path.join(p,e.name);if(e.isDirectory())walk(q);else paths.push(q);}}
+for(const d of ['candidate','host-snapshot','submitted-report','submitted-evidence'])walk(path.join(root,d));paths.push(path.join(root,'identity.json'));for(const n of ['UiStubs.cs','Program.cs','HostAudit.csproj','client-audit.cjs'])paths.push(path.join(old,n));
+const hashes=paths.map(p=>({path:p,sha256:crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex')}));fs.writeFileSync(path.join(__dirname,'inputs-before.json'),JSON.stringify(hashes,null,2));
+fs.copyFileSync(path.join(old,'HostAudit.csproj'),path.join(__dirname,'HostAudit.csproj'));
+let s=fs.readFileSync(path.join(old,'UiStubs.cs'),'utf8').replace('msg["version"]=1','msg["version"]=ReaderProtocol.Version');
+s=s.replace('public class FakeWebView { public Microsoft.Web.WebView2.Core.CoreWebView2 CoreWebView2 {get;}=new(); public Task EnsureCoreWebView2Async()=>Task.CompletedTask; }','public class FakeWebView { public Microsoft.Web.WebView2.Core.CoreWebView2 CoreWebView2 {get; private set;}=new(); private TaskCompletionSource? gate; public int EnsureCalls; public void HoldEnsure(){CoreWebView2=null!;gate=new();} public void ReleaseEnsure(){CoreWebView2=new();gate?.SetResult();} public Task EnsureCoreWebView2Async(){EnsureCalls++;return gate?.Task??Task.CompletedTask;} }');
+s=s.replace('public void AuditStopTimers()=>StopTimers();','public void AuditStopTimers()=>StopTimers(); public void AuditNavigate()=>NavigateToExtension(); public void AuditCleanup()=>CleanupTemp(); public void AuditNavFail()=>OnNavigationCompleted(Wv.CoreWebView2,new(){IsSuccess=false});');
+fs.writeFileSync(path.join(__dirname,'UiStubs.cs'),s);
+let c=fs.readFileSync(path.join(old,'client-audit.cjs'),'utf8');c=c.slice(0,c.indexOf('(async()=>{'));
+c=c.replace('runs/r3-independent','runs/main');
+c=c.replace("const r2child=spawn", "const r2child=spawn");const start=c.indexOf('const r2child=spawn'),end=c.indexOf('const tasks=new Set()');c=c.slice(0,start)+c.slice(end);
+c=c.replaceAll("(hostInfo.backend==='r2'?rpcR2:rpc)", 'rpc').replaceAll("(opts.backend==='r2'?rpcR2:rpc)",'rpc');
+c=c.replace('version:1,type:\'response\'','version:2,type:\'response\'').replace("req.type==='state.interact'&&req.purpose==='preferences'", "req.type==='state.grantPreferences'");
+c=c.replace('holdPosition:false,','holdPosition:false,holdInteraction:false,');c=c.replace("(req.type==='state.savePosition'&&flags.holdPosition)","(req.type==='state.savePosition'&&flags.holdPosition)||(req.type==='state.interact'&&flags.holdInteraction)");
+c=c.replace("async function safe(label){return rpc({op:'seedSafeCounter',label});}","async function archive(label){return rpc({op:'archivePrefs',label});}");
+c=c.replace('const child=spawn', 'fs.mkdirSync(run,{recursive:true});\nconst child=spawn');
+c+='\nmodule.exports={fs,path,vm,crypto,run,candidate,sources,results,wire,copy,drain,rpc,record,settle,book,env,hosted,prefs,disk,closing,runCase,archive,child};\n';
+fs.writeFileSync(path.join(__dirname,'harness.cjs'),c);
+fs.writeFileSync(path.join(__dirname,'NuGet.Config'),'<configuration><packageSources><clear /></packageSources></configuration>');
+console.log(JSON.stringify({inputFiles:hashes.length,scope:__dirname}));

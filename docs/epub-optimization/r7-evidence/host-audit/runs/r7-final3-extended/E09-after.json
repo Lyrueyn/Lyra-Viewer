@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "revision": 15,
+  "interaction": 8,
+  "interactionOwner": "138058eeb7414688bfe971a0b868492b",
+  "position": {
+    "spineHref": "a.xhtml",
+    "spineIndex": 0,
+    "locator": {
+      "textOffset": 1000,
+      "chapterFraction": 0.5263157894736842
+    },
+    "chapterFraction": 0.5263157894736842,
+    "savedAt": "2023-11-14T22:13:20.020Z"
+  },
+  "positionToken": 8,
+  "positionSequence": 1700000000020000,
+  "bookmarks": [],
+  "bookmarksRevision": 3,
+  "positionSession": "138058eeb7414688bfe971a0b868492b",
+  "positionSavedAt": "2026-10-28T15:40:29.0962552Z",
+  "positionRevision": 1
+}

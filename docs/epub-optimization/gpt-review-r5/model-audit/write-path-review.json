@@ -1,0 +1,57 @@
+{
+  "scope": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\model-audit",
+  "allowedWrites": "Only this directory, including scripts, reports, JSON, console logs; all source roots read-only.",
+  "scriptAudit": "All seven legacy scripts read. Candidate resolves ../candidate. Results use __dirname. No old absolute output paths. Only common identity constants updated.",
+  "inputs": 137,
+  "copies": [
+    {
+      "name": "audit-common.cjs",
+      "source": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\model-audit\\audit-common.cjs",
+      "oldHash": "550a2c94880aba2f4918c92860a3eca324b2f2a754d1603fa7b99456c7183070",
+      "newHash": "d9a0cda0dbd6c238ee454f81c9a902a078b52175349c10cd737274729d7f93db",
+      "byteIdentical": false
+    },
+    {
+      "name": "audit-models.cjs",
+      "source": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\model-audit\\audit-models.cjs",
+      "oldHash": "e7ab0771b38de81d8018e2e64fc4be907e84db0cfaf0b09a37fce22e7d769add",
+      "newHash": "e7ab0771b38de81d8018e2e64fc4be907e84db0cfaf0b09a37fce22e7d769add",
+      "byteIdentical": true
+    },
+    {
+      "name": "audit-reader-flow.cjs",
+      "source": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\model-audit\\audit-reader-flow.cjs",
+      "oldHash": "c92c11714d16877577feb60fa49941ddb02f41fbf3208c24801f3f5f770782b7",
+      "newHash": "c92c11714d16877577feb60fa49941ddb02f41fbf3208c24801f3f5f770782b7",
+      "byteIdentical": true
+    },
+    {
+      "name": "audit-boundaries.cjs",
+      "source": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\model-audit\\audit-boundaries.cjs",
+      "oldHash": "e29794e4e7243362d6ca3ba6c5f60254cc0ac92a993bbc68e5e8cc6fd0886383",
+      "newHash": "e29794e4e7243362d6ca3ba6c5f60254cc0ac92a993bbc68e5e8cc6fd0886383",
+      "byteIdentical": true
+    },
+    {
+      "name": "audit-r4-boundaries.cjs",
+      "source": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\model-audit\\audit-r4-boundaries.cjs",
+      "oldHash": "07b2a9a92aa3e558f6b504eca72d376cb88f807ea31032a4289eef8fe20ac363",
+      "newHash": "07b2a9a92aa3e558f6b504eca72d376cb88f807ea31032a4289eef8fe20ac363",
+      "byteIdentical": true
+    },
+    {
+      "name": "audit-r4-reader-stages.cjs",
+      "source": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\model-audit\\audit-r4-reader-stages.cjs",
+      "oldHash": "6bcaded9786ae00f6d47a2132d3bd4e101f83b3690479790fef2e404666937bd",
+      "newHash": "6bcaded9786ae00f6d47a2132d3bd4e101f83b3690479790fef2e404666937bd",
+      "byteIdentical": true
+    },
+    {
+      "name": "audit-r4-anchor-cancel.cjs",
+      "source": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\model-audit\\audit-r4-anchor-cancel.cjs",
+      "oldHash": "4495d364c22d85a15883eb477cdee907005918aa5f6d6dc020a0c311bd214929",
+      "newHash": "4495d364c22d85a15883eb477cdee907005918aa5f6d6dc020a0c311bd214929",
+      "byteIdentical": true
+    }
+  ]
+}

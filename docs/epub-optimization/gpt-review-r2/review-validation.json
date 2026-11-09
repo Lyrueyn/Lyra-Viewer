@@ -1,0 +1,148 @@
+{
+  "report": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\GPT验收结论-R2暨DeepSeek返工任务书-R3.md",
+  "report_sha256": "212b47e2b8b977f7eec77e55ffde90cc6be64374a538969e79ad28203a46c323",
+  "report_lines": 259,
+  "report_utf8_bytes": 32399,
+  "links_checked": 39,
+  "broken_links": [],
+  "frozen_checks": [
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r2\\candidate\\extension.json",
+      "ok": true
+    },
+    {
+      "path": "D:\\Temp\\Lyra-Extension-Epub\\extension.json",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r2\\candidate\\index.html",
+      "ok": true
+    },
+    {
+      "path": "D:\\Temp\\Lyra-Extension-Epub\\index.html",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r2\\candidate\\reader.css",
+      "ok": true
+    },
+    {
+      "path": "D:\\Temp\\Lyra-Extension-Epub\\reader.css",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r2\\candidate\\reader.js",
+      "ok": true
+    },
+    {
+      "path": "D:\\Temp\\Lyra-Extension-Epub\\reader.js",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r2\\candidate\\epub-book.js",
+      "ok": true
+    },
+    {
+      "path": "D:\\Temp\\Lyra-Extension-Epub\\epub-book.js",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r2\\candidate\\paginator.js",
+      "ok": true
+    },
+    {
+      "path": "D:\\Temp\\Lyra-Extension-Epub\\paginator.js",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r2\\candidate\\reader-state.js",
+      "ok": true
+    },
+    {
+      "path": "D:\\Temp\\Lyra-Extension-Epub\\reader-state.js",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r2\\candidate\\search.js",
+      "ok": true
+    },
+    {
+      "path": "D:\\Temp\\Lyra-Extension-Epub\\search.js",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r2\\candidate\\lib\\jszip.min.js",
+      "ok": true
+    },
+    {
+      "path": "D:\\Temp\\Lyra-Extension-Epub\\lib\\jszip.min.js",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r2\\candidate\\LICENSE",
+      "ok": true
+    },
+    {
+      "path": "D:\\Temp\\Lyra-Extension-Epub\\LICENSE",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r2\\candidate\\README.md",
+      "ok": true
+    },
+    {
+      "path": "D:\\Temp\\Lyra-Extension-Epub\\README.md",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r2\\host-snapshot\\ExtensionHostWindow.xaml",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\app\\WinUIGui\\ExtensionHostWindow.xaml",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r2\\host-snapshot\\ExtensionHostWindow.xaml.cs",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\app\\WinUIGui\\ExtensionHostWindow.xaml.cs",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r2\\host-snapshot\\ReaderProtocol.cs",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\app\\WinUIGui\\ReaderProtocol.cs",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r2\\host-snapshot\\ReaderStateStore.cs",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\app\\WinUIGui\\ReaderStateStore.cs",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\candidates-r2\\lyra-ext-epub-0.6.1-candidate.zip",
+      "ok": true
+    },
+    {
+      "path": "D:\\Temp\\lyra_epub_host_r2\\WinUIGui.dll",
+      "ok": true
+    },
+    {
+      "path": "D:\\Temp\\lyra_epub_candidate\\WinUIGui.dll",
+      "ok": true
+    },
+    {
+      "path": "submitted R2 report snapshot",
+      "ok": true
+    }
+  ],
+  "all_frozen_unchanged": true,
+  "complete": true
+}

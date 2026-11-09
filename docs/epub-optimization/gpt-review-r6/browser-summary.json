@@ -1,0 +1,331 @@
+{
+  "F01_CANCEL_RESTORES_LATEST_PAGE": {
+    "defect": true,
+    "probeError": null,
+    "before": {
+      "ready": true,
+      "busy": false,
+      "nav": false,
+      "spine": 0,
+      "prepared": 0,
+      "pgReady": true,
+      "pgSpine": 0,
+      "page": 4,
+      "count": 15,
+      "finalizing": false,
+      "error": "",
+      "text": "START DOCUMENT\n\nSTART pa",
+      "savedOffset": 2506
+    },
+    "after": {
+      "ready": true,
+      "busy": false,
+      "nav": false,
+      "spine": 0,
+      "prepared": 0,
+      "pgReady": true,
+      "pgSpine": 0,
+      "page": 0,
+      "count": 15,
+      "finalizing": false,
+      "error": "",
+      "text": "START DOCUMENT\n\nSTART pa",
+      "savedOffset": 2506
+    },
+    "next": {
+      "ready": true,
+      "busy": false,
+      "nav": false,
+      "spine": 0,
+      "prepared": 0,
+      "pgReady": true,
+      "pgSpine": 0,
+      "page": 1,
+      "count": 15,
+      "finalizing": false,
+      "error": "",
+      "text": "START DOCUMENT\n\nSTART pa",
+      "savedOffset": 578
+    }
+  },
+  "F02_OLD_PREPARE_CLEANUP_OVERWRITES_NEW_VIEW": {
+    "defect": true,
+    "probeError": null,
+    "newer": {
+      "ready": true,
+      "busy": false,
+      "nav": false,
+      "spine": 2,
+      "prepared": 2,
+      "pgReady": true,
+      "pgSpine": 2,
+      "page": 0,
+      "count": 15,
+      "finalizing": false,
+      "error": "",
+      "text": "FRESH DOCUMENT\n\nFRESH pa",
+      "savedOffset": {}
+    },
+    "late": {
+      "ready": true,
+      "busy": false,
+      "nav": false,
+      "spine": 0,
+      "prepared": 0,
+      "pgReady": true,
+      "pgSpine": 2,
+      "page": 0,
+      "count": 15,
+      "finalizing": false,
+      "error": "",
+      "text": "FRESH DOCUMENT\n\nFRESH pa",
+      "savedOffset": {}
+    }
+  },
+  "F03_ROLLBACK_WAIT_NEWER": {
+    "defect": true,
+    "probeError": null,
+    "before": {
+      "ready": true,
+      "busy": false,
+      "nav": false,
+      "spine": 0,
+      "prepared": 0,
+      "pgReady": true,
+      "pgSpine": 0,
+      "page": 4,
+      "count": 15,
+      "finalizing": false,
+      "error": "",
+      "text": "START DOCUMENT\n\nSTART pa",
+      "savedOffset": 2506
+    },
+    "late": {
+      "ready": false,
+      "busy": false,
+      "nav": false,
+      "spine": 0,
+      "prepared": 0,
+      "pgReady": false,
+      "pgSpine": -1,
+      "page": 0,
+      "count": 1,
+      "finalizing": false,
+      "error": "",
+      "text": "",
+      "savedOffset": 2506
+    },
+    "atEvent": {
+      "ready": true,
+      "busy": false,
+      "nav": false,
+      "spine": 2,
+      "prepared": 2,
+      "pgReady": true,
+      "pgSpine": 2,
+      "page": 0,
+      "count": 15,
+      "finalizing": false,
+      "error": "",
+      "text": "FRESH DOCUMENT\n\nFRESH pa",
+      "savedOffset": 2506
+    }
+  },
+  "F03_ROLLBACK_WAIT_CLOSE": {
+    "defect": true,
+    "probeError": null,
+    "before": {
+      "ready": true,
+      "busy": false,
+      "nav": false,
+      "spine": 0,
+      "prepared": 0,
+      "pgReady": true,
+      "pgSpine": 0,
+      "page": 4,
+      "count": 15,
+      "finalizing": false,
+      "error": "",
+      "text": "START DOCUMENT\n\nSTART pa",
+      "savedOffset": 2506
+    },
+    "late": {
+      "ready": true,
+      "busy": false,
+      "nav": false,
+      "spine": 0,
+      "prepared": 0,
+      "pgReady": true,
+      "pgSpine": 0,
+      "page": 0,
+      "count": 15,
+      "finalizing": true,
+      "error": "",
+      "text": "START DOCUMENT\n\nSTART pa",
+      "savedOffset": 2506
+    },
+    "atEvent": {
+      "ready": false,
+      "busy": true,
+      "nav": true,
+      "spine": 0,
+      "prepared": 0,
+      "pgReady": false,
+      "pgSpine": 0,
+      "page": 0,
+      "count": 1,
+      "finalizing": true,
+      "error": "",
+      "text": "START DOCUMENT\n\nSTART pa",
+      "savedOffset": 2506
+    },
+    "ack": {
+      "type": "host.finalized",
+      "requestId": "during-restore",
+      "sessionId": "local-mvs0s7oz",
+      "ok": true,
+      "revision": 2,
+      "closeDiagnostics": []
+    }
+  },
+  "F04_RESOURCE_WAIT_EXCEPTION_RESTORE": {
+    "defect": true,
+    "probeError": null,
+    "before": {
+      "ready": true,
+      "busy": false,
+      "nav": false,
+      "spine": 0,
+      "prepared": 0,
+      "pgReady": true,
+      "pgSpine": 0,
+      "page": 4,
+      "count": 15,
+      "finalizing": false,
+      "error": "",
+      "text": "START DOCUMENT\n\nSTART pa",
+      "savedOffset": 2506
+    },
+    "after": {
+      "ready": false,
+      "busy": false,
+      "nav": false,
+      "spine": 0,
+      "prepared": 0,
+      "pgReady": false,
+      "pgSpine": 1,
+      "page": 0,
+      "count": 1,
+      "finalizing": false,
+      "error": "章节载入失败：injected resource wait failure",
+      "text": "OLDQUERY target\n\nTARGET ",
+      "savedOffset": 2506
+    }
+  },
+  "F05_CSS_IMPORTANT_INVALID_AND_DISPLAY": {
+    "defect": true,
+    "counts": {
+      "IMPORTANTWORD": 0,
+      "DISPLAYWORD": 1,
+      "INVALIDWORD": 1
+    },
+    "items": [
+      {
+        "id": "case1",
+        "text": "IMPORTANTWORD",
+        "style": "visibility:hidden;visibility:visible",
+        "display": "inline",
+        "visibility": "visible"
+      },
+      {
+        "id": "case2",
+        "text": "DISPLAYWORD",
+        "style": "display:none",
+        "display": "none",
+        "visibility": "visible"
+      },
+      {
+        "id": "case3",
+        "text": "INVALIDWORD",
+        "style": "visibility:hidden",
+        "display": "inline",
+        "visibility": "hidden"
+      }
+    ],
+    "marks": null
+  },
+  "F06_SVG_NATIVE_MARK_VISIBLE": {
+    "defect": false,
+    "counts": null,
+    "items": null,
+    "marks": [
+      {
+        "namespace": "http://www.w3.org/2000/svg",
+        "text": "TARGET",
+        "width": 103.671875,
+        "rects": 1
+      }
+    ]
+  },
+  "R6rerun_E01_RESOURCE_CANCEL_INPUT": {
+    "defect": false,
+    "probeError": null
+  },
+  "R6rerun_E01_RESOURCE_CANCEL_CLOSE": {
+    "defect": false,
+    "probeError": null
+  },
+  "R6rerun_E02_FINALIZE_AFTER_DOCUMENT_BEFORE_LAYOUT": {
+    "defect": false,
+    "probeError": null
+  },
+  "R6rerun_E03_SVG_HIGHLIGHT_DISAPPEARS": {
+    "defect": false,
+    "probeError": null
+  },
+  "R6rerun_E04_QUERY_LIMIT_MESSAGE": {
+    "defect": false,
+    "probeError": null
+  },
+  "R6rerun_E05_CSS_VISIBILITY_DECLARATION_ORDER": {
+    "defect": false,
+    "probeError": null
+  },
+  "R6rerun_E06_ANIMATION_FINALIZE": {
+    "defect": false,
+    "probeError": null
+  },
+  "R6rerun_E06_ANIMATION_PAGEHIDE": {
+    "defect": false,
+    "probeError": null
+  },
+  "R6rerun_E07_FILE_BYTES_COMPLETE_AFTER_FINALIZE": {
+    "defect": false,
+    "probeError": null
+  },
+  "_legacy": {
+    "count": 49,
+    "defects": [
+      {
+        "file": "storage-evidence/results.json",
+        "id": "B14_FAILED_SAVE_SWITCH_LOSES_PENDING_POSITION",
+        "defect": true,
+        "probeError": false
+      },
+      {
+        "file": "new-boundary-evidence-v2/results.json",
+        "id": "D05_HIDDEN_SVG_OFFSET_DIVERGENCE",
+        "defect": true,
+        "probeError": false
+      }
+    ],
+    "probeErrors": [
+      {
+        "file": "browser-evidence/review-results.json",
+        "id": "R03_FONT_REOPEN_ANCHOR",
+        "defect": null,
+        "probeError": true
+      }
+    ]
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "scope": "EPUB R3 independent model/parser/search/resource/image-text audit",
+  "overall": "FAIL_COMPLETE_ACCEPTANCE",
+  "commit": "ba6f763f9579a808ddc201b82b5867412265c104",
+  "packageSha256": "847d8047702e8de6a8dec8b7ae9e3fb60693686400b71aa65c2b134a7270636c",
+  "independentCounts": { "observations": 34, "pass": 25, "fail": 6, "observation": 3 },
+  "submittedModelReplay": { "pass": 6, "fail": 0 },
+  "report": "解析搜索资源独立验收-R3.md",
+  "results": ["model-results.json", "reader-flow-results.json", "boundary-results.json", "submitted-model-rerun.json"],
+  "scripts": ["audit-common.cjs", "audit-models.cjs", "audit-reader-flow.cjs", "audit-boundaries.cjs", "rerun-submitted-model.cjs", "submitted-model-adapted.cjs"],
+  "findings": [
+    {
+      "id": "D01", "requirement": "R3-09", "severity": "P1/P2", "evidence": ["F06"],
+      "title": "Late old-book task releases current new-book image through colliding numeric owner",
+      "sources": ["../candidate/reader.js:889-903", "../candidate/reader.js:929-931", "../candidate/epub-book.js:556-565", "../candidate/epub-book.js:605-607"],
+      "actual": "Old book owner 2 finishes after new book owner 2 is displayed. reader calls state.book.releaseTask(2) on NEW; new image URL is revoked, resource/task sets empty, DOM still references URL and ready remains true.",
+      "boundary": "Original full reader events and real parser, deterministic URL ledger, iframe/layout doubles; not rendered image evidence."
+    },
+    {
+      "id": "D02", "requirement": "R3-05", "severity": "P1/P2", "evidence": ["F05"],
+      "title": "Query change during result navigation still commits old highlight",
+      "sources": ["../candidate/reader.js:691-699", "../candidate/reader.js:903-919", "../candidate/reader.js:954-965"],
+      "actual": "Click OLDQUERY result, block readText, input NEWQUERY, release read. activeSearchResult queryGen 3 with state.searchGen 4; Range highlight OLDQUERY.",
+      "boundary": "Original reader/Range with layout dependency double; final browser geometry remains parent scope."
+    },
+    {
+      "id": "D03", "requirement": "R3-06", "severity": "P2", "evidence": ["S06", "B02"],
+      "title": "Sparse and no-match scans have no macrotask yield",
+      "sources": ["../candidate/search.js:98-128", "../candidate/search.js:64-67", "../candidate/epub-book.js:709-720"],
+      "actual": "Hot index of 8388608 UTF-16 units with zero/one match or 64 zero-match sections returns before queued cancellation timer runs. Dense match case passes.",
+      "boundary": "Measured failed inputs around 0.5-6.9ms in Node; no claim these specific inputs severely freeze browser. Cold DOM parse isolated at about 81.7ms is an observation."
+    },
+    {
+      "id": "D04", "requirement": "R3-06", "severity": "P2", "evidence": ["T03"],
+      "title": "Hidden br and SVG presentation semantics differ from text model",
+      "sources": ["../candidate/epub-book.js:143-152", "../candidate/epub-book.js:624-634"],
+      "actual": "A<br hidden>B indexed as A newline B and AB misses. SVG visibility hidden, display none, and unused symbol strings each produce a hit despite preserved markup.",
+      "boundary": "Established DOM/model mismatch; browser visibility not executed. aria-hidden-only and SVG use are policy/gap observations, not separate failures."
+    },
+    {
+      "id": "D05", "requirement": "R3-11", "severity": "P2", "evidence": ["E02"],
+      "title": "IDPF target validation ignores ZIP absence and uses font MIME substring",
+      "sources": ["../candidate/epub-book.js:246", "../candidate/epub-book.js:259-264"],
+      "actual": "Exact IDPF plus manifest font/otf but missing ZIP entry opens with fontObfuscated=true; application/x-not-a-font and text/x-woff-comment also accepted.",
+      "boundary": "Real ZIP and original open/init classification; no decryption or font decoding assertion."
+    },
+    {
+      "id": "D06", "requirement": "R3-09", "severity": "P2", "evidence": ["R06"],
+      "title": "Early prepare failures retain unbounded empty task records",
+      "sources": ["../candidate/epub-book.js:605-608", "../candidate/reader.js:880-890", "../candidate/reader.js:929-931"],
+      "actual": "40 readText failures in prepareSection leave 40 task sets with resources=0 and pending=0.",
+      "boundary": "Empty metadata sets only; does not demonstrate leaked image payloads or unbounded process memory."
+    }
+  ],
+  "confirmedLimitedPasses": [
+    "Hot cancel and cold cancel immediate restart",
+    "Exactly 1000, same/cross chapter 1001 accurate totals",
+    "Over-cap first/middle chapter continues later chapters, including real ZIP+DOM",
+    "Dense-match cancellation yields",
+    "Basic hidden/details/defs/desc filtering",
+    "Shared UTF-16 offsets, repeated/inline/NBSP/virtual block separator ranges",
+    "Null/missing/string text offset uses element; numeric zero remains text",
+    "Same-path genuine pending dedup and both same-book old/new sharing interleavings",
+    "Same-book late A/B after C and 200 image chapter transitions settle bounded",
+    "10 same-jsdom-realm image book replacements settle one live URL/task",
+    "One-decode percent paths, full-byte distinct entries, SVG href/xlink/fragments",
+    "Sanitizer and independent outer http/https whitelist",
+    "Original reader rollback after controlled DOM submission failure restores old document/image reference"
+  ],
+  "limitations": [
+    "No browser, desktop, install, deploy, publish or product/frozen-input modifications",
+    "34 observations are not 34 independent defects",
+    "Model/geometry doubles do not prove visible browser text, images, SVG rendering or original host behavior",
+    "Cache cap is 8388608 UTF-16 code units in retained section text; not total memory or byte cap",
+    "Browser scripts reviewed but not run by this agent; submitted model assertions replayed separately",
+    "Native host, real Edge UI, image decode/visible ranges and full memory trends remain parent/host-agent scope"
+  ]
+}

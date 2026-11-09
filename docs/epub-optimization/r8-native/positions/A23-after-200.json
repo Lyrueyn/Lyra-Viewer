@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "revision": 256,
+  "positionRevision": 256,
+  "metadataRevision": 0,
+  "interaction": 531,
+  "interactionOwner": "6daa349e059c4a6ca16962ffce9a6373",
+  "position": {
+    "spineHref": "OPS/c200.xhtml",
+    "spineIndex": 200,
+    "locator": {
+      "elementPath": null,
+      "textOffset": 8,
+      "quote": "A23-200 A23 image chapter 200 visibl",
+      "prefix": "A23-200",
+      "suffix": "A23 image chapter 200 visibl",
+      "elementId": "",
+      "chapterFraction": 0,
+      "pageIndex": 0
+    },
+    "chapterFraction": 0,
+    "savedAt": "2026-10-29T13:53:04.317Z"
+  },
+  "positionToken": 529,
+  "positionSequence": 0,
+  "bookmarks": [],
+  "bookmarksRevision": 0,
+  "positionSession": "6daa349e059c4a6ca16962ffce9a6373",
+  "positionSavedAt": "2026-10-29T13:53:04.4078157Z"
+}

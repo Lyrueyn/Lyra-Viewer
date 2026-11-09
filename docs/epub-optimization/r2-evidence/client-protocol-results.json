@@ -1,0 +1,24 @@
+{
+  "generatedAt": "2026-10-27T11:49:05.198Z",
+  "results": [
+    {
+      "id": "R2-F11-client",
+      "pass": true,
+      "detail": {
+        "pendingAfterInvalidEnvelopes": true,
+        "helloOk2": true,
+        "loaded": {
+          "revision": 3,
+          "bookmarkCount": 2
+        }
+      }
+    },
+    {
+      "id": "R2-F10-local-fail",
+      "pass": true,
+      "detail": {
+        "writeError": "LOCAL_WRITE_FAILED"
+      }
+    }
+  ]
+}

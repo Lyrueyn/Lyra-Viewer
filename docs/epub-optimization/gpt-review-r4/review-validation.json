@@ -1,0 +1,1221 @@
+{
+  "report": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\GPT验收结论-R4暨DeepSeek返工任务书-R5.md",
+  "report_sha256": "76cfe3aa0c9c7a0fcd8b7e76ebcf259d0116e0a5e2c5797d8af293c68baafdaa",
+  "report_lines": 200,
+  "report_utf8_bytes": 33824,
+  "links_checked": 42,
+  "broken_links": [],
+  "unfinished_markers": [],
+  "frozen_checks": [
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\candidate\\extension.json",
+      "ok": true
+    },
+    {
+      "path": "D:\\Temp\\Lyra-Extension-Epub\\extension.json",
+      "ok": true
+    },
+    {
+      "path": "D:\\Temp\\lyra_epub_r4_candidate\\extensions\\epub\\extension.json",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\candidate\\index.html",
+      "ok": true
+    },
+    {
+      "path": "D:\\Temp\\Lyra-Extension-Epub\\index.html",
+      "ok": true
+    },
+    {
+      "path": "D:\\Temp\\lyra_epub_r4_candidate\\extensions\\epub\\index.html",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\candidate\\reader.css",
+      "ok": true
+    },
+    {
+      "path": "D:\\Temp\\Lyra-Extension-Epub\\reader.css",
+      "ok": true
+    },
+    {
+      "path": "D:\\Temp\\lyra_epub_r4_candidate\\extensions\\epub\\reader.css",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\candidate\\reader.js",
+      "ok": true
+    },
+    {
+      "path": "D:\\Temp\\Lyra-Extension-Epub\\reader.js",
+      "ok": true
+    },
+    {
+      "path": "D:\\Temp\\lyra_epub_r4_candidate\\extensions\\epub\\reader.js",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\candidate\\epub-book.js",
+      "ok": true
+    },
+    {
+      "path": "D:\\Temp\\Lyra-Extension-Epub\\epub-book.js",
+      "ok": true
+    },
+    {
+      "path": "D:\\Temp\\lyra_epub_r4_candidate\\extensions\\epub\\epub-book.js",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\candidate\\paginator.js",
+      "ok": true
+    },
+    {
+      "path": "D:\\Temp\\Lyra-Extension-Epub\\paginator.js",
+      "ok": true
+    },
+    {
+      "path": "D:\\Temp\\lyra_epub_r4_candidate\\extensions\\epub\\paginator.js",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\candidate\\reader-state.js",
+      "ok": true
+    },
+    {
+      "path": "D:\\Temp\\Lyra-Extension-Epub\\reader-state.js",
+      "ok": true
+    },
+    {
+      "path": "D:\\Temp\\lyra_epub_r4_candidate\\extensions\\epub\\reader-state.js",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\candidate\\search.js",
+      "ok": true
+    },
+    {
+      "path": "D:\\Temp\\Lyra-Extension-Epub\\search.js",
+      "ok": true
+    },
+    {
+      "path": "D:\\Temp\\lyra_epub_r4_candidate\\extensions\\epub\\search.js",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\candidate\\lib\\jszip.min.js",
+      "ok": true
+    },
+    {
+      "path": "D:\\Temp\\Lyra-Extension-Epub\\lib\\jszip.min.js",
+      "ok": true
+    },
+    {
+      "path": "D:\\Temp\\lyra_epub_r4_candidate\\extensions\\epub\\lib\\jszip.min.js",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\candidate\\LICENSE",
+      "ok": true
+    },
+    {
+      "path": "D:\\Temp\\Lyra-Extension-Epub\\LICENSE",
+      "ok": true
+    },
+    {
+      "path": "D:\\Temp\\lyra_epub_r4_candidate\\extensions\\epub\\LICENSE",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\candidate\\README.md",
+      "ok": true
+    },
+    {
+      "path": "D:\\Temp\\Lyra-Extension-Epub\\README.md",
+      "ok": true
+    },
+    {
+      "path": "D:\\Temp\\lyra_epub_r4_candidate\\extensions\\epub\\README.md",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\host-snapshot\\ExtensionHostWindow.xaml",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\app\\WinUIGui\\ExtensionHostWindow.xaml",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\host-snapshot\\ExtensionHostWindow.xaml.cs",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\app\\WinUIGui\\ExtensionHostWindow.xaml.cs",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\host-snapshot\\ReaderProtocol.cs",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\app\\WinUIGui\\ReaderProtocol.cs",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\host-snapshot\\ReaderStateStore.cs",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\app\\WinUIGui\\ReaderStateStore.cs",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\candidates-r4\\lyra-ext-epub-0.8.0-candidate.zip",
+      "ok": true
+    },
+    {
+      "path": "D:\\Temp\\lyra_epub_host_r4\\WinUIGui.dll",
+      "ok": true
+    },
+    {
+      "path": "D:\\Temp\\lyra_epub_r4_candidate\\WinUIGui.dll",
+      "ok": true
+    },
+    {
+      "path": "D:\\Temp\\lyra_epub_host_r4\\WinUIGui.exe",
+      "ok": true
+    },
+    {
+      "path": "D:\\Temp\\lyra_epub_r4_candidate\\WinUIGui.exe",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\DeepSeek实施回报-R4.md",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-report\\DeepSeek实施回报-R4.md",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\build-manifest.json",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\r4-evidence\\build-manifest.json",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\early-close-raw.log",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\r4-evidence\\early-close-raw.log",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\native-early-close.log",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\r4-evidence\\native-early-close.log",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\native-final-identity.json",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\r4-evidence\\native-final-identity.json",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\native-final-pending-close.log",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\r4-evidence\\native-final-pending-close.log",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\native-final-pending-prefs.json",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\r4-evidence\\native-final-pending-prefs.json",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\native-nochange-close.log",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\r4-evidence\\native-nochange-close.log",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\native-pending-prefs-close.json",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\r4-evidence\\native-pending-prefs-close.json",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\native-pending-prefs-close.log",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\r4-evidence\\native-pending-prefs-close.log",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\native-two-window-prefs-identity.json",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\r4-evidence\\native-two-window-prefs-identity.json",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\native-two-window-prefs-raw.log",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\r4-evidence\\native-two-window-prefs-raw.log",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\nochange-close-raw.log",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\r4-evidence\\nochange-close-raw.log",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\package-smoke.png",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\r4-evidence\\package-smoke.png",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\pending-close-raw.log",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\r4-evidence\\pending-close-raw.log",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\reader-extra.out",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\r4-evidence\\reader-extra.out",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\reader-smoke.out",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\r4-evidence\\reader-smoke.out",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\README-证据边界.md",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\r4-evidence\\README-证据边界.md",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\SHA256SUMS",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\r4-evidence\\SHA256SUMS",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\client-close\\results.json",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\r4-evidence\\client-close\\results.json",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\compat\\oldhost-b978661-r4ext-identity.json",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\r4-evidence\\compat\\oldhost-b978661-r4ext-identity.json",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\compat\\oldhost-b978661-r4ext-withbook.png",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\r4-evidence\\compat\\oldhost-b978661-r4ext-withbook.png",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\compat\\r4host-c12-nobook-identity.json",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\r4-evidence\\compat\\r4host-c12-nobook-identity.json",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\compat\\r4host-c12-nobook.png",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\r4-evidence\\compat\\r4host-c12-nobook.png",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\compat\\r4host-c12-withbook-identity.json",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\r4-evidence\\compat\\r4host-c12-withbook-identity.json",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\compat\\r4host-c12-withbook.png",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\r4-evidence\\compat\\r4host-c12-withbook.png",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\compat\\r4host-pdf030-identity.json",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\r4-evidence\\compat\\r4host-pdf030-identity.json",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\compat\\r4host-pdf030-withbook.png",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\r4-evidence\\compat\\r4host-pdf030-withbook.png",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\compat\\r4host-r3client-identity.json",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\r4-evidence\\compat\\r4host-r3client-identity.json",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\compat\\r4host-r3client-withbook.png",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\r4-evidence\\compat\\r4host-r3client-withbook.png",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\host-audit\\r4-host-results.json",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\r4-evidence\\host-audit\\r4-host-results.json",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\image-ack\\fresh.epub",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\r4-evidence\\image-ack\\fresh.epub",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\image-ack\\hidden.epub",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\r4-evidence\\image-ack\\hidden.epub",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\image-ack\\image.epub",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\r4-evidence\\image-ack\\image.epub",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\image-ack\\newimg.epub",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\r4-evidence\\image-ack\\newimg.epub",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\image-ack\\normal.epub",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\r4-evidence\\image-ack\\normal.epub",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\image-ack\\oldimg.epub",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\r4-evidence\\image-ack\\oldimg.epub",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\image-ack\\results.json",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\r4-evidence\\image-ack\\results.json",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\image-ack\\search.epub",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\r4-evidence\\image-ack\\search.epub",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\image-ack\\stale-search-click.png",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\r4-evidence\\image-ack\\stale-search-click.png",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\model\\audit-common.cjs",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\r4-evidence\\model\\audit-common.cjs",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\model\\audit-models.cjs",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\r4-evidence\\model\\audit-models.cjs",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\model\\audit-reader-flow.cjs",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\r4-evidence\\model\\audit-reader-flow.cjs",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\model\\model-results.json",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\r4-evidence\\model\\model-results.json",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\model\\reader-flow-results.json",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\r4-evidence\\model\\reader-flow-results.json",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\races-v2\\fresh.epub",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\r4-evidence\\races-v2\\fresh.epub",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\races-v2\\hidden.epub",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\r4-evidence\\races-v2\\hidden.epub",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\races-v2\\image.epub",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\r4-evidence\\races-v2\\image.epub",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\races-v2\\newimg.epub",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\r4-evidence\\races-v2\\newimg.epub",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\races-v2\\normal.epub",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\r4-evidence\\races-v2\\normal.epub",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\races-v2\\oldimg.epub",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\r4-evidence\\races-v2\\oldimg.epub",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\races-v2\\results.json",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\r4-evidence\\races-v2\\results.json",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\races-v2\\search.epub",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\r4-evidence\\races-v2\\search.epub",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\tools\\review-client-close.cjs",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\r4-evidence\\tools\\review-client-close.cjs",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\tools\\review-image-ack.cjs",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\r4-evidence\\tools\\review-image-ack.cjs",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-evidence\\tools\\review-races-v2.cjs",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\r4-evidence\\tools\\review-races-v2.cjs",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-native-supplement\\a08\\1-open-text.png",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-native-supplement\\a08\\2-image-page-toc.png",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-native-supplement\\a08\\2-image-page.png",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-native-supplement\\a08\\3-image-line22.png",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-native-supplement\\a08\\3-image-settings26.png",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-native-supplement\\a08\\4-bookmark.png",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-native-supplement\\a08\\4-image-bookmark.png",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-native-supplement\\a08\\5-reopen-after-app-restart.png",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-native-supplement\\a08\\6-reopen-window-after-close.png",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-native-supplement\\a08\\a08-before-close.log",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-native-supplement\\a08\\a08-close-before.log",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-native-supplement\\a08\\a08-close.log",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-native-supplement\\a08\\a08-identity.json",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-native-supplement\\a08\\a08-reopen-after-restart.log",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-native-supplement\\a08\\a08-reopen-identity.json",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-native-supplement\\a08\\state-26c433946315c3d0491698a7a810355c107b9b948dcf6b4f185359727b18beb9.json",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-native-supplement\\a08.epub",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-native-supplement\\compat\\finalhost-c12-withbook-identity.json",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-native-supplement\\compat\\finalhost-c12-withbook-raw.log",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-native-supplement\\compat\\finalhost-c12-withbook.png",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-native-supplement\\compat\\oldhost-b978661-r4zip080-identity.json",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-native-supplement\\compat\\oldhost-b978661-r4zip080-page-turn-identity.json",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-native-supplement\\compat\\oldhost057-dll-r4zip-open.png",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-native-supplement\\compat\\oldhost057-dll-r4zip-page2.png",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-native-supplement\\compat\\oldhost057-r4zip080-page2-pid.png",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-native-supplement\\compat\\oldhost057-r4zip080-page2.png",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-native-supplement\\DeepSeek补充测试-R4.md",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-native-supplement\\native-failure\\native-write-failure-close-raw.log",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-native-supplement\\native-failure\\native-write-failure-identity.json",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-native-supplement\\native-failure\\preferences-after.json",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-native-supplement\\native-failure\\preferences-before.json",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-native-supplement\\realbooks\\r4-real-books-results.json",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-native-supplement\\SHA256SUMS",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-native-supplement\\supplement-manifest.json",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-native-supplement\\supplement-results.json",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-native-supplement\\tools\\r4-realbooks.cjs",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-native-supplement\\windows\\A-font-before.png",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-native-supplement\\windows\\A-font18.png",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-native-supplement\\windows\\A-line-before.png",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-native-supplement\\windows\\A-line22.png",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-native-supplement\\windows\\A-settings-before.png",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-native-supplement\\windows\\A-settings-line-before.png",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-native-supplement\\windows\\B-font-before.png",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-native-supplement\\windows\\B-font32.png",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-native-supplement\\windows\\B-settings-before.png",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-native-supplement\\windows\\native-A-font18.png",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-native-supplement\\windows\\native-A-line22.png",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-native-supplement\\windows\\native-A-open-settings-line.png",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-native-supplement\\windows\\native-A-open-settings.png",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-native-supplement\\windows\\native-B-font32.png",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-native-supplement\\windows\\native-B-open-settings.png",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-native-supplement\\windows\\native-fast-A18-B32-A22-raw.log",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-native-supplement\\windows\\native-fast-two-window-identity.json",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-native-supplement\\windows\\native-two-window-A18-B32-A22-raw.log",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-native-supplement\\windows\\native-two-window-identity.json",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-native-supplement\\windows\\two-window-identity.json",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-native-supplement\\windows\\two-window-raw.log",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-native-corrections\\CORRECTIONS-A22-A-TABLE.md",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\submitted-native-corrections\\CORRECTIONS-A22-A-TABLE.sha256",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\candidate\\extension.json",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\candidate\\index.html",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\candidate\\reader.css",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\candidate\\reader.js",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\candidate\\epub-book.js",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\candidate\\paginator.js",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\candidate\\reader-state.js",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\candidate\\search.js",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\candidate\\lib\\jszip.min.js",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\candidate\\LICENSE",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\candidate\\README.md",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\host-snapshot\\ExtensionHostWindow.xaml",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\host-snapshot\\ExtensionHostWindow.xaml.cs",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\host-snapshot\\ReaderProtocol.cs",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\host-snapshot\\ReaderStateStore.cs",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\candidates-r3\\lyra-ext-epub-0.7.0-candidate.zip",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\submitted-native-supplement\\a-font18.png",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\submitted-native-supplement\\a-line22.png",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\submitted-native-supplement\\b-font32.png",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\submitted-native-supplement\\close-during-loading-after10s.log",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\submitted-native-supplement\\close-during-loading-raw.log",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\submitted-native-supplement\\close-during-loading-stuck-facts.txt",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\submitted-native-supplement\\close-during-loading-stuck-raw.log",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\submitted-native-supplement\\close-during-loading-stuck-window.png",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\submitted-native-supplement\\close-during-search-raw.log",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\submitted-native-supplement\\close-with-pending-prefs-raw.log",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\submitted-native-supplement\\compat-identity.json",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\submitted-native-supplement\\compat-newhost-nobook-0.png",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\submitted-native-supplement\\compat-newhost-nobook-1.png",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\submitted-native-supplement\\compat-newhost-old-epub-after-turn.png",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\submitted-native-supplement\\compat-newhost-old-epub-withbook.png",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\submitted-native-supplement\\compat-newhost-pdf-page.png",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\submitted-native-supplement\\compat-newhost-pdf030-withbook.png",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\submitted-native-supplement\\compat-oldhost-new-epub-after-turn.png",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\submitted-native-supplement\\compat-oldhost-new-epub-after-turn2.png",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\submitted-native-supplement\\compat-oldhost-new-epub-open.png",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\submitted-native-supplement\\epub-page-before-click.png",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\submitted-native-supplement\\final-runtime-raw.log",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\submitted-native-supplement\\late-image-a-last.png",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\submitted-native-supplement\\late-image-after-full-restart.png",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\submitted-native-supplement\\late-image-lastpage.png",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\submitted-native-supplement\\late-image-reopened-library.png",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\submitted-native-supplement\\main-after-second-click.png",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\submitted-native-supplement\\main-epub-page.png",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\submitted-native-supplement\\main-epub-page2.png",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\submitted-native-supplement\\main-window.png",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\submitted-native-supplement\\native-after-restart-raw.log",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\submitted-native-supplement\\native-pref-two-window-raw.log",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\submitted-native-supplement\\native-reader-before-settings.png",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\submitted-native-supplement\\native-reader-settings.png",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\submitted-native-supplement\\native-run-identity-2.json",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\submitted-native-supplement\\native-run-identity.json",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\submitted-native-supplement\\native-supplement-results.json",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\submitted-native-supplement\\position-late-reopen-B-page.png",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\submitted-native-supplement\\position-late-window-raw.log",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\submitted-native-supplement\\position-renderer-injection-raw.log",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\submitted-native-supplement\\preferences-after-two-window-and-pending-close.json",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\submitted-native-supplement\\R3-A编号校正-补充.md",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\submitted-native-supplement\\README-原生补充证据.md",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\submitted-native-supplement\\SHA256SUMS",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\submitted-compat-addendum\\compat-baseline-c12fe26\\newhost-c12fe26-after-turn.png",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\submitted-compat-addendum\\compat-baseline-c12fe26\\newhost-c12fe26-nobook-raw.log",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\submitted-compat-addendum\\compat-baseline-c12fe26\\newhost-c12fe26-nobook.png",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\submitted-compat-addendum\\compat-baseline-c12fe26\\newhost-c12fe26-withbook-raw.log",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\submitted-compat-addendum\\compat-baseline-c12fe26\\newhost-c12fe26-withbook.png",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\submitted-compat-addendum\\compat-baseline-c12fe26\\oldhost-b978661-build-identity.json",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\submitted-compat-addendum\\compat-baseline-c12fe26\\oldhost-b978661-identity.json",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\submitted-compat-addendum\\compat-baseline-c12fe26\\oldhost-b978661-newepub-after-turn.png",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\submitted-compat-addendum\\compat-baseline-c12fe26\\oldhost-b978661-newepub-open.png",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\submitted-compat-addendum\\compat-baseline-c12fe26\\oldold-b978661-c12fe26-identity.json",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\submitted-compat-addendum\\compat-baseline-c12fe26\\oldold-b978661-c12fe26-withbook.png",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\submitted-compat-addendum\\compat-baseline-c12fe26\\oldold-dm-debug.log",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\submitted-compat-addendum\\compat-baseline-c12fe26\\README-真基线补测.md",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\submitted-compat-addendum\\compat-baseline-c12fe26\\results.json",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\submitted-compat-addendum\\compat-baseline-c12fe26\\runtime-identity-nobook.json",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\submitted-compat-addendum\\compat-baseline-c12fe26\\runtime-identity-withbook.json",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\submitted-compat-addendum\\compat-baseline-c12fe26\\source-manifest.json",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\submitted-compat-addendum\\compat-baseline-c12fe26\\extension-source\\extension.json",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\submitted-compat-addendum\\compat-baseline-c12fe26\\extension-source\\index.html",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\submitted-compat-addendum\\compat-baseline-c12fe26\\extension-source\\LICENSE",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\submitted-compat-addendum\\compat-baseline-c12fe26\\extension-source\\README.md",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\submitted-compat-addendum\\compat-baseline-c12fe26\\extension-source\\lib\\jszip.min.js",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\submitted-compat-addendum\\compat-identity-CORRECTION.md",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\submitted-compat-addendum\\native-supplement-results-v2.json",
+      "ok": true
+    },
+    {
+      "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\submitted-compat-addendum\\SHA256SUMS",
+      "ok": true
+    }
+  ],
+  "all_frozen_unchanged": true,
+  "complete": true
+}

@@ -1,0 +1,202 @@
+[
+  {
+    "id": "E01_RESOURCE_CANCEL_INPUT",
+    "defect": true,
+    "cancelled": {
+      "ready": true,
+      "spine": 0,
+      "paginatorReady": false,
+      "paginatorSpine": 1,
+      "page": 0,
+      "count": 1
+    },
+    "afterNextPosition": {
+      "spineHref": "OPS/c0.xhtml",
+      "spineIndex": 0,
+      "locator": null,
+      "chapterFraction": 0,
+      "savedAt": "2026-10-27T19:45:58.245Z"
+    }
+  },
+  {
+    "id": "E01_RESOURCE_CANCEL_CLOSE",
+    "defect": true,
+    "cancelled": {
+      "ready": true,
+      "spine": 0,
+      "paginatorReady": false,
+      "paginatorSpine": 1,
+      "page": 0,
+      "count": 1
+    },
+    "afterNextPosition": {
+      "spineHref": "OPS/c0.xhtml",
+      "spineIndex": 0,
+      "locator": null,
+      "chapterFraction": 0,
+      "savedAt": "2026-10-27T19:45:59.926Z"
+    }
+  },
+  {
+    "id": "E02_FINALIZE_AFTER_DOCUMENT_BEFORE_LAYOUT",
+    "defect": true,
+    "ack": {
+      "type": "host.finalized",
+      "requestId": "close-after-document",
+      "sessionId": "local-mvr3ip08",
+      "ok": true,
+      "revision": 3
+    },
+    "beforeLocator": {
+      "elementPath": null,
+      "textOffset": 2506,
+      "quote": "这是用于验证实际正文的长段落。 START paragraph 27: independent visible reading",
+      "prefix": "这是用于验证实际正文的长段落。 START paragraph",
+      "suffix": "27: independent visible reading",
+      "elementId": "",
+      "chapterFraction": 0.2857142857142857,
+      "pageIndex": 4
+    },
+    "closedPosition": {
+      "spineHref": "OPS/c0.xhtml",
+      "spineIndex": 0,
+      "locator": null,
+      "chapterFraction": 0,
+      "savedAt": "2026-10-27T19:46:01.041Z"
+    }
+  },
+  {
+    "id": "E03_SVG_HIGHLIGHT_DISAPPEARS",
+    "defect": true,
+    "before": {
+      "visible": "VISIBLE TARGET",
+      "raw": "VISIBLE TARGET",
+      "length": 210.84375,
+      "bbox": {
+        "width": 211.84375,
+        "height": 35
+      },
+      "mark": null
+    },
+    "after": {
+      "visible": "VISIBLE",
+      "raw": "VISIBLE TARGET",
+      "length": 98.890625,
+      "bbox": {
+        "width": 99.890625,
+        "height": 35
+      },
+      "mark": {
+        "namespace": "http://www.w3.org/1999/xhtml",
+        "text": "TARGET",
+        "rects": 0,
+        "width": 0
+      }
+    }
+  },
+  {
+    "id": "E04_QUERY_LIMIT_MESSAGE",
+    "defect": true,
+    "actual": {
+      "length": 4097,
+      "info": "当前结果上限/未完成范围内没有找到匹配内容，不能据此判定全书无匹配 · 已扫描 0/0 章",
+      "status": "此主程序版本不支持跨窗口保存；阅读位置仅保存在当前窗口",
+      "buttons": 0
+    }
+  },
+  {
+    "id": "E05_CSS_VISIBILITY_DECLARATION_ORDER",
+    "defect": true,
+    "target": {
+      "count": 0,
+      "status": "没有找到匹配内容 · 已扫描 1/1 章"
+    },
+    "hidden": {
+      "count": 1,
+      "status": "找到 1 处 · 已扫描 1/1 章 · 缓存 8 字符"
+    },
+    "before": {
+      "plain": "\nHIDDEN\n",
+      "visible": "TARGET",
+      "targetVisibility": "visible",
+      "hiddenVisibility": "hidden"
+    },
+    "after": null
+  },
+  {
+    "id": "E06_ANIMATION_FINALIZE",
+    "defect": true,
+    "ack": {
+      "type": "host.finalized",
+      "requestId": "animation-close",
+      "sessionId": "local-mvr3iqwd",
+      "ok": true,
+      "revision": 1
+    },
+    "during": {
+      "target": 1,
+      "scroll": 0,
+      "raf": 1000001,
+      "modified": true
+    },
+    "savedPosition": {
+      "spineHref": "OPS/c0.xhtml",
+      "spineIndex": 0,
+      "locator": {
+        "elementPath": null,
+        "textOffset": 15,
+        "quote": "NORMAL paragraph 0: independent visible readin",
+        "prefix": "NORMAL paragra",
+        "suffix": "ph 0: independent visible readin",
+        "elementId": "",
+        "chapterFraction": 0.07142857142857142,
+        "pageIndex": 1
+      },
+      "chapterFraction": 0.07142857142857142,
+      "savedAt": "2026-10-27T19:46:02.862Z"
+    },
+    "reopenedPage": 0
+  },
+  {
+    "id": "E06_ANIMATION_PAGEHIDE",
+    "defect": false,
+    "ack": null,
+    "during": {
+      "target": 1,
+      "scroll": 0,
+      "raf": 1000001,
+      "modified": true
+    },
+    "savedPosition": {
+      "spineHref": "OPS/c0.xhtml",
+      "spineIndex": 0,
+      "locator": {
+        "elementPath": null,
+        "textOffset": 659,
+        "quote": "这是用于验证实际正文的长段落。 NORMAL paragraph 7: independent visible readin",
+        "prefix": "这是用于验证实际正文的长段落。 NORMAL paragra",
+        "suffix": "ph 7: independent visible readin",
+        "elementId": "",
+        "chapterFraction": 0.07142857142857142,
+        "pageIndex": 1
+      },
+      "chapterFraction": 0.07142857142857142,
+      "savedAt": "2026-10-27T19:46:03.163Z"
+    },
+    "reopenedPage": 1
+  },
+  {
+    "id": "E07_FILE_BYTES_COMPLETE_AFTER_FINALIZE",
+    "defect": true,
+    "ack": {
+      "type": "host.finalized",
+      "requestId": "file-after-close",
+      "sessionId": "local-mvr3irhy",
+      "ok": true,
+      "revision": 0
+    },
+    "atAckReady": true,
+    "lateReady": false,
+    "error": "打开 EPUB 失败：正文载入失败"
+  }
+]

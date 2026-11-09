@@ -1,0 +1,471 @@
+{
+  "generatedAt": "2026-10-27T15:03:21.823Z",
+  "candidate": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r2\\candidate",
+  "identity": {
+    "expectedCommit": "c96c912ea1ab1e9a7a311620663ea4f6634a3d18",
+    "expectedPackageSha256": "65cf0784ad4a006ba2444d1a5b08ef2c354b116e71325dfcc5e9a2c194170063",
+    "hashes": {
+      "epub-book.js": "a5f1d4528ed71cd2a044332ec653df14776e2e00891f7d3baef66deb1b7d29f6",
+      "search.js": "025add0921f2f27dd9fb3bae6d364aac31ec513015016bdebb0a8ad693c7ccb5",
+      "paginator.js": "94763fbd8e99f919e3e09b1eed17e3a6743fcba073129b670ab2fbdbe46a67af",
+      "reader.js": "f8de0735596a77d5f79e962c11feff10d1c52505eea141c1147ada1e5dcaa482"
+    }
+  },
+  "evidenceKind": "Original frozen JavaScript executed in Node 24 with installed jsdom DOM, real JSZip, controlled async byte/text dependencies; no browser layout or native desktop.",
+  "results": [
+    {
+      "id": "M01",
+      "verdict": "PASS",
+      "title": "Read pending at destroy cannot register late resource",
+      "detail": {
+        "url": "",
+        "resources": 0,
+        "created": [],
+        "revoked": []
+      }
+    },
+    {
+      "id": "M02",
+      "verdict": "PASS",
+      "title": "Concurrent same-path loads share URL",
+      "detail": {
+        "reads": 1,
+        "urls": [
+          "blob:audit-1",
+          "blob:audit-1",
+          "blob:audit-1"
+        ],
+        "created": [
+          {
+            "url": "blob:audit-1",
+            "size": 1,
+            "type": "image/png"
+          }
+        ],
+        "revoked": [
+          "blob:audit-1"
+        ]
+      }
+    },
+    {
+      "id": "M03",
+      "verdict": "FAIL",
+      "title": "1001 matches across chapter boundary",
+      "detail": {
+        "knownMatches": 1001,
+        "total": 1000,
+        "resultCount": 1000,
+        "truncated": false
+      }
+    },
+    {
+      "id": "M04",
+      "verdict": "FAIL",
+      "title": "Oversize first chapter suppresses all later chapters",
+      "detail": {
+        "readSections": [
+          0
+        ],
+        "total": 0,
+        "truncated": true,
+        "chars": 0
+      }
+    },
+    {
+      "id": "M05",
+      "verdict": "FAIL",
+      "title": "Cancel between hot query start and continuation",
+      "detail": {
+        "total": 1
+      }
+    },
+    {
+      "id": "M06",
+      "verdict": "FAIL",
+      "title": "Immediate restart joins cancelled index promise",
+      "detail": {
+        "statuses": [
+          "rejected",
+          "rejected"
+        ],
+        "errors": [
+          "搜索已取消",
+          "搜索已取消"
+        ]
+      }
+    },
+    {
+      "id": "M07",
+      "verdict": "FAIL",
+      "title": "One hot chapter scan has no event-loop cancellation point",
+      "detail": {
+        "elapsedMs": 110,
+        "total": 4194304,
+        "results": 1000,
+        "cancellationTimerRanAtReturn": false
+      }
+    },
+    {
+      "id": "M08",
+      "verdict": "PASS",
+      "title": "Single decode, encoded dot rejection, Chinese/hash/percent paths",
+      "detail": {
+        "paths": [
+          {
+            "href": "pic%20a.png",
+            "kind": "resource",
+            "path": "OPS/pic a.png",
+            "fragment": "",
+            "query": ""
+          },
+          {
+            "href": "pic%2520a.png",
+            "kind": "resource",
+            "path": "OPS/pic%20a.png",
+            "fragment": "",
+            "query": ""
+          },
+          {
+            "href": "%E4%B8%AD%E6%96%87.png",
+            "kind": "resource",
+            "path": "OPS/中文.png",
+            "fragment": "",
+            "query": ""
+          },
+          {
+            "href": "hash%23percent%25.png",
+            "kind": "resource",
+            "path": "OPS/hash#percent%.png",
+            "fragment": "",
+            "query": ""
+          },
+          {
+            "href": "../%2e%2e/out.png",
+            "kind": "invalid",
+            "path": "",
+            "fragment": ""
+          },
+          {
+            "href": "%2e%2e/%2e%2e/out.png",
+            "kind": "invalid",
+            "path": "",
+            "fragment": ""
+          },
+          {
+            "href": "bad%2Fname.png",
+            "kind": "invalid",
+            "path": "",
+            "fragment": ""
+          }
+        ]
+      }
+    },
+    {
+      "id": "M09",
+      "verdict": "PASS",
+      "title": "ZIP exact entries remain distinct; SVG fragment retained",
+      "detail": {
+        "aBytes": [
+          1,
+          2,
+          3
+        ],
+        "pBytes": [
+          9,
+          8,
+          7
+        ],
+        "html": "<img src=\"blob:audit-2\"><img src=\"blob:audit-3\"><img src=\"blob:audit-4#two\">"
+      }
+    },
+    {
+      "id": "M10",
+      "verdict": "FAIL",
+      "title": "Stale same-book sections recreate unused URLs after current commit",
+      "detail": {
+        "currentPaths": [
+          "OPS/current.png"
+        ],
+        "resourcesAtCommit": [
+          "OPS/current.png"
+        ],
+        "resourcesAfterStaleTasks": [
+          "OPS/current.png",
+          "OPS/slow-a.png",
+          "OPS/slow-b.png"
+        ],
+        "pending": 0
+      }
+    },
+    {
+      "id": "M11",
+      "verdict": "PASS",
+      "title": "Current offset mapping preserves duplicates, inline tags, UTF-16 and whitespace",
+      "detail": {
+        "textModelsEqual": true,
+        "checks": [
+          {
+            "q": "甲乙丙",
+            "results": [
+              {
+                "offset": 1,
+                "length": 3,
+                "rangeText": "甲乙丙"
+              },
+              {
+                "offset": 8,
+                "length": 3,
+                "rangeText": "甲乙丙"
+              }
+            ]
+          },
+          {
+            "q": "😀",
+            "results": [
+              {
+                "offset": 5,
+                "length": 2,
+                "rangeText": "😀"
+              }
+            ]
+          },
+          {
+            "q": "Hello world",
+            "results": [
+              {
+                "offset": 13,
+                "length": 14,
+                "rangeText": "Hello  \n world"
+              }
+            ]
+          },
+          {
+            "q": "cross block",
+            "results": [
+              {
+                "offset": 29,
+                "length": 12,
+                "rangeText": "crossblock"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "M12",
+      "verdict": "FAIL",
+      "title": "Invisible text remains searchable and breaks visible adjacency",
+      "detail": {
+        "queries": [
+          {
+            "q": "HIDDEN_SECRET",
+            "total": 1,
+            "rangeText": "HIDDEN_SECRET"
+          },
+          {
+            "q": "FOOTNOTE_SECRET",
+            "total": 1,
+            "rangeText": "FOOTNOTE_SECRET"
+          },
+          {
+            "q": "CLOSED_SECRET",
+            "total": 1,
+            "rangeText": "CLOSED_SECRET"
+          },
+          {
+            "q": "SVG_DEF_SECRET",
+            "total": 1,
+            "rangeText": "SVG_DEF_SECRET"
+          },
+          {
+            "q": "SVG_DESC_SECRET",
+            "total": 1,
+            "rangeText": "SVG_DESC_SECRET"
+          },
+          {
+            "q": "AB",
+            "total": 0,
+            "rangeText": null
+          }
+        ],
+        "hiddenStillPresent": true,
+        "preparedHtml": "<p>甲<span>乙</span>丙 😀 甲<span>乙</span>丙</p><p>Hello  \n <em>world</em></p><p>cross</p><p>block</p><p>A<span hidden=\"\">HIDDEN_SECRET</span>B</p><aside hidden=\"\" epub:type=\"footnote\">FOOTNOTE_SECRET</aside><details><summary>Summary</summary>CLOSED_SECRET</details><svg xmlns=\"http://www.w3.org/2000/svg\"><defs><text id=\"unused\">SVG_DEF_SECRET</text></defs><desc>SVG_DESC_SECRET</desc><text>SVG_VISIBLE</text></svg>"
+      }
+    },
+    {
+      "id": "M13",
+      "verdict": "PASS",
+      "title": "Parser sanitizer rejects dangerous HTML and SVG link protocols",
+      "detail": {
+        "links": [
+          {
+            "id": "js",
+            "href": null,
+            "xlink": null,
+            "external": null
+          },
+          {
+            "id": "data",
+            "href": null,
+            "xlink": null,
+            "external": null
+          },
+          {
+            "id": "file",
+            "href": null,
+            "xlink": null,
+            "external": null
+          },
+          {
+            "id": "https",
+            "href": null,
+            "xlink": null,
+            "external": "https://example.invalid/ok"
+          },
+          {
+            "id": "forged",
+            "href": null,
+            "xlink": null,
+            "external": "https://example.invalid/real"
+          },
+          {
+            "id": "svg",
+            "href": null,
+            "xlink": null,
+            "external": null
+          },
+          {
+            "id": "svgok",
+            "href": null,
+            "xlink": null,
+            "external": "https://example.invalid/svg"
+          }
+        ],
+        "html": "<a id=\"js\">JS</a><a id=\"data\">DATA</a><a id=\"file\">FILE</a><a id=\"https\" data-lyra-external=\"https://example.invalid/ok\" rel=\"noopener noreferrer\" role=\"link\" tabindex=\"0\">HTTPS</a><a id=\"forged\" data-lyra-external=\"https://example.invalid/real\" rel=\"noopener noreferrer\" role=\"link\" tabindex=\"0\">FORGED</a><div>D</div><svg xmlns=\"http://www.w3.org/2000/svg\"><a id=\"svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\"><text>X</text></a><a id=\"svgok\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" data-lyra-external=\"https://example.invalid/svg\" rel=\"noopener noreferrer\" role=\"link\" tabindex=\"0\"><text>OK</text></a></svg><img>"
+      }
+    },
+    {
+      "id": "M14",
+      "verdict": "FAIL",
+      "title": "Encryption classification checks substring, not algorithm and encrypted resource",
+      "detail": {
+        "cases": [
+          {
+            "name": "valid-idpf-font",
+            "algorithm": "http://www.idpf.org/2008/embedding",
+            "uri": "OPS/font.otf",
+            "expectedOpen": true,
+            "opened": true,
+            "error": null
+          },
+          {
+            "name": "aes-body",
+            "algorithm": "http://www.w3.org/2001/04/xmlenc#aes256-cbc",
+            "uri": "OPS/c0.xhtml",
+            "expectedOpen": false,
+            "opened": false,
+            "error": {
+              "code": "DRM",
+              "message": "这本 EPUB 的正文资源受加密保护（非仅字体混淆），本轮不支持解密"
+            }
+          },
+          {
+            "name": "lookalike-idpf-body",
+            "algorithm": "https://invalid.example/idpf/aes256",
+            "uri": "OPS/c0.xhtml",
+            "expectedOpen": false,
+            "opened": true,
+            "error": null
+          },
+          {
+            "name": "lookalike-font-body",
+            "algorithm": "https://invalid.example/font/custom",
+            "uri": "OPS/c0.xhtml",
+            "expectedOpen": false,
+            "opened": true,
+            "error": null
+          },
+          {
+            "name": "idpf-applied-to-body",
+            "algorithm": "http://www.idpf.org/2008/embedding",
+            "uri": "OPS/c0.xhtml",
+            "expectedOpen": false,
+            "opened": true,
+            "error": null
+          },
+          {
+            "name": "standard-adobe-font",
+            "algorithm": "http://ns.adobe.com/pdf/enc#RC",
+            "uri": "OPS/font.otf",
+            "expectedOpen": true,
+            "opened": false,
+            "error": {
+              "code": "DRM",
+              "message": "这本 EPUB 的正文资源受加密保护（非仅字体混淆），本轮不支持解密"
+            }
+          }
+        ],
+        "boundary": "Malformed/unsupported declarations exercise classification; no decryption or DRM bypass asserted. Adobe support scope should be specified."
+      }
+    },
+    {
+      "id": "M15",
+      "verdict": "PASS",
+      "title": "Unlinked EPUB3 navigation group retains hierarchy",
+      "detail": {
+        "toc": [
+          {
+            "title": "第一部",
+            "path": null,
+            "depth": 0,
+            "group": true
+          },
+          {
+            "title": "第一章",
+            "path": "OPS/c0.xhtml",
+            "depth": 1,
+            "group": false
+          },
+          {
+            "title": "第二章",
+            "path": "OPS/c1.xhtml",
+            "depth": 0,
+            "group": false
+          }
+        ]
+      }
+    },
+    {
+      "id": "M16",
+      "verdict": "FAIL",
+      "title": "Closing search does not cancel queued input debounce",
+      "detail": {
+        "searchOpen": false,
+        "sectionReads": 1,
+        "resultButtons": 1,
+        "searchInfo": "找到 1 处 · 索引 0.0 MB"
+      }
+    },
+    {
+      "id": "M17",
+      "verdict": "FAIL",
+      "title": "Reader outer external-open callback has no protocol validation",
+      "detail": {
+        "opened": [
+          "javascript:window.__benignProbe=1"
+        ],
+        "boundary": "Direct controller callback injection proves missing second check only; does not prove sanitizer bypass, script execution, or sandbox escape."
+      }
+    },
+    {
+      "id": "M18",
+      "verdict": "FAIL",
+      "title": "Reader zero-results message hides unscanned range",
+      "detail": {
+        "searchInfo": "没有找到匹配内容",
+        "resultButtons": 0
+      }
+    }
+  ]
+}

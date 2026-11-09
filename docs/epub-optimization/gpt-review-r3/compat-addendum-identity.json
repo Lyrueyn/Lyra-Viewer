@@ -1,0 +1,127 @@
+[
+  {
+    "path": "compat-baseline-c12fe26\\newhost-c12fe26-after-turn.png",
+    "sha256": "2ca75e0781b35f6cf426fa3cccd78a89cf5161ae026679cc34a8df5c14578849",
+    "bytes": 449442
+  },
+  {
+    "path": "compat-baseline-c12fe26\\newhost-c12fe26-nobook-raw.log",
+    "sha256": "1b0e8029694f3ca8abc7dc3f882309c02dedb8163eaeddc8227d8727e3ad68e7",
+    "bytes": 797
+  },
+  {
+    "path": "compat-baseline-c12fe26\\newhost-c12fe26-nobook.png",
+    "sha256": "8810f049d1c1329741c5798317837e527995133e93798084243c2d00a304d7f6",
+    "bytes": 93930
+  },
+  {
+    "path": "compat-baseline-c12fe26\\newhost-c12fe26-withbook-raw.log",
+    "sha256": "5c0a8c0bf482619cd85341eb97c832554630b06355441f8b1e107bd376762df2",
+    "bytes": 420
+  },
+  {
+    "path": "compat-baseline-c12fe26\\newhost-c12fe26-withbook.png",
+    "sha256": "d027e5724ee841c9400f906908533f589b1c2e26e96510349251af5190f237c3",
+    "bytes": 417323
+  },
+  {
+    "path": "compat-baseline-c12fe26\\oldhost-b978661-build-identity.json",
+    "sha256": "2f77b8fd58eedfadfb17f60ada69d24aabc7990a2831ea539ecf877d2398fd61",
+    "bytes": 784
+  },
+  {
+    "path": "compat-baseline-c12fe26\\oldhost-b978661-identity.json",
+    "sha256": "ecbb8d2e3bf32c20b2b7fd9099a9599a75d4127c31e5d488bfed046bd12a6544",
+    "bytes": 645
+  },
+  {
+    "path": "compat-baseline-c12fe26\\oldhost-b978661-newepub-after-turn.png",
+    "sha256": "231e2274da39e435dffe766969424bc309890d483dfc803f5d260919f04eb00a",
+    "bytes": 361019
+  },
+  {
+    "path": "compat-baseline-c12fe26\\oldhost-b978661-newepub-open.png",
+    "sha256": "a13b4f77303fb9ac78213dde3d0bf7d86974162cb4b3e0fc8f0bd5ea6a896875",
+    "bytes": 364219
+  },
+  {
+    "path": "compat-baseline-c12fe26\\oldold-b978661-c12fe26-identity.json",
+    "sha256": "de84c156267a654e692743a7fd5e6f827dd32184641d67ff29e6803f47f1ba43",
+    "bytes": 607
+  },
+  {
+    "path": "compat-baseline-c12fe26\\oldold-b978661-c12fe26-withbook.png",
+    "sha256": "444d4e72b4b2db1f6b72a1ad0f187242c21ca8cc1b918cf8dcc24569b4f364b8",
+    "bytes": 416717
+  },
+  {
+    "path": "compat-baseline-c12fe26\\oldold-dm-debug.log",
+    "sha256": "3cef787f3c0c875d0532d4e6d75d819061e9ad129628ce99cd2c67c2a6bf70cc",
+    "bytes": 174
+  },
+  {
+    "path": "compat-baseline-c12fe26\\README-真基线补测.md",
+    "sha256": "d6aab6083ad8737dac1f493ef29e4f7a200199281d15a8d848ce1d8676f98ea7",
+    "bytes": 4484
+  },
+  {
+    "path": "compat-baseline-c12fe26\\results.json",
+    "sha256": "6c223bce3ac46f74f00ee7d8f4149b4a9553bbca8e175df023bba4ebe90b76b6",
+    "bytes": 4059
+  },
+  {
+    "path": "compat-baseline-c12fe26\\runtime-identity-nobook.json",
+    "sha256": "4493538550e368372febfbd817a1a0d5c52b68290f5405ce5dc712255a11b65c",
+    "bytes": 480
+  },
+  {
+    "path": "compat-baseline-c12fe26\\runtime-identity-withbook.json",
+    "sha256": "eacfd73b5a978c1d315ae551fa9befd4da13ab2edf81161d468bbe07932c776a",
+    "bytes": 898
+  },
+  {
+    "path": "compat-baseline-c12fe26\\source-manifest.json",
+    "sha256": "d6082f3afa5bca138a58541a4c3de063cbe62cd19cd4b5760d2130a870a1fd68",
+    "bytes": 1459
+  },
+  {
+    "path": "compat-baseline-c12fe26\\extension-source\\extension.json",
+    "sha256": "f7156ece4916c3a2381cd93855887a3a654a54207bec50836857cbeb703ee891",
+    "bytes": 240
+  },
+  {
+    "path": "compat-baseline-c12fe26\\extension-source\\index.html",
+    "sha256": "88fa8b2e0537e535b3430b2d8b6d1c3ff7085f3599cf2cd2813267448939721a",
+    "bytes": 30973
+  },
+  {
+    "path": "compat-baseline-c12fe26\\extension-source\\LICENSE",
+    "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986",
+    "bytes": 35149
+  },
+  {
+    "path": "compat-baseline-c12fe26\\extension-source\\README.md",
+    "sha256": "6c5fb734520608fa9e178eea4f32905d45981e8413944766f36e8a253ad09098",
+    "bytes": 672
+  },
+  {
+    "path": "compat-baseline-c12fe26\\extension-source\\lib\\jszip.min.js",
+    "sha256": "acc7e41455a80765b5fd9c7ee1b8078a6d160bbbca455aeae854de65c947d59e",
+    "bytes": 97630
+  },
+  {
+    "path": "compat-identity-CORRECTION.md",
+    "sha256": "cc8e20d4d6313321b649f202c7a0d2bd6ae6eee97e644852fc65049122c7fc69",
+    "bytes": 1689
+  },
+  {
+    "path": "native-supplement-results-v2.json",
+    "sha256": "99bbb84b86d86b9c3237996f5eb55e1bf4357e522e186c80b97f5f7b49b4f16f",
+    "bytes": 9008
+  },
+  {
+    "path": "SHA256SUMS",
+    "sha256": "ee6197c158f78f18e27be610fd9821dc4619e5de95398cfd8db904f6b6e53987",
+    "bytes": 7045
+  }
+]

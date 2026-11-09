@@ -1,0 +1,28 @@
+{
+  "passed": [
+    "host filename, first render and ready signal",
+    "mixed sizes and built-in rotated text alignment",
+    "selectable text and literal full-text search",
+    "outline navigation",
+    "late outline resolution does not override newer navigation",
+    "rapid zoom, fit persistence and reading-position preservation",
+    "rotation and whole-page mode",
+    {
+      "memory": {
+        "pages": 2,
+        "thumbs": 28,
+        "pixels": 9228660
+      }
+    },
+    "bounded canvas memory after traversing a long PDF",
+    "late search-page render cannot pull the reader back after next-page",
+    "page input retains focus while typing; invalid and out-of-range handling",
+    "25% zoom settles and previous-page navigation works at document end",
+    "single-page PDF, scan-only search and narrow window",
+    "document replacement cancels pending load and search",
+    "bad PDF and missing URL recover with working controls",
+    "password retry, unlock and cancellation",
+    "real PDF rendering, search and screenshot"
+  ],
+  "errors": []
+}

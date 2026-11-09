@@ -1,0 +1,4384 @@
+{
+  "generatedAt": "2026-10-28T03:26:12.593569+08:00",
+  "scope": "R5 candidate/evidence; R4/R3 frozen artifacts preserved",
+  "report": {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\DeepSeek实施回报-R5.md",
+    "sha256": "47074ac5a43e1da58814dfefad8eb256415c7ae25a5b63bfdc072d5b95cfba2e"
+  },
+  "source": {
+    "repo": "D:\\Temp\\Lyra-Extension-Epub",
+    "branch": "r5",
+    "commit": "76ced4c17efa4526fbc8c00e3fff5261959a7fe7"
+  },
+  "extension": {
+    "version": "0.9.0",
+    "package": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\candidates-r5\\lyra-ext-epub-0.9.0-candidate.zip",
+    "packageSha256": "60cc97bf2721bb0239122275b307833d871548c985a56068e649f3d3a1517b80",
+    "packageBytes": 95702,
+    "reader.js": "28790e1fb4cd5e04302c26217d80b293d8bdedfc3cd4e1551c9a02c0d93f61fb",
+    "reader-state.js": "fd9e7cad46398d393966358d0813668975d8f93bf915a573e06536c747175e8d",
+    "index.html": "f6b244c642b1842652b4ed733116a26a3e92b1b0271bf7c1b444a1c8af3b411d",
+    "extension.json": "564a8d33896d9d17aadf4066ec40c56a681889aceb4067b34ee0198bea43cca1"
+  },
+  "host": {
+    "dll": "202954e5930fcdc7a50bd96975b84a12cbf7aa4375ac7334832d28a45f5f9480",
+    "exe": "d0f1bb58b07d0b6aeaeb463c841914d9594d0a803e3831fc272a6a5ffed3b335",
+    "buildDll": "202954e5930fcdc7a50bd96975b84a12cbf7aa4375ac7334832d28a45f5f9480",
+    "sourceHashes": {
+      "ExtensionHostWindow.xaml": "283e3e4f682d1ca20563843e19eedd71f3829b29cb8bd69cdf1a64a42876ff88",
+      "ExtensionHostWindow.xaml.cs": "cb8bfbbd0c3b9bf11770dd1d10ff1065b919ff5b03d72de93c1e2f3f1f1d0952",
+      "ReaderProtocol.cs": "079123e5d176d9db960f8eb4b4106a34295a4de3b416b75dc8458f0e8bbea913",
+      "ReaderStateStore.cs": "58d7f17400a3a6917fe8c4c120e2d9ef8c58ba8b7d0df62eff8dddc59bd21c0a"
+    }
+  },
+  "runtime": {
+    "dir": "D:\\Temp\\lyra_epub_r5_candidate",
+    "dataRoot": "D:\\Temp\\lyra_epub_r5_candidate\\data",
+    "extensionPath": "D:\\Temp\\lyra_epub_r5_candidate\\extensions\\epub"
+  },
+  "tests": {
+    "hostAudit": {
+      "generatedAt": "2026-10-27T19:13:51.3037098Z",
+      "baseDirectory": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\r5-host-audit\\bin\\Debug\\net10.0\\",
+      "evidenceKind": "original C# host source with headless WinUI/WebView2 event doubles; not native WinUI/WebView2",
+      "results": [
+        {
+          "id": "R5-PREF-FIELD-SUPERSEDED",
+          "pass": true,
+          "details": {
+            "g18": {
+              "protocol": "lyra-reader",
+              "version": 3,
+              "type": "response",
+              "requestId": "b29d2e4dc0bc49ab806d1e5186a00575",
+              "sessionId": "3c93d5565a1a47e5a278c7415c2ec3d7",
+              "ok": true,
+              "result": {
+                "grant": "pg-c99e8aa8be9c4cc7a38c45a629356bb8",
+                "fields": [
+                  "fontSize"
+                ]
+              }
+            },
+            "s18": {
+              "protocol": "lyra-reader",
+              "version": 3,
+              "type": "response",
+              "requestId": "cd9259584d1e42ef846975b12526701e",
+              "sessionId": "3c93d5565a1a47e5a278c7415c2ec3d7",
+              "ok": true,
+              "result": {
+                "revision": 1,
+                "applied": [
+                  "fontSize"
+                ],
+                "idempotent": [],
+                "superseded": []
+              }
+            },
+            "g32": {
+              "protocol": "lyra-reader",
+              "version": 3,
+              "type": "response",
+              "requestId": "8a6d56f3677f4b2dabe157b96de14716",
+              "sessionId": "3c93d5565a1a47e5a278c7415c2ec3d7",
+              "ok": true,
+              "result": {
+                "grant": "pg-d8fb32ac0fd7429da4f2af73f7892129",
+                "fields": [
+                  "fontSize"
+                ]
+              }
+            },
+            "s32": {
+              "protocol": "lyra-reader",
+              "version": 3,
+              "type": "response",
+              "requestId": "e81b9283b1324d7c873752812490454c",
+              "sessionId": "3c93d5565a1a47e5a278c7415c2ec3d7",
+              "ok": true,
+              "result": {
+                "revision": 2,
+                "applied": [
+                  "fontSize"
+                ],
+                "idempotent": [],
+                "superseded": []
+              }
+            },
+            "gl": {
+              "protocol": "lyra-reader",
+              "version": 3,
+              "type": "response",
+              "requestId": "3d75c1a96c15460897be98cc1a6ec909",
+              "sessionId": "3c93d5565a1a47e5a278c7415c2ec3d7",
+              "ok": true,
+              "result": {
+                "grant": "pg-25d2b20510574fc9a90bdae0412d4d8a",
+                "fields": [
+                  "lineHeight"
+                ]
+              }
+            },
+            "mixed": {
+              "protocol": "lyra-reader",
+              "version": 3,
+              "type": "response",
+              "requestId": "96827d8fe8d14d28a9f04a541cea2151",
+              "sessionId": "3c93d5565a1a47e5a278c7415c2ec3d7",
+              "ok": true,
+              "result": {
+                "revision": 3,
+                "applied": [
+                  "lineHeight"
+                ],
+                "idempotent": [],
+                "superseded": [
+                  "fontSize"
+                ]
+              }
+            },
+            "disk": {
+              "version": 1,
+              "revision": 3,
+              "preferences": {
+                "fontSize": 32,
+                "lineHeight": 2.2
+              },
+              "fieldSequences": {},
+              "preferenceOrders": {
+                "fontSize": 2,
+                "lineHeight": 3
+              },
+              "updatedAt": "2026-10-27T19:13:50.5965779Z"
+            }
+          }
+        },
+        {
+          "id": "R5-PREF-COMPLETION-CAPACITY",
+          "pass": true,
+          "details": {
+            "gf": {
+              "protocol": "lyra-reader",
+              "version": 3,
+              "type": "response",
+              "requestId": "9246088f01ce4014b3775b9e0ac537f1",
+              "sessionId": "d4ce6b994e144034a73f04e5b74b2e44",
+              "ok": true,
+              "result": {
+                "grant": "pg-11d1fec82dca46eeaee5477909af5390",
+                "fields": [
+                  "fontSize"
+                ]
+              }
+            },
+            "sf": {
+              "protocol": "lyra-reader",
+              "version": 3,
+              "type": "response",
+              "requestId": "8ce31f4491c54b0189d988a8b3c9cbce",
+              "sessionId": "d4ce6b994e144034a73f04e5b74b2e44",
+              "ok": true,
+              "result": {
+                "revision": 4,
+                "applied": [
+                  "fontSize"
+                ],
+                "idempotent": [],
+                "superseded": []
+              }
+            },
+            "gline": {
+              "protocol": "lyra-reader",
+              "version": 3,
+              "type": "response",
+              "requestId": "adff8ecb4c9b43c6acb7db74cc785e45",
+              "sessionId": "d4ce6b994e144034a73f04e5b74b2e44",
+              "ok": true,
+              "result": {
+                "grant": "pg-befd925862e542b08dd4da5165bbb182",
+                "fields": [
+                  "lineHeight"
+                ]
+              }
+            },
+            "sline": {
+              "protocol": "lyra-reader",
+              "version": 3,
+              "type": "response",
+              "requestId": "fa01766363e0430ca8d29932413f53e0",
+              "sessionId": "d4ce6b994e144034a73f04e5b74b2e44",
+              "ok": true,
+              "result": {
+                "revision": 5,
+                "applied": [
+                  "lineHeight"
+                ],
+                "idempotent": [],
+                "superseded": []
+              }
+            },
+            "retry": {
+              "protocol": "lyra-reader",
+              "version": 3,
+              "type": "response",
+              "requestId": "764052da53a0447f82d88d7d0ad49ce7",
+              "sessionId": "d4ce6b994e144034a73f04e5b74b2e44",
+              "ok": true,
+              "result": {
+                "revision": 5,
+                "applied": [
+                  "fontSize"
+                ],
+                "idempotent": [
+                  "fontSize"
+                ],
+                "superseded": []
+              }
+            },
+            "capDisk": {
+              "version": 1,
+              "revision": 5,
+              "preferences": {
+                "fontSize": 28,
+                "lineHeight": 2.1
+              },
+              "fieldSequences": {},
+              "preferenceOrders": {
+                "fontSize": 4099,
+                "lineHeight": 4100
+              },
+              "updatedAt": "2026-10-27T19:13:51.2151999Z"
+            }
+          }
+        },
+        {
+          "id": "R5-PREF-SCOPE",
+          "pass": true,
+          "details": {
+            "badScope": {
+              "protocol": "lyra-reader",
+              "version": 3,
+              "type": "response",
+              "requestId": "e008affc606542abb224a5fc6f56efb8",
+              "sessionId": "1b1863b9364c4cdbbbef593b50ab1d7b",
+              "ok": false,
+              "error": {
+                "code": "UNSUPPORTED_SCOPE",
+                "message": "只支持 global 偏好作用域"
+              }
+            },
+            "beforeHash": "0CH3OXkJ2OPXgQ6/9KWKtUCJdnt2NVrJ9mmhNxfpT5g=",
+            "afterHash": "0CH3OXkJ2OPXgQ6/9KWKtUCJdnt2NVrJ9mmhNxfpT5g="
+          }
+        },
+        {
+          "id": "R5-POS-REVISION-SEPARATION",
+          "pass": true,
+          "details": {
+            "pre": {
+              "protocol": "lyra-reader",
+              "version": 3,
+              "type": "response",
+              "requestId": "ff584359dc7c45c69d7edfb82728d65c",
+              "sessionId": "ab4985fc09d347d1988161201b54aade",
+              "ok": true,
+              "result": {
+                "revision": 0,
+                "positionRevision": 0,
+                "metadataRevision": 0,
+                "position": null,
+                "positionToken": 0,
+                "bookmarksRevision": 0,
+                "bookmarkCount": 0,
+                "interactionToken": 0,
+                "preferences": {
+                  "fontSize": 28,
+                  "lineHeight": 2.1
+                }
+              }
+            },
+            "inter": {
+              "protocol": "lyra-reader",
+              "version": 3,
+              "type": "response",
+              "requestId": "d650c7dc960b48a6bdc3dcb1ba94e958",
+              "sessionId": "ab4985fc09d347d1988161201b54aade",
+              "ok": true,
+              "result": {
+                "interactionToken": 1
+              }
+            },
+            "afterInteract": {
+              "protocol": "lyra-reader",
+              "version": 3,
+              "type": "response",
+              "requestId": "3684aa1612a84d29af83f15d3aa4d558",
+              "sessionId": "ab4985fc09d347d1988161201b54aade",
+              "ok": true,
+              "result": {
+                "revision": 0,
+                "positionRevision": 0,
+                "metadataRevision": 0,
+                "position": null,
+                "positionToken": 0,
+                "bookmarksRevision": 0,
+                "bookmarkCount": 0,
+                "interactionToken": 1,
+                "preferences": {
+                  "fontSize": 28,
+                  "lineHeight": 2.1
+                }
+              }
+            },
+            "posSave": {
+              "protocol": "lyra-reader",
+              "version": 3,
+              "type": "response",
+              "requestId": "3c8ab3dfd79e4f979e06709ed839cc05",
+              "sessionId": "ab4985fc09d347d1988161201b54aade",
+              "ok": true,
+              "result": {
+                "revision": 1,
+                "positionRevision": 1,
+                "positionToken": 1
+              }
+            },
+            "afterPos": {
+              "protocol": "lyra-reader",
+              "version": 3,
+              "type": "response",
+              "requestId": "3a5195bebc7c49738e55fcc559f68d53",
+              "sessionId": "ab4985fc09d347d1988161201b54aade",
+              "ok": true,
+              "result": {
+                "revision": 1,
+                "positionRevision": 1,
+                "metadataRevision": 0,
+                "position": {
+                  "locator": {
+                    "textOffset": 100
+                  }
+                },
+                "positionToken": 1,
+                "bookmarksRevision": 0,
+                "bookmarkCount": 0,
+                "interactionToken": 1,
+                "preferences": {
+                  "fontSize": 28,
+                  "lineHeight": 2.1
+                }
+              }
+            },
+            "bm": {
+              "protocol": "lyra-reader",
+              "version": 3,
+              "type": "response",
+              "requestId": "89aac5d36e7344f0ac239f721680ce34",
+              "sessionId": "ab4985fc09d347d1988161201b54aade",
+              "ok": true,
+              "result": {
+                "revision": 1,
+                "metadataRevision": 1,
+                "bookmark": {
+                  "id": "bm-1",
+                  "summary": "s",
+                  "locator": {
+                    "textOffset": 100
+                  }
+                }
+              }
+            },
+            "afterBm": {
+              "protocol": "lyra-reader",
+              "version": 3,
+              "type": "response",
+              "requestId": "6882ceb9558d43b5af48eaa3d38e82bf",
+              "sessionId": "ab4985fc09d347d1988161201b54aade",
+              "ok": true,
+              "result": {
+                "revision": 2,
+                "positionRevision": 1,
+                "metadataRevision": 1,
+                "position": {
+                  "locator": {
+                    "textOffset": 100
+                  }
+                },
+                "positionToken": 1,
+                "bookmarksRevision": 1,
+                "bookmarkCount": 1,
+                "interactionToken": 1,
+                "preferences": {
+                  "fontSize": 28,
+                  "lineHeight": 2.1
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": "R5-POS-S03-FAILED-WRITE",
+          "pass": true,
+          "details": {
+            "loadS03": {
+              "protocol": "lyra-reader",
+              "version": 3,
+              "type": "response",
+              "requestId": "40e9feb39f564c998521ce0be7f57fbf",
+              "sessionId": "9c2510cfd38449078b45a2f5c2c8d71f",
+              "ok": true,
+              "result": {
+                "revision": 0,
+                "positionRevision": 0,
+                "metadataRevision": 0,
+                "position": null,
+                "positionToken": 0,
+                "bookmarksRevision": 0,
+                "bookmarkCount": 0,
+                "interactionToken": 0,
+                "preferences": {
+                  "fontSize": 28,
+                  "lineHeight": 2.1
+                }
+              }
+            },
+            "tokS03": 1,
+            "failedPos": {
+              "protocol": "lyra-reader",
+              "version": 3,
+              "type": "response",
+              "requestId": "4c5efcce088548a8a554065280990d1c",
+              "sessionId": "9c2510cfd38449078b45a2f5c2c8d71f",
+              "ok": false,
+              "error": {
+                "code": "WRITE_FAILED",
+                "message": "状态写入失败：Access to the path is denied."
+              }
+            },
+            "reloadS03": {
+              "protocol": "lyra-reader",
+              "version": 3,
+              "type": "response",
+              "requestId": "b092afe7c6ca43b28a5e52a624767acc",
+              "sessionId": "9c2510cfd38449078b45a2f5c2c8d71f",
+              "ok": true,
+              "result": {
+                "revision": 0,
+                "positionRevision": 0,
+                "metadataRevision": 0,
+                "position": null,
+                "positionToken": 0,
+                "bookmarksRevision": 0,
+                "bookmarkCount": 0,
+                "interactionToken": 1,
+                "preferences": {
+                  "fontSize": 28,
+                  "lineHeight": 2.1
+                }
+              }
+            },
+            "stateS03": {
+              "version": 1,
+              "revision": 0,
+              "positionRevision": 0,
+              "metadataRevision": 0,
+              "interaction": 1,
+              "interactionOwner": "9c2510cfd38449078b45a2f5c2c8d71f",
+              "position": null,
+              "positionToken": 0,
+              "positionSequence": 0,
+              "bookmarks": [],
+              "bookmarksRevision": 0
+            }
+          }
+        },
+        {
+          "id": "R5-CLOSE-ASSOC-EARLY",
+          "pass": true,
+          "details": {
+            "reqId": "2448981c6e3042379d5062ea04f0d8a0",
+            "missing": true,
+            "exact": true,
+            "earlyOk": true
+          }
+        }
+      ]
+    },
+    "model": {
+      "generatedAt": "2026-10-27T19:25:09.348Z",
+      "candidate": "D:/Temp/Lyra-Extension-Epub",
+      "identity": {
+        "expectedCommit": "ba6f763f9579a808ddc201b82b5867412265c104",
+        "expectedPackageSha256": "847d8047702e8de6a8dec8b7ae9e3fb60693686400b71aa65c2b134a7270636c",
+        "hashes": {
+          "epub-book.js": "62453a86f64fc9e883af379440c8306a8e218fa55456de490671873044c2cdc2",
+          "search.js": "470c4fe4bb68f299b1aa367cffd1f3b5e616af2dad25e7b1cc1d10f25bea702a",
+          "paginator.js": "15408a60cf6e65f83d2a3b479a878da888be964d7639ffafd468067c81a2a248",
+          "reader.js": "28790e1fb4cd5e04302c26217d80b293d8bdedfc3cd4e1551c9a02c0d93f61fb"
+        }
+      },
+      "runtime": {
+        "node": "v24.18.0",
+        "jsdom": "29.1.1"
+      },
+      "evidenceKind": "Frozen original JavaScript loaded unmodified; jsdom DOM/Range and real JSZip. Controlled async dependencies and geometry doubles disclosed per case. Not browser visibility, SVG painting or native desktop evidence.",
+      "results": [
+        {
+          "id": "S01",
+          "verdict": "PASS",
+          "title": "Exact 1000, same/cross chapter 1001",
+          "detail": [
+            {
+              "expected": 1000,
+              "total": 1000,
+              "count": 1000,
+              "truncated": false,
+              "scanned": 1
+            },
+            {
+              "expected": 1001,
+              "total": 1001,
+              "count": 1000,
+              "truncated": true,
+              "scanned": 1
+            },
+            {
+              "expected": 1001,
+              "total": 1001,
+              "count": 1000,
+              "truncated": true,
+              "scanned": 2
+            }
+          ]
+        },
+        {
+          "id": "S02",
+          "verdict": "PASS",
+          "title": "Over-limit first/middle chapter still scans later chapter; cap unit is UTF-16 code units",
+          "detail": [
+            {
+              "total": 1,
+              "scanned": 2,
+              "sections": 2,
+              "cacheTruncated": true,
+              "truncated": true,
+              "cacheChars": 12,
+              "cached": [
+                {
+                  "index": 0,
+                  "length": 8388609,
+                  "retainedChars": 0
+                },
+                {
+                  "index": 1,
+                  "length": 12,
+                  "retainedChars": 12
+                }
+              ],
+              "reads": [
+                0,
+                1,
+                0
+              ]
+            },
+            {
+              "total": 1,
+              "scanned": 3,
+              "sections": 3,
+              "cacheTruncated": true,
+              "truncated": true,
+              "cacheChars": 15,
+              "cached": [
+                {
+                  "index": 0,
+                  "length": 3,
+                  "retainedChars": 3
+                },
+                {
+                  "index": 1,
+                  "length": 8388609,
+                  "retainedChars": 0
+                },
+                {
+                  "index": 2,
+                  "length": 12,
+                  "retainedChars": 12
+                }
+              ],
+              "reads": [
+                0,
+                1,
+                2,
+                1
+              ]
+            }
+          ]
+        },
+        {
+          "id": "S03",
+          "verdict": "PASS",
+          "title": "Hot cache query observes immediate cancellation",
+          "detail": {
+            "error": "搜索已取消"
+          }
+        },
+        {
+          "id": "S04",
+          "verdict": "PASS",
+          "title": "Cancelled cold build not reused by new query",
+          "detail": {
+            "statuses": [
+              "rejected",
+              "fulfilled"
+            ],
+            "errors": [
+              "搜索已取消",
+              null
+            ],
+            "freshTotal": 1
+          }
+        },
+        {
+          "id": "S05",
+          "verdict": "PASS",
+          "title": "Dense long chapter scan yields",
+          "detail": {
+            "name": "dense",
+            "totalChars": 8388608,
+            "cancelled": true,
+            "timerRanAtReturn": true,
+            "elapsedMs": 15.314
+          }
+        },
+        {
+          "id": "S06",
+          "verdict": "PASS",
+          "title": "Sparse/no-match hot scan yields independently of number of matches",
+          "detail": [
+            {
+              "name": "zero-match",
+              "totalChars": 8388608,
+              "cancelled": true,
+              "timerRanAtReturn": true,
+              "elapsedMs": 8.342
+            },
+            {
+              "name": "one-end-match",
+              "totalChars": 8388608,
+              "cancelled": true,
+              "timerRanAtReturn": true,
+              "elapsedMs": 6.955
+            },
+            {
+              "name": "many-zero-match",
+              "totalChars": 8388608,
+              "cancelled": true,
+              "timerRanAtReturn": true,
+              "elapsedMs": 15.77
+            }
+          ]
+        },
+        {
+          "id": "S07",
+          "verdict": "PASS",
+          "title": "Read failure counted, remaining sections still searched",
+          "detail": {
+            "total": 1,
+            "readErrors": 1,
+            "truncated": true,
+            "scanned": 3
+          }
+        },
+        {
+          "id": "S08",
+          "verdict": "PASS",
+          "title": "Real frozen parser + ZIP oversized chapter coverage and no search resource allocation",
+          "detail": {
+            "total": 1,
+            "scanned": 2,
+            "cacheChars": 12,
+            "reads": [
+              0,
+              1,
+              0
+            ],
+            "createdDelta": 0,
+            "resources": 0,
+            "taskSets": 0
+          }
+        },
+        {
+          "id": "R01",
+          "verdict": "PASS",
+          "title": "Destroy while bytes pending prevents allocation",
+          "detail": {
+            "url": "",
+            "resources": 0,
+            "createdDelta": 0
+          }
+        },
+        {
+          "id": "R02",
+          "verdict": "PASS",
+          "title": "True concurrent resource pending deduplication",
+          "detail": {
+            "reads": 1,
+            "urls": [
+              "blob:audit-1",
+              "blob:audit-1",
+              "blob:audit-1"
+            ],
+            "createdDelta": 1
+          }
+        },
+        {
+          "id": "R03",
+          "verdict": "PASS",
+          "title": "Stale A/B finish after C; actual task cleanup bounds live resources and task metadata",
+          "detail": {
+            "current": [
+              "OPS/c.png"
+            ],
+            "paths": [
+              "OPS/c.png"
+            ],
+            "pending": 0,
+            "taskSets": 1
+          }
+        },
+        {
+          "id": "R04",
+          "verdict": "PASS",
+          "title": "Same-book old/new pending shared image survives both interleavings",
+          "detail": [
+            {
+              "order": "old-byte-pending",
+              "reads": 2,
+              "currentHtml": "<img src=\"blob:audit-3\">",
+              "currentPaths": [
+                "OPS/same.png"
+              ],
+              "resourcePaths": [
+                "OPS/same.png"
+              ],
+              "taskSets": 1,
+              "pending": 0,
+              "liveUrl": "blob:audit-3",
+              "revokedCurrent": false
+            },
+            {
+              "order": "new-byte-pending-old-text-pending",
+              "reads": 1,
+              "currentHtml": "<img src=\"blob:audit-4\">",
+              "currentPaths": [
+                "OPS/same.png"
+              ],
+              "resourcePaths": [
+                "OPS/same.png"
+              ],
+              "taskSets": 1,
+              "pending": 0,
+              "liveUrl": "blob:audit-4",
+              "revokedCurrent": false
+            }
+          ]
+        },
+        {
+          "id": "R05",
+          "verdict": "PASS",
+          "title": "200 sequential image chapter transitions settle with one live resource/task",
+          "detail": [
+            {
+              "transitions": 0,
+              "resources": 1,
+              "taskSets": 1,
+              "pending": 0,
+              "createdMinusRevoked": 1
+            },
+            {
+              "transitions": 50,
+              "resources": 1,
+              "taskSets": 1,
+              "pending": 0,
+              "createdMinusRevoked": 1
+            },
+            {
+              "transitions": 100,
+              "resources": 1,
+              "taskSets": 1,
+              "pending": 0,
+              "createdMinusRevoked": 1
+            },
+            {
+              "transitions": 150,
+              "resources": 1,
+              "taskSets": 1,
+              "pending": 0,
+              "createdMinusRevoked": 1
+            },
+            {
+              "transitions": 200,
+              "resources": 1,
+              "taskSets": 1,
+              "pending": 0,
+              "createdMinusRevoked": 1
+            }
+          ]
+        },
+        {
+          "id": "R06",
+          "verdict": "PASS",
+          "title": "Failed prepare before returned owner does not retain unbounded task sets",
+          "detail": {
+            "attempts": 40,
+            "taskSets": 0,
+            "resources": 0,
+            "pending": 0,
+            "owners": []
+          }
+        },
+        {
+          "id": "P01",
+          "verdict": "PASS",
+          "title": "One decode distinct complete bytes, HTML/SVG href/xlink and fragments",
+          "detail": {
+            "refs": [
+              {
+                "href": "pic%20a.png",
+                "kind": "resource",
+                "path": "OPS/pic a.png",
+                "fragment": "",
+                "query": ""
+              },
+              {
+                "href": "pic%2520a.png",
+                "kind": "resource",
+                "path": "OPS/pic%20a.png",
+                "fragment": "",
+                "query": ""
+              },
+              {
+                "href": "%E4%B8%AD%E6%96%87.png",
+                "kind": "resource",
+                "path": "OPS/中文.png",
+                "fragment": "",
+                "query": ""
+              },
+              {
+                "href": "hash%23percent%25.png",
+                "kind": "resource",
+                "path": "OPS/hash#percent%.png",
+                "fragment": "",
+                "query": ""
+              },
+              {
+                "href": "../%2e%2e/out.png",
+                "kind": "invalid",
+                "path": "",
+                "fragment": ""
+              },
+              {
+                "href": "bad%2Fname.png",
+                "kind": "invalid",
+                "path": "",
+                "fragment": ""
+              }
+            ],
+            "bytes1": [
+              1,
+              2,
+              3
+            ],
+            "bytes2": [
+              9,
+              8,
+              7
+            ],
+            "html": "<img src=\"blob:audit-206\"><img src=\"blob:audit-207\"><img src=\"blob:audit-208#one\"><svg xmlns=\"http://www.w3.org/2000/svg\"><image href=\"blob:audit-206\"></image><image xmlns:xlink=\"http://www.w3.org/1999/xlink\" xlink:href=\"blob:audit-207\"></image><image href=\"blob:audit-208#two\"></image></svg>",
+            "resources": [
+              "OPS/pic a.png",
+              "OPS/pic%20a.png",
+              "OPS/view.svg",
+              "OPS/pic a.png",
+              "OPS/pic%20a.png",
+              "OPS/view.svg"
+            ],
+            "boundary": "Does not prove SVG view painting or valid image decodability."
+          }
+        },
+        {
+          "id": "T01",
+          "verdict": "PASS",
+          "title": "Shared UTF-16 model / duplicates / inline / NBSP / virtual block separators",
+          "detail": {
+            "checks": [
+              {
+                "q": "甲乙丙",
+                "hits": [
+                  {
+                    "offset": 1,
+                    "length": 3,
+                    "modelSlice": "甲乙丙",
+                    "rangeText": "甲乙丙"
+                  },
+                  {
+                    "offset": 8,
+                    "length": 3,
+                    "modelSlice": "甲乙丙",
+                    "rangeText": "甲乙丙"
+                  }
+                ]
+              },
+              {
+                "q": "😀",
+                "hits": [
+                  {
+                    "offset": 5,
+                    "length": 2,
+                    "modelSlice": "😀",
+                    "rangeText": "😀"
+                  }
+                ]
+              },
+              {
+                "q": "Hello world",
+                "hits": [
+                  {
+                    "offset": 13,
+                    "length": 14,
+                    "modelSlice": "Hello  \n world",
+                    "rangeText": "Hello  \n world"
+                  }
+                ]
+              },
+              {
+                "q": "cross block",
+                "hits": [
+                  {
+                    "offset": 29,
+                    "length": 12,
+                    "modelSlice": "cross\n\nblock",
+                    "rangeText": "crossblock"
+                  }
+                ]
+              },
+              {
+                "q": "non breaking",
+                "hits": [
+                  {
+                    "offset": 43,
+                    "length": 12,
+                    "modelSlice": "non breaking",
+                    "rangeText": "non breaking"
+                  }
+                ]
+              }
+            ],
+            "note": "Range.toString omits virtual model newlines; this is expected."
+          }
+        },
+        {
+          "id": "T02",
+          "verdict": "PASS",
+          "title": "Basic hidden/details/SVG defs/desc model semantics fixed",
+          "detail": {
+            "queries": [
+              {
+                "q": "HIDDEN_SECRET",
+                "total": 0,
+                "range": null
+              },
+              {
+                "q": "FOOTNOTE_SECRET",
+                "total": 0,
+                "range": null
+              },
+              {
+                "q": "CLOSED_SECRET",
+                "total": 0,
+                "range": null
+              },
+              {
+                "q": "SVG_DEF_SECRET",
+                "total": 0,
+                "range": null
+              },
+              {
+                "q": "SVG_DESC_SECRET",
+                "total": 0,
+                "range": null
+              },
+              {
+                "q": "AB",
+                "total": 1,
+                "range": "AHIDDEN_SECRETB"
+              },
+              {
+                "q": "OPEN_VISIBLE",
+                "total": 1,
+                "range": "OPEN_VISIBLE"
+              },
+              {
+                "q": "SVG_VISIBLE",
+                "total": 1,
+                "range": "SVG_VISIBLE"
+              }
+            ],
+            "note": "AB Range spans hidden DOM text, but visible model is AB; no pixel claim."
+          }
+        },
+        {
+          "id": "T03",
+          "verdict": "PASS",
+          "title": "Hidden br and retained SVG display/visibility/symbol semantics",
+          "detail": {
+            "queries": [
+              {
+                "q": "AB",
+                "total": 1
+              },
+              {
+                "q": "SVG_HIDDEN_VISIBILITY",
+                "total": 0
+              },
+              {
+                "q": "SVG_HIDDEN_DISPLAY",
+                "total": 0
+              },
+              {
+                "q": "SVG_UNUSED_SYMBOL",
+                "total": 0
+              },
+              {
+                "q": "SVG_ACTUAL_TEXT",
+                "total": 1
+              },
+              {
+                "q": "VISUALLY_PRESENT",
+                "total": 1
+              }
+            ],
+            "plain": "\nAB\nSVG_ACTUAL_TEXT\nVVISUALLY_PRESENTW\n",
+            "preparedHtml": "<p id=\"brcase\">A<br hidden=\"\">B</p><svg xmlns=\"http://www.w3.org/2000/svg\"><g visibility=\"hidden\"><text>SVG_HIDDEN_VISIBILITY</text></g><g display=\"none\"><text>SVG_HIDDEN_DISPLAY</text></g><symbol id=\"unused\"><text>SVG_UNUSED_SYMBOL</text></symbol><text>SVG_ACTUAL_TEXT</text></svg><p>V<span aria-hidden=\"true\">VISUALLY_PRESENT</span>W</p>",
+            "boundary": "DOM semantics and unchanged attributes, not actual Edge visibility. aria-hidden-only exclusion is recorded as policy observation, not a separate FAIL."
+          }
+        },
+        {
+          "id": "E01",
+          "verdict": "PASS",
+          "title": "Exact supported algorithm and ordinary nonfont checks",
+          "detail": [
+            {
+              "name": "valid-IDPF-font",
+              "algo": "http://www.idpf.org/2008/embedding",
+              "uri": "OPS/font.otf",
+              "mime": "font/otf",
+              "exists": true,
+              "expected": true,
+              "opened": true,
+              "fontFlag": true,
+              "error": null
+            },
+            {
+              "name": "unknown-lookalike",
+              "algo": "https://invalid.example/idpf/aes",
+              "uri": "OPS/font.otf",
+              "mime": "font/otf",
+              "exists": true,
+              "expected": false,
+              "opened": false,
+              "fontFlag": false,
+              "error": {
+                "code": "UNSUPPORTED_ENCRYPTION",
+                "message": "这本 EPUB 使用了不支持的加密/混淆算法：https://invalid.example/idpf/aes"
+              }
+            },
+            {
+              "name": "IDPF-XHTML",
+              "algo": "http://www.idpf.org/2008/embedding",
+              "uri": "OPS/c0.xhtml",
+              "expected": false,
+              "opened": false,
+              "fontFlag": false,
+              "error": {
+                "code": "ENCRYPTED_NON_FONT",
+                "message": "加密目标不是明确支持的字体 MIME：OPS/c0.xhtml (application/xhtml+xml)"
+              }
+            },
+            {
+              "name": "Adobe-font",
+              "algo": "http://ns.adobe.com/pdf/enc#RC",
+              "uri": "OPS/font.otf",
+              "mime": "font/otf",
+              "exists": true,
+              "expected": false,
+              "opened": false,
+              "fontFlag": false,
+              "error": {
+                "code": "UNSUPPORTED_ENCRYPTION",
+                "message": "这本 EPUB 使用了不支持的加密/混淆算法：http://ns.adobe.com/pdf/enc#RC"
+              }
+            }
+          ]
+        },
+        {
+          "id": "E02",
+          "verdict": "PASS",
+          "title": "Target must exist in ZIP and MIME must actually identify font",
+          "detail": [
+            {
+              "name": "missing-font-entry",
+              "algo": "http://www.idpf.org/2008/embedding",
+              "uri": "OPS/font.otf",
+              "mime": "font/otf",
+              "exists": false,
+              "expected": false,
+              "opened": false,
+              "fontFlag": false,
+              "error": {
+                "code": "ENCRYPTED_TARGET_MISSING",
+                "message": "加密目标在 ZIP 中不存在：OPS/font.otf"
+              }
+            },
+            {
+              "name": "nonfont-MIME-containing-font",
+              "algo": "http://www.idpf.org/2008/embedding",
+              "uri": "OPS/font.otf",
+              "mime": "application/x-not-a-font",
+              "exists": true,
+              "expected": false,
+              "opened": false,
+              "fontFlag": false,
+              "error": {
+                "code": "ENCRYPTED_NON_FONT",
+                "message": "加密目标不是明确支持的字体 MIME：OPS/font.otf (application/x-not-a-font)"
+              }
+            },
+            {
+              "name": "nonfont-MIME-containing-woff",
+              "algo": "http://www.idpf.org/2008/embedding",
+              "uri": "OPS/font.otf",
+              "mime": "text/x-woff-comment",
+              "exists": true,
+              "expected": false,
+              "opened": false,
+              "fontFlag": false,
+              "error": {
+                "code": "ENCRYPTED_NON_FONT",
+                "message": "加密目标不是明确支持的字体 MIME：OPS/font.otf (text/x-woff-comment)"
+              }
+            },
+            {
+              "name": "unknown-target",
+              "algo": "http://www.idpf.org/2008/embedding",
+              "uri": "OPS/unknown.otf",
+              "expected": false,
+              "opened": false,
+              "fontFlag": false,
+              "error": {
+                "code": "UNKNOWN_ENCRYPTED_TARGET",
+                "message": "加密目标不在包内清单中：OPS/unknown.otf"
+              }
+            }
+          ]
+        },
+        {
+          "id": "E03",
+          "verdict": "OBSERVATION",
+          "title": "CipherReference non-root fallback permits URI absent at root",
+          "detail": {
+            "case": {
+              "name": "root-relative-font",
+              "algo": "http://www.idpf.org/2008/embedding",
+              "uri": "font.otf",
+              "mime": "font/otf",
+              "exists": true,
+              "expected": false,
+              "opened": true,
+              "fontFlag": true,
+              "error": null
+            },
+            "note": "Spec-relative interpretation requires policy review; not separately counted as confirmed FAIL."
+          }
+        },
+        {
+          "id": "P02",
+          "verdict": "PASS",
+          "title": "Sanitizer protocol check, SVG links and forged control attributes",
+          "detail": [
+            {
+              "id": "js",
+              "href": null,
+              "xlink": null,
+              "external": null
+            },
+            {
+              "id": "data",
+              "href": null,
+              "xlink": null,
+              "external": null
+            },
+            {
+              "id": "file",
+              "href": null,
+              "xlink": null,
+              "external": null
+            },
+            {
+              "id": "https",
+              "href": null,
+              "xlink": null,
+              "external": "https://example.invalid/ok"
+            },
+            {
+              "id": "forged",
+              "href": null,
+              "xlink": null,
+              "external": "https://example.invalid/real"
+            },
+            {
+              "id": "svg",
+              "href": null,
+              "xlink": null,
+              "external": null
+            },
+            {
+              "id": "svgok",
+              "href": null,
+              "xlink": null,
+              "external": "https://example.invalid/svg"
+            }
+          ]
+        }
+      ]
+    },
+    "readerFlow": {
+      "generatedAt": "2026-10-27T19:25:11.886Z",
+      "candidate": "D:/Temp/Lyra-Extension-Epub",
+      "identity": {
+        "expectedCommit": "ba6f763f9579a808ddc201b82b5867412265c104",
+        "expectedPackageSha256": "847d8047702e8de6a8dec8b7ae9e3fb60693686400b71aa65c2b134a7270636c",
+        "hashes": {
+          "epub-book.js": "62453a86f64fc9e883af379440c8306a8e218fa55456de490671873044c2cdc2",
+          "search.js": "470c4fe4bb68f299b1aa367cffd1f3b5e616af2dad25e7b1cc1d10f25bea702a",
+          "paginator.js": "15408a60cf6e65f83d2a3b479a878da888be964d7639ffafd468067c81a2a248",
+          "reader.js": "28790e1fb4cd5e04302c26217d80b293d8bdedfc3cd4e1551c9a02c0d93f61fb"
+        }
+      },
+      "runtime": {
+        "node": "v24.18.0",
+        "jsdom": "29.1.1"
+      },
+      "evidenceKind": "Frozen original JavaScript loaded unmodified; jsdom DOM/Range and real JSZip. Controlled async dependencies and geometry doubles disclosed per case. Not browser visibility, SVG painting or native desktop evidence.",
+      "results": [
+        {
+          "id": "F01",
+          "verdict": "PASS",
+          "title": "Original input-close clears debounce before any read",
+          "detail": {
+            "reads": 0,
+            "open": false,
+            "results": 0,
+            "info": ""
+          }
+        },
+        {
+          "id": "F02",
+          "verdict": "PASS",
+          "title": "Input then Enter starts only one read/build",
+          "detail": {
+            "reads": 1,
+            "results": 1
+          }
+        },
+        {
+          "id": "F03",
+          "verdict": "PASS",
+          "title": "Cross-book cleared list and retained old button callback reject old result",
+          "detail": {
+            "count": 0,
+            "highlight": [],
+            "status": "这条搜索结果已过期，请重新搜索",
+            "currentBook": "FRESH"
+          }
+        },
+        {
+          "id": "F04",
+          "verdict": "PASS",
+          "title": "Input invalidates pending old query before debounce",
+          "detail": {
+            "input": "NEWQUERY",
+            "results": 0,
+            "info": ""
+          }
+        },
+        {
+          "id": "F05",
+          "verdict": "PASS",
+          "title": "Changing query while result navigation pending prevents old highlight commit",
+          "detail": {
+            "input": "NEWQUERY",
+            "generationAtInput": 5,
+            "currentGeneration": 5,
+            "highlight": [],
+            "activeResult": null,
+            "status": "此主程序版本不支持跨窗口保存；阅读位置仅保存在当前窗口"
+          }
+        },
+        {
+          "id": "F06",
+          "verdict": "PASS",
+          "title": "Late old-book task cannot release current new-book task with same numeric owner",
+          "detail": {
+            "before": {
+              "book": "NEW-IMAGE",
+              "owner": 2,
+              "currentTask": 2,
+              "resources": [
+                "OPS/new1.png"
+              ],
+              "taskOwners": [
+                2
+              ],
+              "url": "blob:audit-3",
+              "revoked": false
+            },
+            "after": {
+              "book": "NEW-IMAGE",
+              "ready": true,
+              "owner": 2,
+              "currentTask": 2,
+              "resources": [
+                "OPS/new1.png"
+              ],
+              "taskOwners": [
+                2
+              ],
+              "url": "blob:audit-3",
+              "revoked": false,
+              "pendingOld": 0
+            },
+            "created": [
+              {
+                "url": "blob:audit-1",
+                "size": 1,
+                "type": "image/png"
+              },
+              {
+                "url": "blob:audit-2",
+                "size": 1,
+                "type": "image/png"
+              },
+              {
+                "url": "blob:audit-3",
+                "size": 1,
+                "type": "image/png"
+              }
+            ],
+            "revoked": [
+              "blob:audit-1",
+              "blob:audit-2",
+              "blob:audit-3"
+            ],
+            "boundary": "URL is a deterministic create/revoke double; actual image pixels require Edge test."
+          }
+        },
+        {
+          "id": "F07",
+          "verdict": "PASS",
+          "title": "Controlled failure after DOM submission restores old actual document and image resource",
+          "detail": {
+            "book": "ROLL-OLD",
+            "text": "OLD_DOCUMENT",
+            "ready": true,
+            "url": "blob:audit-1",
+            "revokedCurrent": false,
+            "resources": [
+              "OPS/old.png"
+            ],
+            "taskOwners": [
+              2
+            ],
+            "status": "打开新书失败，已保留原来的书：正文载入失败",
+            "boundary": "Original reader rollback runs; DOM submission is layout double, not browser iframe verification."
+          }
+        },
+        {
+          "id": "F08",
+          "verdict": "PASS",
+          "title": "Independent outer whitelist rejects non-http(s) and malformed URL",
+          "detail": {
+            "unsafe": [
+              "javascript:void(0)",
+              "data:text/plain,x",
+              "file:///audit",
+              "vbscript:x",
+              "mailto:x@example.invalid",
+              "about:blank",
+              "blob:https://audit.invalid/x",
+              "https://[bad"
+            ],
+            "afterUnsafe": [],
+            "opened": [
+              "http://example.invalid/a",
+              "https://example.invalid/b"
+            ],
+            "boundary": "Direct onLink entry, no sanitizer bypass or navigation execution claimed."
+          }
+        }
+      ]
+    },
+    "boundaries": {
+      "generatedAt": "2026-10-27T18:45:25.158Z",
+      "candidate": "D:/Temp/Lyra-Extension-Epub",
+      "identity": {
+        "expectedCommit": "R5",
+        "expectedPackageSha256": "r5-candidate",
+        "hashes": {
+          "epub-book.js": "62453a86f64fc9e883af379440c8306a8e218fa55456de490671873044c2cdc2",
+          "search.js": "470c4fe4bb68f299b1aa367cffd1f3b5e616af2dad25e7b1cc1d10f25bea702a",
+          "paginator.js": "36856bd26e5053c8f809baa1ec65b9b570c03f3df45363ceb49dd14e2e646043",
+          "reader.js": "011aa11f43ad5e2f8327e3d8376881f10083061c78323a64d0b4c272f85ab56f"
+        }
+      },
+      "runtime": {
+        "node": "v24.18.0",
+        "jsdom": "29.1.1"
+      },
+      "evidenceKind": "Frozen original JavaScript loaded unmodified; jsdom DOM/Range and real JSZip. Controlled async dependencies and geometry doubles disclosed per case. Not browser visibility, SVG painting or native desktop evidence.",
+      "results": [
+        {
+          "id": "X01",
+          "verdict": "PASS",
+          "title": "True chunk-boundary matches must not disappear",
+          "detail": [
+            {
+              "offset": 65533,
+              "edge": 65816,
+              "expected": [
+                {
+                  "offset": 65533,
+                  "length": 6
+                }
+              ],
+              "actual": [
+                {
+                  "offset": 65533,
+                  "length": 6
+                }
+              ],
+              "total": 1,
+              "truncated": false
+            },
+            {
+              "offset": 65810,
+              "edge": 65816,
+              "expected": [
+                {
+                  "offset": 65810,
+                  "length": 6
+                }
+              ],
+              "actual": [
+                {
+                  "offset": 65810,
+                  "length": 6
+                }
+              ],
+              "total": 1,
+              "truncated": false
+            },
+            {
+              "offset": 65811,
+              "edge": 65816,
+              "expected": [
+                {
+                  "offset": 65811,
+                  "length": 6
+                }
+              ],
+              "actual": [
+                {
+                  "offset": 65811,
+                  "length": 6
+                }
+              ],
+              "total": 1,
+              "truncated": false
+            },
+            {
+              "offset": 65815,
+              "edge": 65816,
+              "expected": [
+                {
+                  "offset": 65815,
+                  "length": 6
+                }
+              ],
+              "actual": [
+                {
+                  "offset": 65815,
+                  "length": 6
+                }
+              ],
+              "total": 1,
+              "truncated": false
+            },
+            {
+              "offset": 65816,
+              "edge": 65816,
+              "expected": [
+                {
+                  "offset": 65816,
+                  "length": 6
+                }
+              ],
+              "actual": [
+                {
+                  "offset": 65816,
+                  "length": 6
+                }
+              ],
+              "total": 1,
+              "truncated": false
+            },
+            {
+              "offset": 131630,
+              "edge": 65816,
+              "expected": [
+                {
+                  "offset": 131630,
+                  "length": 6
+                }
+              ],
+              "actual": [
+                {
+                  "offset": 131630,
+                  "length": 6
+                }
+              ],
+              "total": 1,
+              "truncated": false
+            }
+          ]
+        },
+        {
+          "id": "X02",
+          "verdict": "PASS",
+          "title": "Emoji, whitespace and repeated count at chunk boundaries",
+          "detail": [
+            {
+              "name": "emoji split surrogate",
+              "queryUnits": 3,
+              "textUnits": 65810,
+              "expectedTotal": 1,
+              "actualTotal": 1,
+              "expectedHead": [
+                {
+                  "offset": 65803,
+                  "length": 3
+                }
+              ],
+              "actualHead": [
+                {
+                  "offset": 65803,
+                  "length": 3
+                }
+              ],
+              "expectedTail": [
+                {
+                  "offset": 65803,
+                  "length": 3
+                }
+              ],
+              "truncated": false,
+              "pass": true
+            },
+            {
+              "name": "whitespace span exceeds nominal overlap",
+              "queryUnits": 10,
+              "textUnits": 67009,
+              "expectedTotal": 1,
+              "actualTotal": 1,
+              "expectedHead": [
+                {
+                  "offset": 65000,
+                  "length": 2009
+                }
+              ],
+              "actualHead": [
+                {
+                  "offset": 65000,
+                  "length": 2009
+                }
+              ],
+              "expectedTail": [
+                {
+                  "offset": 65000,
+                  "length": 2009
+                }
+              ],
+              "truncated": false,
+              "pass": true
+            },
+            {
+              "name": "cross-window repetition count",
+              "queryUnits": 3,
+              "textUnits": 131611,
+              "expectedTotal": 43870,
+              "actualTotal": 43870,
+              "expectedHead": [
+                {
+                  "offset": 0,
+                  "length": 3
+                },
+                {
+                  "offset": 3,
+                  "length": 3
+                },
+                {
+                  "offset": 6,
+                  "length": 3
+                }
+              ],
+              "actualHead": [
+                {
+                  "offset": 0,
+                  "length": 3
+                },
+                {
+                  "offset": 3,
+                  "length": 3
+                },
+                {
+                  "offset": 6,
+                  "length": 3
+                }
+              ],
+              "expectedTail": [
+                {
+                  "offset": 131601,
+                  "length": 3
+                },
+                {
+                  "offset": 131604,
+                  "length": 3
+                },
+                {
+                  "offset": 131607,
+                  "length": 3
+                }
+              ],
+              "truncated": true,
+              "pass": true
+            }
+          ]
+        },
+        {
+          "id": "X11",
+          "verdict": "OBSERVATION",
+          "title": "Query longer than chunk meets engine regexp-size limit",
+          "detail": {
+            "name": "query exceeds complete 64KiB+8192 window",
+            "queryUnits": 74001,
+            "textUnits": 74001,
+            "expectedTotal": 1,
+            "actualTotal": 0,
+            "expectedHead": [
+              {
+                "offset": 0,
+                "length": 74001
+              }
+            ],
+            "actualHead": [],
+            "expectedTail": [
+              {
+                "offset": 0,
+                "length": 74001
+              }
+            ],
+            "truncated": true,
+            "pass": false,
+            "note": "74001 UTF16 literal query rejects with native Regular expression too large. This is a query-length boundary, not proof of chunk-only loss; UI behavior untested here."
+          }
+        },
+        {
+          "id": "X03",
+          "verdict": "PASS",
+          "title": "Nonoverlap and case-insensitive UTF16 offsets retain original regexp semantics",
+          "detail": [
+            {
+              "name": "expected nonoverlapping within one window",
+              "queryUnits": 3,
+              "textUnits": 9,
+              "expectedTotal": 2,
+              "actualTotal": 2,
+              "expectedHead": [
+                {
+                  "offset": 0,
+                  "length": 3
+                },
+                {
+                  "offset": 6,
+                  "length": 3
+                }
+              ],
+              "actualHead": [
+                {
+                  "offset": 0,
+                  "length": 3
+                },
+                {
+                  "offset": 6,
+                  "length": 3
+                }
+              ],
+              "expectedTail": [
+                {
+                  "offset": 0,
+                  "length": 3
+                },
+                {
+                  "offset": 6,
+                  "length": 3
+                }
+              ],
+              "truncated": false,
+              "pass": true
+            },
+            {
+              "name": "ordinary case fold offsets",
+              "queryUnits": 6,
+              "textUnits": 23,
+              "expectedTotal": 2,
+              "actualTotal": 2,
+              "expectedHead": [
+                {
+                  "offset": 3,
+                  "length": 6
+                },
+                {
+                  "offset": 17,
+                  "length": 6
+                }
+              ],
+              "actualHead": [
+                {
+                  "offset": 3,
+                  "length": 6
+                },
+                {
+                  "offset": 17,
+                  "length": 6
+                }
+              ],
+              "expectedTail": [
+                {
+                  "offset": 3,
+                  "length": 6
+                },
+                {
+                  "offset": 17,
+                  "length": 6
+                }
+              ],
+              "truncated": false,
+              "pass": true
+            },
+            {
+              "name": "simple ECMAScript fold sigma",
+              "queryUnits": 1,
+              "textUnits": 5,
+              "expectedTotal": 3,
+              "actualTotal": 3,
+              "expectedHead": [
+                {
+                  "offset": 0,
+                  "length": 1
+                },
+                {
+                  "offset": 2,
+                  "length": 1
+                },
+                {
+                  "offset": 4,
+                  "length": 1
+                }
+              ],
+              "actualHead": [
+                {
+                  "offset": 0,
+                  "length": 1
+                },
+                {
+                  "offset": 2,
+                  "length": 1
+                },
+                {
+                  "offset": 4,
+                  "length": 1
+                }
+              ],
+              "expectedTail": [
+                {
+                  "offset": 0,
+                  "length": 1
+                },
+                {
+                  "offset": 2,
+                  "length": 1
+                },
+                {
+                  "offset": 4,
+                  "length": 1
+                }
+              ],
+              "truncated": false,
+              "pass": true
+            }
+          ]
+        },
+        {
+          "id": "X04",
+          "verdict": "PASS",
+          "title": "Boundary loss must not make 1001 look like exactly 1000",
+          "detail": {
+            "expected": 1001,
+            "total": 1001,
+            "retained": 1000,
+            "truncated": true,
+            "last": [
+              {
+                "offset": 6986,
+                "length": 6
+              },
+              {
+                "offset": 65813,
+                "length": 6
+              }
+            ]
+          }
+        },
+        {
+          "id": "X05",
+          "verdict": "PASS",
+          "title": "Real ZIP parser crossing actual scan boundary",
+          "detail": {
+            "edge": 65816,
+            "expectedOffset": 65813,
+            "total": 1,
+            "scanned": 1,
+            "truncated": false
+          }
+        },
+        {
+          "id": "X06",
+          "verdict": "PASS",
+          "title": "Search and display share text after publisher style removal",
+          "detail": [
+            {
+              "name": "HTML inline display",
+              "cold": "\nSTART  TARGET\n",
+              "display": "\nSTART  TARGET\n",
+              "prepared": "<p>START <span style=\"display:none\">HIDDEN</span> TARGET</p>",
+              "equal": true,
+              "searchOffset": 8,
+              "range": "TARGET"
+            },
+            {
+              "name": "hidden br inline",
+              "cold": "\nAB\n",
+              "display": "\nAB\n",
+              "prepared": "<p>A<br style=\"display:none\">B</p>",
+              "equal": true,
+              "range": null
+            },
+            {
+              "name": "SVG inline visibility",
+              "cold": "TARGET",
+              "display": "TARGET",
+              "prepared": "<svg><text style=\"visibility:hidden\">HIDDEN</text><text>TARGET</text></svg>",
+              "equal": true,
+              "searchOffset": 0,
+              "range": "TARGET"
+            }
+          ]
+        },
+        {
+          "id": "X07",
+          "verdict": "OBSERVATION",
+          "title": "SVG use and child visibility override policy boundary",
+          "detail": {
+            "plain": "OVERRIDE_VISIBLEARIA_VISIBLEDIRECT_VISIBLE",
+            "preparedHtml": "<svg><defs><text id=\"t\">USE_TEMPLATE</text></defs><symbol id=\"s\"><text>SYMBOL_TEMPLATE</text></symbol><use href=\"#t\"></use><g visibility=\"hidden\"><text visibility=\"visible\">OVERRIDE_VISIBLE</text></g><text aria-hidden=\"true\">ARIA_VISIBLE</text><text>DIRECT_VISIBLE</text></svg>",
+            "titleExcluded": true,
+            "symbolExcluded": true,
+            "useTemplateExcluded": true,
+            "visibleOverrideExcluded": false,
+            "ariaRetained": true,
+            "note": "use is explicitly unsupported; child visibility=visible overriding inherited hidden needs real Edge geometry. Do not equate these boundaries."
+          }
+        },
+        {
+          "id": "X08",
+          "verdict": "PASS",
+          "title": "Failed next prepare must keep previously displayed shared image",
+          "detail": {
+            "failure": "controlled title failure after shared image",
+            "oldOwner": 1,
+            "currentTask": 2,
+            "url": "blob:audit-1",
+            "revokedCurrent": false,
+            "resources": [
+              "OPS/shared.png"
+            ],
+            "taskOwners": [
+              1
+            ]
+          }
+        },
+        {
+          "id": "X09",
+          "verdict": "PASS",
+          "title": "Exact font MIME and encoded actual ZIP targets, mixed non-font rejection",
+          "detail": [
+            {
+              "name": "encoded literal percent exists",
+              "uri": "OPS/f%2520.otf",
+              "href": "f%2520.otf",
+              "zip": "OPS/f%20.otf",
+              "mime": "font/otf",
+              "expected": true,
+              "opened": true,
+              "fontFlag": true
+            },
+            {
+              "name": "encoded space exists",
+              "uri": "OPS/f%20.otf",
+              "href": "f%20.otf",
+              "zip": "OPS/f .otf",
+              "mime": "font/otf",
+              "expected": true,
+              "opened": true,
+              "fontFlag": true
+            },
+            {
+              "name": "mime case with parameter",
+              "uri": "OPS/f.otf",
+              "href": "f.otf",
+              "zip": "OPS/f.otf",
+              "mime": "FONT/OTF; test=1",
+              "expected": true,
+              "opened": true,
+              "fontFlag": true
+            },
+            {
+              "name": "mixed font and XHTML",
+              "uri": "OPS/f.otf",
+              "href": "f.otf",
+              "zip": "OPS/f.otf",
+              "mime": "font/otf",
+              "extra": "OPS/c0.xhtml",
+              "expected": false,
+              "opened": false,
+              "error": {
+                "code": "ENCRYPTED_NON_FONT",
+                "message": "加密目标不是明确支持的字体 MIME：OPS/c0.xhtml (application/xhtml+xml)"
+              }
+            }
+          ]
+        },
+        {
+          "id": "X10",
+          "verdict": "OBSERVATION",
+          "title": "Encryption URI fallback reinterprets root-invalid relative path",
+          "detail": {
+            "cases": [
+              {
+                "name": "root traversal target",
+                "uri": "../OPS/f.otf",
+                "href": "f.otf",
+                "zip": "OPS/f.otf",
+                "mime": "font/otf",
+                "expected": false,
+                "opened": true,
+                "fontFlag": true
+              },
+              {
+                "name": "encoded slash target",
+                "uri": "OPS%2Ff.otf",
+                "href": "f.otf",
+                "zip": "OPS/f.otf",
+                "mime": "font/otf",
+                "expected": false,
+                "opened": false,
+                "error": {
+                  "code": "UNKNOWN_ENCRYPTED_TARGET",
+                  "message": "加密 CipherReference 路径非法：OPS%2Ff.otf"
+                }
+              }
+            ],
+            "note": "../OPS/f.otf fails root normalization, then OPF-directory fallback succeeds; encoded slash rejected. Same broader path-policy family as inherited E03. No filesystem escape or decryption inferred; root-only strictness needs explicit acceptance policy."
+          }
+        }
+      ]
+    },
+    "readerStages": {
+      "generatedAt": "2026-10-27T18:53:04.052Z",
+      "candidate": "D:/Temp/Lyra-Extension-Epub",
+      "identity": {
+        "expectedCommit": "R5",
+        "expectedPackageSha256": "r5-candidate",
+        "hashes": {
+          "epub-book.js": "62453a86f64fc9e883af379440c8306a8e218fa55456de490671873044c2cdc2",
+          "search.js": "470c4fe4bb68f299b1aa367cffd1f3b5e616af2dad25e7b1cc1d10f25bea702a",
+          "paginator.js": "15408a60cf6e65f83d2a3b479a878da888be964d7639ffafd468067c81a2a248",
+          "reader.js": "28790e1fb4cd5e04302c26217d80b293d8bdedfc3cd4e1551c9a02c0d93f61fb"
+        }
+      },
+      "runtime": {
+        "node": "v24.18.0",
+        "jsdom": "29.1.1"
+      },
+      "evidenceKind": "Frozen original JavaScript loaded unmodified; jsdom DOM/Range and real JSZip. Controlled async dependencies and geometry doubles disclosed per case. Not browser visibility, SVG painting or native desktop evidence.",
+      "results": [
+        {
+          "id": "N-prepare-input",
+          "verdict": "PASS",
+          "title": "Invalidate result navigation before further DOM/layout/location/highlight side effects",
+          "detail": {
+            "phase": "prepare",
+            "action": "input",
+            "currentBook": "STAGE",
+            "spine": 0,
+            "paginatorSection": 0,
+            "text": "SAFE_START",
+            "ready": true,
+            "finalizing": false,
+            "highlights": [],
+            "activeQuery": null,
+            "after": [],
+            "hostMessages": [],
+            "ledgerBefore": [
+              {
+                "stage": "set-enter",
+                "book": "STAGE",
+                "spine": -1,
+                "queryGen": 3,
+                "navGen": 3,
+                "openIntent": 1,
+                "finalizing": false,
+                "preparedBook": "STAGE",
+                "index": 0
+              },
+              {
+                "stage": "dom-submit",
+                "book": "STAGE",
+                "spine": -1,
+                "queryGen": 3,
+                "navGen": 3,
+                "openIntent": 1,
+                "finalizing": false,
+                "text": "SAFE_START",
+                "preparedBook": "STAGE",
+                "preparedIndex": 0
+              },
+              {
+                "stage": "layout",
+                "book": "STAGE",
+                "spine": -1,
+                "queryGen": 3,
+                "navGen": 3,
+                "openIntent": 1,
+                "finalizing": false,
+                "section": 0
+              },
+              {
+                "stage": "goToPage",
+                "book": "STAGE",
+                "spine": -1,
+                "queryGen": 3,
+                "navGen": 3,
+                "openIntent": 1,
+                "finalizing": false,
+                "section": 0,
+                "arg": 0
+              },
+              {
+                "stage": "set-return",
+                "book": "STAGE",
+                "spine": -1,
+                "queryGen": 3,
+                "navGen": 3,
+                "openIntent": 1,
+                "finalizing": false,
+                "preparedBook": "STAGE",
+                "index": 0
+              },
+              {
+                "stage": "invalidation",
+                "book": "STAGE",
+                "spine": 0,
+                "queryGen": 5,
+                "navGen": 4,
+                "openIntent": 1,
+                "finalizing": false,
+                "action": "input"
+              }
+            ]
+          }
+        },
+        {
+          "id": "NP-prepare-input",
+          "verdict": "PASS",
+          "title": "Subsequent user page turn remains usable",
+          "detail": {
+            "book": "STAGE",
+            "spine": 0,
+            "page": 1,
+            "text": "SAFE_START"
+          }
+        },
+        {
+          "id": "N-prepare-search-close",
+          "verdict": "PASS",
+          "title": "Invalidate result navigation before further DOM/layout/location/highlight side effects",
+          "detail": {
+            "phase": "prepare",
+            "action": "search-close",
+            "currentBook": "STAGE",
+            "spine": 0,
+            "paginatorSection": 0,
+            "text": "SAFE_START",
+            "ready": true,
+            "finalizing": false,
+            "highlights": [],
+            "activeQuery": null,
+            "after": [],
+            "hostMessages": [],
+            "ledgerBefore": [
+              {
+                "stage": "set-enter",
+                "book": "STAGE",
+                "spine": -1,
+                "queryGen": 3,
+                "navGen": 3,
+                "openIntent": 1,
+                "finalizing": false,
+                "preparedBook": "STAGE",
+                "index": 0
+              },
+              {
+                "stage": "dom-submit",
+                "book": "STAGE",
+                "spine": -1,
+                "queryGen": 3,
+                "navGen": 3,
+                "openIntent": 1,
+                "finalizing": false,
+                "text": "SAFE_START",
+                "preparedBook": "STAGE",
+                "preparedIndex": 0
+              },
+              {
+                "stage": "layout",
+                "book": "STAGE",
+                "spine": -1,
+                "queryGen": 3,
+                "navGen": 3,
+                "openIntent": 1,
+                "finalizing": false,
+                "section": 0
+              },
+              {
+                "stage": "goToPage",
+                "book": "STAGE",
+                "spine": -1,
+                "queryGen": 3,
+                "navGen": 3,
+                "openIntent": 1,
+                "finalizing": false,
+                "section": 0,
+                "arg": 0
+              },
+              {
+                "stage": "set-return",
+                "book": "STAGE",
+                "spine": -1,
+                "queryGen": 3,
+                "navGen": 3,
+                "openIntent": 1,
+                "finalizing": false,
+                "preparedBook": "STAGE",
+                "index": 0
+              },
+              {
+                "stage": "invalidation",
+                "book": "STAGE",
+                "spine": 0,
+                "queryGen": 5,
+                "navGen": 4,
+                "openIntent": 1,
+                "finalizing": false,
+                "action": "search-close"
+              }
+            ]
+          }
+        },
+        {
+          "id": "NP-prepare-search-close",
+          "verdict": "PASS",
+          "title": "Subsequent user page turn remains usable",
+          "detail": {
+            "book": "STAGE",
+            "spine": 0,
+            "page": 1,
+            "text": "SAFE_START"
+          }
+        },
+        {
+          "id": "N-prepare-open-intent",
+          "verdict": "PASS",
+          "title": "Invalidate result navigation before further DOM/layout/location/highlight side effects",
+          "detail": {
+            "phase": "prepare",
+            "action": "open-intent",
+            "currentBook": "STAGE",
+            "spine": 0,
+            "paginatorSection": 0,
+            "text": "SAFE_START",
+            "ready": true,
+            "finalizing": false,
+            "highlights": [],
+            "activeQuery": null,
+            "after": [],
+            "hostMessages": [],
+            "ledgerBefore": [
+              {
+                "stage": "set-enter",
+                "book": "STAGE",
+                "spine": -1,
+                "queryGen": 3,
+                "navGen": 3,
+                "openIntent": 1,
+                "finalizing": false,
+                "preparedBook": "STAGE",
+                "index": 0
+              },
+              {
+                "stage": "dom-submit",
+                "book": "STAGE",
+                "spine": -1,
+                "queryGen": 3,
+                "navGen": 3,
+                "openIntent": 1,
+                "finalizing": false,
+                "text": "SAFE_START",
+                "preparedBook": "STAGE",
+                "preparedIndex": 0
+              },
+              {
+                "stage": "layout",
+                "book": "STAGE",
+                "spine": -1,
+                "queryGen": 3,
+                "navGen": 3,
+                "openIntent": 1,
+                "finalizing": false,
+                "section": 0
+              },
+              {
+                "stage": "goToPage",
+                "book": "STAGE",
+                "spine": -1,
+                "queryGen": 3,
+                "navGen": 3,
+                "openIntent": 1,
+                "finalizing": false,
+                "section": 0,
+                "arg": 0
+              },
+              {
+                "stage": "set-return",
+                "book": "STAGE",
+                "spine": -1,
+                "queryGen": 3,
+                "navGen": 3,
+                "openIntent": 1,
+                "finalizing": false,
+                "preparedBook": "STAGE",
+                "index": 0
+              },
+              {
+                "stage": "invalidation",
+                "book": "STAGE",
+                "spine": 0,
+                "queryGen": 5,
+                "navGen": 5,
+                "openIntent": 2,
+                "finalizing": false,
+                "action": "open-intent"
+              }
+            ]
+          }
+        },
+        {
+          "id": "N-prepare-book-replaced",
+          "verdict": "PASS",
+          "title": "Invalidate result navigation before further DOM/layout/location/highlight side effects",
+          "detail": {
+            "phase": "prepare",
+            "action": "book-replaced",
+            "currentBook": "FRESH",
+            "spine": 0,
+            "paginatorSection": 0,
+            "text": "FRESH_TEXT",
+            "ready": true,
+            "finalizing": false,
+            "highlights": [],
+            "activeQuery": null,
+            "after": [],
+            "hostMessages": [],
+            "ledgerBefore": [
+              {
+                "stage": "set-enter",
+                "book": "STAGE",
+                "spine": -1,
+                "queryGen": 3,
+                "navGen": 3,
+                "openIntent": 1,
+                "finalizing": false,
+                "preparedBook": "STAGE",
+                "index": 0
+              },
+              {
+                "stage": "dom-submit",
+                "book": "STAGE",
+                "spine": -1,
+                "queryGen": 3,
+                "navGen": 3,
+                "openIntent": 1,
+                "finalizing": false,
+                "text": "SAFE_START",
+                "preparedBook": "STAGE",
+                "preparedIndex": 0
+              },
+              {
+                "stage": "layout",
+                "book": "STAGE",
+                "spine": -1,
+                "queryGen": 3,
+                "navGen": 3,
+                "openIntent": 1,
+                "finalizing": false,
+                "section": 0
+              },
+              {
+                "stage": "goToPage",
+                "book": "STAGE",
+                "spine": -1,
+                "queryGen": 3,
+                "navGen": 3,
+                "openIntent": 1,
+                "finalizing": false,
+                "section": 0,
+                "arg": 0
+              },
+              {
+                "stage": "set-return",
+                "book": "STAGE",
+                "spine": -1,
+                "queryGen": 3,
+                "navGen": 3,
+                "openIntent": 1,
+                "finalizing": false,
+                "preparedBook": "STAGE",
+                "index": 0
+              },
+              {
+                "stage": "set-enter",
+                "book": "FRESH",
+                "spine": 0,
+                "queryGen": 7,
+                "navGen": 7,
+                "openIntent": 2,
+                "finalizing": false,
+                "preparedBook": "FRESH",
+                "index": 0
+              },
+              {
+                "stage": "dom-submit",
+                "book": "FRESH",
+                "spine": 0,
+                "queryGen": 7,
+                "navGen": 7,
+                "openIntent": 2,
+                "finalizing": false,
+                "text": "FRESH_TEXT",
+                "preparedBook": "FRESH",
+                "preparedIndex": 0
+              },
+              {
+                "stage": "layout",
+                "book": "FRESH",
+                "spine": 0,
+                "queryGen": 7,
+                "navGen": 7,
+                "openIntent": 2,
+                "finalizing": false,
+                "section": 0
+              },
+              {
+                "stage": "goToPage",
+                "book": "FRESH",
+                "spine": 0,
+                "queryGen": 7,
+                "navGen": 7,
+                "openIntent": 2,
+                "finalizing": false,
+                "section": 0,
+                "arg": 0
+              },
+              {
+                "stage": "set-return",
+                "book": "FRESH",
+                "spine": 0,
+                "queryGen": 7,
+                "navGen": 7,
+                "openIntent": 2,
+                "finalizing": false,
+                "preparedBook": "FRESH",
+                "index": 0
+              },
+              {
+                "stage": "invalidation",
+                "book": "FRESH",
+                "spine": 0,
+                "queryGen": 7,
+                "navGen": 7,
+                "openIntent": 2,
+                "finalizing": false,
+                "action": "book-replaced"
+              }
+            ]
+          }
+        },
+        {
+          "id": "N-prepare-host-finalize",
+          "verdict": "PASS",
+          "title": "Invalidate result navigation before further DOM/layout/location/highlight side effects",
+          "detail": {
+            "phase": "prepare",
+            "action": "host-finalize",
+            "currentBook": "STAGE",
+            "spine": 0,
+            "paginatorSection": 0,
+            "text": "SAFE_START",
+            "ready": true,
+            "finalizing": true,
+            "highlights": [],
+            "activeQuery": null,
+            "after": [],
+            "hostMessages": [
+              {
+                "type": "host.finalized",
+                "requestId": "audit-final",
+                "sessionId": "audit",
+                "ok": true,
+                "revision": 0
+              }
+            ],
+            "ledgerBefore": [
+              {
+                "stage": "set-enter",
+                "book": "STAGE",
+                "spine": -1,
+                "queryGen": 3,
+                "navGen": 3,
+                "openIntent": 1,
+                "finalizing": false,
+                "preparedBook": "STAGE",
+                "index": 0
+              },
+              {
+                "stage": "dom-submit",
+                "book": "STAGE",
+                "spine": -1,
+                "queryGen": 3,
+                "navGen": 3,
+                "openIntent": 1,
+                "finalizing": false,
+                "text": "SAFE_START",
+                "preparedBook": "STAGE",
+                "preparedIndex": 0
+              },
+              {
+                "stage": "layout",
+                "book": "STAGE",
+                "spine": -1,
+                "queryGen": 3,
+                "navGen": 3,
+                "openIntent": 1,
+                "finalizing": false,
+                "section": 0
+              },
+              {
+                "stage": "goToPage",
+                "book": "STAGE",
+                "spine": -1,
+                "queryGen": 3,
+                "navGen": 3,
+                "openIntent": 1,
+                "finalizing": false,
+                "section": 0,
+                "arg": 0
+              },
+              {
+                "stage": "set-return",
+                "book": "STAGE",
+                "spine": -1,
+                "queryGen": 3,
+                "navGen": 3,
+                "openIntent": 1,
+                "finalizing": false,
+                "preparedBook": "STAGE",
+                "index": 0
+              },
+              {
+                "stage": "invalidation",
+                "book": "STAGE",
+                "spine": 0,
+                "queryGen": 5,
+                "navGen": 5,
+                "openIntent": 1,
+                "finalizing": true,
+                "action": "host-finalize"
+              }
+            ]
+          }
+        },
+        {
+          "id": "N-resources-input",
+          "verdict": "PASS",
+          "title": "Invalidate result navigation before further DOM/layout/location/highlight side effects",
+          "detail": {
+            "phase": "resources",
+            "action": "input",
+            "currentBook": "STAGE",
+            "spine": 0,
+            "paginatorSection": 1,
+            "text": "OLDQUERY targetTAIL",
+            "ready": true,
+            "finalizing": false,
+            "highlights": [],
+            "activeQuery": null,
+            "after": [
+              {
+                "stage": "set-return",
+                "book": "STAGE",
+                "spine": 0,
+                "queryGen": 5,
+                "navGen": 4,
+                "openIntent": 1,
+                "finalizing": false,
+                "preparedBook": "STAGE",
+                "index": 1
+              }
+            ],
+            "hostMessages": [],
+            "ledgerBefore": [
+              {
+                "stage": "set-enter",
+                "book": "STAGE",
+                "spine": -1,
+                "queryGen": 3,
+                "navGen": 3,
+                "openIntent": 1,
+                "finalizing": false,
+                "preparedBook": "STAGE",
+                "index": 0
+              },
+              {
+                "stage": "dom-submit",
+                "book": "STAGE",
+                "spine": -1,
+                "queryGen": 3,
+                "navGen": 3,
+                "openIntent": 1,
+                "finalizing": false,
+                "text": "SAFE_START",
+                "preparedBook": "STAGE",
+                "preparedIndex": 0
+              },
+              {
+                "stage": "layout",
+                "book": "STAGE",
+                "spine": -1,
+                "queryGen": 3,
+                "navGen": 3,
+                "openIntent": 1,
+                "finalizing": false,
+                "section": 0
+              },
+              {
+                "stage": "goToPage",
+                "book": "STAGE",
+                "spine": -1,
+                "queryGen": 3,
+                "navGen": 3,
+                "openIntent": 1,
+                "finalizing": false,
+                "section": 0,
+                "arg": 0
+              },
+              {
+                "stage": "set-return",
+                "book": "STAGE",
+                "spine": -1,
+                "queryGen": 3,
+                "navGen": 3,
+                "openIntent": 1,
+                "finalizing": false,
+                "preparedBook": "STAGE",
+                "index": 0
+              },
+              {
+                "stage": "set-enter",
+                "book": "STAGE",
+                "spine": 0,
+                "queryGen": 4,
+                "navGen": 4,
+                "openIntent": 1,
+                "finalizing": false,
+                "preparedBook": "STAGE",
+                "index": 1
+              },
+              {
+                "stage": "dom-submit",
+                "book": "STAGE",
+                "spine": 0,
+                "queryGen": 4,
+                "navGen": 4,
+                "openIntent": 1,
+                "finalizing": false,
+                "text": "OLDQUERY targetTAIL",
+                "preparedBook": "STAGE",
+                "preparedIndex": 1
+              },
+              {
+                "stage": "invalidation",
+                "book": "STAGE",
+                "spine": 0,
+                "queryGen": 5,
+                "navGen": 4,
+                "openIntent": 1,
+                "finalizing": false,
+                "action": "input"
+              }
+            ]
+          }
+        },
+        {
+          "id": "NP-resources-input",
+          "verdict": "PASS",
+          "title": "Subsequent user page turn remains usable",
+          "detail": {
+            "book": "STAGE",
+            "spine": 0,
+            "page": 0,
+            "text": "OLDQUERY targetTAIL"
+          }
+        },
+        {
+          "id": "N-resources-search-close",
+          "verdict": "PASS",
+          "title": "Invalidate result navigation before further DOM/layout/location/highlight side effects",
+          "detail": {
+            "phase": "resources",
+            "action": "search-close",
+            "currentBook": "STAGE",
+            "spine": 0,
+            "paginatorSection": 1,
+            "text": "OLDQUERY targetTAIL",
+            "ready": true,
+            "finalizing": false,
+            "highlights": [],
+            "activeQuery": null,
+            "after": [
+              {
+                "stage": "set-return",
+                "book": "STAGE",
+                "spine": 0,
+                "queryGen": 5,
+                "navGen": 4,
+                "openIntent": 1,
+                "finalizing": false,
+                "preparedBook": "STAGE",
+                "index": 1
+              }
+            ],
+            "hostMessages": [],
+            "ledgerBefore": [
+              {
+                "stage": "set-enter",
+                "book": "STAGE",
+                "spine": -1,
+                "queryGen": 3,
+                "navGen": 3,
+                "openIntent": 1,
+                "finalizing": false,
+                "preparedBook": "STAGE",
+                "index": 0
+              },
+              {
+                "stage": "dom-submit",
+                "book": "STAGE",
+                "spine": -1,
+                "queryGen": 3,
+                "navGen": 3,
+                "openIntent": 1,
+                "finalizing": false,
+                "text": "SAFE_START",
+                "preparedBook": "STAGE",
+                "preparedIndex": 0
+              },
+              {
+                "stage": "layout",
+                "book": "STAGE",
+                "spine": -1,
+                "queryGen": 3,
+                "navGen": 3,
+                "openIntent": 1,
+                "finalizing": false,
+                "section": 0
+              },
+              {
+                "stage": "goToPage",
+                "book": "STAGE",
+                "spine": -1,
+                "queryGen": 3,
+                "navGen": 3,
+                "openIntent": 1,
+                "finalizing": false,
+                "section": 0,
+                "arg": 0
+              },
+              {
+                "stage": "set-return",
+                "book": "STAGE",
+                "spine": -1,
+                "queryGen": 3,
+                "navGen": 3,
+                "openIntent": 1,
+                "finalizing": false,
+                "preparedBook": "STAGE",
+                "index": 0
+              },
+              {
+                "stage": "set-enter",
+                "book": "STAGE",
+                "spine": 0,
+                "queryGen": 4,
+                "navGen": 4,
+                "openIntent": 1,
+                "finalizing": false,
+                "preparedBook": "STAGE",
+                "index": 1
+              },
+              {
+                "stage": "dom-submit",
+                "book": "STAGE",
+                "spine": 0,
+                "queryGen": 4,
+                "navGen": 4,
+                "openIntent": 1,
+                "finalizing": false,
+                "text": "OLDQUERY targetTAIL",
+                "preparedBook": "STAGE",
+                "preparedIndex": 1
+              },
+              {
+                "stage": "invalidation",
+                "book": "STAGE",
+                "spine": 0,
+                "queryGen": 5,
+                "navGen": 4,
+                "openIntent": 1,
+                "finalizing": false,
+                "action": "search-close"
+              }
+            ]
+          }
+        },
+        {
+          "id": "NP-resources-search-close",
+          "verdict": "PASS",
+          "title": "Subsequent user page turn remains usable",
+          "detail": {
+            "book": "STAGE",
+            "spine": 0,
+            "page": 0,
+            "text": "OLDQUERY targetTAIL"
+          }
+        },
+        {
+          "id": "N-resources-open-intent",
+          "verdict": "PASS",
+          "title": "Invalidate result navigation before further DOM/layout/location/highlight side effects",
+          "detail": {
+            "phase": "resources",
+            "action": "open-intent",
+            "currentBook": "STAGE",
+            "spine": 0,
+            "paginatorSection": 1,
+            "text": "OLDQUERY targetTAIL",
+            "ready": true,
+            "finalizing": false,
+            "highlights": [],
+            "activeQuery": null,
+            "after": [
+              {
+                "stage": "set-return",
+                "book": "STAGE",
+                "spine": 0,
+                "queryGen": 5,
+                "navGen": 5,
+                "openIntent": 2,
+                "finalizing": false,
+                "preparedBook": "STAGE",
+                "index": 1
+              }
+            ],
+            "hostMessages": [],
+            "ledgerBefore": [
+              {
+                "stage": "set-enter",
+                "book": "STAGE",
+                "spine": -1,
+                "queryGen": 3,
+                "navGen": 3,
+                "openIntent": 1,
+                "finalizing": false,
+                "preparedBook": "STAGE",
+                "index": 0
+              },
+              {
+                "stage": "dom-submit",
+                "book": "STAGE",
+                "spine": -1,
+                "queryGen": 3,
+                "navGen": 3,
+                "openIntent": 1,
+                "finalizing": false,
+                "text": "SAFE_START",
+                "preparedBook": "STAGE",
+                "preparedIndex": 0
+              },
+              {
+                "stage": "layout",
+                "book": "STAGE",
+                "spine": -1,
+                "queryGen": 3,
+                "navGen": 3,
+                "openIntent": 1,
+                "finalizing": false,
+                "section": 0
+              },
+              {
+                "stage": "goToPage",
+                "book": "STAGE",
+                "spine": -1,
+                "queryGen": 3,
+                "navGen": 3,
+                "openIntent": 1,
+                "finalizing": false,
+                "section": 0,
+                "arg": 0
+              },
+              {
+                "stage": "set-return",
+                "book": "STAGE",
+                "spine": -1,
+                "queryGen": 3,
+                "navGen": 3,
+                "openIntent": 1,
+                "finalizing": false,
+                "preparedBook": "STAGE",
+                "index": 0
+              },
+              {
+                "stage": "set-enter",
+                "book": "STAGE",
+                "spine": 0,
+                "queryGen": 4,
+                "navGen": 4,
+                "openIntent": 1,
+                "finalizing": false,
+                "preparedBook": "STAGE",
+                "index": 1
+              },
+              {
+                "stage": "dom-submit",
+                "book": "STAGE",
+                "spine": 0,
+                "queryGen": 4,
+                "navGen": 4,
+                "openIntent": 1,
+                "finalizing": false,
+                "text": "OLDQUERY targetTAIL",
+                "preparedBook": "STAGE",
+                "preparedIndex": 1
+              },
+              {
+                "stage": "invalidation",
+                "book": "STAGE",
+                "spine": 0,
+                "queryGen": 5,
+                "navGen": 5,
+                "openIntent": 2,
+                "finalizing": false,
+                "action": "open-intent"
+              }
+            ]
+          }
+        },
+        {
+          "id": "N-resources-book-replaced",
+          "verdict": "PASS",
+          "title": "Invalidate result navigation before further DOM/layout/location/highlight side effects",
+          "detail": {
+            "phase": "resources",
+            "action": "book-replaced",
+            "currentBook": "FRESH",
+            "spine": 0,
+            "paginatorSection": 0,
+            "text": "FRESH_TEXT",
+            "ready": true,
+            "finalizing": false,
+            "highlights": [],
+            "activeQuery": null,
+            "after": [
+              {
+                "stage": "set-return",
+                "book": "FRESH",
+                "spine": 0,
+                "queryGen": 7,
+                "navGen": 7,
+                "openIntent": 2,
+                "finalizing": false,
+                "preparedBook": "STAGE",
+                "index": 1
+              }
+            ],
+            "hostMessages": [],
+            "ledgerBefore": [
+              {
+                "stage": "set-enter",
+                "book": "STAGE",
+                "spine": -1,
+                "queryGen": 3,
+                "navGen": 3,
+                "openIntent": 1,
+                "finalizing": false,
+                "preparedBook": "STAGE",
+                "index": 0
+              },
+              {
+                "stage": "dom-submit",
+                "book": "STAGE",
+                "spine": -1,
+                "queryGen": 3,
+                "navGen": 3,
+                "openIntent": 1,
+                "finalizing": false,
+                "text": "SAFE_START",
+                "preparedBook": "STAGE",
+                "preparedIndex": 0
+              },
+              {
+                "stage": "layout",
+                "book": "STAGE",
+                "spine": -1,
+                "queryGen": 3,
+                "navGen": 3,
+                "openIntent": 1,
+                "finalizing": false,
+                "section": 0
+              },
+              {
+                "stage": "goToPage",
+                "book": "STAGE",
+                "spine": -1,
+                "queryGen": 3,
+                "navGen": 3,
+                "openIntent": 1,
+                "finalizing": false,
+                "section": 0,
+                "arg": 0
+              },
+              {
+                "stage": "set-return",
+                "book": "STAGE",
+                "spine": -1,
+                "queryGen": 3,
+                "navGen": 3,
+                "openIntent": 1,
+                "finalizing": false,
+                "preparedBook": "STAGE",
+                "index": 0
+              },
+              {
+                "stage": "set-enter",
+                "book": "STAGE",
+                "spine": 0,
+                "queryGen": 4,
+                "navGen": 4,
+                "openIntent": 1,
+                "finalizing": false,
+                "preparedBook": "STAGE",
+                "index": 1
+              },
+              {
+                "stage": "dom-submit",
+                "book": "STAGE",
+                "spine": 0,
+                "queryGen": 4,
+                "navGen": 4,
+                "openIntent": 1,
+                "finalizing": false,
+                "text": "OLDQUERY targetTAIL",
+                "preparedBook": "STAGE",
+                "preparedIndex": 1
+              },
+              {
+                "stage": "set-enter",
+                "book": "FRESH",
+                "spine": 0,
+                "queryGen": 7,
+                "navGen": 7,
+                "openIntent": 2,
+                "finalizing": false,
+                "preparedBook": "FRESH",
+                "index": 0
+              },
+              {
+                "stage": "dom-submit",
+                "book": "FRESH",
+                "spine": 0,
+                "queryGen": 7,
+                "navGen": 7,
+                "openIntent": 2,
+                "finalizing": false,
+                "text": "FRESH_TEXT",
+                "preparedBook": "FRESH",
+                "preparedIndex": 0
+              },
+              {
+                "stage": "layout",
+                "book": "FRESH",
+                "spine": 0,
+                "queryGen": 7,
+                "navGen": 7,
+                "openIntent": 2,
+                "finalizing": false,
+                "section": 0
+              },
+              {
+                "stage": "goToPage",
+                "book": "FRESH",
+                "spine": 0,
+                "queryGen": 7,
+                "navGen": 7,
+                "openIntent": 2,
+                "finalizing": false,
+                "section": 0,
+                "arg": 0
+              },
+              {
+                "stage": "set-return",
+                "book": "FRESH",
+                "spine": 0,
+                "queryGen": 7,
+                "navGen": 7,
+                "openIntent": 2,
+                "finalizing": false,
+                "preparedBook": "FRESH",
+                "index": 0
+              },
+              {
+                "stage": "invalidation",
+                "book": "FRESH",
+                "spine": 0,
+                "queryGen": 7,
+                "navGen": 7,
+                "openIntent": 2,
+                "finalizing": false,
+                "action": "book-replaced"
+              }
+            ]
+          }
+        },
+        {
+          "id": "N-resources-host-finalize",
+          "verdict": "PASS",
+          "title": "Invalidate result navigation before further DOM/layout/location/highlight side effects",
+          "detail": {
+            "phase": "resources",
+            "action": "host-finalize",
+            "currentBook": "STAGE",
+            "spine": 0,
+            "paginatorSection": 1,
+            "text": "OLDQUERY targetTAIL",
+            "ready": true,
+            "finalizing": true,
+            "highlights": [],
+            "activeQuery": null,
+            "after": [
+              {
+                "stage": "set-return",
+                "book": "STAGE",
+                "spine": 0,
+                "queryGen": 5,
+                "navGen": 5,
+                "openIntent": 1,
+                "finalizing": true,
+                "preparedBook": "STAGE",
+                "index": 1
+              }
+            ],
+            "hostMessages": [
+              {
+                "type": "host.finalized",
+                "requestId": "audit-final",
+                "sessionId": "audit",
+                "ok": true,
+                "revision": 0
+              }
+            ],
+            "ledgerBefore": [
+              {
+                "stage": "set-enter",
+                "book": "STAGE",
+                "spine": -1,
+                "queryGen": 3,
+                "navGen": 3,
+                "openIntent": 1,
+                "finalizing": false,
+                "preparedBook": "STAGE",
+                "index": 0
+              },
+              {
+                "stage": "dom-submit",
+                "book": "STAGE",
+                "spine": -1,
+                "queryGen": 3,
+                "navGen": 3,
+                "openIntent": 1,
+                "finalizing": false,
+                "text": "SAFE_START",
+                "preparedBook": "STAGE",
+                "preparedIndex": 0
+              },
+              {
+                "stage": "layout",
+                "book": "STAGE",
+                "spine": -1,
+                "queryGen": 3,
+                "navGen": 3,
+                "openIntent": 1,
+                "finalizing": false,
+                "section": 0
+              },
+              {
+                "stage": "goToPage",
+                "book": "STAGE",
+                "spine": -1,
+                "queryGen": 3,
+                "navGen": 3,
+                "openIntent": 1,
+                "finalizing": false,
+                "section": 0,
+                "arg": 0
+              },
+              {
+                "stage": "set-return",
+                "book": "STAGE",
+                "spine": -1,
+                "queryGen": 3,
+                "navGen": 3,
+                "openIntent": 1,
+                "finalizing": false,
+                "preparedBook": "STAGE",
+                "index": 0
+              },
+              {
+                "stage": "set-enter",
+                "book": "STAGE",
+                "spine": 0,
+                "queryGen": 4,
+                "navGen": 4,
+                "openIntent": 1,
+                "finalizing": false,
+                "preparedBook": "STAGE",
+                "index": 1
+              },
+              {
+                "stage": "dom-submit",
+                "book": "STAGE",
+                "spine": 0,
+                "queryGen": 4,
+                "navGen": 4,
+                "openIntent": 1,
+                "finalizing": false,
+                "text": "OLDQUERY targetTAIL",
+                "preparedBook": "STAGE",
+                "preparedIndex": 1
+              },
+              {
+                "stage": "invalidation",
+                "book": "STAGE",
+                "spine": 0,
+                "queryGen": 5,
+                "navGen": 5,
+                "openIntent": 1,
+                "finalizing": true,
+                "action": "host-finalize"
+              }
+            ]
+          }
+        },
+        {
+          "id": "N-ROLLBACK",
+          "verdict": "PASS",
+          "title": "Failure after original DOM submit/layout restores old document, text position and image",
+          "detail": {
+            "before": {
+              "elementPath": null,
+              "textOffset": 11,
+              "quote": "OLD_HEAD OLD_TARGET",
+              "prefix": "OLD_HEAD",
+              "suffix": "OLD_TARGET",
+              "elementId": "",
+              "chapterFraction": 1,
+              "pageIndex": 2
+            },
+            "after": {
+              "elementPath": null,
+              "textOffset": 11,
+              "quote": "OLD_HEAD OLD_TARGET",
+              "prefix": "OLD_HEAD",
+              "suffix": "OLD_TARGET",
+              "elementId": "",
+              "chapterFraction": 1,
+              "pageIndex": 2
+            },
+            "oldUrl": "blob:audit-1",
+            "url": "blob:audit-1",
+            "revoked": [
+              "blob:audit-2"
+            ],
+            "resources": [
+              "OPS/old.png"
+            ],
+            "owners": [
+              2
+            ],
+            "ledger": [
+              {
+                "stage": "set-enter",
+                "book": "ROLL-OLD",
+                "spine": -1,
+                "queryGen": 3,
+                "navGen": 3,
+                "openIntent": 1,
+                "finalizing": false,
+                "preparedBook": "ROLL-OLD",
+                "index": 0
+              },
+              {
+                "stage": "dom-submit",
+                "book": "ROLL-OLD",
+                "spine": -1,
+                "queryGen": 3,
+                "navGen": 3,
+                "openIntent": 1,
+                "finalizing": false,
+                "text": "OLD_HEADOLD_TARGET",
+                "preparedBook": "ROLL-OLD",
+                "preparedIndex": 0
+              },
+              {
+                "stage": "layout",
+                "book": "ROLL-OLD",
+                "spine": -1,
+                "queryGen": 3,
+                "navGen": 3,
+                "openIntent": 1,
+                "finalizing": false,
+                "section": 0
+              },
+              {
+                "stage": "goToPage",
+                "book": "ROLL-OLD",
+                "spine": -1,
+                "queryGen": 3,
+                "navGen": 3,
+                "openIntent": 1,
+                "finalizing": false,
+                "section": 0,
+                "arg": 0
+              },
+              {
+                "stage": "set-return",
+                "book": "ROLL-OLD",
+                "spine": -1,
+                "queryGen": 3,
+                "navGen": 3,
+                "openIntent": 1,
+                "finalizing": false,
+                "preparedBook": "ROLL-OLD",
+                "index": 0
+              },
+              {
+                "stage": "goToPage",
+                "book": "ROLL-OLD",
+                "spine": 0,
+                "queryGen": 3,
+                "navGen": 3,
+                "openIntent": 1,
+                "finalizing": false,
+                "section": 0,
+                "arg": 2
+              },
+              {
+                "stage": "set-enter",
+                "book": "ROLL-NEW",
+                "spine": 0,
+                "queryGen": 6,
+                "navGen": 6,
+                "openIntent": 2,
+                "finalizing": false,
+                "preparedBook": "ROLL-NEW",
+                "index": 0
+              },
+              {
+                "stage": "dom-submit",
+                "book": "ROLL-NEW",
+                "spine": 0,
+                "queryGen": 6,
+                "navGen": 6,
+                "openIntent": 2,
+                "finalizing": false,
+                "text": "NEW_DOCUMENT",
+                "preparedBook": "ROLL-NEW",
+                "preparedIndex": 0
+              },
+              {
+                "stage": "layout",
+                "book": "ROLL-NEW",
+                "spine": 0,
+                "queryGen": 6,
+                "navGen": 6,
+                "openIntent": 2,
+                "finalizing": false,
+                "section": 0
+              },
+              {
+                "stage": "goToPage",
+                "book": "ROLL-NEW",
+                "spine": 0,
+                "queryGen": 6,
+                "navGen": 6,
+                "openIntent": 2,
+                "finalizing": false,
+                "section": 0,
+                "arg": 0
+              },
+              {
+                "stage": "set-return",
+                "book": "ROLL-NEW",
+                "spine": 0,
+                "queryGen": 6,
+                "navGen": 6,
+                "openIntent": 2,
+                "finalizing": false,
+                "preparedBook": "ROLL-NEW",
+                "index": 0
+              },
+              {
+                "stage": "set-enter",
+                "book": "ROLL-OLD",
+                "spine": 0,
+                "queryGen": 6,
+                "navGen": 7,
+                "openIntent": 2,
+                "finalizing": false,
+                "preparedBook": "ROLL-OLD",
+                "index": 0
+              },
+              {
+                "stage": "dom-submit",
+                "book": "ROLL-OLD",
+                "spine": 0,
+                "queryGen": 6,
+                "navGen": 7,
+                "openIntent": 2,
+                "finalizing": false,
+                "text": "OLD_HEADOLD_TARGET",
+                "preparedBook": "ROLL-OLD",
+                "preparedIndex": 0
+              },
+              {
+                "stage": "layout",
+                "book": "ROLL-OLD",
+                "spine": 0,
+                "queryGen": 6,
+                "navGen": 7,
+                "openIntent": 2,
+                "finalizing": false,
+                "section": 0
+              },
+              {
+                "stage": "locateAnchor",
+                "book": "ROLL-OLD",
+                "spine": 0,
+                "queryGen": 6,
+                "navGen": 7,
+                "openIntent": 2,
+                "finalizing": false,
+                "section": 0
+              },
+              {
+                "stage": "goToPage",
+                "book": "ROLL-OLD",
+                "spine": 0,
+                "queryGen": 6,
+                "navGen": 7,
+                "openIntent": 2,
+                "finalizing": false,
+                "section": 0,
+                "arg": 2
+              },
+              {
+                "stage": "set-return",
+                "book": "ROLL-OLD",
+                "spine": 0,
+                "queryGen": 6,
+                "navGen": 7,
+                "openIntent": 2,
+                "finalizing": false,
+                "preparedBook": "ROLL-OLD",
+                "index": 0
+              }
+            ]
+          }
+        },
+        {
+          "id": "N-SHARED-FAIL",
+          "verdict": "PASS",
+          "title": "Failed same-book prepare retains displayed old shared URL",
+          "detail": {
+            "text": "OLD_VISIBLE",
+            "spine": 0,
+            "paginatorSection": 0,
+            "ready": true,
+            "url": "blob:audit-1",
+            "revoked": [],
+            "resources": [
+              "OPS/same.png"
+            ],
+            "owners": [
+              1
+            ]
+          }
+        }
+      ]
+    },
+    "newBoundaryD01D03": {
+      "evidenceKind": "Real Edge, frozen candidate, controlled delays and optional explicitly local bridge fixture",
+      "results": [
+        {
+          "id": "D01_CHUNK_BOUNDARY_LOST_MATCH",
+          "query": "CROSSBOUNDARY",
+          "actualChunkEdge": 65844,
+          "expected": 3,
+          "status": "找到 3 处 · 已扫描 3/3 章 · 缓存 131781 字符",
+          "buttons": 3,
+          "truth": [
+            {
+              "spine": 0,
+              "offset": 8,
+              "length": 28
+            },
+            {
+              "spine": 1,
+              "offset": 65840,
+              "length": 65859
+            },
+            {
+              "spine": 2,
+              "offset": 65875,
+              "length": 65894
+            }
+          ],
+          "defect": false,
+          "note": "Original UI query, actual ZIP and original sanitized text; three unique chapter matches, middle crosses actual chunk end."
+        },
+        {
+          "id": "D02_CHANGED_QUERY_STILL_REPLACES_DOCUMENT",
+          "before": {
+            "spine": 0,
+            "text": "START DOCUMENT\n\nSTART paragraph 0: independent visible reading and position preservation. "
+          },
+          "after": {
+            "spine": 0,
+            "text": "START DOCUMENT\n\nSTART paragraph 0: independent visible reading and position preservation. ",
+            "input": "NEWQUERY",
+            "highlights": [],
+            "active": null,
+            "queryGen": 5
+          },
+          "defect": false,
+          "note": "Highlights correctly suppressed; stronger R4 requirement checks the obsolete navigation must not commit a replacement document."
+        },
+        {
+          "id": "D03_CLOSE_DURING_CHAPTER_LOAD_ACKS_UNSAVED_POSITION",
+          "before": {
+            "modified": true,
+            "ready": false,
+            "spine": 0,
+            "page": 1,
+            "saved": null
+          },
+          "ack": {
+            "message": {
+              "type": "host.finalized",
+              "requestId": "close-during-chapter",
+              "sessionId": "local-mvr1n0y6",
+              "ok": true,
+              "revision": 1
+            },
+            "modified": false,
+            "ready": false,
+            "saved": "{\"revision\":1,\"position\":{\"spineHref\":\"OPS/c0.xhtml\",\"spineIndex\":0,\"locator\":{\"elementPath\":null,\"textOffset\":32,\"quote\":\"NORMAL paragraph 0: independent visible reading and position pr\",\"prefix\":\"NORMAL paragraph 0: independent\",\"suffix\":\"visible reading and position pr\",\"elementId\":\"\",\"chapterFraction\":0.07142857142857142,\"pageIndex\":1},\"chapterFraction\":0.07142857142857142,\"savedAt\":\"2026-10-27T18:53:23.305Z\"},\"positionSequence\":1793127203305000,\"positionOperationId\":\"pos-op-d553c0fe-4d99-448b-9724-c8d84e420533\",\"positionRevision\":1,\"updatedAt\":\"2026-10-27T18:53:23.305Z\"}"
+          },
+          "late": {
+            "finalizing": true,
+            "spine": 0,
+            "text": "NORMAL paragraph 0: independent visible reading and position preservation. 这是用于验证实际正文的长段落。",
+            "modified": false,
+            "saved": "{\"revision\":1,\"position\":{\"spineHref\":\"OPS/c0.xhtml\",\"spineIndex\":0,\"locator\":{\"elementPath\":null,\"textOffset\":32,\"quote\":\"NORMAL paragraph 0: independent visible reading and position pr\",\"prefix\":\"NORMAL paragraph 0: independent\",\"suffix\":\"visible reading and position pr\",\"elementId\":\"\",\"chapterFraction\":0.07142857142857142,\"pageIndex\":1},\"chapterFraction\":0.07142857142857142,\"savedAt\":\"2026-10-27T18:53:23.305Z\"},\"positionSequence\":1793127203305000,\"positionOperationId\":\"pos-op-d553c0fe-4d99-448b-9724-c8d84e420533\",\"positionRevision\":1,\"updatedAt\":\"2026-10-27T18:53:23.305Z\"}"
+          },
+          "defect": false,
+          "note": "Actual browser/controller/localStorage; host-message delivery fixture explicitly chooses local capability. Not native C#/WinUI evidence. Delay only old chapter read; tests ready=false skips dirty-save and late navigation still commits."
+        }
+      ]
+    },
+    "newBoundaryD04D06": {
+      "evidenceKind": "Real Edge, frozen candidate, controlled delays and optional explicitly local bridge fixture",
+      "results": [
+        {
+          "id": "D04_HIDDEN_HTML_OFFSET_DIVERGENCE",
+          "before": {
+            "plain": "\nSTART  TARGET\n",
+            "visible": "START TARGET",
+            "renderText": "START HIDDEN TARGET"
+          },
+          "after": {
+            "visible": "START TARGET",
+            "renderText": "START HIDDEN TARGET",
+            "highlights": [
+              "TARGET"
+            ],
+            "active": {
+              "id": "r-0-8",
+              "spineIndex": 0,
+              "title": "c0",
+              "offset": 8,
+              "length": 6,
+              "quote": "START TARGET",
+              "prefix": "START",
+              "suffix": "",
+              "snippet": "START TARGET",
+              "bookId": "sha256:648a6475f75623243ab945a7447f7c96d45b42685f8011415d49333e34a426c2",
+              "openIntent": 1,
+              "queryGen": 4,
+              "query": "TARGET"
+            },
+            "status": "查找结果：TARGET，已定位：TARGET"
+          },
+          "defect": false,
+          "note": "No timing/fault injection. Original source model and prepared rendered document differ after sanitizer removes style."
+        },
+        {
+          "id": "D05_HIDDEN_SVG_OFFSET_DIVERGENCE",
+          "before": {
+            "plain": "START TARGET",
+            "visible": "START TARGET",
+            "renderText": "START HIDDEN TARGET"
+          },
+          "after": {
+            "visible": "START ",
+            "renderText": "START HIDDEN TARGET",
+            "highlights": [
+              "TARGET"
+            ],
+            "active": {
+              "id": "r-0-6",
+              "spineIndex": 0,
+              "title": "c0",
+              "offset": 6,
+              "length": 6,
+              "quote": "START TARGET",
+              "prefix": "START",
+              "suffix": "",
+              "snippet": "START TARGET",
+              "bookId": "sha256:433b1a05f73a5a8b30f457225ca389a20e380995e16e8242fb291236dfd444de",
+              "openIntent": 1,
+              "queryGen": 4,
+              "query": "TARGET"
+            },
+            "status": "查找结果：TARGET，已定位：TARGET"
+          },
+          "defect": false,
+          "note": "No timing/fault injection. Original source model and prepared rendered document differ after sanitizer removes style."
+        },
+        {
+          "id": "D06_FAILED_SHARED_IMAGE_PREPARE_REVOKES_VISIBLE_RESOURCE",
+          "before": {
+            "spine": 0,
+            "text": "OLD_VISIBLE",
+            "url": "blob:http://127.0.0.1:63725/bfefea62-fc60-4151-be9b-056bea4f1006",
+            "fetchOK": true,
+            "owners": [
+              1
+            ]
+          },
+          "after": {
+            "spine": 0,
+            "ready": true,
+            "text": "OLD_VISIBLE",
+            "url": "blob:http://127.0.0.1:63725/bfefea62-fc60-4151-be9b-056bea4f1006",
+            "fetchOK": true,
+            "naturalWidth": 1,
+            "resources": [
+              "OPS/shared.png"
+            ],
+            "owners": [
+              1
+            ]
+          },
+          "defect": false,
+          "note": "Injected section-title failure only after same-book resource acquisition; displayed old chapter remains, its referenced blob is revoked. Does not assert decoded pixels instantly disappear."
+        }
+      ]
+    },
+    "svgD07": {
+      "evidenceKind": "Real Edge, frozen candidate, controlled delays and optional explicitly local bridge fixture",
+      "results": [
+        {
+          "id": "D07_SVG_CHILD_VISIBLE_BUT_SEARCH_OMITS",
+          "before": {
+            "plain": "OVERRIDE_VISIBLE",
+            "innerText": "OVERRIDE_VISIBLE",
+            "visibility": "visible",
+            "bounds": {
+              "width": 196.515625,
+              "height": 28
+            }
+          },
+          "after": {
+            "buttons": 1,
+            "status": "找到 1 处 · 已扫描 1/1 章 · 缓存 16 字符"
+          },
+          "defect": false,
+          "note": "SVG parent visibility:hidden is inherited but child explicitly overrides to visible; no use references and no timing/fault injection."
+        }
+      ]
+    },
+    "imageAck": {
+      "evidenceKind": "Real Edge, frozen candidate; controlled delays/faults documented per case",
+      "results": [
+        {
+          "id": "C01_CORRUPT_BOOK_BLOCKS_OTHER_BOOK",
+          "book": "FRESH",
+          "newPosition": "{\"revision\":2,\"position\":{\"spineHref\":\"OPS/c0.xhtml\",\"spineIndex\":0,\"locator\":{\"elementPath\":null,\"textOffset\":1476,\"quote\":\"置，不以内部页号代替内容检查。 FRESH paragraph 14: independent reading text re\",\"prefix\":\"置，不以内部页号代替内容检查。 FRESH paragraph\",\"suffix\":\"14: independent reading text re\",\"elementId\":\"\",\"chapterFraction\":0.14285714285714285,\"pageIndex\":2},\"chapterFraction\":0.14285714285714285,\"savedAt\":\"2026-10-27T19:21:01.675Z\"},\"positionSequence\":1793128861676000,\"positionOperationId\":\"pos-op-11728bc6-a4f7-45bc-9f54-4eb6458ebe33\",\"positionRevision\":2,\"updatedAt\":\"2026-10-27T19:21:01.676Z\"}",
+          "newBookmarks": "{\"revision\":1,\"items\":[{\"id\":\"bm-mvr2mk8w-tqwio6\",\"_key\":\"OPS/c0.xhtml|t1476\",\"spineHref\":\"OPS/c0.xhtml\",\"spineIndex\":0,\"chapterTitle\":\"c0\",\"title\":\"c0\",\"summary\":\"置，不以内部页号代替内容检查。 FRESH paragraph 14: independent reading text re\",\"locator\":{\"elementPath\":null,\"textOffset\":1476,\"quote\":\"置，不以内部页号代替内容检查。 FRESH paragraph 14: independent reading text re\",\"prefix\":\"置，不以内部页号代替内容检查。 FRESH paragraph\",\"suffix\":\"14: independent reading text re\",\"elementId\":\"\",\"chapterFraction\":0.14285714285714285,\"pageIndex\":2},\"createdAt\":\"2026-10-27T19:21:01.184Z\"}]}",
+          "status": "已添加书签：置，不以内部页号代替内容检查。 FRESH paragraph 14: independent reading text re",
+          "saveState": "位置已保存在当前窗口",
+          "oldPosition": "{bad",
+          "defect": false,
+          "note": "Corrupt data belongs only to NORMAL; FRESH has distinct bytes/id and no corrupt state."
+        },
+        {
+          "id": "C02_FAILED_SNAPSHOT_REOPEN_VISIBLE_POSITION",
+          "before": {
+            "page": 4,
+            "anchor": {
+              "elementPath": null,
+              "textOffset": 2973,
+              "quote": "位置，不以内部页号代替内容检查。 NORMAL paragraph 28: independent reading text",
+              "prefix": "位置，不以内部页号代替内容检查。 NORMAL paragra",
+              "suffix": "ph 28: independent reading text",
+              "elementId": "",
+              "chapterFraction": 0.2857142857142857,
+              "pageIndex": 4
+            }
+          },
+          "retained": 1,
+          "after": {
+            "page": 4,
+            "anchor": {
+              "elementPath": null,
+              "textOffset": 2973,
+              "quote": "位置，不以内部页号代替内容检查。 NORMAL paragraph 28: independent reading text",
+              "prefix": "位置，不以内部页号代替内容检查。 NORMAL paragra",
+              "suffix": "ph 28: independent reading text",
+              "elementId": "",
+              "chapterFraction": 0.2857142857142857,
+              "pageIndex": 4
+            },
+            "saved": {
+              "revision": 1,
+              "position": {
+                "spineHref": "OPS/c0.xhtml",
+                "spineIndex": 0,
+                "locator": {
+                  "elementPath": null,
+                  "textOffset": 2973,
+                  "quote": "位置，不以内部页号代替内容检查。 NORMAL paragraph 28: independent reading text",
+                  "prefix": "位置，不以内部页号代替内容检查。 NORMAL paragra",
+                  "suffix": "ph 28: independent reading text",
+                  "elementId": "",
+                  "chapterFraction": 0.2857142857142857,
+                  "pageIndex": 4
+                },
+                "chapterFraction": 0.2857142857142857,
+                "savedAt": "2026-10-27T19:21:02.902Z"
+              },
+              "positionSequence": 1793128862902000,
+              "positionOperationId": "pos-op-068c2314-7ffc-41c9-98a9-bbb21ea38b60",
+              "positionRevision": 1,
+              "updatedAt": "2026-10-27T19:21:03.053Z"
+            },
+            "pending": 0
+          },
+          "defect": false,
+          "note": "Failure snapshot now survives and is retried, but check the actual reader destination on reopening, not only disk."
+        },
+        {
+          "id": "C03_OLD_IMAGE_SAVE_ACK_CLEARS_NEW_PAGE",
+          "before": {
+            "elementPath": [
+              1,
+              0
+            ],
+            "textOffset": null,
+            "quote": "",
+            "prefix": "",
+            "suffix": "",
+            "elementId": "",
+            "chapterFraction": 0.1111111111111111,
+            "pageIndex": 1
+          },
+          "atRelease": {
+            "elementPath": [
+              1,
+              0
+            ],
+            "textOffset": null,
+            "quote": "",
+            "prefix": "",
+            "suffix": "",
+            "elementId": "",
+            "chapterFraction": 0.2222222222222222,
+            "pageIndex": 2
+          },
+          "after": {
+            "current": {
+              "elementPath": [
+                2,
+                0
+              ],
+              "textOffset": null,
+              "quote": "",
+              "prefix": "",
+              "suffix": "",
+              "elementId": "",
+              "chapterFraction": 0.2222222222222222,
+              "pageIndex": 2
+            },
+            "modified": false,
+            "saves": [
+              {
+                "spineHref": "OPS/c0.xhtml",
+                "spineIndex": 0,
+                "locator": {
+                  "elementPath": [
+                    1,
+                    0
+                  ],
+                  "textOffset": null,
+                  "quote": "",
+                  "prefix": "",
+                  "suffix": "",
+                  "elementId": "",
+                  "chapterFraction": 0.1111111111111111,
+                  "pageIndex": 1
+                },
+                "chapterFraction": 0.1111111111111111,
+                "savedAt": "2026-10-27T19:21:04.222Z"
+              },
+              {
+                "spineHref": "OPS/c0.xhtml",
+                "spineIndex": 0,
+                "locator": {
+                  "elementPath": [
+                    2,
+                    0
+                  ],
+                  "textOffset": null,
+                  "quote": "",
+                  "prefix": "",
+                  "suffix": "",
+                  "elementId": "",
+                  "chapterFraction": 0.2222222222222222,
+                  "pageIndex": 2
+                },
+                "chapterFraction": 0.2222222222222222,
+                "savedAt": "2026-10-27T19:21:04.606Z"
+              }
+            ],
+            "saved": {
+              "revision": 2,
+              "position": {
+                "spineHref": "OPS/c0.xhtml",
+                "spineIndex": 0,
+                "locator": {
+                  "elementPath": [
+                    2,
+                    0
+                  ],
+                  "textOffset": null,
+                  "quote": "",
+                  "prefix": "",
+                  "suffix": "",
+                  "elementId": "",
+                  "chapterFraction": 0.2222222222222222,
+                  "pageIndex": 2
+                },
+                "chapterFraction": 0.2222222222222222,
+                "savedAt": "2026-10-27T19:21:04.606Z"
+              },
+              "positionSequence": 1793128864606000,
+              "positionOperationId": "pos-op-1357ad90-5a8a-424b-a005-a1ecaaf8e2ba",
+              "positionRevision": 2,
+              "updatedAt": "2026-10-27T19:21:04.606Z"
+            }
+          },
+          "defect": false,
+          "note": "Controlled delay only after first actual local write, before its acknowledgement; both user inputs are pageNext clicks; no page-input debounce exists to mask the wrong acknowledgement cleanup."
+        },
+        {
+          "id": "C04_OLD_BOOK_RELEASE_REVOKES_NEW_IMAGE",
+          "before": {
+            "url": "blob:http://127.0.0.1:52342/2928d52b-af23-4ced-b1cf-f06257a6f37f",
+            "naturalWidth": 1,
+            "owner": 2,
+            "resources": [
+              "OPS/new1.png"
+            ],
+            "fetchOK": true
+          },
+          "after": {
+            "book": "NEW",
+            "ready": true,
+            "url": "blob:http://127.0.0.1:52342/2928d52b-af23-4ced-b1cf-f06257a6f37f",
+            "naturalWidth": 1,
+            "resources": [
+              "OPS/new1.png"
+            ],
+            "revoked": [
+              "blob:http://127.0.0.1:52342/2b6cc07f-dbcf-4b07-ab7d-d7ec22261d8d",
+              "blob:http://127.0.0.1:52342/b53d8bab-a3f4-450a-bc77-491401d81474"
+            ],
+            "fetchOK": true
+          },
+          "defect": false,
+          "note": "A displayed image may remain decoded in the browser cache; this asserts current referenced blob becomes revoked and unfetchable, not that already painted pixels instantly vanish."
+        },
+        {
+          "id": "C05_SEARCH_CLICK_OLD_QUERY_COMMITS_AFTER_INPUT",
+          "input": "NEWQUERY",
+          "queryGen": 5,
+          "active": null,
+          "highlights": [],
+          "spine": 0,
+          "defect": false,
+          "note": "New input invalidates old query immediately; old chapter read is released before new 300ms debounce fires."
+        },
+        {
+          "id": "C06_VISIBLE_MODEL_HIDDEN_BREAK_AND_SVG",
+          "geom": {
+            "AB": "AB",
+            "breakDisplay": "none",
+            "svgVisibility": "hidden"
+          },
+          "abMatches": 1,
+          "invisibleSvgMatches": 0,
+          "defect": false
+        }
+      ]
+    },
+    "racesV2": {
+      "evidenceKind": "Real Edge, frozen candidate; controlled delays/faults documented per case",
+      "results": [
+        {
+          "id": "C02_FAILED_SNAPSHOT_REOPEN_VISIBLE_POSITION",
+          "before": {
+            "page": 4,
+            "anchor": {
+              "elementPath": null,
+              "textOffset": 2973,
+              "quote": "位置，不以内部页号代替内容检查。 NORMAL paragraph 28: independent reading text",
+              "prefix": "位置，不以内部页号代替内容检查。 NORMAL paragra",
+              "suffix": "ph 28: independent reading text",
+              "elementId": "",
+              "chapterFraction": 0.2857142857142857,
+              "pageIndex": 4
+            }
+          },
+          "retained": 1,
+          "after": {
+            "page": 4,
+            "anchor": {
+              "elementPath": null,
+              "textOffset": 2973,
+              "quote": "位置，不以内部页号代替内容检查。 NORMAL paragraph 28: independent reading text",
+              "prefix": "位置，不以内部页号代替内容检查。 NORMAL paragra",
+              "suffix": "ph 28: independent reading text",
+              "elementId": "",
+              "chapterFraction": 0.2857142857142857,
+              "pageIndex": 4
+            },
+            "saved": {
+              "revision": 1,
+              "position": {
+                "spineHref": "OPS/c0.xhtml",
+                "spineIndex": 0,
+                "locator": {
+                  "elementPath": null,
+                  "textOffset": 2973,
+                  "quote": "位置，不以内部页号代替内容检查。 NORMAL paragraph 28: independent reading text",
+                  "prefix": "位置，不以内部页号代替内容检查。 NORMAL paragra",
+                  "suffix": "ph 28: independent reading text",
+                  "elementId": "",
+                  "chapterFraction": 0.2857142857142857,
+                  "pageIndex": 4
+                },
+                "chapterFraction": 0.2857142857142857,
+                "savedAt": "2026-10-27T19:22:12.246Z"
+              },
+              "positionSequence": 1793128932246000,
+              "positionOperationId": "pos-op-2a20df78-85fb-440e-b761-bba2cb82652b",
+              "positionRevision": 1,
+              "updatedAt": "2026-10-27T19:22:12.397Z"
+            },
+            "pending": 0
+          },
+          "defect": false,
+          "note": "Failure snapshot now survives and is retried, but check the actual reader destination on reopening, not only disk."
+        },
+        {
+          "id": "C03_OLD_IMAGE_SAVE_ACK_CLEARS_NEW_PAGE",
+          "before": {
+            "elementPath": [
+              1,
+              0
+            ],
+            "textOffset": null,
+            "quote": "",
+            "prefix": "",
+            "suffix": "",
+            "elementId": "",
+            "chapterFraction": 0.1111111111111111,
+            "pageIndex": 1
+          },
+          "atRelease": {
+            "elementPath": [
+              2,
+              0
+            ],
+            "textOffset": null,
+            "quote": "",
+            "prefix": "",
+            "suffix": "",
+            "elementId": "",
+            "chapterFraction": 0.2222222222222222,
+            "pageIndex": 2
+          },
+          "after": {
+            "current": {
+              "elementPath": [
+                2,
+                0
+              ],
+              "textOffset": null,
+              "quote": "",
+              "prefix": "",
+              "suffix": "",
+              "elementId": "",
+              "chapterFraction": 0.2222222222222222,
+              "pageIndex": 2
+            },
+            "modified": false,
+            "saves": [
+              {
+                "spineHref": "OPS/c0.xhtml",
+                "spineIndex": 0,
+                "locator": {
+                  "elementPath": [
+                    1,
+                    0
+                  ],
+                  "textOffset": null,
+                  "quote": "",
+                  "prefix": "",
+                  "suffix": "",
+                  "elementId": "",
+                  "chapterFraction": 0.1111111111111111,
+                  "pageIndex": 1
+                },
+                "chapterFraction": 0.1111111111111111,
+                "savedAt": "2026-10-27T19:22:13.245Z"
+              },
+              {
+                "spineHref": "OPS/c0.xhtml",
+                "spineIndex": 0,
+                "locator": {
+                  "elementPath": [
+                    2,
+                    0
+                  ],
+                  "textOffset": null,
+                  "quote": "",
+                  "prefix": "",
+                  "suffix": "",
+                  "elementId": "",
+                  "chapterFraction": 0.2222222222222222,
+                  "pageIndex": 2
+                },
+                "chapterFraction": 0.2222222222222222,
+                "savedAt": "2026-10-27T19:22:13.336Z"
+              },
+              {
+                "spineHref": "OPS/c0.xhtml",
+                "spineIndex": 0,
+                "locator": {
+                  "elementPath": [
+                    2,
+                    0
+                  ],
+                  "textOffset": null,
+                  "quote": "",
+                  "prefix": "",
+                  "suffix": "",
+                  "elementId": "",
+                  "chapterFraction": 0.2222222222222222,
+                  "pageIndex": 2
+                },
+                "chapterFraction": 0.2222222222222222,
+                "savedAt": "2026-10-27T19:22:13.674Z"
+              }
+            ],
+            "saved": {
+              "revision": 3,
+              "position": {
+                "spineHref": "OPS/c0.xhtml",
+                "spineIndex": 0,
+                "locator": {
+                  "elementPath": [
+                    2,
+                    0
+                  ],
+                  "textOffset": null,
+                  "quote": "",
+                  "prefix": "",
+                  "suffix": "",
+                  "elementId": "",
+                  "chapterFraction": 0.2222222222222222,
+                  "pageIndex": 2
+                },
+                "chapterFraction": 0.2222222222222222,
+                "savedAt": "2026-10-27T19:22:13.674Z"
+              },
+              "positionSequence": 1793128933674000,
+              "positionOperationId": "pos-op-cf3d7642-b941-4c5e-abbe-cc5b54e556f7",
+              "positionRevision": 3,
+              "updatedAt": "2026-10-27T19:22:13.674Z"
+            }
+          },
+          "defect": false,
+          "note": "Controlled delay only after first actual local write, before its acknowledgement; next user input is a different pure-image page."
+        }
+      ]
+    },
+    "clientClose": {
+      "evidenceKind": "Real Edge client + protocol v3 fake host; controlled delay/fault disclosed",
+      "results": [
+        {
+          "id": "R5-CLIENT-FIELD-SUPERSEDED",
+          "pass": true,
+          "detail": {
+            "mixed": {
+              "revision": 5,
+              "applied": [
+                "lineHeight"
+              ],
+              "idempotent": [],
+              "superseded": [
+                "fontSize"
+              ]
+            },
+            "hostPrefs": {
+              "fontSize": 32,
+              "lineHeight": 2.2
+            },
+            "hostOrders": {
+              "fontSize": 2,
+              "lineHeight": 4
+            }
+          }
+        },
+        {
+          "id": "R5-CLIENT-CLOSE-PAGEINPUT",
+          "pass": true,
+          "detail": {
+            "finalized": {
+              "type": "host.finalized",
+              "requestId": "pageinput-close",
+              "sessionId": "testsession",
+              "ok": true,
+              "revision": 0
+            },
+            "position": {
+              "spineHref": "OPS/c0.xhtml",
+              "spineIndex": 0,
+              "locator": {
+                "elementPath": null,
+                "textOffset": 5941,
+                "quote": "位置，不以内部页号代替内容检查。 NORMAL paragraph 56: independent reading text",
+                "prefix": "位置，不以内部页号代替内容检查。 NORMAL paragra",
+                "suffix": "ph 56: independent reading text",
+                "elementId": "",
+                "chapterFraction": 0.5714285714285714,
+                "pageIndex": 8
+              },
+              "chapterFraction": 0.5714285714285714,
+              "savedAt": "2026-10-27T18:50:52.505Z"
+            },
+            "modified": false,
+            "page": 8
+          }
+        },
+        {
+          "id": "R5-CLIENT-CLOSE-DURING-READ",
+          "pass": true,
+          "detail": {
+            "before": {
+              "spine": 0,
+              "page": 1,
+              "modified": true,
+              "ready": false
+            },
+            "after": {
+              "ack": {
+                "type": "host.finalized",
+                "requestId": "close-read",
+                "sessionId": "testsession",
+                "ok": true,
+                "revision": 0
+              },
+              "spine": 0,
+              "page": 1,
+              "position": {
+                "spineHref": "OPS/c0.xhtml",
+                "spineIndex": 0,
+                "locator": {
+                  "elementPath": null,
+                  "textOffset": 31,
+                  "quote": "NORMAL paragraph 0: independent reading text repeated at each",
+                  "prefix": "NORMAL paragraph 0: independen",
+                  "suffix": "t reading text repeated at each",
+                  "elementId": "",
+                  "chapterFraction": 0.07142857142857142,
+                  "pageIndex": 1
+                },
+                "chapterFraction": 0.07142857142857142,
+                "savedAt": "2026-10-27T18:50:52.747Z"
+              },
+              "finalizing": true
+            }
+          }
+        },
+        {
+          "id": "R5-CLIENT-BOOKMARK-RECOVERY",
+          "pass": true,
+          "detail": {
+            "firstWarnings": [
+              "当前窗口本地存储不可用"
+            ],
+            "firstMode": "local",
+            "recoveredMode": "local",
+            "bookmarkCountRecovered": 1,
+            "finalCount": 2
+          }
+        }
+      ]
+    },
+    "realBooksA22": {
+      "generatedAt": "2026-10-27T19:07:46.593Z",
+      "results": [
+        {
+          "id": "R2-A22-1",
+          "name": "real book first/mid/last + font/bookmark/reopen",
+          "status": "PASS",
+          "detail": {
+            "title": "死敌怎么能变妻子呢？不行不行！ · 简介",
+            "initial": {
+              "title": "死敌怎么能变妻子呢？不行不行！ · 简介",
+              "spine": 373,
+              "toc": 373,
+              "pageCount": 4,
+              "spineIndex": 0
+            },
+            "samples": [
+              {
+                "spine": 0,
+                "page": 0,
+                "total": 4,
+                "quote": "简介 书名：死敌怎么能变妻子呢？不行不行！ 作者：坠月雨璐"
+              },
+              {
+                "spine": 186,
+                "page": 0,
+                "total": 28,
+                "quote": "第7章 喜欢上她了？不行不行！ 夜幕渐渐降临。 元宵街的花灯"
+              },
+              {
+                "spine": 372,
+                "page": 0,
+                "total": 30,
+                "quote": "第23章 又要酱酱酿？不行不行！ 夜色如浓稠的墨汁，一点点晕"
+              }
+            ],
+            "after": {
+              "total": 38,
+              "bookmarks": 1
+            },
+            "reopened": {
+              "spine": 372,
+              "page": 0,
+              "total": 38,
+              "bookmarks": 1
+            },
+            "search": {
+              "count": 1000,
+              "info": "找到 1236+ 处 · 已扫描 373/373 章 · 缓存 1330102 字符（结果/缓存已截断）",
+              "elapsedMs": 4030,
+              "complete": true
+            }
+          }
+        },
+        {
+          "id": "R2-A22-2",
+          "name": "real book first/mid/last + font/bookmark/reopen",
+          "status": "PASS",
+          "detail": {
+            "title": "逃婚后被隔壁宗主追杀半个修仙界 · 简介",
+            "initial": {
+              "title": "逃婚后被隔壁宗主追杀半个修仙界 · 简介",
+              "spine": 255,
+              "toc": 255,
+              "pageCount": 4,
+              "spineIndex": 0
+            },
+            "samples": [
+              {
+                "spine": 0,
+                "page": 0,
+                "total": 4,
+                "quote": "简介 书名：逃婚后被隔壁宗主追杀半个修仙界 作者：知鱼之寻"
+              },
+              {
+                "spine": 127,
+                "page": 0,
+                "total": 12,
+                "quote": "第126 章 入戏 听见莫岫的话，缪玉瑾不受控一抖，呜呜咽咽"
+              },
+              {
+                "spine": 254,
+                "page": 0,
+                "total": 13,
+                "quote": "第 253章 终章 “消消气，夫人，我真不是有意的，欺负你顺"
+              }
+            ],
+            "after": {
+              "total": 13,
+              "bookmarks": 1
+            },
+            "reopened": {
+              "spine": 254,
+              "page": 0,
+              "total": 13,
+              "bookmarks": 1
+            },
+            "search": {
+              "count": 591,
+              "info": "找到 591 处 · 已扫描 255/255 章 · 缓存 598056 字符",
+              "elapsedMs": 2678,
+              "complete": true
+            }
+          }
+        }
+      ],
+      "errors": []
+    }
+  },
+  "aStatus": {
+    "A01": "PARTIAL",
+    "A02": "PARTIAL",
+    "A03": "PARTIAL",
+    "A04": "PARTIAL",
+    "A05": "PASS",
+    "A06": "PARTIAL",
+    "A07": "PASS",
+    "A08": "PARTIAL",
+    "A09": "PARTIAL",
+    "A10": "PARTIAL",
+    "A11": "UNTESTED",
+    "A12": "PARTIAL",
+    "A13": "PARTIAL",
+    "A14": "PARTIAL",
+    "A15": "PARTIAL",
+    "A16": "PARTIAL",
+    "A17": "PASS",
+    "A18": "PARTIAL",
+    "A19": "PARTIAL",
+    "A20": "PARTIAL",
+    "A21": "PARTIAL",
+    "A22": "PASS",
+    "A23": "PARTIAL",
+    "A24": "PARTIAL",
+    "A25": "PASS"
+  },
+  "boundaries": [
+    "A11 real late resource/font integration not run",
+    "A08 valid image+bookmark simultaneous restore not run",
+    "A23 native 200 image chapter/10 book process trend not run",
+    "pending-A18 native exact timing not stably constructed; host audit/fake client cover field-level fix",
+    "DOM-committed invalidation policy stops side effects but no full old-DOM rebuild native evidence",
+    "R4 frozen evidence was transiently overwritten during a test run and restored from GPT frozen copy; SHA256SUMS A7BC... bad=0"
+  ]
+}

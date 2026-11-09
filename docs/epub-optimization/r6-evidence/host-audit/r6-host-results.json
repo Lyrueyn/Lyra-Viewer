@@ -1,0 +1,558 @@
+{
+  "generatedAt": "2026-10-27T20:44:13.1668374Z",
+  "baseDirectory": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\r6-host-audit\\bin\\Debug\\net10.0\\",
+  "evidenceKind": "original C# host source with headless WinUI/WebView2 event doubles; not native WinUI/WebView2",
+  "results": [
+    {
+      "id": "R5-PREF-FIELD-SUPERSEDED",
+      "pass": true,
+      "details": {
+        "g18": {
+          "protocol": "lyra-reader",
+          "version": 3,
+          "type": "response",
+          "requestId": "dc82207ef46941ea84cedda752544363",
+          "sessionId": "503f567330ad441fb3e0527fdf1903ea",
+          "ok": true,
+          "result": {
+            "grant": "pg-c6470839e00343979c8b42a58f4426dd",
+            "fields": [
+              "fontSize"
+            ]
+          }
+        },
+        "s18": {
+          "protocol": "lyra-reader",
+          "version": 3,
+          "type": "response",
+          "requestId": "c17e29815da44440b5b7c8d85e5154ad",
+          "sessionId": "503f567330ad441fb3e0527fdf1903ea",
+          "ok": true,
+          "result": {
+            "revision": 1,
+            "applied": [
+              "fontSize"
+            ],
+            "idempotent": [],
+            "superseded": []
+          }
+        },
+        "g32": {
+          "protocol": "lyra-reader",
+          "version": 3,
+          "type": "response",
+          "requestId": "522941671af141fcb70a3c67f8027096",
+          "sessionId": "503f567330ad441fb3e0527fdf1903ea",
+          "ok": true,
+          "result": {
+            "grant": "pg-242128de618f49a2ae6ab44007e68798",
+            "fields": [
+              "fontSize"
+            ]
+          }
+        },
+        "s32": {
+          "protocol": "lyra-reader",
+          "version": 3,
+          "type": "response",
+          "requestId": "d2beb194696543438445aa39a43bdeea",
+          "sessionId": "503f567330ad441fb3e0527fdf1903ea",
+          "ok": true,
+          "result": {
+            "revision": 2,
+            "applied": [
+              "fontSize"
+            ],
+            "idempotent": [],
+            "superseded": []
+          }
+        },
+        "gl": {
+          "protocol": "lyra-reader",
+          "version": 3,
+          "type": "response",
+          "requestId": "c986291558f0474d936922c87fdffcaf",
+          "sessionId": "503f567330ad441fb3e0527fdf1903ea",
+          "ok": true,
+          "result": {
+            "grant": "pg-cefcf919d4f34f55b7eb983097879f1b",
+            "fields": [
+              "lineHeight"
+            ]
+          }
+        },
+        "mixed": {
+          "protocol": "lyra-reader",
+          "version": 3,
+          "type": "response",
+          "requestId": "27d1eeb8899041d28ae8780a286e82eb",
+          "sessionId": "503f567330ad441fb3e0527fdf1903ea",
+          "ok": true,
+          "result": {
+            "revision": 3,
+            "applied": [
+              "lineHeight"
+            ],
+            "idempotent": [],
+            "superseded": [
+              "fontSize"
+            ]
+          }
+        },
+        "disk": {
+          "version": 1,
+          "revision": 3,
+          "preferences": {
+            "fontSize": 32,
+            "lineHeight": 2.2
+          },
+          "fieldSequences": {},
+          "preferenceOrders": {
+            "fontSize": 2,
+            "lineHeight": 3
+          },
+          "updatedAt": "2026-10-27T20:36:34.5995344Z"
+        }
+      }
+    },
+    {
+      "id": "R5-PREF-COMPLETION-CAPACITY",
+      "pass": true,
+      "details": {
+        "gf": {
+          "protocol": "lyra-reader",
+          "version": 3,
+          "type": "response",
+          "requestId": "83b4695d4cf2466f9a45930f826c1a75",
+          "sessionId": "0ee2fec0000d49c9af8f3b17a5e0691d",
+          "ok": true,
+          "result": {
+            "grant": "pg-e9ce5721a83843b4b0d7ba1381643217",
+            "fields": [
+              "fontSize"
+            ]
+          }
+        },
+        "sf": {
+          "protocol": "lyra-reader",
+          "version": 3,
+          "type": "response",
+          "requestId": "9237459687fe48f2acc25735ba20d63b",
+          "sessionId": "0ee2fec0000d49c9af8f3b17a5e0691d",
+          "ok": true,
+          "result": {
+            "revision": 4,
+            "applied": [
+              "fontSize"
+            ],
+            "idempotent": [],
+            "superseded": []
+          }
+        },
+        "gline": {
+          "protocol": "lyra-reader",
+          "version": 3,
+          "type": "response",
+          "requestId": "72783065882147dab06efe9e00d17629",
+          "sessionId": "0ee2fec0000d49c9af8f3b17a5e0691d",
+          "ok": true,
+          "result": {
+            "grant": "pg-0c130da7813448f6bca7433f327e1d8c",
+            "fields": [
+              "lineHeight"
+            ]
+          }
+        },
+        "sline": {
+          "protocol": "lyra-reader",
+          "version": 3,
+          "type": "response",
+          "requestId": "2ec6e56966af4fb496b1ef217b02bf03",
+          "sessionId": "0ee2fec0000d49c9af8f3b17a5e0691d",
+          "ok": true,
+          "result": {
+            "revision": 5,
+            "applied": [
+              "lineHeight"
+            ],
+            "idempotent": [],
+            "superseded": []
+          }
+        },
+        "retry": {
+          "protocol": "lyra-reader",
+          "version": 3,
+          "type": "response",
+          "requestId": "7450a5043dac4f9097818156e8288ad1",
+          "sessionId": "0ee2fec0000d49c9af8f3b17a5e0691d",
+          "ok": true,
+          "result": {
+            "revision": 5,
+            "applied": [
+              "fontSize"
+            ],
+            "idempotent": [
+              "fontSize"
+            ],
+            "superseded": []
+          }
+        },
+        "capDisk": {
+          "version": 1,
+          "revision": 5,
+          "preferences": {
+            "fontSize": 28,
+            "lineHeight": 2.1
+          },
+          "fieldSequences": {},
+          "preferenceOrders": {
+            "fontSize": 4099,
+            "lineHeight": 4100
+          },
+          "updatedAt": "2026-10-27T20:36:35.2251820Z"
+        }
+      }
+    },
+    {
+      "id": "R5-PREF-SCOPE",
+      "pass": true,
+      "details": {
+        "badScope": {
+          "protocol": "lyra-reader",
+          "version": 3,
+          "type": "response",
+          "requestId": "e1f50a439782421980843bf6d9bbe38b",
+          "sessionId": "e096ed3905dc4c818478b0f9cdd00ce4",
+          "ok": false,
+          "error": {
+            "code": "UNSUPPORTED_SCOPE",
+            "message": "\u53EA\u652F\u6301 global \u504F\u597D\u4F5C\u7528\u57DF"
+          }
+        },
+        "beforeHash": "tDByeRk2VVhxI6KlQE573uT15r3nIRz5nwe7T1drbn0=",
+        "afterHash": "tDByeRk2VVhxI6KlQE573uT15r3nIRz5nwe7T1drbn0="
+      }
+    },
+    {
+      "id": "R5-POS-REVISION-SEPARATION",
+      "pass": true,
+      "details": {
+        "pre": {
+          "protocol": "lyra-reader",
+          "version": 3,
+          "type": "response",
+          "requestId": "5a584daefa764977ab5e5750e86cbe82",
+          "sessionId": "50fcf8ee837f41e78f08c0b8cf7af1ef",
+          "ok": true,
+          "result": {
+            "revision": 0,
+            "positionRevision": 0,
+            "metadataRevision": 0,
+            "position": null,
+            "positionToken": 0,
+            "bookmarksRevision": 0,
+            "bookmarkCount": 0,
+            "interactionToken": 0,
+            "preferences": {
+              "fontSize": 28,
+              "lineHeight": 2.1
+            }
+          }
+        },
+        "inter": {
+          "protocol": "lyra-reader",
+          "version": 3,
+          "type": "response",
+          "requestId": "eecea2053ec5450a89a63816ed76be12",
+          "sessionId": "50fcf8ee837f41e78f08c0b8cf7af1ef",
+          "ok": true,
+          "result": {
+            "interactionToken": 1
+          }
+        },
+        "afterInteract": {
+          "protocol": "lyra-reader",
+          "version": 3,
+          "type": "response",
+          "requestId": "580530445b1e4700b02a14639b805073",
+          "sessionId": "50fcf8ee837f41e78f08c0b8cf7af1ef",
+          "ok": true,
+          "result": {
+            "revision": 0,
+            "positionRevision": 0,
+            "metadataRevision": 0,
+            "position": null,
+            "positionToken": 0,
+            "bookmarksRevision": 0,
+            "bookmarkCount": 0,
+            "interactionToken": 1,
+            "preferences": {
+              "fontSize": 28,
+              "lineHeight": 2.1
+            }
+          }
+        },
+        "posSave": {
+          "protocol": "lyra-reader",
+          "version": 3,
+          "type": "response",
+          "requestId": "292ce4c0d25a4bad8006ba9b96a9f2d7",
+          "sessionId": "50fcf8ee837f41e78f08c0b8cf7af1ef",
+          "ok": true,
+          "result": {
+            "revision": 1,
+            "positionRevision": 1,
+            "positionToken": 1
+          }
+        },
+        "afterPos": {
+          "protocol": "lyra-reader",
+          "version": 3,
+          "type": "response",
+          "requestId": "eb71effc115c47868e47f14fa32f99f9",
+          "sessionId": "50fcf8ee837f41e78f08c0b8cf7af1ef",
+          "ok": true,
+          "result": {
+            "revision": 1,
+            "positionRevision": 1,
+            "metadataRevision": 0,
+            "position": {
+              "locator": {
+                "textOffset": 100
+              }
+            },
+            "positionToken": 1,
+            "bookmarksRevision": 0,
+            "bookmarkCount": 0,
+            "interactionToken": 1,
+            "preferences": {
+              "fontSize": 28,
+              "lineHeight": 2.1
+            }
+          }
+        },
+        "bm": {
+          "protocol": "lyra-reader",
+          "version": 3,
+          "type": "response",
+          "requestId": "cba47cc35cf94ea6bed5e65ed15cd712",
+          "sessionId": "50fcf8ee837f41e78f08c0b8cf7af1ef",
+          "ok": true,
+          "result": {
+            "revision": 1,
+            "metadataRevision": 1,
+            "bookmark": {
+              "id": "bm-1",
+              "summary": "s",
+              "locator": {
+                "textOffset": 100
+              }
+            }
+          }
+        },
+        "afterBm": {
+          "protocol": "lyra-reader",
+          "version": 3,
+          "type": "response",
+          "requestId": "de0ea4f12d7348f786e5e4984363ac43",
+          "sessionId": "50fcf8ee837f41e78f08c0b8cf7af1ef",
+          "ok": true,
+          "result": {
+            "revision": 2,
+            "positionRevision": 1,
+            "metadataRevision": 1,
+            "position": {
+              "locator": {
+                "textOffset": 100
+              }
+            },
+            "positionToken": 1,
+            "bookmarksRevision": 1,
+            "bookmarkCount": 1,
+            "interactionToken": 1,
+            "preferences": {
+              "fontSize": 28,
+              "lineHeight": 2.1
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "R5-POS-S03-FAILED-WRITE",
+      "pass": true,
+      "details": {
+        "loadS03": {
+          "protocol": "lyra-reader",
+          "version": 3,
+          "type": "response",
+          "requestId": "c8479dcffb5d438bb3e90925f96ed16e",
+          "sessionId": "08676f9927f8440c91c3cf3efbebd2f8",
+          "ok": true,
+          "result": {
+            "revision": 0,
+            "positionRevision": 0,
+            "metadataRevision": 0,
+            "position": null,
+            "positionToken": 0,
+            "bookmarksRevision": 0,
+            "bookmarkCount": 0,
+            "interactionToken": 0,
+            "preferences": {
+              "fontSize": 28,
+              "lineHeight": 2.1
+            }
+          }
+        },
+        "tokS03": 1,
+        "failedPos": {
+          "protocol": "lyra-reader",
+          "version": 3,
+          "type": "response",
+          "requestId": "d953da7a41674815a19d3740aac41137",
+          "sessionId": "08676f9927f8440c91c3cf3efbebd2f8",
+          "ok": false,
+          "error": {
+            "code": "WRITE_FAILED",
+            "message": "\u72B6\u6001\u5199\u5165\u5931\u8D25\uFF1AAccess to the path is denied."
+          }
+        },
+        "reloadS03": {
+          "protocol": "lyra-reader",
+          "version": 3,
+          "type": "response",
+          "requestId": "7f28fba7c5fa465db2f75ffa56319617",
+          "sessionId": "08676f9927f8440c91c3cf3efbebd2f8",
+          "ok": true,
+          "result": {
+            "revision": 0,
+            "positionRevision": 0,
+            "metadataRevision": 0,
+            "position": null,
+            "positionToken": 0,
+            "bookmarksRevision": 0,
+            "bookmarkCount": 0,
+            "interactionToken": 1,
+            "preferences": {
+              "fontSize": 28,
+              "lineHeight": 2.1
+            }
+          }
+        },
+        "stateS03": {
+          "version": 1,
+          "revision": 0,
+          "positionRevision": 0,
+          "metadataRevision": 0,
+          "interaction": 1,
+          "interactionOwner": "08676f9927f8440c91c3cf3efbebd2f8",
+          "position": null,
+          "positionToken": 0,
+          "positionSequence": 0,
+          "bookmarks": [],
+          "bookmarksRevision": 0
+        }
+      }
+    },
+    {
+      "id": "R6-K01-COMPLETION-SUPERSEDED",
+      "pass": true,
+      "details": {
+        "ta": "pg-f947b0ef5f154012a1b4a481044611a9",
+        "tb": "pg-90d69d67393e40d8b1493a254a12014b",
+        "sa": {
+          "protocol": "lyra-reader",
+          "version": 3,
+          "type": "response",
+          "requestId": "bd206b3b40104997aea55d09d022cdee",
+          "sessionId": "bf1cb2bdc9744a478f4c0e4693f5bed3",
+          "ok": true,
+          "result": {
+            "revision": 6,
+            "applied": [
+              "fg"
+            ],
+            "idempotent": [],
+            "superseded": [
+              "theme",
+              "bg"
+            ]
+          }
+        },
+        "sb": {
+          "protocol": "lyra-reader",
+          "version": 3,
+          "type": "response",
+          "requestId": "119e859d79de4188a1137142293be616",
+          "sessionId": "bf1cb2bdc9744a478f4c0e4693f5bed3",
+          "ok": true,
+          "result": {
+            "revision": 7,
+            "applied": [
+              "theme",
+              "bg"
+            ],
+            "idempotent": [],
+            "superseded": []
+          }
+        },
+        "kretry2": {
+          "protocol": "lyra-reader",
+          "version": 3,
+          "type": "response",
+          "requestId": "da55fe63d9ce4115875759f9daf1039d",
+          "sessionId": "bf1cb2bdc9744a478f4c0e4693f5bed3",
+          "ok": true,
+          "result": {
+            "revision": 7,
+            "applied": [
+              "fg"
+            ],
+            "idempotent": [
+              "fg"
+            ],
+            "superseded": [
+              "theme",
+              "bg"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "R6-C02-PRESSURE-LAST-INTENT",
+      "pass": true,
+      "details": {
+        "every": true,
+        "sp": {
+          "protocol": "lyra-reader",
+          "version": 3,
+          "type": "response",
+          "requestId": "575958210ebe44ad8c72ad062e70c6eb",
+          "sessionId": "6e51980597684fe7806c6a8e81c831d2",
+          "ok": true,
+          "result": {
+            "revision": 8,
+            "applied": [
+              "lineHeight"
+            ],
+            "idempotent": [],
+            "superseded": []
+          }
+        },
+        "kdisk": true,
+        "last": "pg-9f17ac133dcc4f008b5c919883d85d7c"
+      }
+    },
+    {
+      "id": "R5-CLOSE-ASSOC-EARLY",
+      "pass": true,
+      "details": {
+        "reqId": "d6ebd6cd42444198bc0e1d3823ea96d3",
+        "missing": true,
+        "exact": true,
+        "earlyOk": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,113 @@
+{
+  "evidenceKind": "Real Edge client + protocol v3 fake host; controlled delay/fault disclosed",
+  "results": [
+    {
+      "id": "R5-CLIENT-FIELD-SUPERSEDED",
+      "pass": true,
+      "detail": {
+        "mixed": {
+          "revision": 5,
+          "applied": [
+            "lineHeight"
+          ],
+          "idempotent": [],
+          "superseded": [
+            "fontSize"
+          ]
+        },
+        "hostPrefs": {
+          "fontSize": 32,
+          "lineHeight": 2.2
+        },
+        "hostOrders": {
+          "fontSize": 2,
+          "lineHeight": 4
+        }
+      }
+    },
+    {
+      "id": "R5-CLIENT-CLOSE-PAGEINPUT",
+      "pass": true,
+      "detail": {
+        "finalized": {
+          "type": "host.finalized",
+          "requestId": "pageinput-close",
+          "sessionId": "testsession",
+          "ok": true,
+          "revision": 0
+        },
+        "position": {
+          "spineHref": "OPS/c0.xhtml",
+          "spineIndex": 0,
+          "locator": {
+            "elementPath": null,
+            "textOffset": 5941,
+            "quote": "位置，不以内部页号代替内容检查。 NORMAL paragraph 56: independent reading text",
+            "prefix": "位置，不以内部页号代替内容检查。 NORMAL paragra",
+            "suffix": "ph 56: independent reading text",
+            "elementId": "",
+            "chapterFraction": 0.5714285714285714,
+            "pageIndex": 8
+          },
+          "chapterFraction": 0.5714285714285714,
+          "savedAt": "2026-10-27T18:50:52.505Z"
+        },
+        "modified": false,
+        "page": 8
+      }
+    },
+    {
+      "id": "R5-CLIENT-CLOSE-DURING-READ",
+      "pass": true,
+      "detail": {
+        "before": {
+          "spine": 0,
+          "page": 1,
+          "modified": true,
+          "ready": false
+        },
+        "after": {
+          "ack": {
+            "type": "host.finalized",
+            "requestId": "close-read",
+            "sessionId": "testsession",
+            "ok": true,
+            "revision": 0
+          },
+          "spine": 0,
+          "page": 1,
+          "position": {
+            "spineHref": "OPS/c0.xhtml",
+            "spineIndex": 0,
+            "locator": {
+              "elementPath": null,
+              "textOffset": 31,
+              "quote": "NORMAL paragraph 0: independent reading text repeated at each",
+              "prefix": "NORMAL paragraph 0: independen",
+              "suffix": "t reading text repeated at each",
+              "elementId": "",
+              "chapterFraction": 0.07142857142857142,
+              "pageIndex": 1
+            },
+            "chapterFraction": 0.07142857142857142,
+            "savedAt": "2026-10-27T18:50:52.747Z"
+          },
+          "finalizing": true
+        }
+      }
+    },
+    {
+      "id": "R5-CLIENT-BOOKMARK-RECOVERY",
+      "pass": true,
+      "detail": {
+        "firstWarnings": [
+          "当前窗口本地存储不可用"
+        ],
+        "firstMode": "local",
+        "recoveredMode": "local",
+        "bookmarkCountRecovered": 1,
+        "finalCount": 2
+      }
+    }
+  ]
+}

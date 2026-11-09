@@ -1,0 +1,132 @@
+﻿{
+    "generatedAt":  "2026-10-28T00:39:02.0445474+08:00",
+    "freezeBaseline":  "docs/epub-optimization/r3-evidence/freeze-ba6f763-20261027-161555",
+    "supplementKind":  "native Windows candidate + actual WebView2; no candidate code modification",
+    "mainRuntime":  {
+                        "runDir":  "D:\\Temp\\lyra_epub_r3_candidate",
+                        "exeSha256":  "D0F1BB58B07D0B6AEAEB463C841914D9594D0A803E3831FC272A6A5FFED3B335",
+                        "dllSha256":  "8067990EBBAF126239B1F3B8CC936D36CB3B1F47DC317D541FDF4CE9C4A9905E",
+                        "extensionVersion":  "0.7.0",
+                        "extensionIndexSha256":  "F6B244C642B1842652B4ED733116A26A3E92B1B0271BF7C1B444A1C8AF3B411D",
+                        "dataPath":  "D:\\Temp\\lyra_epub_r3_candidate\\data",
+                        "pids":  [
+                                     29256,
+                                     39124,
+                                     56472
+                                 ]
+                    },
+    "scenarios":  [
+                      {
+                          "id":  "NATIVE-PREF-TWO-WINDOW",
+                          "status":  "FAIL",
+                          "requirement":  "A font18 -\u003e B font32 -\u003e A lineHeight2.2, prefs file 32/2.2",
+                          "observed":  "all initial saves PREFERENCE_STALE; prefs.json absent at that time; later only a coincidental stale fontSize32 accepted, lineHeight2.2 missing",
+                          "rootCause":  "19-digit long ticks fieldVersion loses precision in JS Number; duplicate rounded field versions",
+                          "evidence":  [
+                                           "native-pref-two-window-raw.log",
+                                           "a-font18.png",
+                                           "b-font32.png",
+                                           "a-line22.png",
+                                           "preferences-after-two-window-and-pending-close.json"
+                                       ],
+                          "matchGPT":  "GPT audit ① reproduced natively"
+                      },
+                      {
+                          "id":  "NATIVE-LATE-POSITION",
+                          "status":  "PASS",
+                          "requirement":  "A late position -\u003e B new position saved -\u003e A close -\u003e reopen still B",
+                          "observed":  "A renderer PID 69824 suspended after A page turn; B saved page7; A save rejected STALE_INTERACTION and close save rejected; final/reopen page7",
+                          "injection":  "NtSuspendProcess/ResumeProcess on A WebView2 renderer only; PID 69824 (B renderer 59860)",
+                          "evidence":  [
+                                           "position-renderer-injection-raw.log",
+                                           "position-late-window-raw.log",
+                                           "position-late-reopen-B-page.png"
+                                       ]
+                      },
+                      {
+                          "id":  "NATIVE-IMAGE-REOPEN",
+                          "status":  "PASS",
+                          "requirement":  "late.epub pure image last page save -\u003e close -\u003e library reopen -\u003e full app restart",
+                          "observed":  "elementPath=[103], textOffset=null, pageIndex=26; image visible after library reopen and after full process restart",
+                          "evidence":  [
+                                           "late-image-a-last.png",
+                                           "late-image-reopened-library.png",
+                                           "late-image-after-full-restart.png",
+                                           "native-after-restart-raw.log"
+                                       ]
+                      },
+                      {
+                          "id":  "NATIVE-CLOSE-SEARCH",
+                          "status":  "PASS",
+                          "requirement":  "close during search: latency/ack",
+                          "observed":  "CLOSING-\u003ehost.finalized-\u003eCLOSE_ACK in ~96ms",
+                          "evidence":  [
+                                           "close-during-search-raw.log"
+                                       ]
+                      },
+                      {
+                          "id":  "NATIVE-CLOSE-LOADING",
+                          "status":  "FAIL",
+                          "requirement":  "close during loading: latency/ack/timeout",
+                          "observed":  "CLOSING at 00:28:07.289; extension ready after CLOSING; no host.finalized/CLOSE_ACK/CLOSE_TIMEOUT after 10s+; reader window remained visible",
+                          "evidence":  [
+                                           "close-during-loading-stuck-facts.txt",
+                                           "close-during-loading-stuck-window.png",
+                                           "close-during-loading-after10s.log"
+                                       ]
+                      },
+                      {
+                          "id":  "NATIVE-CLOSE-PENDING-PREFS",
+                          "status":  "FAIL",
+                          "requirement":  "close while pending preference ack: ack must reflect save outcome",
+                          "observed":  "savePreferences lineHeight2.2 -\u003e PREFERENCE_STALE; extension still sent host.finalized ok:true; CLOSE_ACK revision=0; no lineHeight on disk",
+                          "evidence":  [
+                                           "close-with-pending-prefs-raw.log",
+                                           "preferences-after-two-window-and-pending-close.json"
+                                       ],
+                          "matchGPT":  "GPT audit ②③ reproduced natively"
+                      },
+                      {
+                          "id":  "NATIVE-COMPAT-NEWHOST-OLDEXT",
+                          "status":  "PASS (basic)",
+                          "requirement":  "new host + EPUB0.5.26/PDF0.3.0 with and without book",
+                          "observed":  "EPUB old: ready+turn pass, no-book pass; PDF old: legacy lyra-book-ready, 50-page render pass, no-book pass",
+                          "evidence":  [
+                                           "compat-newhost-old-epub-withbook.png",
+                                           "compat-newhost-old-epub-after-turn.png",
+                                           "compat-newhost-nobook-0.png",
+                                           "compat-newhost-pdf030-withbook.png",
+                                           "compat-newhost-nobook-1.png",
+                                           "compat-identity.json"
+                                       ]
+                      },
+                      {
+                          "id":  "NATIVE-COMPAT-OLDHOST-NEWEXT",
+                          "status":  "PASS (honest degradation)",
+                          "requirement":  "new 0.7.0 + original 1.1.12 host",
+                          "observed":  "opens/reads; page 1/9-\u003e3/9; footer says cross-window save unsupported, position only current window",
+                          "evidence":  [
+                                           "compat-oldhost-new-epub-open.png",
+                                           "compat-oldhost-new-epub-after-turn2.png",
+                                           "compat-identity.json"
+                                       ]
+                      }
+                  ],
+    "aNumberCorrections":  "R3-A编号校正-补充.md",
+    "notes":  [
+                  "All frozen files unchanged; supplement files are new.",
+                  "No fieldVersions hand-filled; client emitted raw requests; fieldVersion precision defect reproduced.",
+                  "Position delay injection is renderer process suspension; PID/location recorded."
+              ],
+    "compatBaselineCorrection":  {
+                                     "oldCompatNewhost":  "INVALID old EPUB sample: index 109 lines / SHA 5A38641D..., modular reader, not c12fe26 baseline",
+                                     "oldCompatOldhost":  "INVALID old host sample: webview exe version 1.1.12+61b53b2..., not b978661",
+                                     "correctedResults":  "compat-baseline-c12fe26/results.json",
+                                     "correctedReadme":  "compat-baseline-c12fe26/README-真基线补测.md",
+                                     "correction":  "compat-identity-CORRECTION.md"
+                                 },
+    "supersededCompatScenarios":  [
+                                      "NATIVE-COMPAT-NEWHOST-OLDEXT",
+                                      "NATIVE-COMPAT-OLDHOST-NEWEXT"
+                                  ]
+}

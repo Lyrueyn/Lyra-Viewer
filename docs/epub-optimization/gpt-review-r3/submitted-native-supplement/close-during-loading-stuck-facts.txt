@@ -1,0 +1,5 @@
+﻿CLOSING request dc2068434a8a4b0ca125d1377aca07c8 at 00:28:07.289
+- no host.finalized / CLOSE_ACK / CLOSE_TIMEOUT / CLOSE_ERROR in 10s+ after CLOSING
+- reader window handle 24646914 remained visible after 10s
+- extension app.ready/hello/state.load/book.ready arrived AFTER CLOSING
+- raw log: close-during-loading-after10s.log

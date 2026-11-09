@@ -1,0 +1,1471 @@
+{
+  "generatedAt": "2026-10-27T18:53:04.052Z",
+  "candidate": "D:/Temp/Lyra-Extension-Epub",
+  "identity": {
+    "expectedCommit": "R5",
+    "expectedPackageSha256": "r5-candidate",
+    "hashes": {
+      "epub-book.js": "62453a86f64fc9e883af379440c8306a8e218fa55456de490671873044c2cdc2",
+      "search.js": "470c4fe4bb68f299b1aa367cffd1f3b5e616af2dad25e7b1cc1d10f25bea702a",
+      "paginator.js": "15408a60cf6e65f83d2a3b479a878da888be964d7639ffafd468067c81a2a248",
+      "reader.js": "28790e1fb4cd5e04302c26217d80b293d8bdedfc3cd4e1551c9a02c0d93f61fb"
+    }
+  },
+  "runtime": {
+    "node": "v24.18.0",
+    "jsdom": "29.1.1"
+  },
+  "evidenceKind": "Frozen original JavaScript loaded unmodified; jsdom DOM/Range and real JSZip. Controlled async dependencies and geometry doubles disclosed per case. Not browser visibility, SVG painting or native desktop evidence.",
+  "results": [
+    {
+      "id": "N-prepare-input",
+      "verdict": "PASS",
+      "title": "Invalidate result navigation before further DOM/layout/location/highlight side effects",
+      "detail": {
+        "phase": "prepare",
+        "action": "input",
+        "currentBook": "STAGE",
+        "spine": 0,
+        "paginatorSection": 0,
+        "text": "SAFE_START",
+        "ready": true,
+        "finalizing": false,
+        "highlights": [],
+        "activeQuery": null,
+        "after": [],
+        "hostMessages": [],
+        "ledgerBefore": [
+          {
+            "stage": "set-enter",
+            "book": "STAGE",
+            "spine": -1,
+            "queryGen": 3,
+            "navGen": 3,
+            "openIntent": 1,
+            "finalizing": false,
+            "preparedBook": "STAGE",
+            "index": 0
+          },
+          {
+            "stage": "dom-submit",
+            "book": "STAGE",
+            "spine": -1,
+            "queryGen": 3,
+            "navGen": 3,
+            "openIntent": 1,
+            "finalizing": false,
+            "text": "SAFE_START",
+            "preparedBook": "STAGE",
+            "preparedIndex": 0
+          },
+          {
+            "stage": "layout",
+            "book": "STAGE",
+            "spine": -1,
+            "queryGen": 3,
+            "navGen": 3,
+            "openIntent": 1,
+            "finalizing": false,
+            "section": 0
+          },
+          {
+            "stage": "goToPage",
+            "book": "STAGE",
+            "spine": -1,
+            "queryGen": 3,
+            "navGen": 3,
+            "openIntent": 1,
+            "finalizing": false,
+            "section": 0,
+            "arg": 0
+          },
+          {
+            "stage": "set-return",
+            "book": "STAGE",
+            "spine": -1,
+            "queryGen": 3,
+            "navGen": 3,
+            "openIntent": 1,
+            "finalizing": false,
+            "preparedBook": "STAGE",
+            "index": 0
+          },
+          {
+            "stage": "invalidation",
+            "book": "STAGE",
+            "spine": 0,
+            "queryGen": 5,
+            "navGen": 4,
+            "openIntent": 1,
+            "finalizing": false,
+            "action": "input"
+          }
+        ]
+      }
+    },
+    {
+      "id": "NP-prepare-input",
+      "verdict": "PASS",
+      "title": "Subsequent user page turn remains usable",
+      "detail": {
+        "book": "STAGE",
+        "spine": 0,
+        "page": 1,
+        "text": "SAFE_START"
+      }
+    },
+    {
+      "id": "N-prepare-search-close",
+      "verdict": "PASS",
+      "title": "Invalidate result navigation before further DOM/layout/location/highlight side effects",
+      "detail": {
+        "phase": "prepare",
+        "action": "search-close",
+        "currentBook": "STAGE",
+        "spine": 0,
+        "paginatorSection": 0,
+        "text": "SAFE_START",
+        "ready": true,
+        "finalizing": false,
+        "highlights": [],
+        "activeQuery": null,
+        "after": [],
+        "hostMessages": [],
+        "ledgerBefore": [
+          {
+            "stage": "set-enter",
+            "book": "STAGE",
+            "spine": -1,
+            "queryGen": 3,
+            "navGen": 3,
+            "openIntent": 1,
+            "finalizing": false,
+            "preparedBook": "STAGE",
+            "index": 0
+          },
+          {
+            "stage": "dom-submit",
+            "book": "STAGE",
+            "spine": -1,
+            "queryGen": 3,
+            "navGen": 3,
+            "openIntent": 1,
+            "finalizing": false,
+            "text": "SAFE_START",
+            "preparedBook": "STAGE",
+            "preparedIndex": 0
+          },
+          {
+            "stage": "layout",
+            "book": "STAGE",
+            "spine": -1,
+            "queryGen": 3,
+            "navGen": 3,
+            "openIntent": 1,
+            "finalizing": false,
+            "section": 0
+          },
+          {
+            "stage": "goToPage",
+            "book": "STAGE",
+            "spine": -1,
+            "queryGen": 3,
+            "navGen": 3,
+            "openIntent": 1,
+            "finalizing": false,
+            "section": 0,
+            "arg": 0
+          },
+          {
+            "stage": "set-return",
+            "book": "STAGE",
+            "spine": -1,
+            "queryGen": 3,
+            "navGen": 3,
+            "openIntent": 1,
+            "finalizing": false,
+            "preparedBook": "STAGE",
+            "index": 0
+          },
+          {
+            "stage": "invalidation",
+            "book": "STAGE",
+            "spine": 0,
+            "queryGen": 5,
+            "navGen": 4,
+            "openIntent": 1,
+            "finalizing": false,
+            "action": "search-close"
+          }
+        ]
+      }
+    },
+    {
+      "id": "NP-prepare-search-close",
+      "verdict": "PASS",
+      "title": "Subsequent user page turn remains usable",
+      "detail": {
+        "book": "STAGE",
+        "spine": 0,
+        "page": 1,
+        "text": "SAFE_START"
+      }
+    },
+    {
+      "id": "N-prepare-open-intent",
+      "verdict": "PASS",
+      "title": "Invalidate result navigation before further DOM/layout/location/highlight side effects",
+      "detail": {
+        "phase": "prepare",
+        "action": "open-intent",
+        "currentBook": "STAGE",
+        "spine": 0,
+        "paginatorSection": 0,
+        "text": "SAFE_START",
+        "ready": true,
+        "finalizing": false,
+        "highlights": [],
+        "activeQuery": null,
+        "after": [],
+        "hostMessages": [],
+        "ledgerBefore": [
+          {
+            "stage": "set-enter",
+            "book": "STAGE",
+            "spine": -1,
+            "queryGen": 3,
+            "navGen": 3,
+            "openIntent": 1,
+            "finalizing": false,
+            "preparedBook": "STAGE",
+            "index": 0
+          },
+          {
+            "stage": "dom-submit",
+            "book": "STAGE",
+            "spine": -1,
+            "queryGen": 3,
+            "navGen": 3,
+            "openIntent": 1,
+            "finalizing": false,
+            "text": "SAFE_START",
+            "preparedBook": "STAGE",
+            "preparedIndex": 0
+          },
+          {
+            "stage": "layout",
+            "book": "STAGE",
+            "spine": -1,
+            "queryGen": 3,
+            "navGen": 3,
+            "openIntent": 1,
+            "finalizing": false,
+            "section": 0
+          },
+          {
+            "stage": "goToPage",
+            "book": "STAGE",
+            "spine": -1,
+            "queryGen": 3,
+            "navGen": 3,
+            "openIntent": 1,
+            "finalizing": false,
+            "section": 0,
+            "arg": 0
+          },
+          {
+            "stage": "set-return",
+            "book": "STAGE",
+            "spine": -1,
+            "queryGen": 3,
+            "navGen": 3,
+            "openIntent": 1,
+            "finalizing": false,
+            "preparedBook": "STAGE",
+            "index": 0
+          },
+          {
+            "stage": "invalidation",
+            "book": "STAGE",
+            "spine": 0,
+            "queryGen": 5,
+            "navGen": 5,
+            "openIntent": 2,
+            "finalizing": false,
+            "action": "open-intent"
+          }
+        ]
+      }
+    },
+    {
+      "id": "N-prepare-book-replaced",
+      "verdict": "PASS",
+      "title": "Invalidate result navigation before further DOM/layout/location/highlight side effects",
+      "detail": {
+        "phase": "prepare",
+        "action": "book-replaced",
+        "currentBook": "FRESH",
+        "spine": 0,
+        "paginatorSection": 0,
+        "text": "FRESH_TEXT",
+        "ready": true,
+        "finalizing": false,
+        "highlights": [],
+        "activeQuery": null,
+        "after": [],
+        "hostMessages": [],
+        "ledgerBefore": [
+          {
+            "stage": "set-enter",
+            "book": "STAGE",
+            "spine": -1,
+            "queryGen": 3,
+            "navGen": 3,
+            "openIntent": 1,
+            "finalizing": false,
+            "preparedBook": "STAGE",
+            "index": 0
+          },
+          {
+            "stage": "dom-submit",
+            "book": "STAGE",
+            "spine": -1,
+            "queryGen": 3,
+            "navGen": 3,
+            "openIntent": 1,
+            "finalizing": false,
+            "text": "SAFE_START",
+            "preparedBook": "STAGE",
+            "preparedIndex": 0
+          },
+          {
+            "stage": "layout",
+            "book": "STAGE",
+            "spine": -1,
+            "queryGen": 3,
+            "navGen": 3,
+            "openIntent": 1,
+            "finalizing": false,
+            "section": 0
+          },
+          {
+            "stage": "goToPage",
+            "book": "STAGE",
+            "spine": -1,
+            "queryGen": 3,
+            "navGen": 3,
+            "openIntent": 1,
+            "finalizing": false,
+            "section": 0,
+            "arg": 0
+          },
+          {
+            "stage": "set-return",
+            "book": "STAGE",
+            "spine": -1,
+            "queryGen": 3,
+            "navGen": 3,
+            "openIntent": 1,
+            "finalizing": false,
+            "preparedBook": "STAGE",
+            "index": 0
+          },
+          {
+            "stage": "set-enter",
+            "book": "FRESH",
+            "spine": 0,
+            "queryGen": 7,
+            "navGen": 7,
+            "openIntent": 2,
+            "finalizing": false,
+            "preparedBook": "FRESH",
+            "index": 0
+          },
+          {
+            "stage": "dom-submit",
+            "book": "FRESH",
+            "spine": 0,
+            "queryGen": 7,
+            "navGen": 7,
+            "openIntent": 2,
+            "finalizing": false,
+            "text": "FRESH_TEXT",
+            "preparedBook": "FRESH",
+            "preparedIndex": 0
+          },
+          {
+            "stage": "layout",
+            "book": "FRESH",
+            "spine": 0,
+            "queryGen": 7,
+            "navGen": 7,
+            "openIntent": 2,
+            "finalizing": false,
+            "section": 0
+          },
+          {
+            "stage": "goToPage",
+            "book": "FRESH",
+            "spine": 0,
+            "queryGen": 7,
+            "navGen": 7,
+            "openIntent": 2,
+            "finalizing": false,
+            "section": 0,
+            "arg": 0
+          },
+          {
+            "stage": "set-return",
+            "book": "FRESH",
+            "spine": 0,
+            "queryGen": 7,
+            "navGen": 7,
+            "openIntent": 2,
+            "finalizing": false,
+            "preparedBook": "FRESH",
+            "index": 0
+          },
+          {
+            "stage": "invalidation",
+            "book": "FRESH",
+            "spine": 0,
+            "queryGen": 7,
+            "navGen": 7,
+            "openIntent": 2,
+            "finalizing": false,
+            "action": "book-replaced"
+          }
+        ]
+      }
+    },
+    {
+      "id": "N-prepare-host-finalize",
+      "verdict": "PASS",
+      "title": "Invalidate result navigation before further DOM/layout/location/highlight side effects",
+      "detail": {
+        "phase": "prepare",
+        "action": "host-finalize",
+        "currentBook": "STAGE",
+        "spine": 0,
+        "paginatorSection": 0,
+        "text": "SAFE_START",
+        "ready": true,
+        "finalizing": true,
+        "highlights": [],
+        "activeQuery": null,
+        "after": [],
+        "hostMessages": [
+          {
+            "type": "host.finalized",
+            "requestId": "audit-final",
+            "sessionId": "audit",
+            "ok": true,
+            "revision": 0
+          }
+        ],
+        "ledgerBefore": [
+          {
+            "stage": "set-enter",
+            "book": "STAGE",
+            "spine": -1,
+            "queryGen": 3,
+            "navGen": 3,
+            "openIntent": 1,
+            "finalizing": false,
+            "preparedBook": "STAGE",
+            "index": 0
+          },
+          {
+            "stage": "dom-submit",
+            "book": "STAGE",
+            "spine": -1,
+            "queryGen": 3,
+            "navGen": 3,
+            "openIntent": 1,
+            "finalizing": false,
+            "text": "SAFE_START",
+            "preparedBook": "STAGE",
+            "preparedIndex": 0
+          },
+          {
+            "stage": "layout",
+            "book": "STAGE",
+            "spine": -1,
+            "queryGen": 3,
+            "navGen": 3,
+            "openIntent": 1,
+            "finalizing": false,
+            "section": 0
+          },
+          {
+            "stage": "goToPage",
+            "book": "STAGE",
+            "spine": -1,
+            "queryGen": 3,
+            "navGen": 3,
+            "openIntent": 1,
+            "finalizing": false,
+            "section": 0,
+            "arg": 0
+          },
+          {
+            "stage": "set-return",
+            "book": "STAGE",
+            "spine": -1,
+            "queryGen": 3,
+            "navGen": 3,
+            "openIntent": 1,
+            "finalizing": false,
+            "preparedBook": "STAGE",
+            "index": 0
+          },
+          {
+            "stage": "invalidation",
+            "book": "STAGE",
+            "spine": 0,
+            "queryGen": 5,
+            "navGen": 5,
+            "openIntent": 1,
+            "finalizing": true,
+            "action": "host-finalize"
+          }
+        ]
+      }
+    },
+    {
+      "id": "N-resources-input",
+      "verdict": "PASS",
+      "title": "Invalidate result navigation before further DOM/layout/location/highlight side effects",
+      "detail": {
+        "phase": "resources",
+        "action": "input",
+        "currentBook": "STAGE",
+        "spine": 0,
+        "paginatorSection": 1,
+        "text": "OLDQUERY targetTAIL",
+        "ready": true,
+        "finalizing": false,
+        "highlights": [],
+        "activeQuery": null,
+        "after": [
+          {
+            "stage": "set-return",
+            "book": "STAGE",
+            "spine": 0,
+            "queryGen": 5,
+            "navGen": 4,
+            "openIntent": 1,
+            "finalizing": false,
+            "preparedBook": "STAGE",
+            "index": 1
+          }
+        ],
+        "hostMessages": [],
+        "ledgerBefore": [
+          {
+            "stage": "set-enter",
+            "book": "STAGE",
+            "spine": -1,
+            "queryGen": 3,
+            "navGen": 3,
+            "openIntent": 1,
+            "finalizing": false,
+            "preparedBook": "STAGE",
+            "index": 0
+          },
+          {
+            "stage": "dom-submit",
+            "book": "STAGE",
+            "spine": -1,
+            "queryGen": 3,
+            "navGen": 3,
+            "openIntent": 1,
+            "finalizing": false,
+            "text": "SAFE_START",
+            "preparedBook": "STAGE",
+            "preparedIndex": 0
+          },
+          {
+            "stage": "layout",
+            "book": "STAGE",
+            "spine": -1,
+            "queryGen": 3,
+            "navGen": 3,
+            "openIntent": 1,
+            "finalizing": false,
+            "section": 0
+          },
+          {
+            "stage": "goToPage",
+            "book": "STAGE",
+            "spine": -1,
+            "queryGen": 3,
+            "navGen": 3,
+            "openIntent": 1,
+            "finalizing": false,
+            "section": 0,
+            "arg": 0
+          },
+          {
+            "stage": "set-return",
+            "book": "STAGE",
+            "spine": -1,
+            "queryGen": 3,
+            "navGen": 3,
+            "openIntent": 1,
+            "finalizing": false,
+            "preparedBook": "STAGE",
+            "index": 0
+          },
+          {
+            "stage": "set-enter",
+            "book": "STAGE",
+            "spine": 0,
+            "queryGen": 4,
+            "navGen": 4,
+            "openIntent": 1,
+            "finalizing": false,
+            "preparedBook": "STAGE",
+            "index": 1
+          },
+          {
+            "stage": "dom-submit",
+            "book": "STAGE",
+            "spine": 0,
+            "queryGen": 4,
+            "navGen": 4,
+            "openIntent": 1,
+            "finalizing": false,
+            "text": "OLDQUERY targetTAIL",
+            "preparedBook": "STAGE",
+            "preparedIndex": 1
+          },
+          {
+            "stage": "invalidation",
+            "book": "STAGE",
+            "spine": 0,
+            "queryGen": 5,
+            "navGen": 4,
+            "openIntent": 1,
+            "finalizing": false,
+            "action": "input"
+          }
+        ]
+      }
+    },
+    {
+      "id": "NP-resources-input",
+      "verdict": "PASS",
+      "title": "Subsequent user page turn remains usable",
+      "detail": {
+        "book": "STAGE",
+        "spine": 0,
+        "page": 0,
+        "text": "OLDQUERY targetTAIL"
+      }
+    },
+    {
+      "id": "N-resources-search-close",
+      "verdict": "PASS",
+      "title": "Invalidate result navigation before further DOM/layout/location/highlight side effects",
+      "detail": {
+        "phase": "resources",
+        "action": "search-close",
+        "currentBook": "STAGE",
+        "spine": 0,
+        "paginatorSection": 1,
+        "text": "OLDQUERY targetTAIL",
+        "ready": true,
+        "finalizing": false,
+        "highlights": [],
+        "activeQuery": null,
+        "after": [
+          {
+            "stage": "set-return",
+            "book": "STAGE",
+            "spine": 0,
+            "queryGen": 5,
+            "navGen": 4,
+            "openIntent": 1,
+            "finalizing": false,
+            "preparedBook": "STAGE",
+            "index": 1
+          }
+        ],
+        "hostMessages": [],
+        "ledgerBefore": [
+          {
+            "stage": "set-enter",
+            "book": "STAGE",
+            "spine": -1,
+            "queryGen": 3,
+            "navGen": 3,
+            "openIntent": 1,
+            "finalizing": false,
+            "preparedBook": "STAGE",
+            "index": 0
+          },
+          {
+            "stage": "dom-submit",
+            "book": "STAGE",
+            "spine": -1,
+            "queryGen": 3,
+            "navGen": 3,
+            "openIntent": 1,
+            "finalizing": false,
+            "text": "SAFE_START",
+            "preparedBook": "STAGE",
+            "preparedIndex": 0
+          },
+          {
+            "stage": "layout",
+            "book": "STAGE",
+            "spine": -1,
+            "queryGen": 3,
+            "navGen": 3,
+            "openIntent": 1,
+            "finalizing": false,
+            "section": 0
+          },
+          {
+            "stage": "goToPage",
+            "book": "STAGE",
+            "spine": -1,
+            "queryGen": 3,
+            "navGen": 3,
+            "openIntent": 1,
+            "finalizing": false,
+            "section": 0,
+            "arg": 0
+          },
+          {
+            "stage": "set-return",
+            "book": "STAGE",
+            "spine": -1,
+            "queryGen": 3,
+            "navGen": 3,
+            "openIntent": 1,
+            "finalizing": false,
+            "preparedBook": "STAGE",
+            "index": 0
+          },
+          {
+            "stage": "set-enter",
+            "book": "STAGE",
+            "spine": 0,
+            "queryGen": 4,
+            "navGen": 4,
+            "openIntent": 1,
+            "finalizing": false,
+            "preparedBook": "STAGE",
+            "index": 1
+          },
+          {
+            "stage": "dom-submit",
+            "book": "STAGE",
+            "spine": 0,
+            "queryGen": 4,
+            "navGen": 4,
+            "openIntent": 1,
+            "finalizing": false,
+            "text": "OLDQUERY targetTAIL",
+            "preparedBook": "STAGE",
+            "preparedIndex": 1
+          },
+          {
+            "stage": "invalidation",
+            "book": "STAGE",
+            "spine": 0,
+            "queryGen": 5,
+            "navGen": 4,
+            "openIntent": 1,
+            "finalizing": false,
+            "action": "search-close"
+          }
+        ]
+      }
+    },
+    {
+      "id": "NP-resources-search-close",
+      "verdict": "PASS",
+      "title": "Subsequent user page turn remains usable",
+      "detail": {
+        "book": "STAGE",
+        "spine": 0,
+        "page": 0,
+        "text": "OLDQUERY targetTAIL"
+      }
+    },
+    {
+      "id": "N-resources-open-intent",
+      "verdict": "PASS",
+      "title": "Invalidate result navigation before further DOM/layout/location/highlight side effects",
+      "detail": {
+        "phase": "resources",
+        "action": "open-intent",
+        "currentBook": "STAGE",
+        "spine": 0,
+        "paginatorSection": 1,
+        "text": "OLDQUERY targetTAIL",
+        "ready": true,
+        "finalizing": false,
+        "highlights": [],
+        "activeQuery": null,
+        "after": [
+          {
+            "stage": "set-return",
+            "book": "STAGE",
+            "spine": 0,
+            "queryGen": 5,
+            "navGen": 5,
+            "openIntent": 2,
+            "finalizing": false,
+            "preparedBook": "STAGE",
+            "index": 1
+          }
+        ],
+        "hostMessages": [],
+        "ledgerBefore": [
+          {
+            "stage": "set-enter",
+            "book": "STAGE",
+            "spine": -1,
+            "queryGen": 3,
+            "navGen": 3,
+            "openIntent": 1,
+            "finalizing": false,
+            "preparedBook": "STAGE",
+            "index": 0
+          },
+          {
+            "stage": "dom-submit",
+            "book": "STAGE",
+            "spine": -1,
+            "queryGen": 3,
+            "navGen": 3,
+            "openIntent": 1,
+            "finalizing": false,
+            "text": "SAFE_START",
+            "preparedBook": "STAGE",
+            "preparedIndex": 0
+          },
+          {
+            "stage": "layout",
+            "book": "STAGE",
+            "spine": -1,
+            "queryGen": 3,
+            "navGen": 3,
+            "openIntent": 1,
+            "finalizing": false,
+            "section": 0
+          },
+          {
+            "stage": "goToPage",
+            "book": "STAGE",
+            "spine": -1,
+            "queryGen": 3,
+            "navGen": 3,
+            "openIntent": 1,
+            "finalizing": false,
+            "section": 0,
+            "arg": 0
+          },
+          {
+            "stage": "set-return",
+            "book": "STAGE",
+            "spine": -1,
+            "queryGen": 3,
+            "navGen": 3,
+            "openIntent": 1,
+            "finalizing": false,
+            "preparedBook": "STAGE",
+            "index": 0
+          },
+          {
+            "stage": "set-enter",
+            "book": "STAGE",
+            "spine": 0,
+            "queryGen": 4,
+            "navGen": 4,
+            "openIntent": 1,
+            "finalizing": false,
+            "preparedBook": "STAGE",
+            "index": 1
+          },
+          {
+            "stage": "dom-submit",
+            "book": "STAGE",
+            "spine": 0,
+            "queryGen": 4,
+            "navGen": 4,
+            "openIntent": 1,
+            "finalizing": false,
+            "text": "OLDQUERY targetTAIL",
+            "preparedBook": "STAGE",
+            "preparedIndex": 1
+          },
+          {
+            "stage": "invalidation",
+            "book": "STAGE",
+            "spine": 0,
+            "queryGen": 5,
+            "navGen": 5,
+            "openIntent": 2,
+            "finalizing": false,
+            "action": "open-intent"
+          }
+        ]
+      }
+    },
+    {
+      "id": "N-resources-book-replaced",
+      "verdict": "PASS",
+      "title": "Invalidate result navigation before further DOM/layout/location/highlight side effects",
+      "detail": {
+        "phase": "resources",
+        "action": "book-replaced",
+        "currentBook": "FRESH",
+        "spine": 0,
+        "paginatorSection": 0,
+        "text": "FRESH_TEXT",
+        "ready": true,
+        "finalizing": false,
+        "highlights": [],
+        "activeQuery": null,
+        "after": [
+          {
+            "stage": "set-return",
+            "book": "FRESH",
+            "spine": 0,
+            "queryGen": 7,
+            "navGen": 7,
+            "openIntent": 2,
+            "finalizing": false,
+            "preparedBook": "STAGE",
+            "index": 1
+          }
+        ],
+        "hostMessages": [],
+        "ledgerBefore": [
+          {
+            "stage": "set-enter",
+            "book": "STAGE",
+            "spine": -1,
+            "queryGen": 3,
+            "navGen": 3,
+            "openIntent": 1,
+            "finalizing": false,
+            "preparedBook": "STAGE",
+            "index": 0
+          },
+          {
+            "stage": "dom-submit",
+            "book": "STAGE",
+            "spine": -1,
+            "queryGen": 3,
+            "navGen": 3,
+            "openIntent": 1,
+            "finalizing": false,
+            "text": "SAFE_START",
+            "preparedBook": "STAGE",
+            "preparedIndex": 0
+          },
+          {
+            "stage": "layout",
+            "book": "STAGE",
+            "spine": -1,
+            "queryGen": 3,
+            "navGen": 3,
+            "openIntent": 1,
+            "finalizing": false,
+            "section": 0
+          },
+          {
+            "stage": "goToPage",
+            "book": "STAGE",
+            "spine": -1,
+            "queryGen": 3,
+            "navGen": 3,
+            "openIntent": 1,
+            "finalizing": false,
+            "section": 0,
+            "arg": 0
+          },
+          {
+            "stage": "set-return",
+            "book": "STAGE",
+            "spine": -1,
+            "queryGen": 3,
+            "navGen": 3,
+            "openIntent": 1,
+            "finalizing": false,
+            "preparedBook": "STAGE",
+            "index": 0
+          },
+          {
+            "stage": "set-enter",
+            "book": "STAGE",
+            "spine": 0,
+            "queryGen": 4,
+            "navGen": 4,
+            "openIntent": 1,
+            "finalizing": false,
+            "preparedBook": "STAGE",
+            "index": 1
+          },
+          {
+            "stage": "dom-submit",
+            "book": "STAGE",
+            "spine": 0,
+            "queryGen": 4,
+            "navGen": 4,
+            "openIntent": 1,
+            "finalizing": false,
+            "text": "OLDQUERY targetTAIL",
+            "preparedBook": "STAGE",
+            "preparedIndex": 1
+          },
+          {
+            "stage": "set-enter",
+            "book": "FRESH",
+            "spine": 0,
+            "queryGen": 7,
+            "navGen": 7,
+            "openIntent": 2,
+            "finalizing": false,
+            "preparedBook": "FRESH",
+            "index": 0
+          },
+          {
+            "stage": "dom-submit",
+            "book": "FRESH",
+            "spine": 0,
+            "queryGen": 7,
+            "navGen": 7,
+            "openIntent": 2,
+            "finalizing": false,
+            "text": "FRESH_TEXT",
+            "preparedBook": "FRESH",
+            "preparedIndex": 0
+          },
+          {
+            "stage": "layout",
+            "book": "FRESH",
+            "spine": 0,
+            "queryGen": 7,
+            "navGen": 7,
+            "openIntent": 2,
+            "finalizing": false,
+            "section": 0
+          },
+          {
+            "stage": "goToPage",
+            "book": "FRESH",
+            "spine": 0,
+            "queryGen": 7,
+            "navGen": 7,
+            "openIntent": 2,
+            "finalizing": false,
+            "section": 0,
+            "arg": 0
+          },
+          {
+            "stage": "set-return",
+            "book": "FRESH",
+            "spine": 0,
+            "queryGen": 7,
+            "navGen": 7,
+            "openIntent": 2,
+            "finalizing": false,
+            "preparedBook": "FRESH",
+            "index": 0
+          },
+          {
+            "stage": "invalidation",
+            "book": "FRESH",
+            "spine": 0,
+            "queryGen": 7,
+            "navGen": 7,
+            "openIntent": 2,
+            "finalizing": false,
+            "action": "book-replaced"
+          }
+        ]
+      }
+    },
+    {
+      "id": "N-resources-host-finalize",
+      "verdict": "PASS",
+      "title": "Invalidate result navigation before further DOM/layout/location/highlight side effects",
+      "detail": {
+        "phase": "resources",
+        "action": "host-finalize",
+        "currentBook": "STAGE",
+        "spine": 0,
+        "paginatorSection": 1,
+        "text": "OLDQUERY targetTAIL",
+        "ready": true,
+        "finalizing": true,
+        "highlights": [],
+        "activeQuery": null,
+        "after": [
+          {
+            "stage": "set-return",
+            "book": "STAGE",
+            "spine": 0,
+            "queryGen": 5,
+            "navGen": 5,
+            "openIntent": 1,
+            "finalizing": true,
+            "preparedBook": "STAGE",
+            "index": 1
+          }
+        ],
+        "hostMessages": [
+          {
+            "type": "host.finalized",
+            "requestId": "audit-final",
+            "sessionId": "audit",
+            "ok": true,
+            "revision": 0
+          }
+        ],
+        "ledgerBefore": [
+          {
+            "stage": "set-enter",
+            "book": "STAGE",
+            "spine": -1,
+            "queryGen": 3,
+            "navGen": 3,
+            "openIntent": 1,
+            "finalizing": false,
+            "preparedBook": "STAGE",
+            "index": 0
+          },
+          {
+            "stage": "dom-submit",
+            "book": "STAGE",
+            "spine": -1,
+            "queryGen": 3,
+            "navGen": 3,
+            "openIntent": 1,
+            "finalizing": false,
+            "text": "SAFE_START",
+            "preparedBook": "STAGE",
+            "preparedIndex": 0
+          },
+          {
+            "stage": "layout",
+            "book": "STAGE",
+            "spine": -1,
+            "queryGen": 3,
+            "navGen": 3,
+            "openIntent": 1,
+            "finalizing": false,
+            "section": 0
+          },
+          {
+            "stage": "goToPage",
+            "book": "STAGE",
+            "spine": -1,
+            "queryGen": 3,
+            "navGen": 3,
+            "openIntent": 1,
+            "finalizing": false,
+            "section": 0,
+            "arg": 0
+          },
+          {
+            "stage": "set-return",
+            "book": "STAGE",
+            "spine": -1,
+            "queryGen": 3,
+            "navGen": 3,
+            "openIntent": 1,
+            "finalizing": false,
+            "preparedBook": "STAGE",
+            "index": 0
+          },
+          {
+            "stage": "set-enter",
+            "book": "STAGE",
+            "spine": 0,
+            "queryGen": 4,
+            "navGen": 4,
+            "openIntent": 1,
+            "finalizing": false,
+            "preparedBook": "STAGE",
+            "index": 1
+          },
+          {
+            "stage": "dom-submit",
+            "book": "STAGE",
+            "spine": 0,
+            "queryGen": 4,
+            "navGen": 4,
+            "openIntent": 1,
+            "finalizing": false,
+            "text": "OLDQUERY targetTAIL",
+            "preparedBook": "STAGE",
+            "preparedIndex": 1
+          },
+          {
+            "stage": "invalidation",
+            "book": "STAGE",
+            "spine": 0,
+            "queryGen": 5,
+            "navGen": 5,
+            "openIntent": 1,
+            "finalizing": true,
+            "action": "host-finalize"
+          }
+        ]
+      }
+    },
+    {
+      "id": "N-ROLLBACK",
+      "verdict": "PASS",
+      "title": "Failure after original DOM submit/layout restores old document, text position and image",
+      "detail": {
+        "before": {
+          "elementPath": null,
+          "textOffset": 11,
+          "quote": "OLD_HEAD OLD_TARGET",
+          "prefix": "OLD_HEAD",
+          "suffix": "OLD_TARGET",
+          "elementId": "",
+          "chapterFraction": 1,
+          "pageIndex": 2
+        },
+        "after": {
+          "elementPath": null,
+          "textOffset": 11,
+          "quote": "OLD_HEAD OLD_TARGET",
+          "prefix": "OLD_HEAD",
+          "suffix": "OLD_TARGET",
+          "elementId": "",
+          "chapterFraction": 1,
+          "pageIndex": 2
+        },
+        "oldUrl": "blob:audit-1",
+        "url": "blob:audit-1",
+        "revoked": [
+          "blob:audit-2"
+        ],
+        "resources": [
+          "OPS/old.png"
+        ],
+        "owners": [
+          2
+        ],
+        "ledger": [
+          {
+            "stage": "set-enter",
+            "book": "ROLL-OLD",
+            "spine": -1,
+            "queryGen": 3,
+            "navGen": 3,
+            "openIntent": 1,
+            "finalizing": false,
+            "preparedBook": "ROLL-OLD",
+            "index": 0
+          },
+          {
+            "stage": "dom-submit",
+            "book": "ROLL-OLD",
+            "spine": -1,
+            "queryGen": 3,
+            "navGen": 3,
+            "openIntent": 1,
+            "finalizing": false,
+            "text": "OLD_HEADOLD_TARGET",
+            "preparedBook": "ROLL-OLD",
+            "preparedIndex": 0
+          },
+          {
+            "stage": "layout",
+            "book": "ROLL-OLD",
+            "spine": -1,
+            "queryGen": 3,
+            "navGen": 3,
+            "openIntent": 1,
+            "finalizing": false,
+            "section": 0
+          },
+          {
+            "stage": "goToPage",
+            "book": "ROLL-OLD",
+            "spine": -1,
+            "queryGen": 3,
+            "navGen": 3,
+            "openIntent": 1,
+            "finalizing": false,
+            "section": 0,
+            "arg": 0
+          },
+          {
+            "stage": "set-return",
+            "book": "ROLL-OLD",
+            "spine": -1,
+            "queryGen": 3,
+            "navGen": 3,
+            "openIntent": 1,
+            "finalizing": false,
+            "preparedBook": "ROLL-OLD",
+            "index": 0
+          },
+          {
+            "stage": "goToPage",
+            "book": "ROLL-OLD",
+            "spine": 0,
+            "queryGen": 3,
+            "navGen": 3,
+            "openIntent": 1,
+            "finalizing": false,
+            "section": 0,
+            "arg": 2
+          },
+          {
+            "stage": "set-enter",
+            "book": "ROLL-NEW",
+            "spine": 0,
+            "queryGen": 6,
+            "navGen": 6,
+            "openIntent": 2,
+            "finalizing": false,
+            "preparedBook": "ROLL-NEW",
+            "index": 0
+          },
+          {
+            "stage": "dom-submit",
+            "book": "ROLL-NEW",
+            "spine": 0,
+            "queryGen": 6,
+            "navGen": 6,
+            "openIntent": 2,
+            "finalizing": false,
+            "text": "NEW_DOCUMENT",
+            "preparedBook": "ROLL-NEW",
+            "preparedIndex": 0
+          },
+          {
+            "stage": "layout",
+            "book": "ROLL-NEW",
+            "spine": 0,
+            "queryGen": 6,
+            "navGen": 6,
+            "openIntent": 2,
+            "finalizing": false,
+            "section": 0
+          },
+          {
+            "stage": "goToPage",
+            "book": "ROLL-NEW",
+            "spine": 0,
+            "queryGen": 6,
+            "navGen": 6,
+            "openIntent": 2,
+            "finalizing": false,
+            "section": 0,
+            "arg": 0
+          },
+          {
+            "stage": "set-return",
+            "book": "ROLL-NEW",
+            "spine": 0,
+            "queryGen": 6,
+            "navGen": 6,
+            "openIntent": 2,
+            "finalizing": false,
+            "preparedBook": "ROLL-NEW",
+            "index": 0
+          },
+          {
+            "stage": "set-enter",
+            "book": "ROLL-OLD",
+            "spine": 0,
+            "queryGen": 6,
+            "navGen": 7,
+            "openIntent": 2,
+            "finalizing": false,
+            "preparedBook": "ROLL-OLD",
+            "index": 0
+          },
+          {
+            "stage": "dom-submit",
+            "book": "ROLL-OLD",
+            "spine": 0,
+            "queryGen": 6,
+            "navGen": 7,
+            "openIntent": 2,
+            "finalizing": false,
+            "text": "OLD_HEADOLD_TARGET",
+            "preparedBook": "ROLL-OLD",
+            "preparedIndex": 0
+          },
+          {
+            "stage": "layout",
+            "book": "ROLL-OLD",
+            "spine": 0,
+            "queryGen": 6,
+            "navGen": 7,
+            "openIntent": 2,
+            "finalizing": false,
+            "section": 0
+          },
+          {
+            "stage": "locateAnchor",
+            "book": "ROLL-OLD",
+            "spine": 0,
+            "queryGen": 6,
+            "navGen": 7,
+            "openIntent": 2,
+            "finalizing": false,
+            "section": 0
+          },
+          {
+            "stage": "goToPage",
+            "book": "ROLL-OLD",
+            "spine": 0,
+            "queryGen": 6,
+            "navGen": 7,
+            "openIntent": 2,
+            "finalizing": false,
+            "section": 0,
+            "arg": 2
+          },
+          {
+            "stage": "set-return",
+            "book": "ROLL-OLD",
+            "spine": 0,
+            "queryGen": 6,
+            "navGen": 7,
+            "openIntent": 2,
+            "finalizing": false,
+            "preparedBook": "ROLL-OLD",
+            "index": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "N-SHARED-FAIL",
+      "verdict": "PASS",
+      "title": "Failed same-book prepare retains displayed old shared URL",
+      "detail": {
+        "text": "OLD_VISIBLE",
+        "spine": 0,
+        "paginatorSection": 0,
+        "ready": true,
+        "url": "blob:audit-1",
+        "revoked": [],
+        "resources": [
+          "OPS/same.png"
+        ],
+        "owners": [
+          1
+        ]
+      }
+    }
+  ]
+}

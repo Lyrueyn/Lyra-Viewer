@@ -1,0 +1,190 @@
+{
+  "generatedAt": "2026-10-28T02:26:23.284534+08:00",
+  "scope": "R4 freeze-period supplement only; no candidate/r4-evidence/R3 freeze changes",
+  "candidate": {
+    "packageSha256": "B128B9DFBE9D7A1085CC3505F9B3EDC645847CFA24DA33958EB26EDD685F184B",
+    "extensionVersion": "0.8.0",
+    "reader.js": "659A466FF7693FBEDD9A0DAEDBCCFBA5BE35389E9685CCCF5178A1C9084DACE4",
+    "reader-state.js": "A790F06F1585291094596F5E0C6075EEEEEF94E8EFF5A7347AE760EC4149FCC0",
+    "index.html": "F6B244C642B1842652B4ED733116A26A3E92B1B0271BF7C1B444A1C8AF3B411D"
+  },
+  "host": {
+    "finalDll": "9EBA643FA6E3933B5A3F86AFC1BE424FFAA08A09BF11B9AC89D2C451E3A9DF95",
+    "finalExe": "D0F1BB58B07D0B6AEAEB463C841914D9594D0A803E3831FC272A6A5FFED3B335",
+    "oldDll": "57CC576547C1FE8BC51780C722E6F39B7F00838A6CF75B19AAAC539DA2AAF3CD"
+  },
+  "identityCorrections": {
+    "finalhostC12": null,
+    "oldhostClean080": null,
+    "oldhostClean080PageTurn": null,
+    "twoWindowNormal": null,
+    "twoWindowFast": null,
+    "writeFailure": null,
+    "a08": null,
+    "a08Reopen": null
+  },
+  "tests": [
+    {
+      "id": "R4-SUP-NORMAL-TWO-WINDOW",
+      "status": "PASS",
+      "detail": "A long fontSize18 -> B late fontSize32 -> A long lineHeight2.2; final prefs 32/2.2; raw windows/native-two-window-A18-B32-A22-raw.log; PID50020"
+    },
+    {
+      "id": "R4-SUP-PENDING-A18",
+      "status": "FAIL",
+      "detail": "Fast pending A18 + B32 + A lineHeight2.2: A save combines old font18 grant and lineHeight grant -> PREFERENCE_STALE; final disk only fontSize32; raw windows/native-fast-A18-B32-A22-raw.log; PID50864"
+    },
+    {
+      "id": "R4-SUP-WRITE-FAILURE-CLOSE",
+      "status": "PASS",
+      "detail": "Read-only preferences -> WRITE_FAILED on save and close retry; host.finalized ok:false; CLOSE_ERROR; file sha unchanged 6024154C...; PID40224"
+    },
+    {
+      "id": "R4-SUP-PENDING-ACK-IN-FLIGHT",
+      "status": "UNTESTED",
+      "detail": "not constructed stably in native; host specialist controlled case not claimed native"
+    },
+    {
+      "id": "R4-SUP-A08",
+      "status": "PARTIAL",
+      "detail": "c1 pure image page + lineHeight2.2 restored after app restart and window reopen; bookmark not added; PNG fixture broken; PID69936 / restart13132"
+    },
+    {
+      "id": "R4-SUP-A11",
+      "status": "UNTESTED",
+      "detail": "late resource after ready/restore intent not constructed; R3 evidence not substituted"
+    },
+    {
+      "id": "R4-SUP-A22",
+      "status": "PARTIAL",
+      "detail": "373/255 chapter real books first/mid/last/font/bookmark/reopen pass; search after 60s pending 373/373, 255/255 with zero results; realbooks/r4-real-books-results.json"
+    },
+    {
+      "id": "R4-SUP-A23",
+      "status": "PARTIAL",
+      "detail": "no new native 200 image chapter/10 book DOM/URL/process trend; only prior module evidence"
+    },
+    {
+      "id": "R4-SUP-A25",
+      "status": "PASS",
+      "detail": "clean 0.8.0 ZIP under old host b978661, local banner, page 2/9; PID73980 open / PID50636 page turn"
+    },
+    {
+      "id": "R4-SUP-A24",
+      "status": "FAIL",
+      "detail": "D03 close during chapter load still ack ok:true revision0, position unsaved, late read commits; early close/pending pass separately"
+    }
+  ],
+  "knownDefectsForR5": [
+    {
+      "id": "D01_CHUNK_BOUNDARY_LOST_MATCH",
+      "evidence": "gpt-review-r4/new-boundary-evidence/results.json",
+      "detail": "3 CROSSBOUNDARY matches expected; actual chunkEnd 65844; UI 2/3, no truncated"
+    },
+    {
+      "id": "D02_CHANGED_QUERY_STILL_REPLACES_DOCUMENT",
+      "evidence": "gpt-review-r4/new-boundary-evidence/results.json",
+      "detail": "obsolete navigation commits spine0->1 after query change; highlight suppressed only"
+    },
+    {
+      "id": "D03_CLOSE_DURING_CHAPTER_LOAD_ACKS_UNSAVED_POSITION",
+      "evidence": "gpt-review-r4/new-boundary-evidence/results.json",
+      "detail": "ready=false/modified=true finalize ok true revision0; old read commits next chapter"
+    },
+    {
+      "id": "inline-hidden-style-model",
+      "detail": "inline display:none sanitize before/after mismatch; search TARGET may highlight hidden IDDEN/HIDDEN"
+    },
+    {
+      "id": "svg-hidden-parent-visible-child",
+      "detail": "visible child under hidden parent not found"
+    },
+    {
+      "id": "shared-image-prepare-failure-revokes-old-visible",
+      "detail": "same-book shared image prepare late failure revokes old visible image"
+    }
+  ],
+  "aStatus": {
+    "A01": "PASS",
+    "A02": "PASS",
+    "A03": "PASS",
+    "A04": "PASS",
+    "A05": "UNTESTED",
+    "A06": "PASS",
+    "A07": "PASS",
+    "A08": "PARTIAL",
+    "A09": "PASS",
+    "A10": "PASS",
+    "A11": "UNTESTED",
+    "A12": "PASS",
+    "A13": "PASS",
+    "A14": "PASS",
+    "A15": "PASS",
+    "A16": "PASS",
+    "A17": "PARTIAL",
+    "A18": "PASS",
+    "A19": "PARTIAL",
+    "A20": "PASS",
+    "A21": "PASS",
+    "A22": "PARTIAL",
+    "A23": "PARTIAL",
+    "A24": "FAIL",
+    "A25": "PASS"
+  },
+  "files": {
+    "a08.epub": "26c433946315c3d0491698a7a810355c107b9b948dcf6b4f185359727b18beb9",
+    "DeepSeek补充测试-R4.md": "390feaee8e04919731f51570d37aaadecccac12e9ccd830a0c0b41edba4b78cd",
+    "a08/1-open-text.png": "32647f075da2e6f9b8e992e799b853fc0239ad75dadb1a6ef72a5e4c1914c397",
+    "a08/2-image-page-toc.png": "15f620a09267668bb2766b2df8f852e0d681eef85390d5ee19bd03e8cd68b659",
+    "a08/2-image-page.png": "26e2d7c16b38a80814ea8f286723030c057732995257a03044dec60360359494",
+    "a08/3-image-line22.png": "be2cbde0f390bf757ecbfcf2c323ce120b39e214d73ef1dc9dddfc00a0e0dd7c",
+    "a08/3-image-settings26.png": "61886533bfff369416044a289fe9b53ccc349caa5f1440edb27ac633ded809c4",
+    "a08/4-bookmark.png": "d311ee8097906ef15f1752f31942d45acdf0356d5008062d682ab575b76db8d9",
+    "a08/4-image-bookmark.png": "36dd72a3220a46e45b2a234bc7e9de28de9f8b230ae6c4e408d75e901e473bcf",
+    "a08/5-reopen-after-app-restart.png": "917c6c34f69ae7214dc2904ce173caefba70d225fea2d280b4b113dfc00b1178",
+    "a08/6-reopen-window-after-close.png": "be36e1d63a2ad2a19dff9a051bf243403d449e6c347324237c044f05b6efc8e0",
+    "a08/a08-before-close.log": "e680e6d0324ff8e563cec618342af14e9e420d8565f56ec468125f4e84c2a729",
+    "a08/a08-close-before.log": "889e8f287429aff9b7638becffbf57bdaf23cfe52ee747e4c0d88fd6f7fc5e7a",
+    "a08/a08-close.log": "43b4b05a8df9fdc9ee016b563ca95d0d766fafb7c1258bddea278dd4c4c652da",
+    "a08/a08-identity.json": "f48731d6a8e942c91070e01987289ee2058d63b5214e9547eaf3b819900e99e1",
+    "a08/a08-reopen-after-restart.log": "76a97a559c0349f9a49c147efa0abc806d1ba71bdb20f772b461fef1b0d19bab",
+    "a08/a08-reopen-identity.json": "70fe341248b746cd2d8061828cea5e66ae9f1e3a768de99adf4a6200d3ee138d",
+    "a08/state-26c433946315c3d0491698a7a810355c107b9b948dcf6b4f185359727b18beb9.json": "8a16ed4af4f22db1a0681d8647bd592332fd379aa9af477a74ab3e209936512b",
+    "compat/finalhost-c12-withbook-identity.json": "d49a28873adf854ba0494200130aef285d70cb0587513d74c97cfe696b66e57c",
+    "compat/finalhost-c12-withbook-raw.log": "5c45bfb1cf0e0df9f44e182fa2ae0393972db03d136734cc3ac915c976979d69",
+    "compat/finalhost-c12-withbook.png": "db945c48746d5ecfa14fdecd46b24837f9060d2d030f73520ed0dcc3bafd08d1",
+    "compat/oldhost-b978661-r4zip080-identity.json": "1982556fd3a9d7eba7202c127f64ddade123291bce55dfc2ea49e827ee16ba6e",
+    "compat/oldhost-b978661-r4zip080-page-turn-identity.json": "57937d4521d9d95fb34f6b6cf89fa5fecb3943be44cbd3ddd696172342a20a59",
+    "compat/oldhost057-dll-r4zip-open.png": "e5ae58f45cad5759e44f38cc8fdaccceb322cd2d6b4e807f4451fea04d15754d",
+    "compat/oldhost057-dll-r4zip-page2.png": "81ccb421f05cc2a81df5dd16513de148eddd636801d3dc906accd55195817958",
+    "compat/oldhost057-r4zip080-page2-pid.png": "9ba36674a2028b22edcf3e515b2970551d144cc8650b265a54432882d4ff44f5",
+    "compat/oldhost057-r4zip080-page2.png": "e8957047b39b27d6aeb63aa91a9d6d6bb9f89418bfe90468d3a6bd7fe32c563c",
+    "native-failure/native-write-failure-close-raw.log": "161dc7e0cef3305beffabd4a63644810e9eeb50cb1c204390d35e9a0d3156def",
+    "native-failure/native-write-failure-identity.json": "b840fadea1174c1b0b73c64187fd2fd125c51748c61a41a77b2ef41655444a1d",
+    "native-failure/preferences-after.json": "6024154cb66ac2d534c563b475bb743af799711cc8aae67bb557a8131e5d904a",
+    "native-failure/preferences-before.json": "6024154cb66ac2d534c563b475bb743af799711cc8aae67bb557a8131e5d904a",
+    "realbooks/r4-real-books-results.json": "5e722f4284de0363d7f0d04bf027e2a8709986fe325e35119fe9ab77267980ef",
+    "tools/r4-realbooks.cjs": "8652f5776c8d8eb770b888fea53831920ca8121a25f926241b43a78dda816334",
+    "windows/A-font-before.png": "6e7573faf132d46db4359f970d50e1edcf4cf1b1c6a9545005e90dad9b7b43f1",
+    "windows/A-font18.png": "09e7d6785d6ccaf58665d74942c2fa467296d1f122903bf5514f4c42a730fd7b",
+    "windows/A-line-before.png": "49e941a5c3476d853a97f7e56ac5db162712754f2ca7f59d3e5f672b0e4411db",
+    "windows/A-line22.png": "8e2595ec86acfbfc72be6a06a875f202aa45fcb50eb9994f2c4be201891a896f",
+    "windows/A-settings-before.png": "29c65d771a092dc440c15beae194db442d427b9e1ac6e4bc80110cf946d14d18",
+    "windows/A-settings-line-before.png": "c9b7e520d302a9b9161787056163b6c36aa25d6c2941cbed07b917bf69558d0f",
+    "windows/B-font-before.png": "f3e49b08af3ea06d6920f6e1297b7e3fccae758b7e034ac5ac613d13f2034f4f",
+    "windows/B-font32.png": "f0a558ae06c63f1eee02b026744ac030c18bfa63f3e4aebbf82da54f1f544a6d",
+    "windows/B-settings-before.png": "1923b609cd472332bf8d35c219fdfcd99f5ff369dd0bbd2ffbaa92e04b8ea255",
+    "windows/native-A-font18.png": "a2c9f9e660e6a6371c8f2efe517105098a26cfa76f6ba4909ed7d238063f42fc",
+    "windows/native-A-line22.png": "496263404beeeebeff52e1c9af243d0a65137e71ca1f6f7e613e062cb4f19d14",
+    "windows/native-A-open-settings-line.png": "00d8db2f2b6eaf85abe0c153a733ae75514c53b7e06591911b0f867be68a4e31",
+    "windows/native-A-open-settings.png": "815cb9e0eff890d96ab80deb1b45fc83865a14cab02cc0682fd4befb9d502a3b",
+    "windows/native-B-font32.png": "0287dbf7f838c94bc0924e17fdb405337938176077e0eae273cc9f254814f513",
+    "windows/native-B-open-settings.png": "0ee5b08719642462e286fa709ecac1843f672f21ce41f682a82e9fcae169a562",
+    "windows/native-fast-A18-B32-A22-raw.log": "89debf30faa16b69cdd11435095d1510614952cccbe442082b68a7d732ac560d",
+    "windows/native-fast-two-window-identity.json": "f0a8acb5e72d4cc252b72ef04371ef58d824b7831d9c880fe0fc4e4ffbe1a862",
+    "windows/native-two-window-A18-B32-A22-raw.log": "68df559c3e7569098cf207ed75170b46ec63f74d98130470e6d672b04605768b",
+    "windows/native-two-window-identity.json": "4a08b84a8ccf5d89dfd2aa42b02a2b031550b772ac3c9d6905966f0f9e150b0a",
+    "windows/two-window-identity.json": "a18eec39e822a5b260378ed962af7d764ce91a523f5ef311975420e128f7ea79",
+    "windows/two-window-raw.log": "4336e41a7ba93b8fed5fc7f7db61c3eddd6f5a259198b088228cac4682c653fe"
+  }
+}

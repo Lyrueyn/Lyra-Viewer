@@ -1,0 +1,3 @@
+'use strict';
+const fs=require('node:fs'),path=require('node:path'),cp=require('node:child_process');
+const name=process.argv[2];if(!/^audit-[a-z0-9-]+\.cjs$/.test(name||''))throw Error('Only local audit script names accepted');const file=path.join(__dirname,name),log=path.join(__dirname,name+'.log'),fd=fs.openSync(log,'w');try{const r=cp.spawnSync(process.execPath,['--expose-gc',file],{cwd:__dirname,stdio:['ignore',fd,fd]});fs.writeFileSync(path.join(__dirname,name+'.run.json'),JSON.stringify({script:name,status:r.status,signal:r.signal,error:r.error?.message,log},null,2));console.log(JSON.stringify({script:name,status:r.status,log}));process.exitCode=r.status||0;}finally{fs.closeSync(fd);}

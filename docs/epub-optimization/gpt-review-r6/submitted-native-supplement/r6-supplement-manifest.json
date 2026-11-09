@@ -1,0 +1,418 @@
+{
+  "generatedAt": "2026-10-28T19:21:34.282581+08:00",
+  "report": {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\r6-evidence-supplement\\DeepSeek补充测试-R6.md",
+    "sha256": "c2e9ea6dc97fdb03ca033b98c655d0a6bbe675f0a07ae007dceb29f75cbb7441"
+  },
+  "product": {
+    "commit": "99bd102f4c9b4c1a92668d04e2e12260e523ad94",
+    "package": "candidates-r6/lyra-ext-epub-0.10.0-candidate.zip",
+    "packageSha": "F2B2741A166749E7108E010151A46246AC2DF40BF1F0861050E8E12D612C535C",
+    "hostDll": "3F30CCC9915993F058DAD62879F1619AC1EBD5B735CE1741D09FAEE86B28719C",
+    "reader": "5A81D526B8126B590738BC50652DB829D701FDB9E3319240766FB3D07C2FC837"
+  },
+  "tests": {
+    "a08": null,
+    "a11": {
+      "evidenceKind": "Real Edge; explicit image.complete gate in reader iframe; no fake host; no business code change",
+      "t0": 1793186000141,
+      "readyAt": 1793186002950,
+      "totalMs": 4415,
+      "before": {
+        "ready": true,
+        "busy": false,
+        "page": 0,
+        "count": 18,
+        "nodes": 123,
+        "imgComplete": false,
+        "imgW": 1,
+        "stable": 11,
+        "gate": {
+          "ready": false,
+          "releasedAt": 0,
+          "installed": 1
+        }
+      },
+      "after": {
+        "ready": true,
+        "busy": false,
+        "page": 0,
+        "count": 18,
+        "nodes": 123,
+        "imgComplete": true,
+        "imgW": 1,
+        "stable": 11,
+        "scroll": 0
+      },
+      "rest": {
+        "ready": true,
+        "busy": false,
+        "page": 0,
+        "count": 18,
+        "nodes": 123,
+        "imgComplete": true,
+        "imgW": 1
+      },
+      "defect": false
+    },
+    "a23NativeAttempt": null,
+    "a23Browser": {
+      "evidenceKind": "Real Edge browser renderer + generated EPUBs; CDP Performance JS heap; not native WinUI process memory",
+      "book200": [
+        {
+          "label": "start",
+          "spine": 0,
+          "ready": true,
+          "busy": false,
+          "book": "sha256:84469c53989a8ac76325d0108085921b6064f0da946e9f89839f25a4d8cbf9b1",
+          "uiNodes": 308,
+          "iframeNodes": 2,
+          "iframeCount": 1,
+          "resourceCount": 1,
+          "taskSets": 1,
+          "pending": 0,
+          "blobUrls": [
+            "blob:http://127.0.0.1:57756/2818c853-aa53-407c-8aa7-f183edceb503"
+          ],
+          "metrics": {
+            "JSHeapUsedSize": 3649868,
+            "LayoutCount": 12,
+            "TaskDuration": 0.12363
+          }
+        },
+        {
+          "label": "after-50",
+          "spine": 50,
+          "ready": true,
+          "busy": false,
+          "book": "sha256:84469c53989a8ac76325d0108085921b6064f0da946e9f89839f25a4d8cbf9b1",
+          "uiNodes": 308,
+          "iframeNodes": 2,
+          "iframeCount": 1,
+          "resourceCount": 1,
+          "taskSets": 1,
+          "pending": 0,
+          "blobUrls": [
+            "blob:http://127.0.0.1:57756/2818c853-aa53-407c-8aa7-f183edceb503"
+          ],
+          "metrics": {
+            "JSHeapUsedSize": 24136680,
+            "LayoutCount": 412,
+            "TaskDuration": 0.430248
+          }
+        },
+        {
+          "label": "after-100",
+          "spine": 100,
+          "ready": true,
+          "busy": false,
+          "book": "sha256:84469c53989a8ac76325d0108085921b6064f0da946e9f89839f25a4d8cbf9b1",
+          "uiNodes": 308,
+          "iframeNodes": 2,
+          "iframeCount": 1,
+          "resourceCount": 1,
+          "taskSets": 1,
+          "pending": 0,
+          "blobUrls": [
+            "blob:http://127.0.0.1:57756/2818c853-aa53-407c-8aa7-f183edceb503"
+          ],
+          "metrics": {
+            "JSHeapUsedSize": 9801292,
+            "LayoutCount": 812,
+            "TaskDuration": 0.730016
+          }
+        },
+        {
+          "label": "after-150",
+          "spine": 150,
+          "ready": true,
+          "busy": false,
+          "book": "sha256:84469c53989a8ac76325d0108085921b6064f0da946e9f89839f25a4d8cbf9b1",
+          "uiNodes": 308,
+          "iframeNodes": 2,
+          "iframeCount": 1,
+          "resourceCount": 1,
+          "taskSets": 1,
+          "pending": 0,
+          "blobUrls": [
+            "blob:http://127.0.0.1:57756/2818c853-aa53-407c-8aa7-f183edceb503"
+          ],
+          "metrics": {
+            "JSHeapUsedSize": 3407160,
+            "LayoutCount": 1212,
+            "TaskDuration": 1.025835
+          }
+        },
+        {
+          "label": "after-200",
+          "spine": 200,
+          "ready": true,
+          "busy": false,
+          "book": "sha256:84469c53989a8ac76325d0108085921b6064f0da946e9f89839f25a4d8cbf9b1",
+          "uiNodes": 308,
+          "iframeNodes": 2,
+          "iframeCount": 1,
+          "resourceCount": 1,
+          "taskSets": 1,
+          "pending": 0,
+          "blobUrls": [
+            "blob:http://127.0.0.1:57756/2818c853-aa53-407c-8aa7-f183edceb503"
+          ],
+          "metrics": {
+            "JSHeapUsedSize": 8661840,
+            "LayoutCount": 1612,
+            "TaskDuration": 1.313159
+          }
+        }
+      ],
+      "switches": [
+        {
+          "label": "book-0",
+          "spine": 0,
+          "ready": true,
+          "busy": false,
+          "book": "sha256:8f7f4d0b17428b5958c63bfcc22a6077c9f4e88fc143230c16d08a581c15a319",
+          "uiNodes": 110,
+          "iframeNodes": 1,
+          "iframeCount": 1,
+          "resourceCount": 0,
+          "taskSets": 1,
+          "pending": 0,
+          "blobUrls": [],
+          "metrics": {
+            "JSHeapUsedSize": 9566420,
+            "LayoutCount": 1622,
+            "TaskDuration": 1.360126
+          }
+        },
+        {
+          "label": "book-1",
+          "spine": 0,
+          "ready": true,
+          "busy": false,
+          "book": "sha256:bf0da276563120f0ef8fc72dd9ebb003696f665969a90a8ce75cbecc5b76b954",
+          "uiNodes": 110,
+          "iframeNodes": 1,
+          "iframeCount": 1,
+          "resourceCount": 0,
+          "taskSets": 1,
+          "pending": 0,
+          "blobUrls": [],
+          "metrics": {
+            "JSHeapUsedSize": 10256136,
+            "LayoutCount": 1632,
+            "TaskDuration": 1.368496
+          }
+        },
+        {
+          "label": "book-2",
+          "spine": 0,
+          "ready": true,
+          "busy": false,
+          "book": "sha256:ff4b3dcf50fa2c207310a3b237f25e2e4d8be984827efce137a2b1e3ec5c251f",
+          "uiNodes": 110,
+          "iframeNodes": 1,
+          "iframeCount": 1,
+          "resourceCount": 0,
+          "taskSets": 1,
+          "pending": 0,
+          "blobUrls": [],
+          "metrics": {
+            "JSHeapUsedSize": 3745688,
+            "LayoutCount": 1642,
+            "TaskDuration": 1.37937
+          }
+        },
+        {
+          "label": "book-3",
+          "spine": 0,
+          "ready": true,
+          "busy": false,
+          "book": "sha256:12bb5908a413f8a7021479a8502b8384488ae6dae1f08c42bec250f4fc5e8d18",
+          "uiNodes": 110,
+          "iframeNodes": 1,
+          "iframeCount": 1,
+          "resourceCount": 0,
+          "taskSets": 1,
+          "pending": 0,
+          "blobUrls": [],
+          "metrics": {
+            "JSHeapUsedSize": 4474032,
+            "LayoutCount": 1652,
+            "TaskDuration": 1.38728
+          }
+        },
+        {
+          "label": "book-4",
+          "spine": 0,
+          "ready": true,
+          "busy": false,
+          "book": "sha256:24322d6f794d0f8b20c87514eedd00916594616d2db8c69ad66c7aab1aa85ad1",
+          "uiNodes": 110,
+          "iframeNodes": 1,
+          "iframeCount": 1,
+          "resourceCount": 0,
+          "taskSets": 1,
+          "pending": 0,
+          "blobUrls": [],
+          "metrics": {
+            "JSHeapUsedSize": 5159852,
+            "LayoutCount": 1662,
+            "TaskDuration": 1.39534
+          }
+        },
+        {
+          "label": "book-5",
+          "spine": 0,
+          "ready": true,
+          "busy": false,
+          "book": "sha256:a0ea00e98ffadc45932d58de1e9c6ed3a4589c6a22d9a11bced84ed82bab23bb",
+          "uiNodes": 110,
+          "iframeNodes": 1,
+          "iframeCount": 1,
+          "resourceCount": 0,
+          "taskSets": 1,
+          "pending": 0,
+          "blobUrls": [],
+          "metrics": {
+            "JSHeapUsedSize": 5828288,
+            "LayoutCount": 1672,
+            "TaskDuration": 1.404867
+          }
+        },
+        {
+          "label": "book-6",
+          "spine": 0,
+          "ready": true,
+          "busy": false,
+          "book": "sha256:52c4da66a293b42b51599aacaea9bb81f2adf82bc6a7959873b18d31d3eb0ded",
+          "uiNodes": 110,
+          "iframeNodes": 1,
+          "iframeCount": 1,
+          "resourceCount": 0,
+          "taskSets": 1,
+          "pending": 0,
+          "blobUrls": [],
+          "metrics": {
+            "JSHeapUsedSize": 5582676,
+            "LayoutCount": 1682,
+            "TaskDuration": 1.413175
+          }
+        },
+        {
+          "label": "book-7",
+          "spine": 0,
+          "ready": true,
+          "busy": false,
+          "book": "sha256:3f98049b803a902ae00530b021251546623e050ea4109749db10242bbf3c2188",
+          "uiNodes": 110,
+          "iframeNodes": 1,
+          "iframeCount": 1,
+          "resourceCount": 0,
+          "taskSets": 1,
+          "pending": 0,
+          "blobUrls": [],
+          "metrics": {
+            "JSHeapUsedSize": 6319076,
+            "LayoutCount": 1692,
+            "TaskDuration": 1.421518
+          }
+        },
+        {
+          "label": "book-8",
+          "spine": 0,
+          "ready": true,
+          "busy": false,
+          "book": "sha256:dc62845e651cd084908296315a3d95767845263a1054e0f443ae46a04f22e293",
+          "uiNodes": 110,
+          "iframeNodes": 1,
+          "iframeCount": 1,
+          "resourceCount": 0,
+          "taskSets": 1,
+          "pending": 0,
+          "blobUrls": [],
+          "metrics": {
+            "JSHeapUsedSize": 7001944,
+            "LayoutCount": 1702,
+            "TaskDuration": 1.429652
+          }
+        },
+        {
+          "label": "book-9",
+          "spine": 0,
+          "ready": true,
+          "busy": false,
+          "book": "sha256:2adda1939a0c0864ced634ce555abc7f768c75ed0a3c93ece3c3501c507ccbd9",
+          "uiNodes": 110,
+          "iframeNodes": 1,
+          "iframeCount": 1,
+          "resourceCount": 0,
+          "taskSets": 1,
+          "pending": 0,
+          "blobUrls": [],
+          "metrics": {
+            "JSHeapUsedSize": 7051936,
+            "LayoutCount": 1712,
+            "TaskDuration": 1.437727
+          }
+        }
+      ],
+      "rest": [
+        {
+          "label": "static-1s",
+          "spine": 200,
+          "ready": true,
+          "busy": false,
+          "book": "sha256:84469c53989a8ac76325d0108085921b6064f0da946e9f89839f25a4d8cbf9b1",
+          "uiNodes": 308,
+          "iframeNodes": 2,
+          "iframeCount": 1,
+          "resourceCount": 1,
+          "taskSets": 1,
+          "pending": 0,
+          "blobUrls": [
+            "blob:http://127.0.0.1:57756/2818c853-aa53-407c-8aa7-f183edceb503"
+          ],
+          "metrics": {
+            "JSHeapUsedSize": 8687344,
+            "LayoutCount": 1612,
+            "TaskDuration": 1.343303
+          }
+        },
+        {
+          "label": "after-switches-static",
+          "spine": 0,
+          "ready": true,
+          "busy": false,
+          "book": "sha256:2adda1939a0c0864ced634ce555abc7f768c75ed0a3c93ece3c3501c507ccbd9",
+          "uiNodes": 110,
+          "iframeNodes": 1,
+          "iframeCount": 1,
+          "resourceCount": 0,
+          "taskSets": 1,
+          "pending": 0,
+          "blobUrls": [],
+          "metrics": {
+            "JSHeapUsedSize": 7072036,
+            "LayoutCount": 1712,
+            "TaskDuration": 1.440092
+          }
+        }
+      ],
+      "successCount": 200,
+      "expectedSuccess": 200,
+      "book200ElapsedMs": 2378
+    },
+    "c12": null,
+    "oldhost": null,
+    "r3client": null,
+    "pdfWith": null,
+    "pdfNo": null
+  },
+  "notComplete": [
+    "A11 true font geometry not constructed",
+    "A23 native 200 automation failed distinctSuccess=0; no native load trend",
+    "c12/oldhost no-book, R3 no-book/close, PDF multi-window/close not rerun",
+    "A/B ledger and operation identity left to GPT independent track"
+  ]
+}

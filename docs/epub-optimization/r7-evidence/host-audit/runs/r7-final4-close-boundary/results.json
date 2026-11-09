@@ -1,0 +1,275 @@
+{
+  "evidenceKind": "Original R6 business methods with explicit DOM/font/transport/timer gates, real isolated host files; not native DLL",
+  "results": [
+    {
+      "id": "L01-ORIGINAL-PAGINATOR-RESOURCE-CLOSE",
+      "pass": true,
+      "expected": "Original resource await must not replace old stable100 with new DOM zero under old spine",
+      "actual": {
+        "stable": {
+          "spineHref": "a.xhtml",
+          "spineIndex": 0,
+          "locator": {
+            "textOffset": 100,
+            "pageIndex": 1,
+            "chapterFraction": 0.05263157894736842
+          },
+          "chapterFraction": 0.05263157894736842,
+          "savedAt": "2023-11-14T22:13:20.320Z"
+        },
+        "before": {
+          "stable": {
+            "spineHref": "a.xhtml",
+            "spineIndex": 0,
+            "locator": {
+              "textOffset": 100,
+              "pageIndex": 1,
+              "chapterFraction": 0.05263157894736842
+            },
+            "chapterFraction": 0.05263157894736842,
+            "savedAt": "2023-11-14T22:13:20.320Z"
+          },
+          "ready": false,
+          "spine": 0,
+          "paginatorSection": 1,
+          "paginatorReady": false,
+          "doc": 1,
+          "scroll": 0
+        },
+        "after": {
+          "acks": [
+            {
+              "type": "host.finalized",
+              "requestId": "a93c7616d4174328a18e4a75f0af66da",
+              "sessionId": "e887d46dd5a543479487e28b8f089325",
+              "ok": true,
+              "revision": 1,
+              "closeDiagnostics": []
+            }
+          ],
+          "stable": {
+            "spineHref": "a.xhtml",
+            "spineIndex": 0,
+            "locator": {
+              "textOffset": 100,
+              "pageIndex": 1,
+              "chapterFraction": 0.05263157894736842
+            },
+            "chapterFraction": 0.05263157894736842,
+            "savedAt": "2023-11-14T22:13:20.340Z"
+          },
+          "file": {
+            "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\r7-evidence\\host-audit\\runs\\r7-final4-close-boundary\\bin\\data\\reader\\epub\\books\\0ad3e8e2a90ff89566cacebc2f1598b42bb038c6a82a4e8b4789fc2a669a1ec2.json",
+            "raw": "{\r\n  \"version\": 1,\r\n  \"revision\": 1,\r\n  \"positionRevision\": 1,\r\n  \"metadataRevision\": 0,\r\n  \"interaction\": 1,\r\n  \"interactionOwner\": \"e887d46dd5a543479487e28b8f089325\",\r\n  \"position\": {\r\n    \"spineHref\": \"a.xhtml\",\r\n    \"spineIndex\": 0,\r\n    \"locator\": {\r\n      \"textOffset\": 100,\r\n      \"pageIndex\": 1,\r\n      \"chapterFraction\": 0.05263157894736842\r\n    },\r\n    \"chapterFraction\": 0.05263157894736842,\r\n    \"savedAt\": \"2023-11-14T22:13:20.320Z\"\r\n  },\r\n  \"positionToken\": 1,\r\n  \"positionSequence\": 1700000000320000,\r\n  \"bookmarks\": [],\r\n  \"bookmarksRevision\": 0,\r\n  \"positionSession\": \"e887d46dd5a543479487e28b8f089325\",\r\n  \"positionSavedAt\": \"2026-10-28T15:44:16.0635854Z\"\r\n}"
+          },
+          "host": {
+            "session": "e887d46dd5a543479487e28b8f089325",
+            "source": "https://lyra-extension-ded1da45.local/index.html?sessionId=e887d46dd5a543479487e28b8f089325&loadId=9a61497580c84b1eafcd85f422a35e20",
+            "activationEpoch": 1,
+            "navEpoch": 1,
+            "ClosedCount": 1,
+            "pending": false,
+            "closeRequest": "a93c7616d4174328a18e4a75f0af66da",
+            "closeTimer": false,
+            "ready": true,
+            "ensureCalls": 1,
+            "loadId": "load-loyw3v28-m51v",
+            "overlay": "Collapsed",
+            "loadingText": "正在打开…",
+            "closeInterval": null,
+            "failed": false
+          }
+        },
+        "late": {
+          "spine": 0,
+          "paginatorSection": 0,
+          "ready": true
+        },
+        "requests": [
+          {
+            "protocol": "lyra-reader",
+            "version": 3,
+            "type": "state.savePosition",
+            "requestId": "req-0916fb43-a129-4e55-bb66-0bda24c35bc6",
+            "sessionId": "e887d46dd5a543479487e28b8f089325",
+            "bookId": "sha256:0ad3e8e2a90ff89566cacebc2f1598b42bb038c6a82a4e8b4789fc2a669a1ec2",
+            "position": {
+              "spineHref": "a.xhtml",
+              "spineIndex": 0,
+              "locator": {
+                "textOffset": 100,
+                "pageIndex": 1,
+                "chapterFraction": 0.05263157894736842
+              },
+              "chapterFraction": 0.05263157894736842,
+              "savedAt": "2023-11-14T22:13:20.320Z"
+            },
+            "interactionToken": 1,
+            "sequence": 1700000000320000,
+            "operationId": "pos-op-b883d436-e4a6-49af-a1ee-d012fe345254"
+          }
+        ],
+        "boundary": "Full original reader/state/paginator setSection/_waitForResources/cancel/settle/C#; iframe load/fonts/DOM/scroll geometry controlled; only layout and captureAnchor geometry substituted; true isolated disk"
+      }
+    },
+    {
+      "id": "L02-PREF-GRANT-STARVES-POSITION-DEADLINE",
+      "pass": true,
+      "expected": "Observe independent pending targets when preference grant wait outlasts 1500ms close budget",
+      "actual": {
+        "before": {
+          "positions": [
+            {
+              "protocol": "lyra-reader",
+              "version": 3,
+              "type": "state.savePosition",
+              "requestId": "req-e19c0eeb-5d1a-4440-a2eb-b23b012e94f8",
+              "sessionId": "35ff1dff22ef4839b4f75dbe87db9ad0",
+              "bookId": "sha256:d6586cd83772a5c5316fee57bc4c3d57a49488d7e1310d79e7743eda36317e32",
+              "position": {
+                "spineHref": "a.xhtml",
+                "spineIndex": 0,
+                "locator": {
+                  "textOffset": 100,
+                  "quote": "synthetic",
+                  "chapterFraction": 0.05263157894736842
+                },
+                "chapterFraction": 0.05263157894736842,
+                "savedAt": "2023-11-14T22:13:20.000Z"
+              },
+              "interactionToken": 1,
+              "sequence": 1700000000000000,
+              "operationId": "pos-op-ce0b0c43-0763-445d-9a49-e870bf04c10e"
+            }
+          ],
+          "file": {
+            "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\r7-evidence\\host-audit\\runs\\r7-final4-close-boundary\\bin\\data\\reader\\epub\\books\\d6586cd83772a5c5316fee57bc4c3d57a49488d7e1310d79e7743eda36317e32.json",
+            "raw": "{\r\n  \"version\": 1,\r\n  \"revision\": 1,\r\n  \"positionRevision\": 1,\r\n  \"metadataRevision\": 0,\r\n  \"interaction\": 1,\r\n  \"interactionOwner\": \"35ff1dff22ef4839b4f75dbe87db9ad0\",\r\n  \"position\": {\r\n    \"spineHref\": \"a.xhtml\",\r\n    \"spineIndex\": 0,\r\n    \"locator\": {\r\n      \"textOffset\": 100,\r\n      \"quote\": \"synthetic\",\r\n      \"chapterFraction\": 0.05263157894736842\r\n    },\r\n    \"chapterFraction\": 0.05263157894736842,\r\n    \"savedAt\": \"2023-11-14T22:13:20.000Z\"\r\n  },\r\n  \"positionToken\": 1,\r\n  \"positionSequence\": 1700000000000000,\r\n  \"bookmarks\": [],\r\n  \"bookmarksRevision\": 0,\r\n  \"positionSession\": \"35ff1dff22ef4839b4f75dbe87db9ad0\",\r\n  \"positionSavedAt\": \"2026-10-28T15:44:16.0814617Z\"\r\n}"
+          },
+          "held": [
+            {
+              "req": {
+                "protocol": "lyra-reader",
+                "version": 3,
+                "type": "state.grantPreferences",
+                "requestId": "req-6aaa8c45-08bf-4dda-a1e7-7b72b5176865",
+                "sessionId": "35ff1dff22ef4839b4f75dbe87db9ad0",
+                "scope": "global",
+                "fields": [
+                  "fontSize"
+                ],
+                "operationId": "pref-op-0e79be39-dcd2-44bf-9463-bd4763bd58ac",
+                "activationEpoch": 1,
+                "navEpoch": 1
+              },
+              "msg": {
+                "protocol": "lyra-reader",
+                "version": 3,
+                "type": "response",
+                "requestId": "req-6aaa8c45-08bf-4dda-a1e7-7b72b5176865",
+                "sessionId": "35ff1dff22ef4839b4f75dbe87db9ad0",
+                "ok": true,
+                "result": {
+                  "grant": "pg-1f0b36893a2442f597d56be3c2ec3de9",
+                  "fields": [
+                    "fontSize"
+                  ]
+                }
+              },
+              "raw": "{\"protocol\":\"lyra-reader\",\"version\":3,\"type\":\"response\",\"requestId\":\"req-6aaa8c45-08bf-4dda-a1e7-7b72b5176865\",\"sessionId\":\"35ff1dff22ef4839b4f75dbe87db9ad0\",\"ok\":true,\"result\":{\"grant\":\"pg-1f0b36893a2442f597d56be3c2ec3de9\",\"fields\":[\"fontSize\"]}}"
+            }
+          ],
+          "host": {
+            "session": "35ff1dff22ef4839b4f75dbe87db9ad0",
+            "source": "https://lyra-extension-fe820e91.local/index.html?sessionId=35ff1dff22ef4839b4f75dbe87db9ad0&loadId=e34572e740874e989d451a6100402914",
+            "activationEpoch": 1,
+            "navEpoch": 1,
+            "ClosedCount": 0,
+            "pending": true,
+            "closeRequest": "b109c19d4b7042caab1286f5271e2019",
+            "closeTimer": true,
+            "ready": false,
+            "ensureCalls": 1,
+            "loadId": "e34572e740874e989d451a6100402914",
+            "overlay": "Collapsed",
+            "loadingText": "正在打开…",
+            "closeInterval": 1500,
+            "failed": false
+          }
+        },
+        "expired": {
+          "session": "35ff1dff22ef4839b4f75dbe87db9ad0",
+          "source": "https://lyra-extension-fe820e91.local/index.html?sessionId=35ff1dff22ef4839b4f75dbe87db9ad0&loadId=e34572e740874e989d451a6100402914",
+          "activationEpoch": 1,
+          "navEpoch": 1,
+          "ClosedCount": 1,
+          "pending": false,
+          "closeRequest": "b109c19d4b7042caab1286f5271e2019",
+          "closeTimer": false,
+          "ready": false,
+          "ensureCalls": 1,
+          "loadId": "e34572e740874e989d451a6100402914",
+          "overlay": "Collapsed",
+          "loadingText": "正在打开…",
+          "closeInterval": null,
+          "failed": false
+        },
+        "acks": [],
+        "pending": [
+          "fontSize"
+        ],
+        "modified": false,
+        "boundary": "Original host 1500ms timer tick is manual, original JS grant request timeout3000; no native elapsed-time claim; grant processed but acknowledgement withheld; valid independent position100 never submitted before deadline"
+      }
+    },
+    {
+      "id": "L03-PENDING-BOOKMARK-ACK-AFTER-FINALIZE",
+      "pass": true,
+      "expected": "specified behavior",
+      "actual": {
+        "atWait": {
+          "ack": [],
+          "host": {
+            "session": "a12bd91dd46e488e90f349cbf88f6e24",
+            "source": "https://lyra-extension-c4df8cc8.local/index.html?sessionId=a12bd91dd46e488e90f349cbf88f6e24&loadId=f5326acecbd647bbb2fec26a008d35e0",
+            "activationEpoch": 1,
+            "navEpoch": 1,
+            "ClosedCount": 0,
+            "pending": true,
+            "closeRequest": "f9727a77f6c84a41b1bab08201b7e859",
+            "closeTimer": true,
+            "ready": false,
+            "ensureCalls": 1,
+            "loadId": "f5326acecbd647bbb2fec26a008d35e0",
+            "overlay": "Collapsed",
+            "loadingText": "正在打开…",
+            "closeInterval": 1500,
+            "failed": false
+          },
+          "modified": false
+        },
+        "afterAck": {
+          "modified": true,
+          "interaction": 1,
+          "bookmarks": 1
+        },
+        "acks": [
+          {
+            "type": "host.finalized",
+            "requestId": "f9727a77f6c84a41b1bab08201b7e859",
+            "sessionId": "a12bd91dd46e488e90f349cbf88f6e24",
+            "ok": true,
+            "revision": 2,
+            "closeDiagnostics": []
+          }
+        ],
+        "file": {
+          "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\r7-evidence\\host-audit\\runs\\r7-final4-close-boundary\\bin\\data\\reader\\epub\\books\\5a19fa55fb2500a725a69f8f5c04c4ed72028eed893186e028b9f1b7470ad79b.json",
+          "raw": "{\r\n  \"version\": 1,\r\n  \"revision\": 1,\r\n  \"positionRevision\": 0,\r\n  \"metadataRevision\": 1,\r\n  \"interaction\": 1,\r\n  \"interactionOwner\": \"a12bd91dd46e488e90f349cbf88f6e24\",\r\n  \"position\": null,\r\n  \"positionToken\": 0,\r\n  \"positionSequence\": 0,\r\n  \"bookmarks\": [\r\n    {\r\n      \"id\": \"bm-loyw3v28-24er90\",\r\n      \"_key\": \"a.xhtml|t10\",\r\n      \"spineHref\": \"a.xhtml\",\r\n      \"spineIndex\": 0,\r\n      \"chapterTitle\": \"Fixture\",\r\n      \"title\": \"Fixture\",\r\n      \"summary\": \"synthetic\",\r\n      \"locator\": {\r\n        \"textOffset\": 10,\r\n        \"quote\": \"synthetic\",\r\n        \"chapterFraction\": 0.1\r\n      },\r\n      \"createdAt\": \"2023-11-14T22:13:20.000Z\"\r\n    }\r\n  ],\r\n  \"bookmarksRevision\": 1\r\n}"
+        },
+        "positions": [],
+        "boundary": "Only client addBookmark promise completion delayed AFTER real original request/disk/response; completion continues while real host closing waits another actual prefs acknowledgement; verifies all final state targets settle"
+      }
+    }
+  ]
+}

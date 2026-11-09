@@ -1,0 +1,96 @@
+{
+  "evidenceKind": "Real Edge, frozen candidate; controlled delays/faults documented per case",
+  "results": [
+    {
+      "id": "C03_OLD_IMAGE_SAVE_ACK_CLEARS_NEW_PAGE",
+      "before": {
+        "elementPath": [
+          1,
+          0
+        ],
+        "textOffset": null,
+        "quote": "",
+        "prefix": "",
+        "suffix": "",
+        "elementId": "",
+        "chapterFraction": 0.1111111111111111,
+        "pageIndex": 1
+      },
+      "atRelease": {
+        "elementPath": [
+          1,
+          0
+        ],
+        "textOffset": null,
+        "quote": "",
+        "prefix": "",
+        "suffix": "",
+        "elementId": "",
+        "chapterFraction": 0.2222222222222222,
+        "pageIndex": 2
+      },
+      "after": {
+        "current": {
+          "elementPath": [
+            2,
+            0
+          ],
+          "textOffset": null,
+          "quote": "",
+          "prefix": "",
+          "suffix": "",
+          "elementId": "",
+          "chapterFraction": 0.2222222222222222,
+          "pageIndex": 2
+        },
+        "modified": false,
+        "saves": [
+          {
+            "spineHref": "OPS/c0.xhtml",
+            "spineIndex": 0,
+            "locator": {
+              "elementPath": [
+                1,
+                0
+              ],
+              "textOffset": null,
+              "quote": "",
+              "prefix": "",
+              "suffix": "",
+              "elementId": "",
+              "chapterFraction": 0.1111111111111111,
+              "pageIndex": 1
+            },
+            "chapterFraction": 0.1111111111111111,
+            "savedAt": "2026-10-27T16:34:31.010Z"
+          }
+        ],
+        "saved": {
+          "revision": 1,
+          "position": {
+            "spineHref": "OPS/c0.xhtml",
+            "spineIndex": 0,
+            "locator": {
+              "elementPath": [
+                1,
+                0
+              ],
+              "textOffset": null,
+              "quote": "",
+              "prefix": "",
+              "suffix": "",
+              "elementId": "",
+              "chapterFraction": 0.1111111111111111,
+              "pageIndex": 1
+            },
+            "chapterFraction": 0.1111111111111111,
+            "savedAt": "2026-10-27T16:34:31.010Z"
+          },
+          "updatedAt": "2026-10-27T16:34:31.011Z"
+        }
+      },
+      "defect": true,
+      "note": "Controlled delay only after first actual local write, before its acknowledgement; both user inputs are pageNext clicks; no page-input debounce exists to mask the wrong acknowledgement cleanup."
+    }
+  ]
+}

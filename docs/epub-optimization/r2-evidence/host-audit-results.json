@@ -1,0 +1,219 @@
+{
+  "generatedAt": "2026-10-27T10:35:26.8749121Z",
+  "baseDirectory": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\r2-host-audit\\bin\\Debug\\net10.0\\",
+  "evidenceKind": "original C# host source with headless event doubles; not desktop integration",
+  "results": [
+    {
+      "id": "H-ACTIVE",
+      "pass": true,
+      "details": {
+        "inactiveGrant": {
+          "protocol": "lyra-reader",
+          "version": 1,
+          "type": "response",
+          "requestId": "16b737d096604624ac8ca0ae1ba9e072",
+          "sessionId": "bcc9df271c64456b814458d28650f6c8",
+          "ok": false,
+          "error": {
+            "code": "WINDOW_NOT_ACTIVE",
+            "message": "\u7A97\u53E3\u672A\u6FC0\u6D3B\uFF0C\u4E0D\u80FD\u53D6\u5F97\u9605\u8BFB\u4F4D\u7F6E\u5199\u5165\u8D44\u683C"
+          }
+        },
+        "staleSave": {
+          "protocol": "lyra-reader",
+          "version": 1,
+          "type": "response",
+          "requestId": "20eae11d799546d6a2611043a28a50ce",
+          "sessionId": "bcc9df271c64456b814458d28650f6c8",
+          "ok": false,
+          "error": {
+            "code": "STALE_INTERACTION",
+            "message": "\u4F4D\u7F6E\u4F7F\u7528\u7684\u4EA4\u4E92\u8D44\u683C\u4E0D\u662F\u5F53\u524D\u6709\u6548\u8D44\u683C"
+          }
+        },
+        "finalQuote": "B latest",
+        "activeA": false
+      }
+    },
+    {
+      "id": "H-ACTIVE-TAKEOVER",
+      "pass": true,
+      "details": {
+        "ta2": 3,
+        "takeover": {
+          "protocol": "lyra-reader",
+          "version": 1,
+          "type": "response",
+          "requestId": "d9f24c6d68204b4488dd3092db294382",
+          "sessionId": "bcc9df271c64456b814458d28650f6c8",
+          "ok": true,
+          "result": {
+            "revision": 6,
+            "positionToken": 3
+          }
+        },
+        "finalQuote": "A new explicit interaction"
+      }
+    },
+    {
+      "id": "H-TOKEN",
+      "pass": true,
+      "details": {
+        "wrongOwner": {
+          "protocol": "lyra-reader",
+          "version": 1,
+          "type": "response",
+          "requestId": "dac8a2be17f246528da9a54da3d4773e",
+          "sessionId": "bcc9df271c64456b814458d28650f6c8",
+          "ok": false,
+          "error": {
+            "code": "TOKEN_OWNER_MISMATCH",
+            "message": "\u4F4D\u7F6E\u4F7F\u7528\u7684\u4EA4\u4E92\u8D44\u683C\u4E0D\u5C5E\u4E8E\u5F53\u524D\u7A97\u53E3"
+          }
+        },
+        "rollback": {
+          "protocol": "lyra-reader",
+          "version": 1,
+          "type": "response",
+          "requestId": "d5adee8f1da14d9a807a9e22ebbf9558",
+          "sessionId": "60a48c1ade9a46d685f120b8357f5037",
+          "ok": false,
+          "error": {
+            "code": "STALE_SEQUENCE",
+            "message": "\u4F4D\u7F6E\u5E8F\u53F7\u5DF2\u8FC7\u671F\uFF0C\u4E0D\u80FD\u8986\u76D6\u66F4\u65B0\u4F4D\u7F6E"
+          }
+        },
+        "fakeToken": {
+          "protocol": "lyra-reader",
+          "version": 1,
+          "type": "response",
+          "requestId": "e8e7c2dc421c493b843b974d9bc35db2",
+          "sessionId": "bcc9df271c64456b814458d28650f6c8",
+          "ok": false,
+          "error": {
+            "code": "STALE_INTERACTION",
+            "message": "\u4F4D\u7F6E\u4F7F\u7528\u7684\u4EA4\u4E92\u8D44\u683C\u4E0D\u662F\u5F53\u524D\u6709\u6548\u8D44\u683C"
+          }
+        },
+        "idem": {
+          "protocol": "lyra-reader",
+          "version": 1,
+          "type": "response",
+          "requestId": "8132172a38244b7eb27dfb92f6fcdded",
+          "sessionId": "60a48c1ade9a46d685f120b8357f5037",
+          "ok": true,
+          "result": {
+            "revision": 2,
+            "positionToken": 1,
+            "idempotent": true
+          }
+        },
+        "finalQuote": "B seq20"
+      }
+    },
+    {
+      "id": "H-PREF-ORDER",
+      "pass": true,
+      "details": {
+        "p1": {
+          "protocol": "lyra-reader",
+          "version": 1,
+          "type": "response",
+          "requestId": "0f9ee865ae524fb4ae7d24cef02523b7",
+          "sessionId": "bcc9df271c64456b814458d28650f6c8",
+          "ok": true,
+          "result": {
+            "revision": 1,
+            "applied": [
+              "fontSize"
+            ]
+          }
+        },
+        "p2": {
+          "protocol": "lyra-reader",
+          "version": 1,
+          "type": "response",
+          "requestId": "48ce9dac8f714b1b98b8e618a44e7599",
+          "sessionId": "60a48c1ade9a46d685f120b8357f5037",
+          "ok": true,
+          "result": {
+            "revision": 2,
+            "applied": [
+              "fontSize",
+              "theme"
+            ]
+          }
+        },
+        "p3": {
+          "protocol": "lyra-reader",
+          "version": 1,
+          "type": "response",
+          "requestId": "3582f6b13d4c40778cd11c450bf89a67",
+          "sessionId": "bcc9df271c64456b814458d28650f6c8",
+          "ok": true,
+          "result": {
+            "revision": 2,
+            "applied": []
+          }
+        },
+        "prefs": {
+          "fontSize": 32,
+          "theme": "dark"
+        }
+      }
+    },
+    {
+      "id": "H-ERROR-OVERLAY",
+      "pass": true,
+      "details": {
+        "overlay": "Collapsed",
+        "text": "\u6B63\u5728\u6253\u5F00\u2026",
+        "ready": true
+      }
+    },
+    {
+      "id": "H-MISSING-LOAD",
+      "pass": true,
+      "details": {
+        "currentLoad": "new-open",
+        "ready": false
+      }
+    },
+    {
+      "id": "H-LEGACY-SOURCE",
+      "pass": true,
+      "details": {
+        "ready": false,
+        "overlay": "Visible"
+      }
+    },
+    {
+      "id": "H-REFRESH-SESSION",
+      "pass": true,
+      "details": {
+        "oldSession": "fbd9e9e5a6b146c0a0ba7a65aac32d57",
+        "newSession": "a7124d4aa7aa4b2aa7481f59f373a196",
+        "oldLoad": "7582347899dd4712886bc5b62fbc8373",
+        "newLoad": "0dd4ddf1ef974d17b349570acb5b5fe5",
+        "canceled": true
+      }
+    },
+    {
+      "id": "H-EMPTY-NAV-FAIL",
+      "pass": true,
+      "details": {
+        "beforeTimer": "Visible",
+        "afterTimer": "Visible",
+        "text": "\u6269\u5C55\u9875\u9762\u52A0\u8F7D\u5931\u8D25\uFF08SyntheticFailure\uFF09"
+      }
+    },
+    {
+      "id": "H-CLOSE-STRUCTURE",
+      "pass": true,
+      "details": {
+        "timersBefore": 1,
+        "timersAfter": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "generatedAt": "2026-10-27T16:10:12.592Z",
+  "results": [
+    {
+      "id": "R3-M05",
+      "pass": true,
+      "title": "hot index cancel is observed before continuation",
+      "detail": {
+        "hotRejected": true
+      }
+    },
+    {
+      "id": "R3-M06",
+      "pass": true,
+      "title": "cold index cancel then immediate new query succeeds",
+      "detail": {
+        "statuses": [
+          "rejected",
+          "fulfilled"
+        ],
+        "errors": [
+          "搜索已取消",
+          null
+        ],
+        "fresh": {
+          "query": "new",
+          "results": [
+            {
+              "id": "r-0-4",
+              "spineIndex": 0,
+              "title": "",
+              "offset": 4,
+              "length": 3,
+              "quote": "old new",
+              "prefix": "old",
+              "suffix": "",
+              "snippet": "old new"
+            }
+          ],
+          "total": 1,
+          "truncated": false,
+          "chars": 7,
+          "scannedSections": 1,
+          "totalSections": 1,
+          "cacheTruncated": false,
+          "readErrors": 0
+        }
+      }
+    },
+    {
+      "id": "R3-M07",
+      "pass": true,
+      "title": "long chapter scan yields to cancellation",
+      "detail": {
+        "longRejected": true,
+        "timerRan": true
+      }
+    },
+    {
+      "id": "R3-M10",
+      "pass": true,
+      "title": "stale same-book tasks cannot register resources after current commit",
+      "detail": {
+        "currentPaths": [
+          "OPS/current.png"
+        ],
+        "atCommit": [
+          "OPS/current.png"
+        ],
+        "afterStale": [
+          "OPS/current.png"
+        ],
+        "pending": 0
+      }
+    },
+    {
+      "id": "R3-M12",
+      "pass": true,
+      "title": "visible text model excludes hidden/closed/details/SVG defs",
+      "detail": {
+        "hidden": 0,
+        "closed": 0,
+        "defs": 0,
+        "visible": 1
+      }
+    },
+    {
+      "id": "R3-M14",
+      "pass": true,
+      "title": "font obfuscation checks exact algorithm and font target",
+      "detail": {
+        "idpfFontOpened": true,
+        "unknownRejected": true,
+        "xhtmlRejected": true
+      }
+    }
+  ]
+}

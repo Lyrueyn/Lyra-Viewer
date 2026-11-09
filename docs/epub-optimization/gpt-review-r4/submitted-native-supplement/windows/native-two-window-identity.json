@@ -1,0 +1,11 @@
+﻿{
+    "capturedAt":  "2026-10-28T02:03:07.7745580+08:00",
+    "pid":  50020,
+    "A_long_hwnd":  10555100,
+    "B_late_hwnd":  8327748,
+    "exe":  "D0F1BB58B07D0B6AEAEB463C841914D9594D0A803E3831FC272A6A5FFED3B335",
+    "dll":  "9EBA643FA6E3933B5A3F86AFC1BE424FFAA08A09BF11B9AC89D2C451E3A9DF95",
+    "extensionVersion":  "0.8.0",
+    "extensionReader":  "659A466FF7693FBEDD9A0DAEDBCCFBA5BE35389E9685CCCF5178A1C9084DACE4",
+    "dataRoot":  "D:\\Temp\\lyra_epub_r4_supplement\\data"
+}

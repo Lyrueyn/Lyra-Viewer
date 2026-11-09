@@ -1,0 +1,59 @@
+{
+  "results": [
+    {
+      "id": "R13_FILE_READ_ORDER",
+      "lastUserChoice": "FRESH",
+      "actual": "FRESH",
+      "defect": false
+    },
+    {
+      "id": "R14_OLD_SEARCH_COMMITS_IN_NEW_BOOK",
+      "book": "FRESH",
+      "results": [],
+      "defect": false
+    },
+    {
+      "id": "R15_HIGHLIGHT_CORRUPTS_SAVED_ANCHOR",
+      "before": {
+        "page": 7,
+        "anchor": {
+          "elementPath": null,
+          "textOffset": 4378,
+          "quote": "来那一句。重复的文字用于验证位置恢复。 每次翻页都应该回到原来那一句。重复的文字用于验证位置恢复。 每次翻页都应该回到原来那一句",
+          "prefix": "来那一句。重复的文字用于验证位置恢复。 每次翻页都应该回到原来那",
+          "suffix": "一句。重复的文字用于验证位置恢复。 每次翻页都应该回到原来那一句",
+          "elementId": "long",
+          "chapterFraction": 0.18421052631578946,
+          "pageIndex": 7
+        }
+      },
+      "after": {
+        "page": 7,
+        "anchor": {
+          "elementPath": null,
+          "textOffset": 4378,
+          "quote": "来那一句。重复的文字用于验证位置恢复。 每次翻页都应该回到原来那一句。重复的文字用于验证位置恢复。 每次翻页都应该回到原来那一句",
+          "prefix": "来那一句。重复的文字用于验证位置恢复。 每次翻页都应该回到原来那",
+          "suffix": "一句。重复的文字用于验证位置恢复。 每次翻页都应该回到原来那一句",
+          "elementId": "long",
+          "chapterFraction": 0.18421052631578946,
+          "pageIndex": 7
+        }
+      },
+      "defect": false
+    },
+    {
+      "id": "R16_DANGEROUS_SCHEME_FORWARDED",
+      "href": null,
+      "outerWindowOpenCalls": [],
+      "defect": false,
+      "note": "window.open was intercepted; no dangerous URL was executed."
+    },
+    {
+      "id": "R17_CLOSE_SEARCH_DOES_NOT_CANCEL_ENGINE",
+      "cancelCalls": 1,
+      "readCompletions": 1,
+      "defect": false
+    }
+  ]
+}

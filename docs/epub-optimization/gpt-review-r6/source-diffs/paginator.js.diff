@@ -1,0 +1,192 @@
+--- R5/paginator.js
++++ R6/paginator.js
+@@ -135,6 +135,8 @@
+       this._anim = { raf: 0, token: 0 };
+       this._destroyed = false;
+       this._activePrepared = null;
++      this._committedView = null;
++      this._finalized = false;
+       this._layoutQueued = 0;
+       this._reduceMotion = false;
+       this._lastProgressAt = 0;
+@@ -210,7 +212,13 @@
+       return doc;
+     }
+ 
++    captureView() {
++      if (!this._committedView) return null;
++      return { ...this._committedView };
++    }
++
+     async setSection(prepared, options = {}) {
++      const oldView = this._committedView && !options.restore ? this.captureView() : null;
+       this.cancelAnimation();
+       const token = ++this._sectionToken;
+       this._activePrepared = prepared;
+@@ -225,6 +233,18 @@
+       this._appliedStyle = options.style || this._appliedStyle || {};
+       const frame = this.frame;
+       if (!frame) throw new Error("分页器没有 iframe");
++      const fail = async (reason) => {
++        if (token !== this._sectionToken) return false; // 已被更新的候选接手，不回滚覆盖
++        let finalizing = false;
++        try { finalizing = typeof options.isFinalizing === "function" && options.isFinalizing(); } catch { }
++        if (oldView && !finalizing && options.restoreOnCancel !== false) {
++          const restored = await this._restoreCommittedView(oldView);
++          if (!restored) this._clearCandidate();
++          return false;
++        }
++        this._clearCandidate();
++        return false;
++      };
+       frame.removeAttribute("src");
+       frame.setAttribute("sandbox", "allow-same-origin");
+       frame.setAttribute("scrolling", "no");
+@@ -236,10 +256,10 @@
+         frame.srcdoc = this._inputDoc(prepared);
+         setTimeout(finish, 4000);
+       });
+-      if (token !== this._sectionToken || this._destroyed) return;
++      if (token !== this._sectionToken || this._destroyed) return false;
+       this.doc = frame.contentDocument;
+       this.content = this.doc && this.doc.getElementById("lyra-content");
+-      if (!this.content) throw new Error("章节 iframe 内容没有创建");
++      if (!this.content) return await fail("empty");
+       // ★ 先应用最终阅读设置，再等待字体/资源，最后才做唯一一次最终分页与锚点恢复
+       this.applyStyle(this._appliedStyle);
+       this.setSelectionMode(options.selectable !== undefined ? options.selectable : this._selectionMode);
+@@ -247,20 +267,58 @@
+       this._bindContentEvents();
+       await this._waitForResources();
+       if (token !== this._sectionToken || this._destroyed) return false;
+-      if (typeof options.isCancelled === "function" && options.isCancelled()) return false;
++      if (typeof options.isCancelled === "function" && options.isCancelled()) return await fail("pre-layout");
+       this.layout({ resetPage: true });
+       if (token !== this._sectionToken || this._destroyed) return false;
+-      if (typeof options.isCancelled === "function" && options.isCancelled()) return false;
+-      this.ready = true;
++      if (typeof options.isCancelled === "function" && options.isCancelled()) return await fail("post-layout");
+       let target = 0;
+       if (options.anchor) target = this.locateAnchor(options.anchor);
+       else if (Number.isFinite(options.page)) target = options.page;
+       else if (Number.isFinite(options.fraction)) target = Math.round(options.fraction * Math.max(0, this.pageCount - 1));
+       if (options.page === "last") target = this.pageCount - 1;
+       this.goToPage(target, { animate: false, notify: true });
++      this.ready = true;
+       this._rememberAnchor();
++      this._committedView = {
++        prepared, sectionIndex: this.sectionIndex, sectionPath: this.sectionPath,
++        pageIndex: this.pageIndex, pageCount: this.pageCount,
++        anchor: this._confirmedAnchor ? { ...this._confirmedAnchor } : null,
++      };
+       this.onContentReady(this.doc);
+       return true;
++    }
++
++    _clearCandidate() {
++      this.ready = false;
++      this.doc = null;
++      this.content = null;
++      this._activePrepared = null;
++      this._committedView = null;
++      this._finalized = false;
++      this.sectionIndex = -1;
++      this.sectionPath = "";
++      this.pageIndex = 0;
++      this.pageCount = 1;
++      try { this.frame.srcdoc = "<!DOCTYPE html><html><body></body></html>"; } catch { }
++    }
++
++    async _restoreCommittedView(view) {
++      const restored = await this.setSection(view.prepared, {
++        restore: true, restoreOnCancel: false,
++        anchor: view.anchor, page: view.pageIndex,
++        style: this._appliedStyle, selectable: this._selectionMode, reduceMotion: this._reduceMotion,
++      });
++      if (restored) {
++        this._committedView = { ...view, prepared: view.prepared };
++        this.ready = true;
++      }
++      return !!restored;
++    }
++
++    async restoreCommittedView() {
++      const old = this._committedView;
++      if (!old) return false;
++      return await this._restoreCommittedView(old);
+     }
+ 
+     async _waitForResources() {
+@@ -284,7 +342,7 @@
+     }
+ 
+     _scheduleLateImageLayout() {
+-      if (this._destroyed) return;
++      if (this._destroyed || this._finalized) return;
+       if (this._imageRelayoutTimer) clearTimeout(this._imageRelayoutTimer);
+       this._imageRelayoutTimer = setTimeout(() => {
+         this._imageRelayoutTimer = 0;
+@@ -607,7 +665,8 @@
+       this._anim.raf = requestAnimationFrame(tick);
+     }
+ 
+-    /** 换书/关闭前把未完成的翻页动画定格到目标页，保证快照捕获的是用户最后看到的页。 */
++    /** 换书/关闭前把未完成的翻页动画定格到目标页，保证快照捕获的是用户最后看到的页。
++     * 必须在 cancelAnimation 之前调用；取消 rAF 会丢掉唯一 pending 目标。 */
+     settleForSnapshot() {
+       if (!this.doc) return;
+       if (this._anim.raf) {
+@@ -615,10 +674,29 @@
+         this._anim.raf = 0;
+         this._anim.token++;
+         this.scrollPos = this.pageIndex * (this.pageW + GAP);
++        try { if (this.content) { this.content.scrollLeft = this.pageIndex * (this.pageW + GAP); void this.content.offsetWidth; } } catch { }
+         try { this.onPageChange(this.pageIndex, this.pageCount, { reason: "snapshot-settle" }); } catch { }
+         this._rememberAnchor();
++        // 被可控 rAF 暂缓的首帧动画没有可靠 DOM 几何；按已接受的目标页保存 fraction 锚点，
++        // 不再把旧页文字 offset 混入 pageIndex=target 的 locator。
++        try {
++          this._confirmedAnchor = {
++            elementPath: null, textOffset: null, quote: "", prefix: "", suffix: "", elementId: "",
++            chapterFraction: this.pageCount > 1 ? this.pageIndex / (this.pageCount - 1) : 0,
++            pageIndex: this.pageIndex,
++          };
++        } catch { }
+         try { if (this.onFinish) this.onFinish(); } catch { }
+       }
++    }
++
++    /** 关闭冻结：先结算动画目标，再取消 rAF/定时器并阻止迟到图片重排。 */
++    freezeForClose() {
++      this.settleForSnapshot();
++      this.cancelAnimation();
++      if (this._imageRelayoutTimer) { clearTimeout(this._imageRelayoutTimer); this._imageRelayoutTimer = 0; }
++      if (this._layoutQueued) { try { cancelAnimationFrame(this._layoutQueued); } catch { } this._layoutQueued = 0; }
++      this._finalized = true;
+     }
+ 
+     nextPage() { return this.goToPage(this.pageIndex + 1, { animate: true, reason: "next" }); }
+@@ -672,10 +750,19 @@
+             const part = this.doc.createRange();
+             part.setStart(node, start);
+             part.setEnd(node, end);
+-            const mark = this.doc.createElement("mark");
+-            mark.className = "lyra-search-mark";
+-            mark.style.background = "rgba(102,204,255,.38)";
+-            mark.style.color = "inherit";
++            const inSvg = !!(node.parentNode && (node.parentNode.ownerSVGElement || node.parentNode.namespaceURI === "http://www.w3.org/2000/svg"));
++            let mark;
++            if (inSvg) {
++              // SVG 文字不能包 HTML mark（会离开渲染命名空间导致命中消失），用 SVG tspan 保持实际文字和几何。
++              mark = this.doc.createElementNS("http://www.w3.org/2000/svg", "tspan");
++              mark.setAttribute("class", "lyra-search-mark-svg");
++              mark.setAttribute("style", "fill:#66ccff;stroke:#66ccff;stroke-width:0.6;paint-order:stroke;");
++            } else {
++              mark = this.doc.createElement("mark");
++              mark.className = "lyra-search-mark";
++              mark.style.background = "rgba(102,204,255,.38)";
++              mark.style.color = "inherit";
++            }
+             part.surroundContents(mark);
+             this._marks.push(mark);
+           } catch { }

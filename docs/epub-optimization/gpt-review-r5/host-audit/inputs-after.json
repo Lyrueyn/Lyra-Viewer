@@ -1,0 +1,502 @@
+[
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\candidate\\epub-book.js",
+    "sha256": "62453a86f64fc9e883af379440c8306a8e218fa55456de490671873044c2cdc2"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\candidate\\extension.json",
+    "sha256": "564a8d33896d9d17aadf4066ec40c56a681889aceb4067b34ee0198bea43cca1"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\candidate\\index.html",
+    "sha256": "f6b244c642b1842652b4ed733116a26a3e92b1b0271bf7c1b444a1c8af3b411d"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\candidate\\lib\\jszip.min.js",
+    "sha256": "acc7e41455a80765b5fd9c7ee1b8078a6d160bbbca455aeae854de65c947d59e"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\candidate\\LICENSE",
+    "sha256": "230184f60bae2feaf244f10a8bac053c8ff33a183bcc365b4d8b876d2b7f4809"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\candidate\\paginator.js",
+    "sha256": "15408a60cf6e65f83d2a3b479a878da888be964d7639ffafd468067c81a2a248"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\candidate\\reader-state.js",
+    "sha256": "fd9e7cad46398d393966358d0813668975d8f93bf915a573e06536c747175e8d"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\candidate\\reader.css",
+    "sha256": "d41553524e1dbed4c895cceb7e66e9b08ae35905b69545ff4637cedeac4a148b"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\candidate\\reader.js",
+    "sha256": "28790e1fb4cd5e04302c26217d80b293d8bdedfc3cd4e1551c9a02c0d93f61fb"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\candidate\\README.md",
+    "sha256": "ebf3fd969d9d2403072e3d8f6a20a9bbdc2fbb7dcdf2a75dad63eb3d372a9b69"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\candidate\\search.js",
+    "sha256": "470c4fe4bb68f299b1aa367cffd1f3b5e616af2dad25e7b1cc1d10f25bea702a"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\candidate\\tests\\r2-checks.cjs",
+    "sha256": "8172b2f3c7cc9d0d9e88c01c3ebe0c30d910d37bf7c600821b87742ae0456723"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\candidate\\tests\\r2-client.cjs",
+    "sha256": "0bfd36d00a328473b7fd0669a91025cf4d6341bd88ceb16a8cf9f7c1318f3dec"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\candidate\\tests\\r2-model.cjs",
+    "sha256": "2953a8bfa11934baa3255b6b203b0615e571c9fcbf3a1fad22677efa02e85778"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\candidate\\tests\\r2-realbooks.cjs",
+    "sha256": "00af437fa42388314c4486fa3f5df8fccc2945b6312d404e7b36a84c2a793ba0"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\candidate\\tests\\r3-checks.cjs",
+    "sha256": "ca4ffb28ece182b878f5bee66b72a5cb6d0ac7ed47baa86541d9f813abdc6c13"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\candidate\\tests\\r3-model-checks.cjs",
+    "sha256": "dba6d4661bb432427648e18aa7d72acabc92f6a971ebd5733a2063c91795ca79"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\candidate\\tests\\reader-extra.cjs",
+    "sha256": "144ced554ebd98cff8644c726982e14c59355a4a247ebe36414ad6df6a8c93f3"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\candidate\\tests\\reader-perf.cjs",
+    "sha256": "262a12b256d251281012ff3ab29bfa551802933ae635e4ae65459178238c1d7d"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\candidate\\tests\\reader-smoke.cjs",
+    "sha256": "b8dd739668cb9cf7f48da04280c4fbf5443f2d7174e271e0ce13a796650fd670"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-snapshot\\ExtensionHostWindow.xaml",
+    "sha256": "283e3e4f682d1ca20563843e19eedd71f3829b29cb8bd69cdf1a64a42876ff88"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-snapshot\\ExtensionHostWindow.xaml.cs",
+    "sha256": "cb8bfbbd0c3b9bf11770dd1d10ff1065b919ff5b03d72de93c1e2f3f1f1d0952"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-snapshot\\ReaderProtocol.cs",
+    "sha256": "079123e5d176d9db960f8eb4b4106a34295a4de3b416b75dc8458f0e8bbea913"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\host-snapshot\\ReaderStateStore.cs",
+    "sha256": "58d7f17400a3a6917fe8c4c120e2d9ef8c58ba8b7d0df62eff8dddc59bd21c0a"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\submitted-evidence\\audits\\boundary-results.json",
+    "sha256": "536f0a954adcc7a2c12f6bae30a6110b4b5532a13636e176127e5c24ae6932f7"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\submitted-evidence\\audits\\reader-stage-results.json",
+    "sha256": "7ae06e22b24cc041a6e32e81fd5780a2257f38281243c4112f71bc18f97c6424"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\submitted-evidence\\client-close\\results.json",
+    "sha256": "33ccdfec1962dd0e765934df66008c5ffb6acc99f476b28b5233527c1063d47d"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\submitted-evidence\\compat\\r5-finalhost-c12-withbook-identity.json",
+    "sha256": "278b57a968c7d9b5fbce16b9814c94cd1824e3ea992ea16caeaedf21d0177825"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\submitted-evidence\\compat\\r5-finalhost-c12-withbook.log",
+    "sha256": "bc6db842a547e9e3178e611506a782a20a278d81bcceed7191a816bda12a3b39"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\submitted-evidence\\compat\\r5-finalhost-c12-withbook.png",
+    "sha256": "2818ed609e5cccc3d9ff2115b9a5a906be70944d6e934eee9eeed8cd44e9af82"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\submitted-evidence\\compat\\r5-host-pdf030-identity.json",
+    "sha256": "ef837c47090c351b814973812d0576bc1cf63325d6dabd0315eec1cca3ddfb56"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\submitted-evidence\\compat\\r5-host-pdf030.png",
+    "sha256": "37a56d798a02f784e438841d58497dca8c5bea456c9f43c36c5fcd66680f43d8"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\submitted-evidence\\compat\\r5-host-r3client-identity.json",
+    "sha256": "75c8d06c56087fd58b4ed04e2bec98e038111ad4942d2d6c6f2228d379ef9e16"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\submitted-evidence\\compat\\r5-host-r3client-withbook.png",
+    "sha256": "4fee987cedd031e813c12f95dccb86ae567d06c76efa30ed1adc634511db4a65"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\submitted-evidence\\compat\\r5-host-r3client.log",
+    "sha256": "33b1956e4c6037444105e78630e47a48c70e4cf44276cead1ec6973b7b57776d"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\submitted-evidence\\compat\\r5-oldhost-b978-r5zip090-identity.json",
+    "sha256": "057216244a019a3eecbfa2fdb512a5d954e61e77fa34facb363067127c3ef9ae"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\submitted-evidence\\compat\\r5-oldhost-b978-r5zip090-open.png",
+    "sha256": "258b62b6178e6fa78df0547e8da2e37806c4e5fa13d55004a0666e50f28f41a5"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\submitted-evidence\\host-audit\\r5-host-results.json",
+    "sha256": "66142279102f3d5f4ca57b1a75fd0602d5aebfea9423c2755b2d4f49b9aa54a7"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\submitted-evidence\\image-ack\\fresh.epub",
+    "sha256": "1e257c6b14802bc376921a7cca19151cda4adf46a902301e4782931217bca6cc"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\submitted-evidence\\image-ack\\hidden.epub",
+    "sha256": "768c0410590182de9da4105f890fdb28ca501c5a3091a48342eca952622e47a1"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\submitted-evidence\\image-ack\\image.epub",
+    "sha256": "69fbb8baf31134035f6817510beb5ae69b664cd031bdd26c241005e010824c40"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\submitted-evidence\\image-ack\\newimg.epub",
+    "sha256": "f05d0f04dee308c161560fe12ee5ca1ab2bf602c76e9c8e0ef5002b6361ed613"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\submitted-evidence\\image-ack\\normal.epub",
+    "sha256": "c348e892717c7f8ca321533f85302ccdd73278890b289039361750705c5eb252"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\submitted-evidence\\image-ack\\oldimg.epub",
+    "sha256": "8a32d1bf003f3b9b7f7fb33d678fee71ffc02695892ccaaa975f6269a154b9d5"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\submitted-evidence\\image-ack\\results.json",
+    "sha256": "addc655c615f466e5dd150e729a57fa8cba138c1866d7b5f935517dd699b8fa6"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\submitted-evidence\\image-ack\\search.epub",
+    "sha256": "8a719d94dca12683fb5f15303d827abb02f2f84ce412c276bfc03ab41f50fd4c"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\submitted-evidence\\image-ack\\stale-search-click.png",
+    "sha256": "eb05ffee8c1f70dc828dcfde6beb0d1c605a5f7efcf14a7b7b4f63381aba1bd7"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\submitted-evidence\\model\\audit-common.cjs",
+    "sha256": "dce345eb6e00f1a0e99d1c7ddf924dab3af99439c2a8ceff0217cfe935bc26c0"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\submitted-evidence\\model\\audit-models.cjs",
+    "sha256": "e7ab0771b38de81d8018e2e64fc4be907e84db0cfaf0b09a37fce22e7d769add"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\submitted-evidence\\model\\audit-reader-flow.cjs",
+    "sha256": "c92c11714d16877577feb60fa49941ddb02f41fbf3208c24801f3f5f770782b7"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\submitted-evidence\\model\\model-results.json",
+    "sha256": "c9ce4948ae7d654ec8a9a8ac1fe503170afe6e69f26e4ebb171acdbbeeb55b4e"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\submitted-evidence\\model\\reader-flow-results.json",
+    "sha256": "b5e4982e1f3fb5fff4109e19eb1b6c8212522692be1bd8b9eff26738d31290e6"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\submitted-evidence\\native\\A-after.png",
+    "sha256": "6f0c7e4044414db12b257013f14d70e6980226c79e01577cde7c4628ad78a66a"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\submitted-evidence\\native\\A-before.png",
+    "sha256": "4c6de5398abd26ee24619a1b12ec9fa67f077d100f2d67831b1a7bd792e6ae1e"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\submitted-evidence\\native\\native-fast-A18-B32-A22-raw.log",
+    "sha256": "a38d1279a932231a41c03a86b239f23c4a059f6c0938dc8b04e9d8dc5ea386a7"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\submitted-evidence\\native\\native-fast-two-window-identity.json",
+    "sha256": "d531a9cf170cd2d2c69ac31206065a1d3b399b377fd92c514eb1a5e35d5caded"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\submitted-evidence\\native\\r5-fast-A-after.png",
+    "sha256": "6419f5d168604dd98f18af3a34f97274bf76b4ee145474a29fac56209b94caf5"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\submitted-evidence\\native\\r5-fast-A-settings-before.png",
+    "sha256": "0a1fdeb28cc132c9ff66c6c127022a991cbd3b00877f340698a224de74626fcd"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\submitted-evidence\\native\\r5-fast-settings-before.png",
+    "sha256": "7d6919f1630522dc19b923a7b227f764d0e24a479c1818010039d239868c679c"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\submitted-evidence\\native\\r5-native-current-prefs.json",
+    "sha256": "9d7f0755f080dd9455abb99fe202d500d6f1916f467e1bbcb2427f504f489bef"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\submitted-evidence\\native\\r5-native-pending-close-identity.json",
+    "sha256": "38bac93ca05fb5fa9216ce6b7c01d9a3e4574550a7d62293cd561889ebbaafd4"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\submitted-evidence\\native\\r5-native-pending-close.log",
+    "sha256": "f0a3eb46a78ba6fa17415f8ec37cb2bfe62d22ab86a0f36993b91181092aa112"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\submitted-evidence\\native\\r5-native-pending-prefs.json",
+    "sha256": "9d7f0755f080dd9455abb99fe202d500d6f1916f467e1bbcb2427f504f489bef"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\submitted-evidence\\new-boundary\\boundary.epub",
+    "sha256": "2d692ad44a1bc5cdd97f74cf078a8d112af3b1d4c02df2e202f36a8d1f724e96"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\submitted-evidence\\new-boundary\\normal.epub",
+    "sha256": "6d2e2e75c6125801df203bfcf931193e825ea68ed73cfb586dbbbb680347a485"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\submitted-evidence\\new-boundary\\results.json",
+    "sha256": "0fac82a5479a39721284f5dcb08f68d0c8f07faef1e2ce285264014ddf18bdbe"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\submitted-evidence\\new-boundary\\search-boundary.png",
+    "sha256": "2dc19143b3af9a6132b3f46fb75fb25bb1d30e9e5befc9b9cf631d1a7c0444ce"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\submitted-evidence\\new-boundary\\search.epub",
+    "sha256": "ddec64931b7146bb4072ebece28853e5aeb199757b0b99ab047eedd80ee9bafa"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\submitted-evidence\\new-boundary\\stale-search-document.png",
+    "sha256": "21914fbf49f92256d9e189903c0235ca077546c8e82a458892136a3c5155f7b3"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\submitted-evidence\\new-boundary-v2\\boundary.epub",
+    "sha256": "3c334f022627b192526bdec56d28f1d26e7effcdd6c8be861500e8ac7c24365f"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\submitted-evidence\\new-boundary-v2\\hiddenflow.epub",
+    "sha256": "648a6475f75623243ab945a7447f7c96d45b42685f8011415d49333e34a426c2"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\submitted-evidence\\new-boundary-v2\\hiddenflow.png",
+    "sha256": "ac1877e0474987c768c9f3869b369588f125158b646226b365d534699b6259a0"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\submitted-evidence\\new-boundary-v2\\normal.epub",
+    "sha256": "a25aa97d93d9fd76497b3bb3cdfd5883e897f16950d645238dcf92bf46fd7f07"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\submitted-evidence\\new-boundary-v2\\results.json",
+    "sha256": "abb923b8aef574c686ebb640585432af7e366503e015b47d69e245e70b7caa11"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\submitted-evidence\\new-boundary-v2\\search.epub",
+    "sha256": "02edf0f125b2c3ed7ce32d07c84aafda728d0845645d6623e4e26b229515d1a1"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\submitted-evidence\\new-boundary-v2\\shared.epub",
+    "sha256": "ea32b62812feacb3b6e6196a234cdd169fb9e9bad40f5231c5ec95cfd58a02e0"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\submitted-evidence\\new-boundary-v2\\svgflow.epub",
+    "sha256": "433b1a05f73a5a8b30f457225ca389a20e380995e16e8242fb291236dfd444de"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\submitted-evidence\\new-boundary-v2\\svgflow.png",
+    "sha256": "967d5e3bf69614e17503717783341c57052e44026e1066953d94df4bc5288b85"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\submitted-evidence\\package-smoke.png",
+    "sha256": "5259337ee05f2f4d4a5085f3c0aa50772cb1b7b1b9fe8c563c4dbf56b9e527ee"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\submitted-evidence\\r5-manifest.json",
+    "sha256": "c9022e15b85c7edf85ff44d1bd63ffaf2a4dffd79d7205c059ec3225ec6f74fc"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\submitted-evidence\\races-v2\\fresh.epub",
+    "sha256": "a74a48561157628162d139e2b60dc7d498d71813e1b61b7dfaaa1e3f99c8609d"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\submitted-evidence\\races-v2\\hidden.epub",
+    "sha256": "dc1f7a0ff40ce5eb91ce8d27c6464038ebedbb750622e4cd1c8319f122ab3958"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\submitted-evidence\\races-v2\\image.epub",
+    "sha256": "9fb0e3f6bb049389967e4fa5692f304a2a438d5ed5d4fa674b58e292969d05ca"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\submitted-evidence\\races-v2\\newimg.epub",
+    "sha256": "d6cd19f73eaa81121fb67d9b0303af0539b7e76cd0cb64c9f4f94fbf42bb1903"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\submitted-evidence\\races-v2\\normal.epub",
+    "sha256": "9fe9823112c349e01a917fe937387c79afe757616880a632acf3deb668932341"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\submitted-evidence\\races-v2\\oldimg.epub",
+    "sha256": "6557b656cba2e43166dcc65dd7769e273b3e619f844889729d835060fd2368db"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\submitted-evidence\\races-v2\\results.json",
+    "sha256": "a4e103c5526cb4612c9a9c412940a0584063ce89293e67819fb5d8d9169d1c2c"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\submitted-evidence\\races-v2\\search.epub",
+    "sha256": "667a76c3fe6a3905394ab97e0d1b0f2f6967ae79343be149288549f3cb8d87af"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\submitted-evidence\\realbooks\\r4-real-books-results.json",
+    "sha256": "2d773d75b33d66f049b929692f540441d9181662343d64b5f8f77e925ff5d221"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\submitted-evidence\\SHA256SUMS",
+    "sha256": "bbd2060ff760c9e7b78bb4aab0151a1f54a9310f85321d3ca9dcd9f2911afc88"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\submitted-evidence\\svg-visibility\\boundary.epub",
+    "sha256": "a2eedbab2637b7c7c4a2fc2b5a63eaf45ca4301c993c118a5bef37cec4e1876c"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\submitted-evidence\\svg-visibility\\normal.epub",
+    "sha256": "c7268c670c0e7ba0955463d44849f761932c67fdd47cbeed6d2f499f5b701229"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\submitted-evidence\\svg-visibility\\results.json",
+    "sha256": "41df1c0a8ac262bc566415028513a887e8b8b9bef9ea69a820842fb8ef9a70b8"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\submitted-evidence\\svg-visibility\\search.epub",
+    "sha256": "73c8be41259b778aaedc51fd5025ac55966561ecae20dc6d75cf0673d13316d5"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\submitted-evidence\\svg-visibility\\svg.epub",
+    "sha256": "6119a1cbd5af27f9043402e7434115b671eed31853f7abd2c620c6e779987347"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\submitted-evidence\\svg-visibility\\visible-child.png",
+    "sha256": "fdc2e0187087cfd3d31fe2ad016cf351ffad710f40a07bd7ecbdeb7efedaf49d"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\submitted-evidence\\tools\\audit-common.cjs",
+    "sha256": "dbc965fdc29d9cc0d038bfb63e029fed6ea4a8584c280ee26449c13a27a1c83c"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\submitted-evidence\\tools\\audit-r4-anchor-cancel.cjs",
+    "sha256": "4495d364c22d85a15883eb477cdee907005918aa5f6d6dc020a0c311bd214929"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\submitted-evidence\\tools\\audit-r4-boundaries.cjs",
+    "sha256": "07b2a9a92aa3e558f6b504eca72d376cb88f807ea31032a4289eef8fe20ac363"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\submitted-evidence\\tools\\audit-r4-reader-stages.cjs",
+    "sha256": "6bcaded9786ae00f6d47a2132d3bd4e101f83b3690479790fef2e404666937bd"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\submitted-evidence\\tools\\r4-boundary-results.json",
+    "sha256": "536f0a954adcc7a2c12f6bae30a6110b4b5532a13636e176127e5c24ae6932f7"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\submitted-evidence\\tools\\r4-reader-stage-results.json",
+    "sha256": "7ae06e22b24cc041a6e32e81fd5780a2257f38281243c4112f71bc18f97c6424"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\submitted-evidence\\tools\\r4-realbooks.cjs",
+    "sha256": "a335a4c7231a8bea8971b937f5cd1d0981d4a263d43efd92317ddbab5a462fa0"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\submitted-evidence\\tools\\review-client-r5.cjs",
+    "sha256": "8cbaba914453ed0677fc1602786483a6b8ba3dce68b5b7d9ba08b042e7c0034c"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\submitted-evidence\\tools\\review-image-ack.cjs",
+    "sha256": "8a0a839fc3c0f7aa259c79cbd3bd50a5969956e91f635f9cd516bce862f6e581"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\submitted-evidence\\tools\\review-new-boundaries-v2.cjs",
+    "sha256": "ef06806c962c0ed5f9e3f0102088ff3112886e46b7e82d2af3693680d2a62164"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\submitted-evidence\\tools\\review-new-boundaries.cjs",
+    "sha256": "cfb0f13418ffe5b7a23af8b0868cfe403d25012183be29b7ddcf5ad1efa09834"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\submitted-evidence\\tools\\review-races-v2.cjs",
+    "sha256": "9f391aa2c6a208718f97f9ed0599fe4ed6101c9410ffd735182a930235538514"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\submitted-evidence\\tools\\review-svg-visibility.cjs",
+    "sha256": "2bba003a8daf40bc939cbd5403ef7b3311019c4ed86f22ee4128217e53ac1c85"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\submitted-evidence\\状态设计-R5.md",
+    "sha256": "79338fe5473a0abf851842428ba534a4dd60bc792649ec14ced8c1b8fa5db3f0"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\submitted-report\\DeepSeek实施回报-R5.md",
+    "sha256": "47074ac5a43e1da58814dfefad8eb256415c7ae25a5b63bfdc072d5b95cfba2e"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\identity.json",
+    "sha256": "354df736a1774b42e54ae4ea85f9594729e241d55046f6b67ec9f85a94c4c2d9"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\GPT验收结论-R4暨DeepSeek返工任务书-R5.md",
+    "sha256": "76cfe3aa0c9c7a0fcd8b7e76ebcf259d0116e0a5e2c5797d8af293c68baafdaa"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\host-audit\\HostAudit.csproj",
+    "sha256": "cf85337f51e4fd1a162d51426edaad210232d1c739d6dd3e7eaa90f7062f8576"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\host-audit\\UiStubs.cs",
+    "sha256": "aac9f334514053460bc1c96f745bccda33e3862b242a8dc7015bea8cb15fd11c"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\host-audit\\Program.cs",
+    "sha256": "af0363fc4d2d9006fd3764ed5aea1aa0d169a281cd8647916ddca63ca827ca15"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\host-audit\\harness.cjs",
+    "sha256": "15186b8e7907ea0aafd1ca17be8075bc612dfd8b98f961dea77f90f74fc41be1"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\host-audit\\audit.cjs",
+    "sha256": "1275bbe5b7f0eb813156f06653593761886dcd88037246964fc690f2980dbb18"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\host-audit\\supplement.cjs",
+    "sha256": "c296f99adcdc41d3393d40a50129c2374f29a4d0eb72cc7660a29947e0440520"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\host-audit\\capacity.cjs",
+    "sha256": "4b624345fd91f1e31bac9890571bdbda398b3a46e126f2f9846d7ad30feaa595"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\host-audit\\boundary.cjs",
+    "sha256": "e9231a1536c2414dc70c32d30854632203533eb66dbe14b2d83bd0e6653323b7"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\host-audit\\regression.cjs",
+    "sha256": "0db171cb53552314db7e2889d9fef05b8acdfba3271ac1f3f823b56954d54841"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\host-audit\\宿主状态通信独立验收-R4.md",
+    "sha256": "5549fa744215f4597fd6f2c6fb9dce675f5564be8d8f2ca51e16fd15889cb288"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r3\\candidate\\reader-state.js",
+    "sha256": "386a563cac9023f447af5f078c0ea0737e40de50c5bcb96391cd9adab5893f4d"
+  },
+  {
+    "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r4\\candidate\\reader-state.js",
+    "sha256": "a790f06f1585291094596f5e0c6075eeeeef94e8eff5a7347ae760ec4149fcc0"
+  }
+]

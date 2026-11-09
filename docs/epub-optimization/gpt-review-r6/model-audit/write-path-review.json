@@ -1,0 +1,113 @@
+{
+  "scope": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r6\\model-audit",
+  "allowedWrites": "Only R6 model-audit. Product and all prior audit evidence read-only.",
+  "scriptAudit": "All R5 cjs files read before copy. Original ten suites preserved byte-identical. Relative ../candidate now resolves R6; all outputs/logs use __dirname. Original preparation/verification scripts not copied/executed as they reference obsolete roots. Common identity updated only.",
+  "inputs": 109,
+  "copies": [
+    {
+      "name": "audit-common.cjs",
+      "source": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\model-audit\\audit-common.cjs",
+      "oldHash": "d9a0cda0dbd6c238ee454f81c9a902a078b52175349c10cd737274729d7f93db",
+      "newHash": "5d95cb75dd88e443248b2dd30664c6d2d6f1c46f53bcb8ce6879a93f9e29e10d",
+      "byteIdentical": false
+    },
+    {
+      "name": "audit-models.cjs",
+      "source": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\model-audit\\audit-models.cjs",
+      "oldHash": "e7ab0771b38de81d8018e2e64fc4be907e84db0cfaf0b09a37fce22e7d769add",
+      "newHash": "e7ab0771b38de81d8018e2e64fc4be907e84db0cfaf0b09a37fce22e7d769add",
+      "byteIdentical": true
+    },
+    {
+      "name": "audit-reader-flow.cjs",
+      "source": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\model-audit\\audit-reader-flow.cjs",
+      "oldHash": "c92c11714d16877577feb60fa49941ddb02f41fbf3208c24801f3f5f770782b7",
+      "newHash": "c92c11714d16877577feb60fa49941ddb02f41fbf3208c24801f3f5f770782b7",
+      "byteIdentical": true
+    },
+    {
+      "name": "audit-boundaries.cjs",
+      "source": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\model-audit\\audit-boundaries.cjs",
+      "oldHash": "e29794e4e7243362d6ca3ba6c5f60254cc0ac92a993bbc68e5e8cc6fd0886383",
+      "newHash": "e29794e4e7243362d6ca3ba6c5f60254cc0ac92a993bbc68e5e8cc6fd0886383",
+      "byteIdentical": true
+    },
+    {
+      "name": "audit-r4-boundaries.cjs",
+      "source": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\model-audit\\audit-r4-boundaries.cjs",
+      "oldHash": "07b2a9a92aa3e558f6b504eca72d376cb88f807ea31032a4289eef8fe20ac363",
+      "newHash": "07b2a9a92aa3e558f6b504eca72d376cb88f807ea31032a4289eef8fe20ac363",
+      "byteIdentical": true
+    },
+    {
+      "name": "audit-r4-reader-stages.cjs",
+      "source": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\model-audit\\audit-r4-reader-stages.cjs",
+      "oldHash": "6bcaded9786ae00f6d47a2132d3bd4e101f83b3690479790fef2e404666937bd",
+      "newHash": "6bcaded9786ae00f6d47a2132d3bd4e101f83b3690479790fef2e404666937bd",
+      "byteIdentical": true
+    },
+    {
+      "name": "audit-r4-anchor-cancel.cjs",
+      "source": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\model-audit\\audit-r4-anchor-cancel.cjs",
+      "oldHash": "4495d364c22d85a15883eb477cdee907005918aa5f6d6dc020a0c311bd214929",
+      "newHash": "4495d364c22d85a15883eb477cdee907005918aa5f6d6dc020a0c311bd214929",
+      "byteIdentical": true
+    },
+    {
+      "name": "audit-r5-reader-consistency.cjs",
+      "source": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\model-audit\\audit-r5-reader-consistency.cjs",
+      "oldHash": "e94a156dd46c3217876ac3f475702ae06e8f520c31c6f0a6d4e8757b28fe4f5e",
+      "newHash": "e94a156dd46c3217876ac3f475702ae06e8f520c31c6f0a6d4e8757b28fe4f5e",
+      "byteIdentical": true
+    },
+    {
+      "name": "audit-r5-search-visibility.cjs",
+      "source": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\model-audit\\audit-r5-search-visibility.cjs",
+      "oldHash": "92cbdb228f5e167190401e02e8ec13ab2c116ed80e965eac179fc6d6766a1dcf",
+      "newHash": "92cbdb228f5e167190401e02e8ec13ab2c116ed80e965eac179fc6d6766a1dcf",
+      "byteIdentical": true
+    },
+    {
+      "name": "audit-r5-resource-trend.cjs",
+      "source": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\model-audit\\audit-r5-resource-trend.cjs",
+      "oldHash": "16b9568e0fa8a2b10f27c72d2f496ed25f3222ee1954e2010fe56e1e2e8dad91",
+      "newHash": "16b9568e0fa8a2b10f27c72d2f496ed25f3222ee1954e2010fe56e1e2e8dad91",
+      "byteIdentical": true
+    },
+    {
+      "name": "audit-r5-late-cancel.cjs",
+      "source": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\model-audit\\audit-r5-late-cancel.cjs",
+      "oldHash": "c1d2ff01a0d597b66d57b21a19c0d1576f99adb2743f7adf30aad403230c4f17",
+      "newHash": "c1d2ff01a0d597b66d57b21a19c0d1576f99adb2743f7adf30aad403230c4f17",
+      "byteIdentical": true
+    },
+    {
+      "name": "reader-harness.cjs",
+      "source": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\model-audit\\reader-harness.cjs",
+      "oldHash": "9c3937a5ca11592ec0cf1c1e8307320071dca824da61d1108fa3c1d308024fcd",
+      "newHash": "9c3937a5ca11592ec0cf1c1e8307320071dca824da61d1108fa3c1d308024fcd",
+      "byteIdentical": true
+    },
+    {
+      "name": "create-reader-harness.cjs",
+      "source": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\model-audit\\create-reader-harness.cjs",
+      "oldHash": "c623b5c624d22a2788626ddc611ee32ff7f685ef108e6ee66a4f1594630da037",
+      "newHash": "c623b5c624d22a2788626ddc611ee32ff7f685ef108e6ee66a4f1594630da037",
+      "byteIdentical": true
+    },
+    {
+      "name": "run-one.cjs",
+      "source": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\model-audit\\run-one.cjs",
+      "oldHash": "c265f0e8552dcc163f8866b7604981dbd861b707671beaea2c203f0335a1c362",
+      "newHash": "c265f0e8552dcc163f8866b7604981dbd861b707671beaea2c203f0335a1c362",
+      "byteIdentical": true
+    },
+    {
+      "name": "run-regressions.cjs",
+      "source": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\model-audit\\run-regressions.cjs",
+      "oldHash": "d6fe0a7ca884d88a88ee3c0f3912edb488af1acf4c0c1d6bea7a45dbd5b4f13f",
+      "newHash": "d6fe0a7ca884d88a88ee3c0f3912edb488af1acf4c0c1d6bea7a45dbd5b4f13f",
+      "byteIdentical": true
+    }
+  ]
+}

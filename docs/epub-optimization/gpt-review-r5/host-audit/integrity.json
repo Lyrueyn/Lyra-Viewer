@@ -1,0 +1,88 @@
+{
+  "checkedAt": "2026-10-27T19:50:37.772Z",
+  "inputCount": 125,
+  "submittedEvidenceFiles": 86,
+  "changed": [],
+  "candidateChecks": [
+    {
+      "path": "extension.json",
+      "sha256": "564a8d33896d9d17aadf4066ec40c56a681889aceb4067b34ee0198bea43cca1",
+      "expected": "564a8d33896d9d17aadf4066ec40c56a681889aceb4067b34ee0198bea43cca1"
+    },
+    {
+      "path": "index.html",
+      "sha256": "f6b244c642b1842652b4ed733116a26a3e92b1b0271bf7c1b444a1c8af3b411d",
+      "expected": "f6b244c642b1842652b4ed733116a26a3e92b1b0271bf7c1b444a1c8af3b411d"
+    },
+    {
+      "path": "reader.css",
+      "sha256": "d41553524e1dbed4c895cceb7e66e9b08ae35905b69545ff4637cedeac4a148b",
+      "expected": "d41553524e1dbed4c895cceb7e66e9b08ae35905b69545ff4637cedeac4a148b"
+    },
+    {
+      "path": "reader.js",
+      "sha256": "28790e1fb4cd5e04302c26217d80b293d8bdedfc3cd4e1551c9a02c0d93f61fb",
+      "expected": "28790e1fb4cd5e04302c26217d80b293d8bdedfc3cd4e1551c9a02c0d93f61fb"
+    },
+    {
+      "path": "epub-book.js",
+      "sha256": "62453a86f64fc9e883af379440c8306a8e218fa55456de490671873044c2cdc2",
+      "expected": "62453a86f64fc9e883af379440c8306a8e218fa55456de490671873044c2cdc2"
+    },
+    {
+      "path": "paginator.js",
+      "sha256": "15408a60cf6e65f83d2a3b479a878da888be964d7639ffafd468067c81a2a248",
+      "expected": "15408a60cf6e65f83d2a3b479a878da888be964d7639ffafd468067c81a2a248"
+    },
+    {
+      "path": "reader-state.js",
+      "sha256": "fd9e7cad46398d393966358d0813668975d8f93bf915a573e06536c747175e8d",
+      "expected": "fd9e7cad46398d393966358d0813668975d8f93bf915a573e06536c747175e8d"
+    },
+    {
+      "path": "search.js",
+      "sha256": "470c4fe4bb68f299b1aa367cffd1f3b5e616af2dad25e7b1cc1d10f25bea702a",
+      "expected": "470c4fe4bb68f299b1aa367cffd1f3b5e616af2dad25e7b1cc1d10f25bea702a"
+    },
+    {
+      "path": "lib/jszip.min.js",
+      "sha256": "acc7e41455a80765b5fd9c7ee1b8078a6d160bbbca455aeae854de65c947d59e",
+      "expected": "acc7e41455a80765b5fd9c7ee1b8078a6d160bbbca455aeae854de65c947d59e"
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "230184f60bae2feaf244f10a8bac053c8ff33a183bcc365b4d8b876d2b7f4809",
+      "expected": "230184f60bae2feaf244f10a8bac053c8ff33a183bcc365b4d8b876d2b7f4809"
+    },
+    {
+      "path": "README.md",
+      "sha256": "ebf3fd969d9d2403072e3d8f6a20a9bbdc2fbb7dcdf2a75dad63eb3d372a9b69",
+      "expected": "ebf3fd969d9d2403072e3d8f6a20a9bbdc2fbb7dcdf2a75dad63eb3d372a9b69"
+    }
+  ],
+  "hostChecks": [
+    {
+      "path": "ExtensionHostWindow.xaml",
+      "sha256": "283e3e4f682d1ca20563843e19eedd71f3829b29cb8bd69cdf1a64a42876ff88",
+      "expected": "283e3e4f682d1ca20563843e19eedd71f3829b29cb8bd69cdf1a64a42876ff88"
+    },
+    {
+      "path": "ExtensionHostWindow.xaml.cs",
+      "sha256": "cb8bfbbd0c3b9bf11770dd1d10ff1065b919ff5b03d72de93c1e2f3f1f1d0952",
+      "expected": "cb8bfbbd0c3b9bf11770dd1d10ff1065b919ff5b03d72de93c1e2f3f1f1d0952"
+    },
+    {
+      "path": "ReaderProtocol.cs",
+      "sha256": "079123e5d176d9db960f8eb4b4106a34295a4de3b416b75dc8458f0e8bbea913",
+      "expected": "079123e5d176d9db960f8eb4b4106a34295a4de3b416b75dc8458f0e8bbea913"
+    },
+    {
+      "path": "ReaderStateStore.cs",
+      "sha256": "58d7f17400a3a6917fe8c4c120e2d9ef8c58ba8b7d0df62eff8dddc59bd21c0a",
+      "expected": "58d7f17400a3a6917fe8c4c120e2d9ef8c58ba8b7d0df62eff8dddc59bd21c0a"
+    }
+  ],
+  "allUnchanged": true,
+  "identityMatches": true,
+  "boundary": "Hash baselines taken before execution; additional R4 client input baseline taken immediately before its protocol run; identity ZIP/DLL values are declared review identity, not native execution proof"
+}

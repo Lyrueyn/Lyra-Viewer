@@ -1,0 +1,166 @@
+{
+  "freezeId": "freeze-ba6f763-20261027-161555",
+  "frozenAtUtc": "2026-10-27T16:19:36Z",
+  "frozenAtLocal": "2026-10-28T00:19:36+0800",
+  "frozenBy": "DeepSeek R3 handoff",
+  "purpose": "冻结 GPT R3 复核开始时的源码、包、宿主源/DLL与 r3-evidence 基线；后续补充证据不得改写本目录",
+  "extension": {
+    "commit": "ba6f763f9579a808ddc201b82b5867412265c104",
+    "branch": "r3",
+    "version": "0.7.0",
+    "sourceArchive": "extension-source/lyra-epub-ba6f763-source.zip",
+    "package": "package/lyra-ext-epub-0.7.0-candidate.zip",
+    "packageSha256": "847D8047702E8DE6A8DEC8B7AE9E3FB60693686400B71AA65C2B134A7270636C"
+  },
+  "hostSourceFiles": [
+    "ExtensionHostWindow.xaml",
+    "ExtensionHostWindow.xaml.cs",
+    "ReaderProtocol.cs",
+    "ReaderStateStore.cs"
+  ],
+  "hostDllCopies": [
+    {
+      "path": "host-dll/WinUIGui-build-output.dll",
+      "source": "D:\\Temp\\lyra_epub_host_r3\\WinUIGui.dll"
+    },
+    {
+      "path": "host-dll/WinUIGui-candidate-runtime.dll",
+      "source": "D:\\Temp\\lyra_epub_r3_candidate\\WinUIGui.dll"
+    }
+  ],
+  "hostExeCopy": {
+    "path": "host-dll/WinUIGui-candidate-runtime.exe",
+    "source": "D:\\Temp\\lyra_epub_r3_candidate\\WinUIGui.exe"
+  },
+  "evidenceBaseline": [
+    "host-finalize-r3-final.log",
+    "host-finalize-r3.log",
+    "r3-browser-checks.out",
+    "r3-browser-results.json",
+    "r3-build-manifest.json",
+    "r3-host-audit-results.json",
+    "r3-model-results.json",
+    "r3-package.png",
+    "r3-reader-extra.out",
+    "r3-reader-smoke.out",
+    "real-host-identity.json",
+    "real-webview2-r3-open.png"
+  ],
+  "notes": [
+    "本目录只新增文件；原 r3-evidence 文件保持原样并已在 evidence-baseline 中复制。",
+    "后续 R3 补测证据写入 r3-evidence 的新文件名/新子目录，不覆盖本冻结目录。",
+    "若 GPT 的“四个宿主源文件”还包含 WinUIGui.csproj 或 MainWindow.xaml.cs，请指出，我会另建 freeze-addendum，不改本冻结。"
+  ],
+  "files": [
+    {
+      "path": "FREEZE.md",
+      "bytes": 1161,
+      "sha256": "A287C2D4E3BC26E2A9BE89BE055A27DAD4AE418BBB27B68C1E93052EECE350FE"
+    },
+    {
+      "path": "evidence-baseline/host-finalize-r3-final.log",
+      "bytes": 2748,
+      "sha256": "156B52B9A134A3FBAA0ABE828467A9E1FDA37D3D29979ABB527F21F628871874"
+    },
+    {
+      "path": "evidence-baseline/host-finalize-r3.log",
+      "bytes": 4867,
+      "sha256": "2D6F3B331F7E2E6C98E5F54BD1DEC0AE1755A70FE9EDDC40672FDB291AF479FA"
+    },
+    {
+      "path": "evidence-baseline/r3-browser-checks.out",
+      "bytes": 3809,
+      "sha256": "3E608FF96E34A28FB28E613C99132EB1C5025C7F0DD5A268CD555F125C874727"
+    },
+    {
+      "path": "evidence-baseline/r3-browser-results.json",
+      "bytes": 5465,
+      "sha256": "17742A4BD4DBE199275AD81D2D9AF28392FFCE81D8E1987182145AA08DF811C4"
+    },
+    {
+      "path": "evidence-baseline/r3-build-manifest.json",
+      "bytes": 2552,
+      "sha256": "C3C5FB08F51E548360AF6618EA18760901B4642AFCA2784D98C668CC908C5584"
+    },
+    {
+      "path": "evidence-baseline/r3-host-audit-results.json",
+      "bytes": 4358,
+      "sha256": "EF09E62C479C7CFB97F879E937CC7383273B118C7E68E37701884BC361158AA9"
+    },
+    {
+      "path": "evidence-baseline/r3-model-results.json",
+      "bytes": 2193,
+      "sha256": "98FB4316F84585CFE2EC62A0CB7CA06DB39266938127237AEE02603E67E12201"
+    },
+    {
+      "path": "evidence-baseline/r3-package.png",
+      "bytes": 162490,
+      "sha256": "5259337EE05F2F4D4A5085F3C0AA50772CB1B7B1B9FE8C563C4DBF56B9E527EE"
+    },
+    {
+      "path": "evidence-baseline/r3-reader-extra.out",
+      "bytes": 2440,
+      "sha256": "578CFDE50D5293DD456CB1A1402A28768168789A92A070F0089045A859DA9D65"
+    },
+    {
+      "path": "evidence-baseline/r3-reader-smoke.out",
+      "bytes": 3184,
+      "sha256": "56EAC27BA927399281D4B49E5E7A61462C8975FCDD671E084959E0A118DF3ACF"
+    },
+    {
+      "path": "evidence-baseline/real-host-identity.json",
+      "bytes": 891,
+      "sha256": "5EAB4ED52FD57BAE41C450D2EB4753D3BEB2C2601FCD1E34A1DBAA9555BE7F1F"
+    },
+    {
+      "path": "evidence-baseline/real-webview2-r3-open.png",
+      "bytes": 360625,
+      "sha256": "E1F153BE81F5CF82D18A174433BF40774442F533538AF03D6468EDC4EAA4DCAC"
+    },
+    {
+      "path": "extension-source/lyra-epub-ba6f763-source.zip",
+      "bytes": 128984,
+      "sha256": "A1C12B4FF3E46434F05385A0850C32BFFCE380E9E546D6737B386109158E4B7E"
+    },
+    {
+      "path": "host-dll/WinUIGui-build-output.dll",
+      "bytes": 599552,
+      "sha256": "8067990EBBAF126239B1F3B8CC936D36CB3B1F47DC317D541FDF4CE9C4A9905E"
+    },
+    {
+      "path": "host-dll/WinUIGui-candidate-runtime.dll",
+      "bytes": 599552,
+      "sha256": "8067990EBBAF126239B1F3B8CC936D36CB3B1F47DC317D541FDF4CE9C4A9905E"
+    },
+    {
+      "path": "host-dll/WinUIGui-candidate-runtime.exe",
+      "bytes": 162816,
+      "sha256": "D0F1BB58B07D0B6AEAEB463C841914D9594D0A803E3831FC272A6A5FFED3B335"
+    },
+    {
+      "path": "host-source/ExtensionHostWindow.xaml",
+      "bytes": 1863,
+      "sha256": "283E3E4F682D1CA20563843E19EEDD71F3829B29CB8BD69CDF1A64A42876FF88"
+    },
+    {
+      "path": "host-source/ExtensionHostWindow.xaml.cs",
+      "bytes": 29589,
+      "sha256": "F21FC3C9FF5C1ABDF4085648CA4C397D5609F70E8CCC0C69FD57F4C6D7E59B30"
+    },
+    {
+      "path": "host-source/ReaderProtocol.cs",
+      "bytes": 3879,
+      "sha256": "9452E71377331457EC61F03D3BA019F660DFE42FA9C1D0BA627E1071E19DFABC"
+    },
+    {
+      "path": "host-source/ReaderStateStore.cs",
+      "bytes": 24944,
+      "sha256": "985B7A38E974AF39606F99A7874B46E97E040672C75AD2C50AE5596DB7C5CEE2"
+    },
+    {
+      "path": "package/lyra-ext-epub-0.7.0-candidate.zip",
+      "bytes": 90769,
+      "sha256": "847D8047702E8DE6A8DEC8B7AE9E3FB60693686400B71AA65C2B134A7270636C"
+    }
+  ]
+}

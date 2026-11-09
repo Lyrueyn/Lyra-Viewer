@@ -1,0 +1,2910 @@
+{
+  "generatedAt": "2026-10-28T15:56:28.543Z",
+  "candidate": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r7\\candidate",
+  "identity": {
+    "expectedCommit": "a2bd44de2b53d0a3f9b4db70a4c597853ac7a315",
+    "expectedPackageSha256": "459766c816a42e9539ee555212f085525dde8645f93cb5772b5aa0da1650bcaa",
+    "hashes": {
+      "epub-book.js": "fdc8b91706bdcff5e0c7bdbfbd4edf7d223085bfc98ccf21e7341beae4d61f89",
+      "search.js": "470c4fe4bb68f299b1aa367cffd1f3b5e616af2dad25e7b1cc1d10f25bea702a",
+      "paginator.js": "6db2bad08f16d65203309d41fa44c040e29bc10b347f5face487e01e46f25d18",
+      "reader.js": "679ea5d2f5593c8dae613d39a70d6d806a3d78ceea1152080ef951159e33710d"
+    }
+  },
+  "runtime": {
+    "node": "v24.18.0",
+    "jsdom": "29.1.1"
+  },
+  "evidenceKind": "Frozen original JavaScript loaded unmodified; jsdom DOM/Range and real JSZip. Controlled async dependencies and geometry doubles disclosed per case. Not browser visibility, SVG painting or native desktop evidence.",
+  "results": [
+    {
+      "id": "Z-RESOURCE-FAIL40",
+      "verdict": "PASS",
+      "title": "40 post-acquisition prepare failures keep both old visible Node Blob URLs fetchable",
+      "detail": [
+        {
+          "iteration": 1,
+          "error": "after resource acquire",
+          "checks": [
+            {
+              "ok": true,
+              "bytes": [
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "ok": true,
+              "bytes": [
+                1,
+                2,
+                3
+              ]
+            }
+          ],
+          "resources": 2,
+          "owners": 1,
+          "pending": 0,
+          "live": 2
+        },
+        {
+          "iteration": 2,
+          "error": "after resource acquire",
+          "checks": [
+            {
+              "ok": true,
+              "bytes": [
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "ok": true,
+              "bytes": [
+                1,
+                2,
+                3
+              ]
+            }
+          ],
+          "resources": 2,
+          "owners": 1,
+          "pending": 0,
+          "live": 2
+        },
+        {
+          "iteration": 3,
+          "error": "after resource acquire",
+          "checks": [
+            {
+              "ok": true,
+              "bytes": [
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "ok": true,
+              "bytes": [
+                1,
+                2,
+                3
+              ]
+            }
+          ],
+          "resources": 2,
+          "owners": 1,
+          "pending": 0,
+          "live": 2
+        },
+        {
+          "iteration": 4,
+          "error": "after resource acquire",
+          "checks": [
+            {
+              "ok": true,
+              "bytes": [
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "ok": true,
+              "bytes": [
+                1,
+                2,
+                3
+              ]
+            }
+          ],
+          "resources": 2,
+          "owners": 1,
+          "pending": 0,
+          "live": 2
+        },
+        {
+          "iteration": 5,
+          "error": "after resource acquire",
+          "checks": [
+            {
+              "ok": true,
+              "bytes": [
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "ok": true,
+              "bytes": [
+                1,
+                2,
+                3
+              ]
+            }
+          ],
+          "resources": 2,
+          "owners": 1,
+          "pending": 0,
+          "live": 2
+        },
+        {
+          "iteration": 6,
+          "error": "after resource acquire",
+          "checks": [
+            {
+              "ok": true,
+              "bytes": [
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "ok": true,
+              "bytes": [
+                1,
+                2,
+                3
+              ]
+            }
+          ],
+          "resources": 2,
+          "owners": 1,
+          "pending": 0,
+          "live": 2
+        },
+        {
+          "iteration": 7,
+          "error": "after resource acquire",
+          "checks": [
+            {
+              "ok": true,
+              "bytes": [
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "ok": true,
+              "bytes": [
+                1,
+                2,
+                3
+              ]
+            }
+          ],
+          "resources": 2,
+          "owners": 1,
+          "pending": 0,
+          "live": 2
+        },
+        {
+          "iteration": 8,
+          "error": "after resource acquire",
+          "checks": [
+            {
+              "ok": true,
+              "bytes": [
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "ok": true,
+              "bytes": [
+                1,
+                2,
+                3
+              ]
+            }
+          ],
+          "resources": 2,
+          "owners": 1,
+          "pending": 0,
+          "live": 2
+        },
+        {
+          "iteration": 9,
+          "error": "after resource acquire",
+          "checks": [
+            {
+              "ok": true,
+              "bytes": [
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "ok": true,
+              "bytes": [
+                1,
+                2,
+                3
+              ]
+            }
+          ],
+          "resources": 2,
+          "owners": 1,
+          "pending": 0,
+          "live": 2
+        },
+        {
+          "iteration": 10,
+          "error": "after resource acquire",
+          "checks": [
+            {
+              "ok": true,
+              "bytes": [
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "ok": true,
+              "bytes": [
+                1,
+                2,
+                3
+              ]
+            }
+          ],
+          "resources": 2,
+          "owners": 1,
+          "pending": 0,
+          "live": 2
+        },
+        {
+          "iteration": 11,
+          "error": "after resource acquire",
+          "checks": [
+            {
+              "ok": true,
+              "bytes": [
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "ok": true,
+              "bytes": [
+                1,
+                2,
+                3
+              ]
+            }
+          ],
+          "resources": 2,
+          "owners": 1,
+          "pending": 0,
+          "live": 2
+        },
+        {
+          "iteration": 12,
+          "error": "after resource acquire",
+          "checks": [
+            {
+              "ok": true,
+              "bytes": [
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "ok": true,
+              "bytes": [
+                1,
+                2,
+                3
+              ]
+            }
+          ],
+          "resources": 2,
+          "owners": 1,
+          "pending": 0,
+          "live": 2
+        },
+        {
+          "iteration": 13,
+          "error": "after resource acquire",
+          "checks": [
+            {
+              "ok": true,
+              "bytes": [
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "ok": true,
+              "bytes": [
+                1,
+                2,
+                3
+              ]
+            }
+          ],
+          "resources": 2,
+          "owners": 1,
+          "pending": 0,
+          "live": 2
+        },
+        {
+          "iteration": 14,
+          "error": "after resource acquire",
+          "checks": [
+            {
+              "ok": true,
+              "bytes": [
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "ok": true,
+              "bytes": [
+                1,
+                2,
+                3
+              ]
+            }
+          ],
+          "resources": 2,
+          "owners": 1,
+          "pending": 0,
+          "live": 2
+        },
+        {
+          "iteration": 15,
+          "error": "after resource acquire",
+          "checks": [
+            {
+              "ok": true,
+              "bytes": [
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "ok": true,
+              "bytes": [
+                1,
+                2,
+                3
+              ]
+            }
+          ],
+          "resources": 2,
+          "owners": 1,
+          "pending": 0,
+          "live": 2
+        },
+        {
+          "iteration": 16,
+          "error": "after resource acquire",
+          "checks": [
+            {
+              "ok": true,
+              "bytes": [
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "ok": true,
+              "bytes": [
+                1,
+                2,
+                3
+              ]
+            }
+          ],
+          "resources": 2,
+          "owners": 1,
+          "pending": 0,
+          "live": 2
+        },
+        {
+          "iteration": 17,
+          "error": "after resource acquire",
+          "checks": [
+            {
+              "ok": true,
+              "bytes": [
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "ok": true,
+              "bytes": [
+                1,
+                2,
+                3
+              ]
+            }
+          ],
+          "resources": 2,
+          "owners": 1,
+          "pending": 0,
+          "live": 2
+        },
+        {
+          "iteration": 18,
+          "error": "after resource acquire",
+          "checks": [
+            {
+              "ok": true,
+              "bytes": [
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "ok": true,
+              "bytes": [
+                1,
+                2,
+                3
+              ]
+            }
+          ],
+          "resources": 2,
+          "owners": 1,
+          "pending": 0,
+          "live": 2
+        },
+        {
+          "iteration": 19,
+          "error": "after resource acquire",
+          "checks": [
+            {
+              "ok": true,
+              "bytes": [
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "ok": true,
+              "bytes": [
+                1,
+                2,
+                3
+              ]
+            }
+          ],
+          "resources": 2,
+          "owners": 1,
+          "pending": 0,
+          "live": 2
+        },
+        {
+          "iteration": 20,
+          "error": "after resource acquire",
+          "checks": [
+            {
+              "ok": true,
+              "bytes": [
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "ok": true,
+              "bytes": [
+                1,
+                2,
+                3
+              ]
+            }
+          ],
+          "resources": 2,
+          "owners": 1,
+          "pending": 0,
+          "live": 2
+        },
+        {
+          "iteration": 21,
+          "error": "after resource acquire",
+          "checks": [
+            {
+              "ok": true,
+              "bytes": [
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "ok": true,
+              "bytes": [
+                1,
+                2,
+                3
+              ]
+            }
+          ],
+          "resources": 2,
+          "owners": 1,
+          "pending": 0,
+          "live": 2
+        },
+        {
+          "iteration": 22,
+          "error": "after resource acquire",
+          "checks": [
+            {
+              "ok": true,
+              "bytes": [
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "ok": true,
+              "bytes": [
+                1,
+                2,
+                3
+              ]
+            }
+          ],
+          "resources": 2,
+          "owners": 1,
+          "pending": 0,
+          "live": 2
+        },
+        {
+          "iteration": 23,
+          "error": "after resource acquire",
+          "checks": [
+            {
+              "ok": true,
+              "bytes": [
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "ok": true,
+              "bytes": [
+                1,
+                2,
+                3
+              ]
+            }
+          ],
+          "resources": 2,
+          "owners": 1,
+          "pending": 0,
+          "live": 2
+        },
+        {
+          "iteration": 24,
+          "error": "after resource acquire",
+          "checks": [
+            {
+              "ok": true,
+              "bytes": [
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "ok": true,
+              "bytes": [
+                1,
+                2,
+                3
+              ]
+            }
+          ],
+          "resources": 2,
+          "owners": 1,
+          "pending": 0,
+          "live": 2
+        },
+        {
+          "iteration": 25,
+          "error": "after resource acquire",
+          "checks": [
+            {
+              "ok": true,
+              "bytes": [
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "ok": true,
+              "bytes": [
+                1,
+                2,
+                3
+              ]
+            }
+          ],
+          "resources": 2,
+          "owners": 1,
+          "pending": 0,
+          "live": 2
+        },
+        {
+          "iteration": 26,
+          "error": "after resource acquire",
+          "checks": [
+            {
+              "ok": true,
+              "bytes": [
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "ok": true,
+              "bytes": [
+                1,
+                2,
+                3
+              ]
+            }
+          ],
+          "resources": 2,
+          "owners": 1,
+          "pending": 0,
+          "live": 2
+        },
+        {
+          "iteration": 27,
+          "error": "after resource acquire",
+          "checks": [
+            {
+              "ok": true,
+              "bytes": [
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "ok": true,
+              "bytes": [
+                1,
+                2,
+                3
+              ]
+            }
+          ],
+          "resources": 2,
+          "owners": 1,
+          "pending": 0,
+          "live": 2
+        },
+        {
+          "iteration": 28,
+          "error": "after resource acquire",
+          "checks": [
+            {
+              "ok": true,
+              "bytes": [
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "ok": true,
+              "bytes": [
+                1,
+                2,
+                3
+              ]
+            }
+          ],
+          "resources": 2,
+          "owners": 1,
+          "pending": 0,
+          "live": 2
+        },
+        {
+          "iteration": 29,
+          "error": "after resource acquire",
+          "checks": [
+            {
+              "ok": true,
+              "bytes": [
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "ok": true,
+              "bytes": [
+                1,
+                2,
+                3
+              ]
+            }
+          ],
+          "resources": 2,
+          "owners": 1,
+          "pending": 0,
+          "live": 2
+        },
+        {
+          "iteration": 30,
+          "error": "after resource acquire",
+          "checks": [
+            {
+              "ok": true,
+              "bytes": [
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "ok": true,
+              "bytes": [
+                1,
+                2,
+                3
+              ]
+            }
+          ],
+          "resources": 2,
+          "owners": 1,
+          "pending": 0,
+          "live": 2
+        },
+        {
+          "iteration": 31,
+          "error": "after resource acquire",
+          "checks": [
+            {
+              "ok": true,
+              "bytes": [
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "ok": true,
+              "bytes": [
+                1,
+                2,
+                3
+              ]
+            }
+          ],
+          "resources": 2,
+          "owners": 1,
+          "pending": 0,
+          "live": 2
+        },
+        {
+          "iteration": 32,
+          "error": "after resource acquire",
+          "checks": [
+            {
+              "ok": true,
+              "bytes": [
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "ok": true,
+              "bytes": [
+                1,
+                2,
+                3
+              ]
+            }
+          ],
+          "resources": 2,
+          "owners": 1,
+          "pending": 0,
+          "live": 2
+        },
+        {
+          "iteration": 33,
+          "error": "after resource acquire",
+          "checks": [
+            {
+              "ok": true,
+              "bytes": [
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "ok": true,
+              "bytes": [
+                1,
+                2,
+                3
+              ]
+            }
+          ],
+          "resources": 2,
+          "owners": 1,
+          "pending": 0,
+          "live": 2
+        },
+        {
+          "iteration": 34,
+          "error": "after resource acquire",
+          "checks": [
+            {
+              "ok": true,
+              "bytes": [
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "ok": true,
+              "bytes": [
+                1,
+                2,
+                3
+              ]
+            }
+          ],
+          "resources": 2,
+          "owners": 1,
+          "pending": 0,
+          "live": 2
+        },
+        {
+          "iteration": 35,
+          "error": "after resource acquire",
+          "checks": [
+            {
+              "ok": true,
+              "bytes": [
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "ok": true,
+              "bytes": [
+                1,
+                2,
+                3
+              ]
+            }
+          ],
+          "resources": 2,
+          "owners": 1,
+          "pending": 0,
+          "live": 2
+        },
+        {
+          "iteration": 36,
+          "error": "after resource acquire",
+          "checks": [
+            {
+              "ok": true,
+              "bytes": [
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "ok": true,
+              "bytes": [
+                1,
+                2,
+                3
+              ]
+            }
+          ],
+          "resources": 2,
+          "owners": 1,
+          "pending": 0,
+          "live": 2
+        },
+        {
+          "iteration": 37,
+          "error": "after resource acquire",
+          "checks": [
+            {
+              "ok": true,
+              "bytes": [
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "ok": true,
+              "bytes": [
+                1,
+                2,
+                3
+              ]
+            }
+          ],
+          "resources": 2,
+          "owners": 1,
+          "pending": 0,
+          "live": 2
+        },
+        {
+          "iteration": 38,
+          "error": "after resource acquire",
+          "checks": [
+            {
+              "ok": true,
+              "bytes": [
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "ok": true,
+              "bytes": [
+                1,
+                2,
+                3
+              ]
+            }
+          ],
+          "resources": 2,
+          "owners": 1,
+          "pending": 0,
+          "live": 2
+        },
+        {
+          "iteration": 39,
+          "error": "after resource acquire",
+          "checks": [
+            {
+              "ok": true,
+              "bytes": [
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "ok": true,
+              "bytes": [
+                1,
+                2,
+                3
+              ]
+            }
+          ],
+          "resources": 2,
+          "owners": 1,
+          "pending": 0,
+          "live": 2
+        },
+        {
+          "iteration": 40,
+          "error": "after resource acquire",
+          "checks": [
+            {
+              "ok": true,
+              "bytes": [
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "ok": true,
+              "bytes": [
+                1,
+                2,
+                3
+              ]
+            }
+          ],
+          "resources": 2,
+          "owners": 1,
+          "pending": 0,
+          "live": 2
+        }
+      ]
+    },
+    {
+      "id": "Z-RESOURCE-CANCEL40",
+      "verdict": "PASS",
+      "title": "40 abandoned prepared candidates release only candidate unique image",
+      "detail": [
+        {
+          "iteration": 1,
+          "checks": [
+            {
+              "ok": true,
+              "bytes": [
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "ok": true,
+              "bytes": [
+                1,
+                2,
+                3
+              ]
+            }
+          ],
+          "owners": 1,
+          "resources": 2,
+          "pending": 0,
+          "live": 2
+        },
+        {
+          "iteration": 2,
+          "checks": [
+            {
+              "ok": true,
+              "bytes": [
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "ok": true,
+              "bytes": [
+                1,
+                2,
+                3
+              ]
+            }
+          ],
+          "owners": 1,
+          "resources": 2,
+          "pending": 0,
+          "live": 2
+        },
+        {
+          "iteration": 3,
+          "checks": [
+            {
+              "ok": true,
+              "bytes": [
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "ok": true,
+              "bytes": [
+                1,
+                2,
+                3
+              ]
+            }
+          ],
+          "owners": 1,
+          "resources": 2,
+          "pending": 0,
+          "live": 2
+        },
+        {
+          "iteration": 4,
+          "checks": [
+            {
+              "ok": true,
+              "bytes": [
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "ok": true,
+              "bytes": [
+                1,
+                2,
+                3
+              ]
+            }
+          ],
+          "owners": 1,
+          "resources": 2,
+          "pending": 0,
+          "live": 2
+        },
+        {
+          "iteration": 5,
+          "checks": [
+            {
+              "ok": true,
+              "bytes": [
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "ok": true,
+              "bytes": [
+                1,
+                2,
+                3
+              ]
+            }
+          ],
+          "owners": 1,
+          "resources": 2,
+          "pending": 0,
+          "live": 2
+        },
+        {
+          "iteration": 6,
+          "checks": [
+            {
+              "ok": true,
+              "bytes": [
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "ok": true,
+              "bytes": [
+                1,
+                2,
+                3
+              ]
+            }
+          ],
+          "owners": 1,
+          "resources": 2,
+          "pending": 0,
+          "live": 2
+        },
+        {
+          "iteration": 7,
+          "checks": [
+            {
+              "ok": true,
+              "bytes": [
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "ok": true,
+              "bytes": [
+                1,
+                2,
+                3
+              ]
+            }
+          ],
+          "owners": 1,
+          "resources": 2,
+          "pending": 0,
+          "live": 2
+        },
+        {
+          "iteration": 8,
+          "checks": [
+            {
+              "ok": true,
+              "bytes": [
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "ok": true,
+              "bytes": [
+                1,
+                2,
+                3
+              ]
+            }
+          ],
+          "owners": 1,
+          "resources": 2,
+          "pending": 0,
+          "live": 2
+        },
+        {
+          "iteration": 9,
+          "checks": [
+            {
+              "ok": true,
+              "bytes": [
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "ok": true,
+              "bytes": [
+                1,
+                2,
+                3
+              ]
+            }
+          ],
+          "owners": 1,
+          "resources": 2,
+          "pending": 0,
+          "live": 2
+        },
+        {
+          "iteration": 10,
+          "checks": [
+            {
+              "ok": true,
+              "bytes": [
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "ok": true,
+              "bytes": [
+                1,
+                2,
+                3
+              ]
+            }
+          ],
+          "owners": 1,
+          "resources": 2,
+          "pending": 0,
+          "live": 2
+        },
+        {
+          "iteration": 11,
+          "checks": [
+            {
+              "ok": true,
+              "bytes": [
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "ok": true,
+              "bytes": [
+                1,
+                2,
+                3
+              ]
+            }
+          ],
+          "owners": 1,
+          "resources": 2,
+          "pending": 0,
+          "live": 2
+        },
+        {
+          "iteration": 12,
+          "checks": [
+            {
+              "ok": true,
+              "bytes": [
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "ok": true,
+              "bytes": [
+                1,
+                2,
+                3
+              ]
+            }
+          ],
+          "owners": 1,
+          "resources": 2,
+          "pending": 0,
+          "live": 2
+        },
+        {
+          "iteration": 13,
+          "checks": [
+            {
+              "ok": true,
+              "bytes": [
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "ok": true,
+              "bytes": [
+                1,
+                2,
+                3
+              ]
+            }
+          ],
+          "owners": 1,
+          "resources": 2,
+          "pending": 0,
+          "live": 2
+        },
+        {
+          "iteration": 14,
+          "checks": [
+            {
+              "ok": true,
+              "bytes": [
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "ok": true,
+              "bytes": [
+                1,
+                2,
+                3
+              ]
+            }
+          ],
+          "owners": 1,
+          "resources": 2,
+          "pending": 0,
+          "live": 2
+        },
+        {
+          "iteration": 15,
+          "checks": [
+            {
+              "ok": true,
+              "bytes": [
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "ok": true,
+              "bytes": [
+                1,
+                2,
+                3
+              ]
+            }
+          ],
+          "owners": 1,
+          "resources": 2,
+          "pending": 0,
+          "live": 2
+        },
+        {
+          "iteration": 16,
+          "checks": [
+            {
+              "ok": true,
+              "bytes": [
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "ok": true,
+              "bytes": [
+                1,
+                2,
+                3
+              ]
+            }
+          ],
+          "owners": 1,
+          "resources": 2,
+          "pending": 0,
+          "live": 2
+        },
+        {
+          "iteration": 17,
+          "checks": [
+            {
+              "ok": true,
+              "bytes": [
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "ok": true,
+              "bytes": [
+                1,
+                2,
+                3
+              ]
+            }
+          ],
+          "owners": 1,
+          "resources": 2,
+          "pending": 0,
+          "live": 2
+        },
+        {
+          "iteration": 18,
+          "checks": [
+            {
+              "ok": true,
+              "bytes": [
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "ok": true,
+              "bytes": [
+                1,
+                2,
+                3
+              ]
+            }
+          ],
+          "owners": 1,
+          "resources": 2,
+          "pending": 0,
+          "live": 2
+        },
+        {
+          "iteration": 19,
+          "checks": [
+            {
+              "ok": true,
+              "bytes": [
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "ok": true,
+              "bytes": [
+                1,
+                2,
+                3
+              ]
+            }
+          ],
+          "owners": 1,
+          "resources": 2,
+          "pending": 0,
+          "live": 2
+        },
+        {
+          "iteration": 20,
+          "checks": [
+            {
+              "ok": true,
+              "bytes": [
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "ok": true,
+              "bytes": [
+                1,
+                2,
+                3
+              ]
+            }
+          ],
+          "owners": 1,
+          "resources": 2,
+          "pending": 0,
+          "live": 2
+        },
+        {
+          "iteration": 21,
+          "checks": [
+            {
+              "ok": true,
+              "bytes": [
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "ok": true,
+              "bytes": [
+                1,
+                2,
+                3
+              ]
+            }
+          ],
+          "owners": 1,
+          "resources": 2,
+          "pending": 0,
+          "live": 2
+        },
+        {
+          "iteration": 22,
+          "checks": [
+            {
+              "ok": true,
+              "bytes": [
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "ok": true,
+              "bytes": [
+                1,
+                2,
+                3
+              ]
+            }
+          ],
+          "owners": 1,
+          "resources": 2,
+          "pending": 0,
+          "live": 2
+        },
+        {
+          "iteration": 23,
+          "checks": [
+            {
+              "ok": true,
+              "bytes": [
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "ok": true,
+              "bytes": [
+                1,
+                2,
+                3
+              ]
+            }
+          ],
+          "owners": 1,
+          "resources": 2,
+          "pending": 0,
+          "live": 2
+        },
+        {
+          "iteration": 24,
+          "checks": [
+            {
+              "ok": true,
+              "bytes": [
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "ok": true,
+              "bytes": [
+                1,
+                2,
+                3
+              ]
+            }
+          ],
+          "owners": 1,
+          "resources": 2,
+          "pending": 0,
+          "live": 2
+        },
+        {
+          "iteration": 25,
+          "checks": [
+            {
+              "ok": true,
+              "bytes": [
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "ok": true,
+              "bytes": [
+                1,
+                2,
+                3
+              ]
+            }
+          ],
+          "owners": 1,
+          "resources": 2,
+          "pending": 0,
+          "live": 2
+        },
+        {
+          "iteration": 26,
+          "checks": [
+            {
+              "ok": true,
+              "bytes": [
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "ok": true,
+              "bytes": [
+                1,
+                2,
+                3
+              ]
+            }
+          ],
+          "owners": 1,
+          "resources": 2,
+          "pending": 0,
+          "live": 2
+        },
+        {
+          "iteration": 27,
+          "checks": [
+            {
+              "ok": true,
+              "bytes": [
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "ok": true,
+              "bytes": [
+                1,
+                2,
+                3
+              ]
+            }
+          ],
+          "owners": 1,
+          "resources": 2,
+          "pending": 0,
+          "live": 2
+        },
+        {
+          "iteration": 28,
+          "checks": [
+            {
+              "ok": true,
+              "bytes": [
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "ok": true,
+              "bytes": [
+                1,
+                2,
+                3
+              ]
+            }
+          ],
+          "owners": 1,
+          "resources": 2,
+          "pending": 0,
+          "live": 2
+        },
+        {
+          "iteration": 29,
+          "checks": [
+            {
+              "ok": true,
+              "bytes": [
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "ok": true,
+              "bytes": [
+                1,
+                2,
+                3
+              ]
+            }
+          ],
+          "owners": 1,
+          "resources": 2,
+          "pending": 0,
+          "live": 2
+        },
+        {
+          "iteration": 30,
+          "checks": [
+            {
+              "ok": true,
+              "bytes": [
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "ok": true,
+              "bytes": [
+                1,
+                2,
+                3
+              ]
+            }
+          ],
+          "owners": 1,
+          "resources": 2,
+          "pending": 0,
+          "live": 2
+        },
+        {
+          "iteration": 31,
+          "checks": [
+            {
+              "ok": true,
+              "bytes": [
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "ok": true,
+              "bytes": [
+                1,
+                2,
+                3
+              ]
+            }
+          ],
+          "owners": 1,
+          "resources": 2,
+          "pending": 0,
+          "live": 2
+        },
+        {
+          "iteration": 32,
+          "checks": [
+            {
+              "ok": true,
+              "bytes": [
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "ok": true,
+              "bytes": [
+                1,
+                2,
+                3
+              ]
+            }
+          ],
+          "owners": 1,
+          "resources": 2,
+          "pending": 0,
+          "live": 2
+        },
+        {
+          "iteration": 33,
+          "checks": [
+            {
+              "ok": true,
+              "bytes": [
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "ok": true,
+              "bytes": [
+                1,
+                2,
+                3
+              ]
+            }
+          ],
+          "owners": 1,
+          "resources": 2,
+          "pending": 0,
+          "live": 2
+        },
+        {
+          "iteration": 34,
+          "checks": [
+            {
+              "ok": true,
+              "bytes": [
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "ok": true,
+              "bytes": [
+                1,
+                2,
+                3
+              ]
+            }
+          ],
+          "owners": 1,
+          "resources": 2,
+          "pending": 0,
+          "live": 2
+        },
+        {
+          "iteration": 35,
+          "checks": [
+            {
+              "ok": true,
+              "bytes": [
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "ok": true,
+              "bytes": [
+                1,
+                2,
+                3
+              ]
+            }
+          ],
+          "owners": 1,
+          "resources": 2,
+          "pending": 0,
+          "live": 2
+        },
+        {
+          "iteration": 36,
+          "checks": [
+            {
+              "ok": true,
+              "bytes": [
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "ok": true,
+              "bytes": [
+                1,
+                2,
+                3
+              ]
+            }
+          ],
+          "owners": 1,
+          "resources": 2,
+          "pending": 0,
+          "live": 2
+        },
+        {
+          "iteration": 37,
+          "checks": [
+            {
+              "ok": true,
+              "bytes": [
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "ok": true,
+              "bytes": [
+                1,
+                2,
+                3
+              ]
+            }
+          ],
+          "owners": 1,
+          "resources": 2,
+          "pending": 0,
+          "live": 2
+        },
+        {
+          "iteration": 38,
+          "checks": [
+            {
+              "ok": true,
+              "bytes": [
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "ok": true,
+              "bytes": [
+                1,
+                2,
+                3
+              ]
+            }
+          ],
+          "owners": 1,
+          "resources": 2,
+          "pending": 0,
+          "live": 2
+        },
+        {
+          "iteration": 39,
+          "checks": [
+            {
+              "ok": true,
+              "bytes": [
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "ok": true,
+              "bytes": [
+                1,
+                2,
+                3
+              ]
+            }
+          ],
+          "owners": 1,
+          "resources": 2,
+          "pending": 0,
+          "live": 2
+        },
+        {
+          "iteration": 40,
+          "checks": [
+            {
+              "ok": true,
+              "bytes": [
+                7,
+                8,
+                9
+              ]
+            },
+            {
+              "ok": true,
+              "bytes": [
+                1,
+                2,
+                3
+              ]
+            }
+          ],
+          "owners": 1,
+          "resources": 2,
+          "pending": 0,
+          "live": 2
+        }
+      ]
+    },
+    {
+      "id": "Z-RESOURCE-200",
+      "verdict": "PASS",
+      "title": "200 committed image transitions retain two current URLs and one owner",
+      "detail": {
+        "started": {
+          "created": 82,
+          "revoked": 80
+        },
+        "samples": [
+          {
+            "transitions": 20,
+            "checks": [
+              {
+                "ok": true,
+                "bytes": [
+                  7,
+                  8,
+                  9
+                ]
+              },
+              {
+                "ok": true,
+                "bytes": [
+                  1,
+                  2,
+                  3
+                ]
+              }
+            ],
+            "nodes": 3,
+            "resources": 2,
+            "owners": 1,
+            "pending": 0,
+            "totalCreated": 102,
+            "totalRevoked": 100,
+            "live": 2,
+            "memory": {
+              "rss": 192860160,
+              "heapTotal": 206516224,
+              "heapUsed": 60040488,
+              "external": 4784667,
+              "arrayBuffers": 981303
+            }
+          },
+          {
+            "transitions": 40,
+            "checks": [
+              {
+                "ok": true,
+                "bytes": [
+                  7,
+                  8,
+                  9
+                ]
+              },
+              {
+                "ok": true,
+                "bytes": [
+                  1,
+                  2,
+                  3
+                ]
+              }
+            ],
+            "nodes": 3,
+            "resources": 2,
+            "owners": 1,
+            "pending": 0,
+            "totalCreated": 122,
+            "totalRevoked": 120,
+            "live": 2,
+            "memory": {
+              "rss": 192614400,
+              "heapTotal": 206516224,
+              "heapUsed": 69850112,
+              "external": 4789027,
+              "arrayBuffers": 985683
+            }
+          },
+          {
+            "transitions": 60,
+            "checks": [
+              {
+                "ok": true,
+                "bytes": [
+                  7,
+                  8,
+                  9
+                ]
+              },
+              {
+                "ok": true,
+                "bytes": [
+                  1,
+                  2,
+                  3
+                ]
+              }
+            ],
+            "nodes": 3,
+            "resources": 2,
+            "owners": 1,
+            "pending": 0,
+            "totalCreated": 142,
+            "totalRevoked": 140,
+            "live": 2,
+            "memory": {
+              "rss": 194068480,
+              "heapTotal": 206516224,
+              "heapUsed": 79573944,
+              "external": 4793347,
+              "arrayBuffers": 990063
+            }
+          },
+          {
+            "transitions": 80,
+            "checks": [
+              {
+                "ok": true,
+                "bytes": [
+                  7,
+                  8,
+                  9
+                ]
+              },
+              {
+                "ok": true,
+                "bytes": [
+                  1,
+                  2,
+                  3
+                ]
+              }
+            ],
+            "nodes": 3,
+            "resources": 2,
+            "owners": 1,
+            "pending": 0,
+            "totalCreated": 162,
+            "totalRevoked": 160,
+            "live": 2,
+            "memory": {
+              "rss": 196329472,
+              "heapTotal": 206516224,
+              "heapUsed": 89083080,
+              "external": 4797667,
+              "arrayBuffers": 994443
+            }
+          },
+          {
+            "transitions": 100,
+            "checks": [
+              {
+                "ok": true,
+                "bytes": [
+                  7,
+                  8,
+                  9
+                ]
+              },
+              {
+                "ok": true,
+                "bytes": [
+                  1,
+                  2,
+                  3
+                ]
+              }
+            ],
+            "nodes": 3,
+            "resources": 2,
+            "owners": 1,
+            "pending": 0,
+            "totalCreated": 182,
+            "totalRevoked": 180,
+            "live": 2,
+            "memory": {
+              "rss": 206168064,
+              "heapTotal": 206778368,
+              "heapUsed": 98963200,
+              "external": 4801987,
+              "arrayBuffers": 998823
+            }
+          },
+          {
+            "transitions": 120,
+            "checks": [
+              {
+                "ok": true,
+                "bytes": [
+                  7,
+                  8,
+                  9
+                ]
+              },
+              {
+                "ok": true,
+                "bytes": [
+                  1,
+                  2,
+                  3
+                ]
+              }
+            ],
+            "nodes": 3,
+            "resources": 2,
+            "owners": 1,
+            "pending": 0,
+            "totalCreated": 202,
+            "totalRevoked": 200,
+            "live": 2,
+            "memory": {
+              "rss": 215453696,
+              "heapTotal": 206778368,
+              "heapUsed": 62085416,
+              "external": 4781695,
+              "arrayBuffers": 978591
+            }
+          },
+          {
+            "transitions": 140,
+            "checks": [
+              {
+                "ok": true,
+                "bytes": [
+                  7,
+                  8,
+                  9
+                ]
+              },
+              {
+                "ok": true,
+                "bytes": [
+                  1,
+                  2,
+                  3
+                ]
+              }
+            ],
+            "nodes": 3,
+            "resources": 2,
+            "owners": 1,
+            "pending": 0,
+            "totalCreated": 222,
+            "totalRevoked": 220,
+            "live": 2,
+            "memory": {
+              "rss": 215842816,
+              "heapTotal": 206778368,
+              "heapUsed": 71463216,
+              "external": 4786015,
+              "arrayBuffers": 982971
+            }
+          },
+          {
+            "transitions": 160,
+            "checks": [
+              {
+                "ok": true,
+                "bytes": [
+                  7,
+                  8,
+                  9
+                ]
+              },
+              {
+                "ok": true,
+                "bytes": [
+                  1,
+                  2,
+                  3
+                ]
+              }
+            ],
+            "nodes": 3,
+            "resources": 2,
+            "owners": 1,
+            "pending": 0,
+            "totalCreated": 242,
+            "totalRevoked": 240,
+            "live": 2,
+            "memory": {
+              "rss": 219987968,
+              "heapTotal": 206778368,
+              "heapUsed": 80819232,
+              "external": 4790335,
+              "arrayBuffers": 987351
+            }
+          },
+          {
+            "transitions": 180,
+            "checks": [
+              {
+                "ok": true,
+                "bytes": [
+                  7,
+                  8,
+                  9
+                ]
+              },
+              {
+                "ok": true,
+                "bytes": [
+                  1,
+                  2,
+                  3
+                ]
+              }
+            ],
+            "nodes": 3,
+            "resources": 2,
+            "owners": 1,
+            "pending": 0,
+            "totalCreated": 262,
+            "totalRevoked": 260,
+            "live": 2,
+            "memory": {
+              "rss": 229105664,
+              "heapTotal": 207302656,
+              "heapUsed": 90582032,
+              "external": 4794655,
+              "arrayBuffers": 991731
+            }
+          },
+          {
+            "transitions": 200,
+            "checks": [
+              {
+                "ok": true,
+                "bytes": [
+                  7,
+                  8,
+                  9
+                ]
+              },
+              {
+                "ok": true,
+                "bytes": [
+                  1,
+                  2,
+                  3
+                ]
+              }
+            ],
+            "nodes": 3,
+            "resources": 2,
+            "owners": 1,
+            "pending": 0,
+            "totalCreated": 282,
+            "totalRevoked": 280,
+            "live": 2,
+            "memory": {
+              "rss": 238800896,
+              "heapTotal": 207302656,
+              "heapUsed": 99834776,
+              "external": 4798975,
+              "arrayBuffers": 996111
+            }
+          }
+        ],
+        "idle": {
+          "nodes": 3,
+          "resources": 2,
+          "owners": 1,
+          "pending": 0,
+          "live": 2,
+          "memory": {
+            "rss": 238215168,
+            "heapTotal": 207302656,
+            "heapUsed": 99863440,
+            "external": 4798975,
+            "arrayBuffers": 996111
+          }
+        },
+        "note": "Node Blob registry + original Book lifecycle + one jsdom root. No real image decode/Edge DOM/WinUI process claim."
+      }
+    },
+    {
+      "id": "Z-RESOURCE-10BOOKS",
+      "verdict": "PASS",
+      "title": "10 same-realm replacements destroy old books while current Node Blob URLs remain fetchable",
+      "detail": {
+        "samples": [
+          {
+            "swaps": 1,
+            "liveChecks": [
+              {
+                "ok": true,
+                "bytes": [
+                  7,
+                  8,
+                  9
+                ]
+              },
+              {
+                "ok": true,
+                "bytes": [
+                  1,
+                  2,
+                  3
+                ]
+              }
+            ],
+            "oldChecks": [
+              {
+                "ok": false,
+                "error": "fetch failed"
+              },
+              {
+                "ok": false,
+                "error": "fetch failed"
+              }
+            ],
+            "nodes": 3,
+            "resources": 2,
+            "owners": 1,
+            "pending": 0,
+            "live": 2,
+            "memory": {
+              "rss": 239165440,
+              "heapTotal": 207302656,
+              "heapUsed": 100782864,
+              "external": 4799571,
+              "arrayBuffers": 996681
+            }
+          },
+          {
+            "swaps": 2,
+            "liveChecks": [
+              {
+                "ok": true,
+                "bytes": [
+                  7,
+                  8,
+                  9
+                ]
+              },
+              {
+                "ok": true,
+                "bytes": [
+                  4,
+                  5,
+                  6
+                ]
+              }
+            ],
+            "oldChecks": [
+              {
+                "ok": false,
+                "error": "fetch failed"
+              },
+              {
+                "ok": false,
+                "error": "fetch failed"
+              }
+            ],
+            "nodes": 3,
+            "resources": 2,
+            "owners": 1,
+            "pending": 0,
+            "live": 2,
+            "memory": {
+              "rss": 240381952,
+              "heapTotal": 207302656,
+              "heapUsed": 101641336,
+              "external": 4800167,
+              "arrayBuffers": 997251
+            }
+          },
+          {
+            "swaps": 3,
+            "liveChecks": [
+              {
+                "ok": true,
+                "bytes": [
+                  7,
+                  8,
+                  9
+                ]
+              },
+              {
+                "ok": true,
+                "bytes": [
+                  1,
+                  2,
+                  3
+                ]
+              }
+            ],
+            "oldChecks": [
+              {
+                "ok": false,
+                "error": "fetch failed"
+              },
+              {
+                "ok": false,
+                "error": "fetch failed"
+              }
+            ],
+            "nodes": 3,
+            "resources": 2,
+            "owners": 1,
+            "pending": 0,
+            "live": 2,
+            "memory": {
+              "rss": 241197056,
+              "heapTotal": 207302656,
+              "heapUsed": 102492960,
+              "external": 4800763,
+              "arrayBuffers": 997821
+            }
+          },
+          {
+            "swaps": 4,
+            "liveChecks": [
+              {
+                "ok": true,
+                "bytes": [
+                  7,
+                  8,
+                  9
+                ]
+              },
+              {
+                "ok": true,
+                "bytes": [
+                  4,
+                  5,
+                  6
+                ]
+              }
+            ],
+            "oldChecks": [
+              {
+                "ok": false,
+                "error": "fetch failed"
+              },
+              {
+                "ok": false,
+                "error": "fetch failed"
+              }
+            ],
+            "nodes": 3,
+            "resources": 2,
+            "owners": 1,
+            "pending": 0,
+            "live": 2,
+            "memory": {
+              "rss": 241524736,
+              "heapTotal": 207564800,
+              "heapUsed": 103352232,
+              "external": 4801359,
+              "arrayBuffers": 998391
+            }
+          },
+          {
+            "swaps": 5,
+            "liveChecks": [
+              {
+                "ok": true,
+                "bytes": [
+                  7,
+                  8,
+                  9
+                ]
+              },
+              {
+                "ok": true,
+                "bytes": [
+                  1,
+                  2,
+                  3
+                ]
+              }
+            ],
+            "oldChecks": [
+              {
+                "ok": false,
+                "error": "fetch failed"
+              },
+              {
+                "ok": false,
+                "error": "fetch failed"
+              }
+            ],
+            "nodes": 3,
+            "resources": 2,
+            "owners": 1,
+            "pending": 0,
+            "live": 2,
+            "memory": {
+              "rss": 243220480,
+              "heapTotal": 207564800,
+              "heapUsed": 104179096,
+              "external": 4801955,
+              "arrayBuffers": 998961
+            }
+          },
+          {
+            "swaps": 6,
+            "liveChecks": [
+              {
+                "ok": true,
+                "bytes": [
+                  7,
+                  8,
+                  9
+                ]
+              },
+              {
+                "ok": true,
+                "bytes": [
+                  4,
+                  5,
+                  6
+                ]
+              }
+            ],
+            "oldChecks": [
+              {
+                "ok": false,
+                "error": "fetch failed"
+              },
+              {
+                "ok": false,
+                "error": "fetch failed"
+              }
+            ],
+            "nodes": 3,
+            "resources": 2,
+            "owners": 1,
+            "pending": 0,
+            "live": 2,
+            "memory": {
+              "rss": 243068928,
+              "heapTotal": 207564800,
+              "heapUsed": 105012984,
+              "external": 4802551,
+              "arrayBuffers": 999531
+            }
+          },
+          {
+            "swaps": 7,
+            "liveChecks": [
+              {
+                "ok": true,
+                "bytes": [
+                  7,
+                  8,
+                  9
+                ]
+              },
+              {
+                "ok": true,
+                "bytes": [
+                  1,
+                  2,
+                  3
+                ]
+              }
+            ],
+            "oldChecks": [
+              {
+                "ok": false,
+                "error": "fetch failed"
+              },
+              {
+                "ok": false,
+                "error": "fetch failed"
+              }
+            ],
+            "nodes": 3,
+            "resources": 2,
+            "owners": 1,
+            "pending": 0,
+            "live": 2,
+            "memory": {
+              "rss": 243933184,
+              "heapTotal": 207564800,
+              "heapUsed": 105847448,
+              "external": 4803147,
+              "arrayBuffers": 1000101
+            }
+          },
+          {
+            "swaps": 8,
+            "liveChecks": [
+              {
+                "ok": true,
+                "bytes": [
+                  7,
+                  8,
+                  9
+                ]
+              },
+              {
+                "ok": true,
+                "bytes": [
+                  4,
+                  5,
+                  6
+                ]
+              }
+            ],
+            "oldChecks": [
+              {
+                "ok": false,
+                "error": "fetch failed"
+              },
+              {
+                "ok": false,
+                "error": "fetch failed"
+              }
+            ],
+            "nodes": 3,
+            "resources": 2,
+            "owners": 1,
+            "pending": 0,
+            "live": 2,
+            "memory": {
+              "rss": 244764672,
+              "heapTotal": 207564800,
+              "heapUsed": 106717968,
+              "external": 4803743,
+              "arrayBuffers": 1000671
+            }
+          },
+          {
+            "swaps": 9,
+            "liveChecks": [
+              {
+                "ok": true,
+                "bytes": [
+                  7,
+                  8,
+                  9
+                ]
+              },
+              {
+                "ok": true,
+                "bytes": [
+                  1,
+                  2,
+                  3
+                ]
+              }
+            ],
+            "oldChecks": [
+              {
+                "ok": false,
+                "error": "fetch failed"
+              },
+              {
+                "ok": false,
+                "error": "fetch failed"
+              }
+            ],
+            "nodes": 3,
+            "resources": 2,
+            "owners": 1,
+            "pending": 0,
+            "live": 2,
+            "memory": {
+              "rss": 245719040,
+              "heapTotal": 207564800,
+              "heapUsed": 107543144,
+              "external": 4804339,
+              "arrayBuffers": 1001241
+            }
+          },
+          {
+            "swaps": 10,
+            "liveChecks": [
+              {
+                "ok": true,
+                "bytes": [
+                  7,
+                  8,
+                  9
+                ]
+              },
+              {
+                "ok": true,
+                "bytes": [
+                  4,
+                  5,
+                  6
+                ]
+              }
+            ],
+            "oldChecks": [
+              {
+                "ok": false,
+                "error": "fetch failed"
+              },
+              {
+                "ok": false,
+                "error": "fetch failed"
+              }
+            ],
+            "nodes": 3,
+            "resources": 2,
+            "owners": 1,
+            "pending": 0,
+            "live": 2,
+            "memory": {
+              "rss": 247037952,
+              "heapTotal": 207564800,
+              "heapUsed": 108697744,
+              "external": 4804935,
+              "arrayBuffers": 1001811
+            }
+          }
+        ],
+        "note": "GC was explicitly requested before memory samples; Node heap/RSS trends are observations, not browser/native leak guarantee."
+      }
+    },
+    {
+      "id": "Z-RESOURCE-DESTROY",
+      "verdict": "PASS",
+      "title": "Final destroy releases all registered Node Blob URLs",
+      "detail": {
+        "created": 302,
+        "revoked": 302,
+        "live": 0,
+        "memory": {
+          "rss": 247087104,
+          "heapTotal": 207564800,
+          "heapUsed": 108439024,
+          "external": 4804935,
+          "arrayBuffers": 1001811
+        }
+      }
+    }
+  ]
+}

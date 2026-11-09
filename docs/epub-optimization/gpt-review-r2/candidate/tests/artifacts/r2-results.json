@@ -1,0 +1,257 @@
+{
+  "generatedAt": "2026-10-27T15:04:42.380Z",
+  "results": [
+    {
+      "id": "R2-F01",
+      "name": "settings toggle once per click",
+      "status": "PASS",
+      "detail": {
+        "openOnce": true,
+        "closedOnce": true,
+        "openTwice": true
+      }
+    },
+    {
+      "id": "R2-F02",
+      "name": "font 36 page count is final layout count",
+      "status": "PASS",
+      "detail": {
+        "beforeLayout": {
+          "page": 0,
+          "count": 15,
+          "total": "/ 15"
+        },
+        "afterLayout": {
+          "count": 51,
+          "total": "/ 51",
+          "width": 810,
+          "scrollWidth": 44510,
+          "toolbarPage": "1",
+          "quote": "CHAPTER-1 跳到章内第二节 段落 000：这是用于验证阅读位置"
+        },
+        "stable": {
+          "first": 51,
+          "second": 51,
+          "toolbar": "51"
+        }
+      }
+    },
+    {
+      "id": "R2-F02b",
+      "name": "font 36 anchor restores inside page",
+      "status": "PASS",
+      "detail": {
+        "beforeReloadAnchor": {
+          "elementPath": null,
+          "textOffset": 6,
+          "quote": "CHAPTER-1 跳到章内第二节 段落 000：这是用于验证阅读位置",
+          "prefix": "CHAPT",
+          "suffix": "ER-1 跳到章内第二节 段落 000：这是用于验证阅读位置",
+          "elementId": "start",
+          "chapterFraction": 0,
+          "pageIndex": 0
+        },
+        "afterReload": {
+          "page": 0,
+          "located": 0,
+          "quote": "CHAPTER-1 跳到章内第二节 段落 000：这是用于验证阅读位置",
+          "total": 51
+        }
+      }
+    },
+    {
+      "id": "R2-F04",
+      "name": "highlight then save does not reset position",
+      "status": "PASS",
+      "detail": {
+        "highlightInfo": {
+          "anchor": {
+            "elementPath": null,
+            "textOffset": 972,
+            "quote": "置的测试文本。我们希望字号变化、窗口变化与下一次打开时，仍然能找到刚才读到的句子。Chapter 1, paragraph 11",
+            "prefix": "置的测试文本。我们希望字号变化、窗口变化与下一次打开时，仍然能找",
+            "suffix": "到刚才读到的句子。Chapter 1, paragraph 11",
+            "elementId": "p11",
+            "chapterFraction": 0.12,
+            "pageIndex": 6
+          },
+          "markText": "到刚才读到的句子",
+          "page": 6
+        },
+        "afterHighlightReload": {
+          "page": 7,
+          "total": 51
+        }
+      }
+    },
+    {
+      "id": "R2-F05",
+      "name": "duplicate search result highlights exact offset",
+      "status": "PASS",
+      "detail": {
+        "resultCount": 271,
+        "searchMark": "重复句"
+      }
+    },
+    {
+      "id": "R2-F07a",
+      "name": "pending position flushed before switching book",
+      "status": "PASS",
+      "detail": {
+        "beforeSwitch": 7,
+        "afterSwitchReopen": {
+          "page": 8,
+          "total": 51,
+          "quote": "置的测试文本。我们希望字号变化、窗口变化与下一次打开时，仍然能找到刚才读到的句子。Chapter 1, paragraph 15"
+        }
+      }
+    },
+    {
+      "id": "R2-F08",
+      "name": "preferences save changed fields only",
+      "status": true,
+      "detail": {
+        "firstKeys": [
+          "fontSize"
+        ],
+        "secondKeys": [
+          "fontSize",
+          "lineHeight"
+        ]
+      }
+    },
+    {
+      "id": "R2-F10",
+      "name": "local write failure not reported as saved",
+      "status": "PASS",
+      "detail": {
+        "saveState": "位置未保存，稍后重试",
+        "failed": true
+      }
+    },
+    {
+      "id": "R2-F09",
+      "name": "51 local bookmarks load with advancing cursor",
+      "status": "PASS",
+      "detail": {
+        "count": 51,
+        "unique": 51,
+        "rendered": 51
+      }
+    },
+    {
+      "id": "R2-F03",
+      "name": "slow first file cannot override fast second; failure keeps old UI",
+      "status": "PASS",
+      "detail": {
+        "latest": {
+          "title": "Group · 第一章",
+          "spine": 0
+        },
+        "afterFail": {
+          "title": "Group · 第一章",
+          "errorVisible": false,
+          "ready": true
+        }
+      }
+    },
+    {
+      "id": "R2-F14d",
+      "name": "font obfuscation opens, protected body rejected",
+      "status": "PASS",
+      "detail": {
+        "obf": {
+          "ready": true,
+          "title": "Obfuscated · c0"
+        },
+        "drm": {
+          "ready": false,
+          "errorVisible": false,
+          "error": "打开 EPUB 失败：这本 EPUB 的正文资源受加密保护（非仅字体混淆），本轮不支持解密"
+        }
+      }
+    },
+    {
+      "id": "R2-F14a",
+      "name": "percent filename opens",
+      "status": "PASS",
+      "detail": {
+        "title": "Baseline normal · 第1章"
+      }
+    },
+    {
+      "id": "R2-F14b",
+      "name": "EPUB3 nav group preserved",
+      "status": "PASS",
+      "detail": {
+        "groups": [
+          "▾ 第一部"
+        ],
+        "items": [
+          {
+            "text": "▾ 第一部",
+            "tag": "DIV",
+            "pad": "8px"
+          },
+          {
+            "text": "第一章",
+            "tag": "BUTTON",
+            "pad": "24px"
+          },
+          {
+            "text": "第二章",
+            "tag": "BUTTON",
+            "pad": "8px"
+          }
+        ]
+      }
+    },
+    {
+      "id": "R2-F14c",
+      "name": "first open skips linear=no",
+      "status": "PASS",
+      "detail": {
+        "spine": 1,
+        "text": "\n正文 FIRST LINE 应该从这里开始\n"
+      }
+    },
+    {
+      "id": "R2-F12",
+      "name": "dangerous protocol blocked; https explicit open",
+      "status": "PASS",
+      "detail": {
+        "linkDom": [
+          {
+            "id": "js",
+            "target": null,
+            "external": null,
+            "href": null
+          },
+          {
+            "id": "https",
+            "target": null,
+            "external": "https://example.com/ok",
+            "href": null
+          },
+          {
+            "id": "forged",
+            "target": null,
+            "external": "https://example.com/real",
+            "href": null
+          },
+          {
+            "id": "svgx",
+            "target": null,
+            "external": null,
+            "href": null
+          }
+        ],
+        "opensAfterJs": [],
+        "opensAfterHttps": [
+          "https://example.com/ok"
+        ]
+      }
+    }
+  ],
+  "errors": []
+}

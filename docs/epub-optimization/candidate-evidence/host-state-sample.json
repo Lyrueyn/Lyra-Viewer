@@ -1,0 +1,57 @@
+{
+  "version": 1,
+  "revision": 5,
+  "interaction": 3,
+  "interactionOwner": "e6cfc0d92e6a42bf81235306a930636e",
+  "position": {
+    "spineHref": "OEBPS/chapter1.xhtml",
+    "spineIndex": 0,
+    "locator": {
+      "elementPath": null,
+      "textNodePath": [
+        8,
+        0
+      ],
+      "offsetUtf16": 75,
+      "quote": "\u653E\u4E00\u6BB5\u8DB3\u591F\u957F\u7684\u6D4B\u8BD5\u6587\u5B57\uFF0C\u7528\u6765\u68C0\u67E5\u5206\u9875\u662F\u5426\u4E00\u9875\u4E00\u9875\u7FFB\u800C\u4E0D\u662F\u9760\u6EDA\u52A8\u3002",
+      "prefix": "\u653E\u4E00\u6BB5\u8DB3\u591F\u957F\u7684\u6D4B\u8BD5\u6587\u5B57\uFF0C\u7528\u6765\u68C0\u67E5\u5206\u9875\u662F\u5426\u4E00\u9875\u4E00\u9875\u7FFB\u800C\u4E0D\u662F\u9760\u6EDA\u52A8\u3002",
+      "suffix": "",
+      "elementId": "",
+      "chapterFraction": 0.125,
+      "pageIndex": 1
+    },
+    "chapterFraction": 0.125,
+    "savedAt": "2026-10-26T14:53:48.017Z"
+  },
+  "positionToken": 2,
+  "bookmarks": [
+    {
+      "id": "bm-mvpdn2cw-85dt7e",
+      "_key": "OEBPS/chapter1.xhtml|[8,0]|75",
+      "spineHref": "OEBPS/chapter1.xhtml",
+      "spineIndex": 0,
+      "chapterTitle": "\u7B2C\u4E00\u7AE0 \u00B7 \u521D\u89C1\u7483\u9E22\u955C",
+      "title": "\u7B2C\u4E00\u7AE0 \u00B7 \u521D\u89C1\u7483\u9E22\u955C",
+      "summary": "\u653E\u4E00\u6BB5\u8DB3\u591F\u957F\u7684\u6D4B\u8BD5\u6587\u5B57\uFF0C\u7528\u6765\u68C0\u67E5\u5206\u9875\u662F\u5426\u4E00\u9875\u4E00\u9875\u7FFB\u800C\u4E0D\u662F\u9760\u6EDA\u52A8\u3002",
+      "locator": {
+        "elementPath": null,
+        "textNodePath": [
+          8,
+          0
+        ],
+        "offsetUtf16": 75,
+        "quote": "\u653E\u4E00\u6BB5\u8DB3\u591F\u957F\u7684\u6D4B\u8BD5\u6587\u5B57\uFF0C\u7528\u6765\u68C0\u67E5\u5206\u9875\u662F\u5426\u4E00\u9875\u4E00\u9875\u7FFB\u800C\u4E0D\u662F\u9760\u6EDA\u52A8\u3002",
+        "prefix": "\u653E\u4E00\u6BB5\u8DB3\u591F\u957F\u7684\u6D4B\u8BD5\u6587\u5B57\uFF0C\u7528\u6765\u68C0\u67E5\u5206\u9875\u662F\u5426\u4E00\u9875\u4E00\u9875\u7FFB\u800C\u4E0D\u662F\u9760\u6EDA\u52A8\u3002",
+        "suffix": "",
+        "elementId": "",
+        "chapterFraction": 0.125,
+        "pageIndex": 1
+      },
+      "createdAt": "2026-10-26T14:53:48.080Z"
+    }
+  ],
+  "bookmarksRevision": 1,
+  "positionSession": "e6cfc0d92e6a42bf81235306a930636e",
+  "positionSequence": 1,
+  "positionSavedAt": "2026-10-26T14:53:48.0210419Z"
+}

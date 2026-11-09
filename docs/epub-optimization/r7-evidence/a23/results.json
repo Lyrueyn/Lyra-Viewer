@@ -1,0 +1,347 @@
+{
+  "evidenceKind": "Real Edge browser renderer + generated EPUBs; CDP Performance JS heap; not native WinUI process memory",
+  "book200": [
+    {
+      "label": "start",
+      "spine": 0,
+      "ready": true,
+      "busy": false,
+      "book": "sha256:61336d9dad9eebfb63c000be9d1b6a216b41012846d94ea2c2f3f3568ec1d865",
+      "uiNodes": 308,
+      "iframeNodes": 2,
+      "iframeCount": 1,
+      "resourceCount": 1,
+      "taskSets": 1,
+      "pending": 0,
+      "blobUrls": [
+        "blob:http://127.0.0.1:54180/faee207e-4c22-4442-9157-299cc3119e73"
+      ],
+      "metrics": {
+        "JSHeapUsedSize": 3642652,
+        "LayoutCount": 12,
+        "TaskDuration": 0.147961
+      }
+    },
+    {
+      "label": "after-50",
+      "spine": 50,
+      "ready": true,
+      "busy": false,
+      "book": "sha256:61336d9dad9eebfb63c000be9d1b6a216b41012846d94ea2c2f3f3568ec1d865",
+      "uiNodes": 308,
+      "iframeNodes": 2,
+      "iframeCount": 1,
+      "resourceCount": 1,
+      "taskSets": 1,
+      "pending": 0,
+      "blobUrls": [
+        "blob:http://127.0.0.1:54180/faee207e-4c22-4442-9157-299cc3119e73"
+      ],
+      "metrics": {
+        "JSHeapUsedSize": 24172852,
+        "LayoutCount": 412,
+        "TaskDuration": 0.592198
+      }
+    },
+    {
+      "label": "after-100",
+      "spine": 100,
+      "ready": true,
+      "busy": false,
+      "book": "sha256:61336d9dad9eebfb63c000be9d1b6a216b41012846d94ea2c2f3f3568ec1d865",
+      "uiNodes": 308,
+      "iframeNodes": 2,
+      "iframeCount": 1,
+      "resourceCount": 1,
+      "taskSets": 1,
+      "pending": 0,
+      "blobUrls": [
+        "blob:http://127.0.0.1:54180/faee207e-4c22-4442-9157-299cc3119e73"
+      ],
+      "metrics": {
+        "JSHeapUsedSize": 10226196,
+        "LayoutCount": 812,
+        "TaskDuration": 1.030667
+      }
+    },
+    {
+      "label": "after-150",
+      "spine": 150,
+      "ready": true,
+      "busy": false,
+      "book": "sha256:61336d9dad9eebfb63c000be9d1b6a216b41012846d94ea2c2f3f3568ec1d865",
+      "uiNodes": 308,
+      "iframeNodes": 2,
+      "iframeCount": 1,
+      "resourceCount": 1,
+      "taskSets": 1,
+      "pending": 0,
+      "blobUrls": [
+        "blob:http://127.0.0.1:54180/faee207e-4c22-4442-9157-299cc3119e73"
+      ],
+      "metrics": {
+        "JSHeapUsedSize": 3900272,
+        "LayoutCount": 1212,
+        "TaskDuration": 1.472554
+      }
+    },
+    {
+      "label": "after-200",
+      "spine": 200,
+      "ready": true,
+      "busy": false,
+      "book": "sha256:61336d9dad9eebfb63c000be9d1b6a216b41012846d94ea2c2f3f3568ec1d865",
+      "uiNodes": 308,
+      "iframeNodes": 2,
+      "iframeCount": 1,
+      "resourceCount": 1,
+      "taskSets": 1,
+      "pending": 0,
+      "blobUrls": [
+        "blob:http://127.0.0.1:54180/faee207e-4c22-4442-9157-299cc3119e73"
+      ],
+      "metrics": {
+        "JSHeapUsedSize": 9116484,
+        "LayoutCount": 1612,
+        "TaskDuration": 1.903588
+      }
+    }
+  ],
+  "switches": [
+    {
+      "label": "book-0",
+      "spine": 0,
+      "ready": true,
+      "busy": false,
+      "book": "sha256:787438cb5dadce3cae4c4220cdf14eff538543e005196061f33ccbf2e2ee7f6f",
+      "uiNodes": 110,
+      "iframeNodes": 1,
+      "iframeCount": 1,
+      "resourceCount": 0,
+      "taskSets": 1,
+      "pending": 0,
+      "blobUrls": [],
+      "metrics": {
+        "JSHeapUsedSize": 9977720,
+        "LayoutCount": 1622,
+        "TaskDuration": 1.980811
+      }
+    },
+    {
+      "label": "book-1",
+      "spine": 0,
+      "ready": true,
+      "busy": false,
+      "book": "sha256:63711a66fc324e57b5ece9ebc4958ad95d7a8e4ec03dc0d425c432ef9da4bd1c",
+      "uiNodes": 110,
+      "iframeNodes": 1,
+      "iframeCount": 1,
+      "resourceCount": 0,
+      "taskSets": 1,
+      "pending": 0,
+      "blobUrls": [],
+      "metrics": {
+        "JSHeapUsedSize": 10668844,
+        "LayoutCount": 1632,
+        "TaskDuration": 1.993226
+      }
+    },
+    {
+      "label": "book-2",
+      "spine": 0,
+      "ready": true,
+      "busy": false,
+      "book": "sha256:1f5086c707f41f0230f15e567ad2455fb01d16ab55f8ad18340f25e644a25632",
+      "uiNodes": 110,
+      "iframeNodes": 1,
+      "iframeCount": 1,
+      "resourceCount": 0,
+      "taskSets": 1,
+      "pending": 0,
+      "blobUrls": [],
+      "metrics": {
+        "JSHeapUsedSize": 4225116,
+        "LayoutCount": 1642,
+        "TaskDuration": 2.009587
+      }
+    },
+    {
+      "label": "book-3",
+      "spine": 0,
+      "ready": true,
+      "busy": false,
+      "book": "sha256:4be0216f76eb3992d766cbc9933ca288d446b2b5641a70987428d1ea508e4024",
+      "uiNodes": 110,
+      "iframeNodes": 1,
+      "iframeCount": 1,
+      "resourceCount": 0,
+      "taskSets": 1,
+      "pending": 0,
+      "blobUrls": [],
+      "metrics": {
+        "JSHeapUsedSize": 4945908,
+        "LayoutCount": 1652,
+        "TaskDuration": 2.021406
+      }
+    },
+    {
+      "label": "book-4",
+      "spine": 0,
+      "ready": true,
+      "busy": false,
+      "book": "sha256:d654d316b2efa8fbd6b3773490f330b871651b577109fead93373e265f91e976",
+      "uiNodes": 110,
+      "iframeNodes": 1,
+      "iframeCount": 1,
+      "resourceCount": 0,
+      "taskSets": 1,
+      "pending": 0,
+      "blobUrls": [],
+      "metrics": {
+        "JSHeapUsedSize": 5626220,
+        "LayoutCount": 1662,
+        "TaskDuration": 2.032769
+      }
+    },
+    {
+      "label": "book-5",
+      "spine": 0,
+      "ready": true,
+      "busy": false,
+      "book": "sha256:d272b3031fcb0748d3e388c6ef2efa938d6f4fc29f2ee6463afc019a386dac1a",
+      "uiNodes": 110,
+      "iframeNodes": 1,
+      "iframeCount": 1,
+      "resourceCount": 0,
+      "taskSets": 1,
+      "pending": 0,
+      "blobUrls": [],
+      "metrics": {
+        "JSHeapUsedSize": 6306860,
+        "LayoutCount": 1672,
+        "TaskDuration": 2.044342
+      }
+    },
+    {
+      "label": "book-6",
+      "spine": 0,
+      "ready": true,
+      "busy": false,
+      "book": "sha256:6be9aab69087fff6024b6e8bbbbe03fb164d6248440cea39263758714f901efb",
+      "uiNodes": 110,
+      "iframeNodes": 1,
+      "iframeCount": 1,
+      "resourceCount": 0,
+      "taskSets": 1,
+      "pending": 0,
+      "blobUrls": [],
+      "metrics": {
+        "JSHeapUsedSize": 6033976,
+        "LayoutCount": 1682,
+        "TaskDuration": 2.057082
+      }
+    },
+    {
+      "label": "book-7",
+      "spine": 0,
+      "ready": true,
+      "busy": false,
+      "book": "sha256:913756245e11c3926c7e0871126ea9fed40a1313ad97aedf57de15988d73fe1f",
+      "uiNodes": 110,
+      "iframeNodes": 1,
+      "iframeCount": 1,
+      "resourceCount": 0,
+      "taskSets": 1,
+      "pending": 0,
+      "blobUrls": [],
+      "metrics": {
+        "JSHeapUsedSize": 6777464,
+        "LayoutCount": 1692,
+        "TaskDuration": 2.068353
+      }
+    },
+    {
+      "label": "book-8",
+      "spine": 0,
+      "ready": true,
+      "busy": false,
+      "book": "sha256:bd472c8f2b0c5b27fa7292e04d8c8b9a78975922ad091a2b5731f7cd799d3987",
+      "uiNodes": 110,
+      "iframeNodes": 1,
+      "iframeCount": 1,
+      "resourceCount": 0,
+      "taskSets": 1,
+      "pending": 0,
+      "blobUrls": [],
+      "metrics": {
+        "JSHeapUsedSize": 7459604,
+        "LayoutCount": 1702,
+        "TaskDuration": 2.079621
+      }
+    },
+    {
+      "label": "book-9",
+      "spine": 0,
+      "ready": true,
+      "busy": false,
+      "book": "sha256:a4c1bd0ac514b4ce3a0a18fb0d948621cf15810c5be93f001227ac2e10b7b955",
+      "uiNodes": 110,
+      "iframeNodes": 1,
+      "iframeCount": 1,
+      "resourceCount": 0,
+      "taskSets": 1,
+      "pending": 0,
+      "blobUrls": [],
+      "metrics": {
+        "JSHeapUsedSize": 7397388,
+        "LayoutCount": 1712,
+        "TaskDuration": 2.090221
+      }
+    }
+  ],
+  "rest": [
+    {
+      "label": "static-1s",
+      "spine": 200,
+      "ready": true,
+      "busy": false,
+      "book": "sha256:61336d9dad9eebfb63c000be9d1b6a216b41012846d94ea2c2f3f3568ec1d865",
+      "uiNodes": 308,
+      "iframeNodes": 2,
+      "iframeCount": 1,
+      "resourceCount": 1,
+      "taskSets": 1,
+      "pending": 0,
+      "blobUrls": [
+        "blob:http://127.0.0.1:54180/faee207e-4c22-4442-9157-299cc3119e73"
+      ],
+      "metrics": {
+        "JSHeapUsedSize": 9141692,
+        "LayoutCount": 1612,
+        "TaskDuration": 1.957446
+      }
+    },
+    {
+      "label": "after-switches-static",
+      "spine": 0,
+      "ready": true,
+      "busy": false,
+      "book": "sha256:a4c1bd0ac514b4ce3a0a18fb0d948621cf15810c5be93f001227ac2e10b7b955",
+      "uiNodes": 110,
+      "iframeNodes": 1,
+      "iframeCount": 1,
+      "resourceCount": 0,
+      "taskSets": 1,
+      "pending": 0,
+      "blobUrls": [],
+      "metrics": {
+        "JSHeapUsedSize": 7417492,
+        "LayoutCount": 1712,
+        "TaskDuration": 2.092985
+      }
+    }
+  ],
+  "successCount": 200,
+  "expectedSuccess": 200,
+  "book200ElapsedMs": 2518
+}

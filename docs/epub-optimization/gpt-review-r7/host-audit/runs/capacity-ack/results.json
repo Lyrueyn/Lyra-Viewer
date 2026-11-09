@@ -1,0 +1,99 @@
+{
+  "evidenceKind": "Original JS/C# serializers and isolated disk; deliberate grant capacity stress",
+  "results": [
+    {
+      "id": "C01-ACK-LOSS-AFTER-CAPACITY-PRUNE",
+      "pass": true,
+      "expected": "specified behavior",
+      "actual": {
+        "committed": {
+          "version": 1,
+          "revision": 1,
+          "preferences": {
+            "fontSize": 28
+          },
+          "fieldSequences": {},
+          "preferenceOrders": {
+            "fontSize": 4096
+          },
+          "updatedAt": "2026-10-28T15:57:37.9698164Z"
+        },
+        "count": {
+          "count": 4096,
+          "order": 4097
+        },
+        "file": {
+          "version": 1,
+          "revision": 2,
+          "preferences": {
+            "fontSize": 28,
+            "lineHeight": 2.2
+          },
+          "fieldSequences": {},
+          "preferenceOrders": {
+            "fontSize": 4096,
+            "lineHeight": 4097
+          },
+          "updatedAt": "2026-10-28T15:57:38.0454265Z"
+        },
+        "pending": [],
+        "acks": [
+          {
+            "type": "host.finalized",
+            "requestId": "c1ec9a5bf4e34da39b23ada583db2a97",
+            "sessionId": "5708e9d981fd4fd4861782f1a7178f87",
+            "ok": true,
+            "revision": 2,
+            "closeDiagnostics": []
+          }
+        ],
+        "requests": [
+          {
+            "protocol": "lyra-reader",
+            "version": 3,
+            "type": "state.savePreferences",
+            "requestId": "req-9763a66e-9d62-4deb-89b6-4d12b6f67231",
+            "sessionId": "5708e9d981fd4fd4861782f1a7178f87",
+            "scope": "global",
+            "preferences": {
+              "fontSize": 28
+            },
+            "grants": {
+              "fontSize": "pg-2b76873d77b349bb9416b13508cce307"
+            }
+          },
+          {
+            "protocol": "lyra-reader",
+            "version": 3,
+            "type": "state.savePreferences",
+            "requestId": "req-d9461e7e-4fb6-402b-a9e9-96caf0079654",
+            "sessionId": "5708e9d981fd4fd4861782f1a7178f87",
+            "scope": "global",
+            "preferences": {
+              "fontSize": 28
+            },
+            "grants": {
+              "fontSize": "pg-2b76873d77b349bb9416b13508cce307"
+            }
+          },
+          {
+            "protocol": "lyra-reader",
+            "version": 3,
+            "type": "state.savePreferences",
+            "requestId": "req-74260d95-ba0c-40a3-9f62-066ceafccb67",
+            "sessionId": "5708e9d981fd4fd4861782f1a7178f87",
+            "scope": "global",
+            "preferences": {
+              "lineHeight": 2.2
+            },
+            "grants": {
+              "lineHeight": "pg-03138fd7874a415ca185a72396e3ae63"
+            }
+          }
+        ],
+        "errors": [],
+        "fixture": "4095 uncompleted grants; final font28 really commits but ack held; line grant triggers completed-token prune; exact JS timeout retries original font token"
+      }
+    }
+  ]
+}

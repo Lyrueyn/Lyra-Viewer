@@ -1,0 +1,305 @@
+{
+  "generatedAt": "2026-10-28T11:16:58.152Z",
+  "candidate": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r6\\candidate",
+  "identity": {
+    "expectedCommit": "99bd102f4c9b4c1a92668d04e2e12260e523ad94",
+    "expectedPackageSha256": "f2b2741a166749e7108e010151a46246ac2df40bf1f0861050e8e12d612c535c",
+    "hashes": {
+      "epub-book.js": "e65e976116da95a29689c5b81c358c1465957787bc81c796d5dc10eccf023417",
+      "search.js": "470c4fe4bb68f299b1aa367cffd1f3b5e616af2dad25e7b1cc1d10f25bea702a",
+      "paginator.js": "5dbbbe764bc616d5fa3829953dbf204786c4c65cc4191db782e63352d6800750",
+      "reader.js": "5a81d526b8126b590738bc50652db829d701fdb9e3319240766fb3d07c2fc837"
+    }
+  },
+  "runtime": {
+    "node": "v24.18.0",
+    "jsdom": "29.1.1"
+  },
+  "evidenceKind": "Frozen original JavaScript loaded unmodified; jsdom DOM/Range and real JSZip. Controlled async dependencies and geometry doubles disclosed per case. Not browser visibility, SVG painting or native desktop evidence.",
+  "results": [
+    {
+      "id": "B01",
+      "verdict": "OBSERVATION",
+      "title": "Cache limit scope is retained section UTF-16 text, not total heap or bytes",
+      "detail": {
+        "retainedUTF16Units": 8388608,
+        "nominalUTF16PayloadBytes": 16777216,
+        "sections": [
+          {
+            "length": 8388608,
+            "cached": true
+          },
+          {
+            "length": 2,
+            "cached": false
+          }
+        ],
+        "cacheTruncated": true,
+        "scopeExcluded": [
+          "book rawBytes / JSZip entries",
+          "temporary full chapter strings and DOM",
+          "section metadata / titles",
+          "search results",
+          "prepared display DOM / image URLs"
+        ]
+      }
+    },
+    {
+      "id": "B02",
+      "verdict": "OBSERVATION",
+      "title": "Original cold HTML parse/model has no internal macrotask yield",
+      "detail": {
+        "htmlTextUnits": 2097152,
+        "returnedModelUnits": 2097154,
+        "timerRanBeforePlainReturned": false,
+        "elapsedMs": 82.266,
+        "boundary": "Controlled immediate readText isolates synchronous DOMParser/buildTextModel; does not measure production ZIP I/O latency or browser responsiveness."
+      }
+    },
+    {
+      "id": "B03",
+      "verdict": "PASS",
+      "title": "Original locator differentiates null/missing/string offset, text zero, valid image and fraction",
+      "detail": {
+        "anchors": [
+          {
+            "name": "null",
+            "a": {
+              "textOffset": null,
+              "elementPath": [
+                1
+              ],
+              "chapterFraction": 0.5
+            },
+            "expected": 3,
+            "located": 3
+          },
+          {
+            "name": "missing",
+            "a": {
+              "elementPath": [
+                1
+              ],
+              "chapterFraction": 0.5
+            },
+            "expected": 3,
+            "located": 3
+          },
+          {
+            "name": "string-zero",
+            "a": {
+              "textOffset": "0",
+              "elementPath": [
+                1
+              ],
+              "chapterFraction": 0.5
+            },
+            "expected": 3,
+            "located": 3
+          },
+          {
+            "name": "numeric-zero",
+            "a": {
+              "textOffset": 0,
+              "elementPath": [
+                1
+              ],
+              "chapterFraction": 0.5
+            },
+            "expected": 0,
+            "located": 0
+          },
+          {
+            "name": "bad-element-fraction",
+            "a": {
+              "textOffset": null,
+              "elementPath": [
+                99
+              ],
+              "chapterFraction": 0.5
+            },
+            "expected": 5,
+            "located": 5
+          }
+        ],
+        "boundary": "Element/Range rectangles are explicit doubles. Confirms branch semantics only; no image painting or browser page visibility."
+      }
+    },
+    {
+      "id": "B04",
+      "verdict": "PASS",
+      "title": "Ten same-jsdom-realm book replacements retain only current image resources",
+      "detail": {
+        "samples": [
+          {
+            "swaps": 0,
+            "resourcePaths": [
+              "OPS/pic.png"
+            ],
+            "taskSets": 1,
+            "pending": 0,
+            "created": 1,
+            "revoked": 0,
+            "liveCount": 1,
+            "heapUsed": 112067232,
+            "rss": 263860224,
+            "external": 4714524,
+            "arrayBuffers": 911960
+          },
+          {
+            "swaps": 1,
+            "resourcePaths": [
+              "OPS/pic.png"
+            ],
+            "taskSets": 1,
+            "pending": 0,
+            "created": 2,
+            "revoked": 1,
+            "liveCount": 1,
+            "heapUsed": 113097680,
+            "rss": 264081408,
+            "external": 4714959,
+            "arrayBuffers": 912323
+          },
+          {
+            "swaps": 2,
+            "resourcePaths": [
+              "OPS/pic.png"
+            ],
+            "taskSets": 1,
+            "pending": 0,
+            "created": 3,
+            "revoked": 2,
+            "liveCount": 1,
+            "heapUsed": 114313168,
+            "rss": 264249344,
+            "external": 4715354,
+            "arrayBuffers": 912686
+          },
+          {
+            "swaps": 3,
+            "resourcePaths": [
+              "OPS/pic.png"
+            ],
+            "taskSets": 1,
+            "pending": 0,
+            "created": 4,
+            "revoked": 3,
+            "liveCount": 1,
+            "heapUsed": 114715584,
+            "rss": 264331264,
+            "external": 4715749,
+            "arrayBuffers": 913049
+          },
+          {
+            "swaps": 4,
+            "resourcePaths": [
+              "OPS/pic.png"
+            ],
+            "taskSets": 1,
+            "pending": 0,
+            "created": 5,
+            "revoked": 4,
+            "liveCount": 1,
+            "heapUsed": 115478912,
+            "rss": 264560640,
+            "external": 4716144,
+            "arrayBuffers": 913412
+          },
+          {
+            "swaps": 5,
+            "resourcePaths": [
+              "OPS/pic.png"
+            ],
+            "taskSets": 1,
+            "pending": 0,
+            "created": 6,
+            "revoked": 5,
+            "liveCount": 1,
+            "heapUsed": 116249648,
+            "rss": 264568832,
+            "external": 4716539,
+            "arrayBuffers": 913775
+          },
+          {
+            "swaps": 6,
+            "resourcePaths": [
+              "OPS/pic.png"
+            ],
+            "taskSets": 1,
+            "pending": 0,
+            "created": 7,
+            "revoked": 6,
+            "liveCount": 1,
+            "heapUsed": 116984720,
+            "rss": 264572928,
+            "external": 4716934,
+            "arrayBuffers": 914138
+          },
+          {
+            "swaps": 7,
+            "resourcePaths": [
+              "OPS/pic.png"
+            ],
+            "taskSets": 1,
+            "pending": 0,
+            "created": 8,
+            "revoked": 7,
+            "liveCount": 1,
+            "heapUsed": 117710704,
+            "rss": 264638464,
+            "external": 4717329,
+            "arrayBuffers": 914501
+          },
+          {
+            "swaps": 8,
+            "resourcePaths": [
+              "OPS/pic.png"
+            ],
+            "taskSets": 1,
+            "pending": 0,
+            "created": 9,
+            "revoked": 8,
+            "liveCount": 1,
+            "heapUsed": 118520400,
+            "rss": 264839168,
+            "external": 4717724,
+            "arrayBuffers": 914864
+          },
+          {
+            "swaps": 9,
+            "resourcePaths": [
+              "OPS/pic.png"
+            ],
+            "taskSets": 1,
+            "pending": 0,
+            "created": 10,
+            "revoked": 9,
+            "liveCount": 1,
+            "heapUsed": 119233128,
+            "rss": 265125888,
+            "external": 4718119,
+            "arrayBuffers": 915227
+          },
+          {
+            "swaps": 10,
+            "resourcePaths": [
+              "OPS/pic.png"
+            ],
+            "taskSets": 1,
+            "pending": 0,
+            "created": 11,
+            "revoked": 10,
+            "liveCount": 1,
+            "heapUsed": 119959456,
+            "rss": 264957952,
+            "external": 4718515,
+            "arrayBuffers": 915591
+          }
+        ],
+        "oldBooksDestroyed": 10,
+        "boundary": "Module lifecycle, not same browser tab UI. Node memory sampled without forced GC; no bounded process-memory guarantee inferred."
+      }
+    }
+  ]
+}

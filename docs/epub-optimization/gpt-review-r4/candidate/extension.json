@@ -1,0 +1,9 @@
+﻿{
+  "id": "epub",
+  "name": "EPUB 阅读器",
+  "version": "0.8.0",
+  "entry": "index.html",
+  "description": "璃鸢镜 EPUB 阅读器候选版：正文/目录分离、跨窗口进度与书签、全文查找、字号行距宽度与主题设置。",
+  "fileTypes": [".epub"],
+  "enabled": true
+}

@@ -1,0 +1,748 @@
+{
+  "generatedAt": "2026-10-27T19:34:33.175Z",
+  "candidate": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r5\\candidate",
+  "identity": {
+    "expectedCommit": "76ced4c17efa4526fbc8c00e3fff5261959a7fe7",
+    "expectedPackageSha256": "60cc97bf2721bb0239122275b307833d871548c985a56068e649f3d3a1517b80",
+    "hashes": {
+      "epub-book.js": "62453a86f64fc9e883af379440c8306a8e218fa55456de490671873044c2cdc2",
+      "search.js": "470c4fe4bb68f299b1aa367cffd1f3b5e616af2dad25e7b1cc1d10f25bea702a",
+      "paginator.js": "15408a60cf6e65f83d2a3b479a878da888be964d7639ffafd468067c81a2a248",
+      "reader.js": "28790e1fb4cd5e04302c26217d80b293d8bdedfc3cd4e1551c9a02c0d93f61fb"
+    }
+  },
+  "runtime": {
+    "node": "v24.18.0",
+    "jsdom": "29.1.1"
+  },
+  "evidenceKind": "Frozen original JavaScript loaded unmodified; jsdom DOM/Range and real JSZip. Controlled async dependencies and geometry doubles disclosed per case. Not browser visibility, SVG painting or native desktop evidence.",
+  "results": [
+    {
+      "id": "S01",
+      "verdict": "PASS",
+      "title": "Exact 1000, same/cross chapter 1001",
+      "detail": [
+        {
+          "expected": 1000,
+          "total": 1000,
+          "count": 1000,
+          "truncated": false,
+          "scanned": 1
+        },
+        {
+          "expected": 1001,
+          "total": 1001,
+          "count": 1000,
+          "truncated": true,
+          "scanned": 1
+        },
+        {
+          "expected": 1001,
+          "total": 1001,
+          "count": 1000,
+          "truncated": true,
+          "scanned": 2
+        }
+      ]
+    },
+    {
+      "id": "S02",
+      "verdict": "PASS",
+      "title": "Over-limit first/middle chapter still scans later chapter; cap unit is UTF-16 code units",
+      "detail": [
+        {
+          "total": 1,
+          "scanned": 2,
+          "sections": 2,
+          "cacheTruncated": true,
+          "truncated": true,
+          "cacheChars": 12,
+          "cached": [
+            {
+              "index": 0,
+              "length": 8388609,
+              "retainedChars": 0
+            },
+            {
+              "index": 1,
+              "length": 12,
+              "retainedChars": 12
+            }
+          ],
+          "reads": [
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "total": 1,
+          "scanned": 3,
+          "sections": 3,
+          "cacheTruncated": true,
+          "truncated": true,
+          "cacheChars": 15,
+          "cached": [
+            {
+              "index": 0,
+              "length": 3,
+              "retainedChars": 3
+            },
+            {
+              "index": 1,
+              "length": 8388609,
+              "retainedChars": 0
+            },
+            {
+              "index": 2,
+              "length": 12,
+              "retainedChars": 12
+            }
+          ],
+          "reads": [
+            0,
+            1,
+            2,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "id": "S03",
+      "verdict": "PASS",
+      "title": "Hot cache query observes immediate cancellation",
+      "detail": {
+        "error": "搜索已取消"
+      }
+    },
+    {
+      "id": "S04",
+      "verdict": "PASS",
+      "title": "Cancelled cold build not reused by new query",
+      "detail": {
+        "statuses": [
+          "rejected",
+          "fulfilled"
+        ],
+        "errors": [
+          "搜索已取消",
+          null
+        ],
+        "freshTotal": 1
+      }
+    },
+    {
+      "id": "S05",
+      "verdict": "PASS",
+      "title": "Dense long chapter scan yields",
+      "detail": {
+        "name": "dense",
+        "totalChars": 8388608,
+        "cancelled": true,
+        "timerRanAtReturn": true,
+        "elapsedMs": 15.142
+      }
+    },
+    {
+      "id": "S06",
+      "verdict": "PASS",
+      "title": "Sparse/no-match hot scan yields independently of number of matches",
+      "detail": [
+        {
+          "name": "zero-match",
+          "totalChars": 8388608,
+          "cancelled": true,
+          "timerRanAtReturn": true,
+          "elapsedMs": 15.443
+        },
+        {
+          "name": "one-end-match",
+          "totalChars": 8388608,
+          "cancelled": true,
+          "timerRanAtReturn": true,
+          "elapsedMs": 15.062
+        },
+        {
+          "name": "many-zero-match",
+          "totalChars": 8388608,
+          "cancelled": true,
+          "timerRanAtReturn": true,
+          "elapsedMs": 15.115
+        }
+      ]
+    },
+    {
+      "id": "S07",
+      "verdict": "PASS",
+      "title": "Read failure counted, remaining sections still searched",
+      "detail": {
+        "total": 1,
+        "readErrors": 1,
+        "truncated": true,
+        "scanned": 3
+      }
+    },
+    {
+      "id": "S08",
+      "verdict": "PASS",
+      "title": "Real frozen parser + ZIP oversized chapter coverage and no search resource allocation",
+      "detail": {
+        "total": 1,
+        "scanned": 2,
+        "cacheChars": 12,
+        "reads": [
+          0,
+          1,
+          0
+        ],
+        "createdDelta": 0,
+        "resources": 0,
+        "taskSets": 0
+      }
+    },
+    {
+      "id": "R01",
+      "verdict": "PASS",
+      "title": "Destroy while bytes pending prevents allocation",
+      "detail": {
+        "url": "",
+        "resources": 0,
+        "createdDelta": 0
+      }
+    },
+    {
+      "id": "R02",
+      "verdict": "PASS",
+      "title": "True concurrent resource pending deduplication",
+      "detail": {
+        "reads": 1,
+        "urls": [
+          "blob:audit-1",
+          "blob:audit-1",
+          "blob:audit-1"
+        ],
+        "createdDelta": 1
+      }
+    },
+    {
+      "id": "R03",
+      "verdict": "PASS",
+      "title": "Stale A/B finish after C; actual task cleanup bounds live resources and task metadata",
+      "detail": {
+        "current": [
+          "OPS/c.png"
+        ],
+        "paths": [
+          "OPS/c.png"
+        ],
+        "pending": 0,
+        "taskSets": 1
+      }
+    },
+    {
+      "id": "R04",
+      "verdict": "PASS",
+      "title": "Same-book old/new pending shared image survives both interleavings",
+      "detail": [
+        {
+          "order": "old-byte-pending",
+          "reads": 2,
+          "currentHtml": "<img src=\"blob:audit-3\">",
+          "currentPaths": [
+            "OPS/same.png"
+          ],
+          "resourcePaths": [
+            "OPS/same.png"
+          ],
+          "taskSets": 1,
+          "pending": 0,
+          "liveUrl": "blob:audit-3",
+          "revokedCurrent": false
+        },
+        {
+          "order": "new-byte-pending-old-text-pending",
+          "reads": 1,
+          "currentHtml": "<img src=\"blob:audit-4\">",
+          "currentPaths": [
+            "OPS/same.png"
+          ],
+          "resourcePaths": [
+            "OPS/same.png"
+          ],
+          "taskSets": 1,
+          "pending": 0,
+          "liveUrl": "blob:audit-4",
+          "revokedCurrent": false
+        }
+      ]
+    },
+    {
+      "id": "R05",
+      "verdict": "PASS",
+      "title": "200 sequential image chapter transitions settle with one live resource/task",
+      "detail": [
+        {
+          "transitions": 0,
+          "resources": 1,
+          "taskSets": 1,
+          "pending": 0,
+          "createdMinusRevoked": 1
+        },
+        {
+          "transitions": 50,
+          "resources": 1,
+          "taskSets": 1,
+          "pending": 0,
+          "createdMinusRevoked": 1
+        },
+        {
+          "transitions": 100,
+          "resources": 1,
+          "taskSets": 1,
+          "pending": 0,
+          "createdMinusRevoked": 1
+        },
+        {
+          "transitions": 150,
+          "resources": 1,
+          "taskSets": 1,
+          "pending": 0,
+          "createdMinusRevoked": 1
+        },
+        {
+          "transitions": 200,
+          "resources": 1,
+          "taskSets": 1,
+          "pending": 0,
+          "createdMinusRevoked": 1
+        }
+      ]
+    },
+    {
+      "id": "R06",
+      "verdict": "PASS",
+      "title": "Failed prepare before returned owner does not retain unbounded task sets",
+      "detail": {
+        "attempts": 40,
+        "taskSets": 0,
+        "resources": 0,
+        "pending": 0,
+        "owners": []
+      }
+    },
+    {
+      "id": "P01",
+      "verdict": "PASS",
+      "title": "One decode distinct complete bytes, HTML/SVG href/xlink and fragments",
+      "detail": {
+        "refs": [
+          {
+            "href": "pic%20a.png",
+            "kind": "resource",
+            "path": "OPS/pic a.png",
+            "fragment": "",
+            "query": ""
+          },
+          {
+            "href": "pic%2520a.png",
+            "kind": "resource",
+            "path": "OPS/pic%20a.png",
+            "fragment": "",
+            "query": ""
+          },
+          {
+            "href": "%E4%B8%AD%E6%96%87.png",
+            "kind": "resource",
+            "path": "OPS/中文.png",
+            "fragment": "",
+            "query": ""
+          },
+          {
+            "href": "hash%23percent%25.png",
+            "kind": "resource",
+            "path": "OPS/hash#percent%.png",
+            "fragment": "",
+            "query": ""
+          },
+          {
+            "href": "../%2e%2e/out.png",
+            "kind": "invalid",
+            "path": "",
+            "fragment": ""
+          },
+          {
+            "href": "bad%2Fname.png",
+            "kind": "invalid",
+            "path": "",
+            "fragment": ""
+          }
+        ],
+        "bytes1": [
+          1,
+          2,
+          3
+        ],
+        "bytes2": [
+          9,
+          8,
+          7
+        ],
+        "html": "<img src=\"blob:audit-206\"><img src=\"blob:audit-207\"><img src=\"blob:audit-208#one\"><svg xmlns=\"http://www.w3.org/2000/svg\"><image href=\"blob:audit-206\"></image><image xmlns:xlink=\"http://www.w3.org/1999/xlink\" xlink:href=\"blob:audit-207\"></image><image href=\"blob:audit-208#two\"></image></svg>",
+        "resources": [
+          "OPS/pic a.png",
+          "OPS/pic%20a.png",
+          "OPS/view.svg",
+          "OPS/pic a.png",
+          "OPS/pic%20a.png",
+          "OPS/view.svg"
+        ],
+        "boundary": "Does not prove SVG view painting or valid image decodability."
+      }
+    },
+    {
+      "id": "T01",
+      "verdict": "PASS",
+      "title": "Shared UTF-16 model / duplicates / inline / NBSP / virtual block separators",
+      "detail": {
+        "checks": [
+          {
+            "q": "甲乙丙",
+            "hits": [
+              {
+                "offset": 1,
+                "length": 3,
+                "modelSlice": "甲乙丙",
+                "rangeText": "甲乙丙"
+              },
+              {
+                "offset": 8,
+                "length": 3,
+                "modelSlice": "甲乙丙",
+                "rangeText": "甲乙丙"
+              }
+            ]
+          },
+          {
+            "q": "😀",
+            "hits": [
+              {
+                "offset": 5,
+                "length": 2,
+                "modelSlice": "😀",
+                "rangeText": "😀"
+              }
+            ]
+          },
+          {
+            "q": "Hello world",
+            "hits": [
+              {
+                "offset": 13,
+                "length": 14,
+                "modelSlice": "Hello  \n world",
+                "rangeText": "Hello  \n world"
+              }
+            ]
+          },
+          {
+            "q": "cross block",
+            "hits": [
+              {
+                "offset": 29,
+                "length": 12,
+                "modelSlice": "cross\n\nblock",
+                "rangeText": "crossblock"
+              }
+            ]
+          },
+          {
+            "q": "non breaking",
+            "hits": [
+              {
+                "offset": 43,
+                "length": 12,
+                "modelSlice": "non breaking",
+                "rangeText": "non breaking"
+              }
+            ]
+          }
+        ],
+        "note": "Range.toString omits virtual model newlines; this is expected."
+      }
+    },
+    {
+      "id": "T02",
+      "verdict": "PASS",
+      "title": "Basic hidden/details/SVG defs/desc model semantics fixed",
+      "detail": {
+        "queries": [
+          {
+            "q": "HIDDEN_SECRET",
+            "total": 0,
+            "range": null
+          },
+          {
+            "q": "FOOTNOTE_SECRET",
+            "total": 0,
+            "range": null
+          },
+          {
+            "q": "CLOSED_SECRET",
+            "total": 0,
+            "range": null
+          },
+          {
+            "q": "SVG_DEF_SECRET",
+            "total": 0,
+            "range": null
+          },
+          {
+            "q": "SVG_DESC_SECRET",
+            "total": 0,
+            "range": null
+          },
+          {
+            "q": "AB",
+            "total": 1,
+            "range": "AHIDDEN_SECRETB"
+          },
+          {
+            "q": "OPEN_VISIBLE",
+            "total": 1,
+            "range": "OPEN_VISIBLE"
+          },
+          {
+            "q": "SVG_VISIBLE",
+            "total": 1,
+            "range": "SVG_VISIBLE"
+          }
+        ],
+        "note": "AB Range spans hidden DOM text, but visible model is AB; no pixel claim."
+      }
+    },
+    {
+      "id": "T03",
+      "verdict": "PASS",
+      "title": "Hidden br and retained SVG display/visibility/symbol semantics",
+      "detail": {
+        "queries": [
+          {
+            "q": "AB",
+            "total": 1
+          },
+          {
+            "q": "SVG_HIDDEN_VISIBILITY",
+            "total": 0
+          },
+          {
+            "q": "SVG_HIDDEN_DISPLAY",
+            "total": 0
+          },
+          {
+            "q": "SVG_UNUSED_SYMBOL",
+            "total": 0
+          },
+          {
+            "q": "SVG_ACTUAL_TEXT",
+            "total": 1
+          },
+          {
+            "q": "VISUALLY_PRESENT",
+            "total": 1
+          }
+        ],
+        "plain": "\nAB\nSVG_ACTUAL_TEXT\nVVISUALLY_PRESENTW\n",
+        "preparedHtml": "<p id=\"brcase\">A<br hidden=\"\">B</p><svg xmlns=\"http://www.w3.org/2000/svg\"><g visibility=\"hidden\"><text>SVG_HIDDEN_VISIBILITY</text></g><g display=\"none\"><text>SVG_HIDDEN_DISPLAY</text></g><symbol id=\"unused\"><text>SVG_UNUSED_SYMBOL</text></symbol><text>SVG_ACTUAL_TEXT</text></svg><p>V<span aria-hidden=\"true\">VISUALLY_PRESENT</span>W</p>",
+        "boundary": "DOM semantics and unchanged attributes, not actual Edge visibility. aria-hidden-only exclusion is recorded as policy observation, not a separate FAIL."
+      }
+    },
+    {
+      "id": "E01",
+      "verdict": "PASS",
+      "title": "Exact supported algorithm and ordinary nonfont checks",
+      "detail": [
+        {
+          "name": "valid-IDPF-font",
+          "algo": "http://www.idpf.org/2008/embedding",
+          "uri": "OPS/font.otf",
+          "mime": "font/otf",
+          "exists": true,
+          "expected": true,
+          "opened": true,
+          "fontFlag": true,
+          "error": null
+        },
+        {
+          "name": "unknown-lookalike",
+          "algo": "https://invalid.example/idpf/aes",
+          "uri": "OPS/font.otf",
+          "mime": "font/otf",
+          "exists": true,
+          "expected": false,
+          "opened": false,
+          "fontFlag": false,
+          "error": {
+            "code": "UNSUPPORTED_ENCRYPTION",
+            "message": "这本 EPUB 使用了不支持的加密/混淆算法：https://invalid.example/idpf/aes"
+          }
+        },
+        {
+          "name": "IDPF-XHTML",
+          "algo": "http://www.idpf.org/2008/embedding",
+          "uri": "OPS/c0.xhtml",
+          "expected": false,
+          "opened": false,
+          "fontFlag": false,
+          "error": {
+            "code": "ENCRYPTED_NON_FONT",
+            "message": "加密目标不是明确支持的字体 MIME：OPS/c0.xhtml (application/xhtml+xml)"
+          }
+        },
+        {
+          "name": "Adobe-font",
+          "algo": "http://ns.adobe.com/pdf/enc#RC",
+          "uri": "OPS/font.otf",
+          "mime": "font/otf",
+          "exists": true,
+          "expected": false,
+          "opened": false,
+          "fontFlag": false,
+          "error": {
+            "code": "UNSUPPORTED_ENCRYPTION",
+            "message": "这本 EPUB 使用了不支持的加密/混淆算法：http://ns.adobe.com/pdf/enc#RC"
+          }
+        }
+      ]
+    },
+    {
+      "id": "E02",
+      "verdict": "PASS",
+      "title": "Target must exist in ZIP and MIME must actually identify font",
+      "detail": [
+        {
+          "name": "missing-font-entry",
+          "algo": "http://www.idpf.org/2008/embedding",
+          "uri": "OPS/font.otf",
+          "mime": "font/otf",
+          "exists": false,
+          "expected": false,
+          "opened": false,
+          "fontFlag": false,
+          "error": {
+            "code": "ENCRYPTED_TARGET_MISSING",
+            "message": "加密目标在 ZIP 中不存在：OPS/font.otf"
+          }
+        },
+        {
+          "name": "nonfont-MIME-containing-font",
+          "algo": "http://www.idpf.org/2008/embedding",
+          "uri": "OPS/font.otf",
+          "mime": "application/x-not-a-font",
+          "exists": true,
+          "expected": false,
+          "opened": false,
+          "fontFlag": false,
+          "error": {
+            "code": "ENCRYPTED_NON_FONT",
+            "message": "加密目标不是明确支持的字体 MIME：OPS/font.otf (application/x-not-a-font)"
+          }
+        },
+        {
+          "name": "nonfont-MIME-containing-woff",
+          "algo": "http://www.idpf.org/2008/embedding",
+          "uri": "OPS/font.otf",
+          "mime": "text/x-woff-comment",
+          "exists": true,
+          "expected": false,
+          "opened": false,
+          "fontFlag": false,
+          "error": {
+            "code": "ENCRYPTED_NON_FONT",
+            "message": "加密目标不是明确支持的字体 MIME：OPS/font.otf (text/x-woff-comment)"
+          }
+        },
+        {
+          "name": "unknown-target",
+          "algo": "http://www.idpf.org/2008/embedding",
+          "uri": "OPS/unknown.otf",
+          "expected": false,
+          "opened": false,
+          "fontFlag": false,
+          "error": {
+            "code": "UNKNOWN_ENCRYPTED_TARGET",
+            "message": "加密目标不在包内清单中：OPS/unknown.otf"
+          }
+        }
+      ]
+    },
+    {
+      "id": "E03",
+      "verdict": "OBSERVATION",
+      "title": "CipherReference non-root fallback permits URI absent at root",
+      "detail": {
+        "case": {
+          "name": "root-relative-font",
+          "algo": "http://www.idpf.org/2008/embedding",
+          "uri": "font.otf",
+          "mime": "font/otf",
+          "exists": true,
+          "expected": false,
+          "opened": true,
+          "fontFlag": true,
+          "error": null
+        },
+        "note": "Spec-relative interpretation requires policy review; not separately counted as confirmed FAIL."
+      }
+    },
+    {
+      "id": "P02",
+      "verdict": "PASS",
+      "title": "Sanitizer protocol check, SVG links and forged control attributes",
+      "detail": [
+        {
+          "id": "js",
+          "href": null,
+          "xlink": null,
+          "external": null
+        },
+        {
+          "id": "data",
+          "href": null,
+          "xlink": null,
+          "external": null
+        },
+        {
+          "id": "file",
+          "href": null,
+          "xlink": null,
+          "external": null
+        },
+        {
+          "id": "https",
+          "href": null,
+          "xlink": null,
+          "external": "https://example.invalid/ok"
+        },
+        {
+          "id": "forged",
+          "href": null,
+          "xlink": null,
+          "external": "https://example.invalid/real"
+        },
+        {
+          "id": "svg",
+          "href": null,
+          "xlink": null,
+          "external": null
+        },
+        {
+          "id": "svgok",
+          "href": null,
+          "xlink": null,
+          "external": "https://example.invalid/svg"
+        }
+      ]
+    }
+  ]
+}

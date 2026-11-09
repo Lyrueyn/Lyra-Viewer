@@ -1,0 +1,190 @@
+{
+  "evidenceKind": "Original old/new JS and frozen R6 C#; raw protocol and isolated true files",
+  "results": [
+    {
+      "id": "P01-R4-V2-CLIENT-ON-R6",
+      "pass": true,
+      "expected": "specified behavior",
+      "actual": {
+        "hello": false,
+        "mode": "local",
+        "sent": [
+          {
+            "protocol": "lyra-reader",
+            "version": 2,
+            "type": "hello",
+            "requestId": "hello-de0aa496-6bb6-4b2b-bd8f-c51e8a8389c4",
+            "sessionId": "759e136ae9a04d33a50318ef38f36c15"
+          },
+          {
+            "protocol": "lyra-reader",
+            "version": 2,
+            "type": "book.begin",
+            "sessionId": "759e136ae9a04d33a50318ef38f36c15",
+            "loadId": "old-v2-book",
+            "name": "V2.epub",
+            "size": 2
+          },
+          {
+            "protocol": "lyra-reader",
+            "version": 2,
+            "type": "book.ready",
+            "sessionId": "759e136ae9a04d33a50318ef38f36c15",
+            "loadId": "old-v2-book"
+          }
+        ],
+        "host": {
+          "session": "759e136ae9a04d33a50318ef38f36c15",
+          "source": "https://lyra-extension-a43d51d7.local/index.html?sessionId=759e136ae9a04d33a50318ef38f36c15&loadId=b4c8abceb92b44bbb67e875fa5c6bb45",
+          "activationEpoch": 1,
+          "navEpoch": 1,
+          "ClosedCount": 0,
+          "pending": false,
+          "closeRequest": "",
+          "closeTimer": false,
+          "ready": true,
+          "ensureCalls": 1,
+          "loadId": "old-v2-book",
+          "overlay": "Collapsed",
+          "loadingText": "正在打开…",
+          "closeInterval": null,
+          "failed": false
+        },
+        "responses": [
+          {
+            "direction": "C#->JS",
+            "name": "v2",
+            "time": 1700000000000,
+            "raw": "{\"protocol\":\"lyra-reader\",\"version\":2,\"type\":\"response\",\"requestId\":\"hello-de0aa496-6bb6-4b2b-bd8f-c51e8a8389c4\",\"sessionId\":\"759e136ae9a04d33a50318ef38f36c15\",\"ok\":false,\"error\":{\"code\":\"INCOMPATIBLE_PROTOCOL\",\"message\":\"\\u5BBF\\u4E3B R6 \\u534F\\u8BAE\\u4E0D\\u63D0\\u4F9B v2 \\u6301\\u4E45\\u5316\\uFF0C\\u65E7\\u6269\\u5C55\\u4F7F\\u7528\\u5F53\\u524D\\u7A97\\u53E3\\u5B58\\u50A8\"}}"
+          }
+        ],
+        "boundary": "Real frozen R4 ReaderStateClient version2; R6 must accept trusted v2 lifecycle; no actual book native overlay exercised"
+      }
+    },
+    {
+      "id": "P02-POSITION-OPERATION-ID-CONTRACT",
+      "pass": true,
+      "expected": "specified behavior",
+      "actual": {
+        "s": {
+          "protocol": "lyra-reader",
+          "version": 3,
+          "type": "response",
+          "requestId": "protocol-2",
+          "sessionId": "6de6c49f5024462ea96365606dd62b79",
+          "ok": true,
+          "result": {
+            "revision": 1,
+            "positionRevision": 1,
+            "positionToken": 1
+          }
+        },
+        "altered": {
+          "protocol": "lyra-reader",
+          "version": 3,
+          "type": "response",
+          "requestId": "protocol-3",
+          "sessionId": "6de6c49f5024462ea96365606dd62b79",
+          "ok": true,
+          "result": {
+            "revision": 1,
+            "positionRevision": 1,
+            "positionToken": 1,
+            "idempotent": true
+          }
+        },
+        "load": {
+          "protocol": "lyra-reader",
+          "version": 3,
+          "type": "response",
+          "requestId": "protocol-4",
+          "sessionId": "6de6c49f5024462ea96365606dd62b79",
+          "ok": true,
+          "result": {
+            "revision": 1,
+            "positionRevision": 1,
+            "metadataRevision": 0,
+            "position": {
+              "spineIndex": 0,
+              "locator": {
+                "textOffset": 100
+              }
+            },
+            "positionToken": 1,
+            "bookmarksRevision": 0,
+            "bookmarkCount": 0,
+            "interactionToken": 1,
+            "preferences": {}
+          }
+        },
+        "file": {
+          "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r7\\host-audit\\runs\\protocol-boundary\\bin\\data\\reader\\epub\\books\\7eb58d22e7676cdc07ad6a733ada580927a8682bcd28a8e43ca4c84c5907ebaf.json",
+          "raw": "{\r\n  \"version\": 1,\r\n  \"revision\": 1,\r\n  \"positionRevision\": 1,\r\n  \"metadataRevision\": 0,\r\n  \"interaction\": 1,\r\n  \"interactionOwner\": \"6de6c49f5024462ea96365606dd62b79\",\r\n  \"position\": {\r\n    \"spineIndex\": 0,\r\n    \"locator\": {\r\n      \"textOffset\": 100\r\n    }\r\n  },\r\n  \"positionToken\": 1,\r\n  \"positionSequence\": 1,\r\n  \"bookmarks\": [],\r\n  \"bookmarksRevision\": 0,\r\n  \"positionSession\": \"6de6c49f5024462ea96365606dd62b79\",\r\n  \"positionSavedAt\": \"2026-10-28T15:57:25.6048324Z\"\r\n}"
+        },
+        "boundary": "OBS contract: host ignores operationId; idempotency identity is session/token/sequence/value, and load omits positionSequence/positionOperationId; no claim this alone defeats token checks"
+      }
+    },
+    {
+      "id": "P03-SCOPE-EXACT-GLOBAL-ONLY",
+      "pass": true,
+      "expected": "specified behavior",
+      "actual": {
+        "rows": [
+          {
+            "scope": "book:foreign",
+            "response": {
+              "protocol": "lyra-reader",
+              "version": 3,
+              "type": "response",
+              "requestId": "protocol-6",
+              "sessionId": "6de6c49f5024462ea96365606dd62b79",
+              "ok": false,
+              "error": {
+                "code": "UNSUPPORTED_SCOPE",
+                "message": "只支持 global 偏好作用域"
+              }
+            }
+          },
+          {
+            "scope": "",
+            "response": {
+              "protocol": "lyra-reader",
+              "version": 3,
+              "type": "response",
+              "requestId": "protocol-7",
+              "sessionId": "6de6c49f5024462ea96365606dd62b79",
+              "ok": false,
+              "error": {
+                "code": "UNSUPPORTED_SCOPE",
+                "message": "只支持 global 偏好作用域"
+              }
+            }
+          },
+          {
+            "scope": null,
+            "response": {
+              "protocol": "lyra-reader",
+              "version": 3,
+              "type": "response",
+              "requestId": "protocol-8",
+              "sessionId": "6de6c49f5024462ea96365606dd62b79",
+              "ok": false,
+              "error": {
+                "code": "UNSUPPORTED_SCOPE",
+                "message": "只支持 global 偏好作用域"
+              }
+            }
+          }
+        ],
+        "before": {
+          "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r7\\host-audit\\runs\\protocol-boundary\\bin\\data\\reader\\epub\\preferences.json",
+          "raw": null
+        },
+        "after": {
+          "path": "F:\\DSH\\LocalMediaPlayer-Workspace\\docs\\epub-optimization\\gpt-review-r7\\host-audit\\runs\\protocol-boundary\\bin\\data\\reader\\epub\\preferences.json",
+          "raw": null
+        }
+      }
+    }
+  ]
+}

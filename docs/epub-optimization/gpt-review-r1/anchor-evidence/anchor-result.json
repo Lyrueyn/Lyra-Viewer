@@ -1,0 +1,40 @@
+{
+  "id": "R18_HIGHLIGHT_ANCHOR_DIRECT",
+  "before": {
+    "page": 7,
+    "anchor": {
+      "elementPath": null,
+      "textNodePath": [
+        1,
+        2
+      ],
+      "offsetUtf16": 4348,
+      "quote": "来那一句。重复的文字用于验证位置恢复。 每次翻页都应该回到原来那一句。重复的文字用于验证位置恢复。 每次翻页都应该回到原来那一句",
+      "prefix": "来那一句。重复的文字用于验证位置恢复。 每次翻页都应该回到原来那",
+      "suffix": "一句。重复的文字用于验证位置恢复。 每次翻页都应该回到原来那一句",
+      "elementId": "long",
+      "chapterFraction": 0.18421052631578946,
+      "pageIndex": 7
+    },
+    "highlights": 1
+  },
+  "after": {
+    "page": 0,
+    "anchor": {
+      "elementPath": null,
+      "textNodePath": [
+        0,
+        0
+      ],
+      "offsetUtf16": 9,
+      "quote": "HIGHLIGHT",
+      "prefix": "HIGHLIGHT",
+      "suffix": "",
+      "elementId": "",
+      "chapterFraction": 0,
+      "pageIndex": 0
+    }
+  },
+  "defect": true,
+  "note": "Invoke candidate highlightRanges with a valid range, then use actual page input and reload. This isolates anchor persistence from the separately broken search locator."
+}

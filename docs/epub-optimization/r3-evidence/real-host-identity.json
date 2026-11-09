@@ -1,0 +1,15 @@
+﻿{
+    "capturedAt":  "2026-10-28T00:11:00.3249320+08:00",
+    "pid":  19500,
+    "processPath":  "D:\\Temp\\lyra_epub_r3_candidate\\WinUIGui.exe",
+    "executableSha256":  "D0F1BB58B07D0B6AEAEB463C841914D9594D0A803E3831FC272A6A5FFED3B335",
+    "assemblySha256":  "8067990EBBAF126239B1F3B8CC936D36CB3B1F47DC317D541FDF4CE9C4A9905E",
+    "assemblyVersion":  "1.1.12.0",
+    "extensionDir":  "D:\\Temp\\lyra_epub_r3_candidate\\extensions\\epub",
+    "extensionVersion":  "0.7.0",
+    "extensionIndexSha256":  "F6B244C642B1842652B4ED733116A26A3E92B1B0271BF7C1B444A1C8AF3B411D",
+    "extensionReaderSha256":  "34595090C9B84DBD3045DCBCA090FBEA7B980E8702BB6428116124662AA3085E",
+    "statePath":  "D:\\Temp\\lyra_epub_r3_candidate\\data\\reader\\epub",
+    "runDir":  "D:\\Temp\\lyra_epub_r3_candidate",
+    "evidenceKind":  "R3 最终候选进程身份；未修改用户安装"
+}

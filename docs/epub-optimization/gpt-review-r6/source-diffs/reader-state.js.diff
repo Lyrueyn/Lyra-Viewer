@@ -1,0 +1,108 @@
+--- R5/reader-state.js
++++ R6/reader-state.js
+@@ -1,4 +1,4 @@
+-/* 阅读状态客户端：R4 协议 2。
++﻿/* 阅读状态客户端：R4 协议 2。
+  * - 偏好授权是宿主不透明字符串 grant，不把 long/时间戳暴露给 JS Number；
+  * - 偏好授权与阅读位置交互资格完全分离；
+  * - 每个字段/书签/位置操作都带操作身份，回执只确认对应操作；
+@@ -386,16 +386,41 @@
+     }
+     _lsKey(bookId) { return "lyra_epub_state_" + (bookId || "unknown"); }
+     _lsBookmarksKey(bookId) { return "lyra_epub_bookmarks_" + (bookId || "unknown"); }
++    _checkLocalVersion(obj, kind, bookId) {
++      if (!obj || typeof obj !== "object" || Array.isArray(obj)) return true;
++      if (!Object.prototype.hasOwnProperty.call(obj, "version")) return true;
++      const v = Number(obj.version);
++      if (v === 1) return true;
++      const c = this._bookCorruption(bookId);
++      if (kind === "bookmarks") c.bookmarks = true; else c.position = true;
++      throw new ReaderStateError("LOCAL_UNKNOWN_VERSION", "本地" + (kind === "bookmarks" ? "书签" : "位置") + "版本未知（" + obj.version + "），未覆盖原数据");
++    }
+     _localLoad(bookId) {
+       let raw = null;
+       try { raw = localStorage.getItem(this._lsKey(bookId)); }
+       catch { throw new ReaderStateError("LOCAL_UNAVAILABLE", "当前窗口本地存储不可用"); }
+       if (!raw) return { revision: 0, position: null, positionSequence: 0 };
+-      try { return JSON.parse(raw) || { revision: 0, position: null, positionSequence: 0 }; }
+-      catch { throw new ReaderStateError("LOCAL_CORRUPT", "当前窗口本地阅读状态损坏，未覆盖原数据"); }
++      let parsed;
++      try { parsed = JSON.parse(raw) || { revision: 0, position: null, positionSequence: 0 }; }
++      catch { this._bookCorruption(bookId).position = true; throw new ReaderStateError("LOCAL_CORRUPT", "当前窗口本地阅读状态损坏，未覆盖原数据"); }
++      this._checkLocalVersion(parsed, "position", bookId);
++      this._bookCorruption(bookId).position = false;
++      return parsed;
+     }
+     _localSave(bookId, data) {
+-      try { localStorage.setItem(this._lsKey(bookId), JSON.stringify(data)); }
++      try {
++        // 已知版本1时保留未来扩展字段；未知版本在读取阶段已被拒绝，不会走到写。
++        let merged = data;
++        try {
++          const raw = localStorage.getItem(this._lsKey(bookId));
++          if (raw) {
++            const old = JSON.parse(raw);
++            if (old && typeof old === "object" && !Array.isArray(old) && (!Object.prototype.hasOwnProperty.call(old, "version") || Number(old.version) === 1))
++              merged = { ...old, ...data };
++          }
++        } catch { }
++        localStorage.setItem(this._lsKey(bookId), JSON.stringify(merged));
++      }
+       catch (e) { throw new ReaderStateError("LOCAL_WRITE_FAILED", "本地保存位置失败：" + (e.message || e)); }
+     }
+     _localLoadPrefs() {
+@@ -404,6 +429,10 @@
+       if (!raw) { this._prefsCorrupt = false; return null; }
+       try {
+         const data = JSON.parse(raw);
++        if (data && typeof data === "object" && Object.prototype.hasOwnProperty.call(data, "version") && Number(data.version) !== 1) {
++          this._prefsCorrupt = true;
++          return null;
++        }
+         this._prefsCorrupt = false;
+         return data && data.preferences ? data.preferences : data;
+       } catch { this._prefsCorrupt = true; return null; }
+@@ -423,6 +452,8 @@
+       if (raw) {
+         try { existing = JSON.parse(raw) || {}; }
+         catch { throw new ReaderStateError("LOCAL_CORRUPT", "本地设置损坏，未覆盖原设置"); }
++        if (existing && typeof existing === "object" && Object.prototype.hasOwnProperty.call(existing, "version") && Number(existing.version) !== 1)
++          throw new ReaderStateError("LOCAL_UNKNOWN_VERSION", "本地设置版本未知，未覆盖原设置");
+       }
+       const preferences = existing.preferences ? { ...existing.preferences } : { ...existing };
+       const seqs = existing.fieldSequences ? { ...existing.fieldSequences } : {};
+@@ -462,11 +493,31 @@
+         this._bookCorruption(bookId).bookmarks = true;
+         throw new ReaderStateError("LOCAL_CORRUPT", "当前窗口本地书签损坏，未覆盖原数据");
+       }
+-      if (Array.isArray(parsed)) return { revision: 0, items: parsed };
+-      return { revision: Number(parsed && parsed.revision) || 0, items: Array.isArray(parsed && parsed.items) ? parsed.items : [] };
++      if (Array.isArray(parsed)) {
++        this._bookCorruption(bookId).bookmarks = false;
++        return { revision: 0, items: parsed };
++      }
++      this._checkLocalVersion(parsed, "bookmarks", bookId);
++      if (!parsed || typeof parsed !== "object" || !Array.isArray(parsed.items)) {
++        this._bookCorruption(bookId).bookmarks = true;
++        throw new ReaderStateError("LOCAL_CORRUPT", "本地书签结构损坏，未覆盖原数据");
++      }
++      this._bookCorruption(bookId).bookmarks = false;
++      return { revision: Number(parsed.revision) || 0, items: parsed.items };
+     }
+     _localSaveBookmarks(bookId, items, revision) {
+-      try { localStorage.setItem(this._lsBookmarksKey(bookId), JSON.stringify({ revision: revision || 0, items: items.slice(0, BOOKMARK_LIMIT) })); }
++      try {
++        let merged = { revision: revision || 0, items: items.slice(0, BOOKMARK_LIMIT) };
++        try {
++          const raw = localStorage.getItem(this._lsBookmarksKey(bookId));
++          if (raw) {
++            const old = JSON.parse(raw);
++            if (old && typeof old === "object" && !Array.isArray(old) && (!Object.prototype.hasOwnProperty.call(old, "version") || Number(old.version) === 1))
++              merged = { ...old, revision: revision || 0, items: items.slice(0, BOOKMARK_LIMIT) };
++          }
++        } catch { }
++        localStorage.setItem(this._lsBookmarksKey(bookId), JSON.stringify(merged));
++      }
+       catch (e) { throw new ReaderStateError("LOCAL_WRITE_FAILED", "本地保存书签失败：" + (e.message || e)); }
+     }
+ 

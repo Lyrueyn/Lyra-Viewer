@@ -1,0 +1,16 @@
+﻿{
+    "capturedAt":  "2026-10-28T00:45:38.8486188+08:00",
+    "pid":  72996,
+    "processPath":  "D:\\Temp\\lyra_r3_compat_newhost_c12fe26\\WinUIGui.exe",
+    "exeSha256":  "D0F1BB58B07D0B6AEAEB463C841914D9594D0A803E3831FC272A6A5FFED3B335",
+    "dllSha256":  "8067990EBBAF126239B1F3B8CC936D36CB3B1F47DC317D541FDF4CE9C4A9905E",
+    "hostVersion":  "1.1.12.0",
+    "runDir":  "D:\\Temp\\lyra_r3_compat_newhost_c12fe26",
+    "dataPath":  "D:\\Temp\\lyra_r3_compat_newhost_c12fe26\\data",
+    "epubBaselineCommit":  "c12fe26275cdec67922cccb64d9b5f2b4c269cd2",
+    "extensionPath":  "D:\\Temp\\lyra_r3_compat_newhost_c12fe26\\extensions\\epub",
+    "actualExtensionIndexLines":  675,
+    "actualExtensionIndexSha256":  "88FA8B2E0537E535B3430B2D8B6D1C3FF7085F3599CF2CD2813267448939721A",
+    "actualExtensionJsonVersion":  "0.5.26",
+    "loadedUrl":  "see reader_host_debug.log NAV"
+}

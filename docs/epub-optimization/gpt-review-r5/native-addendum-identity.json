@@ -1,0 +1,52 @@
+[
+  {
+    "path": "01-3s.png",
+    "sha256": "68f7c53cab13a6c7e171c12ba6ecfc63dfe93687651d7eb25df5a2c933de9022",
+    "bytes": 149576
+  },
+  {
+    "path": "02-9s.png",
+    "sha256": "9f8c718c2fc8e4771b881c9e35eaa0cbd5c6133c2aceafc7643b3ea4e85c198b",
+    "bytes": 149431
+  },
+  {
+    "path": "03-12s.png",
+    "sha256": "6bb0d4174a4b1bd97fa5525237941f402703916af016c3dd49fea8d625481d7f",
+    "bytes": 151405
+  },
+  {
+    "path": "04-after-right.png",
+    "sha256": "4cd0e05ac055f06e741b9e17874627c664f66771fc8dc84dfff12d4ef5f78b66",
+    "bytes": 149948
+  },
+  {
+    "path": "05-22s.png",
+    "sha256": "2f4479a46054a8b50024cf0ff7f19e48c5092ef38644baddf64b44281ea90b67",
+    "bytes": 156900
+  },
+  {
+    "path": "DeepSeek补充测试-R5-addendum.md",
+    "sha256": "d21be48746773c5351b5d24f29bfe9e6a3e28553c64b4a64a1c704b8705b05f6",
+    "bytes": 3121
+  },
+  {
+    "path": "r5-addendum-manifest.json",
+    "sha256": "178bd235e2060c750636ca1bb42be973b3c7ecd312ac03d3fc6dbc16a6413b6f",
+    "bytes": 2026
+  },
+  {
+    "path": "SHA256SUMS",
+    "sha256": "f68460692f956f3f70f84926fff595fae08d3f51c7189c291f0c08cf2a48a662",
+    "bytes": 760
+  },
+  {
+    "path": "v2interop-host.log",
+    "sha256": "2a2d73b1c64f2006055617a73d597961886c06acf4158f2a9af9eb7dabc9888e",
+    "bytes": 1193
+  },
+  {
+    "path": "v2interop-identity.json",
+    "sha256": "6ef8da5fc0ce75adce0b358cd69fb3f99aa97cba428c62b604c87c965c328ee5",
+    "bytes": 812
+  }
+]

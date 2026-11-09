@@ -1,0 +1,253 @@
+{
+  "evidenceKind": "Real Edge, frozen candidate; controlled delays/faults documented per case",
+  "results": [
+    {
+      "id": "C01_CORRUPT_BOOK_BLOCKS_OTHER_BOOK",
+      "book": "FRESH",
+      "newPosition": "{\"revision\":2,\"position\":{\"spineHref\":\"OPS/c0.xhtml\",\"spineIndex\":0,\"locator\":{\"elementPath\":null,\"textOffset\":1476,\"quote\":\"置，不以内部页号代替内容检查。 FRESH paragraph 14: independent reading text re\",\"prefix\":\"置，不以内部页号代替内容检查。 FRESH paragraph\",\"suffix\":\"14: independent reading text re\",\"elementId\":\"\",\"chapterFraction\":0.14285714285714285,\"pageIndex\":2},\"chapterFraction\":0.14285714285714285,\"savedAt\":\"2026-10-27T19:36:25.228Z\"},\"positionSequence\":1793129785228000,\"positionOperationId\":\"pos-op-09d286f3-5fbb-46f3-90c6-82e1fdfaf030\",\"positionRevision\":2,\"updatedAt\":\"2026-10-27T19:36:25.228Z\"}",
+      "newBookmarks": "{\"revision\":1,\"items\":[{\"id\":\"bm-mvr36cv2-51kn4z\",\"_key\":\"OPS/c0.xhtml|t1476\",\"spineHref\":\"OPS/c0.xhtml\",\"spineIndex\":0,\"chapterTitle\":\"c0\",\"title\":\"c0\",\"summary\":\"置，不以内部页号代替内容检查。 FRESH paragraph 14: independent reading text re\",\"locator\":{\"elementPath\":null,\"textOffset\":1476,\"quote\":\"置，不以内部页号代替内容检查。 FRESH paragraph 14: independent reading text re\",\"prefix\":\"置，不以内部页号代替内容检查。 FRESH paragraph\",\"suffix\":\"14: independent reading text re\",\"elementId\":\"\",\"chapterFraction\":0.14285714285714285,\"pageIndex\":2},\"createdAt\":\"2026-10-27T19:36:24.734Z\"}]}",
+      "status": "已添加书签：置，不以内部页号代替内容检查。 FRESH paragraph 14: independent reading text re",
+      "saveState": "位置已保存在当前窗口",
+      "oldPosition": "{bad",
+      "defect": false,
+      "note": "Corrupt data belongs only to NORMAL; FRESH has distinct bytes/id and no corrupt state."
+    },
+    {
+      "id": "C02_FAILED_SNAPSHOT_REOPEN_VISIBLE_POSITION",
+      "before": {
+        "page": 4,
+        "anchor": {
+          "elementPath": null,
+          "textOffset": 2973,
+          "quote": "位置，不以内部页号代替内容检查。 NORMAL paragraph 28: independent reading text",
+          "prefix": "位置，不以内部页号代替内容检查。 NORMAL paragra",
+          "suffix": "ph 28: independent reading text",
+          "elementId": "",
+          "chapterFraction": 0.2857142857142857,
+          "pageIndex": 4
+        }
+      },
+      "retained": 1,
+      "after": {
+        "page": 4,
+        "anchor": {
+          "elementPath": null,
+          "textOffset": 2973,
+          "quote": "位置，不以内部页号代替内容检查。 NORMAL paragraph 28: independent reading text",
+          "prefix": "位置，不以内部页号代替内容检查。 NORMAL paragra",
+          "suffix": "ph 28: independent reading text",
+          "elementId": "",
+          "chapterFraction": 0.2857142857142857,
+          "pageIndex": 4
+        },
+        "saved": {
+          "revision": 2,
+          "position": {
+            "spineHref": "OPS/c0.xhtml",
+            "spineIndex": 0,
+            "locator": {
+              "elementPath": null,
+              "textOffset": 2973,
+              "quote": "位置，不以内部页号代替内容检查。 NORMAL paragraph 28: independent reading text",
+              "prefix": "位置，不以内部页号代替内容检查。 NORMAL paragra",
+              "suffix": "ph 28: independent reading text",
+              "elementId": "",
+              "chapterFraction": 0.2857142857142857,
+              "pageIndex": 4
+            },
+            "chapterFraction": 0.2857142857142857,
+            "savedAt": "2026-10-27T19:36:26.276Z"
+          },
+          "positionSequence": 1793129786276000,
+          "positionOperationId": "pos-op-4ba7b644-9fc8-4fe3-bf2d-7e02e9c6038d",
+          "positionRevision": 2,
+          "updatedAt": "2026-10-27T19:36:26.276Z"
+        },
+        "pending": 0
+      },
+      "defect": false,
+      "note": "Failure snapshot now survives and is retried, but check the actual reader destination on reopening, not only disk."
+    },
+    {
+      "id": "C03_OLD_IMAGE_SAVE_ACK_CLEARS_NEW_PAGE",
+      "before": {
+        "elementPath": [
+          1,
+          0
+        ],
+        "textOffset": null,
+        "quote": "",
+        "prefix": "",
+        "suffix": "",
+        "elementId": "",
+        "chapterFraction": 0.1111111111111111,
+        "pageIndex": 1
+      },
+      "atRelease": {
+        "elementPath": [
+          2,
+          0
+        ],
+        "textOffset": null,
+        "quote": "",
+        "prefix": "",
+        "suffix": "",
+        "elementId": "",
+        "chapterFraction": 0.2222222222222222,
+        "pageIndex": 2
+      },
+      "after": {
+        "current": {
+          "elementPath": [
+            2,
+            0
+          ],
+          "textOffset": null,
+          "quote": "",
+          "prefix": "",
+          "suffix": "",
+          "elementId": "",
+          "chapterFraction": 0.2222222222222222,
+          "pageIndex": 2
+        },
+        "modified": false,
+        "saves": [
+          {
+            "spineHref": "OPS/c0.xhtml",
+            "spineIndex": 0,
+            "locator": {
+              "elementPath": [
+                1,
+                0
+              ],
+              "textOffset": null,
+              "quote": "",
+              "prefix": "",
+              "suffix": "",
+              "elementId": "",
+              "chapterFraction": 0.1111111111111111,
+              "pageIndex": 1
+            },
+            "chapterFraction": 0.1111111111111111,
+            "savedAt": "2026-10-27T19:36:26.900Z"
+          },
+          {
+            "spineHref": "OPS/c0.xhtml",
+            "spineIndex": 0,
+            "locator": {
+              "elementPath": [
+                2,
+                0
+              ],
+              "textOffset": null,
+              "quote": "",
+              "prefix": "",
+              "suffix": "",
+              "elementId": "",
+              "chapterFraction": 0.2222222222222222,
+              "pageIndex": 2
+            },
+            "chapterFraction": 0.2222222222222222,
+            "savedAt": "2026-10-27T19:36:27.008Z"
+          },
+          {
+            "spineHref": "OPS/c0.xhtml",
+            "spineIndex": 0,
+            "locator": {
+              "elementPath": [
+                2,
+                0
+              ],
+              "textOffset": null,
+              "quote": "",
+              "prefix": "",
+              "suffix": "",
+              "elementId": "",
+              "chapterFraction": 0.2222222222222222,
+              "pageIndex": 2
+            },
+            "chapterFraction": 0.2222222222222222,
+            "savedAt": "2026-10-27T19:36:27.436Z"
+          }
+        ],
+        "saved": {
+          "revision": 3,
+          "position": {
+            "spineHref": "OPS/c0.xhtml",
+            "spineIndex": 0,
+            "locator": {
+              "elementPath": [
+                2,
+                0
+              ],
+              "textOffset": null,
+              "quote": "",
+              "prefix": "",
+              "suffix": "",
+              "elementId": "",
+              "chapterFraction": 0.2222222222222222,
+              "pageIndex": 2
+            },
+            "chapterFraction": 0.2222222222222222,
+            "savedAt": "2026-10-27T19:36:27.436Z"
+          },
+          "positionSequence": 1793129787436000,
+          "positionOperationId": "pos-op-80def339-b3b6-4946-838d-4a52638833bf",
+          "positionRevision": 3,
+          "updatedAt": "2026-10-27T19:36:27.436Z"
+        }
+      },
+      "defect": false,
+      "note": "Controlled delay only after first actual local write, before its acknowledgement; next user input is a different pure-image page."
+    },
+    {
+      "id": "C04_OLD_BOOK_RELEASE_REVOKES_NEW_IMAGE",
+      "before": {
+        "url": "blob:http://127.0.0.1:59443/3c75447e-eb0c-4580-abbb-576bbfee1758",
+        "naturalWidth": 1,
+        "owner": 2,
+        "resources": [
+          "OPS/new1.png"
+        ],
+        "fetchOK": true
+      },
+      "after": {
+        "book": "NEW",
+        "ready": true,
+        "url": "blob:http://127.0.0.1:59443/3c75447e-eb0c-4580-abbb-576bbfee1758",
+        "naturalWidth": 1,
+        "resources": [
+          "OPS/new1.png"
+        ],
+        "revoked": [
+          "blob:http://127.0.0.1:59443/22fb8b76-e766-4824-9161-9ee3b65c516f",
+          "blob:http://127.0.0.1:59443/24b06b76-3080-4d25-b998-d94dffade7db"
+        ],
+        "fetchOK": true
+      },
+      "defect": false,
+      "note": "A displayed image may remain decoded in the browser cache; this asserts current referenced blob becomes revoked and unfetchable, not that already painted pixels instantly vanish."
+    },
+    {
+      "id": "C05_SEARCH_CLICK_OLD_QUERY_COMMITS_AFTER_INPUT",
+      "input": "NEWQUERY",
+      "queryGen": 5,
+      "active": null,
+      "highlights": [],
+      "spine": 0,
+      "defect": false,
+      "note": "New input invalidates old query immediately; old chapter read is released before new 300ms debounce fires."
+    },
+    {
+      "id": "C06_VISIBLE_MODEL_HIDDEN_BREAK_AND_SVG",
+      "geom": {
+        "AB": "AB",
+        "breakDisplay": "none",
+        "svgVisibility": "hidden"
+      },
+      "abMatches": 1,
+      "invisibleSvgMatches": 0,
+      "defect": false
+    }
+  ]
+}

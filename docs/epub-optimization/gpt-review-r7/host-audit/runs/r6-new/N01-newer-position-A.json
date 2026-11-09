@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "revision": 1,
+  "positionRevision": 1,
+  "metadataRevision": 0,
+  "interaction": 2,
+  "interactionOwner": "d7faaddb92524c22b82cfbc0e4cdad83",
+  "position": {
+    "spineIndex": 0,
+    "spineHref": "a.xhtml",
+    "locator": {
+      "textOffset": 900
+    }
+  },
+  "positionToken": 2,
+  "positionSequence": 10,
+  "bookmarks": [],
+  "bookmarksRevision": 0,
+  "positionSession": "d7faaddb92524c22b82cfbc0e4cdad83",
+  "positionSavedAt": "2026-10-28T15:57:12.7048914Z"
+}

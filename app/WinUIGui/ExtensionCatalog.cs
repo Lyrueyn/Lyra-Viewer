@@ -55,6 +55,16 @@ namespace WinUIGui
             public bool ProjectMode { get; set; }
         }
 
+        /// <summary>编辑器插件的展示信息。编辑器宿主（MainWindow 的「编辑器」Tab）读取。</summary>
+        public sealed class EditorSpec
+        {
+            public string Id { get; set; } = "";
+            public string Name { get; set; } = "";
+            public string Description { get; set; } = "";
+            public string Glyph { get; set; } = "";
+            public int Order { get; set; } = 100;
+        }
+
         public sealed class ExtensionInfo
         {
             public string Id { get; set; } = "";
@@ -66,6 +76,8 @@ namespace WinUIGui
             public List<string> FileTypes { get; set; } = new();
             public HostSpec? Host { get; set; }
             public LibrarySpec? Library { get; set; }
+            /// <summary>kind=editor-plugin 时的编辑器展示信息。</summary>
+            public EditorSpec? Editor { get; set; }
             /// <summary>运行时前置扩展 id；layer 扩展可被阅读器/笔记本嵌入。</summary>
             public List<string> Requires { get; set; } = new();
             public bool Enabled { get; set; } = true;
@@ -130,6 +142,10 @@ namespace WinUIGui
                 def.Kind = ExtensionKind.Notebook;
             else if (string.Equals(info.Kind, "layer", StringComparison.OrdinalIgnoreCase))
                 def.Kind = ExtensionKind.Layer;
+                else if (string.Equals(info.Kind, "editor", StringComparison.OrdinalIgnoreCase))
+                    def.Kind = ExtensionKind.EditorHost;
+                else if (string.Equals(info.Kind, "editor-plugin", StringComparison.OrdinalIgnoreCase))
+                    def.Kind = ExtensionKind.EditorPlugin;
             else
                 def.Kind = ExtensionKind.Tool;
 
@@ -264,7 +280,7 @@ namespace WinUIGui
         }
     }
 
-    public enum ExtensionKind { Tool, Reader, Notebook, Layer }
+    public enum ExtensionKind { Tool, Reader, Notebook, Layer, EditorHost, EditorPlugin }
 
     public sealed class ExtensionDefinition
     {
@@ -275,5 +291,7 @@ namespace WinUIGui
         public bool IsReader => Kind == ExtensionKind.Reader;
         public bool IsNotebook => Kind == ExtensionKind.Notebook;
         public bool IsLayer => Kind == ExtensionKind.Layer;
+        public bool IsEditorHost => Kind == ExtensionKind.EditorHost;
+        public bool IsEditorPlugin => Kind == ExtensionKind.EditorPlugin;
     }
 }

@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "revision": 2,
+  "preferences": {
+    "fontSize": 32,
+    "lineHeight": 2.2
+  },
+  "fieldSequences": {},
+  "preferenceOrders": {
+    "fontSize": 22,
+    "lineHeight": 40
+  },
+  "updatedAt": "2026-10-27T19:39:12.5789714Z"
+}

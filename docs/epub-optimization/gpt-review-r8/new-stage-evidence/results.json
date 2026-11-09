@@ -1,0 +1,1043 @@
+{
+  "evidenceKind": "Real Edge R5, original modules; explicit resource/File/RAF gates; local-only bridge and actual isolated localStorage",
+  "results": [
+    {
+      "id": "E01_RESOURCE_CANCEL_INPUT",
+      "before": {
+        "ready": true,
+        "busy": false,
+        "modified": true,
+        "spine": 0,
+        "preparedIndex": 0,
+        "owner": 1,
+        "paginatorReady": true,
+        "paginatorSpine": 0,
+        "page": 5,
+        "count": 15,
+        "text": "START DOCUMENT\n\nSTART paragraph 0: independent visible reading and position preservation. 这是用于验证实际正文",
+        "stable": {
+          "spineHref": "OPS/c0.xhtml",
+          "spineIndex": 0,
+          "locator": {
+            "elementPath": null,
+            "textOffset": 2506,
+            "quote": "这是用于验证实际正文的长段落。 START paragraph 27: independent visible reading",
+            "prefix": "这是用于验证实际正文的长段落。 START paragraph",
+            "suffix": "27: independent visible reading",
+            "elementId": "",
+            "chapterFraction": 0.2857142857142857,
+            "pageIndex": 4
+          },
+          "chapterFraction": 0.2857142857142857,
+          "savedAt": "2026-10-29T11:36:26.654Z"
+        },
+        "saved": {
+          "revision": 2,
+          "position": {
+            "spineHref": "OPS/c0.xhtml",
+            "spineIndex": 0,
+            "locator": {
+              "elementPath": null,
+              "textOffset": 2506,
+              "quote": "这是用于验证实际正文的长段落。 START paragraph 27: independent visible reading",
+              "prefix": "这是用于验证实际正文的长段落。 START paragraph",
+              "suffix": "27: independent visible reading",
+              "elementId": "",
+              "chapterFraction": 0.2857142857142857,
+              "pageIndex": 4
+            },
+            "chapterFraction": 0.2857142857142857,
+            "savedAt": "2026-10-29T11:36:26.564Z"
+          },
+          "positionSequence": 1793273786564001,
+          "positionOperationId": "pos-op-862a3a91-e53b-447d-9298-76d665520577",
+          "positionRevision": 2,
+          "updatedAt": "2026-10-29T11:36:26.654Z"
+        },
+        "finalizing": false
+      },
+      "during": {
+        "ready": false,
+        "busy": true,
+        "modified": true,
+        "spine": 0,
+        "preparedIndex": 0,
+        "owner": 1,
+        "paginatorReady": false,
+        "paginatorSpine": 1,
+        "page": 0,
+        "count": 1,
+        "text": "OLDQUERY target\n\nTARGET paragraph 0: independent visible reading and position preservation. 这是用于验证实际",
+        "stable": {
+          "spineHref": "OPS/c0.xhtml",
+          "spineIndex": 0,
+          "locator": {
+            "elementPath": null,
+            "textOffset": 2506,
+            "quote": "这是用于验证实际正文的长段落。 START paragraph 27: independent visible reading",
+            "prefix": "这是用于验证实际正文的长段落。 START paragraph",
+            "suffix": "27: independent visible reading",
+            "elementId": "",
+            "chapterFraction": 0.2857142857142857,
+            "pageIndex": 4
+          },
+          "chapterFraction": 0.2857142857142857,
+          "savedAt": "2026-10-29T11:36:26.654Z"
+        },
+        "saved": {
+          "revision": 2,
+          "position": {
+            "spineHref": "OPS/c0.xhtml",
+            "spineIndex": 0,
+            "locator": {
+              "elementPath": null,
+              "textOffset": 2506,
+              "quote": "这是用于验证实际正文的长段落。 START paragraph 27: independent visible reading",
+              "prefix": "这是用于验证实际正文的长段落。 START paragraph",
+              "suffix": "27: independent visible reading",
+              "elementId": "",
+              "chapterFraction": 0.2857142857142857,
+              "pageIndex": 4
+            },
+            "chapterFraction": 0.2857142857142857,
+            "savedAt": "2026-10-29T11:36:26.564Z"
+          },
+          "positionSequence": 1793273786564001,
+          "positionOperationId": "pos-op-862a3a91-e53b-447d-9298-76d665520577",
+          "positionRevision": 2,
+          "updatedAt": "2026-10-29T11:36:26.654Z"
+        },
+        "finalizing": false
+      },
+      "cancelled": {
+        "ready": true,
+        "busy": false,
+        "modified": false,
+        "spine": 0,
+        "preparedIndex": 0,
+        "owner": 1,
+        "paginatorReady": true,
+        "paginatorSpine": 0,
+        "page": 4,
+        "count": 15,
+        "text": "START DOCUMENT\n\nSTART paragraph 0: independent visible reading and position preservation. 这是用于验证实际正文",
+        "stable": {
+          "spineHref": "OPS/c0.xhtml",
+          "spineIndex": 0,
+          "locator": {
+            "elementPath": null,
+            "textOffset": 14,
+            "quote": "START DOCUMENT START paragraph 0: independen",
+            "prefix": "START DOCUMEN",
+            "suffix": "T START paragraph 0: independen",
+            "elementId": "",
+            "chapterFraction": 0.2857142857142857,
+            "pageIndex": 4
+          },
+          "chapterFraction": 0.2857142857142857,
+          "savedAt": "2026-10-29T11:36:26.774Z"
+        },
+        "saved": {
+          "revision": 3,
+          "position": {
+            "spineHref": "OPS/c0.xhtml",
+            "spineIndex": 0,
+            "locator": {
+              "elementPath": null,
+              "textOffset": 14,
+              "quote": "START DOCUMENT START paragraph 0: independen",
+              "prefix": "START DOCUMEN",
+              "suffix": "T START paragraph 0: independen",
+              "elementId": "",
+              "chapterFraction": 0.2857142857142857,
+              "pageIndex": 4
+            },
+            "chapterFraction": 0.2857142857142857,
+            "savedAt": "2026-10-29T11:36:26.774Z"
+          },
+          "positionSequence": 1793273786774000,
+          "positionOperationId": "pos-op-36e59c39-c3ba-4446-a798-e99e7b4e9c87",
+          "positionRevision": 3,
+          "updatedAt": "2026-10-29T11:36:26.774Z"
+        },
+        "finalizing": false
+      },
+      "afterNext": {
+        "ready": true,
+        "busy": false,
+        "modified": false,
+        "spine": 0,
+        "preparedIndex": 0,
+        "owner": 1,
+        "paginatorReady": true,
+        "paginatorSpine": 0,
+        "page": 5,
+        "count": 15,
+        "text": "START DOCUMENT\n\nSTART paragraph 0: independent visible reading and position preservation. 这是用于验证实际正文",
+        "stable": {
+          "spineHref": "OPS/c0.xhtml",
+          "spineIndex": 0,
+          "locator": {
+            "elementPath": null,
+            "textOffset": 14,
+            "quote": "START DOCUMENT START paragraph 0: independen",
+            "prefix": "START DOCUMEN",
+            "suffix": "T START paragraph 0: independen",
+            "elementId": "",
+            "chapterFraction": 0.35714285714285715,
+            "pageIndex": 5
+          },
+          "chapterFraction": 0.35714285714285715,
+          "savedAt": "2026-10-29T11:36:27.059Z"
+        },
+        "saved": {
+          "revision": 4,
+          "position": {
+            "spineHref": "OPS/c0.xhtml",
+            "spineIndex": 0,
+            "locator": {
+              "elementPath": null,
+              "textOffset": 14,
+              "quote": "START DOCUMENT START paragraph 0: independen",
+              "prefix": "START DOCUMEN",
+              "suffix": "T START paragraph 0: independen",
+              "elementId": "",
+              "chapterFraction": 0.35714285714285715,
+              "pageIndex": 5
+            },
+            "chapterFraction": 0.35714285714285715,
+            "savedAt": "2026-10-29T11:36:27.059Z"
+          },
+          "positionSequence": 1793273787059000,
+          "positionOperationId": "pos-op-4a388598-5a99-47d6-9128-0fb2a9602f03",
+          "positionRevision": 4,
+          "updatedAt": "2026-10-29T11:36:27.059Z"
+        },
+        "finalizing": false
+      },
+      "defect": false,
+      "note": "Original Edge reader/paginator. Only resource-wait completion gated. Cancellation is real UI input/close; next uses real pageNext and localStorage. Full document/position coherence, not only lack of goToPage/highlight."
+    },
+    {
+      "id": "E01_RESOURCE_CANCEL_CLOSE",
+      "before": {
+        "ready": true,
+        "busy": false,
+        "modified": true,
+        "spine": 0,
+        "preparedIndex": 0,
+        "owner": 1,
+        "paginatorReady": true,
+        "paginatorSpine": 0,
+        "page": 5,
+        "count": 15,
+        "text": "START DOCUMENT\n\nSTART paragraph 0: independent visible reading and position preservation. 这是用于验证实际正文",
+        "stable": {
+          "spineHref": "OPS/c0.xhtml",
+          "spineIndex": 0,
+          "locator": {
+            "elementPath": null,
+            "textOffset": 2506,
+            "quote": "这是用于验证实际正文的长段落。 START paragraph 27: independent visible reading",
+            "prefix": "这是用于验证实际正文的长段落。 START paragraph",
+            "suffix": "27: independent visible reading",
+            "elementId": "",
+            "chapterFraction": 0.2857142857142857,
+            "pageIndex": 4
+          },
+          "chapterFraction": 0.2857142857142857,
+          "savedAt": "2026-10-29T11:36:28.343Z"
+        },
+        "saved": {
+          "revision": 2,
+          "position": {
+            "spineHref": "OPS/c0.xhtml",
+            "spineIndex": 0,
+            "locator": {
+              "elementPath": null,
+              "textOffset": 2506,
+              "quote": "这是用于验证实际正文的长段落。 START paragraph 27: independent visible reading",
+              "prefix": "这是用于验证实际正文的长段落。 START paragraph",
+              "suffix": "27: independent visible reading",
+              "elementId": "",
+              "chapterFraction": 0.2857142857142857,
+              "pageIndex": 4
+            },
+            "chapterFraction": 0.2857142857142857,
+            "savedAt": "2026-10-29T11:36:28.253Z"
+          },
+          "positionSequence": 1793273788253001,
+          "positionOperationId": "pos-op-b1afa1d1-6476-4d82-9a47-eb80657f6c83",
+          "positionRevision": 2,
+          "updatedAt": "2026-10-29T11:36:28.343Z"
+        },
+        "finalizing": false
+      },
+      "during": {
+        "ready": false,
+        "busy": true,
+        "modified": true,
+        "spine": 0,
+        "preparedIndex": 0,
+        "owner": 1,
+        "paginatorReady": false,
+        "paginatorSpine": 1,
+        "page": 0,
+        "count": 1,
+        "text": "OLDQUERY target\n\nTARGET paragraph 0: independent visible reading and position preservation. 这是用于验证实际",
+        "stable": {
+          "spineHref": "OPS/c0.xhtml",
+          "spineIndex": 0,
+          "locator": {
+            "elementPath": null,
+            "textOffset": 2506,
+            "quote": "这是用于验证实际正文的长段落。 START paragraph 27: independent visible reading",
+            "prefix": "这是用于验证实际正文的长段落。 START paragraph",
+            "suffix": "27: independent visible reading",
+            "elementId": "",
+            "chapterFraction": 0.2857142857142857,
+            "pageIndex": 4
+          },
+          "chapterFraction": 0.2857142857142857,
+          "savedAt": "2026-10-29T11:36:28.343Z"
+        },
+        "saved": {
+          "revision": 2,
+          "position": {
+            "spineHref": "OPS/c0.xhtml",
+            "spineIndex": 0,
+            "locator": {
+              "elementPath": null,
+              "textOffset": 2506,
+              "quote": "这是用于验证实际正文的长段落。 START paragraph 27: independent visible reading",
+              "prefix": "这是用于验证实际正文的长段落。 START paragraph",
+              "suffix": "27: independent visible reading",
+              "elementId": "",
+              "chapterFraction": 0.2857142857142857,
+              "pageIndex": 4
+            },
+            "chapterFraction": 0.2857142857142857,
+            "savedAt": "2026-10-29T11:36:28.253Z"
+          },
+          "positionSequence": 1793273788253001,
+          "positionOperationId": "pos-op-b1afa1d1-6476-4d82-9a47-eb80657f6c83",
+          "positionRevision": 2,
+          "updatedAt": "2026-10-29T11:36:28.343Z"
+        },
+        "finalizing": false
+      },
+      "cancelled": {
+        "ready": true,
+        "busy": false,
+        "modified": false,
+        "spine": 0,
+        "preparedIndex": 0,
+        "owner": 1,
+        "paginatorReady": true,
+        "paginatorSpine": 0,
+        "page": 4,
+        "count": 15,
+        "text": "START DOCUMENT\n\nSTART paragraph 0: independent visible reading and position preservation. 这是用于验证实际正文",
+        "stable": {
+          "spineHref": "OPS/c0.xhtml",
+          "spineIndex": 0,
+          "locator": {
+            "elementPath": null,
+            "textOffset": 14,
+            "quote": "START DOCUMENT START paragraph 0: independen",
+            "prefix": "START DOCUMEN",
+            "suffix": "T START paragraph 0: independen",
+            "elementId": "",
+            "chapterFraction": 0.2857142857142857,
+            "pageIndex": 4
+          },
+          "chapterFraction": 0.2857142857142857,
+          "savedAt": "2026-10-29T11:36:28.449Z"
+        },
+        "saved": {
+          "revision": 3,
+          "position": {
+            "spineHref": "OPS/c0.xhtml",
+            "spineIndex": 0,
+            "locator": {
+              "elementPath": null,
+              "textOffset": 14,
+              "quote": "START DOCUMENT START paragraph 0: independen",
+              "prefix": "START DOCUMEN",
+              "suffix": "T START paragraph 0: independen",
+              "elementId": "",
+              "chapterFraction": 0.2857142857142857,
+              "pageIndex": 4
+            },
+            "chapterFraction": 0.2857142857142857,
+            "savedAt": "2026-10-29T11:36:28.449Z"
+          },
+          "positionSequence": 1793273788449000,
+          "positionOperationId": "pos-op-e8040ff1-1711-4ea5-81e7-52fbce59e26f",
+          "positionRevision": 3,
+          "updatedAt": "2026-10-29T11:36:28.449Z"
+        },
+        "finalizing": false
+      },
+      "afterNext": {
+        "ready": true,
+        "busy": false,
+        "modified": false,
+        "spine": 0,
+        "preparedIndex": 0,
+        "owner": 1,
+        "paginatorReady": true,
+        "paginatorSpine": 0,
+        "page": 5,
+        "count": 15,
+        "text": "START DOCUMENT\n\nSTART paragraph 0: independent visible reading and position preservation. 这是用于验证实际正文",
+        "stable": {
+          "spineHref": "OPS/c0.xhtml",
+          "spineIndex": 0,
+          "locator": {
+            "elementPath": null,
+            "textOffset": 14,
+            "quote": "START DOCUMENT START paragraph 0: independen",
+            "prefix": "START DOCUMEN",
+            "suffix": "T START paragraph 0: independen",
+            "elementId": "",
+            "chapterFraction": 0.35714285714285715,
+            "pageIndex": 5
+          },
+          "chapterFraction": 0.35714285714285715,
+          "savedAt": "2026-10-29T11:36:28.718Z"
+        },
+        "saved": {
+          "revision": 4,
+          "position": {
+            "spineHref": "OPS/c0.xhtml",
+            "spineIndex": 0,
+            "locator": {
+              "elementPath": null,
+              "textOffset": 14,
+              "quote": "START DOCUMENT START paragraph 0: independen",
+              "prefix": "START DOCUMEN",
+              "suffix": "T START paragraph 0: independen",
+              "elementId": "",
+              "chapterFraction": 0.35714285714285715,
+              "pageIndex": 5
+            },
+            "chapterFraction": 0.35714285714285715,
+            "savedAt": "2026-10-29T11:36:28.718Z"
+          },
+          "positionSequence": 1793273788718000,
+          "positionOperationId": "pos-op-94a1d064-6974-4235-8714-572e39b7d992",
+          "positionRevision": 4,
+          "updatedAt": "2026-10-29T11:36:28.718Z"
+        },
+        "finalizing": false
+      },
+      "defect": false,
+      "note": "Original Edge reader/paginator. Only resource-wait completion gated. Cancellation is real UI input/close; next uses real pageNext and localStorage. Full document/position coherence, not only lack of goToPage/highlight."
+    },
+    {
+      "id": "E02_FINALIZE_AFTER_DOCUMENT_BEFORE_LAYOUT",
+      "before": {
+        "ready": true,
+        "busy": false,
+        "modified": true,
+        "spine": 0,
+        "preparedIndex": 0,
+        "owner": 1,
+        "paginatorReady": true,
+        "paginatorSpine": 0,
+        "page": 5,
+        "count": 15,
+        "text": "START DOCUMENT\n\nSTART paragraph 0: independent visible reading and position preservation. 这是用于验证实际正文",
+        "stable": {
+          "spineHref": "OPS/c0.xhtml",
+          "spineIndex": 0,
+          "locator": {
+            "elementPath": null,
+            "textOffset": 2506,
+            "quote": "这是用于验证实际正文的长段落。 START paragraph 27: independent visible reading",
+            "prefix": "这是用于验证实际正文的长段落。 START paragraph",
+            "suffix": "27: independent visible reading",
+            "elementId": "",
+            "chapterFraction": 0.2857142857142857,
+            "pageIndex": 4
+          },
+          "chapterFraction": 0.2857142857142857,
+          "savedAt": "2026-10-29T11:36:30.019Z"
+        },
+        "saved": {
+          "revision": 2,
+          "position": {
+            "spineHref": "OPS/c0.xhtml",
+            "spineIndex": 0,
+            "locator": {
+              "elementPath": null,
+              "textOffset": 2506,
+              "quote": "这是用于验证实际正文的长段落。 START paragraph 27: independent visible reading",
+              "prefix": "这是用于验证实际正文的长段落。 START paragraph",
+              "suffix": "27: independent visible reading",
+              "elementId": "",
+              "chapterFraction": 0.2857142857142857,
+              "pageIndex": 4
+            },
+            "chapterFraction": 0.2857142857142857,
+            "savedAt": "2026-10-29T11:36:29.928Z"
+          },
+          "positionSequence": 1793273789928001,
+          "positionOperationId": "pos-op-6b65c926-8541-49d3-a66a-620b8942c6fd",
+          "positionRevision": 2,
+          "updatedAt": "2026-10-29T11:36:30.019Z"
+        },
+        "finalizing": false
+      },
+      "during": {
+        "ready": false,
+        "busy": true,
+        "modified": true,
+        "spine": 0,
+        "preparedIndex": 0,
+        "owner": 1,
+        "paginatorReady": false,
+        "paginatorSpine": 1,
+        "page": 0,
+        "count": 1,
+        "text": "OLDQUERY target\n\nTARGET paragraph 0: independent visible reading and position preservation. 这是用于验证实际",
+        "stable": {
+          "spineHref": "OPS/c0.xhtml",
+          "spineIndex": 0,
+          "locator": {
+            "elementPath": null,
+            "textOffset": 2506,
+            "quote": "这是用于验证实际正文的长段落。 START paragraph 27: independent visible reading",
+            "prefix": "这是用于验证实际正文的长段落。 START paragraph",
+            "suffix": "27: independent visible reading",
+            "elementId": "",
+            "chapterFraction": 0.2857142857142857,
+            "pageIndex": 4
+          },
+          "chapterFraction": 0.2857142857142857,
+          "savedAt": "2026-10-29T11:36:30.019Z"
+        },
+        "saved": {
+          "revision": 2,
+          "position": {
+            "spineHref": "OPS/c0.xhtml",
+            "spineIndex": 0,
+            "locator": {
+              "elementPath": null,
+              "textOffset": 2506,
+              "quote": "这是用于验证实际正文的长段落。 START paragraph 27: independent visible reading",
+              "prefix": "这是用于验证实际正文的长段落。 START paragraph",
+              "suffix": "27: independent visible reading",
+              "elementId": "",
+              "chapterFraction": 0.2857142857142857,
+              "pageIndex": 4
+            },
+            "chapterFraction": 0.2857142857142857,
+            "savedAt": "2026-10-29T11:36:29.928Z"
+          },
+          "positionSequence": 1793273789928001,
+          "positionOperationId": "pos-op-6b65c926-8541-49d3-a66a-620b8942c6fd",
+          "positionRevision": 2,
+          "updatedAt": "2026-10-29T11:36:30.019Z"
+        },
+        "finalizing": false
+      },
+      "ack": {
+        "type": "host.finalized",
+        "requestId": "close-after-document",
+        "sessionId": "local-mvtgwvm3",
+        "ok": true,
+        "revision": 3,
+        "closeDiagnostics": []
+      },
+      "closed": {
+        "ready": true,
+        "busy": false,
+        "modified": false,
+        "spine": 0,
+        "preparedIndex": 0,
+        "owner": 1,
+        "paginatorReady": true,
+        "paginatorSpine": 0,
+        "page": 4,
+        "count": 15,
+        "text": "START DOCUMENT\n\nSTART paragraph 0: independent visible reading and position preservation. 这是用于验证实际正文",
+        "stable": {
+          "spineHref": "OPS/c0.xhtml",
+          "spineIndex": 0,
+          "locator": {
+            "elementPath": null,
+            "textOffset": 14,
+            "quote": "START DOCUMENT START paragraph 0: independen",
+            "prefix": "START DOCUMEN",
+            "suffix": "T START paragraph 0: independen",
+            "elementId": "",
+            "chapterFraction": 0.2857142857142857,
+            "pageIndex": 4
+          },
+          "chapterFraction": 0.2857142857142857,
+          "savedAt": "2026-10-29T11:36:30.086Z"
+        },
+        "saved": {
+          "revision": 3,
+          "position": {
+            "spineHref": "OPS/c0.xhtml",
+            "spineIndex": 0,
+            "locator": {
+              "elementPath": null,
+              "textOffset": 14,
+              "quote": "START DOCUMENT START paragraph 0: independen",
+              "prefix": "START DOCUMEN",
+              "suffix": "T START paragraph 0: independen",
+              "elementId": "",
+              "chapterFraction": 0.2857142857142857,
+              "pageIndex": 4
+            },
+            "chapterFraction": 0.2857142857142857,
+            "savedAt": "2026-10-29T11:36:30.086Z"
+          },
+          "positionSequence": 1793273790086000,
+          "positionOperationId": "pos-op-a2277109-22b7-4ed0-9ec9-594b7d44f4e0",
+          "positionRevision": 3,
+          "updatedAt": "2026-10-29T11:36:30.086Z"
+        },
+        "finalizing": true
+      },
+      "late": {
+        "ready": true,
+        "busy": false,
+        "modified": false,
+        "spine": 0,
+        "preparedIndex": 0,
+        "owner": 1,
+        "paginatorReady": true,
+        "paginatorSpine": 0,
+        "page": 4,
+        "count": 15,
+        "text": "START DOCUMENT\n\nSTART paragraph 0: independent visible reading and position preservation. 这是用于验证实际正文",
+        "stable": {
+          "spineHref": "OPS/c0.xhtml",
+          "spineIndex": 0,
+          "locator": {
+            "elementPath": null,
+            "textOffset": 14,
+            "quote": "START DOCUMENT START paragraph 0: independen",
+            "prefix": "START DOCUMEN",
+            "suffix": "T START paragraph 0: independen",
+            "elementId": "",
+            "chapterFraction": 0.2857142857142857,
+            "pageIndex": 4
+          },
+          "chapterFraction": 0.2857142857142857,
+          "savedAt": "2026-10-29T11:36:30.086Z"
+        },
+        "saved": {
+          "revision": 3,
+          "position": {
+            "spineHref": "OPS/c0.xhtml",
+            "spineIndex": 0,
+            "locator": {
+              "elementPath": null,
+              "textOffset": 14,
+              "quote": "START DOCUMENT START paragraph 0: independen",
+              "prefix": "START DOCUMEN",
+              "suffix": "T START paragraph 0: independen",
+              "elementId": "",
+              "chapterFraction": 0.2857142857142857,
+              "pageIndex": 4
+            },
+            "chapterFraction": 0.2857142857142857,
+            "savedAt": "2026-10-29T11:36:30.086Z"
+          },
+          "positionSequence": 1793273790086000,
+          "positionOperationId": "pos-op-a2277109-22b7-4ed0-9ec9-594b7d44f4e0",
+          "positionRevision": 3,
+          "updatedAt": "2026-10-29T11:36:30.086Z"
+        },
+        "finalizing": true
+      },
+      "defect": false,
+      "note": "Real Edge and actual isolated localStorage. Local-only protocol bridge delivers host.finalize, not original C# or native closure. A valid old chapter position is pending when the target document has committed but resources/layout have not."
+    },
+    {
+      "id": "E03_SVG_HIGHLIGHT_DISAPPEARS",
+      "before": {
+        "visible": "VISIBLE TARGET",
+        "raw": "VISIBLE TARGET",
+        "length": 210.84375,
+        "bbox": {
+          "width": 211.84375,
+          "height": 35
+        },
+        "mark": null
+      },
+      "after": {
+        "visible": "VISIBLE TARGET",
+        "raw": "VISIBLE TARGET",
+        "length": 210.859375,
+        "bbox": {
+          "width": 211.859375,
+          "height": 35
+        },
+        "mark": {
+          "namespace": "http://www.w3.org/2000/svg",
+          "text": "TARGET",
+          "rects": 1,
+          "width": 103.671875
+        }
+      },
+      "defect": false,
+      "note": "No fault or timing injection. Valid visible inline SVG text, real UI search click. Check browser text geometry/paint, not just the wrapped DOM textContent."
+    },
+    {
+      "id": "E04_QUERY_LIMIT_MESSAGE",
+      "actual": {
+        "length": 4097,
+        "info": "查找词超过 4096 个 UTF-16 单位，请缩短后重新查找；当前输入未被发送扫描。",
+        "status": "查找词过长，已停止查找；请缩短后重试",
+        "buttons": 0
+      },
+      "defect": false,
+      "note": "Actual 4097-character pasted query; verify new explicit input limit is visible to user."
+    },
+    {
+      "id": "E05_CSS_VISIBILITY_DECLARATION_ORDER",
+      "before": {
+        "plain": "\nTARGET\n",
+        "visible": "TARGET",
+        "targetVisibility": "visible",
+        "hiddenVisibility": "hidden"
+      },
+      "target": {
+        "count": 1,
+        "status": "找到 1 处 · 已扫描 1/1 章 · 缓存 8 字符"
+      },
+      "hidden": {
+        "count": 0,
+        "status": "没有找到匹配内容 · 已扫描 1/1 章"
+      },
+      "defect": false,
+      "note": "No fault injection. Actual CSS duplicate declarations follow last valid declaration; model must match displayed content."
+    },
+    {
+      "id": "E06_ANIMATION_FINALIZE",
+      "during": {
+        "target": 1,
+        "scroll": 0,
+        "raf": 1000001,
+        "modified": true
+      },
+      "ack": {
+        "type": "host.finalized",
+        "requestId": "animation-close",
+        "sessionId": "local-mvtgwxoj",
+        "ok": true,
+        "revision": 1,
+        "closeDiagnostics": []
+      },
+      "after": {
+        "ready": true,
+        "busy": false,
+        "modified": false,
+        "spine": 0,
+        "preparedIndex": 0,
+        "owner": 1,
+        "paginatorReady": true,
+        "paginatorSpine": 0,
+        "page": 1,
+        "count": 15,
+        "text": "NORMAL paragraph 0: independent visible reading and position preservation. 这是用于验证实际正文的长段落。\n\nNORMAL p",
+        "stable": {
+          "spineHref": "OPS/c0.xhtml",
+          "spineIndex": 0,
+          "locator": {
+            "elementPath": null,
+            "textOffset": 659,
+            "quote": "这是用于验证实际正文的长段落。 NORMAL paragraph 7: independent visible readin",
+            "prefix": "这是用于验证实际正文的长段落。 NORMAL paragra",
+            "suffix": "ph 7: independent visible readin",
+            "elementId": "",
+            "chapterFraction": 0.07142857142857142,
+            "pageIndex": 1
+          },
+          "chapterFraction": 0.07142857142857142,
+          "savedAt": "2026-10-29T11:36:32.259Z"
+        },
+        "saved": {
+          "revision": 1,
+          "position": {
+            "spineHref": "OPS/c0.xhtml",
+            "spineIndex": 0,
+            "locator": {
+              "elementPath": null,
+              "textOffset": 659,
+              "quote": "这是用于验证实际正文的长段落。 NORMAL paragraph 7: independent visible readin",
+              "prefix": "这是用于验证实际正文的长段落。 NORMAL paragra",
+              "suffix": "ph 7: independent visible readin",
+              "elementId": "",
+              "chapterFraction": 0.07142857142857142,
+              "pageIndex": 1
+            },
+            "chapterFraction": 0.07142857142857142,
+            "savedAt": "2026-10-29T11:36:32.259Z"
+          },
+          "positionSequence": 1793273792259000,
+          "positionOperationId": "pos-op-e5d6b0be-4fc9-4106-876a-7caaa7b3beaf",
+          "positionRevision": 1,
+          "updatedAt": "2026-10-29T11:36:32.259Z"
+        },
+        "finalizing": true
+      },
+      "reopened": {
+        "ready": true,
+        "busy": false,
+        "modified": false,
+        "spine": 0,
+        "preparedIndex": 0,
+        "owner": 1,
+        "paginatorReady": true,
+        "paginatorSpine": 0,
+        "page": 1,
+        "count": 15,
+        "text": "NORMAL paragraph 0: independent visible reading and position preservation. 这是用于验证实际正文的长段落。\n\nNORMAL p",
+        "stable": {
+          "spineHref": "OPS/c0.xhtml",
+          "spineIndex": 0,
+          "locator": {
+            "elementPath": null,
+            "textOffset": 659,
+            "quote": "这是用于验证实际正文的长段落。 NORMAL paragraph 7: independent visible readin",
+            "prefix": "这是用于验证实际正文的长段落。 NORMAL paragra",
+            "suffix": "ph 7: independent visible readin",
+            "elementId": "",
+            "chapterFraction": 0.07142857142857142,
+            "pageIndex": 1
+          },
+          "chapterFraction": 0.07142857142857142,
+          "savedAt": "2026-10-29T11:36:32.302Z"
+        },
+        "saved": {
+          "revision": 1,
+          "position": {
+            "spineHref": "OPS/c0.xhtml",
+            "spineIndex": 0,
+            "locator": {
+              "elementPath": null,
+              "textOffset": 659,
+              "quote": "这是用于验证实际正文的长段落。 NORMAL paragraph 7: independent visible readin",
+              "prefix": "这是用于验证实际正文的长段落。 NORMAL paragra",
+              "suffix": "ph 7: independent visible readin",
+              "elementId": "",
+              "chapterFraction": 0.07142857142857142,
+              "pageIndex": 1
+            },
+            "chapterFraction": 0.07142857142857142,
+            "savedAt": "2026-10-29T11:36:32.259Z"
+          },
+          "positionSequence": 1793273792259000,
+          "positionOperationId": "pos-op-e5d6b0be-4fc9-4106-876a-7caaa7b3beaf",
+          "positionRevision": 1,
+          "updatedAt": "2026-10-29T11:36:32.259Z"
+        },
+        "finalizing": false
+      },
+      "defect": false,
+      "note": "Original UI next, real Edge geometry/storage/reload. Explicit controllable rAF clock holds animation before first tick; finalize message is local-only bridge. pagehide is settle-order control, not native close."
+    },
+    {
+      "id": "E06_ANIMATION_PAGEHIDE",
+      "during": {
+        "target": 1,
+        "scroll": 0,
+        "raf": 1000001,
+        "modified": true
+      },
+      "ack": null,
+      "after": {
+        "ready": true,
+        "busy": false,
+        "modified": false,
+        "spine": 0,
+        "preparedIndex": 0,
+        "owner": 1,
+        "paginatorReady": true,
+        "paginatorSpine": 0,
+        "page": 1,
+        "count": 15,
+        "text": "NORMAL paragraph 0: independent visible reading and position preservation. 这是用于验证实际正文的长段落。\n\nNORMAL p",
+        "stable": {
+          "spineHref": "OPS/c0.xhtml",
+          "spineIndex": 0,
+          "locator": {
+            "elementPath": null,
+            "textOffset": 659,
+            "quote": "这是用于验证实际正文的长段落。 NORMAL paragraph 7: independent visible readin",
+            "prefix": "这是用于验证实际正文的长段落。 NORMAL paragra",
+            "suffix": "ph 7: independent visible readin",
+            "elementId": "",
+            "chapterFraction": 0.07142857142857142,
+            "pageIndex": 1
+          },
+          "chapterFraction": 0.07142857142857142,
+          "savedAt": "2026-10-29T11:36:32.601Z"
+        },
+        "saved": {
+          "revision": 1,
+          "position": {
+            "spineHref": "OPS/c0.xhtml",
+            "spineIndex": 0,
+            "locator": {
+              "elementPath": null,
+              "textOffset": 659,
+              "quote": "这是用于验证实际正文的长段落。 NORMAL paragraph 7: independent visible readin",
+              "prefix": "这是用于验证实际正文的长段落。 NORMAL paragra",
+              "suffix": "ph 7: independent visible readin",
+              "elementId": "",
+              "chapterFraction": 0.07142857142857142,
+              "pageIndex": 1
+            },
+            "chapterFraction": 0.07142857142857142,
+            "savedAt": "2026-10-29T11:36:32.600Z"
+          },
+          "positionSequence": 1793273792600000,
+          "positionOperationId": "pos-op-58f4ad24-64fe-4125-84ab-c5a608488fd4",
+          "positionRevision": 1,
+          "updatedAt": "2026-10-29T11:36:32.600Z"
+        },
+        "finalizing": false
+      },
+      "reopened": {
+        "ready": true,
+        "busy": false,
+        "modified": false,
+        "spine": 0,
+        "preparedIndex": 0,
+        "owner": 1,
+        "paginatorReady": true,
+        "paginatorSpine": 0,
+        "page": 1,
+        "count": 15,
+        "text": "NORMAL paragraph 0: independent visible reading and position preservation. 这是用于验证实际正文的长段落。\n\nNORMAL p",
+        "stable": {
+          "spineHref": "OPS/c0.xhtml",
+          "spineIndex": 0,
+          "locator": {
+            "elementPath": null,
+            "textOffset": 659,
+            "quote": "这是用于验证实际正文的长段落。 NORMAL paragraph 7: independent visible readin",
+            "prefix": "这是用于验证实际正文的长段落。 NORMAL paragra",
+            "suffix": "ph 7: independent visible readin",
+            "elementId": "",
+            "chapterFraction": 0.07142857142857142,
+            "pageIndex": 1
+          },
+          "chapterFraction": 0.07142857142857142,
+          "savedAt": "2026-10-29T11:36:32.842Z"
+        },
+        "saved": {
+          "revision": 1,
+          "position": {
+            "spineHref": "OPS/c0.xhtml",
+            "spineIndex": 0,
+            "locator": {
+              "elementPath": null,
+              "textOffset": 659,
+              "quote": "这是用于验证实际正文的长段落。 NORMAL paragraph 7: independent visible readin",
+              "prefix": "这是用于验证实际正文的长段落。 NORMAL paragra",
+              "suffix": "ph 7: independent visible readin",
+              "elementId": "",
+              "chapterFraction": 0.07142857142857142,
+              "pageIndex": 1
+            },
+            "chapterFraction": 0.07142857142857142,
+            "savedAt": "2026-10-29T11:36:32.600Z"
+          },
+          "positionSequence": 1793273792600000,
+          "positionOperationId": "pos-op-58f4ad24-64fe-4125-84ab-c5a608488fd4",
+          "positionRevision": 1,
+          "updatedAt": "2026-10-29T11:36:32.600Z"
+        },
+        "finalizing": false
+      },
+      "defect": false,
+      "note": "Original UI next, real Edge geometry/storage/reload. Explicit controllable rAF clock holds animation before first tick; finalize message is local-only bridge. pagehide is settle-order control, not native close."
+    },
+    {
+      "id": "E07_FILE_BYTES_COMPLETE_AFTER_FINALIZE",
+      "ack": {
+        "type": "host.finalized",
+        "requestId": "file-after-close",
+        "sessionId": "local-mvtgwydh",
+        "ok": true,
+        "revision": 0,
+        "closeDiagnostics": []
+      },
+      "atAck": {
+        "ready": true,
+        "busy": false,
+        "modified": false,
+        "spine": 0,
+        "preparedIndex": 0,
+        "owner": 1,
+        "paginatorReady": true,
+        "paginatorSpine": 0,
+        "page": 0,
+        "count": 15,
+        "text": "START DOCUMENT\n\nSTART paragraph 0: independent visible reading and position preservation. 这是用于验证实际正文",
+        "stable": {
+          "spineHref": "OPS/c0.xhtml",
+          "spineIndex": 0,
+          "locator": {
+            "elementPath": null,
+            "textOffset": 14,
+            "quote": "START DOCUMENT START paragraph 0: independen",
+            "prefix": "START DOCUMEN",
+            "suffix": "T START paragraph 0: independen",
+            "elementId": "",
+            "chapterFraction": 0,
+            "pageIndex": 0
+          },
+          "chapterFraction": 0,
+          "savedAt": "2026-10-29T11:36:33.091Z"
+        },
+        "saved": null,
+        "finalizing": true
+      },
+      "late": {
+        "ready": true,
+        "busy": false,
+        "modified": false,
+        "spine": 0,
+        "preparedIndex": 0,
+        "owner": 1,
+        "paginatorReady": true,
+        "paginatorSpine": 0,
+        "page": 0,
+        "count": 15,
+        "text": "START DOCUMENT\n\nSTART paragraph 0: independent visible reading and position preservation. 这是用于验证实际正文",
+        "stable": {
+          "spineHref": "OPS/c0.xhtml",
+          "spineIndex": 0,
+          "locator": {
+            "elementPath": null,
+            "textOffset": 14,
+            "quote": "START DOCUMENT START paragraph 0: independen",
+            "prefix": "START DOCUMEN",
+            "suffix": "T START paragraph 0: independen",
+            "elementId": "",
+            "chapterFraction": 0,
+            "pageIndex": 0
+          },
+          "chapterFraction": 0,
+          "savedAt": "2026-10-29T11:36:33.091Z"
+        },
+        "saved": null,
+        "finalizing": true
+      },
+      "error": "",
+      "defect": false,
+      "note": "File bytes held after genuine file input; original code, local bridge keeps page alive to inspect post-ack work. Does not claim native window continues after actual disposal."
+    }
+  ]
+}
