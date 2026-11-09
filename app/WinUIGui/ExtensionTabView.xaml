@@ -31,7 +31,7 @@
                        VerticalAlignment="Center" TextWrapping="Wrap"/>
         </StackPanel>
         <GridView x:Name="LibraryGrid" Grid.Row="2" SelectionMode="None" IsItemClickEnabled="True"
-                  ItemClick="LibraryGrid_ItemClick" Padding="0,0,0,16">
+                  ItemClick="LibraryGrid_ItemClick" RightTapped="LibraryGrid_RightTapped" Padding="0,0,0,16">
             <GridView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Width="170" Spacing="6" Margin="0,0,14,16">

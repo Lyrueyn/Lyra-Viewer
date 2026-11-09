@@ -1,6 +1,7 @@
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
+using Microsoft.UI.Xaml.Input;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -203,7 +204,7 @@ namespace WinUIGui
             if (e.ClickedItem is ExtensionLibraryCard card) OpenPath(card.Path, card.EntryRel);
         }
 
-        private void OpenPath(string path, string entryRel = "")
+        private void OpenPath(string path, string entryRel = "", string preferredPlugin = "")
         {
             try
             {
@@ -215,19 +216,7 @@ namespace WinUIGui
                 }
                 if (_def.IsEditorHost)
                 {
-                    var defs = ExtensionCatalog.LoadDefinitions();
-                    var readerDef = defs.FirstOrDefault(d => string.Equals(d.Info.Id, "html-reader", StringComparison.OrdinalIgnoreCase));
-                    if (readerDef == null)
-                    {
-                        StatusText.Text = "需要先安装 HTML 阅读器扩展";
-                        return;
-                    }
-                    bool startEdit = defs.Any(d => d.IsEditorPlugin &&
-                        string.Equals(d.Info.Id, "html-editor", StringComparison.OrdinalIgnoreCase));
-                    var editorWin = ExtensionManager.OpenReader(readerDef, path, entryRel, startEdit);
-                    if (editorWin == null) { StatusText.Text = "HTML 阅读器扩展目录不存在或未启用"; return; }
-                    editorWin.Activate();
-                    StatusText.Text = startEdit ? "正在打开编辑窗口：" + Path.GetFileName(path) : "正在打开阅读窗口：" + Path.GetFileName(path);
+                    OpenEditorProject(path, entryRel, preferredPlugin);
                     return;
                 }
                 var win = ExtensionManager.OpenReader(_def, path, entryRel);
@@ -237,6 +226,95 @@ namespace WinUIGui
                 StatusText.Text = "正在打开：" + Path.GetFileName(path);
             }
             catch (Exception ex) { StatusText.Text = "打开失败：" + ex.Message; }
+        }
+
+        private void OpenEditorProject(string path, string entryRel, string preferredPlugin)
+        {
+            var defs = ExtensionCatalog.LoadDefinitions();
+            var plugins = defs.Where(d => d.IsEditorPlugin).ToList();
+            if (plugins.Count == 0)
+            {
+                StatusText.Text = "还没有安装编辑器插件（HTML 编辑器 / JavaScript 编辑器）";
+                return;
+            }
+            if (!string.IsNullOrWhiteSpace(preferredPlugin))
+            {
+                var wanted = plugins.FirstOrDefault(d => string.Equals(d.Info.Id, preferredPlugin, StringComparison.OrdinalIgnoreCase));
+                if (wanted == null)
+                {
+                    StatusText.Text = "指定的编辑器插件没有安装：" + preferredPlugin;
+                    return;
+                }
+                plugins = new List<ExtensionDefinition> { wanted };
+            }
+            else
+            {
+                bool hasHtml = false;
+                bool hasJs = false;
+                try
+                {
+                    if (Directory.Exists(path))
+                    {
+                        hasHtml = Directory.EnumerateFiles(path, "*.html", SearchOption.AllDirectories).Any() ||
+                                  Directory.EnumerateFiles(path, "*.htm", SearchOption.AllDirectories).Any();
+                        hasJs = Directory.EnumerateFiles(path, "*.js", SearchOption.AllDirectories).Any() ||
+                                Directory.EnumerateFiles(path, "*.mjs", SearchOption.AllDirectories).Any() ||
+                                Directory.EnumerateFiles(path, "*.cjs", SearchOption.AllDirectories).Any() ||
+                                File.Exists(Path.Combine(path, "package.json"));
+                    }
+                }
+                catch { }
+                bool hasHtmlPlugin = plugins.Any(d => string.Equals(d.Info.Id, "html-editor", StringComparison.OrdinalIgnoreCase));
+                bool hasJsPlugin = plugins.Any(d => string.Equals(d.Info.Id, "js-editor", StringComparison.OrdinalIgnoreCase));
+                bool hasPackageJson = false;
+                try { hasPackageJson = Directory.Exists(path) && File.Exists(Path.Combine(path, "package.json")); } catch { }
+                string pick = "";
+                if (hasPackageJson && hasJs && hasJsPlugin) pick = "js-editor";
+                else if (hasHtml && hasHtmlPlugin) pick = "html-editor";
+                else if (hasJs && hasJsPlugin) pick = "js-editor";
+                else if (hasHtmlPlugin) pick = "html-editor";
+                else if (hasJsPlugin) pick = "js-editor";
+                else pick = plugins[0].Info.Id;
+                plugins = new List<ExtensionDefinition> { plugins.First(d => string.Equals(d.Info.Id, pick, StringComparison.OrdinalIgnoreCase)) };
+            }
+            var plugin = plugins[0];
+            if (string.Equals(plugin.Info.Id, "html-editor", StringComparison.OrdinalIgnoreCase))
+            {
+                var readerDef = defs.FirstOrDefault(d => string.Equals(d.Info.Id, "html-reader", StringComparison.OrdinalIgnoreCase));
+                if (readerDef == null)
+                {
+                    StatusText.Text = "需要先安装 HTML 阅读器扩展";
+                    return;
+                }
+                var editorWin = ExtensionManager.OpenReader(readerDef, path, entryRel, true);
+                if (editorWin == null) { StatusText.Text = "HTML 阅读器扩展目录不存在或未启用"; return; }
+                editorWin.Activate();
+                StatusText.Text = "正在打开 HTML 编辑窗口：" + Path.GetFileName(path);
+                return;
+            }
+            var jsWin = ExtensionManager.OpenReader(plugin, path, entryRel);
+            if (jsWin == null) { StatusText.Text = "编辑器插件目录不存在或未启用：" + plugin.Info.Id; return; }
+            jsWin.Activate();
+            string label = plugin.Info.Editor?.Name ?? plugin.Info.Name;
+            StatusText.Text = "正在打开 " + label + " 窗口：" + Path.GetFileName(path);
+        }
+
+        private void LibraryGrid_RightTapped(object sender, RightTappedRoutedEventArgs e)
+        {
+            if (!_def.IsEditorHost) return;
+            if (e.OriginalSource is not FrameworkElement fe || fe.DataContext is not ExtensionLibraryCard card) return;
+            var plugins = ExtensionCatalog.LoadDefinitions().Where(d => d.IsEditorPlugin).ToList();
+            if (plugins.Count == 0) return;
+            var flyout = new MenuFlyout();
+            foreach (var plugin in plugins)
+            {
+                string label = plugin.Info.Editor?.Name ?? plugin.Info.Name;
+                var item = new MenuFlyoutItem { Text = "用 " + label + " 打开" };
+                item.Click += (_, _) => OpenPath(card.Path, card.EntryRel, plugin.Info.Id);
+                flyout.Items.Add(item);
+            }
+            flyout.ShowAt(fe);
+            e.Handled = true;
         }
 
         private void CoverBtn_Click(object sender, RoutedEventArgs e)

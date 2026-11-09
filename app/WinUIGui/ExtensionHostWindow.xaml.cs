@@ -387,7 +387,7 @@ namespace WinUIGui
                 if (root.ValueKind != JsonValueKind.Object) return false;
                 string type = ReaderProtocol.GetString(root, "type", 80);
                 if (type != "host.capabilities" && type != "host.importBook" &&
-                    type != "host.workspace.load" && type != "host.workspace.save" && type != "host.file.save" && type != "host.file.import" && type != "host.file.delete" && type != "host.file.rename" && type != "host.file.mkdir" && type != "host.project.list" && type != "host.project.info" &&
+                    type != "host.workspace.load" && type != "host.workspace.save" && type != "host.file.save" && type != "host.file.import" && type != "host.file.delete" && type != "host.file.rename" && type != "host.file.mkdir" && type != "editor.open-file" && type != "host.project.list" && type != "host.project.info" &&
                     type != "host.ready") return false;
                 string requestId = ReaderProtocol.GetString(root, "requestId", 128);
                 if (type == "host.ready")
@@ -491,6 +491,46 @@ namespace WinUIGui
                         }.ToJsonString());
                     }
                     return true;
+                }
+                if (type == "editor.open-file")
+                {
+                    string rel = ReaderProtocol.GetString(root, "rel", 4096) ?? "";
+                    if (string.IsNullOrWhiteSpace(rel) || !_isProject || _projectRoot == null)
+                    {
+                        Wv.CoreWebView2?.PostWebMessageAsJson(new JsonObject { ["type"] = "editor.open-file.result", ["requestId"] = requestId, ["ok"] = false, ["error"] = "只有项目模式支持跨编辑器插件打开文件" }.ToJsonString());
+                        return true;
+                    }
+                    try
+                    {
+                        string ext = Path.GetExtension(rel).ToLowerInvariant();
+                        var defs = ExtensionCatalog.LoadDefinitions();
+                        if (ext == ".html" || ext == ".htm")
+                        {
+                            var readerDef = defs.FirstOrDefault(d => string.Equals(d.Info.Id, "html-reader", StringComparison.OrdinalIgnoreCase));
+                            bool hasPlugin = defs.Any(d => d.IsEditorPlugin && string.Equals(d.Info.Id, "html-editor", StringComparison.OrdinalIgnoreCase));
+                            if (readerDef == null || !hasPlugin)
+                            {
+                                Wv.CoreWebView2?.PostWebMessageAsJson(new JsonObject { ["type"] = "editor.open-file.result", ["requestId"] = requestId, ["ok"] = false, ["error"] = "需要 HTML 阅读器 + HTML 编辑器插件" }.ToJsonString());
+                                return true;
+                            }
+                            var win = ExtensionManager.OpenReader(readerDef, _projectRoot, rel, true);
+                            if (win == null)
+                            {
+                                Wv.CoreWebView2?.PostWebMessageAsJson(new JsonObject { ["type"] = "editor.open-file.result", ["requestId"] = requestId, ["ok"] = false, ["error"] = "无法打开 HTML 编辑器窗口" }.ToJsonString());
+                                return true;
+                            }
+                            win.Activate();
+                            Wv.CoreWebView2?.PostWebMessageAsJson(new JsonObject { ["type"] = "editor.open-file.result", ["requestId"] = requestId, ["ok"] = true, ["plugin"] = "html-editor" }.ToJsonString());
+                            return true;
+                        }
+                        Wv.CoreWebView2?.PostWebMessageAsJson(new JsonObject { ["type"] = "editor.open-file.result", ["requestId"] = requestId, ["ok"] = false, ["error"] = "还没有适配 " + (string.IsNullOrEmpty(ext) ? "该文件类型" : ext) + " 的编辑器插件" }.ToJsonString());
+                        return true;
+                    }
+                    catch (Exception ex)
+                    {
+                        Wv.CoreWebView2?.PostWebMessageAsJson(new JsonObject { ["type"] = "editor.open-file.result", ["requestId"] = requestId, ["ok"] = false, ["error"] = ex.Message }.ToJsonString());
+                        return true;
+                    }
                 }
                 if (type == "host.workspace.load")
                 {

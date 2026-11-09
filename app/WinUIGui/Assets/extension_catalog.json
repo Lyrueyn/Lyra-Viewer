@@ -54,6 +54,16 @@
         ]
     },
     {
+        "id": "js-editor",
+        "name": "JavaScript 编辑器",
+        "repo": "Lyrueyn/Lyra-Extension-JS-Editor",
+        "asset": "lyra-ext-js-editor.zip",
+        "description": "编辑器扩展的 JavaScript 插件：项目文件树、CodeMirror JS 语法高亮、保存、运行、Console 与 Preview。需要先安装编辑器扩展。",
+        "requiresAny": [
+            "editor"
+        ]
+    },
+    {
         "id": "html-editor",
         "name": "HTML 编辑器",
         "repo": "Lyrueyn/Lyra-Extension-HTML-Editor",
