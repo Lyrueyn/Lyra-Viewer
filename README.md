@@ -311,7 +311,7 @@ HTML 阅读器 2.1.3        33,095 bytes       F85A0C93B37CD264B85388303F1315728
 ### 版本
 
 ```
-主程序 2.1.5            本地构建（宿主 API）
+主程序 2.1.6            本地构建（宿主 API + 备份修复）
 编辑器外壳 1.0.0         7,025 bytes        2EFEEEBB8A7C976AAB4E01279C1DB858641B6C94DC56899800177711EB593FAA
 JavaScript 编辑器 1.2.1  103,548 bytes      BC40223C3E188DEF572FCEF5DA1F11D754E131E82EF1E98344E8A7F4A2A2860E
 HTML 阅读器 2.1.6        34,111 bytes       6E2DF8225B37E776925F20D4FD511E4E67966480571D966B3730460BBF0AAAE9
@@ -330,7 +330,7 @@ HTML 编辑器 1.22.0       243,986 bytes      71F7F547FB5A67708FCDD7303566839AA
 ### 版本
 
 ```
-主程序 2.1.5            本地构建（宿主 API）
+主程序 2.1.6            本地构建（宿主 API + 备份修复）
 编辑器外壳 1.1.0         8,212 bytes        C6089BD8A2C8EE13439809B9EA9065D34711A3284D305ABEC22D4872EE2924CA
 JavaScript 编辑器 1.2.2  103,643 bytes      F7F8B038DCA5C8DD25AA6B989DE41FA2410EAF2943AF59265E523CFC52C181A1
 HTML 阅读器 2.1.7        34,184 bytes       7B435F8672F2DC28F4BF208FEC4B973D438C7B210FB3C387B9E7D72A31B25CD7
@@ -349,7 +349,7 @@ HTML 编辑器 1.22.0       243,986 bytes      71F7F547FB5A67708FCDD7303566839AA
 ### 版本
 
 ```
-主程序 2.1.5            本地构建（宿主 API）
+主程序 2.1.6            本地构建（宿主 API + 备份修复）
 HTML 编辑器 1.23.0       244,353 bytes      E222DDB6F739EC01C0FC5B8BE0FD8BFDB7DF87244309253ED3E77CF212A59AB8
 HTML 阅读器 2.1.8        34,256 bytes       B4B9B2516EB4EDC5044585301CD8FCED6606012ACB33BE8C0A782449749B444F
 编辑器外壳 1.1.0         8,212 bytes        C6089BD8A2C8EE13439809B9EA9065D34711A3284D305ABEC22D4872EE2924CA
@@ -373,7 +373,7 @@ JavaScript 编辑器 1.2.2  103,643 bytes      F7F8B038DCA5C8DD25AA6B989DE41FA24
 ### 版本
 
 ```
-主程序 2.1.5            本地构建（宿主 API）
+主程序 2.1.6            本地构建（宿主 API + 备份修复）
 HTML 编辑器 2.5.1        65,833,546 bytes   CF70C4C877C9AEB0B3870DEA43FC40AA366638818D902349DDD54A5C9CD65479
 HTML 阅读器 2.2.0        34,789 bytes       7C940738E6C57069439A1954A0450B74BDC946CB96DACB98A8D67CBBB48735C8
 编辑器外壳 1.1.0         8,212 bytes        C6089BD8A2C8EE13439809B9EA9065D34711A3284D305ABEC22D4872EE2924CA
@@ -395,7 +395,7 @@ JavaScript 编辑器 1.2.2  103,643 bytes      F7F8B038DCA5C8DD25AA6B989DE41FA24
 ### 版本
 
 ```
-主程序 2.1.5            本地构建（宿主 API）
+主程序 2.1.6            本地构建（宿主 API + 备份修复）
 编辑器外壳 1.2.0         11,501 bytes       C2E484F4057B79CBF69FD7786A8F8883984269918E4226F9614539743B1AB5B8
 HTML 阅读器 2.2.0        34,789 bytes       7C940738E6C57069439A1954A0450B74BDC946CB96DACB98A8D67CBBB48735C8
 HTML 编辑器 2.5.1        65,833,546 bytes   CF70C4C877C9AEB0B3870DEA43FC40AA366638818D902349DDD54A5C9CD65479
@@ -412,7 +412,7 @@ JavaScript 编辑器 1.2.2  103,643 bytes      F7F8B038DCA5C8DD25AA6B989DE41FA24
 - 版本：编辑器外壳 1.2.2（11,596 bytes，SHA-256 9F93698E657CF4305E7591E6552116222BFC724609FE6E9E5C8F2499D3E2FC60）。
 
 
-## JavaScript 自动补全（JavaScript 编辑器 1.13.0）
+## JavaScript 自动补全（JavaScript 编辑器 1.14.0）
 
 - 自动弹出补全 + 工具栏「补全」按钮 + Ctrl+Space 手动补全。
 - 补全内容：
@@ -428,11 +428,11 @@ JavaScript 编辑器 1.2.2  103,643 bytes      F7F8B038DCA5C8DD25AA6B989DE41FA24
 ### 版本
 
 ```
-主程序 2.1.5            本地构建（宿主 API）
+主程序 2.1.6            本地构建（宿主 API + 备份修复）
 编辑器外壳 1.2.2         24,223 bytes       7BC39E8F936CF20EA01B59C9AC82628BA3326A09CB4DCC6F32EEA725568A95A1
 HTML 阅读器 2.2.0        34,789 bytes       7C940738E6C57069439A1954A0450B74BDC946CB96DACB98A8D67CBBB48735C8
 HTML 编辑器 2.5.1        65,833,546 bytes   CF70C4C877C9AEB0B3870DEA43FC40AA366638818D902349DDD54A5C9CD65479
-JavaScript 编辑器 1.13.0 2,098,151 bytes    41DB88865384025342FE3DA0877D612E6389AD09360CC60A4F30F320D80A1389
+JavaScript 编辑器 1.14.0 2,098,857 bytes    3215B34EB521459C3EBFCE343AC6AF50F8DC57BE40047499058BB2DD3147361B
 编辑器扩展 1.1.1         6,375 bytes        DC9620790C34EC7170F54D9FE356EE62C6334F9AF9FDED76CE1E9C43185BCCA7
 笔记本 2.3.39            55,179 bytes       E7C03B41CA045E2D7ED2147FBFBACA50CC76F6C80DF6DBA05B93DEA0181341BD
 ```
@@ -504,7 +504,7 @@ JavaScript 编辑器 1.13.0 2,098,151 bytes    41DB88865384025342FE3DA0877D612E6
 - margin/border/padding 画四边色带，content 画填充块；0 值区域也有描边。
 - Box model 对应层在编辑器里也高亮，离开后预览自动清除。
 
-## JS 格式化与检查（JavaScript 编辑器 1.13.0）
+## JS 格式化与检查（JavaScript 编辑器 1.14.0）
 
 - 工具栏「格式化」/ Shift+Alt+F：内置 js-beautify 格式化 JS；JSON 走 JSON.parse + 2 空格缩进。
 - 工具栏「检查」/ Ctrl+Shift+M：内置 acorn 解析，检查语法错误、未使用变量、未定义变量、重复参数、重复对象键、==/!=、debugger、不可达代码。
@@ -517,13 +517,13 @@ JavaScript 编辑器 1.13.0 2,098,151 bytes    41DB88865384025342FE3DA0877D612E6
 - JavaScript 编辑器：GPL-3.0-only，LICENSE + THIRD_PARTY_NOTICES.md 已加入包内。
 - JS 编辑器内置的 CodeMirror、Acorn、js-beautify 仍是各自 MIT 许可，THIRD_PARTY_NOTICES.md 已列明。
 
-## 可拖动分区与 Console 优化（JavaScript 编辑器 1.13.0）
+## 可拖动分区与 Console 优化（JavaScript 编辑器 1.14.0）
 
 - Console 上下拖动，文件树/大纲左右拖动，尺寸保存到 localStorage。
 - Console 每行显示时间、级别、内容；新增自动滚动开关和复制按钮。
 - 运行结束改为最后输出静默 460ms 后标记；晚到输出标注“运行结束后输出”。
 
-## JS 检查与沙箱（JavaScript 编辑器 1.13.0）
+## JS 检查与沙箱（JavaScript 编辑器 1.14.0）
 
 - 静态检查新增：未处理 Promise、循环 `<= .length` 越界、undefined/null 属性访问、undefined/null 参数传给会访问属性的函数。
 - 运行时错误显示堆栈，并把 Worker/iframe 生成行号映射回源文件行号；Console 错误行可点击定位，编辑器对应行红色标记。
@@ -548,7 +548,7 @@ JavaScript 编辑器 1.13.0 2,098,151 bytes    41DB88865384025342FE3DA0877D612E6
 - 问题列表只显示简短标题，完整消息、规则解释和源码片段放在右侧 Detail 面板。
 - 单击问题查看详情，双击或 Detail 按钮跳到源码行。
 
-## ESLint 集成（JavaScript 编辑器 1.13.0）
+## ESLint 集成（JavaScript 编辑器 1.14.0）
 
 - 内置 ESLint browser bundle；启用 ESLint 核心规则：no-undef、no-const-assign、no-unused-vars、no-redeclare、no-dupe-*、no-unreachable、no-unsafe-*、no-useless-* 等。
 - 保留自定义运行时规则：BigInt/Number 混用、Symbol 隐式转换、不可删除属性、冻结对象写入、new 箭头函数、null 解构、不可迭代展开、Object.assign null、Reflect.get 非对象、负数 String 参数等。
@@ -586,9 +586,17 @@ JavaScript 编辑器 1.13.0 2,098,151 bytes    41DB88865384025342FE3DA0877D612E6
 ## Monaco 语言服务（2026-11-10）
 
 - HTML 编辑器 2.5.1：内联 `<script>` 使用 Monaco 自带 TypeScript language service，修复 DOM lib 加载和普通字母补全触发。
-- JavaScript 编辑器 1.13.0：自动补全改用同一 Monaco TypeScript 服务，保留原有悬浮/参数/定义/引用/重命名。
+- JavaScript 编辑器 1.14.0：自动补全改用同一 Monaco TypeScript 服务，保留原有悬浮/参数/定义/引用/重命名。
 
 ## Monaco 悬浮统一（2026-11-10）
 
-- JavaScript 编辑器 1.13.0：悬浮提示也改用 Monaco TypeScript language service，显示完整签名、JSDoc、类型、`Monaco TS · Ln`。
+- JavaScript 编辑器 1.14.0：悬浮提示也改用 Monaco TypeScript language service，显示完整签名、JSDoc、类型、`Monaco TS · Ln`。
 - HTML 编辑器 2.5.1：悬浮卡前缀统一为 FN/PROP/VAR/CLS，不再显示硬编码的 `MONACO · TS`。
+
+## 编辑器备份修复（2.1.6）
+
+- 保存项目文件不再在项目里生成 `文件.bak`；旧版本留下的 `.bak` 会迁移到
+  `%LOCALAPPDATA%\LocalMediaPlayer\edit-backups`。
+- 已清理 physics-review 项目里的 8 个旧 `.bak`，都移动到
+  `edit-backups\legacy-projects\physics-review`。
+- JS 编辑器 1.14.0：参数提示、定义跳转也改用 Monaco TS。
