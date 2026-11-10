@@ -772,12 +772,29 @@ namespace WinUIGui
                     string dir = Path.GetDirectoryName(path)!;
                     Directory.CreateDirectory(dir);
                     string tmp = path + ".tmp-" + Guid.NewGuid().ToString("N");
-                    string bak = path + ".bak";
+                    string backupRoot = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "LocalMediaPlayer", "edit-backups");
+                    string backupKey = Convert.ToHexString(SHA256.HashData(Encoding.UTF8.GetBytes(Path.GetFullPath(path)))).ToLowerInvariant();
+                    string bak = Path.Combine(backupRoot, backupKey + ".bak");
                     try
                     {
                         File.WriteAllBytes(tmp, bytes);
-                        if (File.Exists(path)) File.Copy(path, bak, true);
+                        if (File.Exists(path))
+                        {
+                            Directory.CreateDirectory(backupRoot);
+                            File.Copy(path, bak, true);
+                        }
                         File.Move(tmp, path, true);
+                        // 旧版本曾把 .bak 放在项目文件旁边；迁移到应用备份目录，避免污染项目。
+                        string legacyBak = path + ".bak";
+                        if (File.Exists(legacyBak))
+                        {
+                            try
+                            {
+                                Directory.CreateDirectory(backupRoot);
+                                File.Move(legacyBak, Path.Combine(backupRoot, backupKey + ".legacy.bak"), true);
+                            }
+                            catch { }
+                        }
                     }
                     finally
                     {
