@@ -412,7 +412,7 @@ JavaScript 编辑器 1.2.2  103,643 bytes      F7F8B038DCA5C8DD25AA6B989DE41FA24
 - 版本：编辑器外壳 1.2.2（11,596 bytes，SHA-256 9F93698E657CF4305E7591E6552116222BFC724609FE6E9E5C8F2499D3E2FC60）。
 
 
-## JavaScript 自动补全（JavaScript 编辑器 1.6.1）
+## JavaScript 自动补全（JavaScript 编辑器 1.7.0）
 
 - 自动弹出补全 + 工具栏「补全」按钮 + Ctrl+Space 手动补全。
 - 补全内容：
@@ -432,7 +432,7 @@ JavaScript 编辑器 1.2.2  103,643 bytes      F7F8B038DCA5C8DD25AA6B989DE41FA24
 编辑器外壳 1.2.2         24,223 bytes       7BC39E8F936CF20EA01B59C9AC82628BA3326A09CB4DCC6F32EEA725568A95A1
 HTML 阅读器 2.1.9        34,360 bytes       64D0CE46FE3E26BAF6E85D14E5E29D7E51190701EDA8E11105B3CC89C3D23371
 HTML 编辑器 1.24.1       249,599 bytes      5D93C7C823A9170A4C1E89F2612D56E3551BE6562B485FC726C337E640F1D742
-JavaScript 编辑器 1.6.1  233,824 bytes      AF77F4B83A6E159FBA2A203B1CC489D645AB2079EA29189987A87BCCC863083B
+JavaScript 编辑器 1.7.0  236,348 bytes      9D812E9D6F453855650E2BB2E056C2258B89F103F08E8507F0AE8F2591AFAE0B
 编辑器扩展 1.1.1         6,375 bytes        DC9620790C34EC7170F54D9FE356EE62C6334F9AF9FDED76CE1E9C43185BCCA7
 笔记本 2.3.39            55,179 bytes       E7C03B41CA045E2D7ED2147FBFBACA50CC76F6C80DF6DBA05B93DEA0181341BD
 ```
@@ -504,7 +504,7 @@ JavaScript 编辑器 1.6.1  233,824 bytes      AF77F4B83A6E159FBA2A203B1CC489D64
 - margin/border/padding 画四边色带，content 画填充块；0 值区域也有描边。
 - Box model 对应层在编辑器里也高亮，离开后预览自动清除。
 
-## JS 格式化与检查（JavaScript 编辑器 1.6.1）
+## JS 格式化与检查（JavaScript 编辑器 1.7.0）
 
 - 工具栏「格式化」/ Shift+Alt+F：内置 js-beautify 格式化 JS；JSON 走 JSON.parse + 2 空格缩进。
 - 工具栏「检查」/ Ctrl+Shift+M：内置 acorn 解析，检查语法错误、未使用变量、未定义变量、重复参数、重复对象键、==/!=、debugger、不可达代码。
@@ -516,3 +516,9 @@ JavaScript 编辑器 1.6.1  233,824 bytes      AF77F4B83A6E159FBA2A203B1CC489D64
 - 编辑器外壳：GPL-3.0-only，LICENSE 已加入包内。
 - JavaScript 编辑器：GPL-3.0-only，LICENSE + THIRD_PARTY_NOTICES.md 已加入包内。
 - JS 编辑器内置的 CodeMirror、Acorn、js-beautify 仍是各自 MIT 许可，THIRD_PARTY_NOTICES.md 已列明。
+
+## 可拖动分区与 Console 优化（JavaScript 编辑器 1.7.0）
+
+- Console 上下拖动，文件树/大纲左右拖动，尺寸保存到 localStorage。
+- Console 每行显示时间、级别、内容；新增自动滚动开关和复制按钮。
+- 运行结束改为最后输出静默 460ms 后标记；晚到输出标注“运行结束后输出”。
