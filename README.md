@@ -412,7 +412,7 @@ JavaScript 编辑器 1.2.2  103,643 bytes      F7F8B038DCA5C8DD25AA6B989DE41FA24
 - 版本：编辑器外壳 1.2.2（11,596 bytes，SHA-256 9F93698E657CF4305E7591E6552116222BFC724609FE6E9E5C8F2499D3E2FC60）。
 
 
-## JavaScript 自动补全（JavaScript 编辑器 1.18.0）
+## JavaScript 自动补全（JavaScript 编辑器 1.19.0）
 
 - 自动弹出补全 + 工具栏「补全」按钮 + Ctrl+Space 手动补全。
 - 补全内容：
@@ -432,7 +432,7 @@ JavaScript 编辑器 1.2.2  103,643 bytes      F7F8B038DCA5C8DD25AA6B989DE41FA24
 编辑器外壳 1.2.2         24,223 bytes       7BC39E8F936CF20EA01B59C9AC82628BA3326A09CB4DCC6F32EEA725568A95A1
 HTML 阅读器 2.4.0        38,351 bytes       E41C830CC382D35033518FD264DD08FC6F9130700501B5C1A6EAEB1A2AD2FF66
 HTML 编辑器 2.6.2        65,834,573 bytes   F788BE9744CA1BD04A5DDA20BA5A3BA6B4FF91F4BBA1927A4F8891D0462EF9DB
-JavaScript 编辑器 1.18.0 2,105,942 bytes    E318D6EFD2E97CAAA196ADA4CB1BEB724C5C4618AD061866C6A96CDDCF16219B
+JavaScript 编辑器 1.19.0 2,106,507 bytes    96F1682B65C92584608D7068EE624BD523309015155D7C55277C1F64979C1100
 编辑器扩展 1.1.1         6,375 bytes        DC9620790C34EC7170F54D9FE356EE62C6334F9AF9FDED76CE1E9C43185BCCA7
 笔记本 2.3.39            55,179 bytes       E7C03B41CA045E2D7ED2147FBFBACA50CC76F6C80DF6DBA05B93DEA0181341BD
 ```
@@ -504,7 +504,7 @@ JavaScript 编辑器 1.18.0 2,105,942 bytes    E318D6EFD2E97CAAA196ADA4CB1BEB724
 - margin/border/padding 画四边色带，content 画填充块；0 值区域也有描边。
 - Box model 对应层在编辑器里也高亮，离开后预览自动清除。
 
-## JS 格式化与检查（JavaScript 编辑器 1.18.0）
+## JS 格式化与检查（JavaScript 编辑器 1.19.0）
 
 - 工具栏「格式化」/ Shift+Alt+F：内置 js-beautify 格式化 JS；JSON 走 JSON.parse + 2 空格缩进。
 - 工具栏「检查」/ Ctrl+Shift+M：内置 acorn 解析，检查语法错误、未使用变量、未定义变量、重复参数、重复对象键、==/!=、debugger、不可达代码。
@@ -517,13 +517,13 @@ JavaScript 编辑器 1.18.0 2,105,942 bytes    E318D6EFD2E97CAAA196ADA4CB1BEB724
 - JavaScript 编辑器：GPL-3.0-only，LICENSE + THIRD_PARTY_NOTICES.md 已加入包内。
 - JS 编辑器内置的 CodeMirror、Acorn、js-beautify 仍是各自 MIT 许可，THIRD_PARTY_NOTICES.md 已列明。
 
-## 可拖动分区与 Console 优化（JavaScript 编辑器 1.18.0）
+## 可拖动分区与 Console 优化（JavaScript 编辑器 1.19.0）
 
 - Console 上下拖动，文件树/大纲左右拖动，尺寸保存到 localStorage。
 - Console 每行显示时间、级别、内容；新增自动滚动开关和复制按钮。
 - 运行结束改为最后输出静默 460ms 后标记；晚到输出标注“运行结束后输出”。
 
-## JS 检查与沙箱（JavaScript 编辑器 1.18.0）
+## JS 检查与沙箱（JavaScript 编辑器 1.19.0）
 
 - 静态检查新增：未处理 Promise、循环 `<= .length` 越界、undefined/null 属性访问、undefined/null 参数传给会访问属性的函数。
 - 运行时错误显示堆栈，并把 Worker/iframe 生成行号映射回源文件行号；Console 错误行可点击定位，编辑器对应行红色标记。
@@ -548,7 +548,7 @@ JavaScript 编辑器 1.18.0 2,105,942 bytes    E318D6EFD2E97CAAA196ADA4CB1BEB724
 - 问题列表只显示简短标题，完整消息、规则解释和源码片段放在右侧 Detail 面板。
 - 单击问题查看详情，双击或 Detail 按钮跳到源码行。
 
-## ESLint 集成（JavaScript 编辑器 1.18.0）
+## ESLint 集成（JavaScript 编辑器 1.19.0）
 
 - 内置 ESLint browser bundle；启用 ESLint 核心规则：no-undef、no-const-assign、no-unused-vars、no-redeclare、no-dupe-*、no-unreachable、no-unsafe-*、no-useless-* 等。
 - 保留自定义运行时规则：BigInt/Number 混用、Symbol 隐式转换、不可删除属性、冻结对象写入、new 箭头函数、null 解构、不可迭代展开、Object.assign null、Reflect.get 非对象、负数 String 参数等。
@@ -586,11 +586,11 @@ JavaScript 编辑器 1.18.0 2,105,942 bytes    E318D6EFD2E97CAAA196ADA4CB1BEB724
 ## Monaco 语言服务（2026-11-10）
 
 - HTML 编辑器 2.6.2：内联 `<script>` 使用 Monaco 自带 TypeScript language service，修复 DOM lib 加载和普通字母补全触发。
-- JavaScript 编辑器 1.18.0：自动补全改用同一 Monaco TypeScript 服务，保留原有悬浮/参数/定义/引用/重命名。
+- JavaScript 编辑器 1.19.0：自动补全改用同一 Monaco TypeScript 服务，保留原有悬浮/参数/定义/引用/重命名。
 
 ## Monaco 悬浮统一（2026-11-10）
 
-- JavaScript 编辑器 1.18.0：悬浮提示也改用 Monaco TypeScript language service，显示完整签名、JSDoc、类型、`Monaco TS · Ln`。
+- JavaScript 编辑器 1.19.0：悬浮提示也改用 Monaco TypeScript language service，显示完整签名、JSDoc、类型、`Monaco TS · Ln`。
 - HTML 编辑器 2.6.2：悬浮卡前缀统一为 FN/PROP/VAR/CLS，不再显示硬编码的 `MONACO · TS`。
 
 ## 编辑器备份修复（2.1.6）
@@ -638,7 +638,8 @@ JavaScript 编辑器 1.18.0 2,105,942 bytes    E318D6EFD2E97CAAA196ADA4CB1BEB724
 
 - JS 编辑器底部「调试」标签，纯内嵌调试器，不弹 DevTools、不依赖 CDP。
 - 断点、继续、暂停、单步；暂停行高亮、变量面板、表达式求值。
-- 断点支持顶层、块级语句、函数声明/表达式和 class 方法；箭头回调暂未插桩。
+- 「逐行运行」从第一行开始逐行暂停，「清空断点」一次清除全部断点。
+- 函数/方法/块体箭头回调均插桩，单步可进入函数内部。
 
 ## 断点入口（JS 编辑器 1.17.1）
 
