@@ -43,6 +43,8 @@ namespace WinUIGui
         private readonly ExtensionCatalog.HostSpec? _hostSpec;
         private readonly bool _hasBook;
         private ReaderStateStore? _store;
+        private readonly List<CoreWebView2DevToolsProtocolEventReceiver> _cdpReceivers = new();
+        private bool _cdpEventsReady;
         private string _sessionId = Guid.NewGuid().ToString("N");
         private string _loadId = Guid.NewGuid().ToString("N");
         private string? _tempDir;
@@ -134,6 +136,7 @@ namespace WinUIGui
                 // PDF/EPUB 阅读时不要 WebView2 默认右键菜单（返回/刷新/另存为/打印/检查）。
                 Wv.CoreWebView2.Settings.AreDefaultContextMenusEnabled = false;
                 Wv.CoreWebView2.Settings.AreDevToolsEnabled = true;
+                EnsureCdpEvents();
                 Wv.CoreWebView2.WebMessageReceived += OnWebMessageReceived;
                 try
                 {
@@ -503,6 +506,68 @@ namespace WinUIGui
             catch { }
         }
 
+        private void EnsureCdpEvents()
+        {
+            if (_cdpEventsReady || Wv.CoreWebView2 == null) return;
+            _cdpEventsReady = true;
+            foreach (var name in new[] { "Debugger.paused", "Debugger.resumed", "Debugger.scriptParsed", "Runtime.consoleAPICalled" })
+            {
+                try
+                {
+                    var receiver = Wv.CoreWebView2.GetDevToolsProtocolEventReceiver(name);
+                    receiver.DevToolsProtocolEventReceived += (_, e) => ForwardCdpEvent(name, e.ParameterObjectAsJson);
+                    _cdpReceivers.Add(receiver);
+                }
+                catch { }
+            }
+        }
+
+        private void ForwardCdpEvent(string method, string json)
+        {
+            try
+            {
+                var msg = new JsonObject
+                {
+                    ["type"] = "editor.cdp-event",
+                    ["method"] = method,
+                    ["params"] = string.IsNullOrWhiteSpace(json) ? new JsonObject() : JsonNode.Parse(json),
+                };
+                DispatcherQueue.TryEnqueue(() =>
+                {
+                    if (!_closeStarted) Wv.CoreWebView2?.PostWebMessageAsJson(msg.ToJsonString());
+                });
+            }
+            catch { }
+        }
+
+        private async Task CdpCommandAsync(string requestId, string method, string paramsJson)
+        {
+            try
+            {
+                if (Wv.CoreWebView2 == null) throw new InvalidOperationException("WebView2 不可用");
+                string result = await Wv.CoreWebView2.CallDevToolsProtocolMethodAsync(method, string.IsNullOrWhiteSpace(paramsJson) ? "{}" : paramsJson);
+                var reply = new JsonObject
+                {
+                    ["type"] = "editor.cdp-result",
+                    ["requestId"] = requestId,
+                    ["ok"] = true,
+                    ["result"] = result,
+                };
+                DispatcherQueue.TryEnqueue(() => { if (!_closeStarted) Wv.CoreWebView2?.PostWebMessageAsJson(reply.ToJsonString()); });
+            }
+            catch (Exception ex)
+            {
+                var reply = new JsonObject
+                {
+                    ["type"] = "editor.cdp-result",
+                    ["requestId"] = requestId,
+                    ["ok"] = false,
+                    ["error"] = ex.Message,
+                };
+                DispatcherQueue.TryEnqueue(() => { if (!_closeStarted) Wv.CoreWebView2?.PostWebMessageAsJson(reply.ToJsonString()); });
+            }
+        }
+
         private bool TryHandleToolHostMessage(string raw)
         {
             try
@@ -512,7 +577,7 @@ namespace WinUIGui
                 if (root.ValueKind != JsonValueKind.Object) return false;
                 string type = ReaderProtocol.GetString(root, "type", 80);
                 if (type != "host.capabilities" && type != "host.importBook" &&
-                    type != "host.workspace.load" && type != "host.workspace.save" && type != "host.file.save" && type != "host.file.import" && type != "host.file.delete" && type != "host.file.rename" && type != "host.file.mkdir" && type != "editor.open-file" && type != "editor.open-devtools" && type != "editor.validate-html" && type != "host.project.list" && type != "host.project.info" &&
+                    type != "host.workspace.load" && type != "host.workspace.save" && type != "host.file.save" && type != "host.file.import" && type != "host.file.delete" && type != "host.file.rename" && type != "host.file.mkdir" && type != "editor.open-file" && type != "editor.open-devtools" && type != "editor.cdp-command" && type != "editor.validate-html" && type != "host.project.list" && type != "host.project.info" &&
                     type != "host.ready") return false;
                 string requestId = ReaderProtocol.GetString(root, "requestId", 128);
                 if (type == "host.ready")
@@ -615,6 +680,24 @@ namespace WinUIGui
                             ["error"] = ex.Message,
                         }.ToJsonString());
                     }
+                    return true;
+                }
+                if (type == "editor.cdp-command")
+                {
+                    string method = ReaderProtocol.GetString(root, "method", 200) ?? "";
+                    string cdpParams = ReaderProtocol.GetString(root, "params", 2_000_000) ?? "{}";
+                    if (!(method.StartsWith("Debugger.", StringComparison.Ordinal) || method.StartsWith("Runtime.", StringComparison.Ordinal)))
+                    {
+                        Wv.CoreWebView2?.PostWebMessageAsJson(new JsonObject
+                        {
+                            ["type"] = "editor.cdp-result",
+                            ["requestId"] = requestId,
+                            ["ok"] = false,
+                            ["error"] = "只允许 Debugger/Runtime 调试命令",
+                        }.ToJsonString());
+                        return true;
+                    }
+                    _ = CdpCommandAsync(requestId, method, cdpParams);
                     return true;
                 }
                 if (type == "editor.open-devtools")
