@@ -520,7 +520,7 @@ namespace WinUIGui
         {
             if (_cdpEventsReady || Wv.CoreWebView2 == null) return;
             _cdpEventsReady = true;
-            foreach (var name in new[] { "Debugger.paused", "Debugger.resumed", "Debugger.scriptParsed", "Runtime.consoleAPICalled" })
+            foreach (var name in new[] { "Debugger.paused", "Debugger.resumed", "Debugger.scriptParsed", "Runtime.consoleAPICalled", "Target.receivedMessageFromTarget", "Target.attachedToTarget" })
             {
                 try
                 {
@@ -550,12 +550,14 @@ namespace WinUIGui
             catch { }
         }
 
-        private async Task CdpCommandAsync(string requestId, string method, string paramsJson)
+        private async Task CdpCommandAsync(string requestId, string method, string paramsJson, string sessionId = "")
         {
             try
             {
                 if (Wv.CoreWebView2 == null) throw new InvalidOperationException("WebView2 不可用");
-                string result = await Wv.CoreWebView2.CallDevToolsProtocolMethodAsync(method, string.IsNullOrWhiteSpace(paramsJson) ? "{}" : paramsJson);
+                string result = string.IsNullOrEmpty(sessionId)
+                    ? await Wv.CoreWebView2.CallDevToolsProtocolMethodAsync(method, string.IsNullOrWhiteSpace(paramsJson) ? "{}" : paramsJson)
+                    : await Wv.CoreWebView2.CallDevToolsProtocolMethodForSessionAsync(sessionId, method, string.IsNullOrWhiteSpace(paramsJson) ? "{}" : paramsJson);
                 var reply = new JsonObject
                 {
                     ["type"] = "editor.cdp-result",
@@ -696,7 +698,7 @@ namespace WinUIGui
                 {
                     string method = ReaderProtocol.GetString(root, "method", 200) ?? "";
                     string cdpParams = ReaderProtocol.GetString(root, "params", 2_000_000) ?? "{}";
-                    if (!(method.StartsWith("Debugger.", StringComparison.Ordinal) || method.StartsWith("Runtime.", StringComparison.Ordinal)))
+                    if (!(method.StartsWith("Debugger.", StringComparison.Ordinal) || method.StartsWith("Runtime.", StringComparison.Ordinal) || method.StartsWith("Target.", StringComparison.Ordinal)))
                     {
                         Wv.CoreWebView2?.PostWebMessageAsJson(new JsonObject
                         {
@@ -707,7 +709,8 @@ namespace WinUIGui
                         }.ToJsonString());
                         return true;
                     }
-                    _ = CdpCommandAsync(requestId, method, cdpParams);
+                    string cdpSessionId = ReaderProtocol.GetString(root, "sessionId", 200) ?? "";
+                    _ = CdpCommandAsync(requestId, method, cdpParams, cdpSessionId);
                     return true;
                 }
                 if (type == "editor.open-devtools")
