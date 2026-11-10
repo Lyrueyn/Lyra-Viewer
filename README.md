@@ -412,7 +412,7 @@ JavaScript 编辑器 1.2.2  103,643 bytes      F7F8B038DCA5C8DD25AA6B989DE41FA24
 - 版本：编辑器外壳 1.2.1（11,596 bytes，SHA-256 9F93698E657CF4305E7591E6552116222BFC724609FE6E9E5C8F2499D3E2FC60）。
 
 
-## JavaScript 自动补全（JavaScript 编辑器 1.5.0）
+## JavaScript 自动补全（JavaScript 编辑器 1.5.1）
 
 - 自动弹出补全 + 工具栏「补全」按钮 + Ctrl+Space 手动补全。
 - 补全内容：
@@ -432,7 +432,7 @@ JavaScript 编辑器 1.2.2  103,643 bytes      F7F8B038DCA5C8DD25AA6B989DE41FA24
 编辑器外壳 1.2.1         11,596 bytes       9F93698E657CF4305E7591E6552116222BFC724609FE6E9E5C8F2499D3E2FC60
 HTML 阅读器 2.1.9        34,360 bytes       64D0CE46FE3E26BAF6E85D14E5E29D7E51190701EDA8E11105B3CC89C3D23371
 HTML 编辑器 1.23.2       246,956 bytes      A1DCA5948EF42563C6CF28DDF744E9BE44233FA510A39A556D9D5687927CC61D
-JavaScript 编辑器 1.5.0  133,612 bytes      34A7640CE38A987929F11FA2ADE5536CF3AAF8E507AC500D83E02A4CAD1FCD2F
+JavaScript 编辑器 1.5.1  133,724 bytes      2E8A57F04D8709ADACA9475185DC61C1A9BB1A02A2834C273EB679F10E4F060A
 编辑器扩展 1.1.1         6,375 bytes        DC9620790C34EC7170F54D9FE356EE62C6334F9AF9FDED76CE1E9C43185BCCA7
 笔记本 2.3.39            55,179 bytes       E7C03B41CA045E2D7ED2147FBFBACA50CC76F6C80DF6DBA05B93DEA0181341BD
 ```
@@ -484,3 +484,8 @@ JavaScript 编辑器 1.5.0  133,612 bytes      34A7640CE38A987929F11FA2ADE5536CF
 - 内置属性类型：document.readyState: string、window.innerWidth: number、element.scrollTop: number 等。
 - 数组元素类型、三元/逻辑/比较/算术、常见函数返回值、类字段、对象字面量属性、析构声明。
 - 悬停按最近定义选择同名符号，避免局部变量/对象属性串位。
+
+## 补全 hover 对比度修复（JS 1.5.1）
+
+- 浅色主题补全列表：active 项被鼠标 hover 时，hover 背景会覆盖 active 背景但文字仍为白色。
+- 现在 active:hover 保持深蓝底 + 白字，普通项 hover 保持浅色底 + 深色字。
