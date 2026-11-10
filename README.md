@@ -359,7 +359,7 @@ JavaScript 编辑器 1.2.2  103,643 bytes      F7F8B038DCA5C8DD25AA6B989DE41FA24
 ```
 
 
-## 主题闪烁 / 首开卡顿修复（HTML 编辑器 2.0.1 / Reader 2.1.9）
+## 主题闪烁 / 首开卡顿修复（HTML 编辑器 2.1.0 / Reader 2.1.9）
 
 - 根因：外壳主题 → Reader → HTML 编辑器，HTML 编辑器又把自己的主题回传给 Reader，形成来回 postMessage 的主题回环，表现为原/目标主题快速闪烁，并伴随首次打开卡顿。
 - 修复：
@@ -374,7 +374,7 @@ JavaScript 编辑器 1.2.2  103,643 bytes      F7F8B038DCA5C8DD25AA6B989DE41FA24
 
 ```
 主程序 2.1.4            433,963,636 bytes  1FE72DE5F26B98A31FF88F6FA80EEEB6561666FB0D64EE1D4D85EA7E2591A2FC
-HTML 编辑器 2.0.1        332,779 bytes      D6421390943E56E214D42E2269523E5ABA553910F051CD0EF7FE3CAB18D6BC3D
+HTML 编辑器 2.1.0        485,014 bytes      50C6D8AD1F87768B28E78C2E12E122BB7F5BF3AA462D28B4CBE1F45944879FED
 HTML 阅读器 2.1.9        34,360 bytes       64D0CE46FE3E26BAF6E85D14E5E29D7E51190701EDA8E11105B3CC89C3D23371
 编辑器外壳 1.1.0         8,212 bytes        C6089BD8A2C8EE13439809B9EA9065D34711A3284D305ABEC22D4872EE2924CA
 JavaScript 编辑器 1.2.2  103,643 bytes      F7F8B038DCA5C8DD25AA6B989DE41FA2410EAF2943AF59265E523CFC52C181A1
@@ -398,7 +398,7 @@ JavaScript 编辑器 1.2.2  103,643 bytes      F7F8B038DCA5C8DD25AA6B989DE41FA24
 主程序 2.1.4            433,963,636 bytes  1FE72DE5F26B98A31FF88F6FA80EEEB6561666FB0D64EE1D4D85EA7E2591A2FC
 编辑器外壳 1.2.0         11,501 bytes       C2E484F4057B79CBF69FD7786A8F8883984269918E4226F9614539743B1AB5B8
 HTML 阅读器 2.1.9        34,360 bytes       64D0CE46FE3E26BAF6E85D14E5E29D7E51190701EDA8E11105B3CC89C3D23371
-HTML 编辑器 2.0.1        332,779 bytes      D6421390943E56E214D42E2269523E5ABA553910F051CD0EF7FE3CAB18D6BC3D
+HTML 编辑器 2.1.0        485,014 bytes      50C6D8AD1F87768B28E78C2E12E122BB7F5BF3AA462D28B4CBE1F45944879FED
 JavaScript 编辑器 1.2.2  103,643 bytes      F7F8B038DCA5C8DD25AA6B989DE41FA2410EAF2943AF59265E523CFC52C181A1
 编辑器扩展 1.1.1         6,375 bytes        DC9620790C34EC7170F54D9FE356EE62C6334F9AF9FDED76CE1E9C43185BCCA7
 笔记本 2.3.39            55,179 bytes       E7C03B41CA045E2D7ED2147FBFBACA50CC76F6C80DF6DBA05B93DEA0181341BD
@@ -431,7 +431,7 @@ JavaScript 编辑器 1.2.2  103,643 bytes      F7F8B038DCA5C8DD25AA6B989DE41FA24
 主程序 2.1.4            433,963,636 bytes  1FE72DE5F26B98A31FF88F6FA80EEEB6561666FB0D64EE1D4D85EA7E2591A2FC
 编辑器外壳 1.2.2         24,223 bytes       7BC39E8F936CF20EA01B59C9AC82628BA3326A09CB4DCC6F32EEA725568A95A1
 HTML 阅读器 2.1.9        34,360 bytes       64D0CE46FE3E26BAF6E85D14E5E29D7E51190701EDA8E11105B3CC89C3D23371
-HTML 编辑器 2.0.1        332,779 bytes      D6421390943E56E214D42E2269523E5ABA553910F051CD0EF7FE3CAB18D6BC3D
+HTML 编辑器 2.1.0        485,014 bytes      50C6D8AD1F87768B28E78C2E12E122BB7F5BF3AA462D28B4CBE1F45944879FED
 JavaScript 编辑器 1.11.0 608,775 bytes      8993BD3D1DC5818AF6D1D9FDC308CE0C4162B039434E60F2EA7685DBCD90DE8E
 编辑器扩展 1.1.1         6,375 bytes        DC9620790C34EC7170F54D9FE356EE62C6334F9AF9FDED76CE1E9C43185BCCA7
 笔记本 2.3.39            55,179 bytes       E7C03B41CA045E2D7ED2147FBFBACA50CC76F6C80DF6DBA05B93DEA0181341BD
@@ -490,7 +490,7 @@ JavaScript 编辑器 1.11.0 608,775 bytes      8993BD3D1DC5818AF6D1D9FDC308CE0C4
 - 浅色主题补全列表：active 项被鼠标 hover 时，hover 背景会覆盖 active 背景但文字仍为白色。
 - 现在 active:hover 保持深蓝底 + 白字，普通项 hover 保持浅色底 + 深色字。
 
-## Edge 风格 Box model（HTML 编辑器 2.0.1）
+## Edge 风格 Box model（HTML 编辑器 2.1.0）
 
 - 四层嵌套色带：margin / border / padding / content。
 - 每层的 top/right/bottom/left 数值分别贴近对应边显示，不再挤成一行 4 个值。
@@ -498,7 +498,7 @@ JavaScript 编辑器 1.11.0 608,775 bytes      8993BD3D1DC5818AF6D1D9FDC308CE0C4
 - 修正 content 尺寸计算：之前错误地减掉了 margin，现在只减 border/padding。
 - 深色/浅色主题都有对应配色。
 
-## Box model 悬停联动预览（HTML 编辑器 2.0.1）
+## Box model 悬停联动预览（HTML 编辑器 2.1.0）
 
 - 鼠标悬停 margin/border/padding/content 时，预览中同步高亮对应层。
 - margin/border/padding 画四边色带，content 画填充块；0 值区域也有描边。
@@ -534,7 +534,7 @@ JavaScript 编辑器 1.11.0 608,775 bytes      8993BD3D1DC5818AF6D1D9FDC308CE0C4
 
 - JS 静态检查新增字面量类型、数组长度、URI/JSON 字面量、非函数调用、undefined/null 属性、new Array(-1)、数组越界、无条件递归等规则。
 - more_wrong.js 现在能报出 10 类问题。
-- HTML 编辑器 2.0.1 新增 Problems 标签：HTML 标签闭合、重复 id、图片 alt、内联 CSS 括号、内联 JS 语法/类型错误；自动检查 + 点击跳源码。
+- HTML 编辑器 2.1.0 新增 Problems 标签：HTML 标签闭合、重复 id、图片 alt、内联 CSS 括号、内联 JS 语法/类型错误；自动检查 + 点击跳源码。
 - HTML 编辑器补齐 GPL-3.0-only LICENSE 与第三方许可说明。
 
 ## 语法错误后的恢复检查（JS 1.9.1 / HTML 2.0.1）
@@ -554,3 +554,9 @@ JavaScript 编辑器 1.11.0 608,775 bytes      8993BD3D1DC5818AF6D1D9FDC308CE0C4
 - 保留自定义运行时规则：BigInt/Number 混用、Symbol 隐式转换、不可删除属性、冻结对象写入、new 箭头函数、null 解构、不可迭代展开、Object.assign null、Reflect.get 非对象、负数 String 参数等。
 - more_wrong.js 现在可报出 16 个问题。
 - 问题列表短标题 + Detail 详情。
+
+## 离线 HTML 校验（HTML 编辑器 2.1.0）
+
+- 不再调用任何在线 validator；内置 html-validate 浏览器 bundle，本地执行。
+- HTML 校验按钮检查 DOCTYPE、必需属性、重复 id、可访问性、标签结构等。
+- 所有校验数据留在本地，不上传。
