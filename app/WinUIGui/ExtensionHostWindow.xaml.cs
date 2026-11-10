@@ -133,7 +133,7 @@ namespace WinUIGui
                 catch { }
                 // PDF/EPUB 阅读时不要 WebView2 默认右键菜单（返回/刷新/另存为/打印/检查）。
                 Wv.CoreWebView2.Settings.AreDefaultContextMenusEnabled = false;
-                Wv.CoreWebView2.Settings.AreDevToolsEnabled = false;
+                Wv.CoreWebView2.Settings.AreDevToolsEnabled = true;
                 Wv.CoreWebView2.WebMessageReceived += OnWebMessageReceived;
                 try
                 {
@@ -512,7 +512,7 @@ namespace WinUIGui
                 if (root.ValueKind != JsonValueKind.Object) return false;
                 string type = ReaderProtocol.GetString(root, "type", 80);
                 if (type != "host.capabilities" && type != "host.importBook" &&
-                    type != "host.workspace.load" && type != "host.workspace.save" && type != "host.file.save" && type != "host.file.import" && type != "host.file.delete" && type != "host.file.rename" && type != "host.file.mkdir" && type != "editor.open-file" && type != "editor.validate-html" && type != "host.project.list" && type != "host.project.info" &&
+                    type != "host.workspace.load" && type != "host.workspace.save" && type != "host.file.save" && type != "host.file.import" && type != "host.file.delete" && type != "host.file.rename" && type != "host.file.mkdir" && type != "editor.open-file" && type != "editor.open-devtools" && type != "editor.validate-html" && type != "host.project.list" && type != "host.project.info" &&
                     type != "host.ready") return false;
                 string requestId = ReaderProtocol.GetString(root, "requestId", 128);
                 if (type == "host.ready")
@@ -610,6 +610,30 @@ namespace WinUIGui
                         Wv.CoreWebView2?.PostWebMessageAsJson(new JsonObject
                         {
                             ["type"] = type + ".result",
+                            ["requestId"] = requestId,
+                            ["ok"] = false,
+                            ["error"] = ex.Message,
+                        }.ToJsonString());
+                    }
+                    return true;
+                }
+                if (type == "editor.open-devtools")
+                {
+                    try
+                    {
+                        Wv.CoreWebView2?.OpenDevToolsWindow();
+                        Wv.CoreWebView2?.PostWebMessageAsJson(new JsonObject
+                        {
+                            ["type"] = "editor.open-devtools.result",
+                            ["requestId"] = requestId,
+                            ["ok"] = true,
+                        }.ToJsonString());
+                    }
+                    catch (Exception ex)
+                    {
+                        Wv.CoreWebView2?.PostWebMessageAsJson(new JsonObject
+                        {
+                            ["type"] = "editor.open-devtools.result",
                             ["requestId"] = requestId,
                             ["ok"] = false,
                             ["error"] = ex.Message,
