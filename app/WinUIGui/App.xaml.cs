@@ -92,6 +92,17 @@ public partial class App : Application
     /// <param name="args">Details about the launch request and process.</param>
     protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
     {
+        try
+        {
+            string fixedRoot = System.IO.Path.Combine(AppContext.BaseDirectory, "third_party", "webview2-144");
+            if (Directory.Exists(fixedRoot) && File.Exists(System.IO.Path.Combine(fixedRoot, "msedgewebview2.exe")))
+            {
+                Environment.SetEnvironmentVariable("WEBVIEW2_BROWSER_EXECUTABLE_FOLDER", fixedRoot);
+                Environment.SetEnvironmentVariable("WEBVIEW2_ADDITIONAL_BROWSER_ARGUMENTS",
+                    "--disable-features=IsolateOrigins,site-per-process --disable-site-isolation-trials");
+            }
+        }
+        catch { }
         // ★ 独立视频窗口模式：多视频窗开关启动，绕过单实例锁
         try
         {
