@@ -120,6 +120,16 @@ namespace WinUIGui
             try
             {
                 if (_closeStarted) return;   // 关闭已开始：不再启动初始化/导航
+                try
+                {
+                    string fixedRoot = Path.Combine(AppContext.BaseDirectory, "third_party", "webview2-144");
+                    if (Directory.Exists(fixedRoot) && File.Exists(Path.Combine(fixedRoot, "msedgewebview2.exe")))
+                    {
+                        Environment.SetEnvironmentVariable("WEBVIEW2_BROWSER_EXECUTABLE_FOLDER", fixedRoot);
+                        Environment.SetEnvironmentVariable("WEBVIEW2_ADDITIONAL_BROWSER_ARGUMENTS", "--disable-features=IsolateOrigins,site-per-process");
+                    }
+                }
+                catch { }
                 await Wv.EnsureCoreWebView2Async();
                 if (Wv.CoreWebView2 == null || _closeStarted) return;
                 Wv.CoreWebView2.Settings.IsWebMessageEnabled = true;
