@@ -121,6 +121,8 @@ namespace WinUIGui
                 await Wv.EnsureCoreWebView2Async();
                 if (Wv.CoreWebView2 == null || _closeStarted) return;
                 Wv.CoreWebView2.Settings.IsWebMessageEnabled = true;
+                // Ctrl+滚轮不再缩放整个扩展页面；各阅读器只缩放自己的正文区域。
+                Wv.CoreWebView2.Settings.IsZoomControlEnabled = false;
                 // PDF/EPUB 阅读时不要 WebView2 默认右键菜单（返回/刷新/另存为/打印/检查）。
                 Wv.CoreWebView2.Settings.AreDefaultContextMenusEnabled = false;
                 Wv.CoreWebView2.Settings.AreDevToolsEnabled = false;
