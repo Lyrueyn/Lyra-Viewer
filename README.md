@@ -359,7 +359,7 @@ JavaScript 编辑器 1.2.2  103,643 bytes      F7F8B038DCA5C8DD25AA6B989DE41FA24
 ```
 
 
-## 主题闪烁 / 首开卡顿修复（HTML 编辑器 2.6.0 / Reader 2.1.9）
+## 主题闪烁 / 首开卡顿修复（HTML 编辑器 2.6.1 / Reader 2.1.9）
 
 - 根因：外壳主题 → Reader → HTML 编辑器，HTML 编辑器又把自己的主题回传给 Reader，形成来回 postMessage 的主题回环，表现为原/目标主题快速闪烁，并伴随首次打开卡顿。
 - 修复：
@@ -374,8 +374,8 @@ JavaScript 编辑器 1.2.2  103,643 bytes      F7F8B038DCA5C8DD25AA6B989DE41FA24
 
 ```
 主程序 2.1.6            本地构建（宿主 API + 备份修复）
-HTML 编辑器 2.6.0        65,833,894 bytes   B6CCF46D5861C6D7FD3207F745B9A4FBA9049B665F8903231C244C3FFE602004
-HTML 阅读器 2.3.0        35,157 bytes       2462C00D97CD083F85980ADB725F222E16FBB9405133CF01B133F0EF4BE78FFB
+HTML 编辑器 2.6.1        65,834,074 bytes   0F5492418681F3DC96B361CD0046CE187EB721374D4FB4E988D71BCADB0D0E83
+HTML 阅读器 2.3.1        35,280 bytes       BF47CF12737987BAB24947115C5CFC0D2A015AD217536489FD14075F3CD51BEC
 编辑器外壳 1.1.0         8,212 bytes        C6089BD8A2C8EE13439809B9EA9065D34711A3284D305ABEC22D4872EE2924CA
 JavaScript 编辑器 1.2.2  103,643 bytes      F7F8B038DCA5C8DD25AA6B989DE41FA2410EAF2943AF59265E523CFC52C181A1
 编辑器扩展 1.1.1         6,375 bytes        DC9620790C34EC7170F54D9FE356EE62C6334F9AF9FDED76CE1E9C43185BCCA7
@@ -397,8 +397,8 @@ JavaScript 编辑器 1.2.2  103,643 bytes      F7F8B038DCA5C8DD25AA6B989DE41FA24
 ```
 主程序 2.1.6            本地构建（宿主 API + 备份修复）
 编辑器外壳 1.2.0         11,501 bytes       C2E484F4057B79CBF69FD7786A8F8883984269918E4226F9614539743B1AB5B8
-HTML 阅读器 2.3.0        35,157 bytes       2462C00D97CD083F85980ADB725F222E16FBB9405133CF01B133F0EF4BE78FFB
-HTML 编辑器 2.6.0        65,833,894 bytes   B6CCF46D5861C6D7FD3207F745B9A4FBA9049B665F8903231C244C3FFE602004
+HTML 阅读器 2.3.1        35,280 bytes       BF47CF12737987BAB24947115C5CFC0D2A015AD217536489FD14075F3CD51BEC
+HTML 编辑器 2.6.1        65,834,074 bytes   0F5492418681F3DC96B361CD0046CE187EB721374D4FB4E988D71BCADB0D0E83
 JavaScript 编辑器 1.2.2  103,643 bytes      F7F8B038DCA5C8DD25AA6B989DE41FA2410EAF2943AF59265E523CFC52C181A1
 编辑器扩展 1.1.1         6,375 bytes        DC9620790C34EC7170F54D9FE356EE62C6334F9AF9FDED76CE1E9C43185BCCA7
 笔记本 2.3.39            55,179 bytes       E7C03B41CA045E2D7ED2147FBFBACA50CC76F6C80DF6DBA05B93DEA0181341BD
@@ -430,8 +430,8 @@ JavaScript 编辑器 1.2.2  103,643 bytes      F7F8B038DCA5C8DD25AA6B989DE41FA24
 ```
 主程序 2.1.6            本地构建（宿主 API + 备份修复）
 编辑器外壳 1.2.2         24,223 bytes       7BC39E8F936CF20EA01B59C9AC82628BA3326A09CB4DCC6F32EEA725568A95A1
-HTML 阅读器 2.3.0        35,157 bytes       2462C00D97CD083F85980ADB725F222E16FBB9405133CF01B133F0EF4BE78FFB
-HTML 编辑器 2.6.0        65,833,894 bytes   B6CCF46D5861C6D7FD3207F745B9A4FBA9049B665F8903231C244C3FFE602004
+HTML 阅读器 2.3.1        35,280 bytes       BF47CF12737987BAB24947115C5CFC0D2A015AD217536489FD14075F3CD51BEC
+HTML 编辑器 2.6.1        65,834,074 bytes   0F5492418681F3DC96B361CD0046CE187EB721374D4FB4E988D71BCADB0D0E83
 JavaScript 编辑器 1.14.0 2,098,857 bytes    3215B34EB521459C3EBFCE343AC6AF50F8DC57BE40047499058BB2DD3147361B
 编辑器扩展 1.1.1         6,375 bytes        DC9620790C34EC7170F54D9FE356EE62C6334F9AF9FDED76CE1E9C43185BCCA7
 笔记本 2.3.39            55,179 bytes       E7C03B41CA045E2D7ED2147FBFBACA50CC76F6C80DF6DBA05B93DEA0181341BD
@@ -490,7 +490,7 @@ JavaScript 编辑器 1.14.0 2,098,857 bytes    3215B34EB521459C3EBFCE343AC6AF50F
 - 浅色主题补全列表：active 项被鼠标 hover 时，hover 背景会覆盖 active 背景但文字仍为白色。
 - 现在 active:hover 保持深蓝底 + 白字，普通项 hover 保持浅色底 + 深色字。
 
-## Edge 风格 Box model（HTML 编辑器 2.6.0）
+## Edge 风格 Box model（HTML 编辑器 2.6.1）
 
 - 四层嵌套色带：margin / border / padding / content。
 - 每层的 top/right/bottom/left 数值分别贴近对应边显示，不再挤成一行 4 个值。
@@ -498,7 +498,7 @@ JavaScript 编辑器 1.14.0 2,098,857 bytes    3215B34EB521459C3EBFCE343AC6AF50F
 - 修正 content 尺寸计算：之前错误地减掉了 margin，现在只减 border/padding。
 - 深色/浅色主题都有对应配色。
 
-## Box model 悬停联动预览（HTML 编辑器 2.6.0）
+## Box model 悬停联动预览（HTML 编辑器 2.6.1）
 
 - 鼠标悬停 margin/border/padding/content 时，预览中同步高亮对应层。
 - margin/border/padding 画四边色带，content 画填充块；0 值区域也有描边。
@@ -534,7 +534,7 @@ JavaScript 编辑器 1.14.0 2,098,857 bytes    3215B34EB521459C3EBFCE343AC6AF50F
 
 - JS 静态检查新增字面量类型、数组长度、URI/JSON 字面量、非函数调用、undefined/null 属性、new Array(-1)、数组越界、无条件递归等规则。
 - more_wrong.js 现在能报出 10 类问题。
-- HTML 编辑器 2.6.0 新增 Problems 标签：HTML 标签闭合、重复 id、图片 alt、内联 CSS 括号、内联 JS 语法/类型错误；自动检查 + 点击跳源码。
+- HTML 编辑器 2.6.1 新增 Problems 标签：HTML 标签闭合、重复 id、图片 alt、内联 CSS 括号、内联 JS 语法/类型错误；自动检查 + 点击跳源码。
 - HTML 编辑器补齐 GPL-3.0-only LICENSE 与第三方许可说明。
 
 ## 语法错误后的恢复检查（JS 1.9.1 / HTML 2.0.1）
@@ -555,20 +555,20 @@ JavaScript 编辑器 1.14.0 2,098,857 bytes    3215B34EB521459C3EBFCE343AC6AF50F
 - more_wrong.js 现在可报出 16 个问题。
 - 问题列表短标题 + Detail 详情。
 
-## 离线 HTML 校验（HTML 编辑器 2.6.0）
+## 离线 HTML 校验（HTML 编辑器 2.6.1）
 
 - 不再调用任何在线 validator；内置 html-validate 浏览器 bundle，本地执行。
 - HTML 校验按钮检查 DOCTYPE、必需属性、重复 id、可访问性、标签结构等。
 - 所有校验数据留在本地，不上传。
 
-## 本地 vnu.jar HTML 校验（HTML 编辑器 2.6.0）
+## 本地 vnu.jar HTML 校验（HTML 编辑器 2.6.1）
 
 - 使用官方 validator/validator 的 vnu.jar，通过主程序宿主接口在本机 Java 进程执行。
 - 扩展自带精简 JRE 17 + vnu.jar，不需要联网；不发送任何 HTML。
 - 主程序新增 editor.validate-html 宿主 API，HTML 阅读器负责转发。
 - 实际校验测试可报出缺少 lang、重复 id、缺少 alt 等 vnu 结果。
 
-## 内联脚本语言功能（HTML 编辑器 2.6.0）
+## 内联脚本语言功能（HTML 编辑器 2.6.1）
 
 - `<script>` 内继续使用 htmlmixed 的 JS 高亮。
 - 本地符号补全：当前脚本内函数、变量优先出现在补全列表。
@@ -577,7 +577,7 @@ JavaScript 编辑器 1.14.0 2,098,857 bytes    3215B34EB521459C3EBFCE343AC6AF50F
 - Ctrl+点击标识符跳转到脚本内定义。
 - 只分析 `<script>` 内容，不影响 HTML/CSS。
 
-## Monaco TypeScript 分析（HTML 编辑器 2.6.0）
+## Monaco TypeScript 分析（HTML 编辑器 2.6.1）
 
 - 内联 `<script>` 的悬浮、参数提示、补全、定义跳转改用 Monaco 自带的 TypeScript language service。
 - 使用 `vendor/monaco-ts.min.js`（Monaco `typescriptServices.js` + `lib.ts`，约 6.4MB），不加载 Monaco UI。
@@ -585,13 +585,13 @@ JavaScript 编辑器 1.14.0 2,098,857 bytes    3215B34EB521459C3EBFCE343AC6AF50F
 
 ## Monaco 语言服务（2026-11-10）
 
-- HTML 编辑器 2.6.0：内联 `<script>` 使用 Monaco 自带 TypeScript language service，修复 DOM lib 加载和普通字母补全触发。
+- HTML 编辑器 2.6.1：内联 `<script>` 使用 Monaco 自带 TypeScript language service，修复 DOM lib 加载和普通字母补全触发。
 - JavaScript 编辑器 1.14.0：自动补全改用同一 Monaco TypeScript 服务，保留原有悬浮/参数/定义/引用/重命名。
 
 ## Monaco 悬浮统一（2026-11-10）
 
 - JavaScript 编辑器 1.14.0：悬浮提示也改用 Monaco TypeScript language service，显示完整签名、JSDoc、类型、`Monaco TS · Ln`。
-- HTML 编辑器 2.6.0：悬浮卡前缀统一为 FN/PROP/VAR/CLS，不再显示硬编码的 `MONACO · TS`。
+- HTML 编辑器 2.6.1：悬浮卡前缀统一为 FN/PROP/VAR/CLS，不再显示硬编码的 `MONACO · TS`。
 
 ## 编辑器备份修复（2.1.6）
 
@@ -601,7 +601,12 @@ JavaScript 编辑器 1.14.0 2,098,857 bytes    3215B34EB521459C3EBFCE343AC6AF50F
   `edit-backups\legacy-projects\physics-review`。
 - JS 编辑器 1.14.0：参数提示、定义跳转也改用 Monaco TS。
 
-## 内部资源链接隐藏（HTML 编辑器 2.6.0 / 阅读器 2.3.0）
+## 内部资源链接隐藏（HTML 编辑器 2.6.1 / 阅读器 2.3.0）
 
 - 预览/阅读模式不再把 `https://lyra-book-assets.local/...` 暴露成可悬停链接。
 - 相对链接存入 `data-lyra-href`，点击时由阅读器解析并打开项目文件。
+
+## 内部链接最终修复（2.6.1 / 2.3.1）
+
+- 内部相对链接完全移除 href，只保留 data-lyra-href；悬停不再出现 `lyra-book-assets.local/#`。
+- `#id` 链接改为当前预览/阅读区域内滚动。
