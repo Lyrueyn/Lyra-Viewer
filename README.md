@@ -311,7 +311,7 @@ HTML 阅读器 2.1.3        33,095 bytes       F85A0C93B37CD264B85388303F1315728
 ### 版本
 
 ```
-主程序 2.1.8            本地构建（宿主 API + 备份 + 缩放修复）
+主程序 2.1.9            本地构建（宿主 API + 备份 + 缩放修复）
 编辑器外壳 1.0.0         7,025 bytes        2EFEEEBB8A7C976AAB4E01279C1DB858641B6C94DC56899800177711EB593FAA
 JavaScript 编辑器 1.2.1  103,548 bytes      BC40223C3E188DEF572FCEF5DA1F11D754E131E82EF1E98344E8A7F4A2A2860E
 HTML 阅读器 2.1.6        34,111 bytes       6E2DF8225B37E776925F20D4FD511E4E67966480571D966B3730460BBF0AAAE9
@@ -330,7 +330,7 @@ HTML 编辑器 1.22.0       243,986 bytes      71F7F547FB5A67708FCDD7303566839AA
 ### 版本
 
 ```
-主程序 2.1.8            本地构建（宿主 API + 备份 + 缩放修复）
+主程序 2.1.9            本地构建（宿主 API + 备份 + 缩放修复）
 编辑器外壳 1.1.0         8,212 bytes        C6089BD8A2C8EE13439809B9EA9065D34711A3284D305ABEC22D4872EE2924CA
 JavaScript 编辑器 1.2.2  103,643 bytes      F7F8B038DCA5C8DD25AA6B989DE41FA2410EAF2943AF59265E523CFC52C181A1
 HTML 阅读器 2.1.7        34,184 bytes       7B435F8672F2DC28F4BF208FEC4B973D438C7B210FB3C387B9E7D72A31B25CD7
@@ -349,7 +349,7 @@ HTML 编辑器 1.22.0       243,986 bytes      71F7F547FB5A67708FCDD7303566839AA
 ### 版本
 
 ```
-主程序 2.1.8            本地构建（宿主 API + 备份 + 缩放修复）
+主程序 2.1.9            本地构建（宿主 API + 备份 + 缩放修复）
 HTML 编辑器 1.23.0       244,353 bytes      E222DDB6F739EC01C0FC5B8BE0FD8BFDB7DF87244309253ED3E77CF212A59AB8
 HTML 阅读器 2.1.8        34,256 bytes       B4B9B2516EB4EDC5044585301CD8FCED6606012ACB33BE8C0A782449749B444F
 编辑器外壳 1.1.0         8,212 bytes        C6089BD8A2C8EE13439809B9EA9065D34711A3284D305ABEC22D4872EE2924CA
@@ -373,7 +373,7 @@ JavaScript 编辑器 1.2.2  103,643 bytes      F7F8B038DCA5C8DD25AA6B989DE41FA24
 ### 版本
 
 ```
-主程序 2.1.8            本地构建（宿主 API + 备份 + 缩放修复）
+主程序 2.1.9            本地构建（宿主 API + 备份 + 缩放修复）
 HTML 编辑器 2.6.2        65,834,573 bytes   F788BE9744CA1BD04A5DDA20BA5A3BA6B4FF91F4BBA1927A4F8891D0462EF9DB
 HTML 阅读器 2.3.2        35,518 bytes       75566E364461DF62013A675A566066CFB01F4949CCF54106A26B9569F8232589
 编辑器外壳 1.1.0         8,212 bytes        C6089BD8A2C8EE13439809B9EA9065D34711A3284D305ABEC22D4872EE2924CA
@@ -395,7 +395,7 @@ JavaScript 编辑器 1.2.2  103,643 bytes      F7F8B038DCA5C8DD25AA6B989DE41FA24
 ### 版本
 
 ```
-主程序 2.1.8            本地构建（宿主 API + 备份 + 缩放修复）
+主程序 2.1.9            本地构建（宿主 API + 备份 + 缩放修复）
 编辑器外壳 1.2.0         11,501 bytes       C2E484F4057B79CBF69FD7786A8F8883984269918E4226F9614539743B1AB5B8
 HTML 阅读器 2.3.2        35,518 bytes       75566E364461DF62013A675A566066CFB01F4949CCF54106A26B9569F8232589
 HTML 编辑器 2.6.2        65,834,573 bytes   F788BE9744CA1BD04A5DDA20BA5A3BA6B4FF91F4BBA1927A4F8891D0462EF9DB
@@ -428,7 +428,7 @@ JavaScript 编辑器 1.2.2  103,643 bytes      F7F8B038DCA5C8DD25AA6B989DE41FA24
 ### 版本
 
 ```
-主程序 2.1.8            本地构建（宿主 API + 备份 + 缩放修复）
+主程序 2.1.9            本地构建（宿主 API + 备份 + 缩放修复）
 编辑器外壳 1.2.2         24,223 bytes       7BC39E8F936CF20EA01B59C9AC82628BA3326A09CB4DCC6F32EEA725568A95A1
 HTML 阅读器 2.3.2        35,518 bytes       75566E364461DF62013A675A566066CFB01F4949CCF54106A26B9569F8232589
 HTML 编辑器 2.6.2        65,834,573 bytes   F788BE9744CA1BD04A5DDA20BA5A3BA6B4FF91F4BBA1927A4F8891D0462EF9DB
@@ -613,8 +613,14 @@ JavaScript 编辑器 1.14.0 2,098,857 bytes    3215B34EB521459C3EBFCE343AC6AF50F
 
 ## Ctrl+滚轮缩放范围（2026-11-10）
 
-- 主程序关闭 WebView2 整页 Ctrl+滚轮缩放，并在所有文档注入 capture 级 wheel 防护。
+- 主程序保留 wheel 事件分发，但在所有文档注入 capture 级 wheel 防护；文件树/工具栏不缩放，正文由各自阅读器处理。
 - PDF 阅读器：只在 PDF 页面区域缩放，侧栏/工具栏不缩放。
 - EPUB 阅读器 0.7.0：正文区域 Ctrl+滚轮调整字号，侧栏/工具栏不变。
 - HTML 阅读器 2.3.2：正文区域 Ctrl+滚轮缩放，侧栏/工具栏不变。
 - HTML 编辑器 2.6.2：只缩放源码字号/预览内容，检查器和工具栏不变。
+
+## 部署事故修复（2026-11-10）
+
+- `deploy.ps1` 之前只编译到 bin，没有复制到实际安装目录 `D:\Users\Administrator\AppData\Local\LocalMediaPlayer`，导致用户测试的仍是 2.1.4。
+- 已手动安装 2.1.9 的 `WinUIGui.dll/exe`，并保留自包含 `runtimeconfig.json`（includedFrameworks 10.0.9）。
+- 实测：鼠标在文件树 Ctrl+滚轮，界面不缩放。

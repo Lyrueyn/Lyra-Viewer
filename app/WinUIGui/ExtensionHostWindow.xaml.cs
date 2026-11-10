@@ -121,8 +121,9 @@ namespace WinUIGui
                 await Wv.EnsureCoreWebView2Async();
                 if (Wv.CoreWebView2 == null || _closeStarted) return;
                 Wv.CoreWebView2.Settings.IsWebMessageEnabled = true;
-                // Ctrl+滚轮不再缩放整个扩展页面；各阅读器只缩放自己的正文区域。
-                Wv.CoreWebView2.Settings.IsZoomControlEnabled = false;
+                // 保留 WebView2 的 wheel 事件分发，但由页面 capture 级防护阻止整页缩放；
+                // 正文区域自己的 wheel 处理器再决定是否缩放。
+                Wv.CoreWebView2.Settings.IsZoomControlEnabled = true;
                 // 双保险：即使 WebView2 仍把 Ctrl+滚轮当页面缩放，也在所有文档/iframe 里阻止默认缩放。
                 try
                 {
