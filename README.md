@@ -412,7 +412,7 @@ JavaScript 编辑器 1.2.2  103,643 bytes      F7F8B038DCA5C8DD25AA6B989DE41FA24
 - 版本：编辑器外壳 1.2.2（11,596 bytes，SHA-256 9F93698E657CF4305E7591E6552116222BFC724609FE6E9E5C8F2499D3E2FC60）。
 
 
-## JavaScript 自动补全（JavaScript 编辑器 1.9.1）
+## JavaScript 自动补全（JavaScript 编辑器 1.10.0）
 
 - 自动弹出补全 + 工具栏「补全」按钮 + Ctrl+Space 手动补全。
 - 补全内容：
@@ -432,7 +432,7 @@ JavaScript 编辑器 1.2.2  103,643 bytes      F7F8B038DCA5C8DD25AA6B989DE41FA24
 编辑器外壳 1.2.2         24,223 bytes       7BC39E8F936CF20EA01B59C9AC82628BA3326A09CB4DCC6F32EEA725568A95A1
 HTML 阅读器 2.1.9        34,360 bytes       64D0CE46FE3E26BAF6E85D14E5E29D7E51190701EDA8E11105B3CC89C3D23371
 HTML 编辑器 2.0.1        332,779 bytes      D6421390943E56E214D42E2269523E5ABA553910F051CD0EF7FE3CAB18D6BC3D
-JavaScript 编辑器 1.9.1  254,272 bytes      E988ADD6916EC1E108C14F4CAC9C74699EE499A60313AA5FBC8F132C308C6384
+JavaScript 编辑器 1.10.0 257,402 bytes      05C94B9375BF45FB7E0C0F7A90F1823CAF63430E6E7CEEA7E3358692B6AF1372
 编辑器扩展 1.1.1         6,375 bytes        DC9620790C34EC7170F54D9FE356EE62C6334F9AF9FDED76CE1E9C43185BCCA7
 笔记本 2.3.39            55,179 bytes       E7C03B41CA045E2D7ED2147FBFBACA50CC76F6C80DF6DBA05B93DEA0181341BD
 ```
@@ -504,7 +504,7 @@ JavaScript 编辑器 1.9.1  254,272 bytes      E988ADD6916EC1E108C14F4CAC9C74699
 - margin/border/padding 画四边色带，content 画填充块；0 值区域也有描边。
 - Box model 对应层在编辑器里也高亮，离开后预览自动清除。
 
-## JS 格式化与检查（JavaScript 编辑器 1.9.1）
+## JS 格式化与检查（JavaScript 编辑器 1.10.0）
 
 - 工具栏「格式化」/ Shift+Alt+F：内置 js-beautify 格式化 JS；JSON 走 JSON.parse + 2 空格缩进。
 - 工具栏「检查」/ Ctrl+Shift+M：内置 acorn 解析，检查语法错误、未使用变量、未定义变量、重复参数、重复对象键、==/!=、debugger、不可达代码。
@@ -517,13 +517,13 @@ JavaScript 编辑器 1.9.1  254,272 bytes      E988ADD6916EC1E108C14F4CAC9C74699
 - JavaScript 编辑器：GPL-3.0-only，LICENSE + THIRD_PARTY_NOTICES.md 已加入包内。
 - JS 编辑器内置的 CodeMirror、Acorn、js-beautify 仍是各自 MIT 许可，THIRD_PARTY_NOTICES.md 已列明。
 
-## 可拖动分区与 Console 优化（JavaScript 编辑器 1.9.1）
+## 可拖动分区与 Console 优化（JavaScript 编辑器 1.10.0）
 
 - Console 上下拖动，文件树/大纲左右拖动，尺寸保存到 localStorage。
 - Console 每行显示时间、级别、内容；新增自动滚动开关和复制按钮。
 - 运行结束改为最后输出静默 460ms 后标记；晚到输出标注“运行结束后输出”。
 
-## JS 检查与沙箱（JavaScript 编辑器 1.9.1）
+## JS 检查与沙箱（JavaScript 编辑器 1.10.0）
 
 - 静态检查新增：未处理 Promise、循环 `<= .length` 越界、undefined/null 属性访问、undefined/null 参数传给会访问属性的函数。
 - 运行时错误显示堆栈，并把 Worker/iframe 生成行号映射回源文件行号；Console 错误行可点击定位，编辑器对应行红色标记。
@@ -542,3 +542,8 @@ JavaScript 编辑器 1.9.1  254,272 bytes      E988ADD6916EC1E108C14F4CAC9C74699
 - 严格解析失败后使用 acorn-loose 恢复 AST，继续运行未定义变量、类型、数组、JSON/URI 等检查。
 - 删除一个大括号时不再只剩一条语法错误，而是语法错误 + 其它可分析问题一起显示。
 - HTML 编辑器同样对内联脚本使用恢复分析。
+
+## 问题列表详情（JS 1.10.0）
+
+- 问题列表只显示简短标题，完整消息、规则解释和源码片段放在右侧 Detail 面板。
+- 单击问题查看详情，双击或 Detail 按钮跳到源码行。
