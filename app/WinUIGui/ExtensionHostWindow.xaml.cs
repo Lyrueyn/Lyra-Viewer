@@ -1,9 +1,10 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Linq;
 using System.Collections.Generic;
 using System.Text;
 using System.Text.Json;
+using System.Diagnostics;
 using System.Text.Json.Nodes;
 using System.Security.Cryptography;
 using System.Threading.Tasks;
@@ -392,6 +393,106 @@ namespace WinUIGui
             return _store;
         }
 
+        private (string? java, string? jar) LocateHtmlValidator()
+        {
+            string? jar = null;
+            var roots = new List<string>();
+            roots.Add(Path.Combine(_extensionDir, "validator"));
+            try
+            {
+                foreach (var dir in Directory.GetDirectories(ExtensionCatalog.ExtensionsDir))
+                    roots.Add(Path.Combine(dir, "validator"));
+            }
+            catch { }
+            roots.Add(Path.Combine(AppContext.BaseDirectory, "third_party", "html-validator"));
+            foreach (var root in roots)
+            {
+                string candidate = Path.Combine(root, "vnu.jar");
+                if (File.Exists(candidate)) { jar = candidate; break; }
+            }
+            if (jar == null) return (null, null);
+            string java = Path.Combine(Path.GetDirectoryName(jar)!, "jre", "bin", "java.exe");
+            if (File.Exists(java)) return (java, jar);
+            string appJre = Path.Combine(AppContext.BaseDirectory, "third_party", "html-validator", "jre", "bin", "java.exe");
+            if (File.Exists(appJre)) return (appJre, jar);
+            string? javaHome = Environment.GetEnvironmentVariable("JAVA_HOME");
+            if (!string.IsNullOrWhiteSpace(javaHome))
+            {
+                string candidate = Path.Combine(javaHome, "bin", "java.exe");
+                if (File.Exists(candidate)) return (candidate, jar);
+            }
+            foreach (var segment in (Environment.GetEnvironmentVariable("PATH") ?? "").Split(Path.PathSeparator))
+            {
+                try
+                {
+                    string candidate = Path.Combine(segment.Trim(), "java.exe");
+                    if (File.Exists(candidate)) return (candidate, jar);
+                }
+                catch { }
+            }
+            return (null, jar);
+        }
+
+        private async Task ValidateHtmlAsync(string requestId, string html)
+        {
+            string stdout = "";
+            string error = "";
+            try
+            {
+                var located = LocateHtmlValidator();
+                if (located.jar == null) { error = "未找到 vnu.jar，请重新安装 HTML 编辑器扩展"; }
+                else if (located.java == null) { error = "未找到 Java 运行时（JRE 11+），请把 JRE 放到扩展的 validator/jre 目录或设置 JAVA_HOME"; }
+                else
+                {
+                    string temp = Path.Combine(Path.GetTempPath(), "lyra-vnu-" + Guid.NewGuid().ToString("N") + ".html");
+                    await File.WriteAllTextAsync(temp, html, new UTF8Encoding(false));
+                    var psi = new ProcessStartInfo
+                    {
+                        FileName = located.java,
+                        WorkingDirectory = Path.GetDirectoryName(located.jar)!,
+                        UseShellExecute = false,
+                        RedirectStandardOutput = true,
+                        RedirectStandardError = true,
+                        CreateNoWindow = true,
+                    };
+                    psi.ArgumentList.Add("-jar");
+                    psi.ArgumentList.Add(located.jar);
+                    psi.ArgumentList.Add("--format");
+                    psi.ArgumentList.Add("json");
+                    psi.ArgumentList.Add(temp);
+                    using var process = new Process { StartInfo = psi };
+                    process.Start();
+                    var outTask = process.StandardOutput.ReadToEndAsync();
+                    var errTask = process.StandardError.ReadToEndAsync();
+                    using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(30));
+                    try { await process.WaitForExitAsync(cts.Token); }
+                    catch (OperationCanceledException) { try { process.Kill(true); } catch { } error = "vnu.jar 校验超时"; }
+                    stdout = await outTask;
+                    string stderr = await errTask;
+                    if (string.IsNullOrWhiteSpace(stdout) && !string.IsNullOrWhiteSpace(stderr)) error = stderr.Trim();
+                    try { File.Delete(temp); } catch { }
+                }
+            }
+            catch (Exception ex) { error = ex.Message; }
+            bool ok = !string.IsNullOrWhiteSpace(stdout) && stdout.TrimStart().StartsWith("{");
+            var reply = new JsonObject
+            {
+                ["type"] = "editor.validate-html.result",
+                ["requestId"] = requestId,
+                ["ok"] = ok,
+                ["json"] = stdout,
+                ["error"] = error,
+            };
+            try
+            {
+                DispatcherQueue.TryEnqueue(() =>
+                {
+                    if (!_closeStarted) Wv.CoreWebView2?.PostWebMessageAsJson(reply.ToJsonString());
+                });
+            }
+            catch { }
+        }
+
         private bool TryHandleToolHostMessage(string raw)
         {
             try
@@ -401,7 +502,7 @@ namespace WinUIGui
                 if (root.ValueKind != JsonValueKind.Object) return false;
                 string type = ReaderProtocol.GetString(root, "type", 80);
                 if (type != "host.capabilities" && type != "host.importBook" &&
-                    type != "host.workspace.load" && type != "host.workspace.save" && type != "host.file.save" && type != "host.file.import" && type != "host.file.delete" && type != "host.file.rename" && type != "host.file.mkdir" && type != "editor.open-file" && type != "host.project.list" && type != "host.project.info" &&
+                    type != "host.workspace.load" && type != "host.workspace.save" && type != "host.file.save" && type != "host.file.import" && type != "host.file.delete" && type != "host.file.rename" && type != "host.file.mkdir" && type != "editor.open-file" && type != "editor.validate-html" && type != "host.project.list" && type != "host.project.info" &&
                     type != "host.ready") return false;
                 string requestId = ReaderProtocol.GetString(root, "requestId", 128);
                 if (type == "host.ready")
@@ -563,6 +664,12 @@ namespace WinUIGui
                         Wv.CoreWebView2?.PostWebMessageAsJson(new JsonObject { ["type"] = "editor.open-file.result", ["requestId"] = requestId, ["ok"] = false, ["error"] = ex.Message }.ToJsonString());
                         return true;
                     }
+                }
+                if (type == "editor.validate-html")
+                {
+                    string html = ReaderProtocol.GetString(root, "html", 8_000_000);
+                    _ = ValidateHtmlAsync(requestId, html);
+                    return true;
                 }
                 if (type == "host.workspace.load")
                 {
