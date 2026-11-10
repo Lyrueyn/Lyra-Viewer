@@ -525,14 +525,14 @@ namespace WinUIGui
                 try
                 {
                     var receiver = Wv.CoreWebView2.GetDevToolsProtocolEventReceiver(name);
-                    receiver.DevToolsProtocolEventReceived += (_, e) => ForwardCdpEvent(name, e.ParameterObjectAsJson);
+                    receiver.DevToolsProtocolEventReceived += (_, e) => ForwardCdpEvent(name, e.ParameterObjectAsJson, e.SessionId);
                     _cdpReceivers.Add(receiver);
                 }
                 catch { }
             }
         }
 
-        private void ForwardCdpEvent(string method, string json)
+        private void ForwardCdpEvent(string method, string json, string sessionId = "")
         {
             try
             {
@@ -540,6 +540,7 @@ namespace WinUIGui
                 {
                     ["type"] = "editor.cdp-event",
                     ["method"] = method,
+                    ["sessionId"] = sessionId ?? "",
                     ["params"] = string.IsNullOrWhiteSpace(json) ? new JsonObject() : JsonNode.Parse(json),
                 };
                 DispatcherQueue.TryEnqueue(() =>
