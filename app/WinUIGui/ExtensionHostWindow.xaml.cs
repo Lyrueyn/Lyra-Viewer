@@ -520,6 +520,92 @@ namespace WinUIGui
             catch { }
         }
 
+        private string? FindNodeExecutable()
+        {
+            foreach (var segment in (Environment.GetEnvironmentVariable("PATH") ?? "").Split(Path.PathSeparator))
+            {
+                try { string c = Path.Combine(segment.Trim(), "node.exe"); if (File.Exists(c)) return c; } catch { }
+            }
+            foreach (var root in new[] { Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles), Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\Programs", "D:\\Program Files", "C:\\Program Files" })
+            {
+                try { string c = Path.Combine(root, "nodejs", "node.exe"); if (File.Exists(c)) return c; } catch { }
+            }
+            return null;
+        }
+
+        private string? FindStylelintRunner()
+        {
+            var roots = new List<string>();
+            roots.Add(Path.Combine(_extensionDir, "validator", "stylelint"));
+            try { foreach (var dir in Directory.GetDirectories(ExtensionCatalog.ExtensionsDir)) roots.Add(Path.Combine(dir, "validator", "stylelint")); } catch { }
+            roots.Add(Path.Combine(AppContext.BaseDirectory, "third_party", "stylelint"));
+            foreach (var root in roots)
+            {
+                string runner = Path.Combine(root, "lyra-runner.mjs");
+                if (File.Exists(runner)) return runner;
+            }
+            return null;
+        }
+
+        private async Task ValidateCssAsync(string requestId, string code)
+        {
+            string stdout = "";
+            string error = "";
+            try
+            {
+                string? node = FindNodeExecutable();
+                string? runner = FindStylelintRunner();
+                if (runner == null) error = "未找到 stylelint 运行时，请重新安装 CSS 编辑器扩展";
+                else if (node == null) error = "未找到 Node.js（需要 Node 18+）";
+                else
+                {
+                    var psi = new ProcessStartInfo
+                    {
+                        FileName = node,
+                        WorkingDirectory = Path.GetDirectoryName(runner)!,
+                        UseShellExecute = false,
+                        RedirectStandardInput = true,
+                        RedirectStandardOutput = true,
+                        RedirectStandardError = true,
+                        CreateNoWindow = true,
+                        StandardOutputEncoding = Encoding.UTF8,
+                        StandardErrorEncoding = Encoding.UTF8,
+                    };
+                    psi.ArgumentList.Add(runner);
+                    using var process = new Process { StartInfo = psi };
+                    process.Start();
+                    await process.StandardInput.WriteAsync(code);
+                    process.StandardInput.Close();
+                    var outTask = process.StandardOutput.ReadToEndAsync();
+                    var errTask = process.StandardError.ReadToEndAsync();
+                    using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(25));
+                    try { await process.WaitForExitAsync(cts.Token); }
+                    catch (OperationCanceledException) { try { process.Kill(true); } catch { } error = "stylelint 校验超时"; }
+                    stdout = await outTask;
+                    string stderr = await errTask;
+                    if (string.IsNullOrWhiteSpace(stdout) && !string.IsNullOrWhiteSpace(stderr)) error = stderr.Trim();
+                }
+            }
+            catch (Exception ex) { error = ex.Message; }
+            bool ok = !string.IsNullOrWhiteSpace(stdout) && stdout.TrimStart().StartsWith("{");
+            var reply = new JsonObject
+            {
+                ["type"] = "editor.validate-css.result",
+                ["requestId"] = requestId,
+                ["ok"] = ok,
+                ["json"] = stdout,
+                ["error"] = error,
+            };
+            try
+            {
+                DispatcherQueue.TryEnqueue(() =>
+                {
+                    if (!_closeStarted) Wv.CoreWebView2?.PostWebMessageAsJson(reply.ToJsonString());
+                });
+            }
+            catch { }
+        }
+
         private void EnsureCdpEvents()
         {
             if (_cdpEventsReady || Wv.CoreWebView2 == null) return;
@@ -594,7 +680,7 @@ namespace WinUIGui
                 if (root.ValueKind != JsonValueKind.Object) return false;
                 string type = ReaderProtocol.GetString(root, "type", 80);
                 if (type != "host.capabilities" && type != "host.importBook" &&
-                    type != "host.workspace.load" && type != "host.workspace.save" && type != "host.file.save" && type != "host.file.import" && type != "host.file.delete" && type != "host.file.rename" && type != "host.file.mkdir" && type != "editor.open-file" && type != "editor.open-devtools" && type != "editor.cdp-command" && type != "editor.validate-html" && type != "host.project.list" && type != "host.project.info" &&
+                    type != "host.workspace.load" && type != "host.workspace.save" && type != "host.file.save" && type != "host.file.import" && type != "host.file.delete" && type != "host.file.rename" && type != "host.file.mkdir" && type != "editor.open-file" && type != "editor.open-devtools" && type != "editor.cdp-command" && type != "editor.validate-html" && type != "editor.validate-css" && type != "host.project.list" && type != "host.project.info" &&
                     type != "host.ready") return false;
                 string requestId = ReaderProtocol.GetString(root, "requestId", 128);
                 if (type == "host.ready")
@@ -804,6 +890,12 @@ namespace WinUIGui
                 {
                     string html = ReaderProtocol.GetString(root, "html", 8_000_000);
                     _ = ValidateHtmlAsync(requestId, html);
+                    return true;
+                }
+                if (type == "editor.validate-css")
+                {
+                    string css = ReaderProtocol.GetString(root, "code", 8_000_000);
+                    _ = ValidateCssAsync(requestId, css);
                     return true;
                 }
                 if (type == "host.workspace.load")
