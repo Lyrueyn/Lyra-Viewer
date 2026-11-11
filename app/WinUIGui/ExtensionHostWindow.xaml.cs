@@ -553,8 +553,14 @@ namespace WinUIGui
             string error = "";
             try
             {
-                string? node = FindNodeExecutable();
                 string? runner = FindStylelintRunner();
+                string? node = null;
+                if (runner != null)
+                {
+                    string bundled = Path.Combine(Path.GetDirectoryName(runner)!, "node", "node.exe");
+                    if (File.Exists(bundled)) node = bundled;
+                }
+                if (node == null) node = FindNodeExecutable();
                 if (runner == null) error = "未找到 stylelint 运行时，请重新安装 CSS 编辑器扩展";
                 else if (node == null) error = "未找到 Node.js（需要 Node 18+）";
                 else
