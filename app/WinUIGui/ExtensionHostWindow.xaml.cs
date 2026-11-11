@@ -216,15 +216,17 @@ namespace WinUIGui
                 {
                     bool htmlEditor = false;
                     bool jsEditor = false;
+                    bool epubEditor = false;
                     try
                     {
                         var defs = ExtensionCatalog.LoadDefinitions();
                         htmlEditor = defs.Any(d => string.Equals(d.Info.Id, "html-reader", StringComparison.OrdinalIgnoreCase)) &&
                                      defs.Any(d => d.IsEditorPlugin && string.Equals(d.Info.Id, "html-editor", StringComparison.OrdinalIgnoreCase));
                         jsEditor = defs.Any(d => d.IsEditorPlugin && string.Equals(d.Info.Id, "js-editor", StringComparison.OrdinalIgnoreCase));
+                        epubEditor = defs.Any(d => d.IsEditorPlugin && string.Equals(d.Info.Id, "epub-editor", StringComparison.OrdinalIgnoreCase));
                     }
                     catch { }
-                    query += "&htmlEditor=" + (htmlEditor ? "1" : "0") + "&jsEditor=" + (jsEditor ? "1" : "0");
+                    query += "&htmlEditor=" + (htmlEditor ? "1" : "0") + "&jsEditor=" + (jsEditor ? "1" : "0") + "&epubEditor=" + (epubEditor ? "1" : "0");
                 }
                 // 网页扩展需要调用本机 AI 后端（如 PDF 页面 Real-ESRGAN 超分）时，把当前实际端口传过去，
                 // 不能假设固定 8765（多实例时端口会顺延）。
