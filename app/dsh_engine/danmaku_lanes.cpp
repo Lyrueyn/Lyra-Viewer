@@ -162,7 +162,9 @@ double pickTopRow(const std::vector<Active>& actives, double ph, double rowH, do
         int busy = busyCount(actives, TYPE_FIX_TOP, rowY, rowH);
         if (busy < bestScore) { bestScore = busy; best = r; }   // 严格小于 → 并列保留最上面那行
     }
-    return clampY(topPad + 4 + (double)best * rowH + rowJitter(rowH * (3.0/35.0)), ph, rowH * (27.0/35.0));
+    // ★ 固定弹幕不加行内随机抖动：重叠时若各自带 ±3px 偏移，会看起来像在抖/错位；
+    //   固定弹幕应严格落在同一轨道基线上（B 站允许重叠）。
+    return clampY(topPad + 4 + (double)best * rowH, ph, rowH * (27.0/35.0));
 }
 
 // —— 底部固定选行（pickBottomRow）——从底往上，选占用最少轨道；QML 里 mode===4。
@@ -177,7 +179,8 @@ double pickBottomRow(const std::vector<Active>& actives, double ph, double rowH,
         int busy = busyCount(actives, TYPE_FIX_BOTTOM, rowY, rowH);
         if (busy < bestScore) { bestScore = busy; best = r; }
     }
-    return clampY(ph - rowH - (double)best * rowH + rowJitter(rowH * (3.0/35.0)), ph, rowH * (27.0/35.0));
+    // ★ 同上：底部固定弹幕也不加行内抖动。
+    return clampY(ph - rowH - (double)best * rowH, ph, rowH * (27.0/35.0));
 }
 
 // ===== DanmakuEngine 实现 =====
