@@ -689,7 +689,7 @@ QUALITY_NAMES = {
 
 # 清晰度档位 → 最大高度（选择流时限制，不超目标画质）
 _QN_HEIGHT = {
-    125: 2160, 120: 2160, 116: 1080, 112: 2160, 80: 1080,
+    125: 2160, 120: 2160, 116: 1080, 112: 1080, 80: 1080,
     64: 720, 32: 480, 16: 360,
 }
 
@@ -750,6 +750,27 @@ def get_available_qualities(bvid: str, cid: int) -> list[dict]:
                        "note": note,
                        "codecid": v.get("codecid"),
                        "codecs": v.get("codecs")}
+    # ★ 2026-11-14 修：qn=120 只返回当前最高那一路 dash 流，低档（1080P/720P/480P/360P）
+    #   不会出现在 dash.video 里，但 accept_quality/support_formats 会列出全部可请求档位。
+    #   以前只遍历 dash 就导致界面只显示「1080P+」一项。这里把未出现的可请求档位补齐；
+    #   实际下载时 get_playurl(qn) 会单独按该档重新请求，不依赖这里的 dash 流。
+    accepted = []
+    for q in (data.get("data") or {}).get("accept_quality") or []:
+        try:
+            q = int(q)
+        except (TypeError, ValueError):
+            continue
+        if q > 0 and q not in accepted:
+            accepted.append(q)
+    for q in accepted:
+        if q in seen:
+            continue
+        h = _QN_HEIGHT.get(q, 0)
+        note = QUALITY_NAMES.get(q, "{}P".format(h) if h else "qn{}".format(q))
+        desc = sup.get(q, "")
+        if desc and "hdr" in desc.lower():
+            note += "（HDR）"
+        seen[q] = {"qn": q, "height": h, "note": note, "codecid": None, "codecs": None}
     return sorted(seen.values(), key=lambda x: -x["qn"])
 
 
