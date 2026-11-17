@@ -216,6 +216,7 @@ static std::atomic<bool> g_mediaLoaded{false};        // 解码线程已加载�
 static bool g_dmOnly=false;                            // 默认正常（视频+弹幕）；设 DSH_DM_ONLY=1 进入纯弹幕测试
 static bool g_noDm=false;                              // DSH_NO_DM=1：只画视频、不画弹幕（诊断：确认"带"是不是弹幕）
 static bool g_useVulkan=false;
+static bool g_forceD3D11=false;   // ★ 强制 D3D11（RTX VSR 走 GPU 直通；Vulkan VSR 要 CPU 回读会掉帧）
 static bool g_vkFrameWarned=false;
 static bool g_vkDiagLogged=false;
 // ★ 每帧耗时统计（Vulkan 上传+渲染 vs D3D11 上传）
@@ -1491,6 +1492,7 @@ __declspec(dllexport) int WINAPI DshEngine_Init(void* panelNative,int w,int h){
     //   要退回 D3D11：DSH_GRAPHICS=d3d11（Vulkan 初始化失败时也仍会自动回退，日志会写明）。
     g_useVulkan = true;
     { const char* e=getenv("DSH_GRAPHICS"); if(e && (e[0]=='d'||e[0]=='D')) g_useVulkan=false; }
+    if(g_forceD3D11) g_useVulkan=false;
     { const char* e=getenv("DSH_VULKAN_NEVER"); if(e && e[0]=='1') g_useVulkan=false; }   // 诊断：从不启用 Vulkan（隔离用）   // 视频走 Vulkan
     { const char* e=getenv("DSH_DANMAKU_CPU"); if(e) g_dmForceCpu = e[0]=='1'; }
     { const char* e=getenv("DSH_HDR_PASSTHROUGH"); g.hdrPassReq.store((e && e[0]=='1') ? 1 : 0); }   // env 设默认值；界面开关可运行时覆盖
@@ -2555,6 +2557,7 @@ extern "C" __declspec(dllexport) int WINAPI DshEngine_SetRtxSdkPath(const char* 
     dsh_log(b);
     return ok;
 }
+extern "C" __declspec(dllexport) void WINAPI DshEngine_SetRenderBackend(int d3d11){ g_forceD3D11 = (d3d11 != 0); if(g_forceD3D11) g_useVulkan = false; }
 extern "C" __declspec(dllexport) int WINAPI DshEngine_RtxVsrAvailable(){ return vsr_probe(); }
 extern "C" __declspec(dllexport) int WINAPI DshEngine_SetRtxVsr(int on){
     if(!on){
@@ -2728,7 +2731,7 @@ __declspec(dllexport) void WINAPI DshEngine_Present(){
     if(g.videoTex && g.swap && g.ctx && g.dev){
         draw_frame(g,g.vw,g.vh);
         // ★ 检查 Present 返回值：设备丢失(device removed/reset)时自动重建，避免"画面冻住/白屏只能重启"
-        HRESULT hrPresent = g.swap->Present(0,0);   // 非阻塞 vsync：视频帧不被拖慢，UI 线程不被占（弹幕/界面更顺）
+        HRESULT hrPresent = g.swap->Present(1,0);   // ★ 等垂直同步：D3D11+VSR 已能跑满刷新率，Present 同步可减少微抖
         if(FAILED(hrPresent)) dsh_check_present_hr(hrPresent);
         // ★ 自测钩子（T6 起分三档，用来验证"判死 → 换片"的两种语义）：
         //   DSH_TEST_DEVICE_LOST=1    → 注入丢失 + 强制重建失败 → 3 次退避 → 判死；**判死后自动解除强制失败**，

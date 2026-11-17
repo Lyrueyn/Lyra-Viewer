@@ -88,6 +88,10 @@ public static class DshNative
     public static extern int DshEngine_HdrAvailable();     // 1=直通可用（内容是 PQ HDR 且显示器处于 HDR 模式）
     [DllImport("dsh_engine.dll", CallingConvention = CallingConvention.Winapi)]
     public static extern int DshEngine_SetHdrPassthrough(int on);   // 运行时切：1=直通 0=色调映射；返回实际生效方式，-1=不可用
+    [DllImport("dsh_engine.dll", CallingConvention = CallingConvention.Winapi)]
+    public static extern void DshEngine_SetRenderBackend(int d3d11);
+    // ★ 1=D3D11（RTX VSR 走 GPU 直通；Vulkan VSR 需 CPU 回读，会把渲染循环拖到 ~100fps）
+
     // ---- ★ NVIDIA RTX Video Super Resolution（RTX VSR）----
     [DllImport("dsh_engine.dll", CallingConvention = CallingConvention.Winapi, CharSet = CharSet.Ansi)]
     public static extern int DshEngine_SetRtxSdkPath([MarshalAs(UnmanagedType.LPUTF8Str)] string pathUtf8); // 设置 RTX SDK DLL 目录（空=清除）
@@ -245,6 +249,10 @@ public sealed partial class VideoWindow : Window
         VideoPanel.Loaded += VideoPanel_Loaded;
         _hdrPass = Backend.LoadHdrPassthrough();   // 上次的 HDR 输出方式选择（data/player_settings.json）
         _rtxVsr = Backend.LoadRtxVsr();            // ★ 上次的 RTX VSR 开关选择
+        // ★ 抖动修复：RTX VSR 的 Vulkan 路径需要 CPU 回读（1080p→4K 实测 6~9ms/帧），
+        //   会把渲染循环拖到 ~100fps；显示 180/240Hz 时滚动弹幕就会抖。D3D11 VSR 是 GPU 直通（0.03ms），
+        //   所以记忆里 VSR 开启时优先走 D3D11。
+        try { if (_rtxVsr) { DshNative.DshEngine_SetRenderBackend(1); DmLog("RTX VSR 启用 → 强制 D3D11 渲染路径（避免 Vulkan VSR CPU 回读掉帧）"); } } catch { }
         _rtxVsrQuality = Backend.LoadRtxVsrQuality();   // ★ 上次的挡位（1~4，默认 2）
         _aiSubtitle = Backend.LoadAiSubtitle();    // ★ 上次的 AI 字幕开关
         try
@@ -5090,8 +5098,7 @@ public sealed partial class VideoWindow : Window
             FeedDanmakuToEngine();
         // 每帧：DLL 内做出生调度 + 轨道分配 + 光栅化上屏；返回在飞条数（供显示用）
         int n = DshNative.DshEngine_GetDanmakuLayout(null, null, null, 0);
-        if (++_dmLogTick % 30 == 0)
-            DmLog($"TICK pos={DshNative.DshEngine_GetClockPosMs()} active={n} total={_dmTexts.Length} gpu={_gpuDanmaku} pw={pw:0} ph={ph:0}");
+        // ★ 不在渲染回调里写日志：文件 I/O 会造成周期性掉帧，滚动弹幕看起来就是“抖”。
     }
 
     /// <summary>

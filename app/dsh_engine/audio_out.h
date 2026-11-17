@@ -432,7 +432,7 @@ public:   // ★ 倍速接口供引擎调用（原 struct 内部有 private 区�
     void setSpeed(float r) {
         if (r < 0.5f) r = 0.5f; if (r > 4.0f) r = 4.0f;   // ★ 0.25 ~ 6.0（<0.5 由两级 atempo 串联）
         speedRate.store(r);
-        if (r != 1.0f) atempoWant.store(true);
+        atempoWant.store(r != 1.0f);   // ★ 1x 直接旁路 atempo：atempo 常开会在正常播放时引入滤波边界爆音/延迟
         // ★ 这里不建图、不发命令：只写原子量，渲染线程下一帧会看到并应用（≤ 一个音频帧 ≈ 21ms）
         char b[128];
         snprintf(b, sizeof(b), "倍速: 请求 %.2fx（渲染线程将在下一次喂数据时应用%s）", (double)r,
@@ -514,6 +514,9 @@ public:   // ★ 倍速接口供引擎调用（原 struct 内部有 private 区�
         if (!atempoOn || fgFail) return false;
         if (outCh != 2 || srcRate <= 0) return false;      // atempo 这里只按立体声建图（本机设备都是 2ch）
         if (fgResetReq.exchange(0)) graphFree();           // seek 后图里还留着跳转前的音频 → 丢掉重建
+        // ★ 1x 不走 atempo：正常播放时 atempo 常开会引入滤波边界爆音/额外 43ms 延迟。
+        //   只有真正变速才建图；回到 1x 就把图释放，回到直通。
+        if (fabs(speedRate.load() - 1.0f) < 1e-4f) { if (fg) graphFree(); return false; }
         if (fg) return true;
         if (!avfilter_get_by_name("atempo")) { atempoOn = false; fgFail = 1; dsh_log("倍速: 该 ffmpeg 无 atempo → 退回原速"); return false; }
         fg = avfilter_graph_alloc();
@@ -747,6 +750,21 @@ public:   // ★ 倍速接口供引擎调用（原 struct 内部有 private 区�
 
     void renderMain() {
         HRESULT hr = CoInitializeEx(nullptr, COINIT_MULTITHREADED);
+        // ★ 音频线程必须比 UI/渲染线程更硬：否则 VSR/4K 渲染抢 CPU 时，线程晚 20ms 才写设备 →
+        //   WASAPI 端点已经放空，下一批样本硬接上就是"爆音/不连贯"，而 underruns 计数器看不到（环里还有数据）。
+        //   ① timeBeginPeriod(1) 让 sleep_for(1ms) 真按 1ms 粒度醒；② 线程提到 TIME_CRITICAL。
+        //   用 GetProcAddress 取 timeBeginPeriod，避免给引擎加 winmm 链接依赖。
+        static bool s_timerRes = false;
+        if (!s_timerRes) {
+            s_timerRes = true;
+            HMODULE winmm = LoadLibraryA("winmm.dll");
+            if (winmm) {
+                typedef UINT (WINAPI* PFN_TBP)(UINT);
+                auto tbp = (PFN_TBP)GetProcAddress(winmm, "timeBeginPeriod");
+                if (tbp) tbp(1);
+            }
+        }
+        SetThreadPriority(GetCurrentThread(), THREAD_PRIORITY_TIME_CRITICAL);
         auto fail = [&](const char* why) {
             char b[320]; snprintf(b, sizeof(b), "音频: %s（hr=0x%08lX）", why, (unsigned long)hr);
             info = b; ok = false; rendReady.store(true);
@@ -882,7 +900,10 @@ public:   // ★ 倍速接口供引擎调用（原 struct 内部有 private 区�
         if (!excl) {
             // ★ 与实测可用的 beep_test 完全一致：共享 + 事件驱动 + 缓冲时长 0（让音频引擎自己定，约 10ms）
             // ★ 不用事件回调：在引擎的多线程环境里事件不可靠（实测渲染线程会卡在 WaitForSingleObject），改用轮询
-            hr = ac->Initialize(AUDCLNT_SHAREMODE_SHARED, 0, 0, 0, mix, nullptr);
+            // ★ 先要 50ms 端点缓冲（默认只有 22ms，UI/渲染抖动一下就会在设备侧断开，而我们的欠载计数看不到）；
+            //   设备/引擎不接受就退回默认 0（由 audio engine 决定）。
+            hr = ac->Initialize(AUDCLNT_SHAREMODE_SHARED, 0, 500000, 0, mix, nullptr);
+            if (FAILED(hr)) hr = ac->Initialize(AUDCLNT_SHAREMODE_SHARED, 0, 0, 0, mix, nullptr);
             if (FAILED(hr)) { fail("Initialize(共享) 失败"); return; }
         }
         // ★ 记录"实际生效"的模式（-1 未开 / 1 独占 / 0 共享）：界面与日志都靠它说真话
@@ -928,7 +949,7 @@ public:   // ★ 倍速接口供引擎调用（原 struct 内部有 private 区�
             // ★ 暂停恢复：端点饿死过一段时间，硬起就是一声"呲" → 标记渐入（以前只有欠载/seek 才置位，漏了这条路）
             if (wasPaused) { wasPaused = false; rampIn.store(true); dsh_log("音频: 暂停恢复（渐入 5ms）"); }
             // ★ 轮询：不再等设备事件（事件驱动在这套多线程环境里实测会卡死渲染线程 → 静音）
-            std::this_thread::sleep_for(std::chrono::milliseconds(2));
+            std::this_thread::sleep_for(std::chrono::milliseconds(1));
             if (!run.load()) break;
             iters++;
             if (iters % 150 == 0) {
