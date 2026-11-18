@@ -764,6 +764,7 @@ namespace WinUIGui
                             if (rel.Split('/').Any(seg => skipDirs.Contains(seg))) continue;
                             string fileName = Path.GetFileName(rel);
                             if (fileName.StartsWith(".")) continue;
+                            if (fileName.EndsWith(".bak", StringComparison.OrdinalIgnoreCase)) continue;
                             string ext = Path.GetExtension(rel).ToLowerInvariant();
                             bool isHtml = ext == ".html" || ext == ".htm";
                             string dir = rel.Contains('/') ? rel.Substring(0, rel.LastIndexOf('/')) : "";
@@ -1079,8 +1080,8 @@ namespace WinUIGui
                         if (!projectMode)
                         {
                             string ext = Path.GetExtension(full).ToLowerInvariant();
-                            if (ext != ".png" && ext != ".jpg" && ext != ".jpeg" && ext != ".webp" && ext != ".gif" && ext != ".bmp" && ext != ".svg")
-                                throw new InvalidOperationException("只允许图片文件");
+                            if (ext != ".png" && ext != ".jpg" && ext != ".jpeg" && ext != ".webp" && ext != ".gif" && ext != ".bmp" && ext != ".svg" && ext != ".bak")
+                                throw new InvalidOperationException("只允许图片或 .bak 备份文件");
                             if (fileBytes.Length > 50 * 1024 * 1024) throw new InvalidOperationException("图片超过 50MB");
                         }
                         else
