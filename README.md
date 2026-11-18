@@ -663,17 +663,18 @@ JavaScript 编辑器 2.0.0 2,112,383 bytes    570DDD4B8340DB4D4F7B8A7F5959C903D2
 - 每轮重建 runFrame 目标、复用编辑器 iframe 会话，修复第二次断点失效/卡住。
 - 单步只显示源码行，自动跳过运行器内部行。
 
-## EPUB 编辑器（1.0.7 / EPUB 阅读器 0.8.7）
+## EPUB 编辑器（1.0.8 / EPUB 阅读器 0.8.9）
 
 - `epub-editor` 1.0.7：解包 EPUB 编辑 XHTML/CSS/OPF/NCX，实时 HTML 预览，重新打包保存。
 - 修复编辑内容未写回 ZIP；切换文件保留未保存修改；CSS 修改实时反映到正文预览。
 - 新增章节自动写 OPF manifest/spine 和 EPUB3 nav；删除文件同步清理引用；支持 Ctrl+F 查找替换。
+- 阅读器内嵌编辑器顶部有「返回阅读」按钮/Esc；阅读器只保留一个返回按钮。
 - EPUB 阅读器工具栏新增「编辑 EPUB」，内嵌整书编辑器；保存后经 `host.workspace.save` 写回原文件并重新载入。
 - 编辑器外壳 1.3.0 支持 `.epub`，路由到 EPUB 编辑器插件，项目内双击 EPUB 即可编辑。
 
 ```text
-EPUB 编辑器 1.0.7  124,395 bytes  2541D5F2F332954D5BAB53C6AF5AC411F925D6892DFDA899005803B2555E7884
-EPUB 阅读器 0.8.7  116,853 bytes  8B2476C8F90B8652D9865FA4F7AAA7AD2595403916BF22C14157138387FCF0A0
+EPUB 编辑器 1.0.8  124,840 bytes  CB0218EFB59DBE2E98303A552321B636370DBAE11EE440F080EF596A34D754CE
+EPUB 阅读器 0.8.9  415,054 bytes  2BEE026FAA4652D4741512A62FE8BEBE4C5A6518683255FAB80FB0FC2C17503F
 编辑器外壳 1.3.1    24,374 bytes  4BECBCD6ADFB44B905A07C84607FD01BEB5902CDF31EE059C469D44BD82B63B2
 ```
 
