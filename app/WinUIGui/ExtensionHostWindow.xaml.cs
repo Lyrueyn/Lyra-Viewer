@@ -212,6 +212,17 @@ namespace WinUIGui
                     query += "&editorEnabled=" + (editorAvailable ? "1" : "0");
                       if (_startEdit) query += "&startEdit=1";
                 }
+                if (string.Equals(_extensionId, "epub", StringComparison.OrdinalIgnoreCase))
+                {
+                    bool hasEpubEditor = false;
+                    try
+                    {
+                        hasEpubEditor = ExtensionCatalog.LoadDefinitions().Any(d => d.IsEditorPlugin &&
+                            string.Equals(d.Info.Id, "epub-editor", StringComparison.OrdinalIgnoreCase));
+                    }
+                    catch { }
+                    query += "&epubEditor=" + (hasEpubEditor ? "1" : "0");
+                }
                 if (string.Equals(_extensionId, "editor-shell", StringComparison.OrdinalIgnoreCase))
                 {
                     bool htmlEditor = false;
