@@ -663,7 +663,7 @@ JavaScript 编辑器 2.0.0 2,112,383 bytes    570DDD4B8340DB4D4F7B8A7F5959C903D2
 - 每轮重建 runFrame 目标、复用编辑器 iframe 会话，修复第二次断点失效/卡住。
 - 单步只显示源码行，自动跳过运行器内部行。
 
-## EPUB 编辑器（1.0.21 / EPUB 阅读器 0.8.14）
+## EPUB 编辑器（1.0.22 / EPUB 阅读器 0.8.14）
 
 - `epub-editor` 1.0.7：解包 EPUB 编辑 XHTML/CSS/OPF/NCX，实时 HTML 预览，重新打包保存。
 - 修复编辑内容未写回 ZIP；切换文件保留未保存修改；CSS 修改实时反映到正文预览。
@@ -681,11 +681,12 @@ JavaScript 编辑器 2.0.0 2,112,383 bytes    570DDD4B8340DB4D4F7B8A7F5959C903D2
 - 1.0.19 每个文件独立撤销历史；自动保存新增 2/5 秒（默认 5 秒）；检查结果改为错误/警告统计卡与筛选。
 - 1.0.20 分页预览可跟随阅读器主题/字号/行高/页宽/自定义配色。
 - 1.0.21 格式化 XHTML/XML/CSS（可撤销）；Alt+↑/↓ 移动行、Shift+Alt+D 复制行、Ctrl+G 跳行。
+- 1.0.22 EPUB2 NCX 同步：目录改名/排序、新建/拆分/删除/合并章节都会同步 toc.ncx。
 - EPUB 阅读器工具栏新增「编辑 EPUB」，内嵌整书编辑器；保存后经 `host.workspace.save` 写回原文件并重新载入。
 - 编辑器外壳 1.3.0 支持 `.epub`，路由到 EPUB 编辑器插件，项目内双击 EPUB 即可编辑。
 
 ```text
-EPUB 编辑器 1.0.21  154,833 bytes  B11A413F173284854800BE97692EBFF4CBCB43C4536171AE320E3A7F9E70B71A
+EPUB 编辑器 1.0.22  156,081 bytes  75829BB9BF47110B35A1E3607F2D2BE7D741EB5BEB05895EEBC52F8058769012
 EPUB 阅读器 0.8.14  415,403 bytes  7B6C1BAB756EC9BA69B56468B5B19DEC4EEE61E0B57338066532C878B7E9D622
 编辑器外壳 1.3.1    24,374 bytes  4BECBCD6ADFB44B905A07C84607FD01BEB5902CDF31EE059C469D44BD82B63B2
 ```
